@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en" data-figures="" class="page">
   <head>
-<title>How to read binary file in c | Clarity</title>
+<title>读取二进制文件 | Clarity</title>
 <meta charset="utf-8">
 <meta name="generator" content="Hugo 0.76.5" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -17,13 +17,13 @@
 <meta property="og:locale" content="en" />
 
 <meta property="og:type" content="article">
-<meta name="description" content="1.creat FILE pointer and set mode as &#39;rb&#39; 1FILE *f = fopen(inputFN, &#34;rb&#34;); 2.check the FILE pointer is not null 1if (!f) { 2 fprintf(stderr, &#34;ERROR: …">
+<meta name="description" content="read binary file to char *bytes in c.">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@jerry">
-<meta name="twitter:title" content="How to read binary file in c" />
+<meta name="twitter:title" content="读取二进制文件" />
 <meta property="og:url" content="https://Jerrysmd.github.io/post/read_binary_file/" />
-<meta property="og:title" content="How to read binary file in c" />
-<meta property="og:description" content="1.creat FILE pointer and set mode as &#39;rb&#39; 1FILE *f = fopen(inputFN, &#34;rb&#34;); 2.check the FILE pointer is not null 1if (!f) { 2 fprintf(stderr, &#34;ERROR: …" />
+<meta property="og:title" content="读取二进制文件" />
+<meta property="og:description" content="read binary file to char *bytes in c." />
 <meta property="og:image" content="https://Jerrysmd.github.io/images/thumbnail.png" />
 <link rel="apple-touch-icon" sizes="180x180" href='https://Jerrysmd.github.io/icons/apple-touch-icon.png'>
 <link rel="icon" type="image/png" sizes="32x32" href='https://Jerrysmd.github.io/icons/favicon-32x32.png'>
@@ -139,7 +139,7 @@
   
 <div class="grid-inverse wrap content">
   <article class="post_content">
-    <h1 class="post_title">How to read binary file in c</h1><div class="post_meta">
+    <h1 class="post_title">读取二进制文件</h1><div class="post_meta">
   <svg class="icon">
   <use xlink:href="#calendar"></use>
 </svg>
@@ -150,12 +150,12 @@
     
 <div class="post_share">
   Share on:
-  <a href="https://twitter.com/intent/tweet?text=How%20to%20read%20binary%20file%20in%20c&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2fread_binary_file%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
+  <a href="https://twitter.com/intent/tweet?text=%e8%af%bb%e5%8f%96%e4%ba%8c%e8%bf%9b%e5%88%b6%e6%96%87%e4%bb%b6&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2fread_binary_file%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
     <svg class="icon">
   <use xlink:href="#twitter"></use>
 </svg>
   </a>
-  <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2fread_binary_file%2f&t=How%20to%20read%20binary%20file%20in%20c" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
+  <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2fread_binary_file%2f&t=%e8%af%bb%e5%8f%96%e4%ba%8c%e8%bf%9b%e5%88%b6%e6%96%87%e4%bb%b6" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
     <svg class="icon">
   <use xlink:href="#facebook"></use>
 </svg>
@@ -254,7 +254,7 @@
     <h2 class="mt-4">Featured Posts</h2>
     <ul>
       <li>
-        <a href="https://Jerrysmd.github.io/post/updatablog/" class="nav-link">UpdataBlog</a>
+        <a href="https://Jerrysmd.github.io/post/updatablog/" class="nav-link">更新HUGO步骤</a>
       </li>
       <li>
         <a href="https://Jerrysmd.github.io/post/markdown-syntax/" class="nav-link">Markdown Syntax Guide</a>
@@ -263,22 +263,19 @@
     <h2 class="mt-4">Recent Posts</h2>
     <ul class="flex-column">
       <li>
-        <a href="https://Jerrysmd.github.io/post/updatablog/" class="nav-link">UpdataBlog</a>
+        <a href="https://Jerrysmd.github.io/post/updatablog/" class="nav-link">更新HUGO步骤</a>
       </li>
       <li>
         <a href="https://Jerrysmd.github.io/post/markdown-syntax/" class="nav-link">Markdown Syntax Guide</a>
       </li>
       <li>
-        <a href="https://Jerrysmd.github.io/post/rich-content/" class="nav-link">Rich Content</a>
+        <a href="https://Jerrysmd.github.io/post/emoji-support/" class="nav-link"></a>
       </li>
       <li>
-        <a href="https://Jerrysmd.github.io/post/placeholder-text/" class="nav-link">Placeholder Text</a>
+        <a href="https://Jerrysmd.github.io/post/placeholder-text/" class="nav-link"></a>
       </li>
       <li>
-        <a href="https://Jerrysmd.github.io/post/math-typesetting/" class="nav-link">Math Typesetting</a>
-      </li>
-      <li>
-        <a href="https://Jerrysmd.github.io/post/emoji-support/" class="nav-link">Emoji Support</a>
+        <a href="https://Jerrysmd.github.io/post/rich-content/" class="nav-link"></a>
       </li>
     </ul>
     <div>
@@ -286,11 +283,6 @@
       <nav class="tags_nav">
         <a href='https://Jerrysmd.github.io/categories/syntax/' class="post_tag button button_translucent">
           SYNTAX
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://Jerrysmd.github.io/categories/technology/' class="post_tag button button_translucent">
-          TECHNOLOGY
           <span class="button_tally">1</span>
         </a>
         
@@ -316,18 +308,8 @@
     <div>
       <h2 class="mt-4 taxonomy" id="tags-section">Tags</h2>
       <nav class="tags_nav">
-        <a href='https://Jerrysmd.github.io/tags/markdown/' class="post_tag button button_translucent">
-          MARKDOWN
-          <span class="button_tally">2</span>
-        </a>
-        
         <a href='https://Jerrysmd.github.io/tags/css/' class="post_tag button button_translucent">
           CSS
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://Jerrysmd.github.io/tags/emoji/' class="post_tag button button_translucent">
-          EMOJI
           <span class="button_tally">1</span>
         </a>
         
@@ -346,28 +328,8 @@
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://Jerrysmd.github.io/tags/privacy/' class="post_tag button button_translucent">
-          PRIVACY
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://Jerrysmd.github.io/tags/shortcodes/' class="post_tag button button_translucent">
-          SHORTCODES
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://Jerrysmd.github.io/tags/tag_name1/' class="post_tag button button_translucent">
-          TAG_NAME1
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://Jerrysmd.github.io/tags/tag_name2/' class="post_tag button button_translucent">
-          TAG_NAME2
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://Jerrysmd.github.io/tags/text/' class="post_tag button button_translucent">
-          TEXT
+        <a href='https://Jerrysmd.github.io/tags/markdown/' class="post_tag button button_translucent">
+          MARKDOWN
           <span class="button_tally">1</span>
         </a>
         

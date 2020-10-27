@@ -8,7 +8,7 @@
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Tue, 27 Oct 2020 05:06:59 -0700</lastBuildDate><atom:link href="https://Jerrysmd.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>UpdataBlog</title>
+      <title>更新HUGO步骤</title>
       <link>https://Jerrysmd.github.io/post/updatablog/</link>
       <pubDate>Tue, 27 Oct 2020 05:06:59 -0700</pubDate>
       
@@ -17,7 +17,7 @@
     </item>
     
     <item>
-      <title>How to read binary file in c</title>
+      <title>读取二进制文件</title>
       <link>https://Jerrysmd.github.io/post/read_binary_file/</link>
       <pubDate>Mon, 26 Oct 2020 18:39:37 -0700</pubDate>
       
@@ -45,42 +45,6 @@
     </item>
     
     <item>
-      <title>Rich Content</title>
-      <link>https://Jerrysmd.github.io/post/rich-content/</link>
-      <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://Jerrysmd.github.io/post/rich-content/</guid>
-      <description>&lt;p&gt;Hugo ships with several &lt;a href=&#34;https://gohugo.io/content-management/shortcodes/#use-hugo-s-built-in-shortcodes&#34;&gt;Built-in Shortcodes&lt;/a&gt; for rich content, along with a &lt;a href=&#34;https://gohugo.io/about/hugo-and-gdpr/&#34;&gt;Privacy Config&lt;/a&gt; and a set of Simple Shortcodes that enable static and no-JS versions of various social media embeds.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Placeholder Text</title>
-      <link>https://Jerrysmd.github.io/post/placeholder-text/</link>
-      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://Jerrysmd.github.io/post/placeholder-text/</guid>
-      <description>&lt;p&gt;Lorem est tota propiore conpellat pectoribus de pectora summo.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Math Typesetting</title>
-      <link>https://Jerrysmd.github.io/post/math-typesetting/</link>
-      <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://Jerrysmd.github.io/post/math-typesetting/</guid>
-      <description>&lt;p&gt;Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Emoji Support</title>
-      <link>https://Jerrysmd.github.io/post/emoji-support/</link>
-      <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://Jerrysmd.github.io/post/emoji-support/</guid>
-      <description>&lt;p&gt;Emoji can be enabled in a Hugo project in a number of ways.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>About</title>
       <link>https://Jerrysmd.github.io/about/</link>
       <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
@@ -89,6 +53,66 @@
       <description>Written in Go, Hugo is an open source static site generator available under the Apache Licence 2.0. Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
 Hugo makes use of a variety of open source projects including:
  https://github.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://Jerrysmd.github.io/post/emoji-support/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/emoji-support/</guid>
+      <description>&lt;p&gt;draft:true
++++
+author = &amp;quot;Hugo Authors&amp;quot;
+title = &amp;quot;Emoji Support&amp;quot;
+date = &amp;quot;2019-03-05&amp;quot;
+description = &amp;quot;Guide to emoji usage in Hugo&amp;quot;
+tags = [
+&amp;quot;emoji&amp;quot;,
+]
++++&lt;/p&gt;
+&lt;p&gt;Emoji can be enabled in a Hugo project in a number of ways.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://Jerrysmd.github.io/post/placeholder-text/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/placeholder-text/</guid>
+      <description>&lt;p&gt;draft: true
++++
+author = &amp;quot;Hugo Authors&amp;quot;
+title = &amp;quot;Placeholder Text&amp;quot;
+date = &amp;quot;2019-03-09&amp;quot;
+description = &amp;quot;Lorem Ipsum Dolor Si Amet.&amp;quot;
+tags = [
+&amp;quot;markdown&amp;quot;,
+&amp;quot;text&amp;quot;,
+]&lt;/p&gt;
+&lt;p&gt;+++&lt;/p&gt;
+&lt;p&gt;Lorem est tota propiore conpellat pectoribus de pectora summo.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://Jerrysmd.github.io/post/rich-content/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/rich-content/</guid>
+      <description>&lt;p&gt;draft: true
++++
+author = &amp;quot;Hugo Authors&amp;quot;
+title = &amp;quot;Rich Content&amp;quot;
+date = &amp;quot;2019-03-10&amp;quot;
+description = &amp;quot;A brief description of Hugo Shortcodes&amp;quot;
+tags = [
+&amp;quot;shortcodes&amp;quot;,
+&amp;quot;privacy&amp;quot;,
+]
+thumbnail = &amp;quot;images/dollar.png&amp;quot;
++++&lt;/p&gt;
+&lt;p&gt;Hugo ships with several &lt;a href=&#34;https://gohugo.io/content-management/shortcodes/#use-hugo-s-built-in-shortcodes&#34;&gt;Built-in Shortcodes&lt;/a&gt; for rich content, along with a &lt;a href=&#34;https://gohugo.io/about/hugo-and-gdpr/&#34;&gt;Privacy Config&lt;/a&gt; and a set of Simple Shortcodes that enable static and no-JS versions of various social media embeds.&lt;/p&gt;</description>
     </item>
     
   </channel>
