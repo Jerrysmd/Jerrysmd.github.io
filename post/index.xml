@@ -22,8 +22,7 @@
       <pubDate>Mon, 26 Oct 2020 18:39:37 -0700</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/read_binary_file/</guid>
-      <description>1.creat FILE pointer and set mode as &#39;rb&#39; 1FILE *f = fopen(inputFN, &amp;#34;rb&amp;#34;); 2.check the FILE pointer is not null 1if (!f) { 2 fprintf(stderr, &amp;#34;ERROR: unable to open file \&amp;#34;%s\&amp;#34;: %s\n&amp;#34;, inputFN,strerror(errno)); 3 return NULL; 4} 3.use fseek/ftell to get data length fseek(f,0,SEEK_END) put the pointer to the end of the file,ftell(f) can get the current offset, then use fseek(f,0,SEEK_SET) put the pointer to the start of file.
-1if (fseek(f, 0, SEEK_END) !</description>
+      <description>1.creat FILE pointer and set mode as &#39;rb&#39; 1FILE *f = fopen(inputFN, &amp;#34;rb&amp;#34;); 2.check the FILE pointer is not null 1if (!f) { 2 fprintf(stderr, &amp;#34;ERROR: unable to open file \&amp;#34;%s\&amp;#34;: %s\n&amp;#34;, inputFN,strerror(errno)); 3 return NULL; 4} 3.use fseek/ftell to get data length  fseek(f,0,SEEK_END) put the pointer to the end of the file. ftell(f) can get the current offset. then use fseek(f,0,SEEK_SET) put the pointer to the start of file.</description>
     </item>
     
     <item>

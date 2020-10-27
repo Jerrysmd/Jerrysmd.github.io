@@ -176,31 +176,20 @@
     
     
     <h2>Overview</h2>
-    <nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#1creat-file-pointer-and-set-mode-as-rb">1.creat FILE pointer and set mode as 'rb'</a></li>
-        <li><a href="#2check-the-file-pointer-is-not-null">2.check the FILE pointer is not null</a></li>
-        <li><a href="#3use-fseekftell-to-get-data-length">3.use fseek/ftell to get data length</a></li>
-        <li><a href="#4check-the-datalen">4.check the datalen</a></li>
-        <li><a href="#5malloc-memory-to-char-inputdata">5.malloc memory to char *inputData</a></li>
-        <li><a href="#6read-the-bin-data">6.read the bin data</a></li>
-        <li><a href="#7close-the-file-stream">7.close the File stream</a></li>
-        <li><a href="#8return-length--inputdata">8.return length &amp; inputData</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-    <h3 id="1creat-file-pointer-and-set-mode-as-rb">1.creat FILE pointer and set mode as 'rb'</h3>
+    <nav id="TableOfContents"></nav>
+    <h1 id="1creat-file-pointer-and-set-mode-as-rb">1.creat FILE pointer and set mode as 'rb'</h1>
 <div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="n">FILE</span> <span class="o">*</span><span class="n">f</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">inputFN</span><span class="p">,</span> <span class="s">&#34;rb&#34;</span><span class="p">);</span>
-</code></pre></div><h3 id="2check-the-file-pointer-is-not-null">2.check the FILE pointer is not null</h3>
+</code></pre></div><h1 id="2check-the-file-pointer-is-not-null">2.check the FILE pointer is not null</h1>
 <div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">f</span><span class="p">)</span> <span class="p">{</span>
 <span class="ln">2</span>        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;ERROR: unable to open file </span><span class="se">\&#34;</span><span class="s">%s</span><span class="se">\&#34;</span><span class="s">: %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">inputFN</span><span class="p">,</span><span class="n">strerror</span><span class="p">(</span><span class="n">errno</span><span class="p">));</span>
 <span class="ln">3</span>        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
 <span class="ln">4</span><span class="p">}</span>
-</code></pre></div><h3 id="3use-fseekftell-to-get-data-length">3.use fseek/ftell to get data length</h3>
-<p>fseek(f,0,SEEK_END) put the pointer to the end of the file,ftell(f) can get the current offset, then use fseek(f,0,SEEK_SET) put the pointer to the start of file.</p>
+</code></pre></div><h1 id="3use-fseekftell-to-get-data-length">3.use fseek/ftell to get data length</h1>
+<ul>
+<li>fseek(f,0,SEEK_END) put the pointer to the end of the file.</li>
+<li>ftell(f) can get the current offset.</li>
+<li>then use fseek(f,0,SEEK_SET) put the pointer to the start of file.</li>
+</ul>
 <div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="k">if</span> <span class="p">(</span><span class="n">fseek</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SEEK_END</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
 <span class="ln"> 2</span>        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;ERROR: unable to seek file </span><span class="se">\&#34;</span><span class="s">%s</span><span class="se">\&#34;</span><span class="s">: %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">inputFN</span><span class="p">,</span>
 <span class="ln"> 3</span>                <span class="n">strerror</span><span class="p">(</span><span class="n">errno</span><span class="p">));</span>
@@ -219,7 +208,7 @@
 <span class="ln">16</span>        <span class="n">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
 <span class="ln">17</span>        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
 <span class="ln">18</span>    <span class="p">}</span>
-</code></pre></div><h3 id="4check-the-datalen">4.check the datalen</h3>
+</code></pre></div><h1 id="4check-the-datalen">4.check the datalen</h1>
 <div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="k">if</span> <span class="p">((</span><span class="kt">unsigned</span> <span class="kt">long</span><span class="p">)</span><span class="n">dataLen</span> <span class="o">&gt;</span> <span class="n">UINT_MAX</span><span class="p">)</span> <span class="p">{</span>
 <span class="ln">2</span>        <span class="n">dataLen</span> <span class="o">=</span> <span class="n">UINT_MAX</span><span class="p">;</span>
 <span class="ln">3</span>        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;WARNING: clipping data to %ld bytes</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">dataLen</span><span class="p">);</span>
@@ -228,14 +217,14 @@
 <span class="ln">6</span>        <span class="n">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
 <span class="ln">7</span>        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
 <span class="ln">8</span>    <span class="p">}</span>
-</code></pre></div><h3 id="5malloc-memory-to-char-inputdata">5.malloc memory to char *inputData</h3>
+</code></pre></div><h1 id="5malloc-memory-to-char-inputdata">5.malloc memory to char *inputData</h1>
 <div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="kt">char</span> <span class="o">*</span><span class="n">inputData</span> <span class="o">=</span> <span class="n">static_cast</span><span class="o">&lt;</span><span class="kt">char</span> <span class="o">*&gt;</span><span class="p">(</span><span class="n">malloc</span><span class="p">(</span><span class="n">dataLen</span><span class="p">));</span>
 <span class="ln">2</span>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">inputData</span><span class="p">)</span> <span class="p">{</span>
 <span class="ln">3</span>        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;ERROR: unable to malloc %ld bytes</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">dataLen</span><span class="p">);</span>
 <span class="ln">4</span>        <span class="n">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
 <span class="ln">5</span>        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
 <span class="ln">6</span>    <span class="p">}</span>
-</code></pre></div><h3 id="6read-the-bin-data">6.read the bin data</h3>
+</code></pre></div><h1 id="6read-the-bin-data">6.read the bin data</h1>
 <div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="c1">// create a pointer p to point the begin of the inputData
 </span><span class="ln"> 2</span><span class="c1"></span><span class="kt">char</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">inputData</span><span class="p">;</span>
 <span class="ln"> 3</span><span class="c1">// create a bytesLeft to record the moving of offset
@@ -252,9 +241,9 @@
 <span class="ln">14</span>            <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
 <span class="ln">15</span>	<span class="p">}</span>
 <span class="ln">16</span><span class="p">}</span>
-</code></pre></div><h3 id="7close-the-file-stream">7.close the File stream</h3>
+</code></pre></div><h1 id="7close-the-file-stream">7.close the File stream</h1>
 <div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="n">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
-</code></pre></div><h3 id="8return-length--inputdata">8.return length &amp; inputData</h3>
+</code></pre></div><h1 id="8return-length--inputdata">8.return length &amp; inputData</h1>
 <div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="c1">//change the parameter of &amp;length
 </span><span class="ln">2</span><span class="c1"></span><span class="o">*</span><span class="n">length</span> <span class="o">=</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="p">)</span><span class="n">dataLen</span><span class="p">;</span>
 <span class="ln">3</span><span class="k">return</span> <span class="n">inputData</span><span class="p">;</span>
@@ -267,7 +256,7 @@
   <section class="sidebar_inner">
     <h2>刘佳锐</h2>
     <div>
-      Technologist, perpetual student, teacher, continual incremental improvement.
+      Technologist
     </div>
     <a href='https://Jerrysmd.github.io/about/' class="button mt-1" role="button">Read More</a>
     <h2 class="mt-4">Featured Posts</h2>
