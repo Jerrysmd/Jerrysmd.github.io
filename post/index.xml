@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Clarity</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Mon, 26 Oct 2020 18:39:37 -0700</lastBuildDate><atom:link href="https://Jerrysmd.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 27 Oct 2020 05:06:59 -0700</lastBuildDate><atom:link href="https://Jerrysmd.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>UpdataBlog</title>
+      <link>https://Jerrysmd.github.io/post/updatablog/</link>
+      <pubDate>Tue, 27 Oct 2020 05:06:59 -0700</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/updatablog/</guid>
+      <description>1.新建博客 1hugo new post/*.md 2.更新静态网页 1hugo --theme=hugo-clarity --baseUrl=&amp;#34;https://Jerrysmd.github.io/&amp;#34; 3.推到GithubPages 1cd public/ 2git add . 3git commit -m &amp;#39;why&amp;#39; 4git push -u origin master </description>
+    </item>
+    
     <item>
       <title>How to read binary file in c</title>
       <link>https://Jerrysmd.github.io/post/read_binary_file/</link>

@@ -1,8 +1,8 @@
 
 <!DOCTYPE html>
-<html lang="en" data-figures="" class="page">
+<html lang="en" data-figures="true" class="page">
   <head>
-<title>How to read binary file in c | Clarity</title>
+<title>UpdataBlog | Clarity</title>
 <meta charset="utf-8">
 <meta name="generator" content="Hugo 0.76.5" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en" />
 
 <meta property="og:type" content="article">
-<meta name="description" content="1.creat FILE pointer and set mode as &#39;rb&#39; 1FILE *f = fopen(inputFN, &#34;rb&#34;); 2.check the FILE pointer is not null 1if (!f) { 2 fprintf(stderr, &#34;ERROR: …">
+<meta name="description" content="Article description.">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@jerry">
-<meta name="twitter:title" content="How to read binary file in c" />
-<meta property="og:url" content="https://Jerrysmd.github.io/post/read_binary_file/" />
-<meta property="og:title" content="How to read binary file in c" />
-<meta property="og:description" content="1.creat FILE pointer and set mode as &#39;rb&#39; 1FILE *f = fopen(inputFN, &#34;rb&#34;); 2.check the FILE pointer is not null 1if (!f) { 2 fprintf(stderr, &#34;ERROR: …" />
-<meta property="og:image" content="https://Jerrysmd.github.io/images/thumbnail.png" />
+<meta name="twitter:title" content="UpdataBlog" />
+<meta property="og:url" content="https://Jerrysmd.github.io/post/updatablog/" />
+<meta property="og:title" content="UpdataBlog" />
+<meta property="og:description" content="Article description." />
+<meta property="og:image" content="https://Jerrysmd.github.io/images/path/share.png" />
 <link rel="apple-touch-icon" sizes="180x180" href='https://Jerrysmd.github.io/icons/apple-touch-icon.png'>
 <link rel="icon" type="image/png" sizes="32x32" href='https://Jerrysmd.github.io/icons/favicon-32x32.png'>
 <link rel="manifest" href='https://Jerrysmd.github.io/icons/site.webmanifest'>
@@ -32,7 +32,7 @@
 <meta name="msapplication-TileColor" content="#002538">
 <meta name="theme-color" content="#002538">
 
-<link rel="canonical" href="https://Jerrysmd.github.io/post/read_binary_file/">
+<link rel="canonical" href="https://Jerrysmd.github.io/post/updatablog/">
 
     
 
@@ -49,8 +49,9 @@
   
   
     
+    
   
-  <body data-code="7" data-lines="false" id="documentTop">
+  <body data-code="10" data-lines="false" id="documentTop">
 
 <header class="nav_header" >
   <nav class="nav">
@@ -139,23 +140,27 @@
   
 <div class="grid-inverse wrap content">
   <article class="post_content">
-    <h1 class="post_title">How to read binary file in c</h1><div class="post_meta">
+    <h1 class="post_title">UpdataBlog</h1><div class="post_meta">
   <svg class="icon">
   <use xlink:href="#calendar"></use>
 </svg>
   <span class="post_date">
-    Oct 26, 2020</span>
+    Oct 27, 2020</span>
+    <a href='https://Jerrysmd.github.io/tags/tag_name1' class="post_tag button button_translucent">Tag_name1
+    </a>
+    <a href='https://Jerrysmd.github.io/tags/tag_name2' class="post_tag button button_translucent">Tag_name2
+    </a>
 </div>
 
     
 <div class="post_share">
   Share on:
-  <a href="https://twitter.com/intent/tweet?text=How%20to%20read%20binary%20file%20in%20c&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2fread_binary_file%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
+  <a href="https://twitter.com/intent/tweet?text=UpdataBlog&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2fupdatablog%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
     <svg class="icon">
   <use xlink:href="#twitter"></use>
 </svg>
   </a>
-  <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2fread_binary_file%2f&t=How%20to%20read%20binary%20file%20in%20c" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
+  <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2fupdatablog%2f&t=UpdataBlog" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
     <svg class="icon">
   <use xlink:href="#facebook"></use>
 </svg>
@@ -165,7 +170,7 @@
   <use xlink:href="#linkedin"></use>
 </svg>
   </a>
-  <a href="https://Jerrysmd.github.io/post/read_binary_file/" title="Copy Link" class="link link_yank">
+  <a href="https://Jerrysmd.github.io/post/updatablog/" title="Copy Link" class="link link_yank">
     <svg class="icon">
   <use xlink:href="#copy"></use>
 </svg>
@@ -173,72 +178,17 @@
 </div>
 
     
-    <h3 id="1creat-file-pointer-and-set-mode-as-rb">1.creat FILE pointer and set mode as 'rb'</h3>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="n">FILE</span> <span class="o">*</span><span class="n">f</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">inputFN</span><span class="p">,</span> <span class="s">&#34;rb&#34;</span><span class="p">);</span>
-</code></pre></div><h3 id="2check-the-file-pointer-is-not-null">2.check the FILE pointer is not null</h3>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">f</span><span class="p">)</span> <span class="p">{</span>
-<span class="ln">2</span>        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;ERROR: unable to open file </span><span class="se">\&#34;</span><span class="s">%s</span><span class="se">\&#34;</span><span class="s">: %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">inputFN</span><span class="p">,</span><span class="n">strerror</span><span class="p">(</span><span class="n">errno</span><span class="p">));</span>
-<span class="ln">3</span>        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
-<span class="ln">4</span><span class="p">}</span>
-</code></pre></div><h3 id="3use-fseekftell-to-get-data-length">3.use fseek/ftell to get data length</h3>
-<p>fseek(f,0,SEEK_END) put the pointer to the end of the file,ftell(f) can get the current offset, then use fseek(f,0,SEEK_SET) put the pointer to the start of file.</p>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="k">if</span> <span class="p">(</span><span class="n">fseek</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SEEK_END</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-<span class="ln"> 2</span>        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;ERROR: unable to seek file </span><span class="se">\&#34;</span><span class="s">%s</span><span class="se">\&#34;</span><span class="s">: %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">inputFN</span><span class="p">,</span>
-<span class="ln"> 3</span>                <span class="n">strerror</span><span class="p">(</span><span class="n">errno</span><span class="p">));</span>
-<span class="ln"> 4</span>        <span class="n">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
-<span class="ln"> 5</span>        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
-<span class="ln"> 6</span><span class="p">}</span>
-<span class="ln"> 7</span><span class="kt">long</span> <span class="n">datalen</span> <span class="o">=</span> <span class="n">ftell</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
-<span class="ln"> 8</span><span class="k">if</span> <span class="p">(</span><span class="n">dataLen</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-<span class="ln"> 9</span>        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;ERROR: ftell() failed: %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">strerror</span><span class="p">(</span><span class="n">errno</span><span class="p">));</span>
-<span class="ln">10</span>        <span class="n">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
-<span class="ln">11</span>        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
-<span class="ln">12</span><span class="p">}</span>
-<span class="ln">13</span>    <span class="k">if</span> <span class="p">(</span><span class="n">fseek</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SEEK_SET</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-<span class="ln">14</span>        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;ERROR: unable to seek file </span><span class="se">\&#34;</span><span class="s">%s</span><span class="se">\&#34;</span><span class="s">: %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">inputFN</span><span class="p">,</span>
-<span class="ln">15</span>                <span class="n">strerror</span><span class="p">(</span><span class="n">errno</span><span class="p">));</span>
-<span class="ln">16</span>        <span class="n">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
-<span class="ln">17</span>        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
-<span class="ln">18</span>    <span class="p">}</span>
-</code></pre></div><h3 id="4check-the-datalen">4.check the datalen</h3>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="k">if</span> <span class="p">((</span><span class="kt">unsigned</span> <span class="kt">long</span><span class="p">)</span><span class="n">dataLen</span> <span class="o">&gt;</span> <span class="n">UINT_MAX</span><span class="p">)</span> <span class="p">{</span>
-<span class="ln">2</span>        <span class="n">dataLen</span> <span class="o">=</span> <span class="n">UINT_MAX</span><span class="p">;</span>
-<span class="ln">3</span>        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;WARNING: clipping data to %ld bytes</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">dataLen</span><span class="p">);</span>
-<span class="ln">4</span>    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">dataLen</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-<span class="ln">5</span>        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;ERROR: input file </span><span class="se">\&#34;</span><span class="s">%s</span><span class="se">\&#34;</span><span class="s"> is empty</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">inputFN</span><span class="p">);</span>
-<span class="ln">6</span>        <span class="n">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
-<span class="ln">7</span>        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
-<span class="ln">8</span>    <span class="p">}</span>
-</code></pre></div><h3 id="5malloc-memory-to-char-inputdata">5.malloc memory to char *inputData</h3>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="kt">char</span> <span class="o">*</span><span class="n">inputData</span> <span class="o">=</span> <span class="n">static_cast</span><span class="o">&lt;</span><span class="kt">char</span> <span class="o">*&gt;</span><span class="p">(</span><span class="n">malloc</span><span class="p">(</span><span class="n">dataLen</span><span class="p">));</span>
-<span class="ln">2</span>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">inputData</span><span class="p">)</span> <span class="p">{</span>
-<span class="ln">3</span>        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;ERROR: unable to malloc %ld bytes</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">dataLen</span><span class="p">);</span>
-<span class="ln">4</span>        <span class="n">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
-<span class="ln">5</span>        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
-<span class="ln">6</span>    <span class="p">}</span>
-</code></pre></div><h3 id="6read-the-bin-data">6.read the bin data</h3>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="c1">// create a pointer p to point the begin of the inputData
-</span><span class="ln"> 2</span><span class="c1"></span><span class="kt">char</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">inputData</span><span class="p">;</span>
-<span class="ln"> 3</span><span class="c1">// create a bytesLeft to record the moving of offset
-</span><span class="ln"> 4</span><span class="c1"></span><span class="n">size_t</span> <span class="n">bytesLeft</span> <span class="o">=</span> <span class="n">dataLen</span><span class="p">;</span>
-<span class="ln"> 5</span><span class="k">while</span> <span class="p">(</span><span class="n">bytesLeft</span><span class="p">)</span> <span class="p">{</span>
-<span class="ln"> 6</span>	<span class="c1">//fread will return the bytes of read
-</span><span class="ln"> 7</span><span class="c1"></span>        <span class="n">size_t</span> <span class="n">bytesRead</span> <span class="o">=</span> <span class="n">fread</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bytesLeft</span><span class="p">,</span> <span class="n">f</span><span class="p">);</span>
-<span class="ln"> 8</span>        <span class="n">bytesLeft</span> <span class="o">-=</span> <span class="n">bytesRead</span><span class="p">;</span>
-<span class="ln"> 9</span>        <span class="n">p</span> <span class="o">+=</span> <span class="n">bytesRead</span><span class="p">;</span>
-<span class="ln">10</span>        <span class="k">if</span> <span class="p">(</span><span class="n">ferror</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-<span class="ln">11</span>            <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;ERROR: fread() failed</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-<span class="ln">12</span>            <span class="n">free</span><span class="p">(</span><span class="n">inputData</span><span class="p">);</span>
-<span class="ln">13</span>            <span class="n">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
-<span class="ln">14</span>            <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
-<span class="ln">15</span>	<span class="p">}</span>
-<span class="ln">16</span><span class="p">}</span>
-</code></pre></div><h3 id="7close-the-file-stream">7.close the File stream</h3>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="n">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
-</code></pre></div><h3 id="8return-length--inputdata">8.return length &amp; inputData</h3>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="c1">//change the parameter of &amp;length
-</span><span class="ln">2</span><span class="c1"></span><span class="o">*</span><span class="n">length</span> <span class="o">=</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="p">)</span><span class="n">dataLen</span><span class="p">;</span>
-<span class="ln">3</span><span class="k">return</span> <span class="n">inputData</span><span class="p">;</span>
+    <img src="/images/path/file.jpg" class="image_featured">
+    
+    <h2 id="1新建博客">1.新建博客</h2>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>hugo new post/*.md
+</code></pre></div><h2 id="2更新静态网页">2.更新静态网页</h2>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>hugo --theme=hugo-clarity --baseUrl=&#34;https://Jerrysmd.github.io/&#34;
+</code></pre></div><h2 id="3推到githubpages">3.推到GithubPages</h2>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>cd public/
+<span class="ln">2</span>git add .
+<span class="ln">3</span>git commit -m &#39;why&#39;
+<span class="ln">4</span>git push -u origin master
 </code></pre></div>
     
       
@@ -254,16 +204,13 @@
     <h2 class="mt-4">Featured Posts</h2>
     <ul>
       <li>
-        <a href="https://Jerrysmd.github.io/post/updatablog/" class="nav-link">UpdataBlog</a>
-      </li>
-      <li>
         <a href="https://Jerrysmd.github.io/post/markdown-syntax/" class="nav-link">Markdown Syntax Guide</a>
       </li>
     </ul>
     <h2 class="mt-4">Recent Posts</h2>
     <ul class="flex-column">
       <li>
-        <a href="https://Jerrysmd.github.io/post/updatablog/" class="nav-link">UpdataBlog</a>
+        <a href="https://Jerrysmd.github.io/post/read_binary_file/" class="nav-link">How to read binary file in c</a>
       </li>
       <li>
         <a href="https://Jerrysmd.github.io/post/markdown-syntax/" class="nav-link">Markdown Syntax Guide</a>
