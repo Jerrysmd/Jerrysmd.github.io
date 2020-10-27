@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en" data-figures="" class="page">
+<html lang="en" data-figures="true" class="page">
   <head>
 <title>读取二进制文件 | Clarity</title>
 <meta charset="utf-8">
@@ -19,7 +19,7 @@
 <meta property="og:type" content="article">
 <meta name="description" content="read binary file to char *bytes in c.">
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:creator" content="@jerry">
+<meta name="twitter:creator" content="@0x4c2">
 <meta name="twitter:title" content="读取二进制文件" />
 <meta property="og:url" content="https://Jerrysmd.github.io/post/read_binary_file/" />
 <meta property="og:title" content="读取二进制文件" />
@@ -49,8 +49,9 @@
   
   
     
+    
   
-  <body data-code="7" data-lines="false" id="documentTop">
+  <body data-code="10" data-lines="false" id="documentTop">
 
 <header class="nav_header" >
   <nav class="nav">
@@ -173,6 +174,24 @@
 </div>
 
     
+    
+    <h2>Overview</h2>
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1creat-file-pointer-and-set-mode-as-rb">1.creat FILE pointer and set mode as 'rb'</a></li>
+        <li><a href="#2check-the-file-pointer-is-not-null">2.check the FILE pointer is not null</a></li>
+        <li><a href="#3use-fseekftell-to-get-data-length">3.use fseek/ftell to get data length</a></li>
+        <li><a href="#4check-the-datalen">4.check the datalen</a></li>
+        <li><a href="#5malloc-memory-to-char-inputdata">5.malloc memory to char *inputData</a></li>
+        <li><a href="#6read-the-bin-data">6.read the bin data</a></li>
+        <li><a href="#7close-the-file-stream">7.close the File stream</a></li>
+        <li><a href="#8return-length--inputdata">8.return length &amp; inputData</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     <h3 id="1creat-file-pointer-and-set-mode-as-rb">1.creat FILE pointer and set mode as 'rb'</h3>
 <div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="n">FILE</span> <span class="o">*</span><span class="n">f</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">inputFN</span><span class="p">,</span> <span class="s">&#34;rb&#34;</span><span class="p">);</span>
 </code></pre></div><h3 id="2check-the-file-pointer-is-not-null">2.check the FILE pointer is not null</h3>
@@ -246,7 +265,7 @@
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
-    <h2>Jerru</h2>
+    <h2>刘佳锐</h2>
     <div>
       Technologist, perpetual student, teacher, continual incremental improvement.
     </div>
@@ -267,9 +286,6 @@
       </li>
       <li>
         <a href="https://Jerrysmd.github.io/post/markdown-syntax/" class="nav-link">Markdown Syntax Guide</a>
-      </li>
-      <li>
-        <a href="https://Jerrysmd.github.io/post/emoji-support/" class="nav-link"></a>
       </li>
     </ul>
     <div>
