@@ -13,7 +13,7 @@
       <pubDate>Tue, 27 Oct 2020 05:06:59 -0700</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/updatablog/</guid>
-      <description>1.新建博客 1hugo new post/*.md 2.更新静态网页 1hugo --theme=hugo-clarity --baseUrl=&amp;#34;https://Jerrysmd.github.io/&amp;#34; 3.推到GithubPages 1cd public/ 2git add . 3git commit -m &amp;#39;why&amp;#39; 4git push -u origin master </description>
+      <description>1.新建博客 1hugo new post/*.md 2.更新静态网页 1hugo --theme=hugo-clarity --baseUrl=&amp;#34;https://Jerrysmd.github.io/&amp;#34; 3.推到GithubPages 1cd public/ 2git add . 3git commit -m &amp;#39;update blog&amp;#39; 4git push -u origin master </description>
     </item>
     
     <item>
@@ -72,47 +72,6 @@ tags = [
 ]
 +++&lt;/p&gt;
 &lt;p&gt;Emoji can be enabled in a Hugo project in a number of ways.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://Jerrysmd.github.io/post/placeholder-text/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://Jerrysmd.github.io/post/placeholder-text/</guid>
-      <description>&lt;p&gt;draft: true
-+++
-author = &amp;quot;Hugo Authors&amp;quot;
-title = &amp;quot;Placeholder Text&amp;quot;
-date = &amp;quot;2019-03-09&amp;quot;
-description = &amp;quot;Lorem Ipsum Dolor Si Amet.&amp;quot;
-tags = [
-&amp;quot;markdown&amp;quot;,
-&amp;quot;text&amp;quot;,
-]&lt;/p&gt;
-&lt;p&gt;+++&lt;/p&gt;
-&lt;p&gt;Lorem est tota propiore conpellat pectoribus de pectora summo.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://Jerrysmd.github.io/post/rich-content/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://Jerrysmd.github.io/post/rich-content/</guid>
-      <description>&lt;p&gt;draft: true
-+++
-author = &amp;quot;Hugo Authors&amp;quot;
-title = &amp;quot;Rich Content&amp;quot;
-date = &amp;quot;2019-03-10&amp;quot;
-description = &amp;quot;A brief description of Hugo Shortcodes&amp;quot;
-tags = [
-&amp;quot;shortcodes&amp;quot;,
-&amp;quot;privacy&amp;quot;,
-]
-thumbnail = &amp;quot;images/dollar.png&amp;quot;
-+++&lt;/p&gt;
-&lt;p&gt;Hugo ships with several &lt;a href=&#34;https://gohugo.io/content-management/shortcodes/#use-hugo-s-built-in-shortcodes&#34;&gt;Built-in Shortcodes&lt;/a&gt; for rich content, along with a &lt;a href=&#34;https://gohugo.io/about/hugo-and-gdpr/&#34;&gt;Privacy Config&lt;/a&gt; and a set of Simple Shortcodes that enable static and no-JS versions of various social media embeds.&lt;/p&gt;</description>
     </item>
     
   </channel>
