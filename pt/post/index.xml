@@ -5,15 +5,36 @@
     <link>https://Jerrysmd.github.io/pt/post/</link>
     <description>Recent content in Posts on Claridade</description>
     <generator>Hugo -- gohugo.io</generator>
-    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://Jerrysmd.github.io/pt/post/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright><atom:link href="https://Jerrysmd.github.io/pt/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Guia de Sintaxe Markdown</title>
+      <title></title>
       <link>https://Jerrysmd.github.io/pt/post/markdown-syntax/</link>
-      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://Jerrysmd.github.io/pt/post/markdown-syntax/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Este artigo oferece um exemplo básico de uma tradução em Português. O restante conteúdo não foi traduzido.&lt;/strong&gt;&lt;/p&gt;
+      <description>&lt;p&gt;draft: false
++++
+author = &amp;quot;Hugo Authors&amp;quot;
+title = &amp;quot;Guia de Sintaxe Markdown&amp;quot;
+date = &amp;quot;2019-03-11&amp;quot;
+description = &amp;quot;Um artigo simples para demonstrar a sintaxe básica de Markdown e como formatar elementos HTML.&amp;quot;
+featured = true
+tags = [
+&amp;quot;markdown&amp;quot;,
+&amp;quot;css&amp;quot;,
+&amp;quot;html&amp;quot;,
+&amp;quot;temas&amp;quot;,
+&amp;quot;destacado&amp;quot;
+]
+categories = [
+&amp;quot;temas&amp;quot;,
+&amp;quot;sintaxe&amp;quot;,
+]
+series = [&amp;quot;Guia de Temas&amp;quot;]
+aliases = [&amp;quot;migrar-de-jekyl&amp;quot;]
+thumbnail = &amp;quot;images/building.png&amp;quot;
++++&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Este artigo oferece um exemplo básico de uma tradução em Português. O restante conteúdo não foi traduzido.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Artigo original: https://Jerrysmd.github.io/pt/post/markdown-syntax/&lt;/p&gt;
 &lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;</description>
     </item>

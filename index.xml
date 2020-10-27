@@ -6,16 +6,7 @@
     <description>Recent content on Clarity</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Tue, 27 Oct 2020 00:16:16 -0700</lastBuildDate><atom:link href="https://Jerrysmd.github.io/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Test</title>
-      <link>https://Jerrysmd.github.io/post/test/</link>
-      <pubDate>Tue, 27 Oct 2020 00:16:16 -0700</pubDate>
-      
-      <guid>https://Jerrysmd.github.io/post/test/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Mon, 26 Oct 2020 18:39:37 -0700</lastBuildDate><atom:link href="https://Jerrysmd.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to read binary file in c</title>
       <link>https://Jerrysmd.github.io/post/read_binary_file/</link>
@@ -24,15 +15,6 @@
       <guid>https://Jerrysmd.github.io/post/read_binary_file/</guid>
       <description>1.creat FILE pointer and set mode as &#39;rb&#39; 1FILE *f = fopen(inputFN, &amp;#34;rb&amp;#34;); 2.check the FILE pointer is not null 1if (!f) { 2 fprintf(stderr, &amp;#34;ERROR: unable to open file \&amp;#34;%s\&amp;#34;: %s\n&amp;#34;, inputFN,strerror(errno)); 3 return NULL; 4} 3.use fseek/ftell to get data length fseek(f,0,SEEK_END) put the pointer to the end of the file,ftell(f) can get the current offset, then use fseek(f,0,SEEK_SET) put the pointer to the start of file.
 1if (fseek(f, 0, SEEK_END) !</description>
-    </item>
-    
-    <item>
-      <title>My First Blog</title>
-      <link>https://Jerrysmd.github.io/post/my-first-blog/</link>
-      <pubDate>Thu, 22 Oct 2020 04:18:36 -0700</pubDate>
-      
-      <guid>https://Jerrysmd.github.io/post/my-first-blog/</guid>
-      <description>Insert Lead paragraph here. #hollow world! ##hllow world! ###hollow world! ####hollow world!</description>
     </item>
     
     <item>

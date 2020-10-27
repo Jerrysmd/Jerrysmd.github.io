@@ -4,7 +4,7 @@
   
   <url>
     <loc>https://Jerrysmd.github.io/</loc>
-    <lastmod>2020-10-27T00:16:16-07:00</lastmod>
+    <lastmod>2020-10-26T18:39:37-07:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
@@ -18,8 +18,13 @@
   </url>
   
   <url>
+    <loc>https://Jerrysmd.github.io/post/read_binary_file/</loc>
+    <lastmod>2020-10-26T18:39:37-07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://Jerrysmd.github.io/post/</loc>
-    <lastmod>2020-10-27T00:16:16-07:00</lastmod>
+    <lastmod>2020-10-26T18:39:37-07:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
@@ -33,18 +38,13 @@
   </url>
   
   <url>
-    <loc>https://Jerrysmd.github.io/post/test/</loc>
-    <lastmod>2020-10-27T00:16:16-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/post/read_binary_file/</loc>
-    <lastmod>2020-10-26T18:39:37-07:00</lastmod>
+    <loc>https://Jerrysmd.github.io/archives/</loc>
+    <lastmod>2019-05-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://Jerrysmd.github.io/categories/</loc>
-    <lastmod>2020-10-22T04:18:36-07:00</lastmod>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
@@ -58,58 +58,8 @@
   </url>
   
   <url>
-    <loc>https://Jerrysmd.github.io/post/my-first-blog/</loc>
-    <lastmod>2020-10-22T04:18:36-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/tags/tag_name1/</loc>
-    <lastmod>2020-10-22T04:18:36-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/tags/tag_name2/</loc>
-    <lastmod>2020-10-22T04:18:36-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/tags/</loc>
-    <lastmod>2020-10-22T04:18:36-07:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt"
-                href="https://Jerrysmd.github.io/pt/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://Jerrysmd.github.io/tags/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/categories/technology/</loc>
-    <lastmod>2020-10-22T04:18:36-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/archives/</loc>
-    <lastmod>2019-05-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://Jerrysmd.github.io/tags/css/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt"
-                href="https://Jerrysmd.github.io/pt/tags/css/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://Jerrysmd.github.io/tags/css/"
-                />
   </url>
   
   <url>
@@ -120,31 +70,11 @@
   <url>
     <loc>https://Jerrysmd.github.io/tags/html/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt"
-                href="https://Jerrysmd.github.io/pt/tags/html/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://Jerrysmd.github.io/tags/html/"
-                />
   </url>
   
   <url>
     <loc>https://Jerrysmd.github.io/tags/markdown/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt"
-                href="https://Jerrysmd.github.io/pt/tags/markdown/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://Jerrysmd.github.io/tags/markdown/"
-                />
   </url>
   
   <url>
@@ -180,6 +110,21 @@
   <url>
     <loc>https://Jerrysmd.github.io/categories/syntax/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://Jerrysmd.github.io/tags/</loc>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="pt"
+                href="https://Jerrysmd.github.io/pt/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://Jerrysmd.github.io/tags/"
+                />
   </url>
   
   <url>
