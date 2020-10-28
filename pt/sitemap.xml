@@ -33,26 +33,6 @@
   </url>
   
   <url>
-    <loc>https://Jerrysmd.github.io/pt/tags/css/</loc>
-    <lastmod>2020-09-30T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://Jerrysmd.github.io/tags/css/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt"
-                href="https://Jerrysmd.github.io/pt/tags/css/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/pt/tags/destacado/</loc>
-    <lastmod>2020-09-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://Jerrysmd.github.io/pt/post/markdown-syntax/</loc>
     <lastmod>2020-09-30T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -73,17 +53,17 @@
   </url>
   
   <url>
-    <loc>https://Jerrysmd.github.io/pt/tags/html/</loc>
+    <loc>https://Jerrysmd.github.io/pt/categories/guide/</loc>
     <lastmod>2020-09-30T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://Jerrysmd.github.io/tags/html/"
+                href="https://Jerrysmd.github.io/categories/guide/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="https://Jerrysmd.github.io/pt/tags/html/"
+                href="https://Jerrysmd.github.io/pt/categories/guide/"
                 />
   </url>
   
@@ -133,11 +113,6 @@
   </url>
   
   <url>
-    <loc>https://Jerrysmd.github.io/pt/categories/sintaxe/</loc>
-    <lastmod>2020-09-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://Jerrysmd.github.io/pt/tags/</loc>
     <lastmod>2020-09-30T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -150,16 +125,6 @@
                 hreflang="pt"
                 href="https://Jerrysmd.github.io/pt/tags/"
                 />
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/pt/tags/temas/</loc>
-    <lastmod>2020-09-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/pt/categories/temas/</loc>
-    <lastmod>2020-09-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
