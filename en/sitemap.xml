@@ -4,7 +4,7 @@
   
   <url>
     <loc>https://Jerrysmd.github.io/</loc>
-    <lastmod>2020-10-28T04:23:59-07:00</lastmod>
+    <lastmod>2020-10-26T18:39:37-07:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
@@ -18,8 +18,13 @@
   </url>
   
   <url>
+    <loc>https://Jerrysmd.github.io/tags/c/</loc>
+    <lastmod>2020-10-26T18:39:37-07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://Jerrysmd.github.io/categories/</loc>
-    <lastmod>2020-10-28T04:23:59-07:00</lastmod>
+    <lastmod>2020-10-26T18:39:37-07:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
@@ -33,8 +38,13 @@
   </url>
   
   <url>
+    <loc>https://Jerrysmd.github.io/tags/file/</loc>
+    <lastmod>2020-10-26T18:39:37-07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://Jerrysmd.github.io/post/</loc>
-    <lastmod>2020-10-28T04:23:59-07:00</lastmod>
+    <lastmod>2020-10-26T18:39:37-07:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
@@ -48,18 +58,8 @@
   </url>
   
   <url>
-    <loc>https://Jerrysmd.github.io/tags/tag_name1/</loc>
-    <lastmod>2020-10-28T04:23:59-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/tags/tag_name2/</loc>
-    <lastmod>2020-10-28T04:23:59-07:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://Jerrysmd.github.io/tags/</loc>
-    <lastmod>2020-10-28T04:23:59-07:00</lastmod>
+    <lastmod>2020-10-26T18:39:37-07:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
@@ -74,21 +74,6 @@
   
   <url>
     <loc>https://Jerrysmd.github.io/categories/technology/</loc>
-    <lastmod>2020-10-28T04:23:59-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/post/test/</loc>
-    <lastmod>2020-10-28T04:23:59-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/tags/c/</loc>
-    <lastmod>2020-10-26T18:39:37-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/tags/file/</loc>
     <lastmod>2020-10-26T18:39:37-07:00</lastmod>
   </url>
   
