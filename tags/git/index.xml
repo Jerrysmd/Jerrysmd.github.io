@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Git on Clarity</title>
+    <title>Git on JerrysBlog</title>
     <link>https://Jerrysmd.github.io/tags/git/</link>
-    <description>Recent content in Git on Clarity</description>
+    <description>Recent content in Git on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Thu, 01 Oct 2020 05:06:59 -0700</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
