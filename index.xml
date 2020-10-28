@@ -6,16 +6,7 @@
     <description>Recent content on Clarity</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Tue, 27 Oct 2020 05:06:59 -0700</lastBuildDate><atom:link href="https://Jerrysmd.github.io/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>更新HUGO步骤</title>
-      <link>https://Jerrysmd.github.io/post/updatablog/</link>
-      <pubDate>Tue, 27 Oct 2020 05:06:59 -0700</pubDate>
-      
-      <guid>https://Jerrysmd.github.io/post/updatablog/</guid>
-      <description>1.新建博客 1hugo new post/*.md 2.更新静态网页 1hugo --theme=hugo-clarity --baseUrl=&amp;#34;https://Jerrysmd.github.io/&amp;#34; 3.推到GithubPages 1cd public/ 2git add . 3git commit -m &amp;#39;update blog&amp;#39; 4git push -u origin master </description>
-    </item>
-    
+    <lastBuildDate>Mon, 26 Oct 2020 18:39:37 -0700</lastBuildDate><atom:link href="https://Jerrysmd.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>读取二进制文件</title>
       <link>https://Jerrysmd.github.io/post/read_binary_file/</link>
@@ -23,6 +14,15 @@
       
       <guid>https://Jerrysmd.github.io/post/read_binary_file/</guid>
       <description>1.creat FILE pointer and set mode as &#39;rb&#39; 1FILE *f = fopen(inputFN, &amp;#34;rb&amp;#34;); 2.check the FILE pointer is not null 1if (!f) { 2 fprintf(stderr, &amp;#34;ERROR: unable to open file \&amp;#34;%s\&amp;#34;: %s\n&amp;#34;, inputFN,strerror(errno)); 3 return NULL; 4} 3.use fseek/ftell to get data length  fseek(f,0,SEEK_END) put the pointer to the end of the file. ftell(f) can get the current offset. then use fseek(f,0,SEEK_SET) put the pointer to the start of file.</description>
+    </item>
+    
+    <item>
+      <title>更新HUGO步骤</title>
+      <link>https://Jerrysmd.github.io/post/updatablog/</link>
+      <pubDate>Thu, 01 Oct 2020 05:06:59 -0700</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/updatablog/</guid>
+      <description>1.新建博客 1hugo new post/*.md 2.更新静态网页 1hugo --theme=hugo-clarity --baseUrl=&amp;#34;https://Jerrysmd.github.io/&amp;#34; 3.推到GithubPages 1cd public/ 2git add . 3git commit -m &amp;#39;update blog&amp;#39; 4git push -u origin master </description>
     </item>
     
     <item>
