@@ -4,7 +4,7 @@
   
   <url>
     <loc>https://Jerrysmd.github.io/</loc>
-    <lastmod>2020-10-26T18:39:37-07:00</lastmod>
+    <lastmod>2020-10-28T04:02:36-07:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
@@ -18,8 +18,23 @@
   </url>
   
   <url>
+    <loc>https://Jerrysmd.github.io/categories/</loc>
+    <lastmod>2020-10-28T04:02:36-07:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="pt"
+                href="https://Jerrysmd.github.io/pt/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://Jerrysmd.github.io/categories/"
+                />
+  </url>
+  
+  <url>
     <loc>https://Jerrysmd.github.io/post/</loc>
-    <lastmod>2020-10-26T18:39:37-07:00</lastmod>
+    <lastmod>2020-10-28T04:02:36-07:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
@@ -30,6 +45,41 @@
                 hreflang="en"
                 href="https://Jerrysmd.github.io/post/"
                 />
+  </url>
+  
+  <url>
+    <loc>https://Jerrysmd.github.io/tags/tag_name1/</loc>
+    <lastmod>2020-10-28T04:02:36-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://Jerrysmd.github.io/tags/tag_name2/</loc>
+    <lastmod>2020-10-28T04:02:36-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://Jerrysmd.github.io/tags/</loc>
+    <lastmod>2020-10-28T04:02:36-07:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="pt"
+                href="https://Jerrysmd.github.io/pt/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://Jerrysmd.github.io/tags/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://Jerrysmd.github.io/categories/technology/</loc>
+    <lastmod>2020-10-28T04:02:36-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://Jerrysmd.github.io/post/test/</loc>
+    <lastmod>2020-10-28T04:02:36-07:00</lastmod>
   </url>
   
   <url>
@@ -45,21 +95,6 @@
   <url>
     <loc>https://Jerrysmd.github.io/archives/</loc>
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/categories/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt"
-                href="https://Jerrysmd.github.io/pt/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://Jerrysmd.github.io/categories/"
-                />
   </url>
   
   <url>
@@ -145,21 +180,6 @@
   <url>
     <loc>https://Jerrysmd.github.io/categories/syntax/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/tags/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt"
-                href="https://Jerrysmd.github.io/pt/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://Jerrysmd.github.io/tags/"
-                />
   </url>
   
   <url>

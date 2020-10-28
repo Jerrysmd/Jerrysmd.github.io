@@ -6,14 +6,14 @@
     <description>Recent content in Tag_name2 on Clarity</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Tue, 27 Oct 2020 05:06:59 -0700</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/tag_name2/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 28 Oct 2020 04:02:36 -0700</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/tag_name2/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>UpdataBlog</title>
-      <link>https://Jerrysmd.github.io/post/updatablog/</link>
-      <pubDate>Tue, 27 Oct 2020 05:06:59 -0700</pubDate>
+      <title>Test</title>
+      <link>https://Jerrysmd.github.io/post/test/</link>
+      <pubDate>Wed, 28 Oct 2020 04:02:36 -0700</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/updatablog/</guid>
-      <description>1.新建博客 1hugo new post/*.md 2.更新静态网页 1hugo --theme=hugo-clarity --baseUrl=&amp;#34;https://Jerrysmd.github.io/&amp;#34; 3.推到GithubPages 1cd public/ 2git add . 3git commit -m &amp;#39;why&amp;#39; 4git push -u origin master </description>
+      <guid>https://Jerrysmd.github.io/post/test/</guid>
+      <description>Insert Lead paragraph here.</description>
     </item>
     
   </channel>
