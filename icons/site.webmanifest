@@ -3,14 +3,14 @@
     "short_name": "",
     "icons": [
         {
-            "src": "/android-chrome-192x192.png",
+            "src": "/profile.jpg",
             "sizes": "192x192",
-            "type": "image/png"
+            "type": "image/jpg"
         },
         {
-            "src": "/android-chrome-256x256.png",
+            "src": "/aprofile.jpg",
             "sizes": "256x256",
-            "type": "image/png"
+            "type": "image/jpg"
         }
     ],
     "theme_color": "#ffffff",

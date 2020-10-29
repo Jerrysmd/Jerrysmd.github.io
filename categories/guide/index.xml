@@ -16,16 +16,5 @@
       <description>1.新建博客 1hugo new post/*.md 2.更新静态网页 1hugo --theme=hugo-clarity --baseUrl=&amp;#34;https://Jerrysmd.github.io/&amp;#34; 3.推到GithubPages 1cd public/ 2git add . 3git commit -m &amp;#39;update blog&amp;#39; 4git push -u origin master 完整操作 1hugo --theme=hugo-clarity --baseUrl=&amp;#34;https://Jerrysmd.github.io/&amp;#34; 2cd public/ 3git add . 4git commit -m &amp;#39;update blog&amp;#39; 5git push -u origin master </description>
     </item>
     
-    <item>
-      <title>Guia de Sintaxe Markdown</title>
-      <link>https://Jerrysmd.github.io/post/markdown-syntax.pt/</link>
-      <pubDate>Wed, 30 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://Jerrysmd.github.io/post/markdown-syntax.pt/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Este artigo oferece um exemplo básico de uma tradução em Português. O restante conteúdo não foi traduzido.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Artigo original: https://Jerrysmd.github.io/post/markdown-syntax/&lt;/p&gt;
-&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;</description>
-    </item>
-    
   </channel>
 </rss>
