@@ -17,6 +17,17 @@
     </item>
     
     <item>
+      <title>Hyperscan教程</title>
+      <link>https://Jerrysmd.github.io/post/hyperscan/</link>
+      <pubDate>Fri, 02 Oct 2020 05:42:44 -0700</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/hyperscan/</guid>
+      <description>1. 概述 Hyperscan demo中使用libpcap从pcap文件中读取数据包，并根据一个规则文件中指定的多个正则表达式对报文进行匹配，并输出匹配结果和一些统计信息。pcapscan使用并对比了两种匹配模式：BLOCK和STREAM。BLOCK模式时它对单个数据包进行匹配；而STREAM模式下它通过五元组将数据包进行简单分流，并对每条流中的数据进行匹配。STREAM模式可以命中跨越数据包边界的匹配数据（比如，要匹配abc，而a在前一个数据的末尾，而bc在后一个数据包的前端，这两个数据包在一个流中，那么STREAM模式匹配可以命中它，而BLOCK模式不能）。
+2. Hyperscan源码 2.1 编译 函数buildDatabase用来编译规则文件中的多个正则表达式，参数mode指定了是BLOCK还是STREAM模式。
+1static hs_database_t *buildDatabase(const vector&amp;lt;const char *&amp;gt; &amp;amp;expressions, 2 const vector&amp;lt;unsigned&amp;gt; flags, 3 const vector&amp;lt;unsigned&amp;gt; ids, 4 unsigned int mode) { 5 hs_database_t *db; 6 hs_compile_error_t *compileErr; 7 hs_error_t err; 8 9 Clock clock; 10 clock.start(); 11 12 err = hs_compile_multi(expressions.data(), flags.data(), ids.data(), 13 expressions.size(), mode, nullptr, &amp;amp;db, &amp;amp;compileErr); 14 15 clock.stop(); 16 17 if (err != HS_SUCCESS) { 18 if (compileErr-&amp;gt;expression &amp;lt; 0) { 19 // The error does not refer to a particular expression.</description>
+    </item>
+    
+    <item>
       <title>更新HUGO步骤</title>
       <link>https://Jerrysmd.github.io/post/updatablog/</link>
       <pubDate>Thu, 01 Oct 2020 05:06:59 -0700</pubDate>
@@ -32,17 +43,6 @@
       
       <guid>https://Jerrysmd.github.io/post/markdown-syntax/</guid>
       <description>&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Hyperscan教程</title>
-      <link>https://Jerrysmd.github.io/post/hyperscan/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://Jerrysmd.github.io/post/hyperscan/</guid>
-      <description>1. 概述 Hyperscan demo中使用libpcap从pcap文件中读取数据包，并根据一个规则文件中指定的多个正则表达式对报文进行匹配，并输出匹配结果和一些统计信息。pcapscan使用并对比了两种匹配模式：BLOCK和STREAM。BLOCK模式时它对单个数据包进行匹配；而STREAM模式下它通过五元组将数据包进行简单分流，并对每条流中的数据进行匹配。STREAM模式可以命中跨越数据包边界的匹配数据（比如，要匹配abc，而a在前一个数据的末尾，而bc在后一个数据包的前端，这两个数据包在一个流中，那么STREAM模式匹配可以命中它，而BLOCK模式不能）。
-2. Hyperscan源码 2.1 编译 函数buildDatabase用来编译规则文件中的多个正则表达式，参数mode指定了是BLOCK还是STREAM模式。
-1static hs_database_t *buildDatabase(const vector&amp;lt;const char *&amp;gt; &amp;amp;expressions, 2 const vector&amp;lt;unsigned&amp;gt; flags, 3 const vector&amp;lt;unsigned&amp;gt; ids, 4 unsigned int mode) { 5 hs_database_t *db; 6 hs_compile_error_t *compileErr; 7 hs_error_t err; 8 9 Clock clock; 10 clock.start(); 11 12 err = hs_compile_multi(expressions.data(), flags.data(), ids.data(), 13 expressions.size(), mode, nullptr, &amp;amp;db, &amp;amp;compileErr); 14 15 clock.stop(); 16 17 if (err != HS_SUCCESS) { 18 if (compileErr-&amp;gt;expression &amp;lt; 0) { 19 // The error does not refer to a particular expression.</description>
     </item>
     
   </channel>
