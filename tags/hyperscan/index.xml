@@ -1,21 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Technology on JerrysBlog</title>
-    <link>https://Jerrysmd.github.io/categories/technology/</link>
-    <description>Recent content in Technology on JerrysBlog</description>
+    <title>Hyperscan on JerrysBlog</title>
+    <link>https://Jerrysmd.github.io/tags/hyperscan/</link>
+    <description>Recent content in Hyperscan on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Mon, 26 Oct 2020 18:39:37 -0700</lastBuildDate><atom:link href="https://Jerrysmd.github.io/categories/technology/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>读取二进制文件</title>
-      <link>https://Jerrysmd.github.io/post/read_binary_file/</link>
-      <pubDate>Mon, 26 Oct 2020 18:39:37 -0700</pubDate>
-      
-      <guid>https://Jerrysmd.github.io/post/read_binary_file/</guid>
-      <description>需求  hyperscan中使用fwrite(dbdata, dblength, 1,fp)把字节流写入二进制文件。在新程序读取二进制文件遇到问题：由于不知道二进制文件长度，不知到如何读取全部的二进制到一个char*中。   1.creat FILE pointer and set mode as &#39;rb&#39; 1FILE *f = fopen(inputFN, &amp;#34;rb&amp;#34;); 2.check the FILE pointer is not null 1if (!f) { 2 fprintf(stderr, &amp;#34;ERROR: unable to open file \&amp;#34;%s\&amp;#34;: %s\n&amp;#34;, inputFN,strerror(errno)); 3 return NULL; 4} 3.use fseek/ftell to get data length  fseek(f,0,SEEK_END) put the pointer to the end of the file. ftell(f) can get the current offset. then use fseek(f,0,SEEK_SET) put the pointer to the start of file.</description>
-    </item>
-    
+    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright><atom:link href="https://Jerrysmd.github.io/tags/hyperscan/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hyperscan教程</title>
       <link>https://Jerrysmd.github.io/post/hyperscan/</link>

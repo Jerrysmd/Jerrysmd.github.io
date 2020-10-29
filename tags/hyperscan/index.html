@@ -1,8 +1,8 @@
 
 <!DOCTYPE html>
-<html lang="en" data-figures="true" class="page">
+<html lang="en" data-figures="">
   <head>
-<title>更新HUGO步骤 | JerrysBlog</title>
+<title>Hyperscan | JerrysBlog</title>
 <meta charset="utf-8">
 <meta name="generator" content="Hugo 0.76.5" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -17,13 +17,13 @@
 <meta property="og:locale" content="en" />
 
 <meta property="og:type" content="article">
-<meta name="description" content="The steps of updating hugo blog.">
+<meta name="description" content="">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@0x4c2">
-<meta name="twitter:title" content="更新HUGO步骤" />
-<meta property="og:url" content="https://Jerrysmd.github.io/post/updatablog/" />
-<meta property="og:title" content="更新HUGO步骤" />
-<meta property="og:description" content="The steps of updating hugo blog." />
+<meta name="twitter:title" content="Hyperscan" />
+<meta property="og:url" content="https://Jerrysmd.github.io/tags/hyperscan/" />
+<meta property="og:title" content="Hyperscan" />
+<meta property="og:description" content="" />
 <meta property="og:image" content="https://Jerrysmd.github.io/images/thumbnail.png" />
 <link rel="apple-touch-icon" sizes="180x180" href='https://Jerrysmd.github.io/icons/apple-touch-icon.png'>
 <link rel="icon" type="image/png" sizes="32x32" href='https://Jerrysmd.github.io/icons/favicon-32x32.png'>
@@ -32,7 +32,7 @@
 <meta name="msapplication-TileColor" content="#002538">
 <meta name="theme-color" content="#002538">
 
-<link rel="canonical" href="https://Jerrysmd.github.io/post/updatablog/">
+<link rel="canonical" href="https://Jerrysmd.github.io/tags/hyperscan/">
 
     
 
@@ -50,9 +50,8 @@
   
   
     
-    
   
-  <body data-code="10" data-lines="false" id="documentTop">
+  <body data-code="7" data-lines="true" id="documentTop">
 
 <header class="nav_header" >
   <nav class="nav">
@@ -138,74 +137,43 @@
 </header>
 
     <main>
-  
+
 <div class="grid-inverse wrap content">
-  <article class="post_content">
-    <h1 class="post_title">更新HUGO步骤</h1><div class="post_meta">
+  <ul class="posts" id="posts">
+      <li class="post_item">
+  <div class="excerpt">
+    <div class="excerpt_header">
+      <h3 class="post_link">
+        <a href="https://Jerrysmd.github.io/post/hyperscan/">Hyperscan教程</a>
+      </h3>
+      <div class="post_meta">
   <svg class="icon">
   <use xlink:href="#calendar"></use>
 </svg>
   <span class="post_date">
-    Oct 1, 2020</span>
-    <a href='https://Jerrysmd.github.io/tags/git' class="post_tag button button_translucent">Git
+    Jan 1, 0001</span>
+    <a href='https://Jerrysmd.github.io/tags/c&#43;&#43;' class="post_tag button button_translucent">C&#43;&#43;
+    </a>
+    <a href='https://Jerrysmd.github.io/tags/hyperscan' class="post_tag button button_translucent">Hyperscan
     </a>
 </div>
 
-    
-<div class="post_share">
-  Share on:
-  <a href="https://twitter.com/intent/tweet?text=%e6%9b%b4%e6%96%b0HUGO%e6%ad%a5%e9%aa%a4&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2fupdatablog%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
-    <svg class="icon">
-  <use xlink:href="#twitter"></use>
-</svg>
-  </a>
-  <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2fupdatablog%2f&t=%e6%9b%b4%e6%96%b0HUGO%e6%ad%a5%e9%aa%a4" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
-    <svg class="icon">
-  <use xlink:href="#facebook"></use>
-</svg>
-  </a>
-  <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="Share on LinkedIn" rel="nofollow">
-    <svg class="icon">
-  <use xlink:href="#linkedin"></use>
-</svg>
-  </a>
-  <a href="https://Jerrysmd.github.io/post/updatablog/" title="Copy Link" class="link link_yank">
-    <svg class="icon">
-  <use xlink:href="#copy"></use>
-</svg>
-  </a>
-</div>
+    </div>
+      <div class="excerpt_footer">
+        <div>
+          <p class="pale">1. 概述 Hyperscan demo中使用libpcap从pcap文件中读取数据包，并根据一个规则文件中指定的多个正则表达式对报文进行匹配，并输出匹配结果和一些统计信息。pcapscan使用并对比了两种匹配模式：BLOCK和STREAM。BLOCK模式时它对单个数据包进行匹配；而STREAM模式下它通过五元组将数据包进行简单分流，并对每条流中的数据进行匹配。STREAM模式可以命中跨越数据包边界的匹配数据（比如，要匹配abc，而a在前一个数据的末尾，而bc在后一个数据包的前端，这两个数据包在一个流中，那么STREAM模式匹配可以命中它，而BLOCK模式不能）。
+2. Hyperscan源码 2.1 编译 函 …</p>
+          <a href="https://Jerrysmd.github.io/post/hyperscan/" class="excerpt_more button">Read More</a>
+        </div>
+      </div>
+    </div>
+  </li>
 
-    
-    
-    <h2>Overview</h2>
-    <nav id="TableOfContents">
-  <ul>
-    <li><a href="#1新建博客">1.新建博客</a></li>
-    <li><a href="#2更新静态网页">2.更新静态网页</a></li>
-    <li><a href="#3推到githubpages">3.推到GithubPages</a></li>
-    <li><a href="#完整操作">完整操作</a></li>
+    <li>
+
+
+    </li>
   </ul>
-</nav>
-    <h2 id="1新建博客">1.新建博客</h2>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>hugo new post/*.md
-</code></pre></div><h2 id="2更新静态网页">2.更新静态网页</h2>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>hugo --theme=hugo-clarity --baseUrl=&#34;https://Jerrysmd.github.io/&#34;
-</code></pre></div><h2 id="3推到githubpages">3.推到GithubPages</h2>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>cd public/
-<span class="ln">2</span>git add .
-<span class="ln">3</span>git commit -m &#39;update blog&#39;
-<span class="ln">4</span>git push -u origin master
-</code></pre></div><h2 id="完整操作">完整操作</h2>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>hugo --theme=hugo-clarity --baseUrl=&#34;https://Jerrysmd.github.io/&#34;
-<span class="ln">2</span>git add .
-<span class="ln">3</span>git commit -m &#39;update blog&#39;
-<span class="ln">4</span>git push -u origin master
-</code></pre></div>
-    
-      
-    
-  </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
     <h2>刘佳锐</h2>
@@ -217,6 +185,9 @@
     <ul>
       <li>
         <a href="https://Jerrysmd.github.io/post/read_binary_file/" class="nav-link">读取二进制文件</a>
+      </li>
+      <li>
+        <a href="https://Jerrysmd.github.io/post/updatablog/" class="nav-link">更新HUGO步骤</a>
       </li>
       <li>
         <a href="https://Jerrysmd.github.io/post/markdown-syntax/" class="nav-link">Markdown Syntax Guide</a>
@@ -231,10 +202,10 @@
         <a href="https://Jerrysmd.github.io/post/read_binary_file/" class="nav-link">读取二进制文件</a>
       </li>
       <li>
-        <a href="https://Jerrysmd.github.io/post/markdown-syntax/" class="nav-link">Markdown Syntax Guide</a>
+        <a href="https://Jerrysmd.github.io/post/updatablog/" class="nav-link">更新HUGO步骤</a>
       </li>
       <li>
-        <a href="https://Jerrysmd.github.io/post/hyperscan/" class="nav-link">Hyperscan教程</a>
+        <a href="https://Jerrysmd.github.io/post/markdown-syntax/" class="nav-link">Markdown Syntax Guide</a>
       </li>
     </ul>
     <div>
@@ -339,6 +310,8 @@
 </aside>
 
 </div>
+
+
     </main><svg width="0" height="0" class="hidden">
   <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="facebook">
     <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h151V331h-60v-90h60v-61c0-49.629 40.371-90 90-90h91v90h-91v61h91l-15 90h-76v181h121c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zm0 0"></path>
