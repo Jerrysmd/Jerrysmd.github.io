@@ -141,7 +141,7 @@
     </div>
       <div class="excerpt_footer">
         <div>
-          <p class="pale">需求  hyperscan中使用fwrite(dbdata, dblength, 1,fp)把字节流写入二进制文件。在新程序读取二进制文件遇到问题：由于不知道二进制文件长度，不知到如何读取全部的二进制到一个char*中。   1.creat FILE pointer and set mode as 'rb' 1FILE *f = fopen(inputFN, &#34;rb&#34;); 2.check the FILE pointer is not null 1if (!f) { 2 fprintf(stderr, &#34;ERROR: unable to open file \&#34;%s\&#34;: %s\n&#34;, …</p>
+          <p class="pale"><p>读取二进制文件，把二进制文件内容全部读取到char*字符串中。配合fseek()和fread（）函数实现。</p></p>
           <a href="https://Jerrysmd.github.io/post/read_binary_file/" class="excerpt_more button">Read More</a>
         </div>
       </div>
@@ -169,8 +169,7 @@
     </div>
       <div class="excerpt_footer">
         <div>
-          <p class="pale">1. 概述 Hyperscan demo中使用libpcap从pcap文件中读取数据包，并根据一个规则文件中指定的多个正则表达式对报文进行匹配，并输出匹配结果和一些统计信息。pcapscan使用并对比了两种匹配模式：BLOCK和STREAM。BLOCK模式时它对单个数据包进行匹配；而STREAM模式下它通过五元组将数据包进行简单分流，并对每条流中的数据进行匹配。STREAM模式可以命中跨越数据包边界的匹配数据（比如，要匹配abc，而a在前一个数据的末尾，而bc在后一个数据包的前端，这两个数据包在一个流中，那么STREAM模式匹配可以命中它，而BLOCK模式不能）。
-2. Hyperscan源码 2.1 编译 函 …</p>
+          <p class="pale"><p>Hyperscan是一款来自于Intel的高性能的正则表达式匹配库。它是基于X86平台以PCRE为原型而开发的。在支持PCRE的大部分语法的前提下，Hyperscan增加了特定的语法和工作模式来保证其在真实网络场景下的实用性。</p></p>
           <a href="https://Jerrysmd.github.io/post/hyperscan/" class="excerpt_more button">Read More</a>
         </div>
       </div>
@@ -190,14 +189,6 @@
   <span class="post_date">
     Oct 2, 2020</span>
     <a href='https://Jerrysmd.github.io/tags/markdown' class="post_tag button button_translucent">markdown
-    </a>
-    <a href='https://Jerrysmd.github.io/tags/css' class="post_tag button button_translucent">css
-    </a>
-    <a href='https://Jerrysmd.github.io/tags/html' class="post_tag button button_translucent">html
-    </a>
-    <a href='https://Jerrysmd.github.io/tags/themes' class="post_tag button button_translucent">themes
-    </a>
-    <a href='https://Jerrysmd.github.io/tags/featured' class="post_tag button button_translucent">featured
     </a>
 </div>
 
@@ -234,7 +225,7 @@
     </div>
       <div class="excerpt_footer">
         <div>
-          <p class="pale">1.新建博客 1hugo new post/*.md 2.更新静态网页 1hugo --theme=hugo-clarity --baseUrl=&#34;https://Jerrysmd.github.io/&#34; 3.推到GithubPages 1cd public/ 2git add . 3git commit -m &#39;update blog&#39; 4git push -u origin master 完整操作 1hugo --theme=hugo-clarity --baseUrl=&#34;https://Jerrysmd.github.io/&#34; 2cd public/ 3git add . …</p>
+          <p class="pale"><p>更新博客步骤。更新静态网页，并push到github pages上。</p></p>
           <a href="https://Jerrysmd.github.io/post/updatablog/" class="excerpt_more button">Read More</a>
         </div>
       </div>
@@ -260,9 +251,6 @@
       </li>
       <li>
         <a href="https://Jerrysmd.github.io/post/hyperscan/" class="nav-link">Hyperscan教程</a>
-      </li>
-      <li>
-        <a href="https://Jerrysmd.github.io/post/markdown-syntax/" class="nav-link">Markdown Syntax Guide</a>
       </li>
       <li>
         <a href="https://Jerrysmd.github.io/post/updatablog/" class="nav-link">更新HUGO步骤</a>
@@ -293,16 +281,6 @@
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://Jerrysmd.github.io/categories/syntax/' class="post_tag button button_translucent">
-          SYNTAX
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://Jerrysmd.github.io/categories/themes/' class="post_tag button button_translucent">
-          THEMES
-          <span class="button_tally">1</span>
-        </a>
-        
         
       </nav>
     </div>
@@ -330,16 +308,6 @@
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://Jerrysmd.github.io/tags/css/' class="post_tag button button_translucent">
-          CSS
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://Jerrysmd.github.io/tags/featured/' class="post_tag button button_translucent">
-          FEATURED
-          <span class="button_tally">1</span>
-        </a>
-        
         <a href='https://Jerrysmd.github.io/tags/file/' class="post_tag button button_translucent">
           FILE
           <span class="button_tally">1</span>
@@ -347,11 +315,6 @@
         
         <a href='https://Jerrysmd.github.io/tags/git/' class="post_tag button button_translucent">
           GIT
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://Jerrysmd.github.io/tags/html/' class="post_tag button button_translucent">
-          HTML
           <span class="button_tally">1</span>
         </a>
         
@@ -367,11 +330,6 @@
         
         <a href='https://Jerrysmd.github.io/tags/markdown/' class="post_tag button button_translucent">
           MARKDOWN
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://Jerrysmd.github.io/tags/themes/' class="post_tag button button_translucent">
-          THEMES
           <span class="button_tally">1</span>
         </a>
         
