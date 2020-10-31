@@ -6,7 +6,25 @@
     <description>Recent content in Tags on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Mon, 26 Oct 2020 18:39:37 -0700</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 30 Oct 2020 20:02:24 -0700</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tag_name1</title>
+      <link>https://Jerrysmd.github.io/tags/tag_name1/</link>
+      <pubDate>Fri, 30 Oct 2020 20:02:24 -0700</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/tags/tag_name1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tag_name2</title>
+      <link>https://Jerrysmd.github.io/tags/tag_name2/</link>
+      <pubDate>Fri, 30 Oct 2020 20:02:24 -0700</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/tags/tag_name2/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>C</title>
       <link>https://Jerrysmd.github.io/tags/c/</link>

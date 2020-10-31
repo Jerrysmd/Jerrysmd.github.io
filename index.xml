@@ -6,14 +6,23 @@
     <description>Recent content on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Mon, 26 Oct 2020 18:39:37 -0700</lastBuildDate><atom:link href="https://Jerrysmd.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 30 Oct 2020 20:02:24 -0700</lastBuildDate><atom:link href="https://Jerrysmd.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Test</title>
+      <link>https://Jerrysmd.github.io/post/test/</link>
+      <pubDate>Fri, 30 Oct 2020 20:02:24 -0700</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/test/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;insert artical description&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>读取二进制文件</title>
       <link>https://Jerrysmd.github.io/post/read_binary_file/</link>
       <pubDate>Mon, 26 Oct 2020 18:39:37 -0700</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/read_binary_file/</guid>
-      <description>&lt;p&gt;读取二进制文件，把二进制文件内容全部读取到char*字符串中。配合fseek()和fread（）函数实现。&lt;/p&gt;</description>
+      <description>&lt;p&gt;读取二进制文件，把二进制文件内容全部读取到char*字符串中。配合fseek()和fread()函数实现。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -44,23 +53,21 @@
     </item>
     
     <item>
+      <title>About</title>
+      <link>https://Jerrysmd.github.io/about/</link>
+      <pubDate>Thu, 01 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/about/</guid>
+      <description>刘佳锐  手机：15735184098 邮箱：0x004c2@gmail.com </description>
+    </item>
+    
+    <item>
       <title></title>
       <link>https://Jerrysmd.github.io/archives/</link>
       <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
       
       <guid>https://Jerrysmd.github.io/archives/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>https://Jerrysmd.github.io/about/</link>
-      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://Jerrysmd.github.io/about/</guid>
-      <description>Written in Go, Hugo is an open source static site generator available under the Apache Licence 2.0. Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
-Hugo makes use of a variety of open source projects including:
- https://github.</description>
     </item>
     
     <item>

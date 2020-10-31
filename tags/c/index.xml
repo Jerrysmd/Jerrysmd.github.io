@@ -13,7 +13,7 @@
       <pubDate>Mon, 26 Oct 2020 18:39:37 -0700</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/read_binary_file/</guid>
-      <description>&lt;p&gt;读取二进制文件，把二进制文件内容全部读取到char*字符串中。配合fseek()和fread（）函数实现。&lt;/p&gt;</description>
+      <description>&lt;p&gt;读取二进制文件，把二进制文件内容全部读取到char*字符串中。配合fseek()和fread()函数实现。&lt;/p&gt;</description>
     </item>
     
   </channel>
