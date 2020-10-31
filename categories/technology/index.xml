@@ -6,31 +6,22 @@
     <description>Recent content in Technology on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Fri, 30 Oct 2020 20:02:24 -0700</lastBuildDate><atom:link href="https://Jerrysmd.github.io/categories/technology/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Test</title>
-      <link>https://Jerrysmd.github.io/post/test/</link>
-      <pubDate>Fri, 30 Oct 2020 20:02:24 -0700</pubDate>
-      
-      <guid>https://Jerrysmd.github.io/post/test/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;insert artical description&lt;/strong&gt;&lt;/p&gt;</description>
-    </item>
-    
+    <lastBuildDate>Mon, 26 Oct 2020 18:39:37 -0700</lastBuildDate><atom:link href="https://Jerrysmd.github.io/categories/technology/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>读取二进制文件</title>
-      <link>https://Jerrysmd.github.io/post/read_binary_file/</link>
+      <link>https://Jerrysmd.github.io/post/20201004read_binary_file/</link>
       <pubDate>Mon, 26 Oct 2020 18:39:37 -0700</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/read_binary_file/</guid>
+      <guid>https://Jerrysmd.github.io/post/20201004read_binary_file/</guid>
       <description>&lt;p&gt;读取二进制文件，把二进制文件内容全部读取到char*字符串中。配合fseek()和fread()函数实现。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Hyperscan教程</title>
-      <link>https://Jerrysmd.github.io/post/hyperscan/</link>
+      <link>https://Jerrysmd.github.io/post/20201003hyperscan/</link>
       <pubDate>Sat, 03 Oct 2020 05:42:44 -0700</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/hyperscan/</guid>
+      <guid>https://Jerrysmd.github.io/post/20201003hyperscan/</guid>
       <description>&lt;p&gt;Hyperscan是一款来自于Intel的高性能的正则表达式匹配库。它是基于X86平台以PCRE为原型而开发的。在支持PCRE的大部分语法的前提下，Hyperscan增加了特定的语法和工作模式来保证其在真实网络场景下的实用性。&lt;/p&gt;</description>
     </item>
     
