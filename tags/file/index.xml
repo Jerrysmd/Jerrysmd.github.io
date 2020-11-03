@@ -6,13 +6,13 @@
     <description>Recent content in File on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Mon, 26 Oct 2020 18:39:37 -0700</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/file/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 20 Oct 2020 18:39:37 -0700</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/file/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>读取二进制文件</title>
-      <link>https://Jerrysmd.github.io/post/20201004read_binary_file/</link>
-      <pubDate>Mon, 26 Oct 2020 18:39:37 -0700</pubDate>
+      <link>https://Jerrysmd.github.io/post/20201020read_binary_file/</link>
+      <pubDate>Tue, 20 Oct 2020 18:39:37 -0700</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20201004read_binary_file/</guid>
+      <guid>https://Jerrysmd.github.io/post/20201020read_binary_file/</guid>
       <description>&lt;p&gt;读取二进制文件，把二进制文件内容全部读取到char*字符串中。配合fseek()和fread()函数实现。&lt;/p&gt;</description>
     </item>
     
