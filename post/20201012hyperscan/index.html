@@ -157,25 +157,26 @@
     <h2>Overview</h2>
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#21-编译">2.1 编译</a></li>
-    <li><a href="#22-准备匹配临时数据">2.2 准备匹配临时数据</a></li>
-    <li><a href="#23-读取数据包分流">2.3 读取数据包、分流</a></li>
-    <li><a href="#24-打开流">2.4 打开流</a></li>
-    <li><a href="#25-匹配">2.5 匹配</a>
+    <li><a href="#1-概述">1. 概述</a></li>
+    <li><a href="#2-hyperscan源码">2. Hyperscan源码</a>
       <ul>
-        <li><a href="#251-stream模式">2.5.1 STREAM模式</a></li>
-        <li><a href="#252-block模式">2.5.2 BLOCK模式</a></li>
-        <li><a href="#253-匹配回调函数">2.5.3 匹配回调函数</a></li>
+        <li><a href="#21-编译">2.1 编译</a></li>
+        <li><a href="#22-准备匹配临时数据">2.2 准备匹配临时数据</a></li>
+        <li><a href="#23-读取数据包分流">2.3 读取数据包、分流</a></li>
+        <li><a href="#24-打开流">2.4 打开流</a></li>
+        <li><a href="#25-匹配">2.5 匹配</a></li>
+        <li><a href="#26-清理资源">2.6 清理资源</a></li>
       </ul>
     </li>
-    <li><a href="#26-清理资源">2.6 清理资源</a></li>
+    <li><a href="#3-stream模式总结">3. STREAM模式总结</a></li>
+    <li><a href="#4-编译运行">4. 编译运行</a></li>
   </ul>
 </nav>
     <p>Hyperscan是一款来自于Intel的高性能的正则表达式匹配库。它是基于X86平台以PCRE为原型而开发的。在支持PCRE的大部分语法的前提下，Hyperscan增加了特定的语法和工作模式来保证其在真实网络场景下的实用性。</p>
-<h1 id="1-概述">1. 概述</h1>
+<h2 id="1-概述">1. 概述</h2>
 <p>Hyperscan demo中使用libpcap从pcap文件中读取数据包，并根据一个规则文件中指定的多个正则表达式对报文进行匹配，并输出匹配结果和一些统计信息。pcapscan使用并对比了两种匹配模式：BLOCK和STREAM。BLOCK模式时它对单个数据包进行匹配；而STREAM模式下它通过五元组将数据包进行简单分流，并对每条流中的数据进行匹配。STREAM模式可以命中跨越数据包边界的匹配数据（比如，要匹配abc，而a在前一个数据的末尾，而bc在后一个数据包的前端，这两个数据包在一个流中，那么STREAM模式匹配可以命中它，而BLOCK模式不能）。</p>
-<h1 id="2-hyperscan源码">2. Hyperscan源码</h1>
-<h2 id="21-编译">2.1 编译</h2>
+<h2 id="2-hyperscan源码">2. Hyperscan源码</h2>
+<h3 id="21-编译">2.1 编译</h3>
 <p>函数buildDatabase用来编译规则文件中的多个正则表达式，参数mode指定了是BLOCK还是STREAM模式。</p>
 <div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="ln"> 1</span><span class="k">static</span> <span class="n">hs_database_t</span> <span class="o">*</span><span class="nf">buildDatabase</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*&gt;</span> <span class="o">&amp;</span><span class="n">expressions</span><span class="p">,</span>
 <span class="ln"> 2</span>                                    <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="o">&gt;</span> <span class="n">flags</span><span class="p">,</span>
@@ -221,7 +222,7 @@
 <span class="ln">8</span>                            <span class="n">hs_compile_error_t</span> <span class="o">**</span> <span class="n">error</span><span class="p">)</span>
 </code></pre></div><p>其中，expressions是多个正则表达式字符串，flags和ids分别是expressions对应的flag和id数组；elements是表达式字符串的个数；其余参数与上一个例子中提到的hs_compile的参数涵义相同。</p>
 <p>这里要注意的一个事情是参数ids，它是正则表达式的ID数组。每个表达式都有一个唯一ID，这样命中的时候匹配回调函数可以得到此ID，告诉调用者哪个表达式命中了。如果ids传入NULL，则所有表达式的ID都为0。</p>
-<h2 id="22-准备匹配临时数据">2.2 准备匹配临时数据</h2>
+<h3 id="22-准备匹配临时数据">2.2 准备匹配临时数据</h3>
 <p>Benchmark构造函数中，为接下来的匹配分配足够的临时数据空间(scratch space）。这里有一个技巧：1）BLOCK和STREAM模式的匹配只需共用一个scratch；2）这个scratch足够大，方法是调用两次，在第2次调用时hyperscan如果发现空间不够会进行增加。</p>
 <div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="ln"> 1</span><span class="k">public</span><span class="o">:</span>
 <span class="ln"> 2</span>    <span class="n">Benchmark</span><span class="p">(</span><span class="k">const</span> <span class="n">hs_database_t</span> <span class="o">*</span><span class="n">streaming</span><span class="p">,</span> <span class="k">const</span> <span class="n">hs_database_t</span> <span class="o">*</span><span class="n">block</span><span class="p">)</span>
@@ -242,7 +243,7 @@
 <span class="ln">17</span>            <span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
 <span class="ln">18</span>        <span class="p">}</span>
 <span class="ln">19</span>    <span class="p">}</span>
-</code></pre></div><h2 id="23-读取数据包分流">2.3 读取数据包、分流</h2>
+</code></pre></div><h3 id="23-读取数据包分流">2.3 读取数据包、分流</h3>
 <p>在Benchmark::readStreams方法中，从pcap文件中读取了所有数据包（其实封装必须是ethernet-ipv4-tcp/udp），并根据五元组进行简单分流。主要代码如下</p>
 <div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="ln"> 1</span><span class="k">while</span> <span class="p">((</span><span class="n">pktData</span> <span class="o">=</span> <span class="n">pcap_next</span><span class="p">(</span><span class="n">pcapHandle</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">pktHeader</span><span class="p">))</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
 <span class="ln"> 2</span>            <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">offset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">length</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -262,7 +263,7 @@
 <span class="ln">16</span>            <span class="n">stream_ids</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
 <span class="ln">17</span>        <span class="p">}</span>
 </code></pre></div><p>注意，stream_ids这个vector存储了每一个数据包对应的stream id。</p>
-<h2 id="24-打开流">2.4 打开流</h2>
+<h3 id="24-打开流">2.4 打开流</h3>
 <p>由于需要用到STREAM模式，所以在匹配前要先将流打开，见Benchmark::openStreams</p>
 <div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="ln"> 1</span><span class="c1">// Open a Hyperscan stream for each stream in stream_ids
 </span><span class="ln"> 2</span><span class="c1"></span>    <span class="kt">void</span> <span class="nf">openStreams</span><span class="p">()</span> <span class="p">{</span>
@@ -276,8 +277,8 @@
 <span class="ln">10</span>        <span class="p">}</span>
 <span class="ln">11</span>    <span class="p">}</span>
 </code></pre></div><p>其中，streams的类型是vector&lt;hs_stream_t *&gt;。</p>
-<h2 id="25-匹配">2.5 匹配</h2>
-<h3 id="251-stream模式">2.5.1 STREAM模式</h3>
+<h3 id="25-匹配">2.5 匹配</h3>
+<h4 id="251-stream模式">2.5.1 STREAM模式</h4>
 <p>在Benchmark::scanStreams中</p>
 <div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="ln"> 1</span><span class="c1">// Scan each packet (in the ordering given in the PCAP file) through
 </span><span class="ln"> 2</span><span class="c1"></span>    <span class="c1">// Hyperscan using the streaming interface.
@@ -303,7 +304,7 @@
 <span class="ln">7</span>                          <span class="kt">void</span> <span class="o">*</span> <span class="n">ctxt</span><span class="p">)</span>
 </code></pre></div><p>其中，id是数据所属的stream对应hs_stream_t指针，这里叫id其实我感觉不太合适; 其余参数与hs_scan相同。
 这里调用的streams[stream_ids[i]]已经在上一步打开流中初始化。</p>
-<h3 id="252-block模式">2.5.2 BLOCK模式</h3>
+<h4 id="252-block模式">2.5.2 BLOCK模式</h4>
 <p>BLOCK模式比STREAM简单许多，在Benchmark::scanBlock中</p>
 <div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="ln"> 1</span><span class="c1">// Scan each packet (in the ordering given in the PCAP file) through
 </span><span class="ln"> 2</span><span class="c1"></span>    <span class="c1">// Hyperscan using the block-mode interface.
@@ -319,7 +320,7 @@
 <span class="ln">12</span>        <span class="p">}</span>
 <span class="ln">13</span>    <span class="p">}</span>
 </code></pre></div><p>其中，db就是上一步编译的databas；data和length分别是要匹配的数据和数据长度；flags用来在未来版本中控制函数行为，目前未使用；scratch是匹配时要用的临时数据，之前已经分配好；onEvent非常关键，即匹配时调用的回调函数，由用户指定；context是用户自定义指针。</p>
-<h3 id="253-匹配回调函数">2.5.3 匹配回调函数</h3>
+<h4 id="253-匹配回调函数">2.5.3 匹配回调函数</h4>
 <p>匹配回调函数的原型是</p>
 <div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="ln">1</span><span class="k">typedef</span> <span class="p">(</span><span class="o">*</span> <span class="n">match_event_handler</span><span class="p">)(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">id</span><span class="p">,</span> 
 <span class="ln">2</span>                                <span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">from</span><span class="p">,</span> 
@@ -328,9 +329,9 @@
 <span class="ln">5</span>                                <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span>
 </code></pre></div><p>其中，id是命中的正则表达式的ID，对于使用hs_compile编译的唯一表达式来说，此值为0；如果在编译时指定了相关模式选项(hs_compile中的mode参数），则此值将会设为匹配特征的起始位置，否则会设为0；to是命中数据的下一个字节的偏移；flags目前未用；context是用户自定义指针。</p>
 <p>返回值为非0表示停止匹配，否则继续；在匹配的过程中，每次命中时都将同步调用匹配回调函数，直到匹配结束。</p>
-<h2 id="26-清理资源">2.6 清理资源</h2>
+<h3 id="26-清理资源">2.6 清理资源</h3>
 <p>包括关闭流（hs_close_stream）、释放database等。这里要注意hs_close_stream时仍会进行匹配。</p>
-<h1 id="3-stream模式总结">3. STREAM模式总结</h1>
+<h2 id="3-stream模式总结">3. STREAM模式总结</h2>
 <p>STREAM模式的用法比BLOCK模式要复杂一些，这里简单用伪代码总结一下</p>
 <div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="ln"> 1</span><span class="c1">// N是流的规格，事先已确定好
 </span><span class="ln"> 2</span><span class="c1"></span><span class="n">hs_database_t</span><span class="o">*</span> <span class="n">db</span><span class="p">;</span>
@@ -354,7 +355,7 @@
 <span class="ln">20</span>  <span class="n">hs_close_stream</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">streams</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">tmp</span><span class="p">,</span> <span class="n">callBack</span><span class="p">);</span><span class="n">hs_free_scrach</span><span class="p">(</span><span class="n">tmp</span><span class="p">);</span>
 <span class="ln">21</span><span class="n">hs_free_database</span><span class="p">(</span><span class="n">db</span><span class="p">);</span>
 </code></pre></div><p>可以通过hs_database_size()和hs_stream_size()分别获得database和每条流的stream state的大小。正则表达式的数目和复杂度会影响stream state的大小，随着数目和复杂度的增加，可能会越来越大。在支持上百万条流和复杂规则文件的系统上，stream state的内存耗费可能很大。</p>
-<h1 id="4-编译运行">4. 编译运行</h1>
+<h2 id="4-编译运行">4. 编译运行</h2>
 <p>运行示例前要准备一个pcap文件和一个规则文件，规则文件的格式如</p>
 <div class="highlight"><pre class="chroma"><code class="language-txt" data-lang="txt"><span class="ln">1</span>123：/weibo/i
 <span class="ln">2</span>456：/[f|F]ile/Hi
@@ -379,9 +380,6 @@
     <ul>
       <li>
         <a href="https://Jerrysmd.github.io/post/20201020read_binary_file/" class="nav-link">读取二进制文件</a>
-      </li>
-      <li>
-        <a href="https://Jerrysmd.github.io/post/20201001updatablog/" class="nav-link">更新HUGO步骤</a>
       </li>
     </ul>
     <h2 class="mt-4">Recent Posts</h2>
