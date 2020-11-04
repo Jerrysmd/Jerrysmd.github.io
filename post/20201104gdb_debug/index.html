@@ -1,8 +1,8 @@
 
 <!DOCTYPE html>
-<html lang="en" data-figures="">
+<html lang="en" data-figures="true" class="page">
   <head>
-<title>markdown | JerrysBlog</title>
+<title>GDB调试 | JerrysBlog</title>
 <meta charset="utf-8">
 <meta name="generator" content="Hugo 0.76.5" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -17,13 +17,13 @@
 <meta property="og:locale" content="en" />
 
 <meta property="og:type" content="article">
-<meta name="description" content="">
+<meta name="description" content="Article description.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@0x4c2">
-<meta name="twitter:title" content="markdown" />
-<meta property="og:url" content="https://Jerrysmd.github.io/tags/markdown/" />
-<meta property="og:title" content="markdown" />
-<meta property="og:description" content="" />
+<meta name="twitter:title" content="GDB调试" />
+<meta property="og:url" content="https://Jerrysmd.github.io/post/20201104gdb_debug/" />
+<meta property="og:title" content="GDB调试" />
+<meta property="og:description" content="Article description." />
 <meta property="og:image" content="https://Jerrysmd.github.io/images/thumbnail.png" />
 <link rel="apple-touch-icon" sizes="180x180" href='https://Jerrysmd.github.io/icons/apple-touch-icon.png'>
 <link rel="icon" type="image/png" sizes="32x32" href='https://Jerrysmd.github.io/icons/favicon-32x32.png'>
@@ -32,7 +32,7 @@
 <meta name="msapplication-TileColor" content="#002538">
 <meta name="theme-color" content="#002538">
 
-<link rel="canonical" href="https://Jerrysmd.github.io/tags/markdown/">
+<link rel="canonical" href="https://Jerrysmd.github.io/post/20201104gdb_debug/">
 
     
 
@@ -50,8 +50,7 @@
   
   
     
-  
-  <body data-code="7" data-lines="true" id="documentTop">
+  <body data-code="10" data-lines="true" id="documentTop">
 
 <header class="nav_header" >
   <nav class="nav">
@@ -113,44 +112,146 @@
 </header>
 
     <main>
-
+  
 <div class="grid-inverse wrap content">
-  <ul class="posts" id="posts">
-      <li class="post_item">
-  <div class="excerpt">
-    <div class="excerpt_header">
-      <h3 class="post_link">
-        <a href="https://Jerrysmd.github.io/post/20201002markdown-syntax/">Markdown Syntax Guide</a>
-      </h3>
-      <div class="post_meta">
+  <article class="post_content">
+    <h1 class="post_title">GDB调试</h1><div class="post_meta">
   <svg class="icon">
   <use xlink:href="#calendar"></use>
 </svg>
   <span class="post_date">
-    Oct 2, 2020</span>
-    <a href='https://Jerrysmd.github.io/tags/markdown' class="post_tag button button_translucent">markdown
+    Nov 4, 2020</span>
+    <a href='https://Jerrysmd.github.io/tags/linux' class="post_tag button button_translucent">Linux
     </a>
 </div>
 
-    </div>
-    <div class="excerpt_footer partition">
-      <div class="excerpt_thumbnail">
-        <img src='https://Jerrysmd.github.io/images/building.png'>
-      </div>
-      
-        <div>
-          <p class="pale"><p>This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.</p></p>
-          <a href="https://Jerrysmd.github.io/post/20201002markdown-syntax/" class="excerpt_more button">Read More</a>
-        </div>
-      </div>
-    </div>
-  </li>
+    
+<div class="post_share">
+  Share on:
+  <a href="https://twitter.com/intent/tweet?text=GDB%e8%b0%83%e8%af%95&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201104gdb_debug%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
+    <svg class="icon">
+  <use xlink:href="#twitter"></use>
+</svg>
+  </a>
+  <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201104gdb_debug%2f&t=GDB%e8%b0%83%e8%af%95" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
+    <svg class="icon">
+  <use xlink:href="#facebook"></use>
+</svg>
+  </a>
+  <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="Share on LinkedIn" rel="nofollow">
+    <svg class="icon">
+  <use xlink:href="#linkedin"></use>
+</svg>
+  </a>
+  <a href="https://Jerrysmd.github.io/post/20201104gdb_debug/" title="Copy Link" class="link link_yank">
+    <svg class="icon">
+  <use xlink:href="#copy"></use>
+</svg>
+  </a>
+</div>
 
-    <li>
-
-
+    
+    
+    <h2>Overview</h2>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#gdb的使用">gdb的使用</a>
+      <ul>
+        <li><a href="#启动gdb">启动gdb</a></li>
+        <li><a href="#查看源码">查看源码</a></li>
+        <li><a href="#运行程序">运行程序</a></li>
+        <li><a href="#设置断点">设置断点</a></li>
+        <li><a href="#单步执行">单步执行</a></li>
+        <li><a href="#查看变量">查看变量</a></li>
+        <li><a href="#查看运行信息">查看运行信息</a></li>
+        <li><a href="#分割窗口">分割窗口</a></li>
+        <li><a href="#退出gdb">退出gdb</a></li>
+      </ul>
     </li>
   </ul>
+</nav>
+    <p>GDB是一个由GNU开源组织发布的、UNIX/LINUX操作系统下的、基于命令行的、功能强大的程序调试工具。 对于一名Linux下工作的c/c++程序员，gdb是必不可少的工具；</p>
+<h2 id="gdb的使用">gdb的使用</h2>
+<h3 id="启动gdb">启动gdb</h3>
+<p>编译一个测试程序，-g表示可以调试</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>gcc -g demo.c -o demo
+</code></pre></div><p>启动gdb</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>gdb <span class="nb">test</span> 
+<span class="ln">2</span>或者
+<span class="ln">3</span>gdb -q <span class="nb">test</span> //表示不打印gdb版本信息，界面较为干净；
+</code></pre></div><h3 id="查看源码">查看源码</h3>
+<ul>
+<li>list ：简记为 l ，其作用就是列出程序的源代码，默认每次显示10行。</li>
+<li>list 行号：将显示当前文件以“行号”为中心的前后10行代码，如：list 12</li>
+<li>list 函数名：将显示“函数名”所在函数的源代码，如：list main</li>
+<li>list ：不带参数，将接着上一次 list 命令的，输出下边的内容。</li>
+</ul>
+<h3 id="运行程序">运行程序</h3>
+<ul>
+<li>run：简记为 r ，其作用是运行程序，当遇到断点后，程序会在断点处停止运行，等待用户输入下一步的命令。</li>
+</ul>
+<h3 id="设置断点">设置断点</h3>
+<ul>
+<li>break n （简写b n）:在第n行处设置断点.可以带上代码路径和代码名称： b demo.cpp:578</li>
+<li>b fn1 if a＞b：条件断点设置</li>
+<li>break func（break缩写为b）：在函数func()的入口处设置断点，如：break cb_button</li>
+<li>delete 断点号n：删除第n个断点</li>
+<li>disable 断点号n：暂停第n个断点</li>
+<li>enable 断点号n：开启第n个断点</li>
+<li>clear 行号n：清除第n行的断点</li>
+<li>info b （info breakpoints）：显示当前程序的断点设置情况</li>
+<li>delete breakpoints：清除所有断点</li>
+</ul>
+<h3 id="单步执行">单步执行</h3>
+<ul>
+<li>continue （简写c ）：继续执行，到下一个断点处（或运行结束）</li>
+<li>next：（简写 n），单步跟踪程序，当遇到函数调用时，也不进入此函数体；此命令同 step 的主要区别是，step 遇到用户自定义的函数，将步进到函数中去运行，而 next 则直接调用函数，不会进入到函数体内。</li>
+<li>step （简写s）：单步调试如果有函数调用，则进入函数；与命令n不同，n是不进入调用的函数的</li>
+<li>until：当你厌倦了在一个循环体内单步跟踪时，这个命令可以运行程序直到退出循环体。</li>
+<li>until+行号： 运行至某行，不仅仅用来跳出循环</li>
+<li>finish： 运行程序，直到当前函数完成返回，并打印函数返回时的堆栈地址和返回值及参数值等信息。</li>
+<li>call 函数(参数)：调用程序中可见的函数，并传递“参数”，如：call gdb_test(55)</li>
+</ul>
+<h3 id="查看变量">查看变量</h3>
+<ul>
+<li>print 表达式：简记为 p ，其中“表达式”可以是任何当前正在被测试程序的有效表达式，比如当前正在调试C语言的程序，那么“表达式”可以是任何C语言的有效表达式，包括数字，变量甚至是函数调用。</li>
+<li>print a：将显示整数 a 的值</li>
+<li>print ++a：将把 a 中的值加1,并显示出来</li>
+<li>print name：将显示字符串 name 的值</li>
+<li>print gdb_test(22)：将以整数22作为参数调用 gdb_test() 函数</li>
+<li>print gdb_test(a)：将以变量 a 作为参数调用 gdb_test() 函数</li>
+<li>display 表达式：在单步运行时将非常有用，使用display命令设置一个表达式后，它将在每次单步进行指令后，紧接着输出被设置的表达式及值。如： display a</li>
+<li>watch 表达式：设置一个监视点，一旦被监视的“表达式”的值改变，gdb将强行终止正在被调试的程序。如： watch a</li>
+<li>whatis ：查询变量或函数</li>
+<li>info function： 查询函数</li>
+<li>扩展info locals： 显示当前堆栈页的所有变量</li>
+</ul>
+<h3 id="查看运行信息">查看运行信息</h3>
+<ul>
+<li>where/bt ：当前运行的堆栈列表</li>
+<li>bt backtrace 显示当前调用堆栈</li>
+<li>up/down 改变堆栈显示的深度</li>
+<li>set args 参数:指定运行时的参数</li>
+<li>show args：查看设置好的参数</li>
+<li>info program： 来查看程序的是否在运行，进程号，被暂停的原因。</li>
+</ul>
+<h3 id="分割窗口">分割窗口</h3>
+<ul>
+<li>layout：用于分割窗口，可以一边查看代码，一边测试</li>
+<li>layout src：显示源代码窗口</li>
+<li>layout asm：显示反汇编窗口</li>
+<li>layout regs：显示源代码/反汇编和CPU寄存器窗口</li>
+<li>layout split：显示源代码和反汇编窗口</li>
+<li>Ctrl + L：刷新窗口</li>
+</ul>
+<h3 id="退出gdb">退出gdb</h3>
+<ul>
+<li>quit：简记为 q ，退出gdb</li>
+</ul>
+    
+      
+    
+  </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
     <h2>刘佳锐</h2>
@@ -170,13 +271,13 @@
     <h2 class="mt-4">Recent Posts</h2>
     <ul class="flex-column">
       <li>
-        <a href="https://Jerrysmd.github.io/post/20201104gdb_debug/" class="nav-link">GDB调试</a>
-      </li>
-      <li>
         <a href="https://Jerrysmd.github.io/post/20201103%E5%A4%A7%E9%A1%B5%E5%86%85%E5%AD%98/" class="nav-link">大页内存(HugePages)</a>
       </li>
       <li>
         <a href="https://Jerrysmd.github.io/post/20201102regex_paper/" class="nav-link">20201009Regex_paper</a>
+      </li>
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20201025%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5/" class="nav-link">20201008动态链接和静态链接</a>
       </li>
     </ul>
     <div>
@@ -266,8 +367,6 @@
 </aside>
 
 </div>
-
-
     </main><svg width="0" height="0" class="hidden">
   <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="facebook">
     <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h151V331h-60v-90h60v-61c0-49.629 40.371-90 90-90h91v90h-91v61h91l-15 90h-76v181h121c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zm0 0"></path>

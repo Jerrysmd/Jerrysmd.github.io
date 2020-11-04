@@ -6,7 +6,16 @@
     <description>Recent content on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Tue, 03 Nov 2020 13:04:09 -0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 04 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://Jerrysmd.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GDB调试</title>
+      <link>https://Jerrysmd.github.io/post/20201104gdb_debug/</link>
+      <pubDate>Wed, 04 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/20201104gdb_debug/</guid>
+      <description>&lt;p&gt;GDB是一个由GNU开源组织发布的、UNIX/LINUX操作系统下的、基于命令行的、功能强大的程序调试工具。 对于一名Linux下工作的c/c++程序员，gdb是必不可少的工具；&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>大页内存(HugePages)</title>
       <link>https://Jerrysmd.github.io/post/20201103%E5%A4%A7%E9%A1%B5%E5%86%85%E5%AD%98/</link>
