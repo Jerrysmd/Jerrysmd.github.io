@@ -6,7 +6,16 @@
     <description>Recent content in Technology on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Mon, 02 Nov 2020 22:02:10 -0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/categories/technology/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 03 Nov 2020 13:04:09 -0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/categories/technology/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>大页内存(HugePages)</title>
+      <link>https://Jerrysmd.github.io/post/20201103%E5%A4%A7%E9%A1%B5%E5%86%85%E5%AD%98/</link>
+      <pubDate>Tue, 03 Nov 2020 13:04:09 -0800</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/20201103%E5%A4%A7%E9%A1%B5%E5%86%85%E5%AD%98/</guid>
+      <description>&lt;p&gt;通过增大操作系统页的大小来减小页表，从而避免快表缺失。大页内存优化程序主要是针对其中的malloc机制的，意思就是分配大页，增加tlb的命中率。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>20201009Regex_paper</title>
       <link>https://Jerrysmd.github.io/post/20201102regex_paper/</link>
