@@ -6,7 +6,16 @@
     <description>Recent content in C on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Tue, 20 Oct 2020 18:39:37 -0700</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 09 Nov 2020 20:04:00 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C项目性能优化</title>
+      <link>https://Jerrysmd.github.io/post/20201109%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</link>
+      <pubDate>Mon, 09 Nov 2020 20:04:00 +0800</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/20201109%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</guid>
+      <description>&lt;p&gt;大型C项目的性能优化方法和思路。x86项目往低性能处理器上移植时遇到性能瓶颈的性能优化策略。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>读取二进制文件</title>
       <link>https://Jerrysmd.github.io/post/20201020read_binary_file/</link>

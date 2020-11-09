@@ -1,8 +1,8 @@
 
 <!DOCTYPE html>
-<html lang="en" data-figures="">
+<html lang="en" data-figures="true" class="page">
   <head>
-<title>Series | JerrysBlog</title>
+<title>C项目性能优化 | JerrysBlog</title>
 <meta charset="utf-8">
 <meta name="generator" content="Hugo 0.76.5" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -17,13 +17,13 @@
 <meta property="og:locale" content="en" />
 
 <meta property="og:type" content="article">
-<meta name="description" content="">
+<meta name="description" content="Article description.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@0x4c2">
-<meta name="twitter:title" content="Series" />
-<meta property="og:url" content="https://Jerrysmd.github.io/series/" />
-<meta property="og:title" content="Series" />
-<meta property="og:description" content="" />
+<meta name="twitter:title" content="C项目性能优化" />
+<meta property="og:url" content="https://Jerrysmd.github.io/post/20201109%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" />
+<meta property="og:title" content="C项目性能优化" />
+<meta property="og:description" content="Article description." />
 <meta property="og:image" content="https://Jerrysmd.github.io/images/thumbnail.png" />
 <link rel="apple-touch-icon" sizes="180x180" href='https://Jerrysmd.github.io/icons/apple-touch-icon.png'>
 <link rel="icon" type="image/png" sizes="32x32" href='https://Jerrysmd.github.io/icons/favicon-32x32.png'>
@@ -32,7 +32,7 @@
 <meta name="msapplication-TileColor" content="#002538">
 <meta name="theme-color" content="#002538">
 
-<link rel="canonical" href="https://Jerrysmd.github.io/series/">
+<link rel="canonical" href="https://Jerrysmd.github.io/post/20201109%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">
 
     
 
@@ -50,8 +50,7 @@
   
   
     
-  
-  <body data-code="7" data-lines="true" id="documentTop">
+  <body data-code="10" data-lines="true" id="documentTop">
 
 <header class="nav_header" >
   <nav class="nav">
@@ -113,38 +112,102 @@
 </header>
 
     <main>
-
+  
 <div class="grid-inverse wrap content">
-  <ul class="posts" id="posts">
-      <li class="post_item">
-  <div class="excerpt">
-    <div class="excerpt_header">
-      <h3 class="post_link">
-        <a href="https://Jerrysmd.github.io/series/themes-guide/">Themes Guide</a>
-      </h3>
-      <div class="post_meta">
+  <article class="post_content">
+    <h1 class="post_title">C项目性能优化</h1><div class="post_meta">
   <svg class="icon">
   <use xlink:href="#calendar"></use>
 </svg>
   <span class="post_date">
-    Oct 2, 2020</span>
+    Nov 9, 2020</span>
+    <a href='https://Jerrysmd.github.io/tags/c' class="post_tag button button_translucent">c
+    </a>
 </div>
 
-    </div>
-      <div class="excerpt_footer">
-        <div>
-          <p class="pale"></p>
-          <a href="https://Jerrysmd.github.io/series/themes-guide/" class="excerpt_more button">Read More</a>
-        </div>
-      </div>
-    </div>
-  </li>
+    
+<div class="post_share">
+  Share on:
+  <a href="https://twitter.com/intent/tweet?text=C%e9%a1%b9%e7%9b%ae%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201109%25E6%2580%25A7%25E8%2583%25BD%25E4%25BC%2598%25E5%258C%2596%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
+    <svg class="icon">
+  <use xlink:href="#twitter"></use>
+</svg>
+  </a>
+  <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201109%25E6%2580%25A7%25E8%2583%25BD%25E4%25BC%2598%25E5%258C%2596%2f&t=C%e9%a1%b9%e7%9b%ae%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
+    <svg class="icon">
+  <use xlink:href="#facebook"></use>
+</svg>
+  </a>
+  <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="Share on LinkedIn" rel="nofollow">
+    <svg class="icon">
+  <use xlink:href="#linkedin"></use>
+</svg>
+  </a>
+  <a href="https://Jerrysmd.github.io/post/20201109%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" title="Copy Link" class="link link_yank">
+    <svg class="icon">
+  <use xlink:href="#copy"></use>
+</svg>
+  </a>
+</div>
 
-    <li>
-
-
-    </li>
+    
+    
+    <h2>Overview</h2>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#通常优化方法">通常优化方法</a></li>
+    <li><a href="#代码重构原则">代码重构原则</a></li>
   </ul>
+</nav>
+    <p>大型C项目的性能优化方法和思路。x86项目往低性能处理器上移植时遇到性能瓶颈的性能优化策略。</p>
+<h2 id="通常优化方法">通常优化方法</h2>
+<ol>
+<li>宏定义或内联</li>
+</ol>
+<ul>
+<li>短的、调用频繁的函数改为宏定义或内联函数，减少调用层级</li>
+<li>可能编译器已经做了部分优化，效果不一定明显</li>
+</ul>
+<ol start="2">
+<li>固定次数的短循环展开</li>
+</ol>
+<ul>
+<li>循环语句如果循环次数已知，且是短循环，可以将语句展开</li>
+<li>编译器可能已做优化，效果不一定明显</li>
+</ul>
+<ol start="3">
+<li>减少内存分配和释放的次数</li>
+</ol>
+<ul>
+<li>频繁使用的变量能用全局变量的尽量不用局部变量</li>
+<li>函数体内部的局部变量，如果大小不是特别大，尽量不用动态分配空间</li>
+<li>数据结构中，尽量不用指针变量</li>
+</ul>
+<ol start="4">
+<li>移位代替乘除</li>
+<li>条件语句优化：根据分支被执行的频率；其他</li>
+</ol>
+<ul>
+<li>将频繁执行的分支放在前面部分</li>
+</ul>
+<ol start="6">
+<li>数据结构/算法</li>
+</ol>
+<ul>
+<li>数据结构中尽量减少需要动态分配空间的指针，改用联合、结构体或固定大小的缓存区</li>
+</ul>
+<ol start="7">
+<li>使用并行程序</li>
+</ol>
+<h2 id="代码重构原则">代码重构原则</h2>
+<ul>
+<li>维护一套代码，使用宏定义控制</li>
+<li>小步前进，重构一部分进行充分测试后再重构下一部分</li>
+</ul>
+    
+      
+    
+  </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
     <h2>刘佳锐</h2>
@@ -155,9 +218,6 @@
     <h2 class="mt-4">Featured Posts</h2>
     <ul>
       <li>
-        <a href="https://Jerrysmd.github.io/post/20201109%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="nav-link">C项目性能优化</a>
-      </li>
-      <li>
         <a href="https://Jerrysmd.github.io/post/20201020read_binary_file/" class="nav-link">读取二进制文件</a>
       </li>
       <li>
@@ -167,13 +227,13 @@
     <h2 class="mt-4">Recent Posts</h2>
     <ul class="flex-column">
       <li>
-        <a href="https://Jerrysmd.github.io/post/20201109%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="nav-link">C项目性能优化</a>
-      </li>
-      <li>
         <a href="https://Jerrysmd.github.io/post/20201104gdb_debug/" class="nav-link">GDB调试</a>
       </li>
       <li>
         <a href="https://Jerrysmd.github.io/post/20201103%E5%A4%A7%E9%A1%B5%E5%86%85%E5%AD%98/" class="nav-link">大页内存(HugePages)</a>
+      </li>
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20201102regex_paper/" class="nav-link">20201009Regex_paper</a>
       </li>
     </ul>
     <div>
@@ -263,8 +323,6 @@
 </aside>
 
 </div>
-
-
     </main><svg width="0" height="0" class="hidden">
   <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="facebook">
     <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h151V331h-60v-90h60v-61c0-49.629 40.371-90 90-90h91v90h-91v61h91l-15 90h-76v181h121c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zm0 0"></path>
