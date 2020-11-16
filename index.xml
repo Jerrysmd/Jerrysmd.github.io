@@ -8,7 +8,7 @@
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Wed, 11 Nov 2020 10:42:49 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>条件编译指令</title>
+      <title>条件编译指令:Conditional compilation directives</title>
       <link>https://Jerrysmd.github.io/post/20201111%E6%9D%A1%E4%BB%B6%E7%BC%96%E8%AF%91%E6%8C%87%E4%BB%A4/</link>
       <pubDate>Wed, 11 Nov 2020 10:42:49 +0800</pubDate>
       
@@ -17,7 +17,7 @@
     </item>
     
     <item>
-      <title>C项目性能优化</title>
+      <title>C项目性能优化:C Project performance optimization</title>
       <link>https://Jerrysmd.github.io/post/20201109%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</link>
       <pubDate>Mon, 09 Nov 2020 20:04:00 +0800</pubDate>
       
@@ -26,7 +26,7 @@
     </item>
     
     <item>
-      <title>GDB调试</title>
+      <title>GDB调试:GDB debug guide</title>
       <link>https://Jerrysmd.github.io/post/20201104gdb_debug/</link>
       <pubDate>Wed, 04 Nov 2020 00:00:00 +0000</pubDate>
       
@@ -35,7 +35,7 @@
     </item>
     
     <item>
-      <title>大页内存(HugePages)</title>
+      <title>大页内存:HugePages</title>
       <link>https://Jerrysmd.github.io/post/20201103%E5%A4%A7%E9%A1%B5%E5%86%85%E5%AD%98/</link>
       <pubDate>Tue, 03 Nov 2020 13:04:09 -0800</pubDate>
       
@@ -62,7 +62,7 @@
     </item>
     
     <item>
-      <title>读取二进制文件</title>
+      <title>读取二进制文件:Read binary files</title>
       <link>https://Jerrysmd.github.io/post/20201020read_binary_file/</link>
       <pubDate>Tue, 20 Oct 2020 18:39:37 -0700</pubDate>
       
@@ -89,7 +89,7 @@
     </item>
     
     <item>
-      <title>Hyperscan教程</title>
+      <title>Hyperscan:high-performance multiple regex matching library</title>
       <link>https://Jerrysmd.github.io/post/20201012hyperscan/</link>
       <pubDate>Mon, 12 Oct 2020 05:42:44 -0700</pubDate>
       
@@ -125,7 +125,7 @@
     </item>
     
     <item>
-      <title>Markdown Syntax Guide</title>
+      <title>Markdown语法:Markdown Syntax Guide</title>
       <link>https://Jerrysmd.github.io/post/20201002markdown-syntax/</link>
       <pubDate>Fri, 02 Oct 2020 00:00:00 +0000</pubDate>
       
@@ -134,7 +134,7 @@
     </item>
     
     <item>
-      <title>更新HUGO步骤</title>
+      <title>更新HUGO步骤:Update the HUGO steps</title>
       <link>https://Jerrysmd.github.io/post/20201001updatablog/</link>
       <pubDate>Thu, 01 Oct 2020 05:06:59 -0700</pubDate>
       
