@@ -116,12 +116,12 @@
     </item>
     
     <item>
-      <title>20201003hashcode</title>
+      <title>C语言实现HashMap: C language realize HashMap</title>
       <link>https://Jerrysmd.github.io/post/20201005hashcode/</link>
       <pubDate>Mon, 05 Oct 2020 21:56:51 -0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20201005hashcode/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;insert artical description&lt;/strong&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;哈希表是一种十分重要的数据结构，在很多应用场景下都有用到，本文会对哈希表原理进行简单的剖析，并使用C语言实现一个完整的HashMap。&lt;/p&gt;</description>
     </item>
     
   </channel>

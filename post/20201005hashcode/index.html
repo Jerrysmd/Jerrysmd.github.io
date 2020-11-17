@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en" data-figures="true" class="page" data-mode="dim">
   <head>
-<title>20201003hashcode | JerrysBlog</title>
+<title>C语言实现HashMap: C language realize HashMap | JerrysBlog</title>
 <meta charset="utf-8">
 <meta name="generator" content="Hugo 0.76.5" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -20,9 +20,9 @@
 <meta name="description" content="Article description.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@0x4c2">
-<meta name="twitter:title" content="20201003hashcode" />
+<meta name="twitter:title" content="C语言实现HashMap: C language realize HashMap" />
 <meta property="og:url" content="https://Jerrysmd.github.io/post/20201005hashcode/" />
-<meta property="og:title" content="20201003hashcode" />
+<meta property="og:title" content="C语言实现HashMap: C language realize HashMap" />
 <meta property="og:description" content="Article description." />
 <meta property="og:image" content="https://Jerrysmd.github.io/images/2.png" />
 <link rel="apple-touch-icon" sizes="180x180" href='https://Jerrysmd.github.io/icons/apple-touch-icon.png'>
@@ -115,27 +115,27 @@
   
 <div class="grid-inverse wrap content">
   <article class="post_content">
-    <h1 class="post_title">20201003hashcode</h1><div class="post_meta">
+    <h1 class="post_title">C语言实现HashMap: C language realize HashMap</h1><div class="post_meta">
   <svg class="icon">
   <use xlink:href="#calendar"></use>
 </svg>
   <span class="post_date">
     Oct 5, 2020</span>
-    <a href='https://Jerrysmd.github.io/tags/tag_name1' class="post_tag button button_translucent">Tag_name1
+    <a href='https://Jerrysmd.github.io/tags/c' class="post_tag button button_translucent">c
     </a>
-    <a href='https://Jerrysmd.github.io/tags/tag_name2' class="post_tag button button_translucent">Tag_name2
+    <a href='https://Jerrysmd.github.io/tags/hash' class="post_tag button button_translucent">hash
     </a>
 </div>
 
     
 <div class="post_share">
   Share on:
-  <a href="https://twitter.com/intent/tweet?text=20201003hashcode&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201005hashcode%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
+  <a href="https://twitter.com/intent/tweet?text=C%e8%af%ad%e8%a8%80%e5%ae%9e%e7%8e%b0HashMap%3a%20C%20language%20realize%20HashMap&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201005hashcode%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
     <svg class="icon">
   <use xlink:href="#twitter"></use>
 </svg>
   </a>
-  <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201005hashcode%2f&t=20201003hashcode" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
+  <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201005hashcode%2f&t=C%e8%af%ad%e8%a8%80%e5%ae%9e%e7%8e%b0HashMap%3a%20C%20language%20realize%20HashMap" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
     <svg class="icon">
   <use xlink:href="#facebook"></use>
 </svg>
@@ -155,9 +155,26 @@
     
     
     <h2>Overview</h2>
-    <nav id="TableOfContents"></nav>
-    <p><strong>insert artical description</strong></p>
-<p><strong>Insert Lead paragraph here.</strong></p>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-什么是hashmap">1. 什么是HashMap？</a></li>
+    <li><a href="#定义键值对结构">定义键值对结构</a></li>
+    <li><a href="#3-定义hashmap结构体">3. 定义HashMap结构体</a></li>
+  </ul>
+</nav>
+    <p>哈希表是一种十分重要的数据结构，在很多应用场景下都有用到，本文会对哈希表原理进行简单的剖析，并使用C语言实现一个完整的HashMap。</p>
+<h2 id="1-什么是hashmap">1. 什么是HashMap？</h2>
+<p>存储方式主要有两种<strong>线性存储</strong>和<strong>链式存储</strong>，常见的线性存储例如数组，常见的链式存储如链表、二叉树等。哈希表的存储主干为线性存储，这也是它在理想状态(无冲突)下时间复杂度为<strong>O(1)<strong>的关键所在。普通线性存储的存储内容与索引地址之间没有任何的联系，只能通过索引地址推算出存储内容，不能从存储内容推算出索引地址，是一个</strong>单向不可逆</strong>的过程，而HashMap存储的是一个**&lt;key, value&gt;**的键值对，通过key和索引地址建立了一层关系，这层关系称之为哈希函数(或散列函数)，这样既可以通过key推算出索引地址，也可以通过推算出的索引地址直接定位到键值对，这是一个**双向可逆**的过程。需要注意的一点是HashMap并不直接暴露出键值对的索引地址，但是可以通过哈希函数推算出**HashCode**，其实HashCode就是真实的索引地址。</p>
+<h2 id="定义键值对结构">定义键值对结构</h2>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="k">typedef</span> <span class="k">struct</span> <span class="n">entry</span> <span class="p">{</span>
+<span class="ln">2</span>    <span class="kt">void</span> <span class="o">*</span> <span class="n">key</span><span class="p">;</span>             <span class="c1">// 键
+</span><span class="ln">3</span><span class="c1"></span>    <span class="kt">void</span> <span class="o">*</span> <span class="n">value</span><span class="p">;</span>           <span class="c1">// 值
+</span><span class="ln">4</span><span class="c1"></span>    <span class="k">struct</span> <span class="n">entry</span> <span class="o">*</span> <span class="n">next</span><span class="p">;</span>    <span class="c1">// 冲突链表
+</span><span class="ln">5</span><span class="c1"></span><span class="p">}</span><span class="o">*</span><span class="n">Entry</span><span class="p">;</span>
+</code></pre></div><p>哈希冲突是指两个不同的key值得到了一个相同的HashCode，这种情况称之为<strong>哈希冲突</strong>，一个好的哈希函数很大程度上决定了哈希表的性能，不存在一种适合所有哈希表的哈希函数，在很多特定的情景下，需要有针对性的设计哈希函数才能达到理想的效果。当然啦，还是有一些优秀的哈希函数可以应对大多数情况的，对于性能要求不是很高的场景用这些就可以了。使用HashMap的时候难免会发生冲突，常用的方法主要分为两类：<strong>再散列法</strong>和<strong>链地址法</strong>。再散列法就是发生冲突时使用另一个哈希函数重新推算，一直到不冲突为止，这种方法有时候会造成数据堆积，就是元素本来的HashCode被其它元素再散列的HashCode占用，被迫再散列，如此恶性循环。链地址法就是在冲突的位置建立一个链表，将冲突值放在链表中，检索的时候需要额外的遍历冲突链表，本文采用的就是链地址法。</p>
+<h2 id="3-定义hashmap结构体">3. 定义HashMap结构体</h2>
+<p>HashMap结构的存储本体是一个数组，建立一个<strong>Entry数组</strong>作为存储空间，然后根据传入的key计算出HashCode，当做数组的索引存入数据，读取的时候通过计算出的HashCode可以在数组中直接取出值。</p>
+<p><strong>size</strong>是当前存储键值对的数量，而<strong>listSize</strong>是当前数组的大小，仔细观察键值对结构会发现，数组的每一项其实都是冲突链表的头节点。因为冲突的存在，就有可能导致size大于listSize，当size大于listSize的时候一定发生了冲突，这时候就会扩容。</p>
     
       
     
@@ -244,19 +261,19 @@
     <div>
       <h2 class="mt-4 taxonomy" id="tags-section">Tags</h2>
       <nav class="tags_nav">
+        <a href='https://Jerrysmd.github.io/tags/c/' class="post_tag button button_translucent">
+          C
+          <span class="button_tally">6</span>
+        </a>
+        
         <a href='https://Jerrysmd.github.io/tags/tag_name1/' class="post_tag button button_translucent">
           TAG_NAME1
-          <span class="button_tally">7</span>
+          <span class="button_tally">6</span>
         </a>
         
         <a href='https://Jerrysmd.github.io/tags/tag_name2/' class="post_tag button button_translucent">
           TAG_NAME2
-          <span class="button_tally">7</span>
-        </a>
-        
-        <a href='https://Jerrysmd.github.io/tags/c/' class="post_tag button button_translucent">
-          C
-          <span class="button_tally">5</span>
+          <span class="button_tally">6</span>
         </a>
         
         <a href='https://Jerrysmd.github.io/tags/linux/' class="post_tag button button_translucent">
@@ -276,6 +293,11 @@
         
         <a href='https://Jerrysmd.github.io/tags/git/' class="post_tag button button_translucent">
           GIT
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/hash/' class="post_tag button button_translucent">
+          HASH
           <span class="button_tally">1</span>
         </a>
         
