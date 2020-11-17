@@ -158,23 +158,94 @@
     <nav id="TableOfContents">
   <ul>
     <li><a href="#1-什么是hashmap">1. 什么是HashMap？</a></li>
-    <li><a href="#定义键值对结构">定义键值对结构</a></li>
+    <li><a href="#2-定义键值对结构">2. 定义键值对结构</a></li>
     <li><a href="#3-定义hashmap结构体">3. 定义HashMap结构体</a></li>
   </ul>
 </nav>
     <p>哈希表是一种十分重要的数据结构，在很多应用场景下都有用到，本文会对哈希表原理进行简单的剖析，并使用C语言实现一个完整的HashMap。</p>
 <h2 id="1-什么是hashmap">1. 什么是HashMap？</h2>
-<p>存储方式主要有两种<strong>线性存储</strong>和<strong>链式存储</strong>，常见的线性存储例如数组，常见的链式存储如链表、二叉树等。哈希表的存储主干为线性存储，这也是它在理想状态(无冲突)下时间复杂度为<strong>O(1)<strong>的关键所在。普通线性存储的存储内容与索引地址之间没有任何的联系，只能通过索引地址推算出存储内容，不能从存储内容推算出索引地址，是一个</strong>单向不可逆</strong>的过程，而HashMap存储的是一个**&lt;key, value&gt;**的键值对，通过key和索引地址建立了一层关系，这层关系称之为哈希函数(或散列函数)，这样既可以通过key推算出索引地址，也可以通过推算出的索引地址直接定位到键值对，这是一个**双向可逆**的过程。需要注意的一点是HashMap并不直接暴露出键值对的索引地址，但是可以通过哈希函数推算出**HashCode**，其实HashCode就是真实的索引地址。</p>
-<h2 id="定义键值对结构">定义键值对结构</h2>
+<p>存储方式主要有两种<code>线性存储</code>和<code>链式存储</code>，常见的线性存储例如数组，常见的链式存储如链表、二叉树等。哈希表的存储主干为线性存储，这也是它在理想状态(无冲突)下时间复杂度为<code>O(1)</code>的关键所在。普通线性存储的存储内容与索引地址之间没有任何的联系，只能通过索引地址推算出存储内容，不能从存储内容推算出索引地址，是一个<mark>单向不可逆</mark>的过程，而HashMap存储的是一个<mark>&lt;key, value&gt;</mark>的键值对，通过key和索引地址建立了一层关系，这层关系称之为哈希函数(或散列函数)，这样既可以通过key推算出索引地址，也可以通过推算出的索引地址直接定位到键值对，这是一个<mark>双向可逆</mark>的过程。需要注意的一点是HashMap并不直接暴露出键值对的索引地址，但是可以通过哈希函数推算出<code>HashCode</code>，其实HashCode就是真实的索引地址。</p>
+<h2 id="2-定义键值对结构">2. 定义键值对结构</h2>
 <div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="k">typedef</span> <span class="k">struct</span> <span class="n">entry</span> <span class="p">{</span>
 <span class="ln">2</span>    <span class="kt">void</span> <span class="o">*</span> <span class="n">key</span><span class="p">;</span>             <span class="c1">// 键
 </span><span class="ln">3</span><span class="c1"></span>    <span class="kt">void</span> <span class="o">*</span> <span class="n">value</span><span class="p">;</span>           <span class="c1">// 值
 </span><span class="ln">4</span><span class="c1"></span>    <span class="k">struct</span> <span class="n">entry</span> <span class="o">*</span> <span class="n">next</span><span class="p">;</span>    <span class="c1">// 冲突链表
 </span><span class="ln">5</span><span class="c1"></span><span class="p">}</span><span class="o">*</span><span class="n">Entry</span><span class="p">;</span>
-</code></pre></div><p>哈希冲突是指两个不同的key值得到了一个相同的HashCode，这种情况称之为<strong>哈希冲突</strong>，一个好的哈希函数很大程度上决定了哈希表的性能，不存在一种适合所有哈希表的哈希函数，在很多特定的情景下，需要有针对性的设计哈希函数才能达到理想的效果。当然啦，还是有一些优秀的哈希函数可以应对大多数情况的，对于性能要求不是很高的场景用这些就可以了。使用HashMap的时候难免会发生冲突，常用的方法主要分为两类：<strong>再散列法</strong>和<strong>链地址法</strong>。再散列法就是发生冲突时使用另一个哈希函数重新推算，一直到不冲突为止，这种方法有时候会造成数据堆积，就是元素本来的HashCode被其它元素再散列的HashCode占用，被迫再散列，如此恶性循环。链地址法就是在冲突的位置建立一个链表，将冲突值放在链表中，检索的时候需要额外的遍历冲突链表，本文采用的就是链地址法。</p>
+<span class="ln">6</span>
+<span class="ln">7</span><span class="cp">#define newEntry() NEW(struct entry)
+</span><span class="ln">8</span><span class="cp">#define newEntryList(length) (Entry)malloc(length * sizeof(struct entry))
+</span></code></pre></div><p>哈希冲突是指两个不同的key值得到了一个相同的HashCode，这种情况称之为<mark>哈希冲突</mark>，一个好的哈希函数很大程度上决定了哈希表的性能，不存在一种适合所有哈希表的哈希函数，在很多特定的情景下，需要有针对性的设计哈希函数才能达到理想的效果。当然啦，还是有一些优秀的哈希函数可以应对大多数情况的，对于性能要求不是很高的场景用这些就可以了。使用HashMap的时候难免会发生冲突，常用的方法主要分为两类：<code>再散列法</code>和<code>链地址法</code>。再散列法就是发生冲突时使用另一个哈希函数重新推算，一直到不冲突为止，这种方法有时候会造成数据堆积，就是元素本来的HashCode被其它元素再散列的HashCode占用，被迫再散列，如此恶性循环。链地址法就是在冲突的位置建立一个链表，将冲突值放在链表中，检索的时候需要额外的遍历冲突链表，本文采用的就是链地址法。</p>
 <h2 id="3-定义hashmap结构体">3. 定义HashMap结构体</h2>
-<p>HashMap结构的存储本体是一个数组，建立一个<strong>Entry数组</strong>作为存储空间，然后根据传入的key计算出HashCode，当做数组的索引存入数据，读取的时候通过计算出的HashCode可以在数组中直接取出值。</p>
-<p><strong>size</strong>是当前存储键值对的数量，而<strong>listSize</strong>是当前数组的大小，仔细观察键值对结构会发现，数组的每一项其实都是冲突链表的头节点。因为冲突的存在，就有可能导致size大于listSize，当size大于listSize的时候一定发生了冲突，这时候就会扩容。</p>
+<p>HashMap结构的存储本体是一个数组，建立一个<mark>Entry数组</mark>作为存储空间，然后根据传入的key计算出HashCode，当做数组的索引存入数据，读取的时候通过计算出的HashCode可以在数组中直接取出值。</p>
+<p><code>size</code>是当前存储键值对的数量，而<code>listSize</code>是当前数组的大小，仔细观察键值对结构会发现，数组的每一项其实都是冲突链表的头节点。因为冲突的存在，就有可能导致size大于listSize，当size大于listSize的时候一定发生了冲突，这时候就会扩容。</p>
+<p>在结构体中放了一些常用的方法，因为C语言本身并没有类的概念，为了便于内部封装(经常会有一个方法调用另一个方法的时候)，可以让用户自定义一个方法而不影响其它方法的调用。举个简单的例子，put方法中调用了hashCode函数，如果想自定义一个hashCode方法，迫不得已还要再实现一个put方法，哪怕put中只改了一行代码。</p>
+<p>结构体定义如下：</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="c1">// 哈希结构
+</span><span class="ln"> 2</span><span class="c1"></span><span class="k">typedef</span> <span class="k">struct</span> <span class="n">hashMap</span> <span class="o">*</span><span class="n">HashMap</span><span class="p">;</span>
+<span class="ln"> 3</span><span class="cp">#define newHashMap() NEW(struct hashMap)
+</span><span class="ln"> 4</span><span class="cp"></span>
+<span class="ln"> 5</span><span class="c1">// 哈希函数类型
+</span><span class="ln"> 6</span><span class="c1"></span><span class="k">typedef</span> <span class="nf">int</span><span class="p">(</span><span class="o">*</span><span class="n">HashCode</span><span class="p">)(</span><span class="n">HashMap</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">key</span><span class="p">);</span>
+<span class="ln"> 7</span>
+<span class="ln"> 8</span><span class="c1">// 判等函数类型
+</span><span class="ln"> 9</span><span class="c1"></span><span class="k">typedef</span> <span class="nf">Boolean</span><span class="p">(</span><span class="o">*</span><span class="n">Equal</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span> <span class="n">key1</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">key2</span><span class="p">);</span>
+<span class="ln">10</span>
+<span class="ln">11</span><span class="c1">// 添加键函数类型
+</span><span class="ln">12</span><span class="c1"></span><span class="k">typedef</span> <span class="nf">void</span><span class="p">(</span><span class="o">*</span><span class="n">Put</span><span class="p">)(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">key</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">value</span><span class="p">);</span>
+<span class="ln">13</span>
+<span class="ln">14</span><span class="c1">// 获取键对应值的函数类型
+</span><span class="ln">15</span><span class="c1"></span><span class="k">typedef</span> <span class="kt">void</span> <span class="o">*</span> <span class="p">(</span><span class="o">*</span><span class="n">Get</span><span class="p">)(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">key</span><span class="p">);</span>
+<span class="ln">16</span>
+<span class="ln">17</span><span class="c1">// 删除键的函数类型
+</span><span class="ln">18</span><span class="c1"></span><span class="k">typedef</span> <span class="nf">Boolean</span><span class="p">(</span><span class="o">*</span><span class="n">Remove</span><span class="p">)(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">key</span><span class="p">);</span>
+<span class="ln">19</span>
+<span class="ln">20</span><span class="c1">// 清空Map的函数类型
+</span><span class="ln">21</span><span class="c1"></span><span class="k">typedef</span> <span class="nf">void</span><span class="p">(</span><span class="o">*</span><span class="n">Clear</span><span class="p">)(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">);</span>
+<span class="ln">22</span>
+<span class="ln">23</span><span class="c1">// 判断键值是否存在的函数类型
+</span><span class="ln">24</span><span class="c1"></span><span class="k">typedef</span> <span class="nf">Boolean</span><span class="p">(</span><span class="o">*</span><span class="n">Exists</span><span class="p">)(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">key</span><span class="p">);</span>
+<span class="ln">25</span>
+<span class="ln">26</span><span class="k">typedef</span> <span class="k">struct</span> <span class="n">hashMap</span> <span class="p">{</span>
+<span class="ln">27</span>    <span class="kt">int</span> <span class="n">size</span><span class="p">;</span>           <span class="c1">// 当前大小
+</span><span class="ln">28</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">listSize</span><span class="p">;</span>       <span class="c1">// 有效空间大小
+</span><span class="ln">29</span><span class="c1"></span>    <span class="n">HashCode</span> <span class="n">hashCode</span><span class="p">;</span>  <span class="c1">// 哈希函数
+</span><span class="ln">30</span><span class="c1"></span>    <span class="n">Equal</span> <span class="n">equal</span><span class="p">;</span>        <span class="c1">// 判等函数
+</span><span class="ln">31</span><span class="c1"></span>    <span class="n">Entry</span> <span class="n">list</span><span class="p">;</span>         <span class="c1">// 存储区域
+</span><span class="ln">32</span><span class="c1"></span>    <span class="n">Put</span> <span class="n">put</span><span class="p">;</span>            <span class="c1">// 添加键的函数
+</span><span class="ln">33</span><span class="c1"></span>    <span class="n">Get</span> <span class="n">get</span><span class="p">;</span>            <span class="c1">// 获取键对应值的函数
+</span><span class="ln">34</span><span class="c1"></span>    <span class="n">Remove</span> <span class="n">remove</span><span class="p">;</span>      <span class="c1">// 删除键
+</span><span class="ln">35</span><span class="c1"></span>    <span class="n">Clear</span> <span class="n">clear</span><span class="p">;</span>        <span class="c1">// 清空Map
+</span><span class="ln">36</span><span class="c1"></span>    <span class="n">Exists</span> <span class="n">exists</span><span class="p">;</span>      <span class="c1">// 判断键是否存在
+</span><span class="ln">37</span><span class="c1"></span>    <span class="n">Boolean</span> <span class="n">autoAssign</span><span class="p">;</span>	<span class="c1">// 设定是否根据当前数据量动态调整内存大小，默认开启
+</span><span class="ln">38</span><span class="c1"></span><span class="p">}</span><span class="o">*</span><span class="n">HashMap</span><span class="p">;</span>
+<span class="ln">39</span>
+<span class="ln">40</span><span class="c1">// 默认哈希函数
+</span><span class="ln">41</span><span class="c1"></span><span class="k">static</span> <span class="kt">int</span> <span class="nf">defaultHashCode</span><span class="p">(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">key</span><span class="p">);</span>
+<span class="ln">42</span>
+<span class="ln">43</span><span class="c1">// 默认判断键值是否相等
+</span><span class="ln">44</span><span class="c1"></span><span class="k">static</span> <span class="n">Boolean</span> <span class="nf">defaultEqual</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span> <span class="n">key1</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">key2</span><span class="p">);</span>
+<span class="ln">45</span>
+<span class="ln">46</span><span class="c1">// 默认添加键值对
+</span><span class="ln">47</span><span class="c1"></span><span class="k">static</span> <span class="kt">void</span> <span class="nf">defaultPut</span><span class="p">(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">key</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">value</span><span class="p">);</span>
+<span class="ln">48</span>
+<span class="ln">49</span><span class="c1">// 默认获取键对应值
+</span><span class="ln">50</span><span class="c1"></span><span class="k">static</span> <span class="kt">void</span> <span class="o">*</span> <span class="nf">defaultGet</span><span class="p">(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">key</span><span class="p">);</span>
+<span class="ln">51</span>
+<span class="ln">52</span><span class="c1">// 默认删除键
+</span><span class="ln">53</span><span class="c1"></span><span class="k">static</span> <span class="n">Boolean</span> <span class="nf">defaultRemove</span><span class="p">(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">key</span><span class="p">);</span>
+<span class="ln">54</span>
+<span class="ln">55</span><span class="c1">// 默认判断键是否存在
+</span><span class="ln">56</span><span class="c1"></span><span class="k">static</span> <span class="n">Boolean</span> <span class="nf">defaultExists</span><span class="p">(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">key</span><span class="p">);</span>
+<span class="ln">57</span>
+<span class="ln">58</span><span class="c1">// 默认清空Map
+</span><span class="ln">59</span><span class="c1"></span><span class="k">static</span> <span class="kt">void</span> <span class="nf">defaultClear</span><span class="p">(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">);</span>
+<span class="ln">60</span>
+<span class="ln">61</span><span class="c1">// 创建一个哈希结构
+</span><span class="ln">62</span><span class="c1"></span><span class="n">HashMap</span> <span class="nf">createHashMap</span><span class="p">(</span><span class="n">HashCode</span> <span class="n">hashCode</span><span class="p">,</span> <span class="n">Equal</span> <span class="n">equal</span><span class="p">);</span>
+<span class="ln">63</span>
+<span class="ln">64</span><span class="c1">// 重新构建
+</span><span class="ln">65</span><span class="c1"></span><span class="k">static</span> <span class="kt">void</span> <span class="nf">resetHashMap</span><span class="p">(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="kt">int</span> <span class="n">listSize</span><span class="p">);</span>
+</code></pre></div>
     
       
     
@@ -200,6 +271,9 @@
     </ul>
     <h2 class="mt-4">Recent Posts</h2>
     <ul class="flex-column">
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20201117typedef/" class="nav-link">20201117typedef</a>
+      </li>
       <li>
         <a href="https://Jerrysmd.github.io/post/20201111%E6%9D%A1%E4%BB%B6%E7%BC%96%E8%AF%91%E6%8C%87%E4%BB%A4/" class="nav-link">条件编译指令: Conditional compilation directives</a>
       </li>
@@ -227,16 +301,13 @@
       <li>
         <a href="https://Jerrysmd.github.io/post/20201015makefile_cmakelist/" class="nav-link">20201007makefile_cmakelist</a>
       </li>
-      <li>
-        <a href="https://Jerrysmd.github.io/post/20201012hyperscan/" class="nav-link">Hyperscan: high-performance multiple regex matching library</a>
-      </li>
     </ul>
     <div>
       <h2 class="mt-4 taxonomy" id="categories-section">Categories</h2>
       <nav class="tags_nav">
         <a href='https://Jerrysmd.github.io/categories/technology/' class="post_tag button button_translucent">
           TECHNOLOGY
-          <span class="button_tally">13</span>
+          <span class="button_tally">14</span>
         </a>
         
         <a href='https://Jerrysmd.github.io/categories/guide/' class="post_tag button button_translucent">
@@ -261,18 +332,18 @@
     <div>
       <h2 class="mt-4 taxonomy" id="tags-section">Tags</h2>
       <nav class="tags_nav">
-        <a href='https://Jerrysmd.github.io/tags/c/' class="post_tag button button_translucent">
-          C
-          <span class="button_tally">6</span>
-        </a>
-        
         <a href='https://Jerrysmd.github.io/tags/tag_name1/' class="post_tag button button_translucent">
           TAG_NAME1
-          <span class="button_tally">6</span>
+          <span class="button_tally">7</span>
         </a>
         
         <a href='https://Jerrysmd.github.io/tags/tag_name2/' class="post_tag button button_translucent">
           TAG_NAME2
+          <span class="button_tally">7</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/c/' class="post_tag button button_translucent">
+          C
           <span class="button_tally">6</span>
         </a>
         
