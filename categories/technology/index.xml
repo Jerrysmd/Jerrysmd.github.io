@@ -8,12 +8,12 @@
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Tue, 17 Nov 2020 09:22:18 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/categories/technology/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>20201117typedef</title>
+      <title>Typedef介绍: the guide of typedef</title>
       <link>https://Jerrysmd.github.io/post/20201117typedef/</link>
       <pubDate>Tue, 17 Nov 2020 09:22:18 +0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20201117typedef/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;insert artical description&lt;/strong&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;typedef为C语言的关键字，作用是为一种数据类型定义一个新名字，这里的数据类型包括内部数据类型（int，char等）和自定义的数据类型（struct等）。typedef本身是一种存储类的关键字，与auto、extern、static、register等关键字不能出现在同一个表达式中。&lt;/p&gt;</description>
     </item>
     
     <item>
