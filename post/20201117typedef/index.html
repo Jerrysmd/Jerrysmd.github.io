@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en" data-figures="true" class="page" data-mode="dim">
   <head>
-<title>Typedef介绍: the guide of typedef | JerrysBlog</title>
+<title>Typedef介绍: The descriptions of typedef | JerrysBlog</title>
 <meta charset="utf-8">
 <meta name="generator" content="Hugo 0.76.5" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -20,9 +20,9 @@
 <meta name="description" content="Article description.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@0x4c2">
-<meta name="twitter:title" content="Typedef介绍: the guide of typedef" />
+<meta name="twitter:title" content="Typedef介绍: The descriptions of typedef" />
 <meta property="og:url" content="https://Jerrysmd.github.io/post/20201117typedef/" />
-<meta property="og:title" content="Typedef介绍: the guide of typedef" />
+<meta property="og:title" content="Typedef介绍: The descriptions of typedef" />
 <meta property="og:description" content="Article description." />
 <meta property="og:image" content="https://Jerrysmd.github.io/images/1.png" />
 <link rel="apple-touch-icon" sizes="180x180" href='https://Jerrysmd.github.io/icons/apple-touch-icon.png'>
@@ -115,7 +115,7 @@
   
 <div class="grid-inverse wrap content">
   <article class="post_content">
-    <h1 class="post_title">Typedef介绍: the guide of typedef</h1><div class="post_meta">
+    <h1 class="post_title">Typedef介绍: The descriptions of typedef</h1><div class="post_meta">
   <svg class="icon">
   <use xlink:href="#calendar"></use>
 </svg>
@@ -128,12 +128,12 @@
     
 <div class="post_share">
   Share on:
-  <a href="https://twitter.com/intent/tweet?text=Typedef%e4%bb%8b%e7%bb%8d%3a%20the%20guide%20of%20typedef&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201117typedef%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
+  <a href="https://twitter.com/intent/tweet?text=Typedef%e4%bb%8b%e7%bb%8d%3a%20The%20descriptions%20of%20typedef&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201117typedef%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
     <svg class="icon">
   <use xlink:href="#twitter"></use>
 </svg>
   </a>
-  <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201117typedef%2f&t=Typedef%e4%bb%8b%e7%bb%8d%3a%20the%20guide%20of%20typedef" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
+  <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201117typedef%2f&t=Typedef%e4%bb%8b%e7%bb%8d%3a%20The%20descriptions%20of%20typedef" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
     <svg class="icon">
   <use xlink:href="#facebook"></use>
 </svg>
@@ -156,7 +156,12 @@
     <nav id="TableOfContents">
   <ul>
     <li><a href="#1-概述">1. 概述</a></li>
-    <li><a href="#2-作用及用法">2. 作用及用法</a></li>
+    <li><a href="#2-作用及用法">2. 作用及用法</a>
+      <ul>
+        <li><a href="#21-typedef的用法">2.1 typedef的用法</a></li>
+        <li><a href="#22-typedef的作用">2.2 typedef的作用</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     <p>typedef为C语言的关键字，作用是为一种数据类型定义一个新名字，这里的数据类型包括内部数据类型（int，char等）和自定义的数据类型（struct等）。typedef本身是一种存储类的关键字，与auto、extern、static、register等关键字不能出现在同一个表达式中。</p>
@@ -164,6 +169,24 @@
 <p>typedef为C语言的关键字，作用是为一种数据类型定义一个新名字，这里的数据类型包括内部数据类型（int，char等）和自定义的数据类型（struct等）。</p>
 <p>typedef本身是一种存储类的关键字，与auto、extern、static、register等关键字不能出现在同一个表达式中。</p>
 <h2 id="2-作用及用法">2. 作用及用法</h2>
+<h3 id="21-typedef的用法">2.1 typedef的用法</h3>
+<p>使用typedef定义新类型的方法：在传统的变量声明表达式里用<code>（新的）类型名</code>替换<code>变量名</code>，然后把关键字typedef加在该语句的开头就行了。</p>
+<p>下面以两个示例，描述typedef的用法步骤。</p>
+<p>示例1：</p>
+<p>int a; ———— 传统变量声明表达式
+typedef int myint_t; ———— 使用新的类型名myint_t替换变量名a。在语句开头加上typedef关键字，myint_t就是我们定义的新类型</p>
+<p>示例2：</p>
+<p>void (*pfunA)(int a); ———— 传统变量（函数）声明表达式
+typedef void (*PFUNA)(int a); ———— 使用新的类型名PFUNA替换变量名pfunA。在语句开头加上typedef关键字，PFUNA就是我们定义的新类型</p>
+<h3 id="22-typedef的作用">2.2 typedef的作用</h3>
+<p>typedef的作用有以下几点：</p>
+<h4 id="1-marktypedef的一个重要用途是定义机器无关的类型mark例如定义一个叫real的浮点类型该浮点类型在目标机器上可以获得最高的精度">1. <mark>typedef的一个重要用途是定义机器无关的类型。</mark>例如，定义一个叫REAL的浮点类型，该浮点类型在目标机器上可以获得最高的精度：</h4>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="k">typedef</span> <span class="kt">long</span> <span class="kt">double</span> <span class="n">REAL</span><span class="p">;</span>
+</code></pre></div><p>如果在不支持 long double 的机器上运行相关代码，只需要对对应的typedef语句进行修改，例如：</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="k">typedef</span> <span class="kt">double</span> <span class="n">REAL</span><span class="p">;</span>
+</code></pre></div><p>或者：</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="k">typedef</span> <span class="kt">float</span> <span class="n">REAL</span><span class="p">;</span>
+</code></pre></div><h4 id="heading"></h4>
     
       
     
