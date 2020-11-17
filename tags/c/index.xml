@@ -62,6 +62,15 @@
     </item>
     
     <item>
+      <title>MXML的使用: The description of mxml</title>
+      <link>https://Jerrysmd.github.io/post/20201007mxml/</link>
+      <pubDate>Wed, 07 Oct 2020 21:57:23 -0800</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/20201007mxml/</guid>
+      <description>&lt;p&gt;MXML (Minimal XML) is a small, fast and versatile library that reads a whole XML file and puts it in a DOM tree.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>C语言实现HashMap: C language realize HashMap</title>
       <link>https://Jerrysmd.github.io/post/20201005hashcode/</link>
       <pubDate>Mon, 05 Oct 2020 21:56:51 -0800</pubDate>

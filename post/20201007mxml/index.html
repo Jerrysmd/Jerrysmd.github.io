@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en" data-figures="true" class="page" data-mode="dim">
   <head>
-<title>20201004mxml | JerrysBlog</title>
+<title>MXML的使用: The description of mxml | JerrysBlog</title>
 <meta charset="utf-8">
 <meta name="generator" content="Hugo 0.76.5" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -20,9 +20,9 @@
 <meta name="description" content="Article description.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@0x4c2">
-<meta name="twitter:title" content="20201004mxml" />
+<meta name="twitter:title" content="MXML的使用: The description of mxml" />
 <meta property="og:url" content="https://Jerrysmd.github.io/post/20201007mxml/" />
-<meta property="og:title" content="20201004mxml" />
+<meta property="og:title" content="MXML的使用: The description of mxml" />
 <meta property="og:description" content="Article description." />
 <meta property="og:image" content="https://Jerrysmd.github.io/images/3.png" />
 <link rel="apple-touch-icon" sizes="180x180" href='https://Jerrysmd.github.io/icons/apple-touch-icon.png'>
@@ -115,27 +115,25 @@
   
 <div class="grid-inverse wrap content">
   <article class="post_content">
-    <h1 class="post_title">20201004mxml</h1><div class="post_meta">
+    <h1 class="post_title">MXML的使用: The description of mxml</h1><div class="post_meta">
   <svg class="icon">
   <use xlink:href="#calendar"></use>
 </svg>
   <span class="post_date">
     Oct 7, 2020</span>
-    <a href='https://Jerrysmd.github.io/tags/tag_name1' class="post_tag button button_translucent">Tag_name1
-    </a>
-    <a href='https://Jerrysmd.github.io/tags/tag_name2' class="post_tag button button_translucent">Tag_name2
+    <a href='https://Jerrysmd.github.io/tags/c' class="post_tag button button_translucent">c
     </a>
 </div>
 
     
 <div class="post_share">
   Share on:
-  <a href="https://twitter.com/intent/tweet?text=20201004mxml&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201007mxml%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
+  <a href="https://twitter.com/intent/tweet?text=MXML%e7%9a%84%e4%bd%bf%e7%94%a8%3a%20The%20description%20of%20mxml&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201007mxml%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
     <svg class="icon">
   <use xlink:href="#twitter"></use>
 </svg>
   </a>
-  <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201007mxml%2f&t=20201004mxml" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
+  <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201007mxml%2f&t=MXML%e7%9a%84%e4%bd%bf%e7%94%a8%3a%20The%20description%20of%20mxml" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
     <svg class="icon">
   <use xlink:href="#facebook"></use>
 </svg>
@@ -155,9 +153,188 @@
     
     
     <h2>Overview</h2>
-    <nav id="TableOfContents"></nav>
-    <p><strong>insert artical description</strong></p>
-<p><strong>Insert Lead paragraph here.</strong></p>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1xml">1.XML</a></li>
+    <li><a href="#2mxml写入操作">2.mxml写入操作</a></li>
+    <li><a href="#3mxml解析操作">3.mxml解析操作</a></li>
+    <li><a href="#4mxml-for循环解析长文件">4.mxml for循环解析长文件</a></li>
+  </ul>
+</nav>
+    <p>MXML (Minimal XML) is a small, fast and versatile library that reads a whole XML file and puts it in a DOM tree.</p>
+<h2 id="1xml">1.XML</h2>
+<p>XML特点和作用 :</p>
+<ul>
+<li>XML 指可扩展标识语言（ eXtensible Markup Language）</li>
+<li>XML 的设计宗旨是传输数据， 而非显示数据</li>
+<li>XML 标签没有被预定义。 您需要自行定义标签。</li>
+<li>作为一种通用的数据存储和通信格式被广泛应用。</li>
+<li>描述的数据作为一棵树型的结构而存在。</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="ln">1</span><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+<span class="ln">2</span><span class="nt">&lt;books&gt;</span>
+<span class="ln">3</span>    <span class="nt">&lt;book</span> <span class="na">id=</span><span class="s">&#34;001&#34;</span><span class="nt">&gt;</span>
+<span class="ln">4</span>        <span class="nt">&lt;author&gt;</span>wanger<span class="nt">&lt;/author&gt;</span>
+<span class="ln">5</span>    <span class="nt">&lt;/book&gt;</span>
+<span class="ln">6</span><span class="nt">&lt;/books&gt;</span>
+</code></pre></div><h2 id="2mxml写入操作">2.mxml写入操作</h2>
+<p><mark>mxml既可以创建写入xml文件，也可以解析xml文件数据</mark>
+写入示例:</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="cp">#include</span><span class="cpf">&#34;mxml.h&#34;</span><span class="cp">
+</span><span class="ln"> 2</span><span class="cp"></span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="ln"> 3</span><span class="p">{</span>
+<span class="ln"> 4</span>    <span class="c1">// create a new xml
+</span><span class="ln"> 5</span><span class="c1"></span>    <span class="n">mxml_node_t</span> <span class="o">*</span><span class="n">xml</span> <span class="o">=</span> <span class="n">mxmlNewXML</span><span class="p">(</span><span class="s">&#34;1.0&#34;</span><span class="p">);</span>
+<span class="ln"> 6</span>    <span class="c1">//add a node name books
+</span><span class="ln"> 7</span><span class="c1"></span>    <span class="n">mxml_node_t</span> <span class="o">*</span><span class="n">books</span> <span class="o">=</span> <span class="n">mxmlNewElement</span><span class="p">(</span><span class="n">xml</span><span class="p">,</span><span class="s">&#34;books&#34;</span><span class="p">);</span>
+<span class="ln"> 8</span>    <span class="c1">//add a node under books name book
+</span><span class="ln"> 9</span><span class="c1"></span>    <span class="n">mxml_node_t</span> <span class="o">*</span><span class="n">book</span> <span class="o">=</span> <span class="n">mxmlNewElement</span><span class="p">(</span><span class="n">books</span><span class="p">,</span><span class="s">&#34;book&#34;</span><span class="p">);</span>
+<span class="ln">10</span>    <span class="c1">//set attr
+</span><span class="ln">11</span><span class="c1"></span>    <span class="n">mxmlElementSetAttr</span><span class="p">(</span><span class="n">book</span><span class="p">,</span><span class="s">&#34;id&#34;</span><span class="p">,</span><span class="s">&#34;001&#34;</span><span class="p">);</span>
+<span class="ln">12</span>    <span class="n">mxml_node_t</span> <span class="o">*</span><span class="n">author</span> <span class="o">=</span> <span class="n">mxmlNewElement</span><span class="p">(</span><span class="n">book</span><span class="p">,</span><span class="s">&#34;author&#34;</span><span class="p">);</span>
+<span class="ln">13</span>    <span class="n">mxmlNewText</span><span class="p">(</span><span class="n">author</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s">&#34;wanger&#34;</span><span class="p">);</span>
+<span class="ln">14</span>
+<span class="ln">15</span>    <span class="n">FILE</span><span class="o">*</span> <span class="n">fp</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="s">&#34;book.xml&#34;</span><span class="p">,</span><span class="s">&#34;wb&#34;</span><span class="p">);</span>
+<span class="ln">16</span>    <span class="n">mxmlSaveFile</span><span class="p">(</span><span class="n">xml</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">MXML_NO_CALLBACK</span><span class="p">);</span>
+<span class="ln">17</span>    <span class="n">fclose</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
+<span class="ln">18</span>    <span class="n">mxmlDelete</span><span class="p">(</span><span class="n">xml</span><span class="p">);</span>
+<span class="ln">19</span>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="ln">20</span><span class="p">}</span>
+</code></pre></div><h2 id="3mxml解析操作">3.mxml解析操作</h2>
+<p>解析步骤：
+步骤：</p>
+<ol>
+<li>打开一个xml文件</li>
+<li>把文件加载到内存中，mxml_node_t mxmlLoadFile(mxml_node_t *top, FILE *fp,mxml_type_t (*cb)(mxml_node_t ));</li>
+<li>查找待提取的节点标签：mxml_node_t *mxmlFindElement(mxml_node_t *node, mxml_node_t *top,const char *name, const char *attr,const char *value, int descend);</li>
+<li>获取标签属性：const char *mxmlElementGetAttr(mxml_node_t *node, const char *name);</li>
+<li>获取标签的文本内容： const char *mxmlGetText(mxml_node_t *node, int *whitespace);</li>
+<li>释放节点，关闭文件
+示例：
+解析的文本：</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="ln">1</span><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+<span class="ln">2</span>
+<span class="ln">3</span><span class="nt">&lt;books&gt;</span>
+<span class="ln">4</span>  <span class="nt">&lt;book</span> <span class="na">id=</span><span class="s">&#34;001&#34;</span><span class="nt">&gt;</span>
+<span class="ln">5</span>    <span class="nt">&lt;author&gt;</span>wanger<span class="nt">&lt;/author&gt;</span>
+<span class="ln">6</span>  <span class="nt">&lt;/book&gt;</span>
+<span class="ln">7</span><span class="nt">&lt;/books&gt;</span>
+</code></pre></div><p>代码：</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="cp">#include</span><span class="cpf">&#34;mxml.h&#34;</span><span class="cp">
+</span><span class="ln"> 2</span><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="ln"> 3</span><span class="cp"></span>
+<span class="ln"> 4</span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="ln"> 5</span><span class="p">{</span>
+<span class="ln"> 6</span>    <span class="n">FILE</span><span class="o">*</span> <span class="n">fp</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="s">&#34;book.xml&#34;</span><span class="p">,</span><span class="s">&#34;r&#34;</span><span class="p">);</span>
+<span class="ln"> 7</span>    <span class="c1">// jiazai xml
+</span><span class="ln"> 8</span><span class="c1"></span>    <span class="n">mxml_node_t</span><span class="o">*</span> <span class="n">xml</span> <span class="o">=</span> <span class="n">mxmlLoadFile</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">MXML_NO_CALLBACK</span><span class="p">);</span>
+<span class="ln"> 9</span>    <span class="n">mxml_node_t</span><span class="o">*</span> <span class="n">book</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="ln">10</span>    <span class="n">mxml_node_t</span><span class="o">*</span> <span class="n">author</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="ln">11</span>    <span class="c1">// find note
+</span><span class="ln">12</span><span class="c1"></span>    <span class="n">book</span> <span class="o">=</span> <span class="n">mxmlFindElement</span><span class="p">(</span><span class="n">xml</span><span class="p">,</span><span class="n">xml</span><span class="p">,</span><span class="s">&#34;book&#34;</span><span class="p">,</span><span class="s">&#34;id&#34;</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="n">MXML_DESCEND</span><span class="p">);</span>
+<span class="ln">13</span>        <span class="c1">//get attr
+</span><span class="ln">14</span><span class="c1"></span>    <span class="n">author</span> <span class="o">=</span> <span class="n">mxmlFindElement</span><span class="p">(</span><span class="n">book</span><span class="p">,</span><span class="n">xml</span><span class="p">,</span><span class="s">&#34;author&#34;</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="n">MXML_DESCEND</span><span class="p">);</span>
+<span class="ln">15</span>    <span class="k">if</span><span class="p">(</span><span class="n">author</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+<span class="ln">16</span>    <span class="p">{</span>
+<span class="ln">17</span>        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;author error</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+<span class="ln">18</span>    <span class="p">}</span>
+<span class="ln">19</span>    <span class="k">else</span>
+<span class="ln">20</span>    <span class="p">{</span>
+<span class="ln">21</span>        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;book id is:%s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">mxmlElementGetAttr</span><span class="p">(</span><span class="n">book</span><span class="p">,</span><span class="s">&#34;id&#34;</span><span class="p">));</span>
+<span class="ln">22</span>        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;author is:%s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">mxmlGetText</span><span class="p">(</span><span class="n">author</span><span class="p">,</span><span class="nb">NULL</span><span class="p">));</span>
+<span class="ln">23</span>        <span class="n">book</span> <span class="o">=</span> <span class="n">mxmlFindElement</span><span class="p">(</span><span class="n">xml</span><span class="p">,</span><span class="n">xml</span><span class="p">,</span><span class="s">&#34;book&#34;</span><span class="p">,</span><span class="s">&#34;id&#34;</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="n">MXML_DESCEND</span><span class="p">);</span>
+<span class="ln">24</span>    <span class="p">}</span>
+<span class="ln">25</span>    <span class="n">mxmlDelete</span><span class="p">(</span><span class="n">xml</span><span class="p">);</span>
+<span class="ln">26</span>    <span class="n">fclose</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
+<span class="ln">27</span>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="ln">28</span><span class="p">}</span>
+</code></pre></div><p>结果：</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="n">book</span> <span class="n">id</span> <span class="nl">is</span><span class="p">:</span><span class="mo">001</span>
+<span class="ln">2</span><span class="n">author</span> <span class="nl">is</span><span class="p">:</span><span class="n">wanger</span>
+</code></pre></div><h2 id="4mxml-for循环解析长文件">4.mxml for循环解析长文件</h2>
+<p>xml文件:</p>
+<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="ln"> 1</span><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+<span class="ln"> 2</span><span class="nt">&lt;proto-meta-dump&gt;</span>
+<span class="ln"> 3</span>	<span class="nt">&lt;proto</span> <span class="na">name=</span><span class="s">&#34;AH&#34;</span><span class="nt">&gt;</span>
+<span class="ln"> 4</span>		<span class="nt">&lt;proto-class&gt;</span>crypto<span class="nt">&lt;/proto-class&gt;</span>
+<span class="ln"> 5</span>		<span class="nt">&lt;proto-suit&gt;</span>TCP/IP<span class="nt">&lt;/proto-suit&gt;</span>
+<span class="ln"> 6</span>		<span class="nt">&lt;proto-desc&gt;&lt;/proto-desc&gt;</span>
+<span class="ln"> 7</span>		<span class="nt">&lt;dump-name&gt;&lt;/dump-name&gt;</span>
+<span class="ln"> 8</span>		<span class="nt">&lt;meta-data</span> <span class="na">name=</span><span class="s">&#34;&#34;</span><span class="nt">&gt;</span>
+<span class="ln"> 9</span>			<span class="nt">&lt;dump-on&gt;&lt;/dump-on&gt;</span>
+<span class="ln">10</span>			<span class="nt">&lt;dump-format&gt;&lt;/dump-format&gt;</span>
+<span class="ln">11</span>			<span class="nt">&lt;dump-name&gt;</span>totMeta<span class="nt">&lt;/dump-name&gt;</span>
+<span class="ln">12</span>		<span class="nt">&lt;/meta-data&gt;</span>
+<span class="ln">13</span>		<span class="nt">&lt;meta-data</span> <span class="na">name=</span><span class="s">&#34;ah.spi&#34;</span><span class="nt">&gt;</span>
+<span class="ln">14</span>			<span class="nt">&lt;dump-on&gt;&lt;/dump-on&gt;</span>
+<span class="ln">15</span>			<span class="nt">&lt;dump-format&gt;&lt;/dump-format&gt;</span>
+<span class="ln">16</span>			<span class="nt">&lt;dump-name&gt;</span>SPI<span class="nt">&lt;/dump-name&gt;</span>
+<span class="ln">17</span>		<span class="nt">&lt;/meta-data&gt;</span>
+<span class="ln">18</span>		<span class="nt">&lt;meta-data</span> <span class="na">name=</span><span class="s">&#34;ah.sequence&#34;</span><span class="nt">&gt;</span>
+<span class="ln">19</span>			<span class="nt">&lt;dump-on&gt;&lt;/dump-on&gt;</span>
+<span class="ln">20</span>			<span class="nt">&lt;dump-format&gt;&lt;/dump-format&gt;</span>
+<span class="ln">21</span>			<span class="nt">&lt;dump-name&gt;</span>seqNum<span class="nt">&lt;/dump-name&gt;</span>
+<span class="ln">22</span>		<span class="nt">&lt;/meta-data&gt;</span>
+<span class="ln">23</span>		<span class="nt">&lt;meta-data</span> <span class="na">name=</span><span class="s">&#34;ah.length&#34;</span><span class="nt">&gt;</span>
+<span class="ln">24</span>			<span class="nt">&lt;dump-on&gt;&lt;/dump-on&gt;</span>
+<span class="ln">25</span>			<span class="nt">&lt;dump-format&gt;&lt;/dump-format&gt;</span>
+<span class="ln">26</span>			<span class="nt">&lt;dump-name&gt;</span>payLen<span class="nt">&lt;/dump-name&gt;</span>
+<span class="ln">27</span>		<span class="nt">&lt;/meta-data&gt;</span>
+<span class="ln">28</span>		<span class="nt">&lt;meta-data</span> <span class="na">name=</span><span class="s">&#34;ah.icv&#34;</span><span class="nt">&gt;</span>
+<span class="ln">29</span>			<span class="nt">&lt;dump-on&gt;&lt;/dump-on&gt;</span>
+<span class="ln">30</span>			<span class="nt">&lt;dump-format&gt;&lt;/dump-format&gt;</span>
+<span class="ln">31</span>			<span class="nt">&lt;dump-name&gt;</span>ICV<span class="nt">&lt;/dump-name&gt;</span>
+<span class="ln">32</span>		<span class="nt">&lt;/meta-data&gt;</span>
+<span class="ln">33</span>	<span class="nt">&lt;/proto&gt;</span>
+<span class="ln">34</span>	...
+<span class="ln">35</span><span class="nt">&lt;/proto-meta-dump&gt;</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="c1">//open xml file
+</span><span class="ln"> 2</span><span class="c1"></span><span class="n">FILE</span><span class="o">*</span> <span class="n">fp</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span><span class="s">&#34;r&#34;</span><span class="p">);</span>
+<span class="ln"> 3</span>
+<span class="ln"> 4</span><span class="c1">//create mxml tree head node
+</span><span class="ln"> 5</span><span class="c1"></span><span class="n">mxml_node_t</span><span class="o">*</span> <span class="n">tree</span> <span class="o">=</span> <span class="n">mxmlLoadFile</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span><span class="n">fp</span><span class="p">,</span><span class="n">MXML_NO_CALLBACK</span><span class="p">);</span>
+<span class="ln"> 6</span>
+<span class="ln"> 7</span><span class="c1">//build head node:proto_meta_dump
+</span><span class="ln"> 8</span><span class="c1">//第一层
+</span><span class="ln"> 9</span><span class="c1"></span><span class="n">mxml_node_t</span><span class="o">*</span> <span class="n">proto</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="ln">10</span><span class="c1">//第二层
+</span><span class="ln">11</span><span class="c1"></span><span class="n">mxml_node_t</span><span class="o">*</span> <span class="n">class</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="ln">12</span><span class="n">mxml_node_t</span><span class="o">*</span> <span class="n">suit</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="ln">13</span><span class="n">mxml_node_t</span><span class="o">*</span> <span class="n">desc</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="ln">14</span><span class="n">mxml_node_t</span><span class="o">*</span> <span class="n">name</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="ln">15</span><span class="c1">//第三层
+</span><span class="ln">16</span><span class="c1"></span><span class="n">mxml_node_t</span><span class="o">*</span> <span class="n">meta_data</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="ln">17</span><span class="n">mxml_node_t</span><span class="o">*</span> <span class="n">dump_on</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="ln">18</span><span class="n">mxml_node_t</span><span class="o">*</span> <span class="n">dump_format</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="ln">19</span><span class="n">mxml_node_t</span><span class="o">*</span> <span class="n">dump_name</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="ln">20</span>
+<span class="ln">21</span><span class="c1">//遍历第一层proto，mxmlFindElement函数：寻找下一个proto节点
+</span><span class="ln">22</span><span class="c1"></span><span class="k">for</span><span class="p">(</span><span class="n">proto</span> <span class="o">=</span> <span class="n">mxmlFindElement</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="n">tree</span><span class="p">,</span><span class="s">&#34;proto&#34;</span><span class="p">,</span><span class="s">&#34;name&#34;</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="n">MXML_DESCEND</span><span class="p">);</span><span class="n">proto</span><span class="o">!=</span><span class="nb">NULL</span><span class="p">;</span><span class="n">proto</span> <span class="o">=</span> <span class="n">mxmlFindElement</span><span class="p">(</span><span class="n">proto</span><span class="p">,</span><span class="n">tree</span><span class="p">,</span><span class="s">&#34;proto&#34;</span><span class="p">,</span><span class="s">&#34;name&#34;</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="n">MXML_DESCEND</span><span class="p">)){</span>
+<span class="ln">23</span>	<span class="n">class</span> <span class="o">=</span> <span class="n">mxmlFindElement</span><span class="p">(</span><span class="n">proto</span><span class="p">,</span><span class="n">tree</span><span class="p">,</span><span class="s">&#34;proto-class&#34;</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="n">MXML_DESCEND</span><span class="p">);</span>
+<span class="ln">24</span>	<span class="n">suit</span> <span class="o">=</span> <span class="n">mxmlFindElement</span><span class="p">(</span><span class="n">proto</span><span class="p">,</span><span class="n">tree</span><span class="p">,</span><span class="s">&#34;proto-suit&#34;</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="n">MXML_DESCEND</span><span class="p">);</span>
+<span class="ln">25</span>	<span class="n">desc</span> <span class="o">=</span> <span class="n">mxmlFindElement</span><span class="p">(</span><span class="n">proto</span><span class="p">,</span><span class="n">tree</span><span class="p">,</span><span class="s">&#34;proto-desc&#34;</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="n">MXML_DESCEND</span><span class="p">);</span>
+<span class="ln">26</span>	<span class="n">name</span> <span class="o">=</span> <span class="n">mxmlFindElement</span><span class="p">(</span><span class="n">proto</span><span class="p">,</span><span class="n">tree</span><span class="p">,</span><span class="s">&#34;dump-name&#34;</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="n">MXML_DESCEND</span><span class="p">);</span>
+<span class="ln">27</span>	<span class="c1">//拿到第一层数据
+</span><span class="ln">28</span><span class="c1"></span>	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;|proto:%s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">mxmlElementGetAttr</span><span class="p">(</span><span class="n">proto</span><span class="p">,</span><span class="s">&#34;name&#34;</span><span class="p">));</span>
+<span class="ln">29</span>	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;    |----class:%s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">mxmlGetText</span><span class="p">(</span><span class="n">class</span><span class="p">,</span><span class="nb">NULL</span><span class="p">));</span>
+<span class="ln">30</span>	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;    |----suit:%s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">mxmlGetText</span><span class="p">(</span><span class="n">suit</span><span class="p">,</span><span class="nb">NULL</span><span class="p">));</span>
+<span class="ln">31</span>	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;    |----desc:%s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">mxmlGetText</span><span class="p">(</span><span class="n">desc</span><span class="p">,</span><span class="nb">NULL</span><span class="p">));</span>
+<span class="ln">32</span>	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;    |----name:%s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">mxmlGetText</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="nb">NULL</span><span class="p">));</span>
+<span class="ln">33</span>	<span class="c1">//遍历第二层meta-data
+</span><span class="ln">34</span><span class="c1"></span>	<span class="k">for</span><span class="p">(</span><span class="n">meta_data</span> <span class="o">=</span> <span class="n">mxmlFindElement</span><span class="p">(</span><span class="n">proto</span><span class="p">,</span><span class="n">proto</span><span class="p">,</span><span class="s">&#34;meta-data&#34;</span><span class="p">,</span><span class="s">&#34;name&#34;</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="n">MXML_DESCEND</span><span class="p">);</span><span class="n">meta_data</span><span class="o">!=</span><span class="nb">NULL</span><span class="p">;</span><span class="n">meta_data</span> <span class="o">=</span> <span class="n">mxmlFindElement</span><span class="p">(</span><span class="n">meta_data</span><span class="p">,</span><span class="n">proto</span><span class="p">,</span><span class="s">&#34;meta-data&#34;</span><span class="p">,</span><span class="s">&#34;name&#34;</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="n">MXML_DESCEND</span><span class="p">)){</span>
+<span class="ln">35</span>		<span class="c1">//拿到第二层数据
+</span><span class="ln">36</span><span class="c1"></span> 		<span class="n">dump_on</span> <span class="o">=</span> <span class="n">mxmlFindElement</span><span class="p">(</span><span class="n">meta_data</span><span class="p">,</span><span class="n">proto</span><span class="p">,</span><span class="s">&#34;dump-on&#34;</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="n">MXML_DESCEND</span><span class="p">);</span>
+<span class="ln">37</span>		<span class="n">dump_id</span> <span class="o">=</span> <span class="n">mxmlFindElement</span><span class="p">(</span><span class="n">meta_data</span><span class="p">,</span><span class="n">proto</span><span class="p">,</span><span class="s">&#34;dump-id&#34;</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="n">MXML_DESCEND</span><span class="p">);</span>
+<span class="ln">38</span>		<span class="n">dump_format</span> <span class="o">=</span> <span class="n">mxmlFindElement</span><span class="p">(</span><span class="n">meta_data</span><span class="p">,</span><span class="n">proto</span><span class="p">,</span><span class="s">&#34;dump-format&#34;</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="n">MXML_DESCEND</span><span class="p">);</span>
+<span class="ln">39</span>		<span class="n">dump_name</span> <span class="o">=</span> <span class="n">mxmlFindElement</span><span class="p">(</span><span class="n">meta_data</span><span class="p">,</span><span class="n">proto</span><span class="p">,</span><span class="s">&#34;dump-name&#34;</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="n">MXML_DESCEND</span><span class="p">);</span>
+<span class="ln">40</span>			<span class="n">printf</span><span class="p">(...,</span><span class="n">mxmlGetText</span><span class="p">(...));</span>
+<span class="ln">41</span>			<span class="p">...</span>
+<span class="ln">42</span>	<span class="p">}</span>
+<span class="ln">43</span>    <span class="p">}</span>
+<span class="ln">44</span><span class="n">mxmlDelete</span><span class="p">(</span><span class="n">tree</span><span class="p">);</span>
+<span class="ln">45</span><span class="n">fclose</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
+</code></pre></div>
     
       
     
@@ -249,17 +426,17 @@
       <nav class="tags_nav">
         <a href='https://Jerrysmd.github.io/tags/c/' class="post_tag button button_translucent">
           C
-          <span class="button_tally">7</span>
+          <span class="button_tally">8</span>
         </a>
         
         <a href='https://Jerrysmd.github.io/tags/tag_name1/' class="post_tag button button_translucent">
           TAG_NAME1
-          <span class="button_tally">6</span>
+          <span class="button_tally">5</span>
         </a>
         
         <a href='https://Jerrysmd.github.io/tags/tag_name2/' class="post_tag button button_translucent">
           TAG_NAME2
-          <span class="button_tally">6</span>
+          <span class="button_tally">5</span>
         </a>
         
         <a href='https://Jerrysmd.github.io/tags/linux/' class="post_tag button button_translucent">
