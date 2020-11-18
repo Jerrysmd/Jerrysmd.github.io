@@ -6,7 +6,16 @@
     <description>Recent content in Technology on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Tue, 17 Nov 2020 09:22:18 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/categories/technology/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 18 Nov 2020 10:59:38 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/categories/technology/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>移动通信网络中的GTP协议: The GTP protocol in mobile communication networks</title>
+      <link>https://Jerrysmd.github.io/post/20201118gtp/</link>
+      <pubDate>Wed, 18 Nov 2020 10:59:38 +0800</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/20201118gtp/</guid>
+      <description>&lt;p&gt;GTP（GPRS Tunnelling Protocol，GPRS 隧道协议）是一组基于 IP 的通信协议，用于 GSM、UMTS 和 EPS 网络中承载 GPRS（General Packet Radio Service，通用分组无线业务）。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Typedef介绍: The descriptions of typedef</title>
       <link>https://Jerrysmd.github.io/post/20201117typedef/</link>
@@ -112,7 +121,7 @@
       <pubDate>Sat, 10 Oct 2020 21:58:13 -0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20201010getline/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;insert artical description&lt;/strong&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;getline()多读一行，把最后的&lt;/p&gt;</description>
     </item>
     
     <item>
