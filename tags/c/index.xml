@@ -53,12 +53,21 @@
     </item>
     
     <item>
-      <title>读取二进制文件: Read binary files</title>
+      <title>文件读取的高级方法：Advanced method of reading files</title>
       <link>https://Jerrysmd.github.io/post/20201020read_binary_file/</link>
       <pubDate>Tue, 20 Oct 2020 18:39:37 -0700</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20201020read_binary_file/</guid>
-      <description>&lt;p&gt;读取二进制文件，把二进制文件内容全部读取到char*字符串中。配合fseek()和fread()函数实现。&lt;/p&gt;</description>
+      <description>&lt;p&gt;读取二进制文件（任何文件都可以，本文以二进制为例），把二进制文件内容全部读取到char*字符串中。配合fseek()和fread()函数实现文件读取的高级方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hyperscan: high-performance multiple regex matching library</title>
+      <link>https://Jerrysmd.github.io/post/20201012hyperscan/</link>
+      <pubDate>Mon, 12 Oct 2020 05:42:44 -0700</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/20201012hyperscan/</guid>
+      <description>&lt;p&gt;Hyperscan是一款来自于Intel的高性能的正则表达式匹配库。它是基于X86平台以PCRE为原型而开发的。在支持PCRE的大部分语法的前提下，Hyperscan增加了特定的语法和工作模式来保证其在真实网络场景下的实用性。&lt;/p&gt;</description>
     </item>
     
     <item>
