@@ -17,12 +17,12 @@
     </item>
     
     <item>
-      <title>20201005getline</title>
+      <title>文件读取多读取一行空行问题: The problem about file reading one more line</title>
       <link>https://Jerrysmd.github.io/post/20201010getline/</link>
       <pubDate>Sat, 10 Oct 2020 21:58:13 -0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20201010getline/</guid>
-      <description>&lt;p&gt;getline()多读一行，把最后的&lt;/p&gt;</description>
+      <description>&lt;p&gt;getline()/get()/read()会出现多读一行的现象。造成该原因可能文件本身问题和getline()函数的问题。可以在while处判断时先判断getline()/get()/read()，如果拿到数据再处理。&lt;/p&gt;</description>
     </item>
     
   </channel>
