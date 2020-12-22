@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en" data-figures="true" class="page" data-mode="dim">
   <head>
-<title>20201007makefile_cmakelist | JerrysBlog</title>
+<title>Makefile Guide | JerrysBlog</title>
 <meta charset="utf-8">
 <meta name="generator" content="Hugo 0.76.5" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -20,9 +20,9 @@
 <meta name="description" content="Article description.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@0x4c2">
-<meta name="twitter:title" content="20201007makefile_cmakelist" />
+<meta name="twitter:title" content="Makefile Guide" />
 <meta property="og:url" content="https://Jerrysmd.github.io/post/20201015makefile_cmakelist/" />
-<meta property="og:title" content="20201007makefile_cmakelist" />
+<meta property="og:title" content="Makefile Guide" />
 <meta property="og:description" content="Article description." />
 <meta property="og:image" content="https://Jerrysmd.github.io/images/6.png" />
 <link rel="apple-touch-icon" sizes="180x180" href='https://Jerrysmd.github.io/icons/apple-touch-icon.png'>
@@ -115,27 +115,27 @@
   
 <div class="grid-inverse wrap content">
   <article class="post_content">
-    <h1 class="post_title">20201007makefile_cmakelist</h1><div class="post_meta">
+    <h1 class="post_title">Makefile Guide</h1><div class="post_meta">
   <svg class="icon">
   <use xlink:href="#calendar"></use>
 </svg>
   <span class="post_date">
     Oct 15, 2020</span>
-    <a href='https://Jerrysmd.github.io/tags/tag_name1' class="post_tag button button_translucent">Tag_name1
+    <a href='https://Jerrysmd.github.io/tags/c' class="post_tag button button_translucent">c
     </a>
-    <a href='https://Jerrysmd.github.io/tags/tag_name2' class="post_tag button button_translucent">Tag_name2
+    <a href='https://Jerrysmd.github.io/tags/c&#43;&#43;' class="post_tag button button_translucent">c&#43;&#43;
     </a>
 </div>
 
     
 <div class="post_share">
   Share on:
-  <a href="https://twitter.com/intent/tweet?text=20201007makefile_cmakelist&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201015makefile_cmakelist%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
+  <a href="https://twitter.com/intent/tweet?text=Makefile%20Guide&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201015makefile_cmakelist%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
     <svg class="icon">
   <use xlink:href="#twitter"></use>
 </svg>
   </a>
-  <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201015makefile_cmakelist%2f&t=20201007makefile_cmakelist" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
+  <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201015makefile_cmakelist%2f&t=Makefile%20Guide" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
     <svg class="icon">
   <use xlink:href="#facebook"></use>
 </svg>
@@ -156,8 +156,24 @@
     
     <h2>Overview</h2>
     <nav id="TableOfContents"></nav>
-    <p><strong>insert artical description</strong></p>
-<p><strong>Insert Lead paragraph here.</strong></p>
+    <p>Makefile定义了一系列的规则来指定，哪些文件需要先编译，哪些文件需要后编译，哪些文件需要重新编译，甚至于进行更复杂的功能操作，因为makefile就像一个Shell脚本一样，其中也可以执行操作系统的命令。makefile带来的好处就是——“自动化编译”，整个工程完全自动编译，极大的提高了软件开发的效率。</p>
+<h1 id="makemakefilecmake的关系">Make、Makefile、CMake的关系</h1>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln"> 1</span>
+<span class="ln"> 2</span>graph TD
+<span class="ln"> 3</span>
+<span class="ln"> 4</span>    client1--&gt;|read / write|SVN((SVN server))
+<span class="ln"> 5</span>
+<span class="ln"> 6</span>    client2--&gt;|read only|SVN
+<span class="ln"> 7</span>
+<span class="ln"> 8</span>    client3--&gt;|read / write|SVN
+<span class="ln"> 9</span>
+<span class="ln">10</span>    client4--&gt;|read only|SVN
+<span class="ln">11</span>
+<span class="ln">12</span>    client5(...)--&gt;SVN
+<span class="ln">13</span>
+<span class="ln">14</span>    SVN---|store the data|sharedrive
+<span class="ln">15</span>
+</code></pre></div>
     
       
     
@@ -249,17 +265,22 @@
       <nav class="tags_nav">
         <a href='https://Jerrysmd.github.io/tags/c/' class="post_tag button button_translucent">
           C
-          <span class="button_tally">10</span>
+          <span class="button_tally">11</span>
         </a>
         
         <a href='https://Jerrysmd.github.io/tags/tag_name1/' class="post_tag button button_translucent">
           TAG_NAME1
-          <span class="button_tally">7</span>
+          <span class="button_tally">6</span>
         </a>
         
         <a href='https://Jerrysmd.github.io/tags/tag_name2/' class="post_tag button button_translucent">
           TAG_NAME2
-          <span class="button_tally">7</span>
+          <span class="button_tally">6</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/c&#43;&#43;/' class="post_tag button button_translucent">
+          C&#43;&#43;
+          <span class="button_tally">2</span>
         </a>
         
         <a href='https://Jerrysmd.github.io/tags/file/' class="post_tag button button_translucent">
@@ -270,11 +291,6 @@
         <a href='https://Jerrysmd.github.io/tags/linux/' class="post_tag button button_translucent">
           LINUX
           <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://Jerrysmd.github.io/tags/c&#43;&#43;/' class="post_tag button button_translucent">
-          C&#43;&#43;
-          <span class="button_tally">1</span>
         </a>
         
         <a href='https://Jerrysmd.github.io/tags/git/' class="post_tag button button_translucent">

@@ -116,12 +116,12 @@
     </item>
     
     <item>
-      <title>20201007makefile_cmakelist</title>
+      <title>Makefile Guide</title>
       <link>https://Jerrysmd.github.io/post/20201015makefile_cmakelist/</link>
       <pubDate>Thu, 15 Oct 2020 21:59:46 -0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20201015makefile_cmakelist/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;insert artical description&lt;/strong&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;Makefile定义了一系列的规则来指定，哪些文件需要先编译，哪些文件需要后编译，哪些文件需要重新编译，甚至于进行更复杂的功能操作，因为makefile就像一个Shell脚本一样，其中也可以执行操作系统的命令。makefile带来的好处就是——“自动化编译”，整个工程完全自动编译，极大的提高了软件开发的效率。&lt;/p&gt;</description>
     </item>
     
     <item>
