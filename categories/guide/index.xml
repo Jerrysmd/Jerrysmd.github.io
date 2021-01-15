@@ -16,21 +16,26 @@
       <description>
         
           &lt;p&gt;更新博客步骤。更新静态网页，并push到github pages上。&lt;/p&gt;
-&lt;h2 id=&#34;1新建博客&#34;&gt;1.新建博客&lt;/h2&gt;
+&lt;h2 id=&#34;update-blog&#34;&gt;UPDATE BLOG&lt;/h2&gt;
+&lt;h3 id=&#34;1create-new-blog&#34;&gt;1.create new blog&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;hugo new post/*.md
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;2更新静态网页&#34;&gt;2.更新静态网页&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2update-the-static-website&#34;&gt;2.update the static website&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;hugo --theme=hugo-clarity --baseUrl=&amp;#34;https://Jerrysmd.github.io/&amp;#34;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;3推到githubpages&#34;&gt;3.推到GithubPages&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3commi-gitbubpages&#34;&gt;3.commi gitbubpages&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;cd public/
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;git add .
 &lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;git commit -m &amp;#39;update blog&amp;#39;
 &lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;git push -u origin master
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;完整操作&#34;&gt;完整操作&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;complete-operation&#34;&gt;COMPLETE OPERATION&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;hugo --theme=hugo-clarity --baseUrl=&amp;#34;https://Jerrysmd.github.io/&amp;#34;
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;cd public/
 &lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;git add .
 &lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;git commit -m &amp;#39;update blog&amp;#39;
 &lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;git push -u origin master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;update-hugo&#34;&gt;UPDATE HUGO&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;cd blog
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;mv hugo-clarity hugo-clarity.bak
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;git clone https://github.com/chipzoller/hugo-clarity
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         
       </description>

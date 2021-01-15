@@ -164,28 +164,38 @@
     <h2>Overview</h2>
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#1新建博客">1.新建博客</a></li>
-    <li><a href="#2更新静态网页">2.更新静态网页</a></li>
-    <li><a href="#3推到githubpages">3.推到GithubPages</a></li>
-    <li><a href="#完整操作">完整操作</a></li>
+    <li><a href="#update-blog">UPDATE BLOG</a>
+      <ul>
+        <li><a href="#1create-new-blog">1.create new blog</a></li>
+        <li><a href="#2update-the-static-website">2.update the static website</a></li>
+        <li><a href="#3commi-gitbubpages">3.commi gitbubpages</a></li>
+      </ul>
+    </li>
+    <li><a href="#complete-operation">COMPLETE OPERATION</a></li>
+    <li><a href="#update-hugo">UPDATE HUGO</a></li>
   </ul>
 </nav>
     <p>更新博客步骤。更新静态网页，并push到github pages上。</p>
-<h2 id="1新建博客">1.新建博客</h2>
+<h2 id="update-blog">UPDATE BLOG</h2>
+<h3 id="1create-new-blog">1.create new blog</h3>
 <div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>hugo new post/*.md
-</code></pre></div><h2 id="2更新静态网页">2.更新静态网页</h2>
+</code></pre></div><h3 id="2update-the-static-website">2.update the static website</h3>
 <div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>hugo --theme=hugo-clarity --baseUrl=&#34;https://Jerrysmd.github.io/&#34;
-</code></pre></div><h2 id="3推到githubpages">3.推到GithubPages</h2>
+</code></pre></div><h3 id="3commi-gitbubpages">3.commi gitbubpages</h3>
 <div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>cd public/
 <span class="ln">2</span>git add .
 <span class="ln">3</span>git commit -m &#39;update blog&#39;
 <span class="ln">4</span>git push -u origin master
-</code></pre></div><h2 id="完整操作">完整操作</h2>
+</code></pre></div><h2 id="complete-operation">COMPLETE OPERATION</h2>
 <div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>hugo --theme=hugo-clarity --baseUrl=&#34;https://Jerrysmd.github.io/&#34;
 <span class="ln">2</span>cd public/
 <span class="ln">3</span>git add .
 <span class="ln">4</span>git commit -m &#39;update blog&#39;
 <span class="ln">5</span>git push -u origin master
+</code></pre></div><h2 id="update-hugo">UPDATE HUGO</h2>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>cd blog
+<span class="ln">2</span>mv hugo-clarity hugo-clarity.bak
+<span class="ln">3</span>git clone https://github.com/chipzoller/hugo-clarity
 </code></pre></div>
     
       
