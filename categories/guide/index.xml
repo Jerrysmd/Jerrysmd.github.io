@@ -8,12 +8,32 @@
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Thu, 01 Oct 2020 05:06:59 -0700</lastBuildDate><atom:link href="https://Jerrysmd.github.io/categories/guide/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>更新HUGO步骤: Update the HUGO steps</title>
+      <title>Update the BLOG steps</title>
       <link>https://Jerrysmd.github.io/post/20201001updatablog/</link>
       <pubDate>Thu, 01 Oct 2020 05:06:59 -0700</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20201001updatablog/</guid>
-      <description>&lt;p&gt;更新博客步骤。更新静态网页，并push到github pages上。&lt;/p&gt;</description>
+      <description>
+        
+          &lt;p&gt;更新博客步骤。更新静态网页，并push到github pages上。&lt;/p&gt;
+&lt;h2 id=&#34;1新建博客&#34;&gt;1.新建博客&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;hugo new post/*.md
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;2更新静态网页&#34;&gt;2.更新静态网页&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;hugo --theme=hugo-clarity --baseUrl=&amp;#34;https://Jerrysmd.github.io/&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;3推到githubpages&#34;&gt;3.推到GithubPages&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;cd public/
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;git add .
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;git commit -m &amp;#39;update blog&amp;#39;
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;git push -u origin master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;完整操作&#34;&gt;完整操作&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;hugo --theme=hugo-clarity --baseUrl=&amp;#34;https://Jerrysmd.github.io/&amp;#34;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;cd public/
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;git add .
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;git commit -m &amp;#39;update blog&amp;#39;
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;git push -u origin master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+        
+      </description>
     </item>
     
   </channel>

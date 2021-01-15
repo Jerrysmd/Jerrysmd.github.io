@@ -13,7 +13,110 @@
       <pubDate>Thu, 15 Oct 2020 21:59:46 -0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20201015makefile_cmakelist/</guid>
-      <description>&lt;p&gt;Makefile定义了一系列的规则来指定，哪些文件需要先编译，哪些文件需要后编译，哪些文件需要重新编译，甚至于进行更复杂的功能操作，因为makefile就像一个Shell脚本一样，其中也可以执行操作系统的命令。makefile带来的好处就是——“自动化编译”，整个工程完全自动编译，极大的提高了软件开发的效率。&lt;/p&gt;</description>
+      <description>
+        
+          &lt;p&gt;Makefile定义了一系列的规则来指定，哪些文件需要先编译，哪些文件需要后编译，哪些文件需要重新编译，甚至于进行更复杂的功能操作，因为makefile就像一个Shell脚本一样，其中也可以执行操作系统的命令。makefile带来的好处就是——“自动化编译”，整个工程完全自动编译，极大的提高了软件开发的效率。&lt;/p&gt;
+&lt;h2 id=&#34;关于程序的编译和链接&#34;&gt;关于程序的编译和链接&lt;/h2&gt;
+&lt;p&gt;一般来说，无论是C还是C++，首先要把源文件编译成中间代码文件，在Windows下也就是 .obj 文件，UNIX下是 .o 文件，即 Object File，这个动作叫做&lt;font style= &#34;font-weight:bold&#34; color=&#34;purple&#34;&gt;编译（compile）&lt;/font&gt;。然后再把大量的Object File合成执行文件，这个动作叫作&lt;font style= &#34;font-weight:bold&#34; color=&#34;purple&#34;&gt;链接（link）。&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;编译时，编译器需要的是语法的正确，函数与变量的声明的正确。对于后者，通常是你需要告诉编译器头文件的所在位置（头文件中应该只是声明，而定义应该放在C/C++文件中），只要所有的语法正确，编译器就可以编译出中间目标文件。一般来说，每个源文件都应该对应于一个中间目标文件（O文件或是OBJ文件）。&lt;/p&gt;
+&lt;p&gt;链接时，主要是链接函数和全局变量，所以，我们可以使用这些中间目标文件（O文件或是OBJ文件）来链接我们的应用程序。链接器并不管函数所在的源文件，只管函数的中间目标文件（Object File），在大多数时候，由于源文件太多，编译生成的中间目标文件太多，而在链接时需要明显地指出中间目标文件名，这对于编译很不方便，所以，我们要给中间目标文件打个包，在Windows下这种包叫“库文件”（Library File)，也就是 .lib 文件，在UNIX下，是Archive File，也就是 .a 文件。&lt;/p&gt;
+&lt;p&gt;总结一下，源文件首先会生成中间目标文件，再由中间目标文件生成执行文件。在编译时，编译器只检测程序语法，和函数、变量是否被声明。如果函数未被声明，编译器会给出一个警告，但可以生成Object File。而在链接程序时，链接器会在所有的Object File中找寻函数的实现，如果找不到，那到就会报链接错误码（Linker Error），在VC下，这种错误一般是：Link 2001错误，意思说是说，链接器未能找到函数的实现。你需要指定函数的ObjectFile.&lt;/p&gt;
+&lt;h2 id=&#34;makefile-介绍&#34;&gt;Makefile 介绍&lt;/h2&gt;
+&lt;p&gt;make命令执行时，需要一个 Makefile 文件，以告诉make命令需要怎么样的去编译和链接程序。&lt;/p&gt;
+&lt;p&gt;首先，我们用一个示例来说明Makefile的书写规则。以便给大家一个感兴认识。这个示例来源于GNU的make使用手册，在这个示例中，我们的工程有8个C文件，和3个头文件，我们要写一个Makefile来告诉make命令如何编译和链接这几个文件。我们的规则是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;如果这个工程没有编译过，那么我们的所有C文件都要编译并被链接。&lt;/li&gt;
+&lt;li&gt;如果这个工程的某几个C文件被修改，那么我们只编译被修改的C文件，并链接目标程序。&lt;/li&gt;
+&lt;li&gt;如果这个工程的头文件被改变了，那么我们需要编译引用了这几个头文件的C文件，并链接目标程序。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;makefile-规则&#34;&gt;Makefile 规则&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;target... &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;prerequisites&lt;/span&gt; ...
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;command&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;target也就是一个目标文件，可以是Object File，也可以是执行文件。还可以是一个标签（Label）&lt;/p&gt;
+&lt;p&gt;prerequisites就是，要生成那个target所需的文件或是目标。&lt;/p&gt;
+&lt;p&gt;command也就是make需要执行的命令。(任意的shell命令)&lt;/p&gt;
+&lt;p&gt;这是一个文件的依赖关系，也就是说，target这一个或多个的目标文件依赖于prerequisites中的文件，其生成规则定义在command中。也就是说，prerequisites中如果有一个以上的文件比target文件要新的话，command所定义的命令就会被执行。&lt;/p&gt;
+&lt;h3 id=&#34;-的意义&#34;&gt;$@,$^,$&amp;lt; 的意义&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;$@--目标文件&lt;/li&gt;
+&lt;li&gt;$^--所有的依赖文件&lt;/li&gt;
+&lt;li&gt;$&amp;lt;--第一个依赖文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;一个示例&#34;&gt;一个示例&lt;/h3&gt;
+&lt;p&gt;如果一个工程有3个头文件，和8个C文件，我们为了完成前面所述的那三个规则，我们的Makefile应该是下面的这个样子的。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;edit &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;kbd&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;display&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; \
+&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;       &lt;span class=&#34;n&#34;&gt;insert&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;search&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;files&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;utils&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;       cc -o edit main.o kbd.o command.o display.o &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;           insert.o search.o files.o utils.o
+&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;main.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defs&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;         cc -c main.c
+&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;kbd.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;kbd&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defs&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;        cc -c kbd.c
+&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;command.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defs&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;            cc -c command.c
+&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;display.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;display&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defs&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;buffer&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;16&lt;/span&gt;            cc -c display.c
+&lt;span class=&#34;ln&#34;&gt;17&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;18&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;insert.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;insert&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defs&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;buffer&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;19&lt;/span&gt;           cc -c insert.c
+&lt;span class=&#34;ln&#34;&gt;20&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;21&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;search.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;search&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defs&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;buffer&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;22&lt;/span&gt;           cc -c search.c
+&lt;span class=&#34;ln&#34;&gt;23&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;24&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;files.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;files&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defs&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;buffer&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;25&lt;/span&gt;          cc -c files.c
+&lt;span class=&#34;ln&#34;&gt;26&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;27&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;utils.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;utils&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defs&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;28&lt;/span&gt;          cc -c utils.c
+&lt;span class=&#34;ln&#34;&gt;29&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;30&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;clean &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;31&lt;/span&gt;           rm edit main.o kbd.o command.o display.o &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;32&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;              insert.o search.o files.o utils.o
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;反斜杠（\）是换行符的意思。这样比较便于Makefile的易读。&lt;/p&gt;
+&lt;p&gt;在这个makefile中，目标文件（target）包含：执行文件edit和中间目标文件（*.o），依赖文件（prerequisites）就是冒号后面的那些 .c 文件和 .h文件。每一个 .o 文件都有一组依赖文件，而这些 .o 文件又是执行文件 edit 的依赖文件。依赖关系的实质上就是说明了目标文件是由哪些文件生成的，换言之，目标文件是哪些文件更新的。&lt;/p&gt;
+&lt;p&gt;在定义好依赖关系后，后续的那一行定义了如何生成目标文件的操作系统命令，一定要以一个Tab键作为开头。记住，make并不管命令是怎么工作的，他只管执行所定义的命令。make会比较targets文件和prerequisites文件的修改日期，如果prerequisites文件的日期要比targets文件的日期要新，或者target不存在的话，那么，make就会执行后续定义的命令。&lt;/p&gt;
+&lt;h3 id=&#34;make是如何工作的&#34;&gt;make是如何工作的&lt;/h3&gt;
+&lt;p&gt;在默认的方式下，也就是我们只输入make命令。那么，&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;make会在当前目录下找名字叫“Makefile”或“makefile”的文件。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如果找到，它会找文件中的第一个目标文件（target），在上面的例子中，他会找到“edit”这个文件，并把这个文件作为最终的目标文件。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如果edit文件不存在，或是edit所依赖的后面的 .o 文件的文件修改时间要比edit这个文件新，那么，他就会执行后面所定义的命令来生成edit这个文件。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如果edit所依赖的.o文件也存在，那么make会在当前文件中找目标为.o文件的依赖性，如果找到则再根据那一个规则生成.o文件。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;当然，你的C文件和H文件是存在的啦，于是make会生成 .o 文件，然后再用 .o 文件声明make的终极任务，也就是执行文件edit了。&lt;/p&gt;
+&lt;p&gt;这就是整个make的依赖性，make会一层又一层地去找文件的依赖关系，直到最终编译出第一个目标文件。在找寻的过程中，如果出现错误，比如最后被依赖的文件找不到，那么make就会直接退出，并报错，而对于所定义的命令的错误，或是编译不成功，make根本不理。make只管文件的依赖性&lt;/p&gt;
+&lt;p&gt;于是在我们编程中，如果这个工程已被编译过了，当我们修改了其中一个源文件，比如file.c，那么根据我们的依赖性，我们的目标file.o会被重编译（也就是在这个依性关系后面所定义的命令），于是file.o的文件也是最新的啦，于是file.o的文件修改时间要比edit要新，所以edit也会被重新链接了（详见edit目标文件后定义的命令）。&lt;/p&gt;
+&lt;p&gt;而如果我们改变了“command.h”，那么，kdb.o、command.o和files.o都会被重编译，并且，edit会被重链接。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;makefile中使用变量&#34;&gt;makefile中使用变量&lt;/h3&gt;
+&lt;p&gt;以edit的规则为例：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;nl&#34;&gt;edit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;kbd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;display&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; \
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;	 &lt;span class=&#34;n&#34;&gt;insert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;search&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;files&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;utills&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;edit&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;kbd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;display&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; \
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;		   &lt;span class=&#34;n&#34;&gt;insert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;search&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;files&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;utils&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;看到[.o]文件的字符串被重复了两次，如果我们的工程需要加入新的[.o]文件，那么需要在两个地方加。因为此时的makefile并不复杂。当makefile变得复杂我们就有可能忘掉某个地方，而导致编译失败。所以为了makefile的易维护，在makefile中可以使用变量。&lt;/p&gt;
+&lt;p&gt;比如我们声明一个变量，objects, OBJECTS,objs,OBJS,或OBJ，表示obj文件。在makefile一开始就定义&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;objects&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;kbd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;display&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; \
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;		  &lt;span class=&#34;n&#34;&gt;insert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;search&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;files&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;utils&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;于是，就可以方便的在makefile中以&amp;quot;$(objects)&amp;quot;的方式来使用这个变量了&lt;/p&gt;
+&lt;h2 id=&#34;makemakefilecmake的关系&#34;&gt;Make、Makefile、CMake的关系&lt;/h2&gt;
+&lt;img src = &#34;https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MTg0NTQ1LTM3MjE5OTNhMDY1MjU2NGQucG5n?x-oss-process=image/format,png&#34; width=&#34;100%&#34;&gt;
+        
+      </description>
     </item>
     
     <item>
@@ -22,7 +125,126 @@
       <pubDate>Mon, 12 Oct 2020 05:42:44 -0700</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20201012hyperscan/</guid>
-      <description>&lt;p&gt;Hyperscan是一款来自于Intel的高性能的正则表达式匹配库。它是基于X86平台以PCRE为原型而开发的。在支持PCRE的大部分语法的前提下，Hyperscan增加了特定的语法和工作模式来保证其在真实网络场景下的实用性。&lt;/p&gt;</description>
+      <description>
+        
+          &lt;p&gt;Hyperscan是一款来自于Intel的高性能的正则表达式匹配库。它是基于X86平台以PCRE为原型而开发的。在支持PCRE的大部分语法的前提下，Hyperscan增加了特定的语法和工作模式来保证其在真实网络场景下的实用性。&lt;/p&gt;
+&lt;h2 id=&#34;1-概述&#34;&gt;1. 概述&lt;/h2&gt;
+&lt;p&gt;Hyperscan demo中使用libpcap从pcap文件中读取数据包，并根据一个规则文件中指定的多个正则表达式对报文进行匹配，并输出匹配结果和一些统计信息。Hyperscan增加了特定的语法和工作模式来保证其在真实网络场景下的实用性。与此同时，大量高效算法及IntelSIMD*指令的使用实现了Hyperscan的高性能匹配。&lt;/p&gt;
+&lt;h2 id=&#34;2-keywords--keyfunc&#34;&gt;2. KeyWords &amp;amp; KeyFunc&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Patterns: 规则，用来匹配关键词的规则，支持PCRE的大部分语法（正则表达式c十六进制.etc）&lt;/li&gt;
+&lt;li&gt;id: 与规则绑定,一个规则对应一个不同的id，匹配命中时返回pattern对应的id&lt;/li&gt;
+&lt;li&gt;flags: 与规则绑定,对pattern进行特殊操作，如：与或非逻辑运算(绑定多个pattern),忽略大小写，多行匹配，单次匹配.etc&lt;/li&gt;
+&lt;li&gt;hs_compile_*(): 将patterns生成无向连通图(database)，匹配时把数据往连通图里迭代遍历&lt;/li&gt;
+&lt;li&gt;Scratch()：在扫描数据时，Hyperscan需要少量的临时内存来存储动态内部数据。但database的数量太大了，无法装入堆栈，特别是对于嵌入式应用程序，而且动态分配内存过于昂贵，因此必须为扫描函数提供预先分配的“Scratch”空间。&lt;/li&gt;
+&lt;li&gt;Serialization(): 将生成的database序列化成二进制文件，再由凡序列化拿到databse。&lt;/li&gt;
+&lt;li&gt;Scan(): 匹配，将需要匹配的数据放入database无向连通图中匹配，命中后调用回调函数。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-原理&#34;&gt;3. 原理&lt;/h2&gt;
+&lt;p&gt;Hyperscan以自动机理论为基础，其工作流程主要分成两个部分：编译期(compiletime)和运行期(run-time)。&lt;/p&gt;
+&lt;h3 id=&#34;31编译期&#34;&gt;3.1编译期&lt;/h3&gt;
+&lt;p&gt;Hyperscan 自带C++编写的正则表达式编译器。如图1所示，它将正则表达式作为输入，针对不同的平台，用户定义的模式及特殊语法，经过复杂的图分析及优化过程，生成对应的数据库。另外，生成的数据库可以被序列化后保存在内存中，以供运行期提取使用。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://img1.sdnlab.com/wp-content-uploads/2017/03/Hyperscan-fig-1.jpg&#34; alt=&#34;avatar&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;32运行期&#34;&gt;3.2运行期&lt;/h3&gt;
+&lt;p&gt;Hyperscan的运行期是通过C语言来开发的。图2展示了Hyperscan在运行期的主要流程。用户需要预先分配一段内存来存储临时匹配状态信息，之后利用编译生成的数据库调用Hyperscan内部的匹配引擎(NFA, DFA等)来对输入进行模式匹配。Hyperscan在引擎中使用Intel处理器所具有的SIMD指令进行加速。同时，用户可以通过回调函数来自定义匹配发生后采取的行为。由于生成的数据库是只读的，用户可以在多个CPU核或多线程场景下共享数据库来提升匹配扩展性。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://img1.sdnlab.com/wp-content-uploads/2017/03/Hyperscan-fig-2.jpg&#34; alt=&#34;avatar&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;4-hyperscan伪代码&#34;&gt;4. Hyperscan伪代码&lt;/h2&gt;
+&lt;h3 id=&#34;41-编译&#34;&gt;4.1 编译&lt;/h3&gt;
+&lt;p&gt;函数buildDatabase用来编译规则文件中的多个正则表达式，参数mode指定了是BLOCK,STREAM,或者向量模式。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hs_database_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;buildDatabase&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;vector&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&amp;gt;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;expressions&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;                                    &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;vector&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;flags&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;                                    &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;vector&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ids&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;                                    &lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;hs_database_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;db&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;hs_compile_error_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;compileErr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;hs_error_t&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;err&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;Clock&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;clock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;clock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;start&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;err&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hs_compile_multi&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;expressions&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;flags&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ids&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;                           &lt;span class=&#34;n&#34;&gt;expressions&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;nullptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;db&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;compileErr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;clock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stop&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;16&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;17&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;err&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;HS_SUCCESS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;18&lt;/span&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;compileErr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;expression&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;19&lt;/span&gt;            &lt;span class=&#34;c1&#34;&gt;// The error does not refer to a particular expression.
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;            &lt;span class=&#34;n&#34;&gt;cerr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;ERROR: &amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;compileErr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;message&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;21&lt;/span&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;22&lt;/span&gt;            &lt;span class=&#34;n&#34;&gt;cerr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;ERROR: Pattern &amp;#39;&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;expressions&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;compileErr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;expression&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;23&lt;/span&gt;                 &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#39; failed compilation with error: &amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;compileErr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;message&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;24&lt;/span&gt;                 &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;25&lt;/span&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;26&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// As the compileErr pointer points to dynamically allocated memory, if
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;27&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// we get an error, we must be sure to release it. This is not
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;28&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// necessary when no error is detected.
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;29&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;hs_free_compile_error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;compileErr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;30&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;exit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;31&lt;/span&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;32&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//...
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;33&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其中的核心代码是hs_compile_multi的调用，此函数用来编译多个正则表达式，从代码可见除了mode参数，BLOCK和STREAM模式都使用这一API。它的原型是&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hs_error_t&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hs_compile_multi&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;expressions&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;                            &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;flags&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;                            &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ids&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;                            &lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;elements&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;                            &lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;                            &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hs_platform_info_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;platform&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+&lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;                            &lt;span class=&#34;n&#34;&gt;hs_database_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;**&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;db&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+&lt;span class=&#34;ln&#34;&gt;8&lt;/span&gt;                            &lt;span class=&#34;n&#34;&gt;hs_compile_error_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;**&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其中，expressions是多个正则表达式字符串，flags和ids分别是expressions对应的flag和id数组；elements是表达式字符串的个数；其余参数与上一个例子中提到的hs_compile的参数涵义相同。&lt;/p&gt;
+&lt;p&gt;这里要注意的一个事情是参数ids，它是正则表达式的ID数组。每个表达式都有一个唯一ID，这样命中的时候匹配回调函数可以得到此ID，告诉调用者哪个表达式命中了。如果ids传入NULL，则所有表达式的ID都为0。&lt;/p&gt;
+&lt;h3 id=&#34;42-准备匹配临时数据&#34;&gt;4.2 准备匹配临时数据&lt;/h3&gt;
+&lt;p&gt;为接下来的匹配分配足够的临时数据空间(scratch space）&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;public&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;Benchmark&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hs_database_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;streaming&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hs_database_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;block&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;        &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;db_streaming&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;streaming&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;db_block&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;block&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;scratch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;nullptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;          &lt;span class=&#34;n&#34;&gt;matchCount&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// Allocate enough scratch space to handle either streaming or block
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// mode, so we only need the one scratch region.
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;hs_error_t&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;err&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hs_alloc_scratch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;db_streaming&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;scratch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;err&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;HS_SUCCESS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;            &lt;span class=&#34;n&#34;&gt;cerr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;ERROR: could not allocate scratch space. Exiting.&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;            &lt;span class=&#34;n&#34;&gt;exit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// This second call will increase the scratch size if more is required
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// for block mode.
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;err&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hs_alloc_scratch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;db_block&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;scratch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;err&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;HS_SUCCESS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;16&lt;/span&gt;            &lt;span class=&#34;n&#34;&gt;cerr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;ERROR: could not allocate scratch space. Exiting.&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;17&lt;/span&gt;            &lt;span class=&#34;n&#34;&gt;exit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;18&lt;/span&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;19&lt;/span&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;43-匹配&#34;&gt;4.3 匹配&lt;/h3&gt;
+&lt;h4 id=&#34;431-block模式&#34;&gt;4.3.1 BLOCK模式&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// Scan each packet (in the ordering given in the PCAP file) through
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;// Hyperscan using the block-mode interface.
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;scanBlock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;        &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size_t&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;packets&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;            &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pkt&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;packets&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;            &lt;span class=&#34;n&#34;&gt;hs_error_t&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;err&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hs_scan&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;db_block&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pkt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c_str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pkt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;                                     &lt;span class=&#34;n&#34;&gt;scratch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;onMatch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;matchCount&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;            &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;err&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;HS_SUCCESS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;                &lt;span class=&#34;n&#34;&gt;cerr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;ERROR: Unable to scan packet. Exiting.&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;                &lt;span class=&#34;n&#34;&gt;exit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其中，db就是上一步编译的databas；data和length分别是要匹配的数据和数据长度；flags用来在未来版本中控制函数行为，目前未使用；scratch是匹配时要用的临时数据，之前已经分配好；onEvent非常关键，即匹配时调用的回调函数，由用户指定；context是用户自定义指针。&lt;/p&gt;
+&lt;h4 id=&#34;432-匹配回调函数&#34;&gt;4.3.2 匹配回调函数&lt;/h4&gt;
+&lt;p&gt;匹配回调函数的原型是&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;match_event_handler&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;id&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;                                &lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;long&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;long&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;                                &lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;long&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;long&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;to&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;                                &lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;flags&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;                                &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;context&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其中，id是命中的正则表达式的ID，对于使用hs_compile编译的唯一表达式来说，此值为0；如果在编译时指定了相关模式选项(hs_compile中的mode参数），则此值将会设为匹配特征的起始位置，否则会设为0；to是命中数据的下一个字节的偏移；flags目前未用；context是用户自定义指针。&lt;/p&gt;
+&lt;p&gt;返回值为非0表示停止匹配，否则继续；在匹配的过程中，每次命中时都将同步调用匹配回调函数，直到匹配结束。&lt;/p&gt;
+&lt;h3 id=&#34;44-清理资源&#34;&gt;4.4 清理资源&lt;/h3&gt;
+&lt;p&gt;包括关闭流（hs_close_stream）、释放database等。&lt;/p&gt;
+        
+      </description>
     </item>
     
   </channel>
