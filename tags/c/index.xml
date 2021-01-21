@@ -494,6 +494,47 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     </item>
     
     <item>
+      <title>SQLcipher Guide</title>
+      <link>https://Jerrysmd.github.io/post/20201018sqlcipher/</link>
+      <pubDate>Sun, 18 Oct 2020 21:58:51 -0800</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/20201018sqlcipher/</guid>
+      <description>
+        
+          &lt;p&gt;SQLCipher is based on SQLite, and thus, the majority of the accessible API is identical to the C/C++ interface for SQLite 3. However, SQLCipher does add a number of security specific extensions in the form of PRAGMAs, SQL Functions and C Functions.&lt;/p&gt;
+&lt;h2 id=&#34;1-build-sqlcipher-from-source&#34;&gt;1. Build SQLcipher from source&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;$ git clone &lt;a href=&#34;https://github.com/sqlcipher/sqlcipher.git&#34;&gt;https://github.com/sqlcipher/sqlcipher.git&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;$ cd sqlcipher&lt;/li&gt;
+&lt;li&gt;$ ./configure --enable-tempstore=yes CFLAGS=&amp;quot;-DSQLITE_HAS_CODEC -DSQLITE_TEMP_STORE=2&amp;quot; LDFLAGS=&amp;quot;-lcrypto&amp;quot;&lt;/li&gt;
+&lt;li&gt;$ make&lt;/li&gt;
+&lt;li&gt;$ make install &lt;em&gt;#if you want to do a system wide install of SQLCipher&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Mark the output of make install, especially the following lines:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;libtool: install: /usr/bin/install -c .libs/libsqlcipher.a /usr/local/lib/libsqlcipher.a&lt;/li&gt;
+&lt;li&gt;/usr/bin/install -c -m 0644 sqlite3.h /usr/local/include/sqlcipher&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;these are the folders of SQLcipher headers and the library necessary when building proper C project.&lt;/p&gt;
+&lt;h2 id=&#34;2-building-minimal-c-project-example&#34;&gt;2. Building minimal C project example&lt;/h2&gt;
+&lt;p&gt;In SQLite_example.c put the following lines:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;#34;sqlite3.h&amp;#34; //We want to SQLCipher extension, rather then a system wide SQLite header&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sqlite3_open&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;test.db&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;db&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//open SQLite database test.db
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sqlite3_key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;db&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;1q2w3e4r&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//apply encryption to previously opened database
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Build you example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$gcc&lt;/span&gt; SQLite_example.c -o SQLtest -I /path/to/local/folder/with/sqlcipher/header/files/ -L /path/to/local/folder/with/sqlcipher/library.a -l sqlcipher
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;e.g. with paths extracted from the output of $make install&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$gcc&lt;/span&gt; SQLite_example.c -o SQLtest -I /usr/local/include/sqlcipher -L /usr/local/lib/libsqlcipher.a -lsqlcipher
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Finally, make sure that your SQLCipher library is in the system wide library path e.g. for (Arch)Linux:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;$ &lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;LD_LIBRARY_PATH&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;/usr/local/lib/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Run your test code ((Arch)Linux):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;$ ./SQLtest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+        
+      </description>
+    </item>
+    
+    <item>
       <title>Makefile Guide</title>
       <link>https://Jerrysmd.github.io/post/20201015makefile_cmakelist/</link>
       <pubDate>Thu, 15 Oct 2020 21:59:46 -0800</pubDate>

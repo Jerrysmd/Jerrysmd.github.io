@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en" data-figures="true" class="page" data-mode="dim">
   <head>
-<title>20201006sqlcipher | JerrysBlog</title>
+<title>SQLcipher Guide | JerrysBlog</title>
 <meta charset="utf-8">
 <meta name="generator" content="Hugo 0.76.5" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -20,9 +20,9 @@
 <meta name="description" content="Article description.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@0x4c2">
-<meta name="twitter:title" content="20201006sqlcipher" />
+<meta name="twitter:title" content="SQLcipher Guide" />
 <meta property="og:url" content="https://Jerrysmd.github.io/post/20201018sqlcipher/" />
-<meta property="og:title" content="20201006sqlcipher" />
+<meta property="og:title" content="SQLcipher Guide" />
 <meta property="og:description" content="Article description." />
 <meta property="og:image" content="https://Jerrysmd.github.io/images/7.png" />
 <link rel="apple-touch-icon" sizes="180x180" href='https://Jerrysmd.github.io/icons/apple-touch-icon.png'>
@@ -123,28 +123,28 @@
   
 <div class="grid-inverse wrap content">
   <article class="post_content">
-    <h1 class="post_title">20201006sqlcipher</h1><div class="post_meta">
+    <h1 class="post_title">SQLcipher Guide</h1><div class="post_meta">
   
     <svg class="icon">
   <use xlink:href="#calendar"></use>
 </svg>
     <span class="post_date">
       Oct 18, 2020</span>
-      <a href='https://Jerrysmd.github.io/tags/tag_name1' class="post_tag button button_translucent">Tag_name1
+      <a href='https://Jerrysmd.github.io/tags/sql' class="post_tag button button_translucent">SQL
       </a>
-      <a href='https://Jerrysmd.github.io/tags/tag_name2' class="post_tag button button_translucent">Tag_name2
+      <a href='https://Jerrysmd.github.io/tags/c' class="post_tag button button_translucent">C
       </a>
 </div>
 
     
   <div class="post_share">
     Share on:
-    <a href="https://twitter.com/intent/tweet?text=20201006sqlcipher&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201018sqlcipher%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
+    <a href="https://twitter.com/intent/tweet?text=SQLcipher%20Guide&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201018sqlcipher%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
       <svg class="icon">
   <use xlink:href="#twitter"></use>
 </svg>
     </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201018sqlcipher%2f&t=20201006sqlcipher" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201018sqlcipher%2f&t=SQLcipher%20Guide" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
       <svg class="icon">
   <use xlink:href="#facebook"></use>
 </svg>
@@ -164,9 +164,41 @@
     
     
     <h2>Overview</h2>
-    <nav id="TableOfContents"></nav>
-    <p><strong>insert artical description</strong></p>
-<p><strong>Insert Lead paragraph here.</strong></p>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-build-sqlcipher-from-source">1. Build SQLcipher from source</a></li>
+    <li><a href="#2-building-minimal-c-project-example">2. Building minimal C project example</a></li>
+  </ul>
+</nav>
+    <p>SQLCipher is based on SQLite, and thus, the majority of the accessible API is identical to the C/C++ interface for SQLite 3. However, SQLCipher does add a number of security specific extensions in the form of PRAGMAs, SQL Functions and C Functions.</p>
+<h2 id="1-build-sqlcipher-from-source">1. Build SQLcipher from source</h2>
+<ol>
+<li>$ git clone <a href="https://github.com/sqlcipher/sqlcipher.git">https://github.com/sqlcipher/sqlcipher.git</a></li>
+<li>$ cd sqlcipher</li>
+<li>$ ./configure --enable-tempstore=yes CFLAGS=&quot;-DSQLITE_HAS_CODEC -DSQLITE_TEMP_STORE=2&quot; LDFLAGS=&quot;-lcrypto&quot;</li>
+<li>$ make</li>
+<li>$ make install <em>#if you want to do a system wide install of SQLCipher</em></li>
+</ol>
+<p>Mark the output of make install, especially the following lines:</p>
+<ul>
+<li>libtool: install: /usr/bin/install -c .libs/libsqlcipher.a /usr/local/lib/libsqlcipher.a</li>
+<li>/usr/bin/install -c -m 0644 sqlite3.h /usr/local/include/sqlcipher</li>
+</ul>
+<p>these are the folders of SQLcipher headers and the library necessary when building proper C project.</p>
+<h2 id="2-building-minimal-c-project-example">2. Building minimal C project example</h2>
+<p>In SQLite_example.c put the following lines:</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="cp">#include</span> <span class="cpf">&#34;sqlite3.h&#34; //We want to SQLCipher extension, rather then a system wide SQLite header</span><span class="cp">
+</span><span class="ln">2</span><span class="cp"></span><span class="n">rc</span> <span class="o">=</span> <span class="n">sqlite3_open</span><span class="p">(</span><span class="s">&#34;test.db&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">db</span><span class="p">);</span> <span class="c1">//open SQLite database test.db
+</span><span class="ln">3</span><span class="c1"></span><span class="n">rc</span> <span class="o">=</span> <span class="n">sqlite3_key</span><span class="p">(</span><span class="n">db</span><span class="p">,</span><span class="s">&#34;1q2w3e4r&#34;</span><span class="p">,</span><span class="mi">8</span><span class="p">);</span> <span class="c1">//apply encryption to previously opened database
+</span></code></pre></div><p>Build you example:</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span><span class="nv">$gcc</span> SQLite_example.c -o SQLtest -I /path/to/local/folder/with/sqlcipher/header/files/ -L /path/to/local/folder/with/sqlcipher/library.a -l sqlcipher
+</code></pre></div><p>e.g. with paths extracted from the output of $make install</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span><span class="nv">$gcc</span> SQLite_example.c -o SQLtest -I /usr/local/include/sqlcipher -L /usr/local/lib/libsqlcipher.a -lsqlcipher
+</code></pre></div><p>Finally, make sure that your SQLCipher library is in the system wide library path e.g. for (Arch)Linux:</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>$ <span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/usr/local/lib/
+</code></pre></div><p>Run your test code ((Arch)Linux):</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>$ ./SQLtest
+</code></pre></div>
     
       
     
@@ -259,17 +291,17 @@
       <nav class="tags_nav">
         <a href='https://Jerrysmd.github.io/tags/c/' class="post_tag button button_translucent">
           C
-          <span class="button_tally">11</span>
+          <span class="button_tally">12</span>
         </a>
         
         <a href='https://Jerrysmd.github.io/tags/tag_name1/' class="post_tag button button_translucent">
           TAG_NAME1
-          <span class="button_tally">6</span>
+          <span class="button_tally">5</span>
         </a>
         
         <a href='https://Jerrysmd.github.io/tags/tag_name2/' class="post_tag button button_translucent">
           TAG_NAME2
-          <span class="button_tally">6</span>
+          <span class="button_tally">5</span>
         </a>
         
         <a href='https://Jerrysmd.github.io/tags/c&#43;&#43;/' class="post_tag button button_translucent">
@@ -304,6 +336,11 @@
         
         <a href='https://Jerrysmd.github.io/tags/markdown/' class="post_tag button button_translucent">
           MARKDOWN
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/sql/' class="post_tag button button_translucent">
+          SQL
           <span class="button_tally">1</span>
         </a>
         
