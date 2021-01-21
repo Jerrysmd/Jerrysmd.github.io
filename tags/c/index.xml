@@ -517,7 +517,7 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
 &lt;/ol&gt;
 &lt;h3 id=&#34;1-makefile-规则&#34;&gt;1. Makefile 规则&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;target... &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;prerequisites&lt;/span&gt; ...
-&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;command&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;	&lt;span class=&#34;nb&#34;&gt;command&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;...&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;target也就是一个目标文件，可以是Object File，也可以是执行文件。还可以是一个标签（Label）&lt;/p&gt;
 &lt;p&gt;prerequisites就是，要生成那个target所需的文件或是目标。&lt;/p&gt;
@@ -689,8 +689,8 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;在include前面可以有一些空字符，但是绝不能是[Tab]键开始。include和可以用一个或多个空格隔开。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;举个例子，有这样几个Makefile：a.mk、b.mk、c.mk，还有一个文件叫foo.make，以及一个变量$(bar)，其包含了e.mk和f.mk，那么，下面的语句：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;include&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;foo.make&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;*.mk&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;bar&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;等价于：&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;include&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;foo.make&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;a.mk&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;b.mk&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;c.mk&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;e.mk&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;f.mk&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;#等价于：
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;include&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;foo.make&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;a.mk&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;b.mk&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;c.mk&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;e.mk&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;f.mk&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;make命令开始时，会把找寻include所指出的其它Makefile，并把其内容安置在当前的位置。就好像C/C++的#include指令一样。如果文件都没有指定绝对路径或是相对路径的话，make会在当前目录下首先寻找，如果当前目录下没有找到，那么，make还会在下面的几个目录下找：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;如果make执行时，有“-I”或“--include-dir”参数，那么make就会在这个参数所指定的目录下去寻找。&lt;/li&gt;
@@ -730,8 +730,8 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
 &lt;h3 id=&#34;2-规则的语法&#34;&gt;2. 规则的语法&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;targets &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;prerequisites&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;		&lt;span class=&#34;nb&#34;&gt;command&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;或：&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;targets &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;prerequisites&lt;/span&gt; ; &lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;#或：
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;targets &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;prerequisites&lt;/span&gt; ; &lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;		&lt;span class=&#34;nb&#34;&gt;command&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;
@@ -759,7 +759,7 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
 &lt;h3 id=&#34;4-静态模式&#34;&gt;4. 静态模式&lt;/h3&gt;
 &lt;p&gt;静态模式可以更加容易地定义多目标的规则，可以让我们的规则变得更加的有弹性和灵活。语法：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;&amp;lt;targets...&amp;gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &amp;lt;&lt;span class=&#34;n&#34;&gt;target&lt;/span&gt;-&lt;span class=&#34;n&#34;&gt;pattern&lt;/span&gt;&amp;gt;: &amp;lt;&lt;span class=&#34;n&#34;&gt;prereq&lt;/span&gt;-&lt;span class=&#34;n&#34;&gt;patterns&lt;/span&gt; ...&amp;gt;
-&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;			&amp;lt;commands&amp;gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;	&amp;lt;commands&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;targets定义了一系列的目标文件，可以有通配符。是目标的一个集合。&lt;/p&gt;
 &lt;p&gt;target-parrtern是指明了targets的模式，也就是的目标集模式。&lt;/p&gt;
 &lt;p&gt;prereq-parrterns是目标的依赖模式，它对target-parrtern形成的模式再进行一次依赖目标的定义。&lt;/p&gt;
@@ -786,22 +786,20 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
 &lt;p&gt;通常，make会把其要执行的命令行在命令执行前输出到屏幕上。当我们用“@”字符在命令行前，那么，这个命令将不被make显示出来，最具代表性的例子是，我们用这个功能来像屏幕显示一些信息。如：&lt;/p&gt;
 &lt;p&gt;@echo 正在编译XXX模块......&lt;/p&gt;
 &lt;h3 id=&#34;2赋值命令&#34;&gt;2.赋值命令&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; 是最基本的赋值
-&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;是覆盖之前的值&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;?=&lt;/span&gt; 是如果没有被赋值过就赋予等号后面的值
-&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;是添加等号后面的值&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3-指定目标&#34;&gt;3. 指定目标&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;“all”&lt;/strong&gt;        这个伪目标是所有目标的目标，其功能一般是编译所有的目标。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;“clean”&lt;/strong&gt;    这个伪目标功能是删除所有被make创建的文件。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;“install”&lt;/strong&gt;    这个伪目标功能是安装已编译好的程序，其实就是把目标执行文件拷贝到指定的目标中去。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;“print”&lt;/strong&gt;     这个伪目标的功能是例出改变过的源文件。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;“tar”&lt;/strong&gt;       这个伪目标功能是把源程序打包备份。也就是一个tar文件。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;“dist”&lt;/strong&gt;      这个伪目标功能是创建一个压缩文件，一般是把tar文件压成Z文件。或是gz文件。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;“TAGS”&lt;/strong&gt;     这个伪目标功能是更新所有的目标，以备完整地重编译使用。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;“check”和“test”&lt;/strong&gt;   这两个伪目标一般用来测试makefile的流程。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;4-自动化变量&#34;&gt;4. 自动化变量&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;#  = 是最基本的赋值
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# := 是覆盖之前的值
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# ?= 是如果没有被赋值过就赋予等号后面的值
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# += 是添加等号后面的值
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3-指定目标&#34;&gt;3. 指定目标&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;1.&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;“all”&lt;/span&gt;       &lt;span class=&#34;err&#34;&gt;这个伪目标是所有目标的目标，其功能一般是编译所有的目标。&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;2.&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;“clean”&lt;/span&gt;     &lt;span class=&#34;err&#34;&gt;这个伪目标功能是删除所有被make创建的文件。&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;3.&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;“install”&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;这个伪目标功能是安装已编译好的程序，其实就是把目标执行文件拷贝到指定的目标中去。&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;4.&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;“print”&lt;/span&gt;     &lt;span class=&#34;err&#34;&gt;这个伪目标的功能是例出改变过的源文件。&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;5.&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;“tar”&lt;/span&gt;       &lt;span class=&#34;err&#34;&gt;这个伪目标功能是把源程序打包备份。也就是一个tar文件。&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;6.&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;“dist”&lt;/span&gt;      &lt;span class=&#34;err&#34;&gt;这个伪目标功能是创建一个压缩文件，一般是把tar文件压成Z文件。或是gz文件。&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;7.&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;“TAGS”&lt;/span&gt;      &lt;span class=&#34;err&#34;&gt;这个伪目标功能是更新所有的目标，以备完整地重编译使用。&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;8.&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;“check”和“test”&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;这两个伪目标一般用来测试makefile的流程。&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;4-自动化变量&#34;&gt;4. 自动化变量&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;$@表示规则中的目标文件集。在模式规则中，如果有多个目标，那么，&amp;quot;$@&amp;quot;就是匹配于目标中模式定义的集合。&lt;/li&gt;
 &lt;li&gt;$%仅当目标是函数库文件中，表示规则中的目标成员名。例如，如果一个目标是&amp;quot;foo.a(bar.o)&amp;quot;，那么，&amp;quot;$%&amp;quot;就是&amp;quot;bar.o&amp;quot;，&amp;quot;$@&amp;quot;就是&amp;quot;foo.a&amp;quot;。如果目标不是函数库文件（Unix下是
