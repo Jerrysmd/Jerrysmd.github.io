@@ -6,7 +6,21 @@
     <description>Recent content in Posts on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Mon, 07 Dec 2020 09:11:47 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 26 Jan 2021 11:22:47 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>20210126gitContribution</title>
+      <link>https://Jerrysmd.github.io/post/20210126gitcontribution/</link>
+      <pubDate>Tue, 26 Jan 2021 11:22:47 +0800</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/20210126gitcontribution/</guid>
+      <description>
+        
+          &lt;p&gt;&lt;strong&gt;insert artical description&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Insert Lead paragraph here.&lt;/strong&gt;&lt;/p&gt;
+        
+      </description>
+    </item>
+    
     <item>
       <title>Various data types in C</title>
       <link>https://Jerrysmd.github.io/post/20201207u32/</link>
