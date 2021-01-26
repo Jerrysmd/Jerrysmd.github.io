@@ -98,7 +98,7 @@
 &lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;git commit -m &amp;#39;update blog&amp;#39;
 &lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;git push -u origin master
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;update-hugo-theme&#34;&gt;UPDATE HUGO THEME&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;cd theme
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;cd theme/
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;mv hugo-clarity hugo-clarity.bak
 &lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;git clone https://github.com/chipzoller/hugo-clarity
 &lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;cp -rf hugo-clarity.bak/static/icons/ hugo-clarity/static/
