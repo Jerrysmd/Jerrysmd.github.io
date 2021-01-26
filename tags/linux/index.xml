@@ -5,7 +5,6 @@
     <link>https://Jerrysmd.github.io/tags/linux/</link>
     <description>Recent content in Linux on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <copyright>Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
     <lastBuildDate>Wed, 04 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GDB调试: GDB debug guide</title>
