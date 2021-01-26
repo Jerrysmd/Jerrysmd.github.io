@@ -319,7 +319,7 @@
 &lt;/table&gt;
 &lt;h4 id=&#34;5-length&#34;&gt;5. length&lt;/h4&gt;
 &lt;p&gt;类型长度指明待输出数据的长度。因为相同类型可以有不同的长度，比如整型有16bits的short int，32bits的int，也有64bits的long int，浮点型有32bits的单精度float和64bits的双精度double。为了指明同一类型的不同长度，于是乎，类型长度（length）应运而生，成为格式控制字符串的一部分。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://img-blog.csdn.net/20160824174550372&#34; alt=&#34;length&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://img-blog.csdn.net/20160824174550372&#34; alt=&#34;avatar&#34;&gt;&lt;/p&gt;
         
       </description>
     </item>
