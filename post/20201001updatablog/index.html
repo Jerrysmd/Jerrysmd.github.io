@@ -172,7 +172,7 @@
       </ul>
     </li>
     <li><a href="#complete-operation">COMPLETE OPERATION</a></li>
-    <li><a href="#update-hugo">UPDATE HUGO</a></li>
+    <li><a href="#update-hugo-theme">UPDATE HUGO THEME</a></li>
   </ul>
 </nav>
     <p>更新博客步骤。更新静态网页，并push到github pages上。</p>
@@ -192,10 +192,11 @@
 <span class="ln">3</span>git add .
 <span class="ln">4</span>git commit -m &#39;update blog&#39;
 <span class="ln">5</span>git push -u origin master
-</code></pre></div><h2 id="update-hugo">UPDATE HUGO</h2>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>cd blog
+</code></pre></div><h2 id="update-hugo-theme">UPDATE HUGO THEME</h2>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>cd theme
 <span class="ln">2</span>mv hugo-clarity hugo-clarity.bak
 <span class="ln">3</span>git clone https://github.com/chipzoller/hugo-clarity
+<span class="ln">4</span>cp -rf hugo-clarity.bak/static/icons/ hugo-clarity/static/
 </code></pre></div>
     
       
