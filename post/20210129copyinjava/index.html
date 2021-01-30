@@ -166,7 +166,7 @@
   <ul>
     <li><a href="#preface">Preface</a></li>
     <li><a href="#shallow-copy">Shallow Copy</a></li>
-    <li><a href="#深拷贝">深拷贝</a></li>
+    <li><a href="#deep-copy">Deep Copy</a></li>
   </ul>
 </nav>
     <p>Cloning is a process of creating an exact copy of an existing object in the memory. In java, clone() method of java.lang.Object class is used for cloning process. This method creates an exact copy of an object on which it is called through field-by-field assignment and returns the reference of that object. Not all the objects in java are eligible for cloning process. The objects which implement Cloneable interface are only eligible for cloning process. Cloneable interface is a marker interface which is used to provide the marker to cloning process. Click here to see more info on clone() method in java.</p>
@@ -237,7 +237,7 @@
 <span class="ln">5</span>
 <span class="ln">6</span><span class="n">User</span><span class="o">{</span><span class="n">age</span><span class="o">=</span><span class="n">18</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">&#39;</span><span class="n">Java</span><span class="err">&#39;</span><span class="o">,</span> <span class="n">dept</span><span class="o">=</span><span class="n">Dept</span><span class="o">{</span><span class="n">deptNo</span><span class="o">=</span><span class="n">12</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">&#39;</span><span class="n">研发部</span><span class="err">&#39;</span><span class="o">}}</span>
 <span class="ln">7</span><span class="n">User</span><span class="o">{</span><span class="n">age</span><span class="o">=</span><span class="n">20</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">&#39;</span><span class="n">Java</span><span class="err">&#39;</span><span class="o">,</span> <span class="n">dept</span><span class="o">=</span><span class="n">Dept</span><span class="o">{</span><span class="n">deptNo</span><span class="o">=</span><span class="n">12</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">&#39;</span><span class="n">研发部</span><span class="err">&#39;</span><span class="o">}}</span>
-</code></pre></div><h2 id="深拷贝">深拷贝</h2>
+</code></pre></div><h2 id="deep-copy">Deep Copy</h2>
 <p>相较于浅拷贝而言，深拷贝除了会将基本类型的属性复制外，还会将引用类型的属性也会复制。</p>
 <p><img src="https://mmbiz.qpic.cn/mmbiz_png/lgiaG5BicLkVfz2cJwsP0ltcmibdqdtCrtu3mbYkIB6Pbar606A0YaVVQdfTibr9oS7eMu80FVTmXicWpHqibicoWWufw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="deepCopy"></p>
 <p>深拷贝功能实现</p>
