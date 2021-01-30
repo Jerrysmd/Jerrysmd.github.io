@@ -508,7 +508,7 @@
 &lt;/table&gt;
 &lt;h4 id=&#34;5-length&#34;&gt;5. length&lt;/h4&gt;
 &lt;p&gt;类型长度指明待输出数据的长度。因为相同类型可以有不同的长度，比如整型有16bits的short int，32bits的int，也有64bits的long int，浮点型有32bits的单精度float和64bits的双精度double。为了指明同一类型的不同长度，于是乎，类型长度（length）应运而生，成为格式控制字符串的一部分。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://img-blog.csdn.net/20160824174550372&#34; alt=&#34;avatar&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/typeInC.jpg&#34; alt=&#34;typeTable&#34;&gt;&lt;/p&gt;
         
       </description>
     </item>
@@ -540,7 +540,7 @@
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt; 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Output:&lt;/p&gt;
 &lt;p&gt;​	Size of struct: 24&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://media.geeksforgeeks.org/wp-content/uploads/struct_sizeof_ex1-300x154.png&#34; alt=&#34;Output1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/struct_sizeof_ex1.png&#34; alt=&#34;Output1&#34;&gt;&lt;/p&gt;
 &lt;p&gt;The red portion represents the padding added for data alignment and the green portion represents the struct members. In this case, x (int) is followed by z (double), which is larger in size as compared to x. Hence padding is added after x. Also, padding is needed at the end for data alignment.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Case 2:&lt;/li&gt;
@@ -558,7 +558,7 @@
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt; 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Output:&lt;/p&gt;
 &lt;p&gt;​	Size of struct: 16&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://media.geeksforgeeks.org/wp-content/uploads/struct_sizeof_ex2-300x124.png&#34; alt=&#34;output2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/struct_sizeof_ex2.png&#34; alt=&#34;output2&#34;&gt;&lt;/p&gt;
 &lt;p&gt;In this case, the members of the structure are sorted in decreasing order of their sizes. Hence padding is required only at the end.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Case 3:&lt;/li&gt;
@@ -576,7 +576,7 @@
 &lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt; 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Output:&lt;/p&gt;
 &lt;p&gt;​	Size of struct: 16&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://media.geeksforgeeks.org/wp-content/uploads/struct_sizeof_ex3-300x128.png&#34; alt=&#34;output3&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/struct_sizeof_ex3.png&#34; alt=&#34;output3&#34;&gt;&lt;/p&gt;
 &lt;p&gt;In this case, y (short int) is followed by x (int) and hence padding is required after y. No padding is needed at the end in this case for data alignment.&lt;/p&gt;
 &lt;p&gt;C language doesn’t allow the compilers to reorder the struct members to reduce the amount of padding. In order to minimize the amount of padding, the struct members must be sorted in a descending order (similar to the case 2).&lt;/p&gt;
         
@@ -1478,8 +1478,6 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
 较有较。如果目标中没有模式的定义，那么&amp;quot;$*&amp;quot;也就不能被推导出，但是，如果目标文件的后缀是 make所识别的，那么&amp;quot;$*&amp;quot;就是除了后缀的那一部分。例如：如果目标是&amp;quot;foo.c&amp;quot;
 ，因为&amp;quot;.c&amp;quot;是make所能识别的后缀名，所以，&amp;quot;$*&amp;quot;的值就是&amp;quot;foo&amp;quot;。这个特性是GNU make的，很有可能不兼容于其它版本的make，所以，你应该尽量避免使用&amp;quot;$*&amp;quot;，除非是在隐含规则或是静态模式中。如果目标中的后缀是make所不能识别的，那么&amp;quot;$*&amp;quot;就是空值。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;makemakefilecmake的关系&#34;&gt;Make、Makefile、CMake的关系&lt;/h2&gt;
-&lt;img src = &#34;https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MTg0NTQ1LTM3MjE5OTNhMDY1MjU2NGQucG5n?x-oss-process=image/format,png&#34; width=&#34;100%&#34;&gt;
         
       </description>
     </item>
@@ -1509,10 +1507,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
 &lt;p&gt;Hyperscan以自动机理论为基础，其工作流程主要分成两个部分：编译期(compiletime)和运行期(run-time)。&lt;/p&gt;
 &lt;h3 id=&#34;31编译期&#34;&gt;3.1编译期&lt;/h3&gt;
 &lt;p&gt;Hyperscan 自带C++编写的正则表达式编译器。如图1所示，它将正则表达式作为输入，针对不同的平台，用户定义的模式及特殊语法，经过复杂的图分析及优化过程，生成对应的数据库。另外，生成的数据库可以被序列化后保存在内存中，以供运行期提取使用。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://img1.sdnlab.com/wp-content-uploads/2017/03/Hyperscan-fig-1.jpg&#34; alt=&#34;avatar&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/Hyperscan-fig-1.jpg&#34; alt=&#34;Hyperscan-fig-1&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;32运行期&#34;&gt;3.2运行期&lt;/h3&gt;
 &lt;p&gt;Hyperscan的运行期是通过C语言来开发的。图2展示了Hyperscan在运行期的主要流程。用户需要预先分配一段内存来存储临时匹配状态信息，之后利用编译生成的数据库调用Hyperscan内部的匹配引擎(NFA, DFA等)来对输入进行模式匹配。Hyperscan在引擎中使用Intel处理器所具有的SIMD指令进行加速。同时，用户可以通过回调函数来自定义匹配发生后采取的行为。由于生成的数据库是只读的，用户可以在多个CPU核或多线程场景下共享数据库来提升匹配扩展性。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://img1.sdnlab.com/wp-content-uploads/2017/03/Hyperscan-fig-2.jpg&#34; alt=&#34;avatar&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/Hyperscan-fig-2.jpg&#34; alt=&#34;Hyperscan-fig-2&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;4-hyperscan伪代码&#34;&gt;4. Hyperscan伪代码&lt;/h2&gt;
 &lt;h3 id=&#34;41-编译&#34;&gt;4.1 编译&lt;/h3&gt;
 &lt;p&gt;函数buildDatabase用来编译规则文件中的多个正则表达式，参数mode指定了是BLOCK,STREAM,或者向量模式。&lt;/p&gt;

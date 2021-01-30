@@ -203,10 +203,10 @@
 <p>Hyperscan以自动机理论为基础，其工作流程主要分成两个部分：编译期(compiletime)和运行期(run-time)。</p>
 <h3 id="31编译期">3.1编译期</h3>
 <p>Hyperscan 自带C++编写的正则表达式编译器。如图1所示，它将正则表达式作为输入，针对不同的平台，用户定义的模式及特殊语法，经过复杂的图分析及优化过程，生成对应的数据库。另外，生成的数据库可以被序列化后保存在内存中，以供运行期提取使用。</p>
-<p><img src="https://img1.sdnlab.com/wp-content-uploads/2017/03/Hyperscan-fig-1.jpg" alt="avatar"></p>
+<p><img src="/post/picture/Hyperscan-fig-1.jpg" alt="Hyperscan-fig-1"></p>
 <h3 id="32运行期">3.2运行期</h3>
 <p>Hyperscan的运行期是通过C语言来开发的。图2展示了Hyperscan在运行期的主要流程。用户需要预先分配一段内存来存储临时匹配状态信息，之后利用编译生成的数据库调用Hyperscan内部的匹配引擎(NFA, DFA等)来对输入进行模式匹配。Hyperscan在引擎中使用Intel处理器所具有的SIMD指令进行加速。同时，用户可以通过回调函数来自定义匹配发生后采取的行为。由于生成的数据库是只读的，用户可以在多个CPU核或多线程场景下共享数据库来提升匹配扩展性。</p>
-<p><img src="https://img1.sdnlab.com/wp-content-uploads/2017/03/Hyperscan-fig-2.jpg" alt="avatar"></p>
+<p><img src="/post/picture/Hyperscan-fig-2.jpg" alt="Hyperscan-fig-2"></p>
 <h2 id="4-hyperscan伪代码">4. Hyperscan伪代码</h2>
 <h3 id="41-编译">4.1 编译</h3>
 <p>函数buildDatabase用来编译规则文件中的多个正则表达式，参数mode指定了是BLOCK,STREAM,或者向量模式。</p>

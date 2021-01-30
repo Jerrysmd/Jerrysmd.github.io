@@ -179,7 +179,7 @@
 </span><span class="ln">12</span><span class="c1"></span><span class="p">};</span> 
 </code></pre></div><p>Output:</p>
 <p>​	Size of struct: 24</p>
-<p><img src="https://media.geeksforgeeks.org/wp-content/uploads/struct_sizeof_ex1-300x154.png" alt="Output1"></p>
+<p><img src="/post/picture/struct_sizeof_ex1.png" alt="Output1"></p>
 <p>The red portion represents the padding added for data alignment and the green portion represents the struct members. In this case, x (int) is followed by z (double), which is larger in size as compared to x. Hence padding is added after x. Also, padding is needed at the end for data alignment.</p>
 <ul>
 <li>Case 2:</li>
@@ -197,7 +197,7 @@
 </span><span class="ln">11</span><span class="c1"></span><span class="p">};</span> 
 </code></pre></div><p>Output:</p>
 <p>​	Size of struct: 16</p>
-<p><img src="https://media.geeksforgeeks.org/wp-content/uploads/struct_sizeof_ex2-300x124.png" alt="output2"></p>
+<p><img src="/post/picture/struct_sizeof_ex2.png" alt="output2"></p>
 <p>In this case, the members of the structure are sorted in decreasing order of their sizes. Hence padding is required only at the end.</p>
 <ul>
 <li>Case 3:</li>
@@ -215,7 +215,7 @@
 <span class="ln">11</span><span class="p">};</span> 
 </code></pre></div><p>Output:</p>
 <p>​	Size of struct: 16</p>
-<p><img src="https://media.geeksforgeeks.org/wp-content/uploads/struct_sizeof_ex3-300x128.png" alt="output3"></p>
+<p><img src="/post/picture/struct_sizeof_ex3.png" alt="output3"></p>
 <p>In this case, y (short int) is followed by x (int) and hence padding is required after y. No padding is needed at the end in this case for data alignment.</p>
 <p>C language doesn’t allow the compilers to reorder the struct members to reduce the amount of padding. In order to minimize the amount of padding, the struct members must be sorted in a descending order (similar to the case 2).</p>
     
