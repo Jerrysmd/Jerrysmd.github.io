@@ -1,8 +1,8 @@
 
 <!DOCTYPE html>
-<html lang="en" data-figures="" class="page" data-mode="dim">
+<html lang="en" data-figures="true" class="page" data-mode="dim">
   <head>
-<title>JerrysBlog</title>
+<title>Shallow Copy and Deep Copy in JAVA | JerrysBlog</title>
 <meta charset="utf-8">
 <meta name="generator" content="Hugo 0.76.5" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -17,14 +17,14 @@
 <meta property="og:locale" content="en" />
 
 <meta property="og:type" content="article">
-<meta name="description" content="">
+<meta name="description" content="Article description.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@0x4c2">
-<meta name="twitter:title" content="" />
-<meta property="og:url" content="https://Jerrysmd.github.io/archives/" />
-<meta property="og:title" content="" />
-<meta property="og:description" content="" />
-<meta property="og:image" content="https://Jerrysmd.github.io/images/thumbnail.png" />
+<meta name="twitter:title" content="Shallow Copy and Deep Copy in JAVA" />
+<meta property="og:url" content="https://Jerrysmd.github.io/post/20210129copyinjava/" />
+<meta property="og:title" content="Shallow Copy and Deep Copy in JAVA" />
+<meta property="og:description" content="Article description." />
+<meta property="og:image" content="https://Jerrysmd.github.io/images/6.png" />
 <link rel="apple-touch-icon" sizes="180x180" href='https://Jerrysmd.github.io/icons/apple-touch-icon.png'>
 <link rel="icon" type="image/png" sizes="32x32" href='https://Jerrysmd.github.io/icons/favicon-32x32.png'>
 <link rel="manifest" href='https://Jerrysmd.github.io/icons/site.webmanifest'>
@@ -32,7 +32,7 @@
 <meta name="msapplication-TileColor" content="#002538">
 <meta name="theme-color" content="#002538">
 
-<link rel="canonical" href="https://Jerrysmd.github.io/archives/">
+<link rel="canonical" href="https://Jerrysmd.github.io/post/20210129copyinjava/">
 
     
 
@@ -50,8 +50,7 @@
   
   
     
-  
-  <body data-code="7" data-lines="true" id="documentTop">
+  <body data-code="40" data-lines="true" id="documentTop">
 
 <header class="nav_header" >
   <nav class="nav">
@@ -124,24 +123,26 @@
   
 <div class="grid-inverse wrap content">
   <article class="post_content">
-    <h1 class="post_title"></h1><div class="post_meta">
+    <h1 class="post_title">Shallow Copy and Deep Copy in JAVA</h1><div class="post_meta">
   
     <svg class="icon">
   <use xlink:href="#calendar"></use>
 </svg>
     <span class="post_date">
-      May 28, 2019</span>
+      Jan 29, 2021</span>
+      <a href='https://Jerrysmd.github.io/tags/java' class="post_tag button button_translucent">java
+      </a>
 </div>
 
     
   <div class="post_share">
     Share on:
-    <a href="https://twitter.com/intent/tweet?text=&url=https%3a%2f%2fJerrysmd.github.io%2farchives%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
+    <a href="https://twitter.com/intent/tweet?text=Shallow%20Copy%20and%20Deep%20Copy%20in%20JAVA&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20210129copyinjava%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
       <svg class="icon">
   <use xlink:href="#twitter"></use>
 </svg>
     </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2farchives%2f&t=" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20210129copyinjava%2f&t=Shallow%20Copy%20and%20Deep%20Copy%20in%20JAVA" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
       <svg class="icon">
   <use xlink:href="#facebook"></use>
 </svg>
@@ -151,7 +152,7 @@
   <use xlink:href="#linkedin"></use>
 </svg>
     </a>
-    <a href="https://Jerrysmd.github.io/archives/" title="Copy Link" class="link link_yank">
+    <a href="https://Jerrysmd.github.io/post/20210129copyinjava/" title="Copy Link" class="link link_yank">
       <svg class="icon">
   <use xlink:href="#copy"></use>
 </svg>
@@ -160,6 +161,45 @@
 
     
     
+    <h2>Overview</h2>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#preface">Preface</a></li>
+    <li><a href="#shallow-copy">Shallow Copy</a></li>
+  </ul>
+</nav>
+    <p>Cloning is a process of creating an exact copy of an existing object in the memory. In java, clone() method of java.lang.Object class is used for cloning process. This method creates an exact copy of an object on which it is called through field-by-field assignment and returns the reference of that object. Not all the objects in java are eligible for cloning process. The objects which implement Cloneable interface are only eligible for cloning process. Cloneable interface is a marker interface which is used to provide the marker to cloning process. Click here to see more info on clone() method in java.</p>
+<h2 id="preface">Preface</h2>
+<p>Object  类中有方法clion()，具体方法如下：</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">protected</span> <span class="kd">native</span> <span class="n">Object</span> <span class="nf">clone</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">CloneNotSupportedException</span><span class="o">;</span>
+</code></pre></div><ol>
+<li>该方法由 <code>protected</code> 修饰，java中所有类默认是继承<code>Object</code>类的，重载后的<code>clone()</code>方法为了保证其他类都可以正常调用，修饰符需要改成<code>public</code>。</li>
+<li>该方法是一个<code>native</code>方法，被<code>native</code>修饰的方法实际上是由非Java代码实现的，效率要高于普通的java方法。</li>
+<li>该方法的返回值是<code>Object</code>对象，因此我们需要强转成我们需要的类型。</li>
+<li>该方法抛出了一个<code>CloneNotSupportedException</code>异常，意思就是不支持拷贝，需要我们实现<code>Cloneable</code>接口来标记，这个类支持拷贝。</li>
+</ol>
+<p>为了演示，我们新建两个实体类<code>Dept</code> 和 <code>User</code>，其中<code>User</code>依赖了<code>Dept</code>，实体类代码如下：</p>
+<p>Dept 类：</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="nd">@Data</span>
+<span class="ln">2</span><span class="nd">@AllArgsConstructor</span>
+<span class="ln">3</span><span class="nd">@NoArgsConstructor</span>
+<span class="ln">4</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Dept</span> <span class="o">{</span>
+<span class="ln">5</span>    <span class="kd">private</span> <span class="kt">int</span> <span class="n">deptNo</span><span class="o">;</span>
+<span class="ln">6</span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+<span class="ln">7</span><span class="o">}</span>
+</code></pre></div><p>User 类：</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="nd">@Data</span>
+<span class="ln">2</span><span class="nd">@AllArgsConstructor</span>
+<span class="ln">3</span><span class="nd">@NoArgsConstructor</span>
+<span class="ln">4</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+<span class="ln">5</span>    <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+<span class="ln">6</span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+<span class="ln">7</span>    <span class="kd">private</span> <span class="n">Dept</span> <span class="n">dept</span><span class="o">;</span>
+<span class="ln">8</span><span class="o">}</span>
+</code></pre></div><h2 id="shallow-copy">Shallow Copy</h2>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>graph TD;
+<span class="ln">2</span>	test--&gt;test2;
+</code></pre></div>
     
       
     
@@ -190,9 +230,6 @@
     <h2 class="mt-4">Recent Posts</h2>
     <ul class="flex-column">
       <li>
-        <a href="https://Jerrysmd.github.io/post/20210129copyinjava/" class="nav-link">Shallow Copy and Deep Copy in JAVA</a>
-      </li>
-      <li>
         <a href="https://Jerrysmd.github.io/post/20210126gitcontribution/" class="nav-link">Git Contribution</a>
       </li>
       <li>
@@ -218,6 +255,9 @@
       </li>
       <li>
         <a href="https://Jerrysmd.github.io/post/20201025%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5/" class="nav-link">动态链接和静态链接: Dynamic link library and static link library</a>
+      </li>
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20201020read_binary_file/" class="nav-link">文件读取的高级方法：Advanced method of reading files</a>
       </li>
     </ul>
     <div>
