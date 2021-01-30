@@ -199,7 +199,7 @@
 <span class="ln">8</span><span class="o">}</span>
 </code></pre></div><h2 id="shallow-copy">Shallow Copy</h2>
 <p>对于基本类型的的属性，浅拷贝会将属性值复制给新的对象，而对于引用类型的属性，浅拷贝会将引用复制给新的对象。而像<code>String</code>，<code>Integer</code>这些引用类型，都是不可变的，拷贝的时候会创建一份新的内存空间来存放值，并且将新的引用指向新的内存空间。不可变类型是特殊的引用类型，我们姑且认为这些被<code>final</code>标记的引用类型也是复制值。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/lgiaG5BicLkVfz2cJwsP0ltcmibdqdtCrtuOyUIjoTQ2dkBpqyPvaLtzqO6xlibSwoHje3JpYMOcfqMuckHR93poWA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="shallowCopy"></p>
+<p><img src="/post/picture/ShallowCopy.png" alt="shallowCopy"></p>
 <p><strong>浅拷贝功能实现</strong></p>
 <div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="nd">@Data</span>
 <span class="ln"> 2</span><span class="nd">@AllArgsConstructor</span>
@@ -239,7 +239,7 @@
 <span class="ln">7</span><span class="n">User</span><span class="o">{</span><span class="n">age</span><span class="o">=</span><span class="n">20</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">&#39;</span><span class="n">Java</span><span class="err">&#39;</span><span class="o">,</span> <span class="n">dept</span><span class="o">=</span><span class="n">Dept</span><span class="o">{</span><span class="n">deptNo</span><span class="o">=</span><span class="n">12</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">&#39;</span><span class="n">研发部</span><span class="err">&#39;</span><span class="o">}}</span>
 </code></pre></div><h2 id="deep-copy">Deep Copy</h2>
 <p>相较于浅拷贝而言，深拷贝除了会将基本类型的属性复制外，还会将引用类型的属性也会复制。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/lgiaG5BicLkVfz2cJwsP0ltcmibdqdtCrtu3mbYkIB6Pbar606A0YaVVQdfTibr9oS7eMu80FVTmXicWpHqibicoWWufw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="deepCopy"></p>
+<p><img src="/post/picture/DeepCopy.png" alt="deepCopy"></p>
 <p>深拷贝功能实现</p>
 <p>在拷贝user的时候，同事将user中的dept属性进行拷贝。</p>
 <p>dept 类：</p>
