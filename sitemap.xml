@@ -158,26 +158,6 @@
   </url>
   
   <url>
-    <loc>https://Jerrysmd.github.io/tags/markdown/</loc>
-    <lastmod>2020-10-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/post/20201002markdown-syntax/</loc>
-    <lastmod>2020-10-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/series/</loc>
-    <lastmod>2020-10-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/series/themes-guide/</loc>
-    <lastmod>2020-10-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://Jerrysmd.github.io/about/</loc>
     <lastmod>2020-10-01T00:00:00+00:00</lastmod>
   </url>
@@ -185,6 +165,10 @@
   <url>
     <loc>https://Jerrysmd.github.io/archives/</loc>
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://Jerrysmd.github.io/series/</loc>
   </url>
   
 </urlset>
