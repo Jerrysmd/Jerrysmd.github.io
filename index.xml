@@ -7,15 +7,72 @@
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 02 Feb 2021 14:07:22 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>20210202IdeaProjStruc</title>
+      <title>IDEA Project Structure: Part 1, Project</title>
       <link>https://Jerrysmd.github.io/post/20210202ideaprojstruc/</link>
       <pubDate>Tue, 02 Feb 2021 14:07:22 +0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20210202ideaprojstruc/</guid>
       <description>
         
-          &lt;p&gt;&lt;strong&gt;insert artical description&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Insert Lead paragraph here.&lt;/strong&gt;&lt;/p&gt;
+          &lt;p&gt;工欲善其事，必先利其器。IDE的页布局、功能定制、插件、以及快捷键等熟练程度的使用都会是开发能力的提体现。本文将深入的介绍IntelliJ IDEA里最重要的两个概念：Project和Module，它是最基础也是最重要的。&lt;/p&gt;
+&lt;h2 id=&#34;concept&#34;&gt;Concept&lt;/h2&gt;
+&lt;p&gt;Eclipse对比IDEA&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Eclipse&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;IDEA&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;workspace&lt;/td&gt;
+&lt;td&gt;工作区&lt;/td&gt;
+&lt;td&gt;Project&lt;/td&gt;
+&lt;td&gt;项目&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Project&lt;/td&gt;
+&lt;td&gt;项目&lt;/td&gt;
+&lt;td&gt;Module&lt;/td&gt;
+&lt;td&gt;模块&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Project-SpecificJRE&lt;/td&gt;
+&lt;td&gt;当前项目制定使用的JRE&lt;/td&gt;
+&lt;td&gt;Module JDK&lt;/td&gt;
+&lt;td&gt;当前模块制定使用的JDK&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;User library&lt;/td&gt;
+&lt;td&gt;用户自定义库，所有project都可以用&lt;/td&gt;
+&lt;td&gt;Global library&lt;/td&gt;
+&lt;td&gt;用户自定义库，所有Module都可以用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Classpath variable&lt;/td&gt;
+&lt;td&gt;classpath 变量&lt;/td&gt;
+&lt;td&gt;Path variable&lt;/td&gt;
+&lt;td&gt;classpath变量&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Library&lt;/td&gt;
+&lt;td&gt;当前项目中的库&lt;/td&gt;
+&lt;td&gt;Module Library&lt;/td&gt;
+&lt;td&gt;当前模块中的库&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;1-what-is-project&#34;&gt;1. What is Project&lt;/h3&gt;
+&lt;h3 id=&#34;2-what-is-module&#34;&gt;2. What is Module&lt;/h3&gt;
+&lt;h3 id=&#34;3-wrong-way-to-use&#34;&gt;3. Wrong way to use&lt;/h3&gt;
+&lt;h3 id=&#34;4-correct-way-to-use&#34;&gt;4. Correct way to use&lt;/h3&gt;
+&lt;h2 id=&#34;new-project&#34;&gt;New Project&lt;/h2&gt;
+&lt;h3 id=&#34;1-role-of-idea-folder&#34;&gt;1. Role of .idea folder&lt;/h3&gt;
+&lt;h2 id=&#34;new-module&#34;&gt;New Module&lt;/h2&gt;
+&lt;h3 id=&#34;1-role-of-xxximl&#34;&gt;1. Role of xxx.iml&lt;/h3&gt;
         
       </description>
     </item>

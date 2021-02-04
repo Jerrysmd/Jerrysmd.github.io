@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en" data-figures="true" class="page" data-mode="dim">
   <head>
-<title>20210202IdeaProjStruc | JerrysBlog</title>
+<title>IDEA Project Structure: Part 1, Project | JerrysBlog</title>
 <meta charset="utf-8">
 <meta name="generator" content="Hugo 0.76.5" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -20,9 +20,9 @@
 <meta name="description" content="Article description.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@0x4c2">
-<meta name="twitter:title" content="20210202IdeaProjStruc" />
+<meta name="twitter:title" content="IDEA Project Structure: Part 1, Project" />
 <meta property="og:url" content="https://Jerrysmd.github.io/post/20210202ideaprojstruc/" />
-<meta property="og:title" content="20210202IdeaProjStruc" />
+<meta property="og:title" content="IDEA Project Structure: Part 1, Project" />
 <meta property="og:description" content="Article description." />
 <meta property="og:image" content="https://Jerrysmd.github.io/images/7.png" />
 <link rel="apple-touch-icon" sizes="180x180" href='https://Jerrysmd.github.io/icons/apple-touch-icon.png'>
@@ -123,28 +123,28 @@
   
 <div class="grid-inverse wrap content">
   <article class="post_content">
-    <h1 class="post_title">20210202IdeaProjStruc</h1><div class="post_meta">
+    <h1 class="post_title">IDEA Project Structure: Part 1, Project</h1><div class="post_meta">
   
     <svg class="icon">
   <use xlink:href="#calendar"></use>
 </svg>
     <span class="post_date">
       Feb 2, 2021</span>
-      <a href='https://Jerrysmd.github.io/tags/tag_name1' class="post_tag button button_translucent">Tag_name1
+      <a href='https://Jerrysmd.github.io/tags/java' class="post_tag button button_translucent">java
       </a>
-      <a href='https://Jerrysmd.github.io/tags/tag_name2' class="post_tag button button_translucent">Tag_name2
+      <a href='https://Jerrysmd.github.io/tags/idea' class="post_tag button button_translucent">idea
       </a>
 </div>
 
     
   <div class="post_share">
     Share on:
-    <a href="https://twitter.com/intent/tweet?text=20210202IdeaProjStruc&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20210202ideaprojstruc%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
+    <a href="https://twitter.com/intent/tweet?text=IDEA%20Project%20Structure%3a%20Part%201%2c%20Project&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20210202ideaprojstruc%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
       <svg class="icon">
   <use xlink:href="#twitter"></use>
 </svg>
     </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20210202ideaprojstruc%2f&t=20210202IdeaProjStruc" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20210202ideaprojstruc%2f&t=IDEA%20Project%20Structure%3a%20Part%201%2c%20Project" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
       <svg class="icon">
   <use xlink:href="#facebook"></use>
 </svg>
@@ -164,9 +164,87 @@
     
     
     <h2>Overview</h2>
-    <nav id="TableOfContents"></nav>
-    <p><strong>insert artical description</strong></p>
-<p><strong>Insert Lead paragraph here.</strong></p>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#concept">Concept</a>
+      <ul>
+        <li><a href="#1-what-is-project">1. What is Project</a></li>
+        <li><a href="#2-what-is-module">2. What is Module</a></li>
+        <li><a href="#3-wrong-way-to-use">3. Wrong way to use</a></li>
+        <li><a href="#4-correct-way-to-use">4. Correct way to use</a></li>
+      </ul>
+    </li>
+    <li><a href="#new-project">New Project</a>
+      <ul>
+        <li><a href="#1-role-of-idea-folder">1. Role of .idea folder</a></li>
+      </ul>
+    </li>
+    <li><a href="#new-module">New Module</a>
+      <ul>
+        <li><a href="#1-role-of-xxximl">1. Role of xxx.iml</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    <p>工欲善其事，必先利其器。IDE的页布局、功能定制、插件、以及快捷键等熟练程度的使用都会是开发能力的提体现。本文将深入的介绍IntelliJ IDEA里最重要的两个概念：Project和Module，它是最基础也是最重要的。</p>
+<h2 id="concept">Concept</h2>
+<p>Eclipse对比IDEA</p>
+<table>
+<thead>
+<tr>
+<th>Eclipse</th>
+<th></th>
+<th>IDEA</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>workspace</td>
+<td>工作区</td>
+<td>Project</td>
+<td>项目</td>
+</tr>
+<tr>
+<td>Project</td>
+<td>项目</td>
+<td>Module</td>
+<td>模块</td>
+</tr>
+<tr>
+<td>Project-SpecificJRE</td>
+<td>当前项目制定使用的JRE</td>
+<td>Module JDK</td>
+<td>当前模块制定使用的JDK</td>
+</tr>
+<tr>
+<td>User library</td>
+<td>用户自定义库，所有project都可以用</td>
+<td>Global library</td>
+<td>用户自定义库，所有Module都可以用</td>
+</tr>
+<tr>
+<td>Classpath variable</td>
+<td>classpath 变量</td>
+<td>Path variable</td>
+<td>classpath变量</td>
+</tr>
+<tr>
+<td>Library</td>
+<td>当前项目中的库</td>
+<td>Module Library</td>
+<td>当前模块中的库</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-what-is-project">1. What is Project</h3>
+<h3 id="2-what-is-module">2. What is Module</h3>
+<h3 id="3-wrong-way-to-use">3. Wrong way to use</h3>
+<h3 id="4-correct-way-to-use">4. Correct way to use</h3>
+<h2 id="new-project">New Project</h2>
+<h3 id="1-role-of-idea-folder">1. Role of .idea folder</h3>
+<h2 id="new-module">New Module</h2>
+<h3 id="1-role-of-xxximl">1. Role of xxx.iml</h3>
     
       
     
@@ -256,6 +334,11 @@
           <span class="button_tally">2</span>
         </a>
         
+        <a href='https://Jerrysmd.github.io/tags/java/' class="post_tag button button_translucent">
+          JAVA
+          <span class="button_tally">2</span>
+        </a>
+        
         <a href='https://Jerrysmd.github.io/tags/linux/' class="post_tag button button_translucent">
           LINUX
           <span class="button_tally">2</span>
@@ -276,23 +359,13 @@
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://Jerrysmd.github.io/tags/java/' class="post_tag button button_translucent">
-          JAVA
+        <a href='https://Jerrysmd.github.io/tags/idea/' class="post_tag button button_translucent">
+          IDEA
           <span class="button_tally">1</span>
         </a>
         
         <a href='https://Jerrysmd.github.io/tags/sql/' class="post_tag button button_translucent">
           SQL
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://Jerrysmd.github.io/tags/tag_name1/' class="post_tag button button_translucent">
-          TAG_NAME1
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://Jerrysmd.github.io/tags/tag_name2/' class="post_tag button button_translucent">
-          TAG_NAME2
           <span class="button_tally">1</span>
         </a>
         
