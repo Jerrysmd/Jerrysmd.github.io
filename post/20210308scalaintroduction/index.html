@@ -160,21 +160,22 @@
     <h2>Overview</h2>
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#1-repl">1. REPL</a></li>
-    <li><a href="#2-scaladoc">2. Scaladoc</a></li>
-    <li><a href="#3-val--var">3. val &amp; var</a></li>
-    <li><a href="#4-lazy-value">4. Lazy Value</a></li>
-    <li><a href="#5-data-type">5. Data Type</a></li>
-    <li><a href="#6-control-and-function">6. Control and Function</a></li>
-    <li><a href="#7-array">7. Array</a></li>
-    <li><a href="#8-map-and-tuple">8. Map and Tuple</a></li>
+    <li><a href="#1-repl--scaladoc">1. REPL &amp; Scaladoc</a></li>
+    <li><a href="#2-data-type">2. Data Type</a>
+      <ul>
+        <li><a href="#21-data-type">2.1 Data Type</a></li>
+        <li><a href="#22-valvar--lazy-value">2.2 val、var &amp; Lazy Value</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-control-and-function">3. Control and Function</a></li>
+    <li><a href="#4-array">4. Array</a></li>
+    <li><a href="#5-map-and-tuple">5. Map and Tuple</a></li>
   </ul>
 </nav>
     <p>Scala combines object-oriented and functional programming in one concise, high-level language. Scala's static types help avoid bugs in complex applications, and its JVM and JavaScript runtimes let you build high-performance systems with easy access to huge ecosystems of libraries.</p>
-<h2 id="1-repl">1. REPL</h2>
+<h2 id="1-repl--scaladoc">1. REPL &amp; Scaladoc</h2>
 <p>Scala解释器读到一个表达式，对它进行求值，将它打印出来，接着再继续读下一个表达式。这个过程被称做Read-Eval-Print-Loop，即：REPL。
 从技术上讲，scala程序并不是一个解释器。实际发生的是，你输入的内容被快速地编译成字节码，然后这段字节码交由Java虚拟机执行。正因为如此，大多数scala程序员更倾向于将它称做“REPL”</p>
-<h2 id="2-scaladoc">2. Scaladoc</h2>
 <p>scala api文档，包含了scala所有的api以及使用说明，class、object、trait、function、method、implicit等</p>
 <p>为什么要查阅Scaladoc：如果只是写一些普通的Scala程序基本够用了；但是如果（在现在，或者未来，实际的工作环境中）要编写复杂的scala程序，那么还是需要参考Scaladoc的。（纯粹用scala开发spark应用程序，应该不会特别复杂；用scala构建类似于spark的公司内的分布式的大型系统）</p>
 <p>以下是一些Scaladoc使用的tips（小贴士，小备注）：</p>
@@ -185,24 +186,8 @@
 <li>标记为implicit的方法，代表的是隐式转换</li>
 <li>举例：搜索StringOps，可以看到String的增强类，StringOps的所有方法说明</li>
 </ol>
-<h2 id="3-val--var">3. val &amp; var</h2>
-<ol>
-<li>内容是否可变：val修饰的是不可变的，var修饰是可变的</li>
-<li>val修饰的变量在编译后类似于java中的中的变量被final修饰</li>
-<li>lazy修饰符可以修饰变量，但是这个变量必须是val修饰的</li>
-</ol>
-<p>ps. lazy相当于延迟加载（懒加载），当前变量使用lazy修饰的时候，只要变量不被调用，就不会进行初始化，什么时候调用，什么时候进行初始化</p>
-<h2 id="4-lazy-value">4. Lazy Value</h2>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">lazy</span> <span class="k">val</span> <span class="n">words</span> <span class="k">=</span> <span class="n">scala</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="nc">Source</span><span class="o">.</span><span class="n">fromFile</span><span class="o">(</span><span class="s">&#34;/usr/share/dict/words&#34;</span><span class="o">).</span><span class="n">mkString</span>
-<span class="ln">2</span><span class="c1">//当val被声明为lazy时，它的初始化将被推迟，直到我们首次对他取值
-</span></code></pre></div><p>懒值对于开销大的初始化语句十分有用。它还可以用来应对其他初始化问题，比如循环依赖。更重要的是，它是开发懒数据结构的基础。</p>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">words</span> <span class="k">=</span> <span class="o">...</span>
-<span class="ln">2</span><span class="c1">//在words被定义时即被取值
-</span><span class="ln">3</span><span class="c1"></span><span class="k">lazy</span> <span class="k">val</span> <span class="n">words</span> <span class="k">=</span> <span class="o">...</span>
-<span class="ln">4</span><span class="c1">//在words被首次使用时取值
-</span><span class="ln">5</span><span class="c1"></span><span class="k">def</span> <span class="n">words</span> <span class="k">=</span> <span class="o">...</span>
-<span class="ln">6</span><span class="c1">//在每一次words被使用时取值
-</span></code></pre></div><h2 id="5-data-type">5. Data Type</h2>
+<h2 id="2-data-type">2. Data Type</h2>
+<h3 id="21-data-type">2.1 Data Type</h3>
 <table>
 <thead>
 <tr>
@@ -269,7 +254,23 @@
 </tr>
 </tbody>
 </table>
-<h2 id="6-control-and-function">6. Control and Function</h2>
+<h3 id="22-valvar--lazy-value">2.2 val、var &amp; Lazy Value</h3>
+<ol>
+<li>内容是否可变：val修饰的是不可变的，var修饰是可变的</li>
+<li>val修饰的变量在编译后类似于java中的中的变量被final修饰</li>
+<li>lazy修饰符可以修饰变量，但是这个变量必须是val修饰的</li>
+</ol>
+<p>ps. lazy相当于延迟加载（懒加载），当前变量使用lazy修饰的时候，只要变量不被调用，就不会进行初始化，什么时候调用，什么时候进行初始化</p>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">lazy</span> <span class="k">val</span> <span class="n">words</span> <span class="k">=</span> <span class="n">scala</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="nc">Source</span><span class="o">.</span><span class="n">fromFile</span><span class="o">(</span><span class="s">&#34;/usr/share/dict/words&#34;</span><span class="o">).</span><span class="n">mkString</span>
+<span class="ln">2</span><span class="c1">//当val被声明为lazy时，它的初始化将被推迟，直到我们首次对他取值
+</span></code></pre></div><p>懒值对于开销大的初始化语句十分有用。它还可以用来应对其他初始化问题，比如循环依赖。更重要的是，它是开发懒数据结构的基础。</p>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">words</span> <span class="k">=</span> <span class="o">...</span>
+<span class="ln">2</span><span class="c1">//在words被定义时即被取值
+</span><span class="ln">3</span><span class="c1"></span><span class="k">lazy</span> <span class="k">val</span> <span class="n">words</span> <span class="k">=</span> <span class="o">...</span>
+<span class="ln">4</span><span class="c1">//在words被首次使用时取值
+</span><span class="ln">5</span><span class="c1"></span><span class="k">def</span> <span class="n">words</span> <span class="k">=</span> <span class="o">...</span>
+<span class="ln">6</span><span class="c1">//在每一次words被使用时取值
+</span></code></pre></div><h2 id="3-control-and-function">3. Control and Function</h2>
 <ol>
 <li>if表达式也有值</li>
 <li>块也有值：是它最后一个表达式的值</li>
@@ -281,7 +282,7 @@
 <li>异常的工作方式和Java或C++基本一样，不同的是你在catch语句中使用“模式匹配”</li>
 <li>Scala没有受检异常</li>
 </ol>
-<h2 id="7-array">7. Array</h2>
+<h2 id="4-array">4. Array</h2>
 <ol>
 <li>若长度固定可用Array，若长度可能有变化则使用ArrayBuffer</li>
 <li>提供初始值时不要使用new</li>
@@ -290,7 +291,7 @@
 <li>用for(elem &lt;- arr if ...) yield ... 来将原数据转型为新数组</li>
 <li>Scala数组和Java数组可以相互操作，用ArrayBuffer，使用scala.collection.JavaConversions中的转换函数</li>
 </ol>
-<h2 id="8-map-and-tuple">8. Map and Tuple</h2>
+<h2 id="5-map-and-tuple">5. Map and Tuple</h2>
 <ol>
 <li>Scala有十分易用的语法来创建、查询和遍历映射(Map)</li>
 <li>你需要从可变的和不可变的映射中做出选择</li>
