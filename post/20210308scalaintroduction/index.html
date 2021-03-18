@@ -174,6 +174,7 @@ src='https://plausible.io/js/plausible.js'>
     <li><a href="#3-control-and-function">3. Control and Function</a></li>
     <li><a href="#4-array">4. Array</a></li>
     <li><a href="#5-map-and-tuple">5. Map and Tuple</a></li>
+    <li><a href="#6-class">6. Class</a></li>
   </ul>
 </nav>
     <p>Scala combines object-oriented and functional programming in one concise, high-level language. Scala's static types help avoid bugs in complex applications, and its JVM and JavaScript runtimes let you build high-performance systems with easy access to huge ecosystems of libraries.</p>
@@ -302,6 +303,14 @@ src='https://plausible.io/js/plausible.js'>
 <li>默认情况下，你得到的是一个哈希映射(Hash Map)，不过你也可以指明要树形映射</li>
 <li>你可以很容易地在Scala映射和Java映射之间来回切换</li>
 <li>元组可以用来聚集值</li>
+</ol>
+<h2 id="6-class">6. Class</h2>
+<ol>
+<li>类中的字段自动带有getter方法和setter方法</li>
+<li>可以用定制的getter/setter方法替换掉字段的定义，而不必修改使用类的客户端——这就是所谓的“统一访问原则”</li>
+<li>用@BeanProperty注解来生成JavaBeans的get*/set*方法</li>
+<li>每个类都有一个主要的构造器，这个构造器和类定义&quot;交织&quot;在一起。它的参数直接为类的字段。主构造器执行类体中所有的语句</li>
+<li>辅助构造器是可选的。他们叫做this</li>
 </ol>
 
   </article>

@@ -141,6 +141,14 @@
 &lt;li&gt;你可以很容易地在Scala映射和Java映射之间来回切换&lt;/li&gt;
 &lt;li&gt;元组可以用来聚集值&lt;/li&gt;
 &lt;/ol&gt;
+&lt;h2 id=&#34;6-class&#34;&gt;6. Class&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;类中的字段自动带有getter方法和setter方法&lt;/li&gt;
+&lt;li&gt;可以用定制的getter/setter方法替换掉字段的定义，而不必修改使用类的客户端——这就是所谓的“统一访问原则”&lt;/li&gt;
+&lt;li&gt;用@BeanProperty注解来生成JavaBeans的get*/set*方法&lt;/li&gt;
+&lt;li&gt;每个类都有一个主要的构造器，这个构造器和类定义&amp;quot;交织&amp;quot;在一起。它的参数直接为类的字段。主构造器执行类体中所有的语句&lt;/li&gt;
+&lt;li&gt;辅助构造器是可选的。他们叫做this&lt;/li&gt;
+&lt;/ol&gt;
         
       </description>
     </item>
