@@ -175,6 +175,7 @@ src='https://plausible.io/js/plausible.js'>
     <li><a href="#4-array">4. Array</a></li>
     <li><a href="#5-map-and-tuple">5. Map and Tuple</a></li>
     <li><a href="#6-class">6. Class</a></li>
+    <li><a href="#7-object">7. Object</a></li>
   </ul>
 </nav>
     <p>Scala combines object-oriented and functional programming in one concise, high-level language. Scala's static types help avoid bugs in complex applications, and its JVM and JavaScript runtimes let you build high-performance systems with easy access to huge ecosystems of libraries.</p>
@@ -183,7 +184,7 @@ src='https://plausible.io/js/plausible.js'>
 从技术上讲，scala程序并不是一个解释器。实际发生的是，你输入的内容被快速地编译成字节码，然后这段字节码交由Java虚拟机执行。正因为如此，大多数scala程序员更倾向于将它称做“REPL”</p>
 <p>scala api文档，包含了scala所有的api以及使用说明，class、object、trait、function、method、implicit等</p>
 <p>为什么要查阅Scaladoc：如果只是写一些普通的Scala程序基本够用了；但是如果（在现在，或者未来，实际的工作环境中）要编写复杂的scala程序，那么还是需要参考Scaladoc的。（纯粹用scala开发spark应用程序，应该不会特别复杂；用scala构建类似于spark的公司内的分布式的大型系统）</p>
-<p>以下是一些Scaladoc使用的tips（小贴士，小备注）：</p>
+<p>以下是一些Scaladoc使用的tips：</p>
 <ol>
 <li>直接在左上角的搜索框中，搜索你需要的寻找的包、类即可</li>
 <li>C和O，分别代表了类和伴生对象的概念</li>
@@ -311,6 +312,15 @@ src='https://plausible.io/js/plausible.js'>
 <li>用@BeanProperty注解来生成JavaBeans的get*/set*方法</li>
 <li>每个类都有一个主要的构造器，这个构造器和类定义&quot;交织&quot;在一起。它的参数直接为类的字段。主构造器执行类体中所有的语句</li>
 <li>辅助构造器是可选的。他们叫做this</li>
+</ol>
+<h2 id="7-object">7. Object</h2>
+<ol>
+<li>对象作为单例或存放工具方法</li>
+<li>类可以拥有一个同名的伴生对象</li>
+<li>对象可以扩展类或特质</li>
+<li>对象的apply方法通常用来构造伴生类的新实例</li>
+<li>如果不想显示定义main方法，可以用扩展App特质的对象</li>
+<li>可以通过扩展Enumeration对象来实现枚举</li>
 </ol>
 
   </article>
