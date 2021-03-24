@@ -158,6 +158,18 @@
 &lt;li&gt;如果不想显示定义main方法，可以用扩展App特质的对象&lt;/li&gt;
 &lt;li&gt;可以通过扩展Enumeration对象来实现枚举&lt;/li&gt;
 &lt;/ol&gt;
+&lt;h2 id=&#34;8-package&#34;&gt;8. Package&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;包也可以像内部类那样嵌套&lt;/li&gt;
+&lt;li&gt;包路径不是绝对路径&lt;/li&gt;
+&lt;li&gt;包声明链x.y.z并不自动将中间包x和x.y变成可见&lt;/li&gt;
+&lt;li&gt;位于文件顶部不带花括号的包声明在整个文件范围内有效&lt;/li&gt;
+&lt;li&gt;包对象可以持有函数和变量&lt;/li&gt;
+&lt;li&gt;引入语句可以引入包、类和对象&lt;/li&gt;
+&lt;li&gt;引入语句可以出现在任何位置&lt;/li&gt;
+&lt;li&gt;引入语句可以重命名和隐藏特定成员&lt;/li&gt;
+&lt;li&gt;java.lang、scala和predef总是被引入&lt;/li&gt;
+&lt;/ol&gt;
         
       </description>
     </item>

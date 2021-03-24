@@ -176,6 +176,7 @@ src='https://plausible.io/js/plausible.js'>
     <li><a href="#5-map-and-tuple">5. Map and Tuple</a></li>
     <li><a href="#6-class">6. Class</a></li>
     <li><a href="#7-object">7. Object</a></li>
+    <li><a href="#8-package">8. Package</a></li>
   </ul>
 </nav>
     <p>Scala combines object-oriented and functional programming in one concise, high-level language. Scala's static types help avoid bugs in complex applications, and its JVM and JavaScript runtimes let you build high-performance systems with easy access to huge ecosystems of libraries.</p>
@@ -321,6 +322,18 @@ src='https://plausible.io/js/plausible.js'>
 <li>对象的apply方法通常用来构造伴生类的新实例</li>
 <li>如果不想显示定义main方法，可以用扩展App特质的对象</li>
 <li>可以通过扩展Enumeration对象来实现枚举</li>
+</ol>
+<h2 id="8-package">8. Package</h2>
+<ol>
+<li>包也可以像内部类那样嵌套</li>
+<li>包路径不是绝对路径</li>
+<li>包声明链x.y.z并不自动将中间包x和x.y变成可见</li>
+<li>位于文件顶部不带花括号的包声明在整个文件范围内有效</li>
+<li>包对象可以持有函数和变量</li>
+<li>引入语句可以引入包、类和对象</li>
+<li>引入语句可以出现在任何位置</li>
+<li>引入语句可以重命名和隐藏特定成员</li>
+<li>java.lang、scala和predef总是被引入</li>
 </ol>
 
   </article>
