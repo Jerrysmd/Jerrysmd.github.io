@@ -175,7 +175,7 @@
 &lt;li&gt;extends、final关键字和Java中相同&lt;/li&gt;
 &lt;li&gt;重写方法时必须用override&lt;/li&gt;
 &lt;li&gt;只有主构造器可以用超类的主构造器&lt;/li&gt;
-&lt;li&gt;你可以重写字段&lt;/li&gt;
+&lt;li&gt;可以重写字段&lt;/li&gt;
 &lt;/ol&gt;
         
       </description>
