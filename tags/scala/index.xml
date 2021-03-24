@@ -170,6 +170,13 @@
 &lt;li&gt;引入语句可以重命名和隐藏特定成员&lt;/li&gt;
 &lt;li&gt;java.lang、scala和predef总是被引入&lt;/li&gt;
 &lt;/ol&gt;
+&lt;h2 id=&#34;9-extends&#34;&gt;9. Extends&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;extends、final关键字和Java中相同&lt;/li&gt;
+&lt;li&gt;重写方法时必须用override&lt;/li&gt;
+&lt;li&gt;只有主构造器可以用超类的主构造器&lt;/li&gt;
+&lt;li&gt;你可以重写字段&lt;/li&gt;
+&lt;/ol&gt;
         
       </description>
     </item>
