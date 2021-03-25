@@ -187,6 +187,33 @@
 &lt;li&gt;如果你的正则表达式包含反斜杠的话，用&amp;quot;&amp;quot;&amp;quot;...&amp;quot;&amp;quot;&amp;quot;&lt;/li&gt;
 &lt;li&gt;如果正则模式包含分组，你可以用如下语法来提取它们的内容for(regex(变量1,...,变量n) &amp;lt;- 字符串)&lt;/li&gt;
 &lt;/ol&gt;
+&lt;h2 id=&#34;11-feature&#34;&gt;11. Feature&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;类可以实现任意数量的特质&lt;/li&gt;
+&lt;li&gt;特质可以要求实现它们的类具备特定的字段、方法或超类&lt;/li&gt;
+&lt;li&gt;和Java接口不同，Scala特质可以提供方法和字段的实现&lt;/li&gt;
+&lt;li&gt;当将多个特质叠加在一起时，顺序很重要——其方法先被执行啊的特质排在更后面&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;12-advanced-function&#34;&gt;12. Advanced function&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;函数可以直接赋值给变量，就和数字一样&lt;/li&gt;
+&lt;li&gt;可以创建匿名函数，通常还会把它们交给其他函数&lt;/li&gt;
+&lt;li&gt;函数参数可以给出需要稍后执行的行为&lt;/li&gt;
+&lt;li&gt;许多集合方法都接受函数参数，将函数应用到集合中的值&lt;/li&gt;
+&lt;li&gt;有很多语法上的简写让你以简短且易读的方式表达函数参数&lt;/li&gt;
+&lt;li&gt;可以创建操作代码块的函数，它们看上去就像是内建的控制语句&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;13-collection&#34;&gt;13. Collection&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;所有集合都扩展自Iterable特质&lt;/li&gt;
+&lt;li&gt;集合有三大类，分别为序列、集合映射&lt;/li&gt;
+&lt;li&gt;对于几乎所有集合类，Scala都同时提供了可变的和不可变的版本&lt;/li&gt;
+&lt;li&gt;Scala列表要么是空的，要么拥有一头一尾，其中尾部本身又是一个列表&lt;/li&gt;
+&lt;li&gt;集是无先后次序的集合&lt;/li&gt;
+&lt;li&gt;用LinkedHashSet保留插入顺序，或者用SortedSet按顺序进行迭代&lt;/li&gt;
+&lt;li&gt;+将元素添加到无先后次序的集合中；+:和:+向前或向后追加到序列；++将两个集合串接在一起；-和--移除元素&lt;/li&gt;
+&lt;li&gt;映射、折叠和拉链操作是很有用的技巧，用来将函数或操作应用到集合中的元素&lt;/li&gt;
+&lt;/ol&gt;
         
       </description>
     </item>
