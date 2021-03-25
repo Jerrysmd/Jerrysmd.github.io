@@ -178,6 +178,7 @@ src='https://plausible.io/js/plausible.js'>
     <li><a href="#7-object">7. Object</a></li>
     <li><a href="#8-package">8. Package</a></li>
     <li><a href="#9-extends">9. Extends</a></li>
+    <li><a href="#10-fileregex">10. File&amp;Regex</a></li>
   </ul>
 </nav>
     <p>Scala combines object-oriented and functional programming in one concise, high-level language. Scala's static types help avoid bugs in complex applications, and its JVM and JavaScript runtimes let you build high-performance systems with easy access to huge ecosystems of libraries.</p>
@@ -342,6 +343,16 @@ src='https://plausible.io/js/plausible.js'>
 <li>重写方法时必须用override</li>
 <li>只有主构造器可以用超类的主构造器</li>
 <li>可以重写字段</li>
+</ol>
+<h2 id="10-fileregex">10. File&amp;Regex</h2>
+<ol>
+<li>Source.fromFile(...).getLines.toArray将交出文件的所有行</li>
+<li>Source.fromFile(...).mkString将以字符串形式交出文件内容</li>
+<li>将字符串转化为数字，可以用toInt或toDouble方法</li>
+<li>使用Java的PrintWriter来写入文本文件</li>
+<li>&quot;正则&quot;.r是一个Regex对象</li>
+<li>如果你的正则表达式包含反斜杠的话，用&quot;&quot;&quot;...&quot;&quot;&quot;</li>
+<li>如果正则模式包含分组，你可以用如下语法来提取它们的内容for(regex(变量1,...,变量n) &lt;- 字符串)</li>
 </ol>
 
   </article>

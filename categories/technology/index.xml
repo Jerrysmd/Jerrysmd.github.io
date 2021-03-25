@@ -177,6 +177,16 @@
 &lt;li&gt;只有主构造器可以用超类的主构造器&lt;/li&gt;
 &lt;li&gt;可以重写字段&lt;/li&gt;
 &lt;/ol&gt;
+&lt;h2 id=&#34;10-fileregex&#34;&gt;10. File&amp;amp;Regex&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Source.fromFile(...).getLines.toArray将交出文件的所有行&lt;/li&gt;
+&lt;li&gt;Source.fromFile(...).mkString将以字符串形式交出文件内容&lt;/li&gt;
+&lt;li&gt;将字符串转化为数字，可以用toInt或toDouble方法&lt;/li&gt;
+&lt;li&gt;使用Java的PrintWriter来写入文本文件&lt;/li&gt;
+&lt;li&gt;&amp;quot;正则&amp;quot;.r是一个Regex对象&lt;/li&gt;
+&lt;li&gt;如果你的正则表达式包含反斜杠的话，用&amp;quot;&amp;quot;&amp;quot;...&amp;quot;&amp;quot;&amp;quot;&lt;/li&gt;
+&lt;li&gt;如果正则模式包含分组，你可以用如下语法来提取它们的内容for(regex(变量1,...,变量n) &amp;lt;- 字符串)&lt;/li&gt;
+&lt;/ol&gt;
         
       </description>
     </item>
