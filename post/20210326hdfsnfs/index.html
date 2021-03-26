@@ -1,8 +1,8 @@
 
 <!DOCTYPE html>
-<html lang="en" data-figures="" data-mode="dim">
+<html lang="en" data-figures="true" class="page" data-mode="dim">
   <head>
-<title>Series | JerrysBlog</title>
+<title>HDFS &amp; NFS | JerrysBlog</title>
 <meta charset="utf-8">
 <meta name="generator" content="Hugo 0.81.0" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -20,14 +20,14 @@ src='https://plausible.io/js/plausible.js'>
 <meta property="og:locale" content="en" />
 
 <meta property="og:type" content="article">
-<meta name="description" content="">
+<meta name="description" content="Article description.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@0x4c2">
-<meta name="twitter:title" content="Series" />
-<meta property="og:url" content="https://Jerrysmd.github.io/series/" />
-<meta property="og:title" content="Series" />
-<meta property="og:description" content="" />
-<meta property="og:image" content="https://Jerrysmd.github.io/images/thumbnail.png" />
+<meta name="twitter:title" content="HDFS &amp; NFS" />
+<meta property="og:url" content="https://Jerrysmd.github.io/post/20210326hdfsnfs/" />
+<meta property="og:title" content="HDFS &amp; NFS" />
+<meta property="og:description" content="Article description." />
+<meta property="og:image" content="https://Jerrysmd.github.io/images/10.png" />
 <link rel="apple-touch-icon" sizes="180x180" href='https://Jerrysmd.github.io/icons/apple-touch-icon.png'>
 <link rel="icon" type="image/png" sizes="32x32" href='https://Jerrysmd.github.io/icons/favicon-32x32.png'>
 <link rel="manifest" href='https://Jerrysmd.github.io/icons/site.webmanifest'>
@@ -35,8 +35,7 @@ src='https://plausible.io/js/plausible.js'>
 <meta name="msapplication-TileColor" content="#002538">
 <meta name="theme-color" content="#002538">
 
-<link rel="canonical" href="https://Jerrysmd.github.io/series/">
-<link rel="alternate" type="application/rss+xml" href="https://Jerrysmd.github.io/series/index.xml" title="JerrysBlog" />
+<link rel="canonical" href="https://Jerrysmd.github.io/post/20210326hdfsnfs/">
 
     
 
@@ -54,8 +53,7 @@ src='https://plausible.io/js/plausible.js'>
   
   
     
-  
-  <body data-code="7" data-lines="true" id="documentTop">
+  <body data-code="40" data-lines="true" id="documentTop">
 
 <header class="nav_header" >
   <nav class="nav"><a href='https://Jerrysmd.github.io/' class="nav_brand nav_item" title="JerrysBlog">
@@ -122,14 +120,72 @@ src='https://plausible.io/js/plausible.js'>
 </header>
 
     <main>
-
+  
 <div class="grid-inverse wrap content">
-  <ul class="posts" id="posts">
-    <li>
+  <article class="post_content">
+    <h1 class="post_title">HDFS &amp; NFS</h1><div class="post_meta">
+  
+    <svg class="icon">
+  <use xlink:href="#calendar"></use>
+</svg>
+    <span class="post_date">
+      Mar 26, 2021</span>
+      <a href='https://Jerrysmd.github.io/tags/hdfs' title="HDFS" class="post_tag button button_translucent">HDFS
+      </a>
+      <a href='https://Jerrysmd.github.io/tags/nfs' title="NFS" class="post_tag button button_translucent">NFS
+      </a>
+</div>
 
+    
+  <div class="post_share">
+    Share on:
+    <a href="https://twitter.com/intent/tweet?text=HDFS%20%26%20NFS&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20210326hdfsnfs%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <use xlink:href="#twitter"></use>
+</svg>
+    </a>
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20210326hdfsnfs%2f&t=HDFS%20%26%20NFS" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <use xlink:href="#facebook"></use>
+</svg>
+    </a>
+    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="Share on LinkedIn" rel="nofollow">
+      <svg class="icon">
+  <use xlink:href="#linkedin"></use>
+</svg>
+    </a>
+    <a href="https://Jerrysmd.github.io/post/20210326hdfsnfs/" title="Copy Link" class="link link_yank">
+      <svg class="icon">
+  <use xlink:href="#copy"></use>
+</svg>
+    </a>
+  </div>
 
-    </li>
+    
+    
+    <h2>Overview</h2>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#nfs">NFS</a></li>
+    <li><a href="#hdfs">HDFS</a></li>
+    <li><a href="#相同点">相同点</a></li>
+    <li><a href="#不同点">不同点</a></li>
   </ul>
+</nav>
+    <p>The major difference between the two is Replication/Fault Tolerance. HDFS was designed to survive failures. NFS does not have any fault tolerance built in. Other than fault tolerance, HDFS does support multiple replicas of files. This eliminates (or eases) the common bottleneck of many clients accessing a single file. Since files have multiple replicas, on different physical disks, reading performance scales better than NFS.</p>
+<h2 id="nfs">NFS</h2>
+<p><strong>NFS (Network</strong> <strong>File system</strong>): A protocol developed that allows clients to access files over the network. NFS clients allow files to be accessed as if the files reside on the local machine, even though they reside on the disk of a networked machine.</p>
+<p>In <strong>NFS</strong>, the data is stored only on one main system. All the other systems in that network can access the data stored in that as if it was stored in their local system. But the problem with this is that, if the main system goes down, then the data is lost and also, the storage depends on the space available on that system.</p>
+<h2 id="hdfs">HDFS</h2>
+<p><strong>HDFS (Hadoop Distributed File System):</strong> A file system that is distributed amongst many networked computers or nodes. HDFS is fault tolerant because it stores multiple replicas of files on the file system, the default replication level is 3.</p>
+<p>In <strong>HDFS,</strong> data is distributed among different systems called datanodes. Here, the storage capacity is comparatively high. <strong>HDFS</strong> is mainly used to store Big Data and enable fast data transaction.</p>
+<h2 id="相同点">相同点</h2>
+<p>两者的文件系统数据均能够在相关系统内的多台机器上进行数据读取和写入，都是分布式文件系统</p>
+<h2 id="不同点">不同点</h2>
+<p>NFS是通过RPC通信协议进行数据共享的文件系统，所以NFS必须在运行的同时确保RPC能够正常工作。在不同的文件进行读取和写入时，实际上是对服务端的共享文件地址进行操作，一旦服务端出现问题，那么其他所有的机器无法进行文件读取和写入，并且数据无法找回。所以NFS系统的文件其实并没有备份，并且其服务端没有做高可用处理。</p>
+<p>HDFS是通过数据备份进行的大数据存储文件系统。HDFS有系统备份，并且其namenode有secondnamenode进行备份处理，更加安全可靠。数据在经过多副本存储后，能够抵御各种灾难，只要有一个副本不丢失，数据就不会丢失。所以数据的安全性很高。</p>
+
+  </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
     
@@ -159,9 +215,6 @@ src='https://plausible.io/js/plausible.js'>
     <h2 class="mt-4">Recent Posts</h2>
     <ul class="flex-column">
       <li>
-        <a href="https://Jerrysmd.github.io/post/20210326hdfsnfs/" class="nav-link" title="HDFS &amp; NFS">HDFS &amp; NFS</a>
-      </li>
-      <li>
         <a href="https://Jerrysmd.github.io/post/20210308scalaintroduction/" class="nav-link" title="Scala Introduction">Scala Introduction</a>
       </li>
       <li>
@@ -187,6 +240,9 @@ src='https://plausible.io/js/plausible.js'>
       </li>
       <li>
         <a href="https://Jerrysmd.github.io/post/20201110pythonintroduction/" class="nav-link" title="Python Introduction">Python Introduction</a>
+      </li>
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20201109%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="nav-link" title="C项目性能优化: C Project performance optimization">C项目性能优化: C Project performance optimization</a>
       </li>
     </ul>
     <div>
@@ -274,9 +330,8 @@ src='https://plausible.io/js/plausible.js'>
   </section>
 </aside>
 
+  
 </div>
-
-
     </main><svg width="0" height="0" class="hidden">
   <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="facebook">
     <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h151V331h-60v-90h60v-61c0-49.629 40.371-90 90-90h91v90h-91v61h91l-15 90h-76v181h121c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zm0 0"></path>

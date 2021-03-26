@@ -5,7 +5,31 @@
     <link>https://Jerrysmd.github.io/categories/technology/</link>
     <description>Recent content in Technology on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 08 Mar 2021 10:16:17 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/categories/technology/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 26 Mar 2021 11:02:36 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/categories/technology/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HDFS &amp; NFS</title>
+      <link>https://Jerrysmd.github.io/post/20210326hdfsnfs/</link>
+      <pubDate>Fri, 26 Mar 2021 11:02:36 +0800</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/20210326hdfsnfs/</guid>
+      <description>
+        
+          &lt;p&gt;The major difference between the two is Replication/Fault Tolerance. HDFS was designed to survive failures. NFS does not have any fault tolerance built in. Other than fault tolerance, HDFS does support multiple replicas of files. This eliminates (or eases) the common bottleneck of many clients accessing a single file. Since files have multiple replicas, on different physical disks, reading performance scales better than NFS.&lt;/p&gt;
+&lt;h2 id=&#34;nfs&#34;&gt;NFS&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;NFS (Network&lt;/strong&gt; &lt;strong&gt;File system&lt;/strong&gt;): A protocol developed that allows clients to access files over the network. NFS clients allow files to be accessed as if the files reside on the local machine, even though they reside on the disk of a networked machine.&lt;/p&gt;
+&lt;p&gt;In &lt;strong&gt;NFS&lt;/strong&gt;, the data is stored only on one main system. All the other systems in that network can access the data stored in that as if it was stored in their local system. But the problem with this is that, if the main system goes down, then the data is lost and also, the storage depends on the space available on that system.&lt;/p&gt;
+&lt;h2 id=&#34;hdfs&#34;&gt;HDFS&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;HDFS (Hadoop Distributed File System):&lt;/strong&gt; A file system that is distributed amongst many networked computers or nodes. HDFS is fault tolerant because it stores multiple replicas of files on the file system, the default replication level is 3.&lt;/p&gt;
+&lt;p&gt;In &lt;strong&gt;HDFS,&lt;/strong&gt; data is distributed among different systems called datanodes. Here, the storage capacity is comparatively high. &lt;strong&gt;HDFS&lt;/strong&gt; is mainly used to store Big Data and enable fast data transaction.&lt;/p&gt;
+&lt;h2 id=&#34;相同点&#34;&gt;相同点&lt;/h2&gt;
+&lt;p&gt;两者的文件系统数据均能够在相关系统内的多台机器上进行数据读取和写入，都是分布式文件系统&lt;/p&gt;
+&lt;h2 id=&#34;不同点&#34;&gt;不同点&lt;/h2&gt;
+&lt;p&gt;NFS是通过RPC通信协议进行数据共享的文件系统，所以NFS必须在运行的同时确保RPC能够正常工作。在不同的文件进行读取和写入时，实际上是对服务端的共享文件地址进行操作，一旦服务端出现问题，那么其他所有的机器无法进行文件读取和写入，并且数据无法找回。所以NFS系统的文件其实并没有备份，并且其服务端没有做高可用处理。&lt;/p&gt;
+&lt;p&gt;HDFS是通过数据备份进行的大数据存储文件系统。HDFS有系统备份，并且其namenode有secondnamenode进行备份处理，更加安全可靠。数据在经过多副本存储后，能够抵御各种灾难，只要有一个副本不丢失，数据就不会丢失。所以数据的安全性很高。&lt;/p&gt;
+        
+      </description>
+    </item>
+    
     <item>
       <title>Scala Introduction</title>
       <link>https://Jerrysmd.github.io/post/20210308scalaintroduction/</link>
