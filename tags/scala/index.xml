@@ -237,6 +237,14 @@
 &lt;li&gt;assert函数利用了@elidable注解。你可以选择从Scala程序中移除所有断言&lt;/li&gt;
 &lt;li&gt;用@deprecated注解来标记已过时的特性&lt;/li&gt;
 &lt;/ol&gt;
+&lt;h2 id=&#34;16-xml&#34;&gt;16. XML&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;XML字面量&lt;like&gt;this&lt;/like&gt;的类型为NodeSeq&lt;/li&gt;
+&lt;li&gt;可以在XML里字面量中嵌套Scala代码&lt;/li&gt;
+&lt;li&gt;Node的child属性交出的是子节点&lt;/li&gt;
+&lt;li&gt;Node的attributes属性交出的是包含节点属性的MetaData对象&lt;/li&gt;
+&lt;li&gt;\和\操作符执行类XPath匹配&lt;/li&gt;
+&lt;/ol&gt;
         
       </description>
     </item>

@@ -186,6 +186,7 @@ src='https://plausible.io/js/plausible.js'>
     <li><a href="#13-collection">13. Collection</a></li>
     <li><a href="#14-pattern-match">14. Pattern match</a></li>
     <li><a href="#15-annotation">15. Annotation</a></li>
+    <li><a href="#16-xml">16. XML</a></li>
   </ul>
 </nav>
     <p>Scala combines object-oriented and functional programming in one concise, high-level language. Scala's static types help avoid bugs in complex applications, and its JVM and JavaScript runtimes let you build high-performance systems with easy access to huge ecosystems of libraries.</p>
@@ -410,6 +411,14 @@ src='https://plausible.io/js/plausible.js'>
 <li>@tailrec注解让你校验某个递归函数使用了尾递归优化</li>
 <li>assert函数利用了@elidable注解。你可以选择从Scala程序中移除所有断言</li>
 <li>用@deprecated注解来标记已过时的特性</li>
+</ol>
+<h2 id="16-xml">16. XML</h2>
+<ol>
+<li>XML字面量<like>this</like>的类型为NodeSeq</li>
+<li>可以在XML里字面量中嵌套Scala代码</li>
+<li>Node的child属性交出的是子节点</li>
+<li>Node的attributes属性交出的是包含节点属性的MetaData对象</li>
+<li>\和\操作符执行类XPath匹配</li>
 </ol>
 
   </article>
