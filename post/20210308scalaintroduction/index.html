@@ -185,6 +185,7 @@ src='https://plausible.io/js/plausible.js'>
     <li><a href="#12-advanced-function">12. Advanced function</a></li>
     <li><a href="#13-collection">13. Collection</a></li>
     <li><a href="#14-pattern-match">14. Pattern match</a></li>
+    <li><a href="#15-annotation">15. Annotation</a></li>
   </ul>
 </nav>
     <p>Scala combines object-oriented and functional programming in one concise, high-level language. Scala's static types help avoid bugs in complex applications, and its JVM and JavaScript runtimes let you build high-performance systems with easy access to huge ecosystems of libraries.</p>
@@ -398,6 +399,17 @@ src='https://plausible.io/js/plausible.js'>
 <li>样例类是是编译器会为之自动产出模式匹配所需要的方法的类</li>
 <li>样例类继承层级中的公共超类应该是sealed的</li>
 <li>用Option来存放对于可能存在也可能不存在的值——比null更安全</li>
+</ol>
+<h2 id="15-annotation">15. Annotation</h2>
+<ol>
+<li>可以为类、方法、字段、局部变量、参数、表达式、类型参数以及各种类型定义添加注解</li>
+<li>对于表达式和类型，注解跟在被注解的条目之后</li>
+<li>注解的形式有 @Annotation、@Annotation(value)或@Annotation(name = value1, ...)</li>
+<li>@volatile、@transient、@strictfp和@native分别生成等效的Java修饰符</li>
+<li>用@throws来生成与Java兼容的throws规格说明</li>
+<li>@tailrec注解让你校验某个递归函数使用了尾递归优化</li>
+<li>assert函数利用了@elidable注解。你可以选择从Scala程序中移除所有断言</li>
+<li>用@deprecated注解来标记已过时的特性</li>
 </ol>
 
   </article>

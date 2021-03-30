@@ -250,6 +250,17 @@
 &lt;li&gt;样例类继承层级中的公共超类应该是sealed的&lt;/li&gt;
 &lt;li&gt;用Option来存放对于可能存在也可能不存在的值——比null更安全&lt;/li&gt;
 &lt;/ol&gt;
+&lt;h2 id=&#34;15-annotation&#34;&gt;15. Annotation&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;可以为类、方法、字段、局部变量、参数、表达式、类型参数以及各种类型定义添加注解&lt;/li&gt;
+&lt;li&gt;对于表达式和类型，注解跟在被注解的条目之后&lt;/li&gt;
+&lt;li&gt;注解的形式有 @Annotation、@Annotation(value)或@Annotation(name = value1, ...)&lt;/li&gt;
+&lt;li&gt;@volatile、@transient、@strictfp和@native分别生成等效的Java修饰符&lt;/li&gt;
+&lt;li&gt;用@throws来生成与Java兼容的throws规格说明&lt;/li&gt;
+&lt;li&gt;@tailrec注解让你校验某个递归函数使用了尾递归优化&lt;/li&gt;
+&lt;li&gt;assert函数利用了@elidable注解。你可以选择从Scala程序中移除所有断言&lt;/li&gt;
+&lt;li&gt;用@deprecated注解来标记已过时的特性&lt;/li&gt;
+&lt;/ol&gt;
         
       </description>
     </item>
