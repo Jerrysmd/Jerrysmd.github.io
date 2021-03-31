@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>spark on JerrysBlog</title>
+    <link>https://Jerrysmd.github.io/tags/spark/</link>
+    <description>Recent content in spark on JerrysBlog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 31 Mar 2021 10:28:47 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/spark/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Spark Introduction</title>
+      <link>https://Jerrysmd.github.io/post/20210331spark/</link>
+      <pubDate>Wed, 31 Mar 2021 10:28:47 +0800</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/20210331spark/</guid>
+      <description>
+        
+          &lt;p&gt;Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.&lt;/p&gt;
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>
