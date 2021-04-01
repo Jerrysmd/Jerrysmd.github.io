@@ -164,8 +164,18 @@ src='https://plausible.io/js/plausible.js'>
     
     
     <h2>Overview</h2>
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-spark-component">1. Spark Component</a></li>
+  </ul>
+</nav>
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
+<h2 id="1-spark-component">1. Spark Component</h2>
+<ul>
+<li>Spark提供了批处理（RDDs），结构化查询（DataFrame），流计算（SparkStreaming），机器学习（MLib），图计算（GraphX）等组件</li>
+<li>这些组件均是依托于通用的计算引擎RDDs而构建出，所以spark-core的RDDs是整个Spark的基础</li>
+</ul>
+<p><img src="/post/picture/sparkStructure.png" alt="sparkStructure"></p>
 
   </article>
 <aside class="sidebar">

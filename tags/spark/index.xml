@@ -15,6 +15,12 @@
       <description>
         
           &lt;p&gt;Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.&lt;/p&gt;
+&lt;h2 id=&#34;1-spark-component&#34;&gt;1. Spark Component&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Spark提供了批处理（RDDs），结构化查询（DataFrame），流计算（SparkStreaming），机器学习（MLib），图计算（GraphX）等组件&lt;/li&gt;
+&lt;li&gt;这些组件均是依托于通用的计算引擎RDDs而构建出，所以spark-core的RDDs是整个Spark的基础&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/sparkStructure.png&#34; alt=&#34;sparkStructure&#34;&gt;&lt;/p&gt;
         
       </description>
     </item>
