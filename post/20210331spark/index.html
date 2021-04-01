@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en" data-figures="true" class="page" data-mode="dim">
   <head>
-<title>Spark Introduction | JerrysBlog</title>
+<title>Spark | JerrysBlog</title>
 <meta charset="utf-8">
 <meta name="generator" content="Hugo 0.81.0" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -23,9 +23,9 @@ src='https://plausible.io/js/plausible.js'>
 <meta name="description" content="Article description.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@0x4c2">
-<meta name="twitter:title" content="Spark Introduction" />
+<meta name="twitter:title" content="Spark" />
 <meta property="og:url" content="https://Jerrysmd.github.io/post/20210331spark/" />
-<meta property="og:title" content="Spark Introduction" />
+<meta property="og:title" content="Spark" />
 <meta property="og:description" content="Article description." />
 <meta property="og:image" content="https://Jerrysmd.github.io/images/11.png" />
 
@@ -121,7 +121,7 @@ src='https://plausible.io/js/plausible.js'>
   
 <div class="grid-inverse wrap content">
   <article class="post_content">
-    <h1 class="post_title">Spark Introduction</h1><div class="post_meta">
+    <h1 class="post_title">Spark</h1><div class="post_meta">
   
     <span><svg class="icon">
   <use xlink:href="#calendar"></use>
@@ -137,12 +137,12 @@ src='https://plausible.io/js/plausible.js'>
   <span class="page_only"> · 
   <div class="post_share">
     Share on:
-    <a href="https://twitter.com/intent/tweet?text=Spark%20Introduction&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20210331spark%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
+    <a href="https://twitter.com/intent/tweet?text=Spark&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20210331spark%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
       <svg class="icon">
   <use xlink:href="#twitter"></use>
 </svg>
     </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20210331spark%2f&t=Spark%20Introduction" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20210331spark%2f&t=Spark" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
       <svg class="icon">
   <use xlink:href="#facebook"></use>
 </svg>
@@ -166,16 +166,59 @@ src='https://plausible.io/js/plausible.js'>
     <h2>Overview</h2>
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#1-spark-component">1. Spark Component</a></li>
+    <li><a href="#1-spark-introduction">1. Spark Introduction</a>
+      <ul>
+        <li><a href="#11-spark-component">1.1 Spark Component</a></li>
+        <li><a href="#12-spark--hadoop">1.2 Spark &amp; Hadoop</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
-<h2 id="1-spark-component">1. Spark Component</h2>
+<h2 id="1-spark-introduction">1. Spark Introduction</h2>
+<h3 id="11-spark-component">1.1 Spark Component</h3>
 <ul>
 <li>Spark提供了批处理（RDDs），结构化查询（DataFrame），流计算（SparkStreaming），机器学习（MLib），图计算（GraphX）等组件</li>
 <li>这些组件均是依托于通用的计算引擎RDDs而构建出，所以spark-core的RDDs是整个Spark的基础</li>
 </ul>
 <p><img src="/post/picture/sparkStructure.png" alt="sparkStructure"></p>
+<h3 id="12-spark--hadoop">1.2 Spark &amp; Hadoop</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Hadoop</th>
+<th>Spark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>类型</td>
+<td>基础平台，包含计算，存储，调度</td>
+<td>分布式计算工具（主要代替Hadoop的计算功能）</td>
+</tr>
+<tr>
+<td>场景</td>
+<td>大规模数据集上的批处理</td>
+<td>迭代计算，交互式计算，流计算</td>
+</tr>
+<tr>
+<td>延迟</td>
+<td>大</td>
+<td>小</td>
+</tr>
+<tr>
+<td>易用性</td>
+<td>API较为底层，算法适应性差</td>
+<td>API较为顶层，方便使用</td>
+</tr>
+<tr>
+<td>价格</td>
+<td>性能要求低，便宜</td>
+<td>对内存要求高，相对较贵</td>
+</tr>
+</tbody>
+</table>
 
   </article>
 <aside class="sidebar">

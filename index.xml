@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 31 Mar 2021 10:28:47 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Spark Introduction</title>
+      <title>Spark</title>
       <link>https://Jerrysmd.github.io/post/20210331spark/</link>
       <pubDate>Wed, 31 Mar 2021 10:28:47 +0800</pubDate>
       
@@ -15,12 +15,50 @@
       <description>
         
           &lt;p&gt;Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.&lt;/p&gt;
-&lt;h2 id=&#34;1-spark-component&#34;&gt;1. Spark Component&lt;/h2&gt;
+&lt;h2 id=&#34;1-spark-introduction&#34;&gt;1. Spark Introduction&lt;/h2&gt;
+&lt;h3 id=&#34;11-spark-component&#34;&gt;1.1 Spark Component&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Spark提供了批处理（RDDs），结构化查询（DataFrame），流计算（SparkStreaming），机器学习（MLib），图计算（GraphX）等组件&lt;/li&gt;
 &lt;li&gt;这些组件均是依托于通用的计算引擎RDDs而构建出，所以spark-core的RDDs是整个Spark的基础&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/sparkStructure.png&#34; alt=&#34;sparkStructure&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;12-spark--hadoop&#34;&gt;1.2 Spark &amp;amp; Hadoop&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;Hadoop&lt;/th&gt;
+&lt;th&gt;Spark&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;类型&lt;/td&gt;
+&lt;td&gt;基础平台，包含计算，存储，调度&lt;/td&gt;
+&lt;td&gt;分布式计算工具（主要代替Hadoop的计算功能）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;场景&lt;/td&gt;
+&lt;td&gt;大规模数据集上的批处理&lt;/td&gt;
+&lt;td&gt;迭代计算，交互式计算，流计算&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;延迟&lt;/td&gt;
+&lt;td&gt;大&lt;/td&gt;
+&lt;td&gt;小&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;易用性&lt;/td&gt;
+&lt;td&gt;API较为底层，算法适应性差&lt;/td&gt;
+&lt;td&gt;API较为顶层，方便使用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;价格&lt;/td&gt;
+&lt;td&gt;性能要求低，便宜&lt;/td&gt;
+&lt;td&gt;对内存要求高，相对较贵&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
         
       </description>
     </item>
