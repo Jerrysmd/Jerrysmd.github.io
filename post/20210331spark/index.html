@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en" data-figures="true" class="page" data-mode="dim">
   <head>
-<title>Spark | JerrysBlog</title>
+<title>Spark Guide | JerrysBlog</title>
 <meta charset="utf-8">
 <meta name="generator" content="Hugo 0.81.0" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -23,9 +23,9 @@ src='https://plausible.io/js/plausible.js'>
 <meta name="description" content="Article description.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@0x4c2">
-<meta name="twitter:title" content="Spark" />
+<meta name="twitter:title" content="Spark Guide" />
 <meta property="og:url" content="https://Jerrysmd.github.io/post/20210331spark/" />
-<meta property="og:title" content="Spark" />
+<meta property="og:title" content="Spark Guide" />
 <meta property="og:description" content="Article description." />
 <meta property="og:image" content="https://Jerrysmd.github.io/images/11.png" />
 
@@ -121,7 +121,7 @@ src='https://plausible.io/js/plausible.js'>
   
 <div class="grid-inverse wrap content">
   <article class="post_content">
-    <h1 class="post_title">Spark</h1><div class="post_meta">
+    <h1 class="post_title">Spark Guide</h1><div class="post_meta">
   
     <span><svg class="icon">
   <use xlink:href="#calendar"></use>
@@ -137,12 +137,12 @@ src='https://plausible.io/js/plausible.js'>
   <span class="page_only"> · 
   <div class="post_share">
     Share on:
-    <a href="https://twitter.com/intent/tweet?text=Spark&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20210331spark%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
+    <a href="https://twitter.com/intent/tweet?text=Spark%20Guide&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20210331spark%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
       <svg class="icon">
   <use xlink:href="#twitter"></use>
 </svg>
     </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20210331spark%2f&t=Spark" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20210331spark%2f&t=Spark%20Guide" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
       <svg class="icon">
   <use xlink:href="#facebook"></use>
 </svg>
@@ -172,7 +172,11 @@ src='https://plausible.io/js/plausible.js'>
         <li><a href="#12-spark--hadoop">1.2 Spark &amp; Hadoop</a></li>
       </ul>
     </li>
-    <li><a href="#2-spark-cluster">2. Spark Cluster</a></li>
+    <li><a href="#2-spark-cluster">2. Spark Cluster</a>
+      <ul>
+        <li><a href="#21-cluster">2.1 Cluster</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
@@ -221,6 +225,21 @@ src='https://plausible.io/js/plausible.js'>
 </tbody>
 </table>
 <h2 id="2-spark-cluster">2. Spark Cluster</h2>
+<h3 id="21-cluster">2.1 Cluster</h3>
+<p><img src="/post/picture/clusterManager.png" alt="clusterManager"></p>
+<ul>
+<li>Driver：该进程调用Spark程序的main方法，并且启动SparkContext</li>
+<li>Cluster Manager：该进程负责和外部集群工具打交道，申请或释放集群资源</li>
+<li>Worker：该进程是一个守护进程，负责启动和管理Executor</li>
+<li>Executor：该进程是一个JVM虚拟机，负责运行Spark Task</li>
+</ul>
+<p>运行一个Spark程序大致经历如下几个步骤：</p>
+<ol>
+<li>启动Driver，创建SparkContext</li>
+<li>Client提交程序给Drive，Drive向Cluster Manager申请集群资源</li>
+<li>资源申请完毕，在Worker中启动Executor</li>
+<li>Driver将程序转化为Tasks，分发给Executor执行</li>
+</ol>
 
   </article>
 <aside class="sidebar">

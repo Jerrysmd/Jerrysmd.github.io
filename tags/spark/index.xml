@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 31 Mar 2021 10:28:47 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/spark/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Spark</title>
+      <title>Spark Guide</title>
       <link>https://Jerrysmd.github.io/post/20210331spark/</link>
       <pubDate>Wed, 31 Mar 2021 10:28:47 +0800</pubDate>
       
@@ -60,6 +60,21 @@
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h2 id=&#34;2-spark-cluster&#34;&gt;2. Spark Cluster&lt;/h2&gt;
+&lt;h3 id=&#34;21-cluster&#34;&gt;2.1 Cluster&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/clusterManager.png&#34; alt=&#34;clusterManager&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Driver：该进程调用Spark程序的main方法，并且启动SparkContext&lt;/li&gt;
+&lt;li&gt;Cluster Manager：该进程负责和外部集群工具打交道，申请或释放集群资源&lt;/li&gt;
+&lt;li&gt;Worker：该进程是一个守护进程，负责启动和管理Executor&lt;/li&gt;
+&lt;li&gt;Executor：该进程是一个JVM虚拟机，负责运行Spark Task&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;运行一个Spark程序大致经历如下几个步骤：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;启动Driver，创建SparkContext&lt;/li&gt;
+&lt;li&gt;Client提交程序给Drive，Drive向Cluster Manager申请集群资源&lt;/li&gt;
+&lt;li&gt;资源申请完毕，在Worker中启动Executor&lt;/li&gt;
+&lt;li&gt;Driver将程序转化为Tasks，分发给Executor执行&lt;/li&gt;
+&lt;/ol&gt;
         
       </description>
     </item>
