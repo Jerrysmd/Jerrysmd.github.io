@@ -176,6 +176,7 @@ src='https://plausible.io/js/plausible.js'>
       <ul>
         <li><a href="#21-cluster--relation">2.1 Cluster  relation</a></li>
         <li><a href="#22-build-cluster">2.2 Build Cluster</a></li>
+        <li><a href="#23-high-availability">2.3 High Availability</a></li>
       </ul>
     </li>
   </ul>
@@ -249,6 +250,13 @@ src='https://plausible.io/js/plausible.js'>
 <li>HistoryServer</li>
 <li>Distribute:  scp -r spark node02: $PWD</li>
 <li>Start</li>
+</ol>
+<h3 id="23-high-availability">2.3 High Availability</h3>
+<p>对于 Spark Standalone 集群来说，当Worker调度出现问题时，会自动的弹性容错，将出错的Task调度到其他Worker执行。</p>
+<p>但对于Master来说，是会出现单点失败的，为了避免可能出现的单点失败问题，Spark提供了两种方式满足高可用</p>
+<ol>
+<li>使用Zookeeper实现Master的主备切换</li>
+<li>使用文件系统做主备切换</li>
 </ol>
 
   </article>
