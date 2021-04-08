@@ -60,7 +60,7 @@
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h2 id=&#34;2-spark-cluster&#34;&gt;2. Spark Cluster&lt;/h2&gt;
-&lt;h3 id=&#34;21-cluster&#34;&gt;2.1 Cluster&lt;/h3&gt;
+&lt;h3 id=&#34;21-cluster--process&#34;&gt;2.1 Cluster  Process&lt;/h3&gt;
 &lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/clusterManager.png&#34; alt=&#34;clusterManager&#34;&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Driver：该进程调用Spark程序的main方法，并且启动SparkContext&lt;/li&gt;
@@ -1135,10 +1135,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     
     <item>
       <title>条件编译指令: Conditional compilation directives</title>
-      <link>https://Jerrysmd.github.io/post/20201111%E6%9D%A1%E4%BB%B6%E7%BC%96%E8%AF%91%E6%8C%87%E4%BB%A4/</link>
+      <link>https://Jerrysmd.github.io/post/20201111conditionalcompilation/</link>
       <pubDate>Wed, 11 Nov 2020 10:42:49 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20201111%E6%9D%A1%E4%BB%B6%E7%BC%96%E8%AF%91%E6%8C%87%E4%BB%A4/</guid>
+      <guid>https://Jerrysmd.github.io/post/20201111conditionalcompilation/</guid>
       <description>
         
           &lt;p&gt;条件编译是根据实际定义宏（某类条件）进行代码静态编译的手段。可根据表达式的值或某个特定宏是否被定义来确定编译条件。c语言中条件编译相关的预编译指令，包括  #define、#undef、#ifdef、#ifndef、#if、#elif、#else、#endif、defined。&lt;/p&gt;
@@ -1433,10 +1433,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     
     <item>
       <title>C项目性能优化: C Project performance optimization</title>
-      <link>https://Jerrysmd.github.io/post/20201109%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</link>
+      <link>https://Jerrysmd.github.io/post/20201109cperformanceoptimization/</link>
       <pubDate>Mon, 09 Nov 2020 20:04:00 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20201109%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</guid>
+      <guid>https://Jerrysmd.github.io/post/20201109cperformanceoptimization/</guid>
       <description>
         
           &lt;p&gt;大型C项目的性能优化方法和思路。x86项目往低性能处理器上移植时遇到性能瓶颈的性能优化策略。&lt;/p&gt;
@@ -1572,10 +1572,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     
     <item>
       <title>大页内存: HugePages</title>
-      <link>https://Jerrysmd.github.io/post/20201103%E5%A4%A7%E9%A1%B5%E5%86%85%E5%AD%98/</link>
+      <link>https://Jerrysmd.github.io/post/20201103hugepages/</link>
       <pubDate>Tue, 03 Nov 2020 13:04:09 -0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20201103%E5%A4%A7%E9%A1%B5%E5%86%85%E5%AD%98/</guid>
+      <guid>https://Jerrysmd.github.io/post/20201103hugepages/</guid>
       <description>
         
           &lt;p&gt;通过增大操作系统页的大小来减小页表，从而避免快表缺失。大页内存优化程序主要是针对其中的malloc机制的，意思就是分配大页，增加tlb的命中率。&lt;/p&gt;
@@ -1610,10 +1610,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     
     <item>
       <title>动态链接和静态链接: Dynamic link library and static link library</title>
-      <link>https://Jerrysmd.github.io/post/20201025%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5/</link>
+      <link>https://Jerrysmd.github.io/post/20201025dynamicstaticlinklibrary/</link>
       <pubDate>Sun, 25 Oct 2020 22:01:19 -0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20201025%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5/</guid>
+      <guid>https://Jerrysmd.github.io/post/20201025dynamicstaticlinklibrary/</guid>
       <description>
         
           &lt;p&gt;开发中，我们只需要知道lib是编译时需要的，dll是运行时需要的。如果要完成源代码的编译，有lib就够了。如果要使动态连接的程序运行起来，有dll就够了。本文会更加清晰的了解二者的区别、生成、使用。&lt;/p&gt;
@@ -2410,10 +2410,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     
     <item>
       <title>文件读取多读取一行空行问题: The problem about file reading one more line</title>
-      <link>https://Jerrysmd.github.io/post/20201010getline/</link>
+      <link>https://Jerrysmd.github.io/post/20201010cgetline/</link>
       <pubDate>Sat, 10 Oct 2020 21:58:13 -0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20201010getline/</guid>
+      <guid>https://Jerrysmd.github.io/post/20201010cgetline/</guid>
       <description>
         
           &lt;p&gt;getline()/get()/read()会出现多读一行的现象。造成该原因可能文件本身问题和getline()函数的问题。可以在while处判断时先判断getline()/get()/read()，如果拿到数据再处理。&lt;/p&gt;
