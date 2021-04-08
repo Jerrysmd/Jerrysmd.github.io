@@ -60,7 +60,7 @@
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h2 id=&#34;2-spark-cluster&#34;&gt;2. Spark Cluster&lt;/h2&gt;
-&lt;h3 id=&#34;21-cluster--process&#34;&gt;2.1 Cluster  Process&lt;/h3&gt;
+&lt;h3 id=&#34;21-cluster--relation&#34;&gt;2.1 Cluster  relation&lt;/h3&gt;
 &lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/clusterManager.png&#34; alt=&#34;clusterManager&#34;&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Driver：该进程调用Spark程序的main方法，并且启动SparkContext&lt;/li&gt;
@@ -74,6 +74,15 @@
 &lt;li&gt;Client提交程序给Drive，Drive向Cluster Manager申请集群资源&lt;/li&gt;
 &lt;li&gt;资源申请完毕，在Worker中启动Executor&lt;/li&gt;
 &lt;li&gt;Driver将程序转化为Tasks，分发给Executor执行&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;22-build-cluster&#34;&gt;2.2 Build Cluster&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Download Spark&lt;/li&gt;
+&lt;li&gt;Upload&lt;/li&gt;
+&lt;li&gt;Config&lt;/li&gt;
+&lt;li&gt;HistoryServer&lt;/li&gt;
+&lt;li&gt;Distribute:  scp -r spark node02: $PWD&lt;/li&gt;
+&lt;li&gt;Start&lt;/li&gt;
 &lt;/ol&gt;
         
       </description>

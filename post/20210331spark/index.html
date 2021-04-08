@@ -174,7 +174,8 @@ src='https://plausible.io/js/plausible.js'>
     </li>
     <li><a href="#2-spark-cluster">2. Spark Cluster</a>
       <ul>
-        <li><a href="#21-cluster--process">2.1 Cluster  Process</a></li>
+        <li><a href="#21-cluster--relation">2.1 Cluster  relation</a></li>
+        <li><a href="#22-build-cluster">2.2 Build Cluster</a></li>
       </ul>
     </li>
   </ul>
@@ -225,7 +226,7 @@ src='https://plausible.io/js/plausible.js'>
 </tbody>
 </table>
 <h2 id="2-spark-cluster">2. Spark Cluster</h2>
-<h3 id="21-cluster--process">2.1 Cluster  Process</h3>
+<h3 id="21-cluster--relation">2.1 Cluster  relation</h3>
 <p><img src="/post/picture/clusterManager.png" alt="clusterManager"></p>
 <ul>
 <li>Driver：该进程调用Spark程序的main方法，并且启动SparkContext</li>
@@ -239,6 +240,15 @@ src='https://plausible.io/js/plausible.js'>
 <li>Client提交程序给Drive，Drive向Cluster Manager申请集群资源</li>
 <li>资源申请完毕，在Worker中启动Executor</li>
 <li>Driver将程序转化为Tasks，分发给Executor执行</li>
+</ol>
+<h3 id="22-build-cluster">2.2 Build Cluster</h3>
+<ol>
+<li>Download Spark</li>
+<li>Upload</li>
+<li>Config</li>
+<li>HistoryServer</li>
+<li>Distribute:  scp -r spark node02: $PWD</li>
+<li>Start</li>
 </ol>
 
   </article>
