@@ -88,7 +88,7 @@
 &lt;p&gt;对于 Spark Standalone 集群来说，当Worker调度出现问题时，会自动的弹性容错，将出错的Task调度到其他Worker执行。&lt;/p&gt;
 &lt;p&gt;但对于Master来说，是会出现单点失败的，为了避免可能出现的单点失败问题，Spark提供了两种方式满足高可用&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;使用Zookeeper实现Master的主备切换&lt;/li&gt;
+&lt;li&gt;使用Zookeeper实现Master的主备切换(Zookeeper是一个分布式强一致性的协调服务，Zookeeper最基本的一个保证是：如果多个节点同时创建一个ZNode)只有一个能够成功创建，这个做法的本质使用的是Zookeeper的ZAB协议，能够在分布式环境下达成一致。&lt;/li&gt;
 &lt;li&gt;使用文件系统做主备切换&lt;/li&gt;
 &lt;/ol&gt;
         
