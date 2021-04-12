@@ -179,6 +179,7 @@ src='https://plausible.io/js/plausible.js'>
         <li><a href="#23-high-availability">2.3 High Availability</a></li>
       </ul>
     </li>
+    <li><a href="#3">3.</a></li>
   </ul>
 </nav>
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
@@ -258,6 +259,7 @@ src='https://plausible.io/js/plausible.js'>
 <li>使用Zookeeper实现Master的主备切换(Zookeeper是一个分布式强一致性的协调服务，Zookeeper最基本的一个保证是：如果多个节点同时创建一个ZNode)只有一个能够成功创建，这个做法的本质使用的是Zookeeper的ZAB协议，能够在分布式环境下达成一致。</li>
 <li>使用文件系统做主备切换</li>
 </ol>
+<h2 id="3">3.</h2>
 
   </article>
 <aside class="sidebar">
