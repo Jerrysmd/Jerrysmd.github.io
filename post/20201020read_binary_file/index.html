@@ -172,7 +172,7 @@ src='https://plausible.io/js/plausible.js'>
     <h2>Overview</h2>
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#1creat-file-pointer-and-set-mode-as-rb">1.creat FILE pointer and set mode as &lsquo;rb&rsquo;</a></li>
+    <li><a href="#1creat-file-pointer-and-set-mode-as-rb">1.creat FILE pointer and set mode as 'rb'</a></li>
     <li><a href="#2check-the-file-pointer-is-not-null">2.check the FILE pointer is not null</a></li>
     <li><a href="#3use-fseekftell-to-get-data-length">3.use fseek/ftell to get data length</a></li>
     <li><a href="#4check-the-datalen">4.check the datalen</a></li>
@@ -189,136 +189,305 @@ src='https://plausible.io/js/plausible.js'>
 <li>使用fwrite(dbdata, dblength, 1,fp)把字节流写入二进制文件。在新程序读取二进制文件遇到问题：二进制内容不能向文本一样行读取，也不知道二进制文件长度，在fread()函数中无从下手。</li>
 </ul>
 <hr>
-<h2 id="1creat-file-pointer-and-set-mode-as-rb">1.creat FILE pointer and set mode as &lsquo;rb&rsquo;</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">FILE <span style="color:#f92672">*</span>f <span style="color:#f92672">=</span> fopen(inputFN, <span style="color:#e6db74">&#34;rb&#34;</span>);
-</code></pre></div><h2 id="2check-the-file-pointer-is-not-null">2.check the FILE pointer is not null</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>f) {
-        fprintf(stderr, <span style="color:#e6db74">&#34;ERROR: unable to open file </span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">%s</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, inputFN,strerror(errno));
-        <span style="color:#66d9ef">return</span> NULL;
-}
-</code></pre></div><h2 id="3use-fseekftell-to-get-data-length">3.use fseek/ftell to get data length</h2>
+<h2 id="1creat-file-pointer-and-set-mode-as-rb">1.creat FILE pointer and set mode as 'rb'</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="n">FILE</span> <span class="o">*</span><span class="n">f</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">inputFN</span><span class="p">,</span> <span class="s">&#34;rb&#34;</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="2check-the-file-pointer-is-not-null">2.check the FILE pointer is not null</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">f</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;ERROR: unable to open file </span><span class="se">\&#34;</span><span class="s">%s</span><span class="se">\&#34;</span><span class="s">: %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">inputFN</span><span class="p">,</span><span class="n">strerror</span><span class="p">(</span><span class="n">errno</span><span class="p">));</span>
+        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="3use-fseekftell-to-get-data-length">3.use fseek/ftell to get data length</h2>
 <ul>
 <li>fseek(f,0,SEEK_END) put the pointer to the end of the file.</li>
 <li>ftell(f) can get the current offset.</li>
 <li>then use fseek(f,0,SEEK_SET) put the pointer to the start of file.</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">if</span> (fseek(f, <span style="color:#ae81ff">0</span>, SEEK_END) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
-        fprintf(stderr, <span style="color:#e6db74">&#34;ERROR: unable to seek file </span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">%s</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, inputFN,
-                strerror(errno));
-        fclose(f);
-        <span style="color:#66d9ef">return</span> NULL;
-}
-<span style="color:#66d9ef">long</span> datalen <span style="color:#f92672">=</span> ftell(f);
-<span style="color:#66d9ef">if</span> (dataLen <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
-        fprintf(stderr, <span style="color:#e6db74">&#34;ERROR: ftell() failed: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, strerror(errno));
-        fclose(f);
-        <span style="color:#66d9ef">return</span> NULL;
-}
-    <span style="color:#66d9ef">if</span> (fseek(f, <span style="color:#ae81ff">0</span>, SEEK_SET) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
-        fprintf(stderr, <span style="color:#e6db74">&#34;ERROR: unable to seek file </span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">%s</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, inputFN,
-                strerror(errno));
-        fclose(f);
-        <span style="color:#66d9ef">return</span> NULL;
-    }
-</code></pre></div><h2 id="4check-the-datalen">4.check the datalen</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">if</span> ((<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span>)dataLen <span style="color:#f92672">&gt;</span> UINT_MAX) {
-        dataLen <span style="color:#f92672">=</span> UINT_MAX;
-        printf(<span style="color:#e6db74">&#34;WARNING: clipping data to %ld bytes</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, dataLen);
-    } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (dataLen <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
-        fprintf(stderr, <span style="color:#e6db74">&#34;ERROR: input file </span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">%s</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74"> is empty</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, inputFN);
-        fclose(f);
-        <span style="color:#66d9ef">return</span> NULL;
-    }
-</code></pre></div><h2 id="5malloc-memory-to-char-inputdata">5.malloc memory to char *inputData</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>inputData <span style="color:#f92672">=</span> static_cast<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span> <span style="color:#f92672">*&gt;</span>(malloc(dataLen));
-    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>inputData) {
-        fprintf(stderr, <span style="color:#e6db74">&#34;ERROR: unable to malloc %ld bytes</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, dataLen);
-        fclose(f);
-        <span style="color:#66d9ef">return</span> NULL;
-    }
-</code></pre></div><h2 id="6read-the-bin-data">6.read the bin data</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">// create a pointer p to point the begin of the inputData
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>p <span style="color:#f92672">=</span> inputData;
-<span style="color:#75715e">// create a bytesLeft to record the moving of offset
-</span><span style="color:#75715e"></span>size_t bytesLeft <span style="color:#f92672">=</span> dataLen;
-<span style="color:#66d9ef">while</span> (bytesLeft) {
-	<span style="color:#75715e">//fread will return the bytes of read
-</span><span style="color:#75715e"></span>        size_t bytesRead <span style="color:#f92672">=</span> fread(p, <span style="color:#ae81ff">1</span>, bytesLeft, f);
-        bytesLeft <span style="color:#f92672">-=</span> bytesRead;
-        p <span style="color:#f92672">+=</span> bytesRead;
-        <span style="color:#66d9ef">if</span> (ferror(f) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
-            fprintf(stderr, <span style="color:#e6db74">&#34;ERROR: fread() failed</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-            free(inputData);
-            fclose(f);
-            <span style="color:#66d9ef">return</span> NULL;
-	}
-}
-</code></pre></div><h2 id="7close-the-file-stream">7.close the File stream</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">fclose(f);
-</code></pre></div><h2 id="8return-length--inputdata">8.return length &amp; inputData</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">//change the parameter of &amp;length
-</span><span style="color:#75715e"></span><span style="color:#f92672">*</span>length <span style="color:#f92672">=</span> (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span>)dataLen;
-<span style="color:#66d9ef">return</span> inputData;
-</code></pre></div><h2 id="9完整代码">9.完整代码</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">    FILE <span style="color:#f92672">*</span>f <span style="color:#f92672">=</span> fopen(inputFN, <span style="color:#e6db74">&#34;rb&#34;</span>);
-    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>f) {
-        fprintf(stderr, <span style="color:#e6db74">&#34;ERROR: unable to open file </span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">%s</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, inputFN,strerror(errno));
-        <span style="color:#66d9ef">return</span> NULL;
-    }
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="k">if</span> <span class="p">(</span><span class="n">fseek</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SEEK_END</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;ERROR: unable to seek file </span><span class="se">\&#34;</span><span class="s">%s</span><span class="se">\&#34;</span><span class="s">: %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">inputFN</span><span class="p">,</span>
+                <span class="n">strerror</span><span class="p">(</span><span class="n">errno</span><span class="p">));</span>
+        <span class="n">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">long</span> <span class="n">datalen</span> <span class="o">=</span> <span class="n">ftell</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">dataLen</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;ERROR: ftell() failed: %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">strerror</span><span class="p">(</span><span class="n">errno</span><span class="p">));</span>
+        <span class="n">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">fseek</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SEEK_SET</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;ERROR: unable to seek file </span><span class="se">\&#34;</span><span class="s">%s</span><span class="se">\&#34;</span><span class="s">: %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">inputFN</span><span class="p">,</span>
+                <span class="n">strerror</span><span class="p">(</span><span class="n">errno</span><span class="p">));</span>
+        <span class="n">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="4check-the-datalen">4.check the datalen</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="k">if</span> <span class="p">((</span><span class="kt">unsigned</span> <span class="kt">long</span><span class="p">)</span><span class="n">dataLen</span> <span class="o">&gt;</span> <span class="n">UINT_MAX</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">dataLen</span> <span class="o">=</span> <span class="n">UINT_MAX</span><span class="p">;</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;WARNING: clipping data to %ld bytes</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">dataLen</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">dataLen</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;ERROR: input file </span><span class="se">\&#34;</span><span class="s">%s</span><span class="se">\&#34;</span><span class="s"> is empty</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">inputFN</span><span class="p">);</span>
+        <span class="n">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="5malloc-memory-to-char-inputdata">5.malloc memory to char *inputData</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">char</span> <span class="o">*</span><span class="n">inputData</span> <span class="o">=</span> <span class="n">static_cast</span><span class="o">&lt;</span><span class="kt">char</span> <span class="o">*&gt;</span><span class="p">(</span><span class="n">malloc</span><span class="p">(</span><span class="n">dataLen</span><span class="p">));</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">inputData</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;ERROR: unable to malloc %ld bytes</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">dataLen</span><span class="p">);</span>
+        <span class="n">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="6read-the-bin-data">6.read the bin data</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="c1">// create a pointer p to point the begin of the inputData
+</span><span class="c1"></span><span class="kt">char</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">inputData</span><span class="p">;</span>
+<span class="c1">// create a bytesLeft to record the moving of offset
+</span><span class="c1"></span><span class="n">size_t</span> <span class="n">bytesLeft</span> <span class="o">=</span> <span class="n">dataLen</span><span class="p">;</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">bytesLeft</span><span class="p">)</span> <span class="p">{</span>
+	<span class="c1">//fread will return the bytes of read
+</span><span class="c1"></span>        <span class="n">size_t</span> <span class="n">bytesRead</span> <span class="o">=</span> <span class="n">fread</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bytesLeft</span><span class="p">,</span> <span class="n">f</span><span class="p">);</span>
+        <span class="n">bytesLeft</span> <span class="o">-=</span> <span class="n">bytesRead</span><span class="p">;</span>
+        <span class="n">p</span> <span class="o">+=</span> <span class="n">bytesRead</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">ferror</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;ERROR: fread() failed</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+            <span class="n">free</span><span class="p">(</span><span class="n">inputData</span><span class="p">);</span>
+            <span class="n">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="7close-the-file-stream">7.close the File stream</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="n">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="8return-length--inputdata">8.return length &amp; inputData</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="c1">//change the parameter of &amp;length
+</span><span class="c1"></span><span class="o">*</span><span class="n">length</span> <span class="o">=</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="p">)</span><span class="n">dataLen</span><span class="p">;</span>
+<span class="k">return</span> <span class="n">inputData</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="9完整代码">9.完整代码</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c">    <span class="n">FILE</span> <span class="o">*</span><span class="n">f</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">inputFN</span><span class="p">,</span> <span class="s">&#34;rb&#34;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">f</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;ERROR: unable to open file </span><span class="se">\&#34;</span><span class="s">%s</span><span class="se">\&#34;</span><span class="s">: %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">inputFN</span><span class="p">,</span><span class="n">strerror</span><span class="p">(</span><span class="n">errno</span><span class="p">));</span>
+        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    <span style="color:#66d9ef">if</span> (fseek(f, <span style="color:#ae81ff">0</span>, SEEK_END) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
-        fprintf(stderr, <span style="color:#e6db74">&#34;ERROR: unable to seek file </span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">%s</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, inputFN,
-                strerror(errno));
-        fclose(f);
-        <span style="color:#66d9ef">return</span> NULL;
-    }
-    <span style="color:#66d9ef">long</span> dataLen <span style="color:#f92672">=</span> ftell(f);
-    <span style="color:#66d9ef">if</span> (dataLen <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
-        fprintf(stderr, <span style="color:#e6db74">&#34;ERROR: ftell() failed: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, strerror(errno));
-        fclose(f);
-        <span style="color:#66d9ef">return</span> NULL;
-    }
-    <span style="color:#66d9ef">if</span> (fseek(f, <span style="color:#ae81ff">0</span>, SEEK_SET) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
-        fprintf(stderr, <span style="color:#e6db74">&#34;ERROR: unable to seek file </span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">%s</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, inputFN,
-                strerror(errno));
-        fclose(f);
-        <span style="color:#66d9ef">return</span> NULL;
-    }
+    <span class="k">if</span> <span class="p">(</span><span class="n">fseek</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SEEK_END</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;ERROR: unable to seek file </span><span class="se">\&#34;</span><span class="s">%s</span><span class="se">\&#34;</span><span class="s">: %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">inputFN</span><span class="p">,</span>
+                <span class="n">strerror</span><span class="p">(</span><span class="n">errno</span><span class="p">));</span>
+        <span class="n">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">long</span> <span class="n">dataLen</span> <span class="o">=</span> <span class="n">ftell</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">dataLen</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;ERROR: ftell() failed: %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">strerror</span><span class="p">(</span><span class="n">errno</span><span class="p">));</span>
+        <span class="n">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">fseek</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SEEK_SET</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;ERROR: unable to seek file </span><span class="se">\&#34;</span><span class="s">%s</span><span class="se">\&#34;</span><span class="s">: %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">inputFN</span><span class="p">,</span>
+                <span class="n">strerror</span><span class="p">(</span><span class="n">errno</span><span class="p">));</span>
+        <span class="n">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    <span style="color:#66d9ef">if</span> ((<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span>)dataLen <span style="color:#f92672">&gt;</span> UINT_MAX) {
-        dataLen <span style="color:#f92672">=</span> UINT_MAX;
-        printf(<span style="color:#e6db74">&#34;WARNING: clipping data to %ld bytes</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, dataLen);
-    } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (dataLen <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
-        fprintf(stderr, <span style="color:#e6db74">&#34;ERROR: input file </span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">%s</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74"> is empty</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, inputFN);
-        fclose(f);
-        <span style="color:#66d9ef">return</span> NULL;
-    }
+    <span class="k">if</span> <span class="p">((</span><span class="kt">unsigned</span> <span class="kt">long</span><span class="p">)</span><span class="n">dataLen</span> <span class="o">&gt;</span> <span class="n">UINT_MAX</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">dataLen</span> <span class="o">=</span> <span class="n">UINT_MAX</span><span class="p">;</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;WARNING: clipping data to %ld bytes</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">dataLen</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">dataLen</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;ERROR: input file </span><span class="se">\&#34;</span><span class="s">%s</span><span class="se">\&#34;</span><span class="s"> is empty</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">inputFN</span><span class="p">);</span>
+        <span class="n">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>inputData <span style="color:#f92672">=</span> static_cast<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span> <span style="color:#f92672">*&gt;</span>(malloc(dataLen));
-    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>inputData) {
-        fprintf(stderr, <span style="color:#e6db74">&#34;ERROR: unable to malloc %ld bytes</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, dataLen);
-        fclose(f);
-        <span style="color:#66d9ef">return</span> NULL;
-    }
+    <span class="kt">char</span> <span class="o">*</span><span class="n">inputData</span> <span class="o">=</span> <span class="n">static_cast</span><span class="o">&lt;</span><span class="kt">char</span> <span class="o">*&gt;</span><span class="p">(</span><span class="n">malloc</span><span class="p">(</span><span class="n">dataLen</span><span class="p">));</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">inputData</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;ERROR: unable to malloc %ld bytes</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">dataLen</span><span class="p">);</span>
+        <span class="n">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>p <span style="color:#f92672">=</span> inputData;
-    size_t bytesLeft <span style="color:#f92672">=</span> dataLen;
-    <span style="color:#66d9ef">while</span> (bytesLeft) {
-        size_t bytesRead <span style="color:#f92672">=</span> fread(p, <span style="color:#ae81ff">1</span>, bytesLeft, f);
-        bytesLeft <span style="color:#f92672">-=</span> bytesRead;
-        p <span style="color:#f92672">+=</span> bytesRead;
-        <span style="color:#66d9ef">if</span> (ferror(f) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
-            fprintf(stderr, <span style="color:#e6db74">&#34;ERROR: fread() failed</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-            free(inputData);
-            fclose(f);
-            <span style="color:#66d9ef">return</span> NULL;
-        }
-    }
+    <span class="kt">char</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">inputData</span><span class="p">;</span>
+    <span class="n">size_t</span> <span class="n">bytesLeft</span> <span class="o">=</span> <span class="n">dataLen</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">bytesLeft</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">size_t</span> <span class="n">bytesRead</span> <span class="o">=</span> <span class="n">fread</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bytesLeft</span><span class="p">,</span> <span class="n">f</span><span class="p">);</span>
+        <span class="n">bytesLeft</span> <span class="o">-=</span> <span class="n">bytesRead</span><span class="p">;</span>
+        <span class="n">p</span> <span class="o">+=</span> <span class="n">bytesRead</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">ferror</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;ERROR: fread() failed</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+            <span class="n">free</span><span class="p">(</span><span class="n">inputData</span><span class="p">);</span>
+            <span class="n">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
 
-    fclose(f);
+    <span class="n">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
 
-    <span style="color:#f92672">*</span>length <span style="color:#f92672">=</span> (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span>)dataLen;
-</code></pre></div>
+    <span class="o">*</span><span class="n">length</span> <span class="o">=</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="p">)</span><span class="n">dataLen</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div>
 
   </article>
 <aside class="sidebar">

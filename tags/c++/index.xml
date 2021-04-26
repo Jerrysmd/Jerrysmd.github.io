@@ -33,13 +33,25 @@
 &lt;h3 id=&#34;2-静态链接的原理&#34;&gt;2. 静态链接的原理&lt;/h3&gt;
 &lt;p&gt;由很多目标文件进行链接形成的是静态库，反之静态库也可以简单地看成是一组目标文件的集合，即很多目标文件经过压缩打包后形成的一个文件。&lt;/p&gt;
 &lt;p&gt;以下面这个图来简单说明一下从静态链接到可执行文件的过程，根据在源文件中包含的头文件和程序中使用到的库函数，如stdio.h中定义的printf()函数，在libc.a中找到目标文件printf.o(这里暂且不考虑printf()函数的依赖关系)，然后将这个目标文件和我们hello.o这个文件进行链接形成我们的可执行文件。&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-mermaid&#34; data-lang=&#34;mermaid&#34;&gt;graph TD
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;graph TD
 A[Christmas] --&amp;gt;|Get money| B(Go shopping)
 B --&amp;gt; C{Let me think}
 C --&amp;gt;|One| D[Laptop]
 C --&amp;gt;|Two| E[iPhone]
 C --&amp;gt;|Three| F[fa:fa-car Car]
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;链接器在链接静态链接库的时候是以目标文件为单位的。比如我们引用了静态库中的printf()函数，那么链接器就会把库中包含printf()函数的那个目标文件链接进来，如果很多函数都放在一个目标文件中，很可能很多没用的函数都被一起链接进了输出结果中。由于运行库有成百上千个函数，数量非常庞大，每个函数独立地放在一个目标文件中可以尽量减少空间的浪费，那些没有被用到的目标文件就不要链接到最终的输出文件中。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;链接器在链接静态链接库的时候是以目标文件为单位的。比如我们引用了静态库中的printf()函数，那么链接器就会把库中包含printf()函数的那个目标文件链接进来，如果很多函数都放在一个目标文件中，很可能很多没用的函数都被一起链接进了输出结果中。由于运行库有成百上千个函数，数量非常庞大，每个函数独立地放在一个目标文件中可以尽量减少空间的浪费，那些没有被用到的目标文件就不要链接到最终的输出文件中。&lt;/p&gt;
 &lt;h3 id=&#34;3-静态链接的优缺点&#34;&gt;3. 静态链接的优缺点&lt;/h3&gt;
 &lt;p&gt;静态链接的缺点很明显，一是浪费空间，因为每个可执行程序中对所有需要的目标文件都要有一份副本，所以如果多个程序对同一个目标文件都有依赖，如多个程序中都调用了printf()函数，则这多个程序中都含有printf.o，所以同一个目标文件都在内存存在多个副本；另一方面就是更新比较困难，因为每当库函数的代码修改了，这个时候就需要重新进行编译链接形成可执行程序。但是静态链接的优点就是，在可执行程序中已经具备了所有执行程序所需要的任何东西，在执行的时候运行速度快。&lt;/p&gt;
 &lt;h2 id=&#34;动态链接&#34;&gt;动态链接&lt;/h2&gt;
@@ -65,7 +77,7 @@ C --&amp;gt;|Three| F[fa:fa-car Car]
         
           &lt;p&gt;Makefile定义了一系列的规则来指定，哪些文件需要先编译，哪些文件需要后编译，哪些文件需要重新编译，甚至于进行更复杂的功能操作，因为makefile就像一个Shell脚本一样，其中也可以执行操作系统的命令。makefile带来的好处就是——“自动化编译”，整个工程完全自动编译，极大的提高了软件开发的效率。&lt;/p&gt;
 &lt;h2 id=&#34;关于程序的编译和链接&#34;&gt;关于程序的编译和链接&lt;/h2&gt;
-&lt;p&gt;无论是C还是C++，首先要把源文件编译成中间代码文件，在Windows下也就是 .obj 文件，UNIX下是 .o 文件，即 Object File，这个动作叫做&lt;!-- raw HTML omitted --&gt;编译（compile）&lt;!-- raw HTML omitted --&gt;。然后再把大量的Object File合成执行文件，这个动作叫作&lt;!-- raw HTML omitted --&gt;链接（link）。&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;无论是C还是C++，首先要把源文件编译成中间代码文件，在Windows下也就是 .obj 文件，UNIX下是 .o 文件，即 Object File，这个动作叫做&lt;font style= &#34;font-weight:bold&#34; color=&#34;purple&#34;&gt;编译（compile）&lt;/font&gt;。然后再把大量的Object File合成执行文件，这个动作叫作&lt;font style= &#34;font-weight:bold&#34; color=&#34;purple&#34;&gt;链接（link）。&lt;/font&gt;&lt;/p&gt;
 &lt;p&gt;编译时，编译器需要的是语法的正确，函数与变量的声明的正确。对于后者，通常需要告诉编译器头文件的所在位置（头文件中应该只是声明，而定义应该放在C/C++文件中），只要所有的语法正确，编译器就可以编译出中间目标文件。一般来说，每个源文件都应该对应于一个中间目标文件（O文件或是OBJ文件）。&lt;/p&gt;
 &lt;p&gt;链接时，主要是链接函数和全局变量，所以，我们可以使用这些中间目标文件（O文件或是OBJ文件）来链接我们的应用程序。链接器并不管函数所在的源文件，只管函数的中间目标文件（Object File），在大多数时候，由于源文件太多，编译生成的中间目标文件太多，而在链接时需要明显地指出中间目标文件名，这对于编译很不方便，所以，我们要给中间目标文件打个包，在Windows下这种包叫“库文件”（Library File)，也就是 .lib 文件，在UNIX下，是Archive File，也就是 .a 文件。&lt;/p&gt;
 &lt;p&gt;总结一下，源文件首先会生成中间目标文件，再由中间目标文件生成执行文件。在编译时，编译器只检测程序语法，和函数、变量是否被声明。如果函数未被声明，编译器会给出一个警告，但可以生成Object File。而在链接程序时，链接器会在所有的Object File中找寻函数的实现，如果找不到，那到就会报链接错误码（Linker Error），在VC下，这种错误一般是：Link 2001错误，意思说是说，链接器未能找到函数的实现。需要指定函数的ObjectFile.&lt;/p&gt;
@@ -78,54 +90,101 @@ C --&amp;gt;|Three| F[fa:fa-car Car]
 &lt;li&gt;如果这个工程的头文件被改变了，那么我们需要编译引用了这几个头文件的C文件，并链接目标程序。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 id=&#34;1-makefile-规则&#34;&gt;1. Makefile 规则&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;target... &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; prerequisites ...
-	command
-&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;...&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;target也就是一个目标文件，可以是Object File，也可以是执行文件。还可以是一个标签（Label）&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span class=&#34;nf&#34;&gt;target... &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;prerequisites&lt;/span&gt; ...
+	&lt;span class=&#34;nb&#34;&gt;command&lt;/span&gt;
+&lt;span class=&#34;err&#34;&gt;...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;target也就是一个目标文件，可以是Object File，也可以是执行文件。还可以是一个标签（Label）&lt;/p&gt;
 &lt;p&gt;prerequisites就是，要生成那个target所需的文件或是目标。&lt;/p&gt;
 &lt;p&gt;command也就是make需要执行的命令。(任意的shell命令)&lt;/p&gt;
 &lt;p&gt;这是一个文件的依赖关系，也就是说，target这一个或多个的目标文件依赖于prerequisites中的文件，其生成规则定义在command中。也就是说，prerequisites中如果有一个以上的文件比target文件要新的话，command所定义的命令就会被执行。&lt;/p&gt;
 &lt;h3 id=&#34;2----含义&#34;&gt;2. $@, $^, $&amp;lt; 含义&lt;/h3&gt;
 &lt;ol&gt;
-&lt;li&gt;$@&amp;ndash;目标文件&lt;/li&gt;
-&lt;li&gt;$^&amp;ndash;所有的依赖文件&lt;/li&gt;
-&lt;li&gt;$&amp;lt;&amp;ndash;第一个依赖文件&lt;/li&gt;
+&lt;li&gt;$@--目标文件&lt;/li&gt;
+&lt;li&gt;$^--所有的依赖文件&lt;/li&gt;
+&lt;li&gt;$&amp;lt;--第一个依赖文件&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;一个示例
 如果一个工程有3个头文件，和8个C文件，我们为了完成前面所述的那三个规则，我们的Makefile应该是下面的这个样子的。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;edit &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; main.o kbd.o command.o display.o \
-       insert.o search.o files.o utils.o
-       cc -o edit main.o kbd.o command.o display.o &lt;span style=&#34;color:#ae81ff&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;           insert.o search.o files.o utils.o
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span class=&#34;nf&#34;&gt;edit &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;kbd&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;display&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; \
+       &lt;span class=&#34;n&#34;&gt;insert&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;search&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;files&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;utils&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt;
+       cc -o edit main.o kbd.o command.o display.o &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;           insert.o search.o files.o utils.o
 
-&lt;span style=&#34;color:#a6e22e&#34;&gt;main.o &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; main.c defs.h
+&lt;span class=&#34;nf&#34;&gt;main.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defs&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
          cc -c main.c
 
-&lt;span style=&#34;color:#a6e22e&#34;&gt;kbd.o &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; kbd.c defs.h command.h
+&lt;span class=&#34;nf&#34;&gt;kbd.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;kbd&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defs&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
         cc -c kbd.c
 
-&lt;span style=&#34;color:#a6e22e&#34;&gt;command.o &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; command.c defs.h command.h
+&lt;span class=&#34;nf&#34;&gt;command.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defs&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
             cc -c command.c
 
-&lt;span style=&#34;color:#a6e22e&#34;&gt;display.o &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; display.c defs.h buffer.h
+&lt;span class=&#34;nf&#34;&gt;display.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;display&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defs&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;buffer&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
             cc -c display.c
 
-&lt;span style=&#34;color:#a6e22e&#34;&gt;insert.o &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; insert.c defs.h buffer.h
+&lt;span class=&#34;nf&#34;&gt;insert.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;insert&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defs&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;buffer&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
            cc -c insert.c
 
-&lt;span style=&#34;color:#a6e22e&#34;&gt;search.o &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; search.c defs.h buffer.h
+&lt;span class=&#34;nf&#34;&gt;search.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;search&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defs&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;buffer&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
            cc -c search.c
 
-&lt;span style=&#34;color:#a6e22e&#34;&gt;files.o &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; files.c defs.h buffer.h command.h
+&lt;span class=&#34;nf&#34;&gt;files.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;files&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defs&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;buffer&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
           cc -c files.c
 
-&lt;span style=&#34;color:#a6e22e&#34;&gt;utils.o &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; utils.c defs.h
+&lt;span class=&#34;nf&#34;&gt;utils.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;utils&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defs&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
           cc -c utils.c
 
-&lt;span style=&#34;color:#a6e22e&#34;&gt;clean &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
-           rm edit main.o kbd.o command.o display.o &lt;span style=&#34;color:#ae81ff&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;              insert.o search.o files.o utils.o
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;反斜杠（\）是换行符的意思。这样比较便于Makefile的易读。&lt;/p&gt;
+&lt;span class=&#34;nf&#34;&gt;clean &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;
+           rm edit main.o kbd.o command.o display.o &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;              insert.o search.o files.o utils.o
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;反斜杠（\）是换行符的意思。这样比较便于Makefile的易读。&lt;/p&gt;
 &lt;p&gt;在这个makefile中，目标文件（target）包含：执行文件edit和中间目标文件（*.o），依赖文件（prerequisites）就是冒号后面的那些 .c 文件和 .h文件。每一个 .o 文件都有一组依赖文件，而这些 .o 文件又是执行文件 edit 的依赖文件。依赖关系的实质上就是说明了目标文件是由哪些文件生成的，换言之，目标文件是哪些文件更新的。&lt;/p&gt;
 &lt;p&gt;在定义好依赖关系后，后续的那一行定义了如何生成目标文件的操作系统命令，一定要以一个Tab键作为开头。记住，make并不管命令是怎么工作的，他只管执行所定义的命令。make会比较targets文件和prerequisites文件的修改日期，如果prerequisites文件的日期要比targets文件的日期要新，或者target不存在的话，那么，make就会执行后续定义的命令。&lt;/p&gt;
 &lt;h3 id=&#34;3-make是如何工作的&#34;&gt;3. make是如何工作的&lt;/h3&gt;
@@ -152,87 +211,187 @@ C --&amp;gt;|Three| F[fa:fa-car Car]
 &lt;/ol&gt;
 &lt;h3 id=&#34;4-makefile中使用变量&#34;&gt;4. makefile中使用变量&lt;/h3&gt;
 &lt;p&gt;以edit的规则为例：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;edit&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;main.o kbd.o command.o display.o \
-	 insert.o search.o files.o utills.o
-&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;cc&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;-o&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;edit&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;main.o&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;kbd.o&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;command.o&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;display.o&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;\&lt;/span&gt;
-		   &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;insert.o&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;search.o&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;files.o&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;utils.o&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;看到[.o]文件的字符串被重复了两次，如果我们的工程需要加入新的[.o]文件，那么需要在两个地方加。因为此时的makefile并不复杂。当makefile变得复杂我们就有可能忘掉某个地方，而导致编译失败。所以为了makefile的易维护，在makefile中可以使用变量。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span class=&#34;nf&#34;&gt;edit&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;kbd&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;display&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; \
+	 &lt;span class=&#34;n&#34;&gt;insert&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;search&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;files&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;utills&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt;
+&lt;span class=&#34;err&#34;&gt;cc&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;-o&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;edit&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;main.o&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;kbd.o&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;command.o&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;display.o&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;\&lt;/span&gt;
+		   &lt;span class=&#34;err&#34;&gt;insert.o&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;search.o&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;files.o&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;utils.o&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;看到[.o]文件的字符串被重复了两次，如果我们的工程需要加入新的[.o]文件，那么需要在两个地方加。因为此时的makefile并不复杂。当makefile变得复杂我们就有可能忘掉某个地方，而导致编译失败。所以为了makefile的易维护，在makefile中可以使用变量。&lt;/p&gt;
 &lt;p&gt;比如我们声明一个变量，objects, OBJECTS,objs,OBJS,或OBJ，表示obj文件。在makefile一开始就定义&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;objects &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; main.o kbd.o command.o display.o &lt;span style=&#34;color:#ae81ff&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;		  insert.o search.o files.o utils.o
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;于是，就可以方便的在makefile中以&amp;quot;$(objects)&amp;ldquo;的方式来使用这个变量了。改良后的makefile如下：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;objects &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; main.o kbd.o command.o display.o &lt;span style=&#34;color:#ae81ff&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;		insert.o search.o files.o utils.o
-&lt;span style=&#34;color:#a6e22e&#34;&gt;edit &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;objects&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
-		cc -o edit &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;objects&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
-&lt;span style=&#34;color:#a6e22e&#34;&gt;main.o &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; main.c defs.h
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span class=&#34;nv&#34;&gt;objects&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; main.o kbd.o command.o display.o &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;		  insert.o search.o files.o utils.o
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;于是，就可以方便的在makefile中以&amp;quot;$(objects)&amp;quot;的方式来使用这个变量了。改良后的makefile如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span class=&#34;nv&#34;&gt;objects&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; main.o kbd.o command.o display.o &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;		insert.o search.o files.o utils.o
+&lt;span class=&#34;nf&#34;&gt;edit &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;objects&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;
+		cc -o edit &lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;objects&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;main.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defs&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
 		cc -c main.c
-&lt;span style=&#34;color:#a6e22e&#34;&gt;command.o &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; command.c defs.h command.h
+&lt;span class=&#34;nf&#34;&gt;command.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defs&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
 			cc -c command.c
-&lt;span style=&#34;color:#a6e22e&#34;&gt;display.o &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; display.c defs.h buffer.h
+&lt;span class=&#34;nf&#34;&gt;display.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;display&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defs&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;buffer&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
            cc -c display.c
-&lt;span style=&#34;color:#a6e22e&#34;&gt;insert.o &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; insert.c defs.h buffer.h
+&lt;span class=&#34;nf&#34;&gt;insert.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;insert&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defs&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;buffer&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
            cc -c insert.c
-&lt;span style=&#34;color:#a6e22e&#34;&gt;search.o &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; search.c defs.h buffer.h
+&lt;span class=&#34;nf&#34;&gt;search.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;search&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defs&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;buffer&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
            cc -c search.c
-&lt;span style=&#34;color:#a6e22e&#34;&gt;files.o &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; files.c defs.h buffer.h command.h
+&lt;span class=&#34;nf&#34;&gt;files.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;files&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defs&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;buffer&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
            cc -c files.c
-&lt;span style=&#34;color:#a6e22e&#34;&gt;utils.o &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; utils.c defs.h
+&lt;span class=&#34;nf&#34;&gt;utils.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;utils&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defs&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
            cc -c utils.c
-&lt;span style=&#34;color:#a6e22e&#34;&gt;clean &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
-	rm edit &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;objects&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;于是如果有新的 .o 文件加入，只需修改一下 objects 变量就可以了。&lt;/p&gt;
+&lt;span class=&#34;nf&#34;&gt;clean &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;
+	rm edit &lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;objects&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;于是如果有新的 .o 文件加入，只需修改一下 objects 变量就可以了。&lt;/p&gt;
 &lt;h3 id=&#34;5-make自动推导&#34;&gt;5. make自动推导&lt;/h3&gt;
 &lt;p&gt;GNU的make很强大，它可以自动推导文件以及文件依赖关系后面的命令，于是我们没有必要在每个[.o]文件写上依赖关系。make会自动识别，并自己推导命令。&lt;/p&gt;
 &lt;p&gt;只要make找到一个[.o]文件，它就会自动的把[.c]文件加在依赖关系中，如果make找到一个whatever.o，那么whatever.c等whatever.o的依赖文件，并且cc -c whatever.c也会被推导出来。于是makefile可以又一次简化。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;objects &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; main.o kbd.o command.o display.o &lt;span style=&#34;color:#ae81ff&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;		insert.o seaerch.o files.o utils.o
-&lt;span style=&#34;color:#a6e22e&#34;&gt;edit &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;objects&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
-	cc -o edit &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;objects&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
-&lt;span style=&#34;color:#a6e22e&#34;&gt;main.o &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; defs.h
-&lt;span style=&#34;color:#a6e22e&#34;&gt;kbd.o &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; defs.h command.h
-&lt;span style=&#34;color:#a6e22e&#34;&gt;command.o &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; defs.h command.h
-&lt;span style=&#34;color:#a6e22e&#34;&gt;display.o &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; defs.h buffer.h
-&lt;span style=&#34;color:#a6e22e&#34;&gt;insert.o &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; defs.h buffer.h
-&lt;span style=&#34;color:#a6e22e&#34;&gt;search.o &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; defs.h buffer.h
-&lt;span style=&#34;color:#a6e22e&#34;&gt;files.o &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; defs.h buffer.h command.h
-&lt;span style=&#34;color:#a6e22e&#34;&gt;utils.o &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; defs.h
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span class=&#34;nv&#34;&gt;objects&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; main.o kbd.o command.o display.o &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;		insert.o seaerch.o files.o utils.o
+&lt;span class=&#34;nf&#34;&gt;edit &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;objects&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;
+	cc -o edit &lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;objects&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;main.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defs&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;kbd.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defs&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;command.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defs&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;display.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defs&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;buffer&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;insert.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defs&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;buffer&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;search.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defs&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;buffer&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;files.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defs&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;buffer&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;utils.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defs&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
 
-&lt;span style=&#34;color:#a6e22e&#34;&gt;.PHONY &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; clean
-&lt;span style=&#34;color:#a6e22e&#34;&gt;clean &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
-		rm edit &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;objects&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这就是make的“隐晦规则”。&lt;/p&gt;
+&lt;span class=&#34;nf&#34;&gt;.PHONY &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;clean&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;clean &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;
+		rm edit &lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;objects&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;这就是make的“隐晦规则”。&lt;/p&gt;
 &lt;p&gt;.PHONY表示，clean是个伪目标文件&lt;/p&gt;
 &lt;h3 id=&#34;6-makefile的收缩&#34;&gt;6. makefile的收缩&lt;/h3&gt;
 &lt;p&gt;收拢起来&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;objects &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; main.o kbd.o command.o display.o &lt;span style=&#34;color:#ae81ff&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;    	insert.o search.o files.o utils.o
-&lt;span style=&#34;color:#a6e22e&#34;&gt;edit &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;objects&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
-		cc -o edit &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;objects&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
-&lt;span style=&#34;color:#a6e22e&#34;&gt;$(objects) &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; defs.h
-&lt;span style=&#34;color:#a6e22e&#34;&gt;kbd.o command.o files.o &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; command.h
-&lt;span style=&#34;color:#a6e22e&#34;&gt;display.o insert.o search.o files.o &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; buffer.h
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span class=&#34;nv&#34;&gt;objects&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; main.o kbd.o command.o display.o &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    	insert.o search.o files.o utils.o
+&lt;span class=&#34;nf&#34;&gt;edit &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;objects&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;
+		cc -o edit &lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;objects&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;$(objects) &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;defs&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;kbd.o command.o files.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;display.o insert.o search.o files.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;buffer&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt;
 
-&lt;span style=&#34;color:#a6e22e&#34;&gt;.PHONY &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; clean
-&lt;span style=&#34;color:#a6e22e&#34;&gt;clean&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
-	rm edit &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;objects&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;虽然makefile变得很简单，但我们的文件依赖关系会显得凌乱，新增.o文件不好管理&lt;/p&gt;
+&lt;span class=&#34;nf&#34;&gt;.PHONY &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;clean&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;clean&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;
+	rm edit &lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;objects&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;虽然makefile变得很简单，但我们的文件依赖关系会显得凌乱，新增.o文件不好管理&lt;/p&gt;
 &lt;h3 id=&#34;7-清空目标文件的规则&#34;&gt;7. 清空目标文件的规则&lt;/h3&gt;
 &lt;p&gt;每个Makefile中都应该写一个清空目标文件(.o和执行文件)的规则。&lt;/p&gt;
 &lt;p&gt;一般的风格是：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;clean&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
-	rm edit &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;objects&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;更稳健的做法是：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;.PHONY&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; clean
-&lt;span style=&#34;color:#a6e22e&#34;&gt;clean&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
-	-rm edit &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;objects&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;.PHONY表示clean是一个“伪目标”，向make说明，不管是否有这个文件，这个目标就是“伪目标”。只要有这个声明，不管是否有“clean”文件，要运行“clean”这个目标，只有“make clean”这样。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span class=&#34;nf&#34;&gt;clean&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;
+	rm edit &lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;objects&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;更稳健的做法是：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span class=&#34;nf&#34;&gt;.PHONY&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;clean&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;clean&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;
+	-rm edit &lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;objects&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;.PHONY表示clean是一个“伪目标”，向make说明，不管是否有这个文件，这个目标就是“伪目标”。只要有这个声明，不管是否有“clean”文件，要运行“clean”这个目标，只有“make clean”这样。&lt;/p&gt;
 &lt;p&gt;而在rm命令前面加了一个减号表示也许某些文件出现问题，但不用管，继续往后执行。&lt;/p&gt;
 &lt;p&gt;当然，clean的规则不要放在文件的开头，不然，这就会变成make的默认目标。&lt;/p&gt;
 &lt;p&gt;“clean从来都是放在文件的最后”&lt;/p&gt;
 &lt;h2 id=&#34;makefile总述&#34;&gt;Makefile总述&lt;/h2&gt;
 &lt;h3 id=&#34;1-makefile里有什么&#34;&gt;1. Makefile里有什么&lt;/h3&gt;
-&lt;p&gt;Makefile主要包含了五个东西：&lt;strong&gt;&lt;!-- raw HTML omitted --&gt;显示规则，隐晦规则，变量定义，文件指示和注释。&lt;!-- raw HTML omitted --&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Makefile主要包含了五个东西：&lt;strong&gt;&lt;font color = &#34;red&#34;&gt;显示规则，隐晦规则，变量定义，文件指示和注释。&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;显示规则：显示规则说明了如何生成一个或多个的目标文件。这是由Makefile书写者明显指出要生成的文件、文件的依赖文件、生成的命令。&lt;/li&gt;
 &lt;li&gt;隐晦规则：由于我们的make有自动推导功能，所以隐晦的规则可以让我们比较粗糙地简略书写Makefile，这是make支持的。&lt;/li&gt;
@@ -243,24 +402,48 @@ C --&amp;gt;|Three| F[fa:fa-car Car]
 &lt;p&gt;最后，在Makefile中的命令，必须要以[Tab]键开始。&lt;/p&gt;
 &lt;h3 id=&#34;2-makefile的文件名&#34;&gt;2. Makefile的文件名&lt;/h3&gt;
 &lt;p&gt;默认的情况下，make命令会在当前目录下按顺序找寻文件名为**“GNUmakefile”、“makefile”、“Makefile”**的文件，找到了解释这个文件。在这三个文件名中，最好使用“Makefile”这个文件名，因为，这个文件名第一个字符为大写，这样有一种显目的感觉。最好不要用“GNUmakefile”，这个文件是GNU的make识别的。有另外一些make只对全小写的“makefile”文件名敏感，但是基本上来说，大多数的make都支持“**makefile”和“Makefile”**这两种默认文件名。&lt;/p&gt;
-&lt;p&gt;当然，可以使用别的文件名来书写Makefile，比如：“Make.Linux”，“Make.Solaris”，“Make.AIX”等，如果要****指定特定的Makefile，可以使用make的“-f”和“&amp;ndash;file”参数****，如：make -f Make.Linux或make &amp;ndash;file Make.AIX。&lt;/p&gt;
+&lt;p&gt;当然，可以使用别的文件名来书写Makefile，比如：“Make.Linux”，“Make.Solaris”，“Make.AIX”等，如果要****指定特定的Makefile，可以使用make的“-f”和“--file”参数****，如：make -f Make.Linux或make --file Make.AIX。&lt;/p&gt;
 &lt;h3 id=&#34;3-引用其他的makefile&#34;&gt;3. 引用其他的Makefile&lt;/h3&gt;
 &lt;p&gt;在Makefile使用include关键字可以把别的Makefile包含进来，这很像C语言的#include，被包含的文件会原模原样的放在当前文件的包含位置。include的语法是：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt; include filename
- &lt;span style=&#34;color:#75715e&#34;&gt;#filename可以是当前操作系统Shell的文件模式（可以保含路径和通配符）&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;在include前面可以有一些空字符，但是绝不能是[Tab]键开始。include和可以用一个或多个空格隔开。&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt; include filename
+ &lt;span class=&#34;c1&#34;&gt;#filename可以是当前操作系统Shell的文件模式（可以保含路径和通配符）&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;在include前面可以有一些空字符，但是绝不能是[Tab]键开始。include和可以用一个或多个空格隔开。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;举个例子，有这样几个Makefile：a.mk、b.mk、c.mk，还有一个文件叫foo.make，以及一个变量$(bar)，其包含了e.mk和f.mk，那么，下面的语句：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;include&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;foo.make&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;*.mk&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;bar&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
-&lt;span style=&#34;color:#75715e&#34;&gt;#等价于：
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;include&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;foo.make&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;a.mk&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;b.mk&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;c.mk&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;e.mk&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;f.mk&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;make命令开始时，会把找寻include所指出的其它Makefile，并把其内容安置在当前的位置。就好像C/C++的#include指令一样。如果文件都没有指定绝对路径或是相对路径的话，make会在当前目录下首先寻找，如果当前目录下没有找到，那么，make还会在下面的几个目录下找：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span class=&#34;err&#34;&gt;include&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;foo.make&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;*.mk&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;bar&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;c&#34;&gt;#等价于：
+&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;include&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;foo.make&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;a.mk&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;b.mk&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;c.mk&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;e.mk&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;f.mk&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;make命令开始时，会把找寻include所指出的其它Makefile，并把其内容安置在当前的位置。就好像C/C++的#include指令一样。如果文件都没有指定绝对路径或是相对路径的话，make会在当前目录下首先寻找，如果当前目录下没有找到，那么，make还会在下面的几个目录下找：&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;如果make执行时，有“-I”或“&amp;ndash;include-dir”参数，那么make就会在这个参数所指定的目录下去寻找。&lt;/li&gt;
+&lt;li&gt;如果make执行时，有“-I”或“--include-dir”参数，那么make就会在这个参数所指定的目录下去寻找。&lt;/li&gt;
 &lt;li&gt;如果目录/include（一般是：/usr/local/bin或/usr/include）存在的话，make也会去找。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;如果有文件没有找到的话，make会生成一条警告信息，但不会马上出现致命错误。它会继续载入其它的文件，一旦完成makefile的读取，make会再重试这些没有找到，或是不能读取的文件，如果还是不行，make才会出现一条致命信息。如果想让make不理那些无法读取的文件，而继续执行，可以在include前加一个减号“-”。如：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;-include&amp;lt;filename&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其表示，无论include过程中出现什么错误，都不要报错继续执行。和其它版本make兼容的相关命令是sinclude，其作用和这一个是一样的。这个变量中的值是其它的Makefile，用空格分隔。只是，它和include不同的是，从这个环境变量中引入的Makefile的“目标”不会起作用，如果环境变量中定义的文件发现错误，make也会不理。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span class=&#34;err&#34;&gt;-include&amp;lt;filename&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;其表示，无论include过程中出现什么错误，都不要报错继续执行。和其它版本make兼容的相关命令是sinclude，其作用和这一个是一样的。这个变量中的值是其它的Makefile，用空格分隔。只是，它和include不同的是，从这个环境变量中引入的Makefile的“目标”不会起作用，如果环境变量中定义的文件发现错误，make也会不理。&lt;/p&gt;
 &lt;h3 id=&#34;4-环境变量makefiles&#34;&gt;4. 环境变量Makefiles&lt;/h3&gt;
 &lt;p&gt;如果当前环境中定义了环境变量Makefiles，那么make会把这个变量中的值做一个类似于include的动作。这个变量中的值是其它的Makefile，用空格分隔。只是，它和include不同的是，从这个环境变中引入的Makefile的“目标”不会起作用，如果环境变量中定义的文件发现错误，make也会不理。&lt;/p&gt;
 &lt;p&gt;但还是建议不要使用这个环境变量，因为只要这个变量一旦被定义，那么当使用make时，所有的Makefile都会受到它的影响，这绝不是想看到的。在这里提这个事，只是为了告诉大家，也许有时候Makefile出现了怪事，那么可以看看当前环境中有没有定义这个变量。&lt;/p&gt;
@@ -282,20 +465,39 @@ C --&amp;gt;|Three| F[fa:fa-car Car]
 &lt;p&gt;规则包含两个部分，一个是&lt;strong&gt;依赖关系&lt;/strong&gt;，一个是&lt;strong&gt;生成目标的方法&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;在Makefile中，规则的顺序是很重要的&lt;/strong&gt;，因为，&lt;strong&gt;Makefile中只应该有一个最终目标&lt;/strong&gt;，其它的目标都是被这个目标所连带出来的，所以一定要让make知道你的最终目标是什么。一般来说，定义在Makefile中的目标可能会有很多，但是第一条规则中的目标将被确立为最终的目标。如果第一条规则中的目标有很多个，那么，第一个目标会成为最终的目标。make所完成的也就是这个目标。&lt;/p&gt;
 &lt;p&gt;规则举例&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt; foo.o: foo.c defs.h       &lt;span style=&#34;color:#75715e&#34;&gt;# foo模块&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt; foo.o: foo.c defs.h       &lt;span class=&#34;c1&#34;&gt;# foo模块&lt;/span&gt;
         cc -c -g foo.c
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;foo.o是我们的目标，foo.c和defs.h是目标所依赖的源文件，而只有一个命令“cc -c -g foo.c”（以Tab键开头）&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;foo.o是我们的目标，foo.c和defs.h是目标所依赖的源文件，而只有一个命令“cc -c -g foo.c”（以Tab键开头）&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;文件的依赖关系，foo.o依赖于foo.c和defs.h的文件，如果foo.c和defs.h的文件日期要比foo.o文件日期要新，或是foo.o不存在，那么依赖关系发生。&lt;/li&gt;
 &lt;li&gt;如果生成（或更新）foo.o文件。也就是那个cc命令，其说明了，如何生成foo.o这个文件。（当然foo.c文件include了defs.h文件）&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 id=&#34;2-规则的语法&#34;&gt;2. 规则的语法&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;targets &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; prerequisites
-		command
-&lt;span style=&#34;color:#75715e&#34;&gt;#或：
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;targets &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; prerequisites ; command
-		command
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span class=&#34;nf&#34;&gt;targets &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;prerequisites&lt;/span&gt;
+		&lt;span class=&#34;nb&#34;&gt;command&lt;/span&gt;
+&lt;span class=&#34;c&#34;&gt;#或：
+&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;targets &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;prerequisites&lt;/span&gt; ; &lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;
+		&lt;span class=&#34;nb&#34;&gt;command&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;targets是文件名，以空格分开，可以使用通配符。一般来说，我们的目标基本上是一个文件，但也有可能是多个文件。&lt;/p&gt;
 &lt;/li&gt;
@@ -313,66 +515,118 @@ C --&amp;gt;|Three| F[fa:fa-car Car]
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;3-在规则中使用通配符&#34;&gt;3. 在规则中使用通配符&lt;/h3&gt;
-&lt;p&gt;make支持三各通配符：“*”，“?”和“[&amp;hellip;]”。这是和Unix的B-Shell是相同的。&lt;/p&gt;
+&lt;p&gt;make支持三各通配符：“*”，“?”和“[...]”。这是和Unix的B-Shell是相同的。&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;“~”：波浪号（“~”）字符在文件名中也有比较特殊的用途。如果是“~/test”，这就表示当前用户的$HOME目录下的test目录。而“~hchen/test”则表示用户hchen的宿主目录下的test目录。（这些都是Unix下的小知识了，make也支持）而在Windows或是MS-DOS下，用户没有宿主目录，那么波浪号所指的目录则根据环境变量“HOME”而定。&lt;/li&gt;
 &lt;li&gt;“*”：通配符代替了你一系列的文件，如“&lt;em&gt;.c”表示所以后缀为c的文件。一个需要我们注意的是，如果我们的文件名中有通配符，如：“&lt;/em&gt;”，那么可以用转义字符“\”，如“*”来表示真实的“*”字符，而不是任意长度的字符串。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 id=&#34;4-静态模式&#34;&gt;4. 静态模式&lt;/h3&gt;
 &lt;p&gt;静态模式可以更加容易地定义多目标的规则，可以让我们的规则变得更加的有弹性和灵活。语法：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;&amp;lt;targets...&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &amp;lt;target-pattern&amp;gt;: &amp;lt;prereq-patterns ...&amp;gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span class=&#34;nf&#34;&gt;&amp;lt;targets...&amp;gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &amp;lt;&lt;span class=&#34;n&#34;&gt;target&lt;/span&gt;-&lt;span class=&#34;n&#34;&gt;pattern&lt;/span&gt;&amp;gt;: &amp;lt;&lt;span class=&#34;n&#34;&gt;prereq&lt;/span&gt;-&lt;span class=&#34;n&#34;&gt;patterns&lt;/span&gt; ...&amp;gt;
 	&amp;lt;commands&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;targets定义了一系列的目标文件，可以有通配符。是目标的一个集合。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;targets定义了一系列的目标文件，可以有通配符。是目标的一个集合。&lt;/p&gt;
 &lt;p&gt;target-parrtern是指明了targets的模式，也就是的目标集模式。&lt;/p&gt;
 &lt;p&gt;prereq-parrterns是目标的依赖模式，它对target-parrtern形成的模式再进行一次依赖目标的定义。&lt;/p&gt;
 &lt;p&gt;说明:&lt;/p&gt;
-&lt;p&gt;如果我们的&lt;!-- raw HTML omitted --&gt;定义成“%.o”，意思是我们的集合中都是以“.o”结尾的。&lt;/p&gt;
-&lt;p&gt;而如果我们的&lt;!-- raw HTML omitted --&gt;定义成“%.c”，意思是对&lt;!-- raw HTML omitted --&gt;所形成的目标集进行二次定义，其计算方法是，取&lt;!-- raw HTML omitted --&gt;模式中的“%”（也就是去掉了[.o]这个结尾），并为其加上[.c]这个结尾，形成的新集合。&lt;/p&gt;
+&lt;p&gt;如果我们的&lt;target-parrtern&gt;定义成“%.o”，意思是我们的集合中都是以“.o”结尾的。&lt;/p&gt;
+&lt;p&gt;而如果我们的&lt;prereq-parrterns&gt;定义成“%.c”，意思是对&lt;target-parrtern&gt;所形成的目标集进行二次定义，其计算方法是，取&lt;target-parrtern&gt;模式中的“%”（也就是去掉了[.o]这个结尾），并为其加上[.c]这个结尾，形成的新集合。&lt;/p&gt;
 &lt;p&gt;所以，我们的“目标模式”或是“依赖模式”中都应该有“%”这个字符&lt;/p&gt;
 &lt;p&gt;实例：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;objects &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; foo.o bar.o
-&lt;span style=&#34;color:#a6e22e&#34;&gt;all&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;objects&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
-&lt;span style=&#34;color:#a6e22e&#34;&gt;$(objects)&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; %.o: %.c
-	&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;CC&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt; -c &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;CFLAGS&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt; $&amp;lt; -o $@
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;例子中，指明了目标从$objects中获取&lt;/p&gt;
-&lt;p&gt;“%.o”表明要所有以“.o”结尾的目标，也就是&amp;quot;foo.o bar.o&amp;rdquo;，也就是变量$object集合的模式&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span class=&#34;nv&#34;&gt;objects&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; foo.o bar.o
+&lt;span class=&#34;nf&#34;&gt;all&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;objects&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;$(objects)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; %.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt;: %.&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;
+	&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;CC&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt; -c &lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;CFLAGS&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt; $&amp;lt; -o &lt;span class=&#34;nv&#34;&gt;$@&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;例子中，指明了目标从$objects中获取&lt;/p&gt;
+&lt;p&gt;“%.o”表明要所有以“.o”结尾的目标，也就是&amp;quot;foo.o bar.o&amp;quot;，也就是变量$object集合的模式&lt;/p&gt;
 &lt;p&gt;而依赖模式“%.c”则取模式“%.o”的“%”，也就是“foobar”，并为其加下“.c”的后缀，于是，我们的依赖目标就是“foo.c bar.c”&lt;/p&gt;
 &lt;p&gt;而命令中的“$&amp;lt;”和“$@”则是自动化变量，“$&amp;lt;”表示所有的依赖目标集（也就是“foo.c bar.c”），“$@”表示目标集（也褪恰癴oo.o bar.o”）&lt;/p&gt;
 &lt;p&gt;上面的规则展开后等价于：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;foo.o &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; foo.c
-	&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;CC&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt; -c &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;CFLAGS&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt; foo.c -o foo.o
-&lt;span style=&#34;color:#a6e22e&#34;&gt;bar.o &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; bar.c
-	&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;CC&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt; -c &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;CFLAGS&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt; bar.c -o bar.o
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;makefile书写命令&#34;&gt;Makefile书写命令&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span class=&#34;nf&#34;&gt;foo.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;foo&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;
+	&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;CC&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt; -c &lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;CFLAGS&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt; foo.c -o foo.o
+&lt;span class=&#34;nf&#34;&gt;bar.o &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;bar&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;
+	&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;CC&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt; -c &lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;CFLAGS&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt; bar.c -o bar.o
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;makefile书写命令&#34;&gt;Makefile书写命令&lt;/h2&gt;
 &lt;h3 id=&#34;1-显示命令&#34;&gt;1. 显示命令&lt;/h3&gt;
 &lt;p&gt;通常，make会把其要执行的命令行在命令执行前输出到屏幕上。当我们用“@”字符在命令行前，那么，这个命令将不被make显示出来，最具代表性的例子是，我们用这个功能来像屏幕显示一些信息。如：&lt;/p&gt;
-&lt;p&gt;@echo 正在编译XXX模块&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;p&gt;@echo 正在编译XXX模块......&lt;/p&gt;
 &lt;h3 id=&#34;2赋值命令&#34;&gt;2.赋值命令&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#  = 是最基本的赋值
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# := 是覆盖之前的值
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# ?= 是如果没有被赋值过就赋予等号后面的值
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# += 是添加等号后面的值
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3-指定目标&#34;&gt;3. 指定目标&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;1.&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;“all”&lt;/span&gt;       &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;这个伪目标是所有目标的目标，其功能一般是编译所有的目标。&lt;/span&gt;
-&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;2.&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;“clean”&lt;/span&gt;     &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;这个伪目标功能是删除所有被make创建的文件。&lt;/span&gt;
-&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;3.&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;“install”&lt;/span&gt;   &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;这个伪目标功能是安装已编译好的程序，其实就是把目标执行文件拷贝到指定的目标中去。&lt;/span&gt;
-&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;4.&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;“print”&lt;/span&gt;     &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;这个伪目标的功能是例出改变过的源文件。&lt;/span&gt;
-&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;5.&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;“tar”&lt;/span&gt;       &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;这个伪目标功能是把源程序打包备份。也就是一个tar文件。&lt;/span&gt;
-&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;6.&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;“dist”&lt;/span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;这个伪目标功能是创建一个压缩文件，一般是把tar文件压成Z文件。或是gz文件。&lt;/span&gt;
-&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;7.&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;“TAGS”&lt;/span&gt;      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;这个伪目标功能是更新所有的目标，以备完整地重编译使用。&lt;/span&gt;
-&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;8.&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;“check”和“test”&lt;/span&gt;   &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;这两个伪目标一般用来测试makefile的流程。&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;4-自动化变量&#34;&gt;4. 自动化变量&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span class=&#34;c&#34;&gt;#  = 是最基本的赋值
+&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# := 是覆盖之前的值
+&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# ?= 是如果没有被赋值过就赋予等号后面的值
+&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# += 是添加等号后面的值
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;3-指定目标&#34;&gt;3. 指定目标&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span class=&#34;err&#34;&gt;1.&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;“all”&lt;/span&gt;       &lt;span class=&#34;err&#34;&gt;这个伪目标是所有目标的目标，其功能一般是编译所有的目标。&lt;/span&gt;
+&lt;span class=&#34;err&#34;&gt;2.&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;“clean”&lt;/span&gt;     &lt;span class=&#34;err&#34;&gt;这个伪目标功能是删除所有被make创建的文件。&lt;/span&gt;
+&lt;span class=&#34;err&#34;&gt;3.&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;“install”&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;这个伪目标功能是安装已编译好的程序，其实就是把目标执行文件拷贝到指定的目标中去。&lt;/span&gt;
+&lt;span class=&#34;err&#34;&gt;4.&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;“print”&lt;/span&gt;     &lt;span class=&#34;err&#34;&gt;这个伪目标的功能是例出改变过的源文件。&lt;/span&gt;
+&lt;span class=&#34;err&#34;&gt;5.&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;“tar”&lt;/span&gt;       &lt;span class=&#34;err&#34;&gt;这个伪目标功能是把源程序打包备份。也就是一个tar文件。&lt;/span&gt;
+&lt;span class=&#34;err&#34;&gt;6.&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;“dist”&lt;/span&gt;      &lt;span class=&#34;err&#34;&gt;这个伪目标功能是创建一个压缩文件，一般是把tar文件压成Z文件。或是gz文件。&lt;/span&gt;
+&lt;span class=&#34;err&#34;&gt;7.&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;“TAGS”&lt;/span&gt;      &lt;span class=&#34;err&#34;&gt;这个伪目标功能是更新所有的目标，以备完整地重编译使用。&lt;/span&gt;
+&lt;span class=&#34;err&#34;&gt;8.&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;“check”和“test”&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;这两个伪目标一般用来测试makefile的流程。&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;4-自动化变量&#34;&gt;4. 自动化变量&lt;/h3&gt;
 &lt;ol&gt;
-&lt;li&gt;$@表示规则中的目标文件集。在模式规则中，如果有多个目标，那么，&amp;quot;$@&amp;ldquo;就是匹配于目标中模式定义的集合。&lt;/li&gt;
-&lt;li&gt;$%仅当目标是函数库文件中，表示规则中的目标成员名。例如，如果一个目标是&amp;quot;foo.a(bar.o)&amp;quot;，那么，&amp;quot;$%&amp;ldquo;就是&amp;quot;bar.o&amp;rdquo;，&amp;quot;$@&amp;ldquo;就是&amp;quot;foo.a&amp;rdquo;。如果目标不是函数库文件（Unix下是
+&lt;li&gt;$@表示规则中的目标文件集。在模式规则中，如果有多个目标，那么，&amp;quot;$@&amp;quot;就是匹配于目标中模式定义的集合。&lt;/li&gt;
+&lt;li&gt;$%仅当目标是函数库文件中，表示规则中的目标成员名。例如，如果一个目标是&amp;quot;foo.a(bar.o)&amp;quot;，那么，&amp;quot;$%&amp;quot;就是&amp;quot;bar.o&amp;quot;，&amp;quot;$@&amp;quot;就是&amp;quot;foo.a&amp;quot;。如果目标不是函数库文件（Unix下是
 [.a]，Windows下是[.lib]），那么，其值为空。&lt;/li&gt;
-&lt;li&gt;$&amp;lt;依赖目标中的第一个目标名字。如果依赖目标是以模式（即&amp;rdquo;%&amp;quot;）定义的，那么&amp;quot;$&amp;lt;&amp;ldquo;将是符合模式的一系列的文件集。注意，其是一个一个取出来的。&lt;/li&gt;
+&lt;li&gt;$&amp;lt;依赖目标中的第一个目标名字。如果依赖目标是以模式（即&amp;quot;%&amp;quot;）定义的，那么&amp;quot;$&amp;lt;&amp;quot;将是符合模式的一系列的文件集。注意，其是一个一个取出来的。&lt;/li&gt;
 &lt;li&gt;$?所有比目标新的依赖目标的集合。以空格分隔。&lt;/li&gt;
 &lt;li&gt;$^所有的依赖目标的集合。以空格分隔。如果在依赖目标中有多个重复的，那个这个变量会去除重复的依赖目标，只保留一份。&lt;/li&gt;
-&lt;li&gt;$+这个变量很像&amp;rdquo;$^&amp;quot;，也是所有依赖目标的集合。只是它不去除重复的依赖目标。&lt;/li&gt;
-&lt;li&gt;$*这个变量表示目标模式中&amp;quot;%&amp;ldquo;及其之前的部分。如果目标是&amp;quot;dir/a.foo.b&amp;rdquo;，并且目标的模式是&amp;quot;a.%.b&amp;quot;，那么，&amp;quot;$*&amp;ldquo;的值就是&amp;quot;dir /a.foo&amp;rdquo;。这个变量对于构造有关联的文件名是比
-较有较。如果目标中没有模式的定义，那么&amp;quot;$*&amp;ldquo;也就不能被推导出，但是，如果目标文件的后缀是 make所识别的，那么&amp;rdquo;$*&amp;ldquo;就是除了后缀的那一部分。例如：如果目标是&amp;quot;foo.c&amp;rdquo;
-，因为&amp;quot;.c&amp;quot;是make所能识别的后缀名，所以，&amp;quot;$*&amp;ldquo;的值就是&amp;quot;foo&amp;rdquo;。这个特性是GNU make的，很有可能不兼容于其它版本的make，所以，你应该尽量避免使用&amp;quot;$*&amp;quot;，除非是在隐含规则或是静态模式中。如果目标中的后缀是make所不能识别的，那么&amp;quot;$*&amp;ldquo;就是空值。&lt;/li&gt;
+&lt;li&gt;$+这个变量很像&amp;quot;$^&amp;quot;，也是所有依赖目标的集合。只是它不去除重复的依赖目标。&lt;/li&gt;
+&lt;li&gt;$*这个变量表示目标模式中&amp;quot;%&amp;quot;及其之前的部分。如果目标是&amp;quot;dir/a.foo.b&amp;quot;，并且目标的模式是&amp;quot;a.%.b&amp;quot;，那么，&amp;quot;$*&amp;quot;的值就是&amp;quot;dir /a.foo&amp;quot;。这个变量对于构造有关联的文件名是比
+较有较。如果目标中没有模式的定义，那么&amp;quot;$*&amp;quot;也就不能被推导出，但是，如果目标文件的后缀是 make所识别的，那么&amp;quot;$*&amp;quot;就是除了后缀的那一部分。例如：如果目标是&amp;quot;foo.c&amp;quot;
+，因为&amp;quot;.c&amp;quot;是make所能识别的后缀名，所以，&amp;quot;$*&amp;quot;的值就是&amp;quot;foo&amp;quot;。这个特性是GNU make的，很有可能不兼容于其它版本的make，所以，你应该尽量避免使用&amp;quot;$*&amp;quot;，除非是在隐含规则或是静态模式中。如果目标中的后缀是make所不能识别的，那么&amp;quot;$*&amp;quot;就是空值。&lt;/li&gt;
 &lt;/ol&gt;
         
       </description>
@@ -410,95 +664,203 @@ C --&amp;gt;|Three| F[fa:fa-car Car]
 &lt;h2 id=&#34;4-hyperscan伪代码&#34;&gt;4. Hyperscan伪代码&lt;/h2&gt;
 &lt;h3 id=&#34;41-编译&#34;&gt;4.1 编译&lt;/h3&gt;
 &lt;p&gt;函数buildDatabase用来编译规则文件中的多个正则表达式，参数mode指定了是BLOCK,STREAM,或者向量模式。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; hs_database_t &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;buildDatabase&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; vector&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;char&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;expressions,
-                                    &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; vector&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;unsigned&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; flags,
-                                    &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; vector&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;unsigned&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; ids,
-                                    &lt;span style=&#34;color:#66d9ef&#34;&gt;unsigned&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; mode) {
-    hs_database_t &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;db;
-    hs_compile_error_t &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;compileErr;
-    hs_error_t err;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span class=&#34;k&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hs_database_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;buildDatabase&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;vector&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&amp;gt;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;expressions&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+                                    &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;vector&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;flags&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+                                    &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;vector&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ids&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+                                    &lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;hs_database_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;db&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;hs_compile_error_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;compileErr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;hs_error_t&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;err&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 
-    Clock clock;
-    clock.start();
+    &lt;span class=&#34;n&#34;&gt;Clock&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;clock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;clock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;start&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
 
-    err &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; hs_compile_multi(expressions.data(), flags.data(), ids.data(),
-                           expressions.size(), mode, &lt;span style=&#34;color:#66d9ef&#34;&gt;nullptr&lt;/span&gt;, &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;db, &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;compileErr);
+    &lt;span class=&#34;n&#34;&gt;err&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hs_compile_multi&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;expressions&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;flags&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ids&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt;
+                           &lt;span class=&#34;n&#34;&gt;expressions&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;nullptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;db&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;compileErr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 
-    clock.stop();
+    &lt;span class=&#34;n&#34;&gt;clock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stop&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
 
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (err &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; HS_SUCCESS) {
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (compileErr&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;expression &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;) {
-            &lt;span style=&#34;color:#75715e&#34;&gt;// The error does not refer to a particular expression.
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            cerr &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ERROR: &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; compileErr&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;message &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; endl;
-        } &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; {
-            cerr &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ERROR: Pattern &amp;#39;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; expressions[compileErr&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;expression]
-                 &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#39; failed compilation with error: &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; compileErr&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;message
-                 &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; endl;
-        }
-        &lt;span style=&#34;color:#75715e&#34;&gt;// As the compileErr pointer points to dynamically allocated memory, if
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// we get an error, we must be sure to release it. This is not
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// necessary when no error is detected.
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        hs_free_compile_error(compileErr);
-        exit(&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;);
-    }
-&lt;span style=&#34;color:#75715e&#34;&gt;//...
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其中的核心代码是hs_compile_multi的调用，此函数用来编译多个正则表达式，从代码可见除了mode参数，BLOCK和STREAM模式都使用这一API。它的原型是&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;hs_error_t hs_compile_multi(&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;char&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; expressions, 
-                            &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;unsigned&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; flags, 
-                            &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;unsigned&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; ids, 
-                            &lt;span style=&#34;color:#66d9ef&#34;&gt;unsigned&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; elements, 
-                            &lt;span style=&#34;color:#66d9ef&#34;&gt;unsigned&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; mode, 
-                            &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; hs_platform_info_t &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; platform, 
-                            hs_database_t &lt;span style=&#34;color:#f92672&#34;&gt;**&lt;/span&gt; db, 
-                            hs_compile_error_t &lt;span style=&#34;color:#f92672&#34;&gt;**&lt;/span&gt; error)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其中，expressions是多个正则表达式字符串，flags和ids分别是expressions对应的flag和id数组；elements是表达式字符串的个数；其余参数与上一个例子中提到的hs_compile的参数涵义相同。&lt;/p&gt;
+    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;err&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;HS_SUCCESS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;compileErr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;expression&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+            &lt;span class=&#34;c1&#34;&gt;// The error does not refer to a particular expression.
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;            &lt;span class=&#34;n&#34;&gt;cerr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;ERROR: &amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;compileErr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;message&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+            &lt;span class=&#34;n&#34;&gt;cerr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;ERROR: Pattern &amp;#39;&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;expressions&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;compileErr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;expression&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+                 &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#39; failed compilation with error: &amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;compileErr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;message&lt;/span&gt;
+                 &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+        &lt;span class=&#34;c1&#34;&gt;// As the compileErr pointer points to dynamically allocated memory, if
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// we get an error, we must be sure to release it. This is not
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// necessary when no error is detected.
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;hs_free_compile_error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;compileErr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;exit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;//...
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;其中的核心代码是hs_compile_multi的调用，此函数用来编译多个正则表达式，从代码可见除了mode参数，BLOCK和STREAM模式都使用这一API。它的原型是&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span class=&#34;n&#34;&gt;hs_error_t&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hs_compile_multi&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;expressions&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+                            &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;flags&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+                            &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ids&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+                            &lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;elements&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+                            &lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+                            &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hs_platform_info_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;platform&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+                            &lt;span class=&#34;n&#34;&gt;hs_database_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;**&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;db&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+                            &lt;span class=&#34;n&#34;&gt;hs_compile_error_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;**&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;其中，expressions是多个正则表达式字符串，flags和ids分别是expressions对应的flag和id数组；elements是表达式字符串的个数；其余参数与上一个例子中提到的hs_compile的参数涵义相同。&lt;/p&gt;
 &lt;p&gt;这里要注意的一个事情是参数ids，它是正则表达式的ID数组。每个表达式都有一个唯一ID，这样命中的时候匹配回调函数可以得到此ID，告诉调用者哪个表达式命中了。如果ids传入NULL，则所有表达式的ID都为0。&lt;/p&gt;
 &lt;h3 id=&#34;42-准备匹配临时数据&#34;&gt;4.2 准备匹配临时数据&lt;/h3&gt;
 &lt;p&gt;为接下来的匹配分配足够的临时数据空间(scratch space）&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
-    Benchmark(&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; hs_database_t &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;streaming, &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; hs_database_t &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;block)
-        &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; db_streaming(streaming), db_block(block), scratch(&lt;span style=&#34;color:#66d9ef&#34;&gt;nullptr&lt;/span&gt;),
-          matchCount(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;) {
-        &lt;span style=&#34;color:#75715e&#34;&gt;// Allocate enough scratch space to handle either streaming or block
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// mode, so we only need the one scratch region.
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        hs_error_t err &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; hs_alloc_scratch(db_streaming, &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;scratch);
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (err &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; HS_SUCCESS) {
-            cerr &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ERROR: could not allocate scratch space. Exiting.&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; endl;
-            exit(&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;);
-        }
-        &lt;span style=&#34;color:#75715e&#34;&gt;// This second call will increase the scratch size if more is required
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// for block mode.
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        err &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; hs_alloc_scratch(db_block, &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;scratch);
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (err &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; HS_SUCCESS) {
-            cerr &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ERROR: could not allocate scratch space. Exiting.&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; endl;
-            exit(&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;);
-        }
-    }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;43-匹配&#34;&gt;4.3 匹配&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span class=&#34;k&#34;&gt;public&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;Benchmark&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hs_database_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;streaming&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hs_database_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;block&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+        &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;db_streaming&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;streaming&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;db_block&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;block&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;scratch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;nullptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+          &lt;span class=&#34;n&#34;&gt;matchCount&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;c1&#34;&gt;// Allocate enough scratch space to handle either streaming or block
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// mode, so we only need the one scratch region.
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;hs_error_t&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;err&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hs_alloc_scratch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;db_streaming&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;scratch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;err&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;HS_SUCCESS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+            &lt;span class=&#34;n&#34;&gt;cerr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;ERROR: could not allocate scratch space. Exiting.&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            &lt;span class=&#34;n&#34;&gt;exit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+        &lt;span class=&#34;c1&#34;&gt;// This second call will increase the scratch size if more is required
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// for block mode.
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;err&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hs_alloc_scratch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;db_block&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;scratch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;err&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;HS_SUCCESS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+            &lt;span class=&#34;n&#34;&gt;cerr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;ERROR: could not allocate scratch space. Exiting.&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            &lt;span class=&#34;n&#34;&gt;exit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;43-匹配&#34;&gt;4.3 匹配&lt;/h3&gt;
 &lt;h4 id=&#34;431-block模式&#34;&gt;4.3.1 BLOCK模式&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Scan each packet (in the ordering given in the PCAP file) through
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// Hyperscan using the block-mode interface.
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;scanBlock&lt;/span&gt;() {
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (size_t i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; i &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; packets.size(); &lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;i) {
-            &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; std&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;string &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;pkt &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; packets[i];
-            hs_error_t err &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; hs_scan(db_block, pkt.c_str(), pkt.length(), &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;,
-                                     scratch, onMatch, &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;matchCount);
-            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (err &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; HS_SUCCESS) {
-                cerr &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ERROR: Unable to scan packet. Exiting.&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; endl;
-                exit(&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;);
-            }
-        }
-    }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其中，db就是上一步编译的databas；data和length分别是要匹配的数据和数据长度；flags用来在未来版本中控制函数行为，目前未使用；scratch是匹配时要用的临时数据，之前已经分配好；onEvent非常关键，即匹配时调用的回调函数，由用户指定；context是用户自定义指针。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// Scan each packet (in the ordering given in the PCAP file) through
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;// Hyperscan using the block-mode interface.
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;scanBlock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size_t&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;packets&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+            &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pkt&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;packets&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
+            &lt;span class=&#34;n&#34;&gt;hs_error_t&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;err&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hs_scan&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;db_block&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pkt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c_str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pkt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+                                     &lt;span class=&#34;n&#34;&gt;scratch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;onMatch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;matchCount&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+            &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;err&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;HS_SUCCESS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+                &lt;span class=&#34;n&#34;&gt;cerr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;ERROR: Unable to scan packet. Exiting.&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+                &lt;span class=&#34;n&#34;&gt;exit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;其中，db就是上一步编译的databas；data和length分别是要匹配的数据和数据长度；flags用来在未来版本中控制函数行为，目前未使用；scratch是匹配时要用的临时数据，之前已经分配好；onEvent非常关键，即匹配时调用的回调函数，由用户指定；context是用户自定义指针。&lt;/p&gt;
 &lt;h4 id=&#34;432-匹配回调函数&#34;&gt;4.3.2 匹配回调函数&lt;/h4&gt;
 &lt;p&gt;匹配回调函数的原型是&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;typedef&lt;/span&gt; (&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; match_event_handler)(&lt;span style=&#34;color:#66d9ef&#34;&gt;unsigned&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; id, 
-                                &lt;span style=&#34;color:#66d9ef&#34;&gt;unsigned&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;long&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;long&lt;/span&gt; from, 
-                                &lt;span style=&#34;color:#66d9ef&#34;&gt;unsigned&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;long&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;long&lt;/span&gt; to, 
-                                &lt;span style=&#34;color:#66d9ef&#34;&gt;unsigned&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; flags, 
-                                &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;context)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其中，id是命中的正则表达式的ID，对于使用hs_compile编译的唯一表达式来说，此值为0；如果在编译时指定了相关模式选项(hs_compile中的mode参数），则此值将会设为匹配特征的起始位置，否则会设为0；to是命中数据的下一个字节的偏移；flags目前未用；context是用户自定义指针。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;match_event_handler&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;id&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+                                &lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;long&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;long&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+                                &lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;long&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;long&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;to&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+                                &lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;flags&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+                                &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;context&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;其中，id是命中的正则表达式的ID，对于使用hs_compile编译的唯一表达式来说，此值为0；如果在编译时指定了相关模式选项(hs_compile中的mode参数），则此值将会设为匹配特征的起始位置，否则会设为0；to是命中数据的下一个字节的偏移；flags目前未用；context是用户自定义指针。&lt;/p&gt;
 &lt;p&gt;返回值为非0表示停止匹配，否则继续；在匹配的过程中，每次命中时都将同步调用匹配回调函数，直到匹配结束。&lt;/p&gt;
 &lt;h3 id=&#34;44-清理资源&#34;&gt;4.4 清理资源&lt;/h3&gt;
 &lt;p&gt;包括关闭流（hs_close_stream）、释放database等。&lt;/p&gt;

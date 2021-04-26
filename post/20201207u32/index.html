@@ -167,9 +167,9 @@ src='https://plausible.io/js/plausible.js'>
   </div>
 
     
-    <p>C/C++ provides various data types that can be used in your programs.In general, you&rsquo;d commonly use: int for most variables and &ldquo;countable&rdquo; things (for loop counts, variables, events). char for characters and strings. float for general measurable things (seconds, distance, temperature). uint32 for bit manipulations, especially on 32-bit registers.</p>
+    <p>C/C++ provides various data types that can be used in your programs.In general, you'd commonly use: int for most variables and &quot;countable&quot; things (for loop counts, variables, events). char for characters and strings. float for general measurable things (seconds, distance, temperature). uint32 for bit manipulations, especially on 32-bit registers.</p>
 <ul>
-<li><strong>int</strong> for most variables and &ldquo;countable&rdquo; things (for loop counts, variables, events)</li>
+<li><strong>int</strong> for most variables and &quot;countable&quot; things (for loop counts, variables, events)</li>
 <li><strong>char</strong> for characters and strings</li>
 <li><strong>float</strong> for general measurable things (seconds, distance, temperature)</li>
 <li><strong>uint32_t</strong> for bit manipulations, especially on 32-bit registers</li>
@@ -270,9 +270,17 @@ src='https://plausible.io/js/plausible.js'>
 </tbody>
 </table>
 <h3 id="print-format">Print format</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#f92672">%</span>[flags][width][.prec][length]type
-<span style="color:#f92672">%</span>[<span style="color:#960050;background-color:#1e0010">标志</span>][<span style="color:#960050;background-color:#1e0010">最小宽度</span>][.<span style="color:#960050;background-color:#1e0010">精度</span>][<span style="color:#960050;background-color:#1e0010">类型长度</span>]<span style="color:#960050;background-color:#1e0010">类型。</span>
-</code></pre></div><h4 id="1-type">1. Type</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="o">%</span><span class="p">[</span><span class="n">flags</span><span class="p">][</span><span class="n">width</span><span class="p">][.</span><span class="n">prec</span><span class="p">][</span><span class="n">length</span><span class="p">]</span><span class="n">type</span>
+<span class="o">%</span><span class="p">[</span><span class="err">标志</span><span class="p">][</span><span class="err">最小宽度</span><span class="p">][.</span><span class="err">精度</span><span class="p">][</span><span class="err">类型长度</span><span class="p">]</span><span class="err">类型。</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="1-type">1. Type</h4>
 <table>
 <thead>
 <tr>
@@ -419,15 +427,29 @@ src='https://plausible.io/js/plausible.js'>
 </tbody>
 </table>
 <p>example:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">printf(<span style="color:#e6db74">&#34;%5d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,<span style="color:#ae81ff">1000</span>);               <span style="color:#75715e">//默认右对齐,左边补空格  			//output:1000
-</span><span style="color:#75715e"></span>printf(<span style="color:#e6db74">&#34;%-5d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,<span style="color:#ae81ff">1000</span>);              <span style="color:#75715e">//左对齐,右边补空格 			//output:1000
-</span><span style="color:#75715e"></span>printf(<span style="color:#e6db74">&#34;%+d %+d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,<span style="color:#ae81ff">1000</span>,<span style="color:#f92672">-</span><span style="color:#ae81ff">1000</span>);     <span style="color:#75715e">//输出正负号					//output:+1000 -1000
-</span><span style="color:#75715e"></span>printf(<span style="color:#e6db74">&#34;% d % d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,<span style="color:#ae81ff">1000</span>,<span style="color:#f92672">-</span><span style="color:#ae81ff">1000</span>);     <span style="color:#75715e">//正号用空格替代，负号输出 		//output:1000 -1000
-</span><span style="color:#75715e"></span>printf(<span style="color:#e6db74">&#34;%x %#x</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,<span style="color:#ae81ff">1000</span>,<span style="color:#ae81ff">1000</span>);       <span style="color:#75715e">//输出0x 						//output:3e8 0x3e8
-</span><span style="color:#75715e"></span>printf(<span style="color:#e6db74">&#34;%.0f %#.0f</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,<span style="color:#ae81ff">1000.0</span>,<span style="color:#ae81ff">1000.0</span>)<span style="color:#75715e">//当小数点后不输出值时依然输出小数点 //output:1000 1000.
-</span><span style="color:#75715e"></span>printf(<span style="color:#e6db74">&#34;%g %#g</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,<span style="color:#ae81ff">1000.0</span>,<span style="color:#ae81ff">1000.0</span>);   <span style="color:#75715e">//保留小数点后后的0 			//output:1000 1000.00
-</span><span style="color:#75715e"></span>printf(<span style="color:#e6db74">&#34;%05d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,<span style="color:#ae81ff">1000</span>);              <span style="color:#75715e">//前面补0						//01000
-</span></code></pre></div><h4 id="3-width">3. width</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%5d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="mi">1000</span><span class="p">);</span>               <span class="c1">//默认右对齐,左边补空格  			//output:1000
+</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%-5d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="mi">1000</span><span class="p">);</span>              <span class="c1">//左对齐,右边补空格 			//output:1000
+</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%+d %+d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="o">-</span><span class="mi">1000</span><span class="p">);</span>     <span class="c1">//输出正负号					//output:+1000 -1000
+</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;% d % d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="o">-</span><span class="mi">1000</span><span class="p">);</span>     <span class="c1">//正号用空格替代，负号输出 		//output:1000 -1000
+</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%x %#x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">1000</span><span class="p">);</span>       <span class="c1">//输出0x 						//output:3e8 0x3e8
+</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%.0f %#.0f</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="mf">1000.0</span><span class="p">,</span><span class="mf">1000.0</span><span class="p">)</span><span class="c1">//当小数点后不输出值时依然输出小数点 //output:1000 1000.
+</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%g %#g</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="mf">1000.0</span><span class="p">,</span><span class="mf">1000.0</span><span class="p">);</span>   <span class="c1">//保留小数点后后的0 			//output:1000 1000.00
+</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%05d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="mi">1000</span><span class="p">);</span>              <span class="c1">//前面补0						//01000
+</span></code></pre></td></tr></table>
+</div>
+</div><h4 id="3-width">3. width</h4>
 <p>输出最小宽度</p>
 <table>
 <thead>
@@ -461,7 +483,7 @@ src='https://plausible.io/js/plausible.js'>
 <tbody>
 <tr>
 <td>.数值</td>
-<td>十进制整数。 <!-- raw HTML omitted -->(1)对于整型（d,i,o,u,x,X）,precision表示输出的最小的数字个数，不足补前导零，超过不截断。<!-- raw HTML omitted -->(2)对于浮点型（a, A, e, E, f ），precision表示小数点后数值位数，默认为六位，不足补后置0，超过则截断。 <!-- raw HTML omitted -->(3)对于类型说明符g或G，表示可输出的最大有效数字。 <!-- raw HTML omitted -->(4)对于字符串（s），precision表示最大可输出字符数，不足正常输出，超过则截断。 precision不显示指定，则默认为0</td>
+<td>十进制整数。 <br/>(1)对于整型（d,i,o,u,x,X）,precision表示输出的最小的数字个数，不足补前导零，超过不截断。<br/>(2)对于浮点型（a, A, e, E, f ），precision表示小数点后数值位数，默认为六位，不足补后置0，超过则截断。 <br/>(3)对于类型说明符g或G，表示可输出的最大有效数字。 <br/>(4)对于字符串（s），precision表示最大可输出字符数，不足正常输出，超过则截断。 precision不显示指定，则默认为0</td>
 </tr>
 <tr>
 <td>.*</td>

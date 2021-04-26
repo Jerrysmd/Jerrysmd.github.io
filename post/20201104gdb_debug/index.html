@@ -192,12 +192,28 @@ src='https://plausible.io/js/plausible.js'>
 <h2 id="gdb的使用">gdb的使用</h2>
 <h3 id="启动gdb">启动gdb</h3>
 <p>编译一个测试程序，-g表示可以调试</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gcc -g demo.c -o demo
-</code></pre></div><p>启动gdb</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gdb test 
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">gcc -g demo.c -o demo
+</code></pre></td></tr></table>
+</div>
+</div><p>启动gdb</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">gdb <span class="nb">test</span> 
 或者
-gdb -q test //表示不打印gdb版本信息，界面较为干净；
-</code></pre></div><h3 id="查看源码">查看源码</h3>
+gdb -q <span class="nb">test</span> //表示不打印gdb版本信息，界面较为干净；
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="查看源码">查看源码</h3>
 <ul>
 <li>list ：简记为 l ，其作用就是列出程序的源代码，默认每次显示10行。</li>
 <li>list 行号：将显示当前文件以“行号”为中心的前后10行代码，如：list 12</li>
