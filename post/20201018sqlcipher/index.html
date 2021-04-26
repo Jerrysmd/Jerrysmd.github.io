@@ -193,55 +193,18 @@ src='https://plausible.io/js/plausible.js'>
 <p>these are the folders of SQLcipher headers and the library necessary when building proper C project.</p>
 <h2 id="2-building-minimal-c-project-example">2. Building minimal C project example</h2>
 <p>In SQLite_example.c put the following lines:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&#34;sqlite3.h&#34; //We want to SQLCipher extension, rather then a system wide SQLite header</span><span class="cp">
-</span><span class="cp"></span><span class="n">rc</span> <span class="o">=</span> <span class="n">sqlite3_open</span><span class="p">(</span><span class="s">&#34;test.db&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">db</span><span class="p">);</span> <span class="c1">//open SQLite database test.db
-</span><span class="c1"></span><span class="n">rc</span> <span class="o">=</span> <span class="n">sqlite3_key</span><span class="p">(</span><span class="n">db</span><span class="p">,</span><span class="s">&#34;1q2w3e4r&#34;</span><span class="p">,</span><span class="mi">8</span><span class="p">);</span> <span class="c1">//apply encryption to previously opened database
-</span></code></pre></td></tr></table>
-</div>
-</div><p>Build you example:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nv">$gcc</span> SQLite_example.c -o SQLtest -I /path/to/local/folder/with/sqlcipher/header/files/ -L /path/to/local/folder/with/sqlcipher/library.a -l sqlcipher
-</code></pre></td></tr></table>
-</div>
-</div><p>e.g. with paths extracted from the output of $make install</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nv">$gcc</span> SQLite_example.c -o SQLtest -I /usr/local/include/sqlcipher -L /usr/local/lib/libsqlcipher.a -lsqlcipher
-</code></pre></td></tr></table>
-</div>
-</div><p>Finally, make sure that your SQLCipher library is in the system wide library path e.g. for (Arch)Linux:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ <span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/usr/local/lib/
-</code></pre></td></tr></table>
-</div>
-</div><p>Run your test code ((Arch)Linux):</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ ./SQLtest
-</code></pre></td></tr></table>
-</div>
-</div>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="cp">#include</span> <span class="cpf">&#34;sqlite3.h&#34; //We want to SQLCipher extension, rather then a system wide SQLite header</span><span class="cp">
+</span><span class="ln">2</span><span class="cp"></span><span class="n">rc</span> <span class="o">=</span> <span class="n">sqlite3_open</span><span class="p">(</span><span class="s">&#34;test.db&#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">db</span><span class="p">);</span> <span class="c1">//open SQLite database test.db
+</span><span class="ln">3</span><span class="c1"></span><span class="n">rc</span> <span class="o">=</span> <span class="n">sqlite3_key</span><span class="p">(</span><span class="n">db</span><span class="p">,</span><span class="s">&#34;1q2w3e4r&#34;</span><span class="p">,</span><span class="mi">8</span><span class="p">);</span> <span class="c1">//apply encryption to previously opened database
+</span></code></pre></div><p>Build you example:</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span><span class="nv">$gcc</span> SQLite_example.c -o SQLtest -I /path/to/local/folder/with/sqlcipher/header/files/ -L /path/to/local/folder/with/sqlcipher/library.a -l sqlcipher
+</code></pre></div><p>e.g. with paths extracted from the output of $make install</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span><span class="nv">$gcc</span> SQLite_example.c -o SQLtest -I /usr/local/include/sqlcipher -L /usr/local/lib/libsqlcipher.a -lsqlcipher
+</code></pre></div><p>Finally, make sure that your SQLCipher library is in the system wide library path e.g. for (Arch)Linux:</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>$ <span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/usr/local/lib/
+</code></pre></div><p>Run your test code ((Arch)Linux):</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>$ ./SQLtest
+</code></pre></div>
 
   </article>
 <aside class="sidebar">

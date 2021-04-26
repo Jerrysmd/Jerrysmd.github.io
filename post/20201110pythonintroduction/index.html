@@ -309,61 +309,26 @@ src='https://plausible.io/js/plausible.js'>
 </table>
 <h2 id="2-身份运算">2. 身份运算</h2>
 <p>判断地址是否相同</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">x</span> <span class="ow">is</span> <span class="n">y</span>
-<span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">y</span>
-<span class="mf">1.</span><span class="err">字符串：字符串值相同，</span><span class="n">ID相同</span><span class="err">。</span>
-<span class="mf">2.</span><span class="err">列表、字典、集合：无论什么情况</span><span class="n">ID都不同</span>
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="3-成员检测运算">3. 成员检测运算</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">val1</span> <span class="ow">in</span> <span class="n">val2</span> 
-<span class="n">val1</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">val2</span> 
-<span class="o">//</span><span class="err">检测一个数据是否在容器中</span>
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="4-流程控制">4. 流程控制</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="mf">1.</span>
-<span class="k">if</span> <span class="n">___</span><span class="p">:</span>
-<span class="k">elif</span> <span class="n">___</span><span class="p">:</span>
-<span class="k">elif</span> <span class="n">___</span><span class="p">:</span>
-<span class="k">else</span><span class="p">:</span>
-<span class="mf">2.</span>
-<span class="k">while</span> <span class="n">___</span><span class="p">:</span>
-<span class="k">else</span><span class="p">:</span>
-<span class="mf">3.</span>
-<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="err">容器</span><span class="p">:</span>
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="5-函数">5. 函数</h2>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="ln">1</span><span class="n">x</span> <span class="ow">is</span> <span class="n">y</span>
+<span class="ln">2</span><span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">y</span>
+<span class="ln">3</span><span class="mf">1.</span><span class="err">字符串：字符串值相同，</span><span class="n">ID相同</span><span class="err">。</span>
+<span class="ln">4</span><span class="mf">2.</span><span class="err">列表、字典、集合：无论什么情况</span><span class="n">ID都不同</span>
+</code></pre></div><h2 id="3-成员检测运算">3. 成员检测运算</h2>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="ln">1</span><span class="n">val1</span> <span class="ow">in</span> <span class="n">val2</span> 
+<span class="ln">2</span><span class="n">val1</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">val2</span> 
+<span class="ln">3</span><span class="o">//</span><span class="err">检测一个数据是否在容器中</span>
+</code></pre></div><h2 id="4-流程控制">4. 流程控制</h2>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="ln"> 1</span><span class="mf">1.</span>
+<span class="ln"> 2</span><span class="k">if</span> <span class="n">___</span><span class="p">:</span>
+<span class="ln"> 3</span><span class="k">elif</span> <span class="n">___</span><span class="p">:</span>
+<span class="ln"> 4</span><span class="k">elif</span> <span class="n">___</span><span class="p">:</span>
+<span class="ln"> 5</span><span class="k">else</span><span class="p">:</span>
+<span class="ln"> 6</span><span class="mf">2.</span>
+<span class="ln"> 7</span><span class="k">while</span> <span class="n">___</span><span class="p">:</span>
+<span class="ln"> 8</span><span class="k">else</span><span class="p">:</span>
+<span class="ln"> 9</span><span class="mf">3.</span>
+<span class="ln">10</span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="err">容器</span><span class="p">:</span>
+</code></pre></div><h2 id="5-函数">5. 函数</h2>
 <table>
 <thead>
 <tr>
@@ -397,17 +362,9 @@ src='https://plausible.io/js/plausible.js'>
 </tr>
 </tbody>
 </table>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="nb">locals</span><span class="p">())</span> <span class="o">//</span><span class="err">获取当前作用域的局部变量</span>
-<span class="k">print</span><span class="p">(</span><span class="nb">globals</span><span class="p">())</span> <span class="o">//</span><span class="err">获取当前作用域的全局变量</span>
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="6-迭代器">6. 迭代器</h2>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="ln">1</span><span class="k">print</span><span class="p">(</span><span class="nb">locals</span><span class="p">())</span> <span class="o">//</span><span class="err">获取当前作用域的局部变量</span>
+<span class="ln">2</span><span class="k">print</span><span class="p">(</span><span class="nb">globals</span><span class="p">())</span> <span class="o">//</span><span class="err">获取当前作用域的全局变量</span>
+</code></pre></div><h2 id="6-迭代器">6. 迭代器</h2>
 <ol>
 <li>能被next()函数调用并不断返回下一个值的对象</li>
 <li>特征：迭代器会生成惰性序列，通过计算把值依次返回</li>
@@ -421,19 +378,10 @@ src='https://plausible.io/js/plausible.js'>
 </li>
 <li>Iter：使用iter可把迭代数据变为迭代器</li>
 </ol>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
-<span class="n">result</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">list1</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
-</code></pre></td></tr></table>
-</div>
-</div>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="ln">1</span><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="ln">2</span><span class="n">result</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">list1</span><span class="p">)</span>
+<span class="ln">3</span><span class="k">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
+</code></pre></div>
 
   </article>
 <aside class="sidebar">

@@ -270,17 +270,9 @@ src='https://plausible.io/js/plausible.js'>
 </tbody>
 </table>
 <h3 id="print-format">Print format</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c"><span class="o">%</span><span class="p">[</span><span class="n">flags</span><span class="p">][</span><span class="n">width</span><span class="p">][.</span><span class="n">prec</span><span class="p">][</span><span class="n">length</span><span class="p">]</span><span class="n">type</span>
-<span class="o">%</span><span class="p">[</span><span class="err">标志</span><span class="p">][</span><span class="err">最小宽度</span><span class="p">][.</span><span class="err">精度</span><span class="p">][</span><span class="err">类型长度</span><span class="p">]</span><span class="err">类型。</span>
-</code></pre></td></tr></table>
-</div>
-</div><h4 id="1-type">1. Type</h4>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="o">%</span><span class="p">[</span><span class="n">flags</span><span class="p">][</span><span class="n">width</span><span class="p">][.</span><span class="n">prec</span><span class="p">][</span><span class="n">length</span><span class="p">]</span><span class="n">type</span>
+<span class="ln">2</span><span class="o">%</span><span class="p">[</span><span class="err">标志</span><span class="p">][</span><span class="err">最小宽度</span><span class="p">][.</span><span class="err">精度</span><span class="p">][</span><span class="err">类型长度</span><span class="p">]</span><span class="err">类型。</span>
+</code></pre></div><h4 id="1-type">1. Type</h4>
 <table>
 <thead>
 <tr>
@@ -427,29 +419,15 @@ src='https://plausible.io/js/plausible.js'>
 </tbody>
 </table>
 <p>example:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c"><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%5d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="mi">1000</span><span class="p">);</span>               <span class="c1">//默认右对齐,左边补空格  			//output:1000
-</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%-5d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="mi">1000</span><span class="p">);</span>              <span class="c1">//左对齐,右边补空格 			//output:1000
-</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%+d %+d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="o">-</span><span class="mi">1000</span><span class="p">);</span>     <span class="c1">//输出正负号					//output:+1000 -1000
-</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;% d % d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="o">-</span><span class="mi">1000</span><span class="p">);</span>     <span class="c1">//正号用空格替代，负号输出 		//output:1000 -1000
-</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%x %#x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">1000</span><span class="p">);</span>       <span class="c1">//输出0x 						//output:3e8 0x3e8
-</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%.0f %#.0f</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="mf">1000.0</span><span class="p">,</span><span class="mf">1000.0</span><span class="p">)</span><span class="c1">//当小数点后不输出值时依然输出小数点 //output:1000 1000.
-</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%g %#g</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="mf">1000.0</span><span class="p">,</span><span class="mf">1000.0</span><span class="p">);</span>   <span class="c1">//保留小数点后后的0 			//output:1000 1000.00
-</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%05d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="mi">1000</span><span class="p">);</span>              <span class="c1">//前面补0						//01000
-</span></code></pre></td></tr></table>
-</div>
-</div><h4 id="3-width">3. width</h4>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%5d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="mi">1000</span><span class="p">);</span>               <span class="c1">//默认右对齐,左边补空格  			//output:1000
+</span><span class="ln">2</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%-5d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="mi">1000</span><span class="p">);</span>              <span class="c1">//左对齐,右边补空格 			//output:1000
+</span><span class="ln">3</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%+d %+d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="o">-</span><span class="mi">1000</span><span class="p">);</span>     <span class="c1">//输出正负号					//output:+1000 -1000
+</span><span class="ln">4</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;% d % d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="o">-</span><span class="mi">1000</span><span class="p">);</span>     <span class="c1">//正号用空格替代，负号输出 		//output:1000 -1000
+</span><span class="ln">5</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%x %#x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">1000</span><span class="p">);</span>       <span class="c1">//输出0x 						//output:3e8 0x3e8
+</span><span class="ln">6</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%.0f %#.0f</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="mf">1000.0</span><span class="p">,</span><span class="mf">1000.0</span><span class="p">)</span><span class="c1">//当小数点后不输出值时依然输出小数点 //output:1000 1000.
+</span><span class="ln">7</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%g %#g</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="mf">1000.0</span><span class="p">,</span><span class="mf">1000.0</span><span class="p">);</span>   <span class="c1">//保留小数点后后的0 			//output:1000 1000.00
+</span><span class="ln">8</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%05d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="mi">1000</span><span class="p">);</span>              <span class="c1">//前面补0						//01000
+</span></code></pre></div><h4 id="3-width">3. width</h4>
 <p>输出最小宽度</p>
 <table>
 <thead>
