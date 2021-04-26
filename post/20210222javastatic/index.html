@@ -171,67 +171,67 @@ src='https://plausible.io/js/plausible.js'>
     <p>The static keyword can be used for variables, methods, code blocks, and inner classes to indicate that a particular member belongs only to a class itself, and not to an object of that class.</p>
 <h2 id="1-static-variable">1. Static Variable</h2>
 <p>静态变量也叫类变量，它属于一个类，而不是这个类的对象。</p>
-<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Writer</span> <span class="o">{</span>
-<span class="ln"> 2</span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
-<span class="ln"> 3</span>    <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
-<span class="ln"> 4</span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">countOfWriters</span><span class="o">;</span>
-<span class="ln"> 5</span>
-<span class="ln"> 6</span>    <span class="kd">public</span> <span class="nf">Writer</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
-<span class="ln"> 7</span>        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
-<span class="ln"> 8</span>        <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
-<span class="ln"> 9</span>        <span class="n">countOfWriters</span><span class="o">++;</span>
-<span class="ln">10</span>    <span class="o">}</span>
-<span class="ln">11</span>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
-<span class="ln">12</span>        <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
-<span class="ln">13</span>    <span class="o">}</span>
-<span class="ln">14</span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
-<span class="ln">15</span>        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
-<span class="ln">16</span>    <span class="o">}</span>
-<span class="ln">17</span>    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getAge</span><span class="o">()</span> <span class="o">{</span>
-<span class="ln">18</span>        <span class="k">return</span> <span class="n">age</span><span class="o">;</span>
-<span class="ln">19</span>    <span class="o">}</span>
-<span class="ln">20</span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAge</span><span class="o">(</span><span class="kt">int</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
-<span class="ln">21</span>        <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
-<span class="ln">22</span>    <span class="o">}</span>
-<span class="ln">23</span><span class="o">}</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Writer</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> String name<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> age<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> countOfWriters<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Writer</span><span style="color:#f92672">(</span>String name<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> age<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> name<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> age<span style="color:#f92672">;</span>
+        countOfWriters<span style="color:#f92672">++;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getName</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> name<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setName</span><span style="color:#f92672">(</span>String name<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> name<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getAge</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> age<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setAge</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> age<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> age<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
 </code></pre></div><p>其中，countOfWriters 被称为静态变量，它有别于 name 和 age 这两个成员变量，因为它前面多了一个修饰符 <code>static</code>。</p>
 <p>这意味着无论这个类被初始化多少次，静态变量的值都会在所有类的对象中共享。</p>
-<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">Writer</span> <span class="n">w1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Writer</span><span class="o">(</span><span class="s">&#34;沉默王二&#34;</span><span class="o">,</span><span class="n">18</span><span class="o">);</span>
-<span class="ln">2</span><span class="n">Writer</span> <span class="n">w2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Writer</span><span class="o">(</span><span class="s">&#34;沉默王三&#34;</span><span class="o">,</span><span class="n">16</span><span class="o">);</span>
-<span class="ln">3</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Writer</span><span class="o">.</span><span class="na">countOfWriters</span><span class="o">);</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Writer w1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Writer<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;沉默王二&#34;</span><span style="color:#f92672">,</span>18<span style="color:#f92672">);</span>
+Writer w2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Writer<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;沉默王三&#34;</span><span style="color:#f92672">,</span>16<span style="color:#f92672">);</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Writer<span style="color:#f92672">.</span><span style="color:#a6e22e">countOfWriters</span><span style="color:#f92672">);</span>
 </code></pre></div><p>按照上面的逻辑，你应该能推理得出，countOfWriters 的值此时应该为 2 而不是 1。从内存的角度来看，静态变量将会存储在 Java 虚拟机中一个名叫“Metaspace”（元空间，Java 8 之后）的特定池中。</p>
 <p>静态变量和成员变量有着很大的不同，成员变量的值属于某个对象，不同的对象之间，值是不共享的；但静态变量不是的，它可以用来统计对象的数量，因为它是共享的。就像上面例子中的 countOfWriters，创建一个对象的时候，它的值为 1，创建两个对象的时候，它的值就为 2。</p>
 <p>Summary:</p>
 <ol>
 <li>由于静态变量属于一个类，所以不能通过对象引用来访问，而应该直接通过类名来访问；</li>
 </ol>
-<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">w1</span><span class="o">.</span><span class="na">countOfWriters</span> <span class="err">#</span><span class="n">不应该通过类实例访问静态成员</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">w1<span style="color:#f92672">.</span><span style="color:#a6e22e">countOfWriters</span> <span style="color:#960050;background-color:#1e0010">#</span>不应该通过类实例访问静态成员
 </code></pre></div><ol start="2">
 <li>不需要初始化类就可以访问静态变量。</li>
 </ol>
-<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-<span class="ln">2</span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Writer</span><span class="o">.</span><span class="na">countOfWriters</span><span class="o">);</span> <span class="c1">// 输出 0
-</span><span class="ln">3</span><span class="c1"></span>    <span class="o">}</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>Writer<span style="color:#f92672">.</span><span style="color:#a6e22e">countOfWriters</span><span style="color:#f92672">);</span> <span style="color:#75715e">// 输出 0
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span>
 </code></pre></div><h2 id="2-static-method">2. Static Method</h2>
 <p>静态方法也叫类方法，它和静态变量类似，属于一个类，而不是这个类的对象。</p>
-<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setCountOfWriters</span><span class="o">(</span><span class="kt">int</span> <span class="n">countOfWriters</span><span class="o">)</span> <span class="o">{</span>
-<span class="ln">2</span>    <span class="n">Writer</span><span class="o">.</span><span class="na">countOfWriters</span> <span class="o">=</span> <span class="n">countOfWriters</span><span class="o">;</span>
-<span class="ln">3</span><span class="o">}</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setCountOfWriters</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> countOfWriters<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    Writer<span style="color:#f92672">.</span><span style="color:#a6e22e">countOfWriters</span> <span style="color:#f92672">=</span> countOfWriters<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
 </code></pre></div><p><code>setCountOfWriters()</code> 就是一个静态方法，它由 static 关键字修饰。</p>
 <p>如果你用过 java.lang.Math 类或者 Apache 的一些工具类（比如说 StringUtils）的话，对静态方法一定不会感动陌生。</p>
 <p>Math 类的几乎所有方法都是静态的，可以直接通过类名来调用，不需要创建类的对象。</p>
-<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">Math</span><span class="o">.</span>
-<span class="ln">2</span>    <span class="nf">random</span><span class="o">()</span>
-<span class="ln">3</span>    <span class="n">abs</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">)</span>
-<span class="ln">4</span>    <span class="n">sin</span><span class="o">(</span><span class="kt">double</span> <span class="n">a</span><span class="o">)</span>
-<span class="ln">5</span>    <span class="n">cos</span><span class="o">(</span><span class="kt">double</span> <span class="n">a</span><span class="o">)</span>
-<span class="ln">6</span>    <span class="o">...</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Math<span style="color:#f92672">.</span>
+    <span style="color:#a6e22e">random</span><span style="color:#f92672">()</span>
+    abs<span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> a<span style="color:#f92672">)</span>
+    sin<span style="color:#f92672">(</span><span style="color:#66d9ef">double</span> a<span style="color:#f92672">)</span>
+    cos<span style="color:#f92672">(</span><span style="color:#66d9ef">double</span> a<span style="color:#f92672">)</span>
+    <span style="color:#f92672">...</span>
 </code></pre></div><p>Summary:</p>
 <ol>
 <li>Java 中的静态方法在编译时解析，因为静态方法不能被重写（方法重写发生在运行时阶段，为了多态）。</li>
 <li>抽象方法不能是静态的。</li>
 </ol>
-<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">static</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">paly</span><span class="o">();</span> <span class="err">#</span><span class="n">修饰符abstract</span> <span class="n">和</span> <span class="n">static的组合非法</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">paly</span><span style="color:#f92672">();</span> <span style="color:#960050;background-color:#1e0010">#</span>修饰符abstract 和 static的组合非法
 </code></pre></div><ol start="3">
 <li>静态方法不能使用 this 和 super 关键字。</li>
 <li>成员方法可以直接访问其他成员方法和成员变量。</li>
@@ -241,47 +241,47 @@ src='https://plausible.io/js/plausible.js'>
 </ol>
 <h2 id="3-static-code-block">3. Static Code Block</h2>
 <p>静态代码块可以用来初始化静态变量，尽管静态方法也可以在声明的时候直接初始化，但有些时候，我们需要多行代码来完成初始化。</p>
-<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">StaticBlockDemo</span> <span class="o">{</span>
-<span class="ln"> 2</span>    <span class="kd">public</span> <span class="kd">static</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">writes</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
-<span class="ln"> 3</span>
-<span class="ln"> 4</span>    <span class="kd">static</span> <span class="o">{</span>
-<span class="ln"> 5</span>        <span class="n">writes</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;a&#34;</span><span class="o">);</span>
-<span class="ln"> 6</span>        <span class="n">writes</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;b&#34;</span><span class="o">);</span>
-<span class="ln"> 7</span>        <span class="n">writes</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;c&#34;</span><span class="o">);</span>
-<span class="ln"> 8</span>
-<span class="ln"> 9</span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;第一块&#34;</span><span class="o">);</span>
-<span class="ln">10</span>    <span class="o">}</span>
-<span class="ln">11</span>
-<span class="ln">12</span>    <span class="kd">static</span> <span class="o">{</span>
-<span class="ln">13</span>        <span class="n">writes</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;d&#34;</span><span class="o">);</span>
-<span class="ln">14</span>        <span class="n">writes</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;e&#34;</span><span class="o">);</span>
-<span class="ln">15</span>
-<span class="ln">16</span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;第二块&#34;</span><span class="o">);</span>
-<span class="ln">17</span>    <span class="o">}</span>
-<span class="ln">18</span><span class="o">}</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StaticBlockDemo</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> writes <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;();</span>
+
+    <span style="color:#66d9ef">static</span> <span style="color:#f92672">{</span>
+        writes<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;a&#34;</span><span style="color:#f92672">);</span>
+        writes<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;b&#34;</span><span style="color:#f92672">);</span>
+        writes<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;c&#34;</span><span style="color:#f92672">);</span>
+
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;第一块&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">static</span> <span style="color:#f92672">{</span>
+        writes<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;d&#34;</span><span style="color:#f92672">);</span>
+        writes<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;e&#34;</span><span style="color:#f92672">);</span>
+
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;第二块&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
 </code></pre></div><p>writes 是一个静态的 ArrayList，所以不太可能在声明的时候完成初始化，因此需要在静态代码块中完成初始化。</p>
 <p>Summary:</p>
 <ol>
 <li>一个类可以有多个静态代码块。</li>
 <li>静态代码块的解析和执行顺序和它在类中的位置保持一致。为了验证这个结论，可以在 StaticBlockDemo 类中加入空的 main 方法，执行完的结果如下所示：</li>
 </ol>
-<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">第一块</span>
-<span class="ln">2</span><span class="n">第二块</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">第一块
+第二块
 </code></pre></div><h2 id="4-static-inner-class">4. Static Inner Class</h2>
 <p>Java 允许我们在一个类中声明一个内部类，它提供了一种令人信服的方式，允许我们只在一个地方使用一些变量，使代码更具有条理性和可读性。</p>
 <p>常见的内部类有四种，成员内部类、局部内部类、匿名内部类和静态内部类。</p>
 <p>静态内部类：</p>
-<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Singleton</span> <span class="o">{</span>
-<span class="ln"> 2</span>    <span class="kd">private</span> <span class="nf">Singleton</span><span class="o">()</span> <span class="o">{}</span>
-<span class="ln"> 3</span>
-<span class="ln"> 4</span>    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">SingletonHolder</span> <span class="o">{</span>
-<span class="ln"> 5</span>        <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">Singleton</span> <span class="n">instance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Singleton</span><span class="o">();</span>
-<span class="ln"> 6</span>    <span class="o">}</span>
-<span class="ln"> 7</span>
-<span class="ln"> 8</span>    <span class="kd">public</span> <span class="kd">static</span> <span class="n">Singleton</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
-<span class="ln"> 9</span>        <span class="k">return</span> <span class="n">SingletonHolder</span><span class="o">.</span><span class="na">instance</span><span class="o">;</span>
-<span class="ln">10</span>    <span class="o">}</span>
-<span class="ln">11</span><span class="o">}</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Singleton</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">Singleton</span><span style="color:#f92672">()</span> <span style="color:#f92672">{}</span>
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SingletonHolder</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> Singleton instance <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Singleton<span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> Singleton <span style="color:#a6e22e">getInstance</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> SingletonHolder<span style="color:#f92672">.</span><span style="color:#a6e22e">instance</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
 </code></pre></div><p>以上这段代码是不是特别熟悉，对，这就是创建单例的一种方式，第一次加载 Singleton 类时并不会初始化 instance，只有第一次调用 <code>getInstance()</code> 方法时 Java 虚拟机才开始加载 SingletonHolder 并初始化 instance，这样不仅能确保线程安全也能保证 Singleton 类的唯一性。不过，创建单例更优雅的一种方式是使用枚举。</p>
 <p>Summary:</p>
 <ol>
@@ -292,7 +292,10 @@ src='https://plausible.io/js/plausible.js'>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
-        <h2>刘佳锐</h2>
+        <div class="author_header">
+          <img src="https://Jerrysmd.github.io/images/jane-doe.png" alt="刘佳锐 photo">
+          <h2>刘佳锐</h2>
+        </div>
       <div class="author_bio">
         Technologist, perpetual student, continual incremental improvement.
       </div>

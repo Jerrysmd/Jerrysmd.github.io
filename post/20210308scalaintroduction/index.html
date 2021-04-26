@@ -185,7 +185,7 @@ src='https://plausible.io/js/plausible.js'>
     <li><a href="#16-xml">16. XML</a></li>
   </ul>
 </nav>
-    <p>Scala combines object-oriented and functional programming in one concise, high-level language. Scala's static types help avoid bugs in complex applications, and its JVM and JavaScript runtimes let you build high-performance systems with easy access to huge ecosystems of libraries.</p>
+    <p>Scala combines object-oriented and functional programming in one concise, high-level language. Scala&rsquo;s static types help avoid bugs in complex applications, and its JVM and JavaScript runtimes let you build high-performance systems with easy access to huge ecosystems of libraries.</p>
 <h2 id="1-repl--scaladoc">1. REPL &amp; Scaladoc</h2>
 <p>Scala解释器读到一个表达式，对它进行求值，将它打印出来，接着再继续读下一个表达式。这个过程被称做Read-Eval-Print-Loop，即：REPL。
 从技术上讲，scala程序并不是一个解释器。实际发生的是，你输入的内容被快速地编译成字节码，然后这段字节码交由Java虚拟机执行。正因为如此，大多数scala程序员更倾向于将它称做“REPL”</p>
@@ -274,15 +274,15 @@ src='https://plausible.io/js/plausible.js'>
 <li>lazy修饰符可以修饰变量，但是这个变量必须是val修饰的</li>
 </ol>
 <p>ps. lazy相当于延迟加载（懒加载），当前变量使用lazy修饰的时候，只要变量不被调用，就不会进行初始化，什么时候调用，什么时候进行初始化</p>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">lazy</span> <span class="k">val</span> <span class="n">words</span> <span class="k">=</span> <span class="n">scala</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="nc">Source</span><span class="o">.</span><span class="n">fromFile</span><span class="o">(</span><span class="s">&#34;/usr/share/dict/words&#34;</span><span class="o">).</span><span class="n">mkString</span>
-<span class="ln">2</span><span class="c1">//当val被声明为lazy时，它的初始化将被推迟，直到我们首次对他取值
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">lazy</span> <span style="color:#66d9ef">val</span> words <span style="color:#66d9ef">=</span> scala<span style="color:#f92672">.</span>io<span style="color:#f92672">.</span><span style="color:#a6e22e">Source</span><span style="color:#f92672">.</span>fromFile<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/usr/share/dict/words&#34;</span><span style="color:#f92672">).</span>mkString
+<span style="color:#75715e">//当val被声明为lazy时，它的初始化将被推迟，直到我们首次对他取值
 </span></code></pre></div><p>懒值对于开销大的初始化语句十分有用。它还可以用来应对其他初始化问题，比如循环依赖。更重要的是，它是开发懒数据结构的基础。</p>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">words</span> <span class="k">=</span> <span class="o">...</span>
-<span class="ln">2</span><span class="c1">//在words被定义时即被取值
-</span><span class="ln">3</span><span class="c1"></span><span class="k">lazy</span> <span class="k">val</span> <span class="n">words</span> <span class="k">=</span> <span class="o">...</span>
-<span class="ln">4</span><span class="c1">//在words被首次使用时取值
-</span><span class="ln">5</span><span class="c1"></span><span class="k">def</span> <span class="n">words</span> <span class="k">=</span> <span class="o">...</span>
-<span class="ln">6</span><span class="c1">//在每一次words被使用时取值
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> words <span style="color:#66d9ef">=</span> <span style="color:#f92672">...</span>
+<span style="color:#75715e">//在words被定义时即被取值
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">lazy</span> <span style="color:#66d9ef">val</span> words <span style="color:#66d9ef">=</span> <span style="color:#f92672">...</span>
+<span style="color:#75715e">//在words被首次使用时取值
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">def</span> words <span style="color:#66d9ef">=</span> <span style="color:#f92672">...</span>
+<span style="color:#75715e">//在每一次words被使用时取值
 </span></code></pre></div><h2 id="3-control-and-function">3. Control and Function</h2>
 <ol>
 <li>if表达式也有值</li>
@@ -301,7 +301,7 @@ src='https://plausible.io/js/plausible.js'>
 <li>提供初始值时不要使用new</li>
 <li>用()来访问元素</li>
 <li>用for(elem &lt;- arr)来遍历元素</li>
-<li>用for(elem &lt;- arr if ...) yield ... 来将原数据转型为新数组</li>
+<li>用for(elem &lt;- arr if &hellip;) yield &hellip; 来将原数据转型为新数组</li>
 <li>Scala数组和Java数组可以相互操作，用ArrayBuffer，使用scala.collection.JavaConversions中的转换函数</li>
 </ol>
 <h2 id="5-map-and-tuple">5. Map and Tuple</h2>
@@ -350,13 +350,13 @@ src='https://plausible.io/js/plausible.js'>
 </ol>
 <h2 id="10-fileregex">10. File&amp;Regex</h2>
 <ol>
-<li>Source.fromFile(...).getLines.toArray将交出文件的所有行</li>
-<li>Source.fromFile(...).mkString将以字符串形式交出文件内容</li>
+<li>Source.fromFile(&hellip;).getLines.toArray将交出文件的所有行</li>
+<li>Source.fromFile(&hellip;).mkString将以字符串形式交出文件内容</li>
 <li>将字符串转化为数字，可以用toInt或toDouble方法</li>
 <li>使用Java的PrintWriter来写入文本文件</li>
-<li>&quot;正则&quot;.r是一个Regex对象</li>
-<li>如果你的正则表达式包含反斜杠的话，用&quot;&quot;&quot;...&quot;&quot;&quot;</li>
-<li>如果正则模式包含分组，你可以用如下语法来提取它们的内容for(regex(变量1,...,变量n) &lt;- 字符串)</li>
+<li>&ldquo;正则&rdquo;.r是一个Regex对象</li>
+<li>如果你的正则表达式包含反斜杠的话，用&quot;&quot;&quot;&hellip;&quot;&quot;&quot;</li>
+<li>如果正则模式包含分组，你可以用如下语法来提取它们的内容for(regex(变量1,&hellip;,变量n) &lt;- 字符串)</li>
 </ol>
 <h2 id="11-feature">11. Feature</h2>
 <ol>
@@ -382,7 +382,7 @@ src='https://plausible.io/js/plausible.js'>
 <li>Scala列表要么是空的，要么拥有一头一尾，其中尾部本身又是一个列表</li>
 <li>集是无先后次序的集合</li>
 <li>用LinkedHashSet保留插入顺序，或者用SortedSet按顺序进行迭代</li>
-<li>+将元素添加到无先后次序的集合中；+:和:+向前或向后追加到序列；++将两个集合串接在一起；-和--移除元素</li>
+<li>+将元素添加到无先后次序的集合中；+:和:+向前或向后追加到序列；++将两个集合串接在一起；-和&ndash;移除元素</li>
 <li>映射、折叠和拉链操作是很有用的技巧，用来将函数或操作应用到集合中的元素</li>
 </ol>
 <h2 id="14-pattern-match">14. Pattern match</h2>
@@ -401,7 +401,7 @@ src='https://plausible.io/js/plausible.js'>
 <ol>
 <li>可以为类、方法、字段、局部变量、参数、表达式、类型参数以及各种类型定义添加注解</li>
 <li>对于表达式和类型，注解跟在被注解的条目之后</li>
-<li>注解的形式有 @Annotation、@Annotation(value)或@Annotation(name = value1, ...)</li>
+<li>注解的形式有 @Annotation、@Annotation(value)或@Annotation(name = value1, &hellip;)</li>
 <li>@volatile、@transient、@strictfp和@native分别生成等效的Java修饰符</li>
 <li>用@throws来生成与Java兼容的throws规格说明</li>
 <li>@tailrec注解让你校验某个递归函数使用了尾递归优化</li>
@@ -410,7 +410,7 @@ src='https://plausible.io/js/plausible.js'>
 </ol>
 <h2 id="16-xml">16. XML</h2>
 <ol>
-<li>XML字面量<like>this</like>的类型为NodeSeq</li>
+<li>XML字面量<!-- raw HTML omitted -->this<!-- raw HTML omitted -->的类型为NodeSeq</li>
 <li>可以在XML里字面量中嵌套Scala代码</li>
 <li>Node的child属性交出的是子节点</li>
 <li>Node的attributes属性交出的是包含节点属性的MetaData对象</li>
@@ -420,7 +420,10 @@ src='https://plausible.io/js/plausible.js'>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
-        <h2>刘佳锐</h2>
+        <div class="author_header">
+          <img src="https://Jerrysmd.github.io/images/jane-doe.png" alt="刘佳锐 photo">
+          <h2>刘佳锐</h2>
+        </div>
       <div class="author_bio">
         Technologist, perpetual student, continual incremental improvement.
       </div>

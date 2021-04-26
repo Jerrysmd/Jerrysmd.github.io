@@ -16,36 +16,36 @@
         
           &lt;p&gt;Contribution graph shows activity from public repositories. You can choose to show activity from both public and private repositories, with specific details of your activity in private repositories anonymized.&lt;/p&gt;
 &lt;h2 id=&#34;update-local-git-config&#34;&gt;Update local git config&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;git config --global user.name “github’s Name”
-&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt; 
-&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;git config --global user.email &lt;span class=&#34;s2&#34;&gt;&amp;#34;github@*.com&amp;#34;&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;git config --global user.name “github’s Name”
+ 
+git config --global user.email &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;github@*.com&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;update-commit-history&#34;&gt;Update commit history&lt;/h2&gt;
 &lt;p&gt;If you do not want to waste your commit history.&lt;/p&gt;
-&lt;p&gt;we can use &#39;git log&#39; to see the git record&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;git log
+&lt;p&gt;we can use &amp;lsquo;git log&amp;rsquo; to see the git record&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;git log
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;we need to edit all of the history of commit and push.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;git filter-branch -f --env-filter &lt;span class=&#34;s1&#34;&gt;&amp;#39;
-&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;if [ &amp;#34;$GIT_AUTHOR_NAME&amp;#34; = &amp;#34;oldName&amp;#34; ]
-&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;then
-&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;export GIT_AUTHOR_NAME=&amp;#34;newName&amp;#34;
-&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;export GIT_AUTHOR_EMAIL=&amp;#34;newEmail&amp;#34;
-&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;fi
-&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;&lt;/span&gt; HEAD
-&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt; 
-&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;git filter-branch -f --env-filter &lt;span class=&#34;s1&#34;&gt;&amp;#39;
-&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;if [ &amp;#34;$GIT_COMMITTER_NAME&amp;#34; = &amp;#34;oldName&amp;#34; ]
-&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;then
-&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;export GIT_COMMITTER_NAME=&amp;#34;newName&amp;#34;
-&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;export GIT_COMMITTER_EMAIL=&amp;#34;newEmail&amp;#34;
-&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;fi
-&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;&lt;/span&gt; HEAD
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;git filter-branch -f --env-filter &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;if [ &amp;#34;$GIT_AUTHOR_NAME&amp;#34; = &amp;#34;oldName&amp;#34; ]
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;then
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;export GIT_AUTHOR_NAME=&amp;#34;newName&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;export GIT_AUTHOR_EMAIL=&amp;#34;newEmail&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;fi
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt; HEAD
+ 
+git filter-branch -f --env-filter &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;if [ &amp;#34;$GIT_COMMITTER_NAME&amp;#34; = &amp;#34;oldName&amp;#34; ]
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;then
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;export GIT_COMMITTER_NAME=&amp;#34;newName&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;export GIT_COMMITTER_EMAIL=&amp;#34;newEmail&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;fi
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt; HEAD
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果无差别把所有都改的话去掉if..fi&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;git filter-branch -f --env-filter &lt;span class=&#34;s2&#34;&gt;&amp;#34;
-&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;GIT_AUTHOR_NAME=&amp;#39;newName&amp;#39;;
-&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;GIT_AUTHOR_EMAIL=&amp;#39;newEmail&amp;#39;;
-&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;GIT_COMMITTER_NAME=&amp;#39;newName&amp;#39;;
-&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;GIT_COMMITTER_EMAIL=&amp;#39;newEmail&amp;#39;
-&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt; HEAD
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;git filter-branch -f --env-filter &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;GIT_AUTHOR_NAME=&amp;#39;newName&amp;#39;;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;GIT_AUTHOR_EMAIL=&amp;#39;newEmail&amp;#39;;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;GIT_COMMITTER_NAME=&amp;#39;newName&amp;#39;;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;GIT_COMMITTER_EMAIL=&amp;#39;newEmail&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; HEAD
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;update-git-push&#34;&gt;Update Git push&lt;/h2&gt;
 &lt;p&gt;你这里将你本地git的账户和邮箱重新设置了,但是github并没有那么智能就能判断你是原来你系统默认的用户.&lt;/p&gt;
 &lt;p&gt;也就是说你新配置的用户和你默认的被github识别成两个用户.&lt;/p&gt;
@@ -54,19 +54,19 @@
 &lt;ol&gt;
 &lt;li&gt;使用强制push的方法:&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;git push -u origin master -f
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;git push -u origin master -f
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这样会使远程修改丢失，一般是不可取的，尤其是多人协作开发的时候。&lt;/p&gt;
 &lt;ol start=&#34;2&#34;&gt;
 &lt;li&gt;push前先将远程repository修改pull下来&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;git pull origin master
-&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;git push -u origin master
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;git pull origin master
+git push -u origin master
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
 &lt;li&gt;若不想merge远程和本地修改，可以先创建新的分支：&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;git branch &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;name&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;#然后push&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;git push -u origin &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;name&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;git branch &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;name&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;#然后push&lt;/span&gt;
+git push -u origin &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;name&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         
       </description>

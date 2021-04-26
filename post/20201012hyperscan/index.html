@@ -127,7 +127,7 @@ src='https://plausible.io/js/plausible.js'>
 </svg></span>
     <span class="post_date">
       Oct 12, 2020</span>
-    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/c' title="C" class="post_tag button button_translucent">C
+    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/c' title="C" class="post_tag button button_translucent">C
         </a><a href='https://Jerrysmd.github.io/tags/c&#43;&#43;' title="C&#43;&#43;" class="post_tag button button_translucent">C&#43;&#43;
         </a><a href='https://Jerrysmd.github.io/tags/hyperscan' title="Hyperscan" class="post_tag button button_translucent">Hyperscan
         </a>
@@ -206,94 +206,94 @@ src='https://plausible.io/js/plausible.js'>
 <h2 id="4-hyperscan伪代码">4. Hyperscan伪代码</h2>
 <h3 id="41-编译">4.1 编译</h3>
 <p>函数buildDatabase用来编译规则文件中的多个正则表达式，参数mode指定了是BLOCK,STREAM,或者向量模式。</p>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="ln"> 1</span><span class="k">static</span> <span class="n">hs_database_t</span> <span class="o">*</span><span class="nf">buildDatabase</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*&gt;</span> <span class="o">&amp;</span><span class="n">expressions</span><span class="p">,</span>
-<span class="ln"> 2</span>                                    <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="o">&gt;</span> <span class="n">flags</span><span class="p">,</span>
-<span class="ln"> 3</span>                                    <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="o">&gt;</span> <span class="n">ids</span><span class="p">,</span>
-<span class="ln"> 4</span>                                    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">mode</span><span class="p">)</span> <span class="p">{</span>
-<span class="ln"> 5</span>    <span class="n">hs_database_t</span> <span class="o">*</span><span class="n">db</span><span class="p">;</span>
-<span class="ln"> 6</span>    <span class="n">hs_compile_error_t</span> <span class="o">*</span><span class="n">compileErr</span><span class="p">;</span>
-<span class="ln"> 7</span>    <span class="n">hs_error_t</span> <span class="n">err</span><span class="p">;</span>
-<span class="ln"> 8</span>
-<span class="ln"> 9</span>    <span class="n">Clock</span> <span class="n">clock</span><span class="p">;</span>
-<span class="ln">10</span>    <span class="n">clock</span><span class="p">.</span><span class="n">start</span><span class="p">();</span>
-<span class="ln">11</span>
-<span class="ln">12</span>    <span class="n">err</span> <span class="o">=</span> <span class="n">hs_compile_multi</span><span class="p">(</span><span class="n">expressions</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span> <span class="n">flags</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span> <span class="n">ids</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span>
-<span class="ln">13</span>                           <span class="n">expressions</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="n">mode</span><span class="p">,</span> <span class="k">nullptr</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">db</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">compileErr</span><span class="p">);</span>
-<span class="ln">14</span>
-<span class="ln">15</span>    <span class="n">clock</span><span class="p">.</span><span class="n">stop</span><span class="p">();</span>
-<span class="ln">16</span>
-<span class="ln">17</span>    <span class="k">if</span> <span class="p">(</span><span class="n">err</span> <span class="o">!=</span> <span class="n">HS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
-<span class="ln">18</span>        <span class="k">if</span> <span class="p">(</span><span class="n">compileErr</span><span class="o">-&gt;</span><span class="n">expression</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-<span class="ln">19</span>            <span class="c1">// The error does not refer to a particular expression.
-</span><span class="ln">20</span><span class="c1"></span>            <span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;ERROR: &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">compileErr</span><span class="o">-&gt;</span><span class="n">message</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-<span class="ln">21</span>        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<span class="ln">22</span>            <span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;ERROR: Pattern &#39;&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">expressions</span><span class="p">[</span><span class="n">compileErr</span><span class="o">-&gt;</span><span class="n">expression</span><span class="p">]</span>
-<span class="ln">23</span>                 <span class="o">&lt;&lt;</span> <span class="s">&#34;&#39; failed compilation with error: &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">compileErr</span><span class="o">-&gt;</span><span class="n">message</span>
-<span class="ln">24</span>                 <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-<span class="ln">25</span>        <span class="p">}</span>
-<span class="ln">26</span>        <span class="c1">// As the compileErr pointer points to dynamically allocated memory, if
-</span><span class="ln">27</span><span class="c1"></span>        <span class="c1">// we get an error, we must be sure to release it. This is not
-</span><span class="ln">28</span><span class="c1"></span>        <span class="c1">// necessary when no error is detected.
-</span><span class="ln">29</span><span class="c1"></span>        <span class="n">hs_free_compile_error</span><span class="p">(</span><span class="n">compileErr</span><span class="p">);</span>
-<span class="ln">30</span>        <span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
-<span class="ln">31</span>    <span class="p">}</span>
-<span class="ln">32</span><span class="c1">//...
-</span><span class="ln">33</span><span class="c1"></span><span class="p">}</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">static</span> hs_database_t <span style="color:#f92672">*</span><span style="color:#a6e22e">buildDatabase</span>(<span style="color:#66d9ef">const</span> vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*&gt;</span> <span style="color:#f92672">&amp;</span>expressions,
+                                    <span style="color:#66d9ef">const</span> vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">unsigned</span><span style="color:#f92672">&gt;</span> flags,
+                                    <span style="color:#66d9ef">const</span> vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">unsigned</span><span style="color:#f92672">&gt;</span> ids,
+                                    <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> mode) {
+    hs_database_t <span style="color:#f92672">*</span>db;
+    hs_compile_error_t <span style="color:#f92672">*</span>compileErr;
+    hs_error_t err;
+
+    Clock clock;
+    clock.start();
+
+    err <span style="color:#f92672">=</span> hs_compile_multi(expressions.data(), flags.data(), ids.data(),
+                           expressions.size(), mode, <span style="color:#66d9ef">nullptr</span>, <span style="color:#f92672">&amp;</span>db, <span style="color:#f92672">&amp;</span>compileErr);
+
+    clock.stop();
+
+    <span style="color:#66d9ef">if</span> (err <span style="color:#f92672">!=</span> HS_SUCCESS) {
+        <span style="color:#66d9ef">if</span> (compileErr<span style="color:#f92672">-&gt;</span>expression <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
+            <span style="color:#75715e">// The error does not refer to a particular expression.
+</span><span style="color:#75715e"></span>            cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;ERROR: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> compileErr<span style="color:#f92672">-&gt;</span>message <span style="color:#f92672">&lt;&lt;</span> endl;
+        } <span style="color:#66d9ef">else</span> {
+            cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;ERROR: Pattern &#39;&#34;</span> <span style="color:#f92672">&lt;&lt;</span> expressions[compileErr<span style="color:#f92672">-&gt;</span>expression]
+                 <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;&#39; failed compilation with error: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> compileErr<span style="color:#f92672">-&gt;</span>message
+                 <span style="color:#f92672">&lt;&lt;</span> endl;
+        }
+        <span style="color:#75715e">// As the compileErr pointer points to dynamically allocated memory, if
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// we get an error, we must be sure to release it. This is not
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// necessary when no error is detected.
+</span><span style="color:#75715e"></span>        hs_free_compile_error(compileErr);
+        exit(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);
+    }
+<span style="color:#75715e">//...
+</span><span style="color:#75715e"></span>}
 </code></pre></div><p>其中的核心代码是hs_compile_multi的调用，此函数用来编译多个正则表达式，从代码可见除了mode参数，BLOCK和STREAM模式都使用这一API。它的原型是</p>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="ln">1</span><span class="n">hs_error_t</span> <span class="n">hs_compile_multi</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="k">const</span> <span class="o">*</span> <span class="n">expressions</span><span class="p">,</span> 
-<span class="ln">2</span>                            <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="o">*</span> <span class="n">flags</span><span class="p">,</span> 
-<span class="ln">3</span>                            <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="o">*</span> <span class="n">ids</span><span class="p">,</span> 
-<span class="ln">4</span>                            <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">elements</span><span class="p">,</span> 
-<span class="ln">5</span>                            <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">mode</span><span class="p">,</span> 
-<span class="ln">6</span>                            <span class="k">const</span> <span class="n">hs_platform_info_t</span> <span class="o">*</span> <span class="n">platform</span><span class="p">,</span> 
-<span class="ln">7</span>                            <span class="n">hs_database_t</span> <span class="o">**</span> <span class="n">db</span><span class="p">,</span> 
-<span class="ln">8</span>                            <span class="n">hs_compile_error_t</span> <span class="o">**</span> <span class="n">error</span><span class="p">)</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">hs_error_t hs_compile_multi(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">const</span> <span style="color:#f92672">*</span> expressions, 
+                            <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> flags, 
+                            <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> ids, 
+                            <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> elements, 
+                            <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> mode, 
+                            <span style="color:#66d9ef">const</span> hs_platform_info_t <span style="color:#f92672">*</span> platform, 
+                            hs_database_t <span style="color:#f92672">**</span> db, 
+                            hs_compile_error_t <span style="color:#f92672">**</span> error)
 </code></pre></div><p>其中，expressions是多个正则表达式字符串，flags和ids分别是expressions对应的flag和id数组；elements是表达式字符串的个数；其余参数与上一个例子中提到的hs_compile的参数涵义相同。</p>
 <p>这里要注意的一个事情是参数ids，它是正则表达式的ID数组。每个表达式都有一个唯一ID，这样命中的时候匹配回调函数可以得到此ID，告诉调用者哪个表达式命中了。如果ids传入NULL，则所有表达式的ID都为0。</p>
 <h3 id="42-准备匹配临时数据">4.2 准备匹配临时数据</h3>
 <p>为接下来的匹配分配足够的临时数据空间(scratch space）</p>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="ln"> 1</span><span class="k">public</span><span class="o">:</span>
-<span class="ln"> 2</span>    <span class="n">Benchmark</span><span class="p">(</span><span class="k">const</span> <span class="n">hs_database_t</span> <span class="o">*</span><span class="n">streaming</span><span class="p">,</span> <span class="k">const</span> <span class="n">hs_database_t</span> <span class="o">*</span><span class="n">block</span><span class="p">)</span>
-<span class="ln"> 3</span>        <span class="o">:</span> <span class="n">db_streaming</span><span class="p">(</span><span class="n">streaming</span><span class="p">),</span> <span class="n">db_block</span><span class="p">(</span><span class="n">block</span><span class="p">),</span> <span class="n">scratch</span><span class="p">(</span><span class="k">nullptr</span><span class="p">),</span>
-<span class="ln"> 4</span>          <span class="n">matchCount</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-<span class="ln"> 5</span>        <span class="c1">// Allocate enough scratch space to handle either streaming or block
-</span><span class="ln"> 6</span><span class="c1"></span>        <span class="c1">// mode, so we only need the one scratch region.
-</span><span class="ln"> 7</span><span class="c1"></span>        <span class="n">hs_error_t</span> <span class="n">err</span> <span class="o">=</span> <span class="n">hs_alloc_scratch</span><span class="p">(</span><span class="n">db_streaming</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">scratch</span><span class="p">);</span>
-<span class="ln"> 8</span>        <span class="k">if</span> <span class="p">(</span><span class="n">err</span> <span class="o">!=</span> <span class="n">HS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
-<span class="ln"> 9</span>            <span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;ERROR: could not allocate scratch space. Exiting.&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-<span class="ln">10</span>            <span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
-<span class="ln">11</span>        <span class="p">}</span>
-<span class="ln">12</span>        <span class="c1">// This second call will increase the scratch size if more is required
-</span><span class="ln">13</span><span class="c1"></span>        <span class="c1">// for block mode.
-</span><span class="ln">14</span><span class="c1"></span>        <span class="n">err</span> <span class="o">=</span> <span class="n">hs_alloc_scratch</span><span class="p">(</span><span class="n">db_block</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">scratch</span><span class="p">);</span>
-<span class="ln">15</span>        <span class="k">if</span> <span class="p">(</span><span class="n">err</span> <span class="o">!=</span> <span class="n">HS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
-<span class="ln">16</span>            <span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;ERROR: could not allocate scratch space. Exiting.&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-<span class="ln">17</span>            <span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
-<span class="ln">18</span>        <span class="p">}</span>
-<span class="ln">19</span>    <span class="p">}</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    Benchmark(<span style="color:#66d9ef">const</span> hs_database_t <span style="color:#f92672">*</span>streaming, <span style="color:#66d9ef">const</span> hs_database_t <span style="color:#f92672">*</span>block)
+        <span style="color:#f92672">:</span> db_streaming(streaming), db_block(block), scratch(<span style="color:#66d9ef">nullptr</span>),
+          matchCount(<span style="color:#ae81ff">0</span>) {
+        <span style="color:#75715e">// Allocate enough scratch space to handle either streaming or block
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// mode, so we only need the one scratch region.
+</span><span style="color:#75715e"></span>        hs_error_t err <span style="color:#f92672">=</span> hs_alloc_scratch(db_streaming, <span style="color:#f92672">&amp;</span>scratch);
+        <span style="color:#66d9ef">if</span> (err <span style="color:#f92672">!=</span> HS_SUCCESS) {
+            cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;ERROR: could not allocate scratch space. Exiting.&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+            exit(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);
+        }
+        <span style="color:#75715e">// This second call will increase the scratch size if more is required
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// for block mode.
+</span><span style="color:#75715e"></span>        err <span style="color:#f92672">=</span> hs_alloc_scratch(db_block, <span style="color:#f92672">&amp;</span>scratch);
+        <span style="color:#66d9ef">if</span> (err <span style="color:#f92672">!=</span> HS_SUCCESS) {
+            cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;ERROR: could not allocate scratch space. Exiting.&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+            exit(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);
+        }
+    }
 </code></pre></div><h3 id="43-匹配">4.3 匹配</h3>
 <h4 id="431-block模式">4.3.1 BLOCK模式</h4>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="ln"> 1</span><span class="c1">// Scan each packet (in the ordering given in the PCAP file) through
-</span><span class="ln"> 2</span><span class="c1"></span>    <span class="c1">// Hyperscan using the block-mode interface.
-</span><span class="ln"> 3</span><span class="c1"></span>    <span class="kt">void</span> <span class="nf">scanBlock</span><span class="p">()</span> <span class="p">{</span>
-<span class="ln"> 4</span>        <span class="k">for</span> <span class="p">(</span><span class="n">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">packets</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-<span class="ln"> 5</span>            <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">pkt</span> <span class="o">=</span> <span class="n">packets</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-<span class="ln"> 6</span>            <span class="n">hs_error_t</span> <span class="n">err</span> <span class="o">=</span> <span class="n">hs_scan</span><span class="p">(</span><span class="n">db_block</span><span class="p">,</span> <span class="n">pkt</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span> <span class="n">pkt</span><span class="p">.</span><span class="n">length</span><span class="p">(),</span> <span class="mi">0</span><span class="p">,</span>
-<span class="ln"> 7</span>                                     <span class="n">scratch</span><span class="p">,</span> <span class="n">onMatch</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">matchCount</span><span class="p">);</span>
-<span class="ln"> 8</span>            <span class="k">if</span> <span class="p">(</span><span class="n">err</span> <span class="o">!=</span> <span class="n">HS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
-<span class="ln"> 9</span>                <span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;ERROR: Unable to scan packet. Exiting.&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-<span class="ln">10</span>                <span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
-<span class="ln">11</span>            <span class="p">}</span>
-<span class="ln">12</span>        <span class="p">}</span>
-<span class="ln">13</span>    <span class="p">}</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">// Scan each packet (in the ordering given in the PCAP file) through
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// Hyperscan using the block-mode interface.
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">scanBlock</span>() {
+        <span style="color:#66d9ef">for</span> (size_t i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">!=</span> packets.size(); <span style="color:#f92672">++</span>i) {
+            <span style="color:#66d9ef">const</span> std<span style="color:#f92672">::</span>string <span style="color:#f92672">&amp;</span>pkt <span style="color:#f92672">=</span> packets[i];
+            hs_error_t err <span style="color:#f92672">=</span> hs_scan(db_block, pkt.c_str(), pkt.length(), <span style="color:#ae81ff">0</span>,
+                                     scratch, onMatch, <span style="color:#f92672">&amp;</span>matchCount);
+            <span style="color:#66d9ef">if</span> (err <span style="color:#f92672">!=</span> HS_SUCCESS) {
+                cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;ERROR: Unable to scan packet. Exiting.&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+                exit(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);
+            }
+        }
+    }
 </code></pre></div><p>其中，db就是上一步编译的databas；data和length分别是要匹配的数据和数据长度；flags用来在未来版本中控制函数行为，目前未使用；scratch是匹配时要用的临时数据，之前已经分配好；onEvent非常关键，即匹配时调用的回调函数，由用户指定；context是用户自定义指针。</p>
 <h4 id="432-匹配回调函数">4.3.2 匹配回调函数</h4>
 <p>匹配回调函数的原型是</p>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="ln">1</span><span class="k">typedef</span> <span class="p">(</span><span class="o">*</span> <span class="n">match_event_handler</span><span class="p">)(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">id</span><span class="p">,</span> 
-<span class="ln">2</span>                                <span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">from</span><span class="p">,</span> 
-<span class="ln">3</span>                                <span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">to</span><span class="p">,</span> 
-<span class="ln">4</span>                                <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">,</span> 
-<span class="ln">5</span>                                <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">typedef</span> (<span style="color:#f92672">*</span> match_event_handler)(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> id, 
+                                <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> <span style="color:#66d9ef">long</span> from, 
+                                <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> <span style="color:#66d9ef">long</span> to, 
+                                <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> flags, 
+                                <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>context)
 </code></pre></div><p>其中，id是命中的正则表达式的ID，对于使用hs_compile编译的唯一表达式来说，此值为0；如果在编译时指定了相关模式选项(hs_compile中的mode参数），则此值将会设为匹配特征的起始位置，否则会设为0；to是命中数据的下一个字节的偏移；flags目前未用；context是用户自定义指针。</p>
 <p>返回值为非0表示停止匹配，否则继续；在匹配的过程中，每次命中时都将同步调用匹配回调函数，直到匹配结束。</p>
 <h3 id="44-清理资源">4.4 清理资源</h3>
@@ -302,7 +302,10 @@ src='https://plausible.io/js/plausible.js'>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
-        <h2>刘佳锐</h2>
+        <div class="author_header">
+          <img src="https://Jerrysmd.github.io/images/jane-doe.png" alt="刘佳锐 photo">
+          <h2>刘佳锐</h2>
+        </div>
       <div class="author_bio">
         Technologist, perpetual student, continual incremental improvement.
       </div>

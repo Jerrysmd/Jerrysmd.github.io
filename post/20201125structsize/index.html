@@ -163,18 +163,18 @@ src='https://plausible.io/js/plausible.js'>
 <ul>
 <li>Case 1:</li>
 </ul>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="k">struct</span> <span class="n">A</span> <span class="p">{</span>    
-<span class="ln"> 2</span>	<span class="c1">// sizeof(int) = 4 
-</span><span class="ln"> 3</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">x</span><span class="p">;</span> 
-<span class="ln"> 4</span>    <span class="c1">// Padding of 4 bytes 
-</span><span class="ln"> 5</span><span class="c1"></span>
-<span class="ln"> 6</span>    <span class="c1">// sizeof(double) = 8 
-</span><span class="ln"> 7</span><span class="c1"></span>    <span class="kt">double</span> <span class="n">z</span><span class="p">;</span> 
-<span class="ln"> 8</span>    
-<span class="ln"> 9</span>    <span class="c1">// sizeof(short int) = 2 
-</span><span class="ln">10</span><span class="c1"></span>    <span class="kt">short</span> <span class="kt">int</span> <span class="n">y</span><span class="p">;</span> 
-<span class="ln">11</span>    <span class="c1">// Padding of 6 bytes 
-</span><span class="ln">12</span><span class="c1"></span><span class="p">};</span> 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> A {    
+	<span style="color:#75715e">// sizeof(int) = 4 
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> x; 
+    <span style="color:#75715e">// Padding of 4 bytes 
+</span><span style="color:#75715e"></span>
+    <span style="color:#75715e">// sizeof(double) = 8 
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">double</span> z; 
+    
+    <span style="color:#75715e">// sizeof(short int) = 2 
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">short</span> <span style="color:#66d9ef">int</span> y; 
+    <span style="color:#75715e">// Padding of 6 bytes 
+</span><span style="color:#75715e"></span>}; 
 </code></pre></div><p>Output:</p>
 <p>​	Size of struct: 24</p>
 <p><img src="/post/picture/struct_sizeof_ex1.png" alt="Output1"></p>
@@ -182,17 +182,17 @@ src='https://plausible.io/js/plausible.js'>
 <ul>
 <li>Case 2:</li>
 </ul>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="k">struct</span> <span class="n">B</span> <span class="p">{</span> 
-<span class="ln"> 2</span>    <span class="c1">// sizeof(double) = 8 
-</span><span class="ln"> 3</span><span class="c1"></span>    <span class="kt">double</span> <span class="n">z</span><span class="p">;</span> 
-<span class="ln"> 4</span>    
-<span class="ln"> 5</span>    <span class="c1">// sizeof(int) = 4 
-</span><span class="ln"> 6</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">x</span><span class="p">;</span> 
-<span class="ln"> 7</span>    
-<span class="ln"> 8</span>    <span class="c1">// sizeof(short int) = 2 
-</span><span class="ln"> 9</span><span class="c1"></span>    <span class="kt">short</span> <span class="kt">int</span> <span class="n">y</span><span class="p">;</span> 
-<span class="ln">10</span>    <span class="c1">// Padding of 2 bytes 
-</span><span class="ln">11</span><span class="c1"></span><span class="p">};</span> 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> B { 
+    <span style="color:#75715e">// sizeof(double) = 8 
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">double</span> z; 
+    
+    <span style="color:#75715e">// sizeof(int) = 4 
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> x; 
+    
+    <span style="color:#75715e">// sizeof(short int) = 2 
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">short</span> <span style="color:#66d9ef">int</span> y; 
+    <span style="color:#75715e">// Padding of 2 bytes 
+</span><span style="color:#75715e"></span>}; 
 </code></pre></div><p>Output:</p>
 <p>​	Size of struct: 16</p>
 <p><img src="/post/picture/struct_sizeof_ex2.png" alt="output2"></p>
@@ -200,17 +200,17 @@ src='https://plausible.io/js/plausible.js'>
 <ul>
 <li>Case 3:</li>
 </ul>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="k">struct</span> <span class="n">C</span> <span class="p">{</span> 
-<span class="ln"> 2</span>    <span class="c1">// sizeof(double) = 8 
-</span><span class="ln"> 3</span><span class="c1"></span>    <span class="kt">double</span> <span class="n">z</span><span class="p">;</span> 
-<span class="ln"> 4</span>    
-<span class="ln"> 5</span>    <span class="c1">// sizeof(short int) = 2 
-</span><span class="ln"> 6</span><span class="c1"></span>    <span class="kt">short</span> <span class="kt">int</span> <span class="n">y</span><span class="p">;</span> 
-<span class="ln"> 7</span>    <span class="c1">// Padding of 2 bytes 
-</span><span class="ln"> 8</span><span class="c1"></span>    
-<span class="ln"> 9</span>    <span class="c1">// sizeof(int) = 4 
-</span><span class="ln">10</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">x</span><span class="p">;</span> 
-<span class="ln">11</span><span class="p">};</span> 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> C { 
+    <span style="color:#75715e">// sizeof(double) = 8 
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">double</span> z; 
+    
+    <span style="color:#75715e">// sizeof(short int) = 2 
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">short</span> <span style="color:#66d9ef">int</span> y; 
+    <span style="color:#75715e">// Padding of 2 bytes 
+</span><span style="color:#75715e"></span>    
+    <span style="color:#75715e">// sizeof(int) = 4 
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> x; 
+}; 
 </code></pre></div><p>Output:</p>
 <p>​	Size of struct: 16</p>
 <p><img src="/post/picture/struct_sizeof_ex3.png" alt="output3"></p>
@@ -220,7 +220,10 @@ src='https://plausible.io/js/plausible.js'>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
-        <h2>刘佳锐</h2>
+        <div class="author_header">
+          <img src="https://Jerrysmd.github.io/images/jane-doe.png" alt="刘佳锐 photo">
+          <h2>刘佳锐</h2>
+        </div>
       <div class="author_bio">
         Technologist, perpetual student, continual incremental improvement.
       </div>

@@ -170,7 +170,7 @@ src='https://plausible.io/js/plausible.js'>
     <li><a href="#6-迭代器">6. 迭代器</a></li>
   </ul>
 </nav>
-    <p>Python is dynamically-typed and garbage-collected. It supports multiple programming paradigms, including structured (particularly, procedural), object-oriented and functional programming. Python is often described as a &quot;batteries included&quot; language due to its comprehensive standard library.</p>
+    <p>Python is dynamically-typed and garbage-collected. It supports multiple programming paradigms, including structured (particularly, procedural), object-oriented and functional programming. Python is often described as a &ldquo;batteries included&rdquo; language due to its comprehensive standard library.</p>
 <h2 id="1-数据类型转换">1. 数据类型转换</h2>
 <table>
 <thead>
@@ -214,8 +214,8 @@ src='https://plausible.io/js/plausible.js'>
 </tr>
 <tr>
 <td style="text-align:center">bool</td>
-<td style="text-align:center">true1<br>false0</td>
-<td style="text-align:center">true1.0<br>false0.0</td>
+<td style="text-align:center">true1<!-- raw HTML omitted -->false0</td>
+<td style="text-align:center">true1.0<!-- raw HTML omitted -->false0.0</td>
 <td style="text-align:center">\</td>
 <td style="text-align:center">true1+0j</td>
 <td style="text-align:center">可以</td>
@@ -300,25 +300,25 @@ src='https://plausible.io/js/plausible.js'>
 </table>
 <h2 id="2-身份运算">2. 身份运算</h2>
 <p>判断地址是否相同</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="ln">1</span><span class="n">x</span> <span class="ow">is</span> <span class="n">y</span>
-<span class="ln">2</span><span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">y</span>
-<span class="ln">3</span><span class="mf">1.</span><span class="err">字符串：字符串值相同，</span><span class="n">ID相同</span><span class="err">。</span>
-<span class="ln">4</span><span class="mf">2.</span><span class="err">列表、字典、集合：无论什么情况</span><span class="n">ID都不同</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">x <span style="color:#f92672">is</span> y
+x <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> y
+<span style="color:#ae81ff">1.</span><span style="color:#960050;background-color:#1e0010">字符串：字符串值相同，</span>ID相同<span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#ae81ff">2.</span><span style="color:#960050;background-color:#1e0010">列表、字典、集合：无论什么情况</span>ID都不同
 </code></pre></div><h2 id="3-成员检测运算">3. 成员检测运算</h2>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="ln">1</span><span class="n">val1</span> <span class="ow">in</span> <span class="n">val2</span> 
-<span class="ln">2</span><span class="n">val1</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">val2</span> 
-<span class="ln">3</span><span class="o">//</span><span class="err">检测一个数据是否在容器中</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">val1 <span style="color:#f92672">in</span> val2 
+val1 <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> val2 
+<span style="color:#f92672">//</span><span style="color:#960050;background-color:#1e0010">检测一个数据是否在容器中</span>
 </code></pre></div><h2 id="4-流程控制">4. 流程控制</h2>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="ln"> 1</span><span class="mf">1.</span>
-<span class="ln"> 2</span><span class="k">if</span> <span class="n">___</span><span class="p">:</span>
-<span class="ln"> 3</span><span class="k">elif</span> <span class="n">___</span><span class="p">:</span>
-<span class="ln"> 4</span><span class="k">elif</span> <span class="n">___</span><span class="p">:</span>
-<span class="ln"> 5</span><span class="k">else</span><span class="p">:</span>
-<span class="ln"> 6</span><span class="mf">2.</span>
-<span class="ln"> 7</span><span class="k">while</span> <span class="n">___</span><span class="p">:</span>
-<span class="ln"> 8</span><span class="k">else</span><span class="p">:</span>
-<span class="ln"> 9</span><span class="mf">3.</span>
-<span class="ln">10</span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="err">容器</span><span class="p">:</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ae81ff">1.</span>
+<span style="color:#66d9ef">if</span> ___:
+<span style="color:#66d9ef">elif</span> ___:
+<span style="color:#66d9ef">elif</span> ___:
+<span style="color:#66d9ef">else</span>:
+<span style="color:#ae81ff">2.</span>
+<span style="color:#66d9ef">while</span> ___:
+<span style="color:#66d9ef">else</span>:
+<span style="color:#ae81ff">3.</span>
+<span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> <span style="color:#960050;background-color:#1e0010">容器</span>:
 </code></pre></div><h2 id="5-函数">5. 函数</h2>
 <table>
 <thead>
@@ -326,9 +326,9 @@ src='https://plausible.io/js/plausible.js'>
 <th>def</th>
 <th>func(</th>
 <th>name,</th>
-<th>sex = &quot;male&quot;,</th>
+<th>sex = &ldquo;male&rdquo;,</th>
 <th>*args,</th>
-<th>like = &quot;乒乓&quot;,</th>
+<th>like = &ldquo;乒乓&rdquo;,</th>
 <th>**kwargs);</th>
 </tr>
 </thead>
@@ -345,16 +345,16 @@ src='https://plausible.io/js/plausible.js'>
 <tr>
 <td></td>
 <td>func(</td>
-<td>&quot;刘佳锐&quot;,</td>
-<td>&quot;男&quot;,</td>
-<td>&quot;乐色&quot;, &quot;垃圾&quot;,</td>
-<td>like = &quot;羽毛球&quot;,</td>
-<td>skin = &quot;yellow&quot;, hobby = &quot;hello&quot;)</td>
+<td>&ldquo;刘佳锐&rdquo;,</td>
+<td>&ldquo;男&rdquo;,</td>
+<td>&ldquo;乐色&rdquo;, &ldquo;垃圾&rdquo;,</td>
+<td>like = &ldquo;羽毛球&rdquo;,</td>
+<td>skin = &ldquo;yellow&rdquo;, hobby = &ldquo;hello&rdquo;)</td>
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="ln">1</span><span class="k">print</span><span class="p">(</span><span class="nb">locals</span><span class="p">())</span> <span class="o">//</span><span class="err">获取当前作用域的局部变量</span>
-<span class="ln">2</span><span class="k">print</span><span class="p">(</span><span class="nb">globals</span><span class="p">())</span> <span class="o">//</span><span class="err">获取当前作用域的全局变量</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">print</span>(locals()) <span style="color:#f92672">//</span><span style="color:#960050;background-color:#1e0010">获取当前作用域的局部变量</span>
+<span style="color:#66d9ef">print</span>(globals()) <span style="color:#f92672">//</span><span style="color:#960050;background-color:#1e0010">获取当前作用域的全局变量</span>
 </code></pre></div><h2 id="6-迭代器">6. 迭代器</h2>
 <ol>
 <li>能被next()函数调用并不断返回下一个值的对象</li>
@@ -369,15 +369,18 @@ src='https://plausible.io/js/plausible.js'>
 </li>
 <li>Iter：使用iter可把迭代数据变为迭代器</li>
 </ol>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="ln">1</span><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
-<span class="ln">2</span><span class="n">result</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">list1</span><span class="p">)</span>
-<span class="ln">3</span><span class="k">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">list1 <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>]
+result <span style="color:#f92672">=</span> iter(list1)
+<span style="color:#66d9ef">print</span>(next(result))
 </code></pre></div>
 
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
-        <h2>刘佳锐</h2>
+        <div class="author_header">
+          <img src="https://Jerrysmd.github.io/images/jane-doe.png" alt="刘佳锐 photo">
+          <h2>刘佳锐</h2>
+        </div>
       <div class="author_bio">
         Technologist, perpetual student, continual incremental improvement.
       </div>
