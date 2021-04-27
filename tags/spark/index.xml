@@ -15,7 +15,7 @@
       <description>
         
           &lt;p&gt;Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.&lt;/p&gt;
-&lt;h2 id=&#34;1-spark-introduction&#34;&gt;1. Spark Introduction&lt;/h2&gt;
+&lt;h2 id=&#34;spark-introduction&#34;&gt;Spark Introduction&lt;/h2&gt;
 &lt;h3 id=&#34;11-spark-component&#34;&gt;1.1 Spark Component&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Spark提供了批处理（RDDs），结构化查询（DataFrame），流计算（SparkStreaming），机器学习（MLib），图计算（GraphX）等组件&lt;/li&gt;
@@ -59,8 +59,8 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2 id=&#34;2-spark-cluster&#34;&gt;2. Spark Cluster&lt;/h2&gt;
-&lt;h3 id=&#34;21-cluster--relation&#34;&gt;2.1 Cluster  relation&lt;/h3&gt;
+&lt;h2 id=&#34;spark-cluster&#34;&gt;Spark Cluster&lt;/h2&gt;
+&lt;h3 id=&#34;11-cluster--relation&#34;&gt;1.1 Cluster  relation&lt;/h3&gt;
 &lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/clusterManager.png&#34; alt=&#34;clusterManager&#34;&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Driver：该进程调用Spark程序的main方法，并且启动SparkContext&lt;/li&gt;
@@ -75,7 +75,7 @@
 &lt;li&gt;资源申请完毕，在Worker中启动Executor&lt;/li&gt;
 &lt;li&gt;Driver将程序转化为Tasks，分发给Executor执行&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;22-build-cluster&#34;&gt;2.2 Build Cluster&lt;/h3&gt;
+&lt;h3 id=&#34;12-build-cluster&#34;&gt;1.2 Build Cluster&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;Download Spark&lt;/li&gt;
 &lt;li&gt;Upload&lt;/li&gt;
@@ -84,22 +84,45 @@
 &lt;li&gt;Distribute:  scp -r spark node02: $PWD&lt;/li&gt;
 &lt;li&gt;Start&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;23-high-availability&#34;&gt;2.3 High Availability&lt;/h3&gt;
+&lt;h3 id=&#34;13-high-availability&#34;&gt;1.3 High Availability&lt;/h3&gt;
 &lt;p&gt;对于 Spark Standalone 集群来说，当Worker调度出现问题时，会自动的弹性容错，将出错的Task调度到其他Worker执行。&lt;/p&gt;
 &lt;p&gt;但对于Master来说，是会出现单点失败的，为了避免可能出现的单点失败问题，Spark提供了两种方式满足高可用&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;使用Zookeeper实现Master的主备切换(Zookeeper是一个分布式强一致性的协调服务，Zookeeper最基本的一个保证是：如果多个节点同时创建一个ZNode)只有一个能够成功创建，这个做法的本质使用的是Zookeeper的ZAB协议，能够在分布式环境下达成一致。&lt;/li&gt;
 &lt;li&gt;使用文件系统做主备切换&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;3-running-process&#34;&gt;3. Running Process&lt;/h2&gt;
-&lt;h3 id=&#34;31-spark-shell&#34;&gt;3.1 Spark-Shell&lt;/h3&gt;
+&lt;h2 id=&#34;running-process&#34;&gt;Running Process&lt;/h2&gt;
+&lt;h3 id=&#34;11-spark-shell&#34;&gt;1.1 Spark-Shell&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-scala&#34; data-lang=&#34;scala&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;val&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rdd1&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;textFile&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;/data/wordcount.txt&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//Hadoop默认读取hdfs路径：hdfs:///data/wordcount.txt
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;val&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rdd2&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rdd1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;flatMap&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;item&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;item&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;split&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34; &amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;))&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;val&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rdd3&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rdd2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;map&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;item&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;item&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;))&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;val&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rdd4&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rdd3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;reduceByKey&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;curr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;agg&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;curr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;agg&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rdd4&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;collect&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/sparkDemoRunProcess.png&#34; alt=&#34;sparkDemoRunProcess&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;32-idea&#34;&gt;3.2 IDEA&lt;/h3&gt;
+&lt;h3 id=&#34;12-idea&#34;&gt;1.2 IDEA&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-scala&#34; data-lang=&#34;scala&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;Arrary&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;])&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;Unit&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;//1. 创建SparkContext
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;val&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;conf&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;SparkConf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;setMaster&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;local[6]&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;setAppName&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;word_count&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;val&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sc&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;SparkContext&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;conf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;    
+&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;//2. 加载文件
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;//	1.准备文件
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;//	2.读取文件
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;val&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rdd1&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;testFile&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;path&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;dataset/wordcount.txt&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;    
+&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;//3. 处理
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;//	1.拆分为多个单词
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;val&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rdd2&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rdd1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;flatMap&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;item&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;item&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;split&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34; &amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;))&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;//	2.把每个单词指定一个词频
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;val&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rdd3&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rdd2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;map&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;item&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;item&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;))&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;16&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;//	3.聚合
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;17&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;val&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rdd4&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rdd3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;reduceByKey&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;curr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;agg&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;curr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;agg&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;18&lt;/span&gt;    
+&lt;span class=&#34;ln&#34;&gt;19&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;//4.得到结果
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;val&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rdd4&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;collect&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;21&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;foreach&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;item&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;item&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;))&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;22&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         
       </description>
     </item>

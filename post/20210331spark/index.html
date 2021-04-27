@@ -136,7 +136,7 @@ src='https://plausible.io/js/plausible.js'>
 </svg></span>
     <span class="post_date">
       Mar 31, 2021</span>
-    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/spark' title="spark" class="post_tag button button_translucent">spark
+    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/spark' title="spark" class="post_tag button button_translucent">spark
         </a><a href='https://Jerrysmd.github.io/tags/distributed' title="distributed" class="post_tag button button_translucent">distributed
         </a>
     </span>
@@ -172,29 +172,29 @@ src='https://plausible.io/js/plausible.js'>
     <h2>Overview</h2>
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#1-spark-introduction">1. Spark Introduction</a>
+    <li><a href="#spark-introduction">Spark Introduction</a>
       <ul>
         <li><a href="#11-spark-component">1.1 Spark Component</a></li>
         <li><a href="#12-spark--hadoop">1.2 Spark &amp; Hadoop</a></li>
       </ul>
     </li>
-    <li><a href="#2-spark-cluster">2. Spark Cluster</a>
+    <li><a href="#spark-cluster">Spark Cluster</a>
       <ul>
-        <li><a href="#21-cluster--relation">2.1 Cluster  relation</a></li>
-        <li><a href="#22-build-cluster">2.2 Build Cluster</a></li>
-        <li><a href="#23-high-availability">2.3 High Availability</a></li>
+        <li><a href="#11-cluster--relation">1.1 Cluster  relation</a></li>
+        <li><a href="#12-build-cluster">1.2 Build Cluster</a></li>
+        <li><a href="#13-high-availability">1.3 High Availability</a></li>
       </ul>
     </li>
-    <li><a href="#3-running-process">3. Running Process</a>
+    <li><a href="#running-process">Running Process</a>
       <ul>
-        <li><a href="#31-spark-shell">3.1 Spark-Shell</a></li>
-        <li><a href="#32-idea">3.2 IDEA</a></li>
+        <li><a href="#11-spark-shell">1.1 Spark-Shell</a></li>
+        <li><a href="#12-idea">1.2 IDEA</a></li>
       </ul>
     </li>
   </ul>
 </nav>
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
-<h2 id="1-spark-introduction">1. Spark Introduction</h2>
+<h2 id="spark-introduction">Spark Introduction</h2>
 <h3 id="11-spark-component">1.1 Spark Component</h3>
 <ul>
 <li>Spark提供了批处理（RDDs），结构化查询（DataFrame），流计算（SparkStreaming），机器学习（MLib），图计算（GraphX）等组件</li>
@@ -238,8 +238,8 @@ src='https://plausible.io/js/plausible.js'>
 </tr>
 </tbody>
 </table>
-<h2 id="2-spark-cluster">2. Spark Cluster</h2>
-<h3 id="21-cluster--relation">2.1 Cluster  relation</h3>
+<h2 id="spark-cluster">Spark Cluster</h2>
+<h3 id="11-cluster--relation">1.1 Cluster  relation</h3>
 <p><img src="/post/picture/clusterManager.png" alt="clusterManager"></p>
 <ul>
 <li>Driver：该进程调用Spark程序的main方法，并且启动SparkContext</li>
@@ -254,7 +254,7 @@ src='https://plausible.io/js/plausible.js'>
 <li>资源申请完毕，在Worker中启动Executor</li>
 <li>Driver将程序转化为Tasks，分发给Executor执行</li>
 </ol>
-<h3 id="22-build-cluster">2.2 Build Cluster</h3>
+<h3 id="12-build-cluster">1.2 Build Cluster</h3>
 <ol>
 <li>Download Spark</li>
 <li>Upload</li>
@@ -263,22 +263,45 @@ src='https://plausible.io/js/plausible.js'>
 <li>Distribute:  scp -r spark node02: $PWD</li>
 <li>Start</li>
 </ol>
-<h3 id="23-high-availability">2.3 High Availability</h3>
+<h3 id="13-high-availability">1.3 High Availability</h3>
 <p>对于 Spark Standalone 集群来说，当Worker调度出现问题时，会自动的弹性容错，将出错的Task调度到其他Worker执行。</p>
 <p>但对于Master来说，是会出现单点失败的，为了避免可能出现的单点失败问题，Spark提供了两种方式满足高可用</p>
 <ol>
 <li>使用Zookeeper实现Master的主备切换(Zookeeper是一个分布式强一致性的协调服务，Zookeeper最基本的一个保证是：如果多个节点同时创建一个ZNode)只有一个能够成功创建，这个做法的本质使用的是Zookeeper的ZAB协议，能够在分布式环境下达成一致。</li>
 <li>使用文件系统做主备切换</li>
 </ol>
-<h2 id="3-running-process">3. Running Process</h2>
-<h3 id="31-spark-shell">3.1 Spark-Shell</h3>
+<h2 id="running-process">Running Process</h2>
+<h3 id="11-spark-shell">1.1 Spark-Shell</h3>
 <div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">rdd1</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">textFile</span><span class="o">(</span><span class="s">&#34;/data/wordcount.txt&#34;</span><span class="o">)</span> <span class="c1">//Hadoop默认读取hdfs路径：hdfs:///data/wordcount.txt
 </span><span class="ln">2</span><span class="c1"></span><span class="k">val</span> <span class="n">rdd2</span> <span class="k">=</span> <span class="n">rdd1</span><span class="o">.</span><span class="n">flatMap</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
 <span class="ln">3</span><span class="k">val</span> <span class="n">rdd3</span> <span class="k">=</span> <span class="n">rdd2</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">item</span><span class="o">,</span><span class="mi">1</span><span class="o">))</span>
 <span class="ln">4</span><span class="k">val</span> <span class="n">rdd4</span> <span class="k">=</span> <span class="n">rdd3</span><span class="o">.</span><span class="n">reduceByKey</span><span class="o">((</span><span class="n">curr</span><span class="o">,</span><span class="n">agg</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">curr</span> <span class="o">+</span> <span class="n">agg</span><span class="o">)</span>
 <span class="ln">5</span><span class="n">rdd4</span><span class="o">.</span><span class="n">collect</span><span class="o">()</span>
 </code></pre></div><p><img src="/post/picture/sparkDemoRunProcess.png" alt="sparkDemoRunProcess"></p>
-<h3 id="32-idea">3.2 IDEA</h3>
+<h3 id="12-idea">1.2 IDEA</h3>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span><span class="kt">Arrary</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<span class="ln"> 2</span>    <span class="c1">//1. 创建SparkContext
+</span><span class="ln"> 3</span><span class="c1"></span>    <span class="k">val</span> <span class="n">conf</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkConf</span><span class="o">().</span><span class="n">setMaster</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">).</span><span class="n">setAppName</span><span class="o">(</span><span class="s">&#34;word_count&#34;</span><span class="o">)</span>
+<span class="ln"> 4</span>    <span class="k">val</span> <span class="n">sc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkContext</span><span class="o">(</span><span class="n">conf</span><span class="o">)</span>
+<span class="ln"> 5</span>    
+<span class="ln"> 6</span>    <span class="c1">//2. 加载文件
+</span><span class="ln"> 7</span><span class="c1"></span>    <span class="c1">//	1.准备文件
+</span><span class="ln"> 8</span><span class="c1"></span>    <span class="c1">//	2.读取文件
+</span><span class="ln"> 9</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd1</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">testFile</span><span class="o">(</span><span class="n">path</span> <span class="k">=</span> <span class="s">&#34;dataset/wordcount.txt&#34;</span><span class="o">)</span>
+<span class="ln">10</span>    
+<span class="ln">11</span>    <span class="c1">//3. 处理
+</span><span class="ln">12</span><span class="c1"></span>    <span class="c1">//	1.拆分为多个单词
+</span><span class="ln">13</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd2</span> <span class="k">=</span> <span class="n">rdd1</span><span class="o">.</span><span class="n">flatMap</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
+<span class="ln">14</span>    <span class="c1">//	2.把每个单词指定一个词频
+</span><span class="ln">15</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd3</span> <span class="k">=</span> <span class="n">rdd2</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">item</span><span class="o">,</span><span class="mi">1</span><span class="o">))</span>
+<span class="ln">16</span>    <span class="c1">//	3.聚合
+</span><span class="ln">17</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd4</span> <span class="k">=</span> <span class="n">rdd3</span><span class="o">.</span><span class="n">reduceByKey</span><span class="o">((</span><span class="n">curr</span><span class="o">,</span><span class="n">agg</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">curr</span> <span class="o">+</span> <span class="n">agg</span><span class="o">)</span>
+<span class="ln">18</span>    
+<span class="ln">19</span>    <span class="c1">//4.得到结果
+</span><span class="ln">20</span><span class="c1"></span>    <span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="n">rdd4</span><span class="o">.</span><span class="n">collect</span><span class="o">()</span>
+<span class="ln">21</span>    <span class="n">result</span><span class="o">.</span><span class="n">foreach</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="n">item</span><span class="o">))</span>
+<span class="ln">22</span><span class="o">}</span>
+</code></pre></div>
 
   </article>
 <aside class="sidebar">
