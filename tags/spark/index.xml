@@ -143,6 +143,7 @@
 &lt;li&gt;RDD相互之间有依赖关系&lt;/li&gt;
 &lt;li&gt;RDD是可以分区的&lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/sparkRdd.png&#34; alt=&#34;sparkRdd&#34;&gt;&lt;/p&gt;
         
       </description>
     </item>
