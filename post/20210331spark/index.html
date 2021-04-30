@@ -195,6 +195,7 @@ src='https://plausible.io/js/plausible.js'>
     <li><a href="#rdd">RDD</a>
       <ul>
         <li><a href="#11-concept">1.1 Concept</a></li>
+        <li><a href="#12-feature">1.2 Feature</a></li>
       </ul>
     </li>
   </ul>
@@ -320,6 +321,14 @@ src='https://plausible.io/js/plausible.js'>
 <div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>bin/spark -submit --class cn.demo.spark.rdd.WordCount --master spark://node01:7077 ~/original -spark-0.1.0.jar
 </code></pre></div><h2 id="rdd">RDD</h2>
 <h3 id="11-concept">1.1 Concept</h3>
+<p>RDD，全程 Resilient Distributed Datasets，是一个弹性，分布式，数据集。</p>
+<h3 id="12-feature">1.2 Feature</h3>
+<ol>
+<li>RDD是数据集</li>
+<li>RDD是编程模型</li>
+<li>RDD相互之间有依赖关系</li>
+<li>RDD是可以分区的</li>
+</ol>
 
   </article>
 <aside class="sidebar">
