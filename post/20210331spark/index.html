@@ -359,13 +359,19 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln"> 9</span><span class="mf">2.</span> <span class="n">通过外部数据创建RDD</span>
 <span class="ln">10</span><span class="nd">@Test</span>
 <span class="ln">11</span><span class="k">def</span> <span class="n">rddCreationFiles</span><span class="o">()</span><span class="k">:</span><span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln">12</span>    <span class="n">sc</span><span class="o">.</span><span class="n">textFile</span><span class="o">(</span><span class="s">&#34;&#34;</span><span class="o">)</span>
-<span class="ln">13</span><span class="o">}</span>
-<span class="ln">14</span><span class="mf">3.</span> <span class="n">通过RDD衍生新的RDD</span>
-<span class="ln">15</span><span class="nd">@Test</span>
-<span class="ln">16</span><span class="k">def</span> <span class="n">rddCreationFromRDD</span><span class="o">()</span><span class="k">:</span><span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln">17</span>    
-<span class="ln">18</span><span class="o">}</span>
+<span class="ln">12</span>    <span class="n">sc</span><span class="o">.</span><span class="n">textFile</span><span class="o">(</span><span class="s">&#34;/.../...&#34;</span><span class="o">)</span>
+<span class="ln">13</span>    <span class="c1">//1.testFile: 传入* hdfs://   file://   /.../...(这种方式分为在集群还是本地执行，在集群中读的是hdfs，本地读本地文件)
+</span><span class="ln">14</span><span class="c1"></span>    <span class="c1">//2.是否支持分区：支持，在hdfs中由hdfs文件的block决定
+</span><span class="ln">15</span><span class="c1"></span>    <span class="c1">//3.支持什么平台：支持aws和阿里云...
+</span><span class="ln">16</span><span class="c1"></span><span class="o">}</span>
+<span class="ln">17</span><span class="mf">3.</span> <span class="n">通过RDD衍生新的RDD</span>
+<span class="ln">18</span><span class="nd">@Test</span>
+<span class="ln">19</span><span class="k">def</span> <span class="n">rddCreationFromRDD</span><span class="o">()</span><span class="k">:</span><span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<span class="ln">20</span>    <span class="k">val</span> <span class="n">rdd1</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">))</span>
+<span class="ln">21</span>    <span class="c1">//通过在rdd上执行算子操作，会生成新的rdd
+</span><span class="ln">22</span><span class="c1"></span>    <span class="c1">//非原地计算：str.substr 返回新的字符串，非原地计算。字符串不可变，RDD不可变
+</span><span class="ln">23</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd2</span><span class="k">:</span> <span class="kt">RDD</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="n">rdd1</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span><span class="k">=&gt;</span><span class="n">item</span><span class="o">)</span>
+<span class="ln">24</span><span class="o">}</span>
 </code></pre></div>
 
   </article>
