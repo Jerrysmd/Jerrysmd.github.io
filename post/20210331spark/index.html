@@ -136,7 +136,7 @@ src='https://plausible.io/js/plausible.js'>
 </svg></span>
     <span class="post_date">
       Mar 31, 2021</span>
-    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/spark' title="spark" class="post_tag button button_translucent">spark
+    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/spark' title="spark" class="post_tag button button_translucent">spark
         </a><a href='https://Jerrysmd.github.io/tags/distributed' title="distributed" class="post_tag button button_translucent">distributed
         </a>
     </span>
@@ -373,9 +373,21 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">20</span>    <span class="k">val</span> <span class="n">rdd1</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">))</span>
 <span class="ln">21</span>    <span class="c1">//通过在rdd上执行算子操作，会生成新的rdd
 </span><span class="ln">22</span><span class="c1"></span>    <span class="c1">//非原地计算：str.substr 返回新的字符串，非原地计算。字符串不可变，RDD也不可变
-</span><span class="ln">23</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd2</span><span class="k">:</span> <span class="kt">RDD</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="n">rdd1</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span><span class="k">=&gt;</span><span class="n">item</span><span class="o">)</span>
+</span><span class="ln">23</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd2</span><span class="k">:</span> <span class="kt">RDD</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="n">rdd1</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">)</span>
 <span class="ln">24</span><span class="o">}</span>
 </code></pre></div><h3 id="15--operator">1.5  Operator</h3>
+<h4 id="151-map">1.5.1 map</h4>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="nd">@Test</span>
+<span class="ln"> 2</span><span class="k">def</span> <span class="n">mapTest</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<span class="ln"> 3</span>    <span class="c1">//1.创建RDD
+</span><span class="ln"> 4</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd1</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">))</span>
+<span class="ln"> 5</span>    <span class="c1">//2.执行map操作
+</span><span class="ln"> 6</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd2</span> <span class="k">=</span> <span class="n">rdd1</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span> <span class="o">*</span> <span class="mi">10</span><span class="o">)</span>
+<span class="ln"> 7</span>    <span class="c1">//3.得到结果
+</span><span class="ln"> 8</span><span class="c1"></span>    <span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="n">rdd2</span><span class="o">.</span><span class="n">collect</span><span class="o">()</span>
+<span class="ln"> 9</span>    <span class="n">result</span><span class="o">.</span><span class="n">foreach</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="n">item</span><span class="o">))</span>
+<span class="ln">10</span><span class="o">}</span>
+</code></pre></div><h4 id="152-flatmap">1.5.2 flatmap</h4>
 
   </article>
 <aside class="sidebar">
