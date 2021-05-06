@@ -388,6 +388,21 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln"> 9</span>    <span class="n">result</span><span class="o">.</span><span class="n">foreach</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="n">item</span><span class="o">))</span>
 <span class="ln">10</span><span class="o">}</span>
 </code></pre></div><h4 id="152-flatmap">1.5.2 flatmap</h4>
+<ol>
+<li>把rdd中的数据转化成数组或集合形式</li>
+<li>把集合展开</li>
+<li>生成了多条数据</li>
+</ol>
+<p>flatmap是一对多</p>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="nd">@Test</span>
+<span class="ln">2</span><span class="k">def</span> <span class="n">flatMapTest</span><span class="o">()</span><span class="k">:</span><span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<span class="ln">3</span>    <span class="k">val</span> <span class="n">rdd1</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="s">&#34;Hello a&#34;</span><span class="o">,</span><span class="s">&#34;Hello b&#34;</span><span class="o">,</span><span class="s">&#34;Hello c&#34;</span><span class="o">))</span>
+<span class="ln">4</span>    <span class="k">val</span> <span class="n">rdd2</span> <span class="k">=</span> <span class="n">rdd1</span><span class="o">.</span><span class="n">flatMap</span><span class="o">(</span> <span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
+<span class="ln">5</span>    <span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="n">rdd2</span><span class="o">.</span><span class="n">collect</span><span class="o">()</span>
+<span class="ln">6</span>    <span class="n">result</span><span class="o">.</span><span class="n">foreach</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="n">item</span><span class="o">))</span>
+<span class="ln">7</span>    <span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="o">()</span>
+<span class="ln">8</span><span class="o">}</span>
+</code></pre></div>
 
   </article>
 <aside class="sidebar">
