@@ -477,6 +477,17 @@ src='https://plausible.io/js/plausible.js'>
 <li>通过父级RDD和计算函数来恢复RDD2</li>
 </ol>
 </blockquote>
+<ol start="6">
+<li>任务特别复杂，流程特别长，有很多RDD之间有依赖关系，如何优化？</li>
+</ol>
+<blockquote>
+<p>上面提到了可以使用依赖关系来进行<strong>容错</strong>，但是如果依赖关系特别长的时候，这种方式其实也比较低效，这个时候就应该使用另外一种方式，也就是记录数据集的状态</p>
+<p><strong>在Spark中有两个手段可以做到</strong></p>
+<ol>
+<li>缓存</li>
+<li>Checkpoint</li>
+</ol>
+</blockquote>
 
   </article>
 <aside class="sidebar">
