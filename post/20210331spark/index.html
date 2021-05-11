@@ -35,7 +35,7 @@ src='https://plausible.io/js/plausible.js'>
 <meta property="og:url" content="https://Jerrysmd.github.io/post/20210331spark/" />
 <meta property="og:title" content="Spark 简介: Spark Guide" />
 <meta property="og:description" content="Article description." />
-<meta property="og:image" content="https://Jerrysmd.github.io/images/11.png" />
+<meta property="og:image" content="https://Jerrysmd.github.io/images/1png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://Jerrysmd.github.io/post/icons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://Jerrysmd.github.io/post/icons/favicon-32x32.png">
@@ -174,45 +174,45 @@ src='https://plausible.io/js/plausible.js'>
   <ul>
     <li><a href="#spark-introduction">Spark Introduction</a>
       <ul>
-        <li><a href="#11-spark-component">1.1 Spark Component</a></li>
-        <li><a href="#12-spark--hadoop">1.2 Spark &amp; Hadoop</a></li>
+        <li><a href="#1-spark-component">1 Spark Component</a></li>
+        <li><a href="#2-spark--hadoop">2 Spark &amp; Hadoop</a></li>
       </ul>
     </li>
     <li><a href="#spark-cluster">Spark Cluster</a>
       <ul>
-        <li><a href="#11-cluster--relation">1.1 Cluster  relation</a></li>
-        <li><a href="#12-build-cluster">1.2 Build Cluster</a></li>
-        <li><a href="#13-high-availability">1.3 High Availability</a></li>
+        <li><a href="#1-cluster--relation">1 Cluster  relation</a></li>
+        <li><a href="#2-build-cluster">2 Build Cluster</a></li>
+        <li><a href="#3-high-availability">3 High Availability</a></li>
       </ul>
     </li>
     <li><a href="#running-process">Running Process</a>
       <ul>
-        <li><a href="#11-spark-shell-run">1.1 Spark-Shell Run</a></li>
-        <li><a href="#12-local-idea-run">1.2 Local IDEA Run</a></li>
-        <li><a href="#13--submit-run">1.3  Submit Run</a></li>
+        <li><a href="#1-spark-shell-run">1 Spark-Shell Run</a></li>
+        <li><a href="#2-local-idea-run">2 Local IDEA Run</a></li>
+        <li><a href="#3--submit-run">3  Submit Run</a></li>
       </ul>
     </li>
     <li><a href="#rdd">RDD</a>
       <ul>
-        <li><a href="#11-concept">1.1 Concept</a></li>
-        <li><a href="#12-feature">1.2 Feature</a></li>
-        <li><a href="#13-sparkcontext">1.3 sparkContext</a></li>
-        <li><a href="#14-creation-way">1.4 Creation Way</a></li>
-        <li><a href="#15--operator">1.5  Operator</a></li>
-        <li><a href="#16-qa">1.6 Q&amp;A</a></li>
+        <li><a href="#1-concept">1 Concept</a></li>
+        <li><a href="#2-feature">2 Feature</a></li>
+        <li><a href="#3-sparkcontext">3 sparkContext</a></li>
+        <li><a href="#4-creation-way">4 Creation Way</a></li>
+        <li><a href="#5--operator">5  Operator</a></li>
+        <li><a href="#6-qa">6 Q&amp;A</a></li>
       </ul>
     </li>
   </ul>
 </nav>
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
 <h2 id="spark-introduction">Spark Introduction</h2>
-<h3 id="11-spark-component">1.1 Spark Component</h3>
+<h3 id="1-spark-component">1 Spark Component</h3>
 <ul>
 <li>Spark提供了批处理（RDDs），结构化查询（DataFrame），流计算（SparkStreaming），机器学习（MLib），图计算（GraphX）等组件</li>
 <li>这些组件均是依托于通用的计算引擎RDDs而构建出，所以spark-core的RDDs是整个Spark的基础</li>
 </ul>
 <p><img src="/post/picture/sparkStructure.png" alt="sparkStructure"></p>
-<h3 id="12-spark--hadoop">1.2 Spark &amp; Hadoop</h3>
+<h3 id="2-spark--hadoop">2 Spark &amp; Hadoop</h3>
 <table>
 <thead>
 <tr>
@@ -250,7 +250,7 @@ src='https://plausible.io/js/plausible.js'>
 </tbody>
 </table>
 <h2 id="spark-cluster">Spark Cluster</h2>
-<h3 id="11-cluster--relation">1.1 Cluster  relation</h3>
+<h3 id="1-cluster--relation">1 Cluster  relation</h3>
 <p><img src="/post/picture/clusterManager.png" alt="clusterManager"></p>
 <ul>
 <li>Driver：该进程调用Spark程序的main方法，并且启动SparkContext</li>
@@ -265,7 +265,7 @@ src='https://plausible.io/js/plausible.js'>
 <li>资源申请完毕，在Worker中启动Executor</li>
 <li>Driver将程序转化为Tasks，分发给Executor执行</li>
 </ol>
-<h3 id="12-build-cluster">1.2 Build Cluster</h3>
+<h3 id="2-build-cluster">2 Build Cluster</h3>
 <ol>
 <li>Download Spark</li>
 <li>Upload</li>
@@ -274,7 +274,7 @@ src='https://plausible.io/js/plausible.js'>
 <li>Distribute:  scp -r spark node02: $PWD</li>
 <li>Start</li>
 </ol>
-<h3 id="13-high-availability">1.3 High Availability</h3>
+<h3 id="3-high-availability">3 High Availability</h3>
 <p>对于 Spark Standalone 集群来说，当Worker调度出现问题时，会自动的弹性容错，将出错的Task调度到其他Worker执行。</p>
 <p>但对于Master来说，是会出现单点失败的，为了避免可能出现的单点失败问题，Spark提供了两种方式满足高可用</p>
 <ol>
@@ -282,27 +282,27 @@ src='https://plausible.io/js/plausible.js'>
 <li>使用文件系统做主备切换</li>
 </ol>
 <h2 id="running-process">Running Process</h2>
-<h3 id="11-spark-shell-run">1.1 Spark-Shell Run</h3>
+<h3 id="1-spark-shell-run">1 Spark-Shell Run</h3>
 <div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">rdd1</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">textFile</span><span class="o">(</span><span class="s">&#34;/data/wordcount.txt&#34;</span><span class="o">)</span> <span class="c1">//Hadoop默认读取hdfs路径：hdfs:///data/wordcount.txt
-</span><span class="ln">2</span><span class="c1"></span><span class="k">val</span> <span class="n">rdd2</span> <span class="k">=</span> <span class="n">rdd1</span><span class="o">.</span><span class="n">flatMap</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
+</span><span class="ln">2</span><span class="c1"></span><span class="k">val</span> <span class="n">rdd2</span> <span class="k">=</span> <span class="n">rddflatMap</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
 <span class="ln">3</span><span class="k">val</span> <span class="n">rdd3</span> <span class="k">=</span> <span class="n">rdd2</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">item</span><span class="o">,</span><span class="mi">1</span><span class="o">))</span>
 <span class="ln">4</span><span class="k">val</span> <span class="n">rdd4</span> <span class="k">=</span> <span class="n">rdd3</span><span class="o">.</span><span class="n">reduceByKey</span><span class="o">((</span><span class="n">curr</span><span class="o">,</span><span class="n">agg</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">curr</span> <span class="o">+</span> <span class="n">agg</span><span class="o">)</span>
 <span class="ln">5</span><span class="n">rdd4</span><span class="o">.</span><span class="n">collect</span><span class="o">()</span>
 </code></pre></div><p><img src="/post/picture/sparkDemoRunProcess.png" alt="sparkDemoRunProcess"></p>
-<h3 id="12-local-idea-run">1.2 Local IDEA Run</h3>
+<h3 id="2-local-idea-run">2 Local IDEA Run</h3>
 <div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span><span class="kt">Arrary</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln"> 2</span>    <span class="c1">//1. 创建SparkContext
+<span class="ln"> 2</span>    <span class="c1">// 创建SparkContext
 </span><span class="ln"> 3</span><span class="c1"></span>    <span class="k">val</span> <span class="n">conf</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkConf</span><span class="o">().</span><span class="n">setMaster</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">).</span><span class="n">setAppName</span><span class="o">(</span><span class="s">&#34;word_count&#34;</span><span class="o">)</span>
 <span class="ln"> 4</span>    <span class="k">val</span> <span class="n">sc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkContext</span><span class="o">(</span><span class="n">conf</span><span class="o">)</span>
 <span class="ln"> 5</span>    
 <span class="ln"> 6</span>    <span class="c1">//2. 加载文件
-</span><span class="ln"> 7</span><span class="c1"></span>    <span class="c1">//	1.准备文件
+</span><span class="ln"> 7</span><span class="c1"></span>    <span class="c1">//	准备文件
 </span><span class="ln"> 8</span><span class="c1"></span>    <span class="c1">//	2.读取文件
 </span><span class="ln"> 9</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd1</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">testFile</span><span class="o">(</span><span class="n">path</span> <span class="k">=</span> <span class="s">&#34;dataset/wordcount.txt&#34;</span><span class="o">)</span>
 <span class="ln">10</span>    
 <span class="ln">11</span>    <span class="c1">//3. 处理
-</span><span class="ln">12</span><span class="c1"></span>    <span class="c1">//	1.拆分为多个单词
-</span><span class="ln">13</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd2</span> <span class="k">=</span> <span class="n">rdd1</span><span class="o">.</span><span class="n">flatMap</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
+</span><span class="ln">12</span><span class="c1"></span>    <span class="c1">//	拆分为多个单词
+</span><span class="ln">13</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd2</span> <span class="k">=</span> <span class="n">rddflatMap</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
 <span class="ln">14</span>    <span class="c1">//	2.把每个单词指定一个词频
 </span><span class="ln">15</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd3</span> <span class="k">=</span> <span class="n">rdd2</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">item</span><span class="o">,</span><span class="mi">1</span><span class="o">))</span>
 <span class="ln">16</span>    <span class="c1">//	3.聚合
@@ -312,7 +312,7 @@ src='https://plausible.io/js/plausible.js'>
 </span><span class="ln">20</span><span class="c1"></span>    <span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="n">rdd4</span><span class="o">.</span><span class="n">collect</span><span class="o">()</span>
 <span class="ln">21</span>    <span class="n">result</span><span class="o">.</span><span class="n">foreach</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="n">item</span><span class="o">))</span>
 <span class="ln">22</span><span class="o">}</span>
-</code></pre></div><h3 id="13--submit-run">1.3  Submit Run</h3>
+</code></pre></div><h3 id="3--submit-run">3  Submit Run</h3>
 <ol>
 <li>修改代码
 <ol>
@@ -322,11 +322,11 @@ src='https://plausible.io/js/plausible.js'>
 <li>Maven打包上传</li>
 <li>在集群中运行</li>
 </ol>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>bin/spark -submit --class cn.demo.spark.rdd.WordCount --master spark://node01:7077 ~/original -spark-0.1.0.jar
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>bin/spark -submit --class cn.demo.spark.rdd.WordCount --master spark://node01:7077 ~/original -spark-0.0.jar
 </code></pre></div><h2 id="rdd">RDD</h2>
-<h3 id="11-concept">1.1 Concept</h3>
+<h3 id="1-concept">1 Concept</h3>
 <p>RDD，全程 Resilient Distributed Datasets，是一个弹性，分布式，数据集。</p>
-<h3 id="12-feature">1.2 Feature</h3>
+<h3 id="2-feature">2 Feature</h3>
 <ol>
 <li>RDD是数据集</li>
 <li>RDD是编程模型</li>
@@ -334,13 +334,13 @@ src='https://plausible.io/js/plausible.js'>
 <li>RDD是可以分区的</li>
 </ol>
 <p><img src="/post/picture/sparkRdd.png" alt="sparkRdd"></p>
-<h3 id="13-sparkcontext">1.3 sparkContext</h3>
+<h3 id="3-sparkcontext">3 sparkContext</h3>
 <p>SparkContext是spark功能的主要入口。其代表与spark集群的连接，能够用来在集群上创建RDD、累加器、广播变量。每个JVM里只能存在一个处于激活状态的SparkContext，在创建新的SparkContext之前必须调用stop()来关闭之前的SparkContext。</p>
 <p>每一个Spark应用都是一个SparkContext实例，可以理解为一个SparkContext就是一个spark application的生命周期，一旦SparkContext创建之后，就可以用这个SparkContext来创建RDD、累加器、广播变量，并且可以通过SparkContext访问Spark的服务，运行任务。spark context设置内部服务，并建立与spark执行环境的连接。</p>
 <div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="nd">@Test</span>
 <span class="ln"> 2</span><span class="k">def</span> <span class="n">sparkContext</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln"> 3</span>    <span class="c1">// 1. Spark Context 编写
-</span><span class="ln"> 4</span><span class="c1"></span>    <span class="c1">// 		1.创建SparkConf
+<span class="ln"> 3</span>    <span class="c1">//  Spark Context 编写
+</span><span class="ln"> 4</span><span class="c1"></span>    <span class="c1">// 		创建SparkConf
 </span><span class="ln"> 5</span><span class="c1"></span>    <span class="k">val</span> <span class="n">conf</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkConf</span><span class="o">().</span><span class="n">setMaster</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">).</span><span class="n">setAppName</span><span class="o">(</span><span class="s">&#34;spark_context&#34;</span><span class="o">)</span>
 <span class="ln"> 6</span>    <span class="c1">//		2.创建SparkContext
 </span><span class="ln"> 7</span><span class="c1"></span>    <span class="k">val</span> <span class="n">sc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkContext</span><span class="o">(</span><span class="n">conf</span><span class="o">)</span>
@@ -350,9 +350,9 @@ src='https://plausible.io/js/plausible.js'>
 </span><span class="ln">11</span><span class="c1"></span>    
 <span class="ln">12</span>    <span class="c1">//2. 关闭SparkContext，释放集群资源
 </span><span class="ln">13</span><span class="c1"></span><span class="o">}</span>
-</code></pre></div><h3 id="14-creation-way">1.4 Creation Way</h3>
+</code></pre></div><h3 id="4-creation-way">4 Creation Way</h3>
 <p>三种RDD的创建方式</p>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="mf">1.</span> <span class="n">通过本地集合创建RDD</span>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span> <span class="n">通过本地集合创建RDD</span>
 <span class="ln"> 2</span><span class="nd">@Test</span>
 <span class="ln"> 3</span><span class="k">def</span> <span class="n">rddCreationLocal</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln"> 4</span>    <span class="k">val</span> <span class="n">conf</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkConf</span><span class="o">().</span><span class="n">setMaster</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">).</span><span class="n">setAppName</span><span class="o">(</span><span class="s">&#34;spark_context&#34;</span><span class="o">)</span>
@@ -364,7 +364,7 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">10</span><span class="nd">@Test</span>
 <span class="ln">11</span><span class="k">def</span> <span class="n">rddCreationFiles</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln">12</span>    <span class="n">sc</span><span class="o">.</span><span class="n">textFile</span><span class="o">(</span><span class="s">&#34;/.../...&#34;</span><span class="o">)</span>
-<span class="ln">13</span>    <span class="c1">//1.testFile: 传入* hdfs://   file://   /.../...(这种方式分为在集群还是本地执行，在集群中读的是hdfs，本地读本地文件)
+<span class="ln">13</span>    <span class="c1">//testFile: 传入* hdfs://   file://   /.../...(这种方式分为在集群还是本地执行，在集群中读的是hdfs，本地读本地文件)
 </span><span class="ln">14</span><span class="c1"></span>    <span class="c1">//2.是否支持分区：支持，在hdfs中由hdfs文件的block决定
 </span><span class="ln">15</span><span class="c1"></span>    <span class="c1">//3.支持什么平台：支持aws和阿里云...
 </span><span class="ln">16</span><span class="c1"></span><span class="o">}</span>
@@ -374,21 +374,21 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">20</span>    <span class="k">val</span> <span class="n">rdd1</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">))</span>
 <span class="ln">21</span>    <span class="c1">//通过在rdd上执行算子操作，会生成新的rdd
 </span><span class="ln">22</span><span class="c1"></span>    <span class="c1">//非原地计算：str.substr 返回新的字符串，非原地计算。字符串不可变，RDD也不可变
-</span><span class="ln">23</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd2</span><span class="k">:</span> <span class="kt">RDD</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="n">rdd1</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">)</span>
+</span><span class="ln">23</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd2</span><span class="k">:</span> <span class="kt">RDD</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="n">rddmap</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">)</span>
 <span class="ln">24</span><span class="o">}</span>
-</code></pre></div><h3 id="15--operator">1.5  Operator</h3>
-<h4 id="151-map">1.5.1 map</h4>
+</code></pre></div><h3 id="5--operator">5  Operator</h3>
+<h4 id="51-map">5.1 map</h4>
 <div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="nd">@Test</span>
 <span class="ln"> 2</span><span class="k">def</span> <span class="n">mapTest</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln"> 3</span>    <span class="c1">//1.创建RDD
+<span class="ln"> 3</span>    <span class="c1">//创建RDD
 </span><span class="ln"> 4</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd1</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">))</span>
 <span class="ln"> 5</span>    <span class="c1">//2.执行map操作
-</span><span class="ln"> 6</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd2</span> <span class="k">=</span> <span class="n">rdd1</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span> <span class="o">*</span> <span class="mi">10</span><span class="o">)</span>
+</span><span class="ln"> 6</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd2</span> <span class="k">=</span> <span class="n">rddmap</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span> <span class="o">*</span> <span class="mi">10</span><span class="o">)</span>
 <span class="ln"> 7</span>    <span class="c1">//3.得到结果
 </span><span class="ln"> 8</span><span class="c1"></span>    <span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="n">rdd2</span><span class="o">.</span><span class="n">collect</span><span class="o">()</span>
 <span class="ln"> 9</span>    <span class="n">result</span><span class="o">.</span><span class="n">foreach</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="n">item</span><span class="o">))</span>
 <span class="ln">10</span><span class="o">}</span>
-</code></pre></div><h4 id="152-flatmap">1.5.2 flatmap</h4>
+</code></pre></div><h4 id="52-flatmap">5.2 flatmap</h4>
 <ol>
 <li>把rdd中的数据转化成数组或集合形式</li>
 <li>把集合展开</li>
@@ -398,19 +398,19 @@ src='https://plausible.io/js/plausible.js'>
 <div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="nd">@Test</span>
 <span class="ln">2</span><span class="k">def</span> <span class="n">flatMapTest</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln">3</span>    <span class="k">val</span> <span class="n">rdd1</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="s">&#34;Hello a&#34;</span><span class="o">,</span><span class="s">&#34;Hello b&#34;</span><span class="o">,</span><span class="s">&#34;Hello c&#34;</span><span class="o">))</span>
-<span class="ln">4</span>    <span class="k">val</span> <span class="n">rdd2</span> <span class="k">=</span> <span class="n">rdd1</span><span class="o">.</span><span class="n">flatMap</span><span class="o">(</span> <span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
+<span class="ln">4</span>    <span class="k">val</span> <span class="n">rdd2</span> <span class="k">=</span> <span class="n">rddflatMap</span><span class="o">(</span> <span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
 <span class="ln">5</span>    <span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="n">rdd2</span><span class="o">.</span><span class="n">collect</span><span class="o">()</span>
 <span class="ln">6</span>    <span class="n">result</span><span class="o">.</span><span class="n">foreach</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="n">item</span><span class="o">))</span>
 <span class="ln">7</span>    <span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="o">()</span>
 <span class="ln">8</span><span class="o">}</span>
-</code></pre></div><h4 id="153-reducebykey">1.5.3 reducebykey</h4>
+</code></pre></div><h4 id="53-reducebykey">5.3 reducebykey</h4>
 <p>reduceByKey第一步先按照key分组，然后对每一组进行聚合，得到结果。</p>
 <div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="nd">@Test</span>
 <span class="ln"> 2</span><span class="k">def</span> <span class="n">reduceBykeyTest</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln"> 3</span>    <span class="c1">//1.创建RDD
+<span class="ln"> 3</span>    <span class="c1">//创建RDD
 </span><span class="ln"> 4</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd1</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="s">&#34;Hello a&#34;</span><span class="o">,</span><span class="s">&#34;Hello b&#34;</span><span class="o">,</span><span class="s">&#34;Hello c&#34;</span><span class="o">))</span>
 <span class="ln"> 5</span>    <span class="c1">//2.处理数据
-</span><span class="ln"> 6</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd2</span> <span class="k">=</span> <span class="n">rdd1</span><span class="o">.</span><span class="n">flatMap</span><span class="o">(</span> <span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
+</span><span class="ln"> 6</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd2</span> <span class="k">=</span> <span class="n">rddflatMap</span><span class="o">(</span> <span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
 <span class="ln"> 7</span>    <span class="o">.</span><span class="n">map</span><span class="o">(</span> <span class="n">item</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">item</span><span class="o">,</span><span class="mi">1</span><span class="o">)</span> <span class="o">)</span>
 <span class="ln"> 8</span>    <span class="o">.</span><span class="n">reduceByKey</span><span class="o">(</span> <span class="o">(</span><span class="n">curr</span><span class="o">,</span> <span class="n">agg</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">curr</span> <span class="o">+</span> <span class="n">agg</span><span class="o">)</span><span class="c1">//curr是当前的总值，agg是单个item的值
 </span><span class="ln"> 9</span><span class="c1"></span>    <span class="c1">//3.得到结果
@@ -419,7 +419,7 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">12</span>    <span class="c1">//4.关闭sc
 </span><span class="ln">13</span><span class="c1"></span>    <span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="o">()</span> 
 <span class="ln">14</span><span class="o">}</span>
-</code></pre></div><h3 id="16-qa">1.6 Q&amp;A</h3>
+</code></pre></div><h3 id="6-qa">6 Q&amp;A</h3>
 <ol>
 <li>数据量过大，如何处理？</li>
 </ol>
@@ -428,6 +428,13 @@ src='https://plausible.io/js/plausible.js'>
 <li>如何放在集群中运行?</li>
 </ol>
 <p><img src="/post/picture/sparkPutFile2Cluster.png" alt="sparkPutFile2Cluster"></p>
+<p>并行计算就是同时使用多个计算资源解决一个问题，有四个要点</p>
+<ul>
+<li>解决的问题可以分解为多个可以并发计算的部分</li>
+<li>每个部分可以在不同处理器上被同时执行</li>
+<li><strong>需要一个共享内存的机制</strong></li>
+<li>需要一个总体上的协作机制来进行调度</li>
+</ul>
 
   </article>
 <aside class="sidebar">
