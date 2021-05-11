@@ -595,6 +595,38 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;/ol&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/sparkFile2Cluster2.png&#34; alt=&#34;sparkFile2Cluster2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;概述&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;对于HDFS中的文件，是分为不同的Block&lt;/li&gt;
+&lt;li&gt;在进行计算的时候，就可以按照Block来划分，每一个Block对应一个不同的计算单元&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;扩展&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;RDD并没有真实的存放数据，数据是从HDFS中读取的，在计算的过程中读取即可&lt;/li&gt;
+&lt;li&gt;RDD至少是需要可以&lt;strong&gt;分片&lt;/strong&gt;的，因为HDFS中的文件就是分片的，RDD可以分片也意味着可以并行计算&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;移动数据不如移动计算是一个基础的优化，如何做到？&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;每一个计算单元需要记录其存储单元的位置，尽量调度过去&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;集群中运行，需要多节点配合，出错的概率也更高，出错了怎么办？&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;RDD1-&amp;gt;RDD2-&amp;gt;RDD3这个过程中，RDD2出错了，有两种解决办法&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;缓存RDD2的数据，直接恢复RDD2，类似HDFS的备份机制&lt;/li&gt;
+&lt;li&gt;记录RDD2的依赖关系，通过其父级的RDD来恢复RDD2，这种方式会少很多数据的交互和保存&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;如何通过父级RDD恢复？&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;记录RDD2的父亲是RDD1&lt;/li&gt;
+&lt;li&gt;记录RDD2的计算函数，例如RDD2 = RDD1.map(...)等计算函数&lt;/li&gt;
+&lt;li&gt;通过父级RDD和计算函数来恢复RDD2&lt;/li&gt;
+&lt;/ol&gt;
 &lt;/blockquote&gt;
         
       </description>

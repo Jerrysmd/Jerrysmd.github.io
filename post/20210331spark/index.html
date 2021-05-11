@@ -444,6 +444,38 @@ src='https://plausible.io/js/plausible.js'>
 </ol>
 <blockquote>
 <p><img src="/post/picture/sparkFile2Cluster2.png" alt="sparkFile2Cluster2"></p>
+<p><strong>概述</strong></p>
+<ul>
+<li>对于HDFS中的文件，是分为不同的Block</li>
+<li>在进行计算的时候，就可以按照Block来划分，每一个Block对应一个不同的计算单元</li>
+</ul>
+<p><strong>扩展</strong></p>
+<ul>
+<li>RDD并没有真实的存放数据，数据是从HDFS中读取的，在计算的过程中读取即可</li>
+<li>RDD至少是需要可以<strong>分片</strong>的，因为HDFS中的文件就是分片的，RDD可以分片也意味着可以并行计算</li>
+</ul>
+</blockquote>
+<ol start="4">
+<li>移动数据不如移动计算是一个基础的优化，如何做到？</li>
+</ol>
+<blockquote>
+<p>每一个计算单元需要记录其存储单元的位置，尽量调度过去</p>
+</blockquote>
+<ol start="5">
+<li>集群中运行，需要多节点配合，出错的概率也更高，出错了怎么办？</li>
+</ol>
+<blockquote>
+<p><strong>RDD1-&gt;RDD2-&gt;RDD3这个过程中，RDD2出错了，有两种解决办法</strong></p>
+<ol>
+<li>缓存RDD2的数据，直接恢复RDD2，类似HDFS的备份机制</li>
+<li>记录RDD2的依赖关系，通过其父级的RDD来恢复RDD2，这种方式会少很多数据的交互和保存</li>
+</ol>
+<p><strong>如何通过父级RDD恢复？</strong></p>
+<ol>
+<li>记录RDD2的父亲是RDD1</li>
+<li>记录RDD2的计算函数，例如RDD2 = RDD1.map(...)等计算函数</li>
+<li>通过父级RDD和计算函数来恢复RDD2</li>
+</ol>
 </blockquote>
 
   </article>
