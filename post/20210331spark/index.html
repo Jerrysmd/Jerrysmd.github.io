@@ -423,10 +423,13 @@ src='https://plausible.io/js/plausible.js'>
 <ol>
 <li>数据量过大，如何处理？</li>
 </ol>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>集群中处理，利用集群多台计算机来并行处理
-</code></pre></div><ol start="2">
+<blockquote>
+<p>集群中处理，利用集群多台计算机来并行处理</p>
+</blockquote>
+<ol start="2">
 <li>如何放在集群中运行?</li>
 </ol>
+<blockquote>
 <p><img src="/post/picture/sparkPutFile2Cluster.png" alt="sparkPutFile2Cluster"></p>
 <p>并行计算就是同时使用多个计算资源解决一个问题，有四个要点</p>
 <ul>
@@ -435,6 +438,13 @@ src='https://plausible.io/js/plausible.js'>
 <li><strong>需要一个共享内存的机制</strong></li>
 <li>需要一个总体上的协作机制来进行调度</li>
 </ul>
+</blockquote>
+<ol start="3">
+<li>如果放在集群中，如何对整个计算任务进行分解？</li>
+</ol>
+<blockquote>
+<p><img src="/post/picture/sparkFile2Cluster2.png" alt="sparkFile2Cluster2"></p>
+</blockquote>
 
   </article>
 <aside class="sidebar">
