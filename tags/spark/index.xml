@@ -155,7 +155,7 @@
 &lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;RDD可以不保存具体数据，只保留创建自己的必备信息，例如依赖和计算函数&lt;/li&gt;
-&lt;li&gt;RDD也可以缓存起来，相当于存储具体&lt;/li&gt;
+&lt;li&gt;RDD也可以缓存起来，相当于存储具体数据&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;3-feature&#34;&gt;3 Feature&lt;/h3&gt;
