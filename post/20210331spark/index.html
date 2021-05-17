@@ -194,13 +194,14 @@ src='https://plausible.io/js/plausible.js'>
     </li>
     <li><a href="#rdd">RDD</a>
       <ul>
-        <li><a href="#1-concept">1 Concept</a></li>
-        <li><a href="#2-feature">2 Feature</a></li>
-        <li><a href="#3-sparkcontext">3 sparkContext</a></li>
-        <li><a href="#4-creation-way">4 Creation Way</a></li>
-        <li><a href="#5--operator">5  Operator</a></li>
-        <li><a href="#6-qa">6 Q&amp;A</a></li>
-        <li><a href="#7-why-rdd">7. Why RDD</a></li>
+        <li><a href="#1-cause-of-creation">1 Cause of creation</a></li>
+        <li><a href="#2-resilient-distributed-datasets">2 Resilient Distributed Datasets</a></li>
+        <li><a href="#3-feature">3 Feature</a></li>
+        <li><a href="#4-sparkcontext">4 sparkContext</a></li>
+        <li><a href="#5-creation-way">5 Creation Way</a></li>
+        <li><a href="#6--operator">6  Operator</a></li>
+        <li><a href="#7-qa">7 Q&amp;A</a></li>
+        <li><a href="#heading"></a></li>
       </ul>
     </li>
   </ul>
@@ -325,17 +326,53 @@ src='https://plausible.io/js/plausible.js'>
 </ol>
 <div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>bin/spark -submit --class cn.demo.spark.rdd.WordCount --master spark://node01:7077 ~/original -spark-0.0.jar
 </code></pre></div><h2 id="rdd">RDD</h2>
-<h3 id="1-concept">1 Concept</h3>
-<p>RDD，全程 Resilient Distributed Datasets，是一个弹性，分布式，数据集。</p>
-<h3 id="2-feature">2 Feature</h3>
+<h3 id="1-cause-of-creation">1 Cause of creation</h3>
+<p><strong>在RDD出现之前，MapReduce是比较主流的</strong></p>
+<p>但多个MapReduce任务之间没有基于内存的数据共享方式，只能通过磁盘来进行共享，这种方式明显比较低效。</p>
+<p><strong>RDD如何解决迭代计算非常低效的问题</strong></p>
+<p>在Spark中，最终Job3从逻辑上的计算过程是：Job3 = (Job1.map).filter，整个过程是共享内存的，而不需要中间结果存放在可靠的分布式文件系统中。</p>
+<h3 id="2-resilient-distributed-datasets">2 Resilient Distributed Datasets</h3>
+<p>分布式</p>
+<blockquote>
+<p>RDD支持分区，可以运行在集群中</p>
+</blockquote>
+<p>弹性</p>
+<blockquote>
+<ul>
+<li>RDD支持高效的容错</li>
+<li>RDD中的数据即可以缓存在内存中，也可以缓存在磁盘中，也可以缓存在外部存储中</li>
+</ul>
+</blockquote>
+<p>数据集</p>
+<blockquote>
+<ul>
+<li>RDD可以不保存具体数据，只保留创建自己的必备信息，例如依赖和计算函数</li>
+<li>RDD也可以缓存起来，相当于存储具体</li>
+</ul>
+</blockquote>
+<h3 id="3-feature">3 Feature</h3>
 <ol>
 <li>RDD是数据集</li>
+</ol>
+<blockquote>
+<p>RDD不仅是数据集，也是编程模型</p>
+<p>RDD的算子大致分为两类：</p>
+<ol>
+<li>Transformation转化操作，例如：map、flatMap、filter等</li>
+<li>Action动作操作，例如：reduce、collect、show等</li>
+</ol>
+</blockquote>
+<ol>
 <li>RDD是编程模型</li>
 <li>RDD相互之间有依赖关系</li>
 <li>RDD是可以分区的</li>
+<li><strong>RDD是只读的</strong></li>
 </ol>
+<blockquote>
+<p>RDD需要容错，可以惰性求值，可以移动计算，所以很难支持修改，显著降低问题的复杂度。</p>
+</blockquote>
 <p><img src="/post/picture/sparkRdd.png" alt="sparkRdd"></p>
-<h3 id="3-sparkcontext">3 sparkContext</h3>
+<h3 id="4-sparkcontext">4 sparkContext</h3>
 <p>SparkContext是spark功能的主要入口。其代表与spark集群的连接，能够用来在集群上创建RDD、累加器、广播变量。每个JVM里只能存在一个处于激活状态的SparkContext，在创建新的SparkContext之前必须调用stop()来关闭之前的SparkContext。</p>
 <p>每一个Spark应用都是一个SparkContext实例，可以理解为一个SparkContext就是一个spark application的生命周期，一旦SparkContext创建之后，就可以用这个SparkContext来创建RDD、累加器、广播变量，并且可以通过SparkContext访问Spark的服务，运行任务。spark context设置内部服务，并建立与spark执行环境的连接。</p>
 <div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="nd">@Test</span>
@@ -351,7 +388,7 @@ src='https://plausible.io/js/plausible.js'>
 </span><span class="ln">11</span><span class="c1"></span>    
 <span class="ln">12</span>    <span class="c1">//2. 关闭SparkContext，释放集群资源
 </span><span class="ln">13</span><span class="c1"></span><span class="o">}</span>
-</code></pre></div><h3 id="4-creation-way">4 Creation Way</h3>
+</code></pre></div><h3 id="5-creation-way">5 Creation Way</h3>
 <p>三种RDD的创建方式</p>
 <div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span> <span class="n">通过本地集合创建RDD</span>
 <span class="ln"> 2</span><span class="nd">@Test</span>
@@ -377,8 +414,8 @@ src='https://plausible.io/js/plausible.js'>
 </span><span class="ln">22</span><span class="c1"></span>    <span class="c1">//非原地计算：str.substr 返回新的字符串，非原地计算。字符串不可变，RDD也不可变
 </span><span class="ln">23</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd2</span><span class="k">:</span> <span class="kt">RDD</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="n">rddmap</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">)</span>
 <span class="ln">24</span><span class="o">}</span>
-</code></pre></div><h3 id="5--operator">5  Operator</h3>
-<h4 id="51-map">5.1 map</h4>
+</code></pre></div><h3 id="6--operator">6  Operator</h3>
+<h4 id="61-map">6.1 map</h4>
 <div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="nd">@Test</span>
 <span class="ln"> 2</span><span class="k">def</span> <span class="n">mapTest</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln"> 3</span>    <span class="c1">//创建RDD
@@ -389,7 +426,7 @@ src='https://plausible.io/js/plausible.js'>
 </span><span class="ln"> 8</span><span class="c1"></span>    <span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="n">rdd2</span><span class="o">.</span><span class="n">collect</span><span class="o">()</span>
 <span class="ln"> 9</span>    <span class="n">result</span><span class="o">.</span><span class="n">foreach</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="n">item</span><span class="o">))</span>
 <span class="ln">10</span><span class="o">}</span>
-</code></pre></div><h4 id="52-flatmap">5.2 flatmap</h4>
+</code></pre></div><h4 id="62-flatmap">6.2 flatmap</h4>
 <ol>
 <li>把rdd中的数据转化成数组或集合形式</li>
 <li>把集合展开</li>
@@ -404,7 +441,7 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">6</span>    <span class="n">result</span><span class="o">.</span><span class="n">foreach</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="n">item</span><span class="o">))</span>
 <span class="ln">7</span>    <span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="o">()</span>
 <span class="ln">8</span><span class="o">}</span>
-</code></pre></div><h4 id="53-reducebykey">5.3 reducebykey</h4>
+</code></pre></div><h4 id="63-reducebykey">6.3 reducebykey</h4>
 <p>reduceByKey第一步先按照key分组，然后对每一组进行聚合，得到结果。</p>
 <div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="nd">@Test</span>
 <span class="ln"> 2</span><span class="k">def</span> <span class="n">reduceBykeyTest</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
@@ -420,7 +457,7 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">12</span>    <span class="c1">//4.关闭sc
 </span><span class="ln">13</span><span class="c1"></span>    <span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="o">()</span> 
 <span class="ln">14</span><span class="o">}</span>
-</code></pre></div><h3 id="6-qa">6 Q&amp;A</h3>
+</code></pre></div><h3 id="7-qa">7 Q&amp;A</h3>
 <ol>
 <li>数据量过大，如何处理？</li>
 </ol>
@@ -489,10 +526,7 @@ src='https://plausible.io/js/plausible.js'>
 <li>Checkpoint</li>
 </ol>
 </blockquote>
-<h3 id="7-why-rdd">7. Why RDD</h3>
-<h4 id="71-cause-of-creation">7.1 Cause of creation</h4>
-<p>MapReduce</p>
-<h4 id="72-what-is-resilient-distributed-datasets">7.2 What is Resilient Distributed Datasets</h4>
+<h3 id="heading"></h3>
 
   </article>
 <aside class="sidebar">
