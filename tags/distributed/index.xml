@@ -640,6 +640,9 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;/ol&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;7-why-rdd&#34;&gt;7. Why RDD&lt;/h3&gt;
+&lt;h4 id=&#34;71-cause-of-creation&#34;&gt;7.1 Cause of creation&lt;/h4&gt;
+&lt;p&gt;MapReduce&lt;/p&gt;
+&lt;h4 id=&#34;72-what-is-resilient-distributed-datasets&#34;&gt;7.2 What is Resilient Distributed Datasets&lt;/h4&gt;
         
       </description>
     </item>
