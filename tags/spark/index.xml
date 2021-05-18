@@ -328,7 +328,7 @@
 &lt;/ol&gt;
 &lt;blockquote&gt;
 &lt;p&gt;上面提到了可以使用依赖关系来进行&lt;strong&gt;容错&lt;/strong&gt;，但是如果依赖关系特别长的时候，这种方式其实也比较低效，这个时候就应该使用另外一种方式，也就是记录数据集的状态&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;在Spark中有两个手 段可以做到&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;在Spark中有两个手段可以做到&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;缓存&lt;/li&gt;
 &lt;li&gt;Checkpoint&lt;/li&gt;

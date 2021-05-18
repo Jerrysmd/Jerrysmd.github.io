@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tag_name2 on JerrysBlog</title>
-    <link>https://Jerrysmd.github.io/tags/tag_name2/</link>
-    <description>Recent content in Tag_name2 on JerrysBlog</description>
+    <title>Life on JerrysBlog</title>
+    <link>https://Jerrysmd.github.io/categories/life/</link>
+    <description>Recent content in Life on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 18 May 2021 15:16:54 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/tag_name2/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 18 May 2021 15:16:54 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/categories/life/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>20210518lifeTest</title>
       <link>https://Jerrysmd.github.io/post/20210518lifetest/</link>
