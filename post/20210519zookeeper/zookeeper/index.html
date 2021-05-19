@@ -1,0 +1,923 @@
+
+<!DOCTYPE html>
+<html lang="en" data-figures="true" class="page" data-mode="dim">
+  <head>
+<title>Zookeeper核心知识点: Core points of ZooKeeper | JerrysBlog</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script async src="https://www.googletagmanager.com/gtag/js?id=XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'XXXXXXXXXX');
+</script>
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?XXXXXXXX";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<script async defer data-domain="Jerrysmd.github.io" 
+src='https://plausible.io/js/plausible.js'>
+</script>
+<meta property="og:locale" content="en" />
+
+<meta property="og:type" content="article">
+<meta name="description" content="Article description.">
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:creator" content="@0x4c2">
+<meta name="twitter:title" content="Zookeeper核心知识点: Core points of ZooKeeper" />
+<meta property="og:url" content="https://Jerrysmd.github.io/post/20210519zookeeper/zookeeper/" />
+<meta property="og:title" content="Zookeeper核心知识点: Core points of ZooKeeper" />
+<meta property="og:description" content="Article description." />
+<meta property="og:image" content="https://Jerrysmd.github.io/images/1.png" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://Jerrysmd.github.io/icons-self/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://Jerrysmd.github.io/icons-self/favicon-32x32.png">
+<link rel="manifest" href="https://Jerrysmd.github.io/icons-self/site.webmanifest">
+
+<link rel="canonical" href="https://Jerrysmd.github.io/post/20210519zookeeper/zookeeper/">
+
+    
+
+    
+    
+    <link rel="preload" href="https://Jerrysmd.github.io/css/styles.19822ef8d57c281b0ee1aa50d42585c2400da8137a121dec28cd58f48a7fec71bf92e0e20f91751c5622f183b719a2663b3c1766d877cd46e764de699307df61.css" integrity = "sha512-GYIu&#43;NV8KBsO4apQ1CWFwkANqBN6Eh3sKM1Y9Ip/7HG/kuDiD5F1HFYi8YO3GaJmOzwXZth3zUbnZN5pkwffYQ==" as="style" crossorigin="anonymous">
+    <link rel="preload" href="https://Jerrysmd.github.io/js/bundle.min.8eea1aecc57423dab19be8bc94e087c8b1d3ba29f1fe33bd6049448465a91b3a4304ee3bdd1a45447ec2583732e01fc0dbfbb34af1159c3b8b40bf24735bc16d.js" as="script" integrity=
+    "sha512-juoa7MV0I9qxm&#43;i8lOCHyLHTuinx/jO9YElEhGWpGzpDBO473RpFRH7CWDcy4B/A2/uzSvEVnDuLQL8kc1vBbQ==" crossorigin="anonymous">
+
+    
+    <link rel="stylesheet" type="text/css" href="https://Jerrysmd.github.io/css/styles.19822ef8d57c281b0ee1aa50d42585c2400da8137a121dec28cd58f48a7fec71bf92e0e20f91751c5622f183b719a2663b3c1766d877cd46e764de699307df61.css" integrity="sha512-GYIu&#43;NV8KBsO4apQ1CWFwkANqBN6Eh3sKM1Y9Ip/7HG/kuDiD5F1HFYi8YO3GaJmOzwXZth3zUbnZN5pkwffYQ==" crossorigin="anonymous">
+    
+  </head>
+  
+  
+  
+    
+  <body data-code="40" data-lines="true" id="documentTop">
+
+<header class="nav_header" >
+  <nav class="nav"><a href='https://Jerrysmd.github.io/' class="nav_brand nav_item" title="JerrysBlog">
+  <img src="https://Jerrysmd.github.io/logos/logo.png" class="logo" alt="JerrysBlog">
+  <div class="nav_close">
+    <div><svg class="icon">
+  <use xlink:href="#open-menu"></use>
+</svg><svg class="icon">
+  <use xlink:href="#closeme"></use>
+</svg></div>
+  </div>
+</a>
+
+    <div class='nav_body nav_body_left'>
+      
+      
+      
+        
+
+  <div class="nav_parent">
+    <a href="https://Jerrysmd.github.io/" class="nav_item" title="Home">Home </a>
+  </div>
+  <div class="nav_parent">
+    <a href="https://Jerrysmd.github.io/categories/technology/" class="nav_item" title="Technology">Technology </a>
+  </div>
+  <div class="nav_parent">
+    <a href="https://Jerrysmd.github.io/categories/life/" class="nav_item" title="Life">Life </a>
+  </div>
+  <div class="nav_parent">
+    <a href="https://Jerrysmd.github.io/about/" class="nav_item" title="About">About </a>
+  </div>
+      
+<div class='follow'>
+    
+    
+  <a href="https://github.com/Jerrysmd#">
+    <svg class="icon">
+  <use xlink:href="#github"></use>
+</svg>
+  </a>
+    
+    
+  <a href="https://twitter.com/ZJ1IFlOSupZnr7W#">
+    <svg class="icon">
+  <use xlink:href="#twitter"></use>
+</svg>
+  </a>
+    
+    
+  <a href="https://www.linkedin.com/in/#">
+    <svg class="icon">
+  <use xlink:href="#linkedin"></use>
+</svg>
+  </a>
+    
+    
+  <a href="https://www.instagram.com/0x4c2/#">
+    <svg class="icon">
+  <use xlink:href="#instagram"></use>
+</svg>
+  </a>
+<div class="color_mode">
+  <input type="checkbox" class="color_choice" id="mode">
+</div>
+
+</div>
+
+    </div>
+  </nav>
+</header>
+
+    <main>
+  
+<div class="grid-inverse wrap content">
+  <article class="post_content">
+    <h1 class="post_title">Zookeeper核心知识点: Core points of ZooKeeper</h1>
+  <div class="post_meta">
+    <span><svg class="icon">
+  <use xlink:href="#calendar"></use>
+</svg></span>
+    <span class="post_date">
+      May 19, 2021</span>
+    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/zookeeper' title="zookeeper" class="post_tag button button_translucent">zookeeper
+        </a><a href='https://Jerrysmd.github.io/tags/distributed' title="distributed" class="post_tag button button_translucent">distributed
+        </a>
+    </span>
+    <span class="page_only">&nbsp;·
+  <div class="post_share">
+    Share on:
+    <a href="https://twitter.com/intent/tweet?text=Zookeeper%e6%a0%b8%e5%bf%83%e7%9f%a5%e8%af%86%e7%82%b9%3a%20Core%20points%20of%20ZooKeeper&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20210519zookeeper%2fzookeeper%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <use xlink:href="#twitter"></use>
+</svg>
+    </a>
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20210519zookeeper%2fzookeeper%2f&t=Zookeeper%e6%a0%b8%e5%bf%83%e7%9f%a5%e8%af%86%e7%82%b9%3a%20Core%20points%20of%20ZooKeeper" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <use xlink:href="#facebook"></use>
+</svg>
+    </a>
+    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="Share on LinkedIn" rel="nofollow">
+      <svg class="icon">
+  <use xlink:href="#linkedin"></use>
+</svg>
+    </a>
+    <a href="https://Jerrysmd.github.io/post/20210519zookeeper/zookeeper/" title="Copy Link" class="link link_yank">
+      <svg class="icon">
+  <use xlink:href="#copy"></use>
+</svg>
+    </a>
+  </div>
+  </span>
+  </div>
+
+    
+    
+    <h2>Overview</h2>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-introduce">1. Introduce</a>
+      <ul>
+        <li><a href="#11-file-system">1.1 File System</a></li>
+        <li><a href="#12-watcher">1.2 Watcher</a></li>
+        <li><a href="#13-feature">1.3 Feature</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-function">2. Function</a>
+      <ul>
+        <li><a href="#1-数据发布订阅">1. 数据发布/订阅</a></li>
+        <li><a href="#2-分布式锁">2. 分布式锁</a></li>
+        <li><a href="#3-负载均衡">3. 负载均衡</a></li>
+        <li><a href="#4-命名服务">4. 命名服务</a></li>
+        <li><a href="#5-分布式协调通知">5. 分布式协调/通知</a></li>
+        <li><a href="#6-集群管理">6. 集群管理</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-choose-leader">3. Choose Leader</a>
+      <ul>
+        <li><a href="#31-预备知识">3.1 预备知识</a></li>
+        <li><a href="#313--zxid">3.1.3  ZXID</a></li>
+        <li><a href="#32-leader选举">3.2 Leader选举</a></li>
+        <li><a href="#33-脑裂">3.3 脑裂</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#41--zab-协议介绍">4.1  ZAB 协议介绍</a></li>
+        <li><a href="#42-原子广播模式">4.2 原子广播模式</a></li>
+        <li><a href="#43-崩溃恢复">4.3 崩溃恢复</a></li>
+        <li><a href="#44-zab-特性">4.4 ZAB 特性</a></li>
+        <li><a href="#45-zab-和-paxos-对比">4.5 ZAB 和 Paxos 对比</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#51-常见指令">5.1 常见指令</a></li>
+        <li><a href="#52-zookeeper客户端">5.2 Zookeeper客户端</a></li>
+        <li><a href="#53-acl-权限控制机制">5.3 ACL 权限控制机制</a></li>
+        <li><a href="#54-zookeeper使用注意事项">5.4 Zookeeper使用注意事项</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    <p>ZooKeeper is an open source distributed coordination framework. It is positioned to provide consistent services for distributed applications and is the administrator of the entire big data system. ZooKeeper will encapsulate key services that are complex and error-prone, and provide users with efficient, stable, and easy-to-use services.</p>
+<h2 id="1-introduce">1. Introduce</h2>
+<p><strong>ZooKeeper</strong> 是一个开源的<strong>分布式协调框架</strong>，它的定位是为分布式应用提供一致性服务，是整个大数据体系的<strong>管理员</strong>。<strong>ZooKeeper</strong> 会封装好复杂易出错的关键服务，将高效、稳定、易用的服务提供给用户使用。</p>
+<p>如果上面的官方言语你不太理解，你可以认为 <strong>ZooKeeper</strong> = <strong>文件系统</strong> + <strong>监听通知机制</strong>。</p>
+<h3 id="11-file-system">1.1 File System</h3>
+<p><img src="%22/post/20210519zookeeper/1.png%22" alt="fileSystem"></p>
+<p><strong>Zookeeper</strong>维护一个类似文件系统的树状数据结构，这种特性使得 <strong>Zookeeper</strong> 不能用于存放大量的数据，每个节点的存放数据上限为<strong>1M</strong>。每个子目录项如 NameService 都被称作为 <strong>znode</strong>(目录节点)。和文件系统一样，我们能够自由的增加、删除<strong>znode</strong>，在一个<strong>znode</strong>下增加、删除子<strong>znode</strong>，唯一的不同在于<strong>znode</strong>是可以存储数据的。默认有四种类型的<strong>znode</strong>：</p>
+<ol>
+<li><strong>持久化目录节点 PERSISTENT</strong>：客户端与zookeeper断开连接后，该节点依旧存在。</li>
+<li><strong>持久化顺序编号目录节点 PERSISTENT_SEQUENTIAL</strong>：客户端与zookeeper断开连接后，该节点依旧存在，只是Zookeeper给该节点名称进行顺序编号。</li>
+<li><strong>临时目录节点 EPHEMERAL</strong>：客户端与zookeeper断开连接后，该节点被删除。</li>
+<li><strong>临时顺序编号目录节点 EPHEMERAL_SEQUENTIAL</strong>：客户端与zookeeper断开连接后，该节点被删除，只是Zookeeper给该节点名称进行顺序编号。</li>
+</ol>
+<h3 id="12-watcher">1.2 Watcher</h3>
+<p><strong>Watcher</strong> 监听机制是 <strong>Zookeeper</strong> 中非常重要的特性，我们基于  <strong>Zookeeper</strong> 上创建的节点，可以对这些节点绑定<strong>监听</strong>事件，比如可以监听节点数据变更、节点删除、子节点状态变更等事件，通过这个事件机制，可以基于  <strong>Zookeeper</strong> 实现分布式锁、集群管理等功能。</p>
+<p><strong>Watcher</strong> 特性：</p>
+<blockquote>
+<p>当数据发生变化的时候，  <strong>Zookeeper</strong> 会产生一个 <strong>Watcher</strong> 事件，并且会发送到客户端。但是客户端只会收到一次通知。如果后续这个节点再次发生变化，那么之前设置 <strong>Watcher</strong> 的客户端不会再次收到消息。（<strong>Watcher</strong> 是一次性的操作）。可以通过循环监听去达到永久监听效果。</p>
+</blockquote>
+<p>ZooKeeper 的 Watcher 机制，总的来说可以分为三个过程：</p>
+<blockquote>
+<ol>
+<li>客户端注册 Watcher，注册 watcher 有 3 种方式，getData、exists、getChildren。</li>
+<li>服务器处理 Watcher 。</li>
+<li>客户端回调 Watcher 客户端。</li>
+</ol>
+</blockquote>
+<p><img src="/post/20210519zookeeper/2.webp" alt="watcher"></p>
+<p><strong>监听流程</strong>：</p>
+<blockquote>
+<ol>
+<li>首先要有一个main()线程</li>
+<li>在main线程中创建Zookeeper客户端，这时就会创建两个线程，一个负责网络连接通信（connet），一个负责监听（listener）。</li>
+<li>通过connect线程将注册的监听事件发送给Zookeeper。</li>
+<li>在Zookeeper的注册监听器列表中将注册的监听事件添加到列表中。</li>
+<li>Zookeeper监听到有数据或路径变化，就会将这个消息发送给listener线程。</li>
+<li>listener线程内部调用了process()方法。</li>
+</ol>
+</blockquote>
+<h3 id="13-feature">1.3 Feature</h3>
+<p><img src="/post/20210519zookeeper/3.png" alt="feature"></p>
+<ol>
+<li><strong>集群</strong>：Zookeeper是一个领导者（Leader），多个跟随者（Follower）组成的集群。</li>
+<li><strong>高可用性</strong>：集群中只要有半数以上节点存活，Zookeeper集群就能正常服务。</li>
+<li><strong>全局数据一致</strong>：每个Server保存一份相同的数据副本，Client无论连接到哪个Server，数据都是一致的。</li>
+<li><strong>更新请求顺序进行</strong>：来自同一个Client的更新请求按其发送顺序依次执行。</li>
+<li><strong>数据更新原子性</strong>：一次数据更新要么成功，要么失败。</li>
+<li><strong>实时性</strong>：在一定时间范围内，Client能读到最新数据。</li>
+<li>从<code>设计模式</code>角度来看，zk是一个基于<strong>观察者设计模式</strong>的框架，它负责管理跟存储大家都关心的数据，然后接受观察者的注册，数据反生变化zk会通知在zk上注册的观察者做出反应。</li>
+<li>Zookeeper是一个分布式协调系统，满足CP性，跟<a href="https://mp.weixin.qq.com/s?__biz=MzI4NjI1OTI4Nw==&amp;mid=2247487072&amp;idx=1&amp;sn=3010908c4b668edef8fbd1f320343354&amp;scene=21#wechat_redirect">SpringCloud</a>中的Eureka满足AP不一样。</li>
+</ol>
+<blockquote>
+<ol>
+<li>分布式协调系统：Leader会同步数据到follower，用户请求可通过follower得到数据，这样不会出现单点故障，并且只要同步时间无限短，那这就是个好的 分布式协调系统。</li>
+<li>CAP原则又称CAP定理，指的是在一个分布式系统中，一致性（Consistency）、可用性（Availability）、分区容错性（Partition tolerance）。CAP 原则指的是，这三个要素最多只能同时实现两点，不可能三者兼顾。</li>
+</ol>
+</blockquote>
+<h2 id="2-function">2. Function</h2>
+<p>通过对 Zookeeper 中丰富的数据节点进行交叉使用，配合 <strong>Watcher</strong> 事件通知机制，可以非常方便的构建一系列分布式应用中涉及的核心功能，比如 <strong>数据发布/订阅、负载均衡、命名服务、分布式协调/通知、集群管理、Master 选举、分布式锁和分布式队列</strong> 等功能。</p>
+<h3 id="1-数据发布订阅">1. 数据发布/订阅</h3>
+<p>当某些数据由几个机器共享，且这些信息经常变化数据量还小的时候，这些数据就适合存储到ZK中。</p>
+<ul>
+<li><strong>数据存储</strong>：将数据存储到 Zookeeper 上的一个数据节点。</li>
+<li><strong>数据获取</strong>：应用在启动初始化节点从 Zookeeper 数据节点读取数据，并在该节点上注册一个数据变更 <strong>Watcher</strong></li>
+<li><strong>数据变更</strong>：当变更数据时会更新 Zookeeper 对应节点数据，Zookeeper会将数据变更<strong>通知</strong>发到各客户端，客户端接到通知后重新读取变更后的数据即可。</li>
+</ul>
+<h3 id="2-分布式锁">2. 分布式锁</h3>
+<p>关于分布式锁其实在 <a href="https://mp.weixin.qq.com/s?__biz=MzI4NjI1OTI4Nw==&amp;mid=2247488832&amp;idx=1&amp;sn=5999893d7fe773f54f7d097ac1c2074d&amp;scene=21#wechat_redirect"><strong>Redis</strong></a> 中已经讲过了，并且Redis提供的分布式锁是比ZK性能强的。基于ZooKeeper的分布式锁一般有如下两种。</p>
+<ol>
+<li>保持独占</li>
+</ol>
+<blockquote>
+<p><strong>核心思想</strong>：在zk中有一个唯一的临时节点，只有拿到节点的才可以操作数据，没拿到的线程就需要等待。<strong>缺点</strong>：可能引发<code>羊群效应</code>，第一个用完后瞬间有999个同时并发的线程向zk请求获得锁。</p>
+</blockquote>
+<ol>
+<li>控制时序</li>
+</ol>
+<blockquote>
+<p>主要是避免了羊群效应，临时节点已经预先存在，所有想要获得锁的线程在它下面创建临时顺序编号目录节点，编号最小的获得锁，用完删除，后面的依次排队获取。</p>
+</blockquote>
+<p><img src="/post/20210519zookeeper/4.png" alt="distributedLock"></p>
+<h3 id="3-负载均衡">3. 负载均衡</h3>
+<p>多个相同的jar包在不同的服务器上开启相同的服务，可以通过nginx在服务端进行负载均衡的配置。也可以通过ZooKeeper在客户端进行负载均衡配置。</p>
+<ol>
+<li>多个服务注册</li>
+<li>客户端获取中间件地址集合</li>
+<li>从集合中随机选一个服务执行任务</li>
+</ol>
+<p><strong>ZooKeeper负载均衡和Nginx负载均衡区别</strong>：</p>
+<blockquote>
+<ol>
+<li><strong>ZooKeeper</strong>不存在单点问题，zab机制保证单点故障可重新选举一个leader只负责服务的注册与发现，不负责转发，减少一次数据交换（消费方与服务方直接通信），需要自己实现相应的负载均衡算法。</li>
+<li><strong>Nginx</strong>存在单点问题，单点负载高数据量大,需要通过 <strong>KeepAlived</strong> + <strong>LVS</strong> 备机实现高可用。每次负载，都充当一次中间人转发角色，增加网络负载量（消费方与服务方间接通信），自带负载均衡算法。</li>
+</ol>
+</blockquote>
+<h3 id="4-命名服务">4. 命名服务</h3>
+<p>命名服务是指通过指定的名字来获取资源或者服务的地址，利用 zk 创建一个全局唯一的路径，这个路径就可以作为一个名字，指向集群中的集群，提供的服务的地址，或者一个远程的对象等等。</p>
+<h3 id="5-分布式协调通知">5. 分布式协调/通知</h3>
+<ol>
+<li>对于系统调度来说，用户更改zk某个节点的value， ZooKeeper会将这些变化发送给注册了这个节点的 watcher 的所有客户端，进行通知。</li>
+<li>对于执行情况汇报来说，每个工作进程都在目录下创建一个携带工作进度的临时节点，那么汇总的进程可以监控目录子节点的变化获得工作进度的实时的全局情况。</li>
+</ol>
+<h3 id="6-集群管理">6. 集群管理</h3>
+<p>大数据体系下的大部分集群服务好像都通过<strong>ZooKeeper</strong>管理的，其实管理的时候主要关注的就是机器的动态上下线跟<strong>Leader</strong>选举。</p>
+<ol>
+<li>动态上下线：</li>
+</ol>
+<blockquote>
+<p>比如在<strong>zookeeper</strong>服务器端有一个<strong>znode</strong>叫 <strong>/Configuration</strong>，那么集群中每一个机器启动的时候都去这个节点下创建一个<strong>EPHEMERAL</strong>类型的节点，比如<strong>server1</strong> 创建 <strong>/Configuration/Server1</strong>，<strong>server2</strong>创建**/Configuration /Server1**，然后**Server1**和**Server2**都**watch** **/Configuration** 这个父节点，那么也就是这个父节点下数据或者子节点变化都会通知到该节点进行**watch**的客户端。</p>
+</blockquote>
+<ol>
+<li>Leader选举：</li>
+</ol>
+<blockquote>
+<ol>
+<li>利用ZooKeeper的<strong>强一致性</strong>，能够保证在分布式高并发情况下节点创建的全局唯一性，即：同时有多个客户端请求创建 /Master 节点，最终一定只有一个客户端请求能够创建成功。利用这个特性，就能很轻易的在分布式环境中进行集群选举了。</li>
+<li>就是动态Master选举。这就要用到 <strong>EPHEMERAL_SEQUENTIAL</strong>类型节点的特性了，这样每个节点会<code>自动被编号</code>。允许所有请求都能够创建成功，但是得有个创建顺序，每次选取序列号<strong>最小</strong>的那个机器作为<strong>Master</strong> 。</li>
+</ol>
+</blockquote>
+<h2 id="3-choose-leader">3. Choose Leader</h2>
+<p><strong>ZooKeeper</strong>集群节点个数一定是<strong>奇数</strong>个，一般3个或者5个就OK。为避免集群群龙无首，一定要选个大哥出来当Leader。这是个高频考点。</p>
+<h3 id="31-预备知识">3.1 预备知识</h3>
+<h5 id="311-节点四种状态">3.1.1. 节点四种状态。</h5>
+<ol>
+<li><strong>LOOKING</strong>：寻 找 Leader 状态。当服务器处于该状态时会认为当前集群中没有 Leader，因此需要进入 Leader 选举状态。</li>
+<li><strong>FOLLOWING</strong>：跟随者状态。处理客户端的非事务请求，转发事务请求给 Leader 服务器，参与事务请求 Proposal(提议) 的投票，参与 Leader 选举投票。</li>
+<li><strong>LEADING</strong>：领导者状态。事务请求的唯一调度和处理者，保证集群事务处理的顺序性，集群内部个服务器的调度者(管理follower,数据同步)。</li>
+<li><strong>OBSERVING</strong>：观察者状态。3.0 版本以后引入的一个服务器角色，在不影响集群事务处理能力的基础上提升集群的非事务处理能力，处理客户端的非事务请求，转发事务请求给 Leader 服务器，不参与任何形式的投票。</li>
+</ol>
+<h5 id="312-服务器id">3.1.2 服务器ID</h5>
+<p>既<strong>Server id</strong>，一般在搭建ZK集群时会在<strong>myid</strong>文件中给每个节点搞个唯一编号，<code>编号越大在Leader选择算法中的权重越大</code>，比如初始化启动时就是根据服务器ID进行比较。</p>
+<h3 id="313--zxid">3.1.3  ZXID</h3>
+<p><strong>ZooKeeper</strong> 采用全局递增的事务 Id 来标识，所有 proposal(提议)在被提出的时候加上了<strong>ZooKeeper Transaction Id</strong> ，zxid是64位的Long类型，<strong>这是保证事务的顺序一致性的关键</strong>。zxid中高32位表示纪元<strong>epoch</strong>，低32位表示事务标识<strong>xid</strong>。你可以认为zxid越大说明存储数据越新。</p>
+<ol>
+<li>每个leader都会具有不同的<strong>epoch</strong>值，表示一个纪元/朝代，用来标识 <strong>leader</strong> 周期。每个新的选举开启时都会生成一个新的<strong>epoch</strong>，新的leader产生的话<strong>epoch</strong>会自增，会将该值更新到所有的zkServer的<strong>zxid</strong>和<strong>epoch</strong>，</li>
+<li><strong>xid</strong>是一个依次递增的事务编号。数值越大说明数据越新，所有 proposal（提议）在被提出的时候加上了<strong>zxid</strong>，然后会依据数据库的<a href="https://mp.weixin.qq.com/s?__biz=MzI4NjI1OTI4Nw==&amp;mid=2247485515&amp;idx=1&amp;sn=60763ddda77928943bfd3d57e0c9256e&amp;scene=21#wechat_redirect">两阶段过程</a>，首先会向其他的 server 发出事务执行请求，如果超过半数的机器都能执行并且能够成功，那么就会开始执行。</li>
+</ol>
+<h3 id="32-leader选举">3.2 Leader选举</h3>
+<p><strong>Leader</strong>的选举一般分为<strong>启动时选举</strong>跟Leader挂掉后的<strong>运行时选举</strong>。</p>
+<h5 id="321-启动时leader选举">3.2.1 启动时Leader选举</h5>
+<p>我们以5台机器为例，只有超过半数以上，即最少启动3台服务器，集群才能正常工作。</p>
+<ol>
+<li>服务器1启动，发起一次选举。</li>
+</ol>
+<blockquote>
+<p>服务器1投自己一票。此时服务器1票数一票，不够半数以上（3票），选举无法完成，服务器1状态保持为<strong>LOOKING</strong>。</p>
+</blockquote>
+<ol>
+<li>服务器2启动，再发起一次选举。</li>
+</ol>
+<blockquote>
+<p>服务器1和2分别投自己一票，此时服务器1发现服务器2的id比自己大，更改选票投给服务器2。此时服务器1票数0票，服务器2票数2票，不够半数以上（3票），选举无法完成。服务器1，2状态保持<strong>LOOKING</strong>。</p>
+</blockquote>
+<ol>
+<li>服务器3启动，发起一次选举。</li>
+</ol>
+<blockquote>
+<p>与上面过程一样，服务器1和2先投自己一票，然后因为服务器3id最大，两者更改选票投给为服务器3。此次投票结果：服务器1为0票，服务器2为0票，服务器3为3票。此时服务器3的票数已经超过半数（3票），服务器3当选<strong>Leader</strong>。服务器1，2更改状态为<strong>FOLLOWING</strong>，服务器3更改状态为<strong>LEADING</strong>；</p>
+</blockquote>
+<ol>
+<li>服务器4启动，发起一次选举。</li>
+</ol>
+<blockquote>
+<p>此时服务器1、2、3已经不是<strong>LOOKING</strong>状态，不会更改选票信息，交换选票信息结果。服务器3为3票，服务器4为1票。此时服务器4服从多数，更改选票信息为服务器3，服务器4并更改状态为<strong>FOLLOWING</strong>。</p>
+</blockquote>
+<ol>
+<li>服务器5启动，发起一次选举</li>
+</ol>
+<blockquote>
+<p>同4一样投票给3，此时服务器3一共5票，服务器5为0票。服务器5并更改状态为<strong>FOLLOWING</strong>；</p>
+</blockquote>
+<ol>
+<li>最终</li>
+</ol>
+<blockquote>
+<p><strong>Leader</strong>是服务器3，状态为<strong>LEADING</strong>。其余服务器是<strong>Follower</strong>，状态为<strong>FOLLOWING</strong>。</p>
+</blockquote>
+<h5 id="322-运行时leader选举">3.2.2 运行时Leader选举</h5>
+<p>运行时候如果Master节点崩溃了会走恢复模式，新Leader选出前会暂停对外服务，大致可以分为四个阶段  <code>选举</code>、<code>发现</code>、<code>同步</code>、<code>广播</code>。</p>
+<p><img src="/post/20210519zookeeper/5.png" alt="chooseLeader"></p>
+<ol>
+<li>每个Server会发出一个投票，第一次都是投自己，其中投票信息 = (myid，ZXID)</li>
+<li>收集来自各个服务器的投票</li>
+<li>处理投票并重新投票，处理逻辑：<strong>优先比较ZXID，然后比较myid</strong>。</li>
+<li>统计投票，只要超过半数的机器接收到同样的投票信息，就可以确定leader，注意epoch的增加跟同步。</li>
+<li>改变服务器状态Looking变为Following或Leading。</li>
+<li>当 Follower 链接上 Leader 之后，Leader 服务器会根据自己服务器上最后被提交的 ZXID 和 Follower 上的 ZXID 进行比对，比对结果要么回滚，要么和 Leader 同步，保证集群中各个节点的事务一致。</li>
+<li>集群恢复到广播模式，开始接受客户端的写请求。</li>
+</ol>
+<h3 id="33-脑裂">3.3 脑裂</h3>
+<p>脑裂问题是集群部署必须考虑的一点，比如在Hadoop跟Spark集群中。而ZAB为解决脑裂问题，要求集群内的节点数量为2N+1。当网络分裂后，始终有一个集群的节点数量<strong>过半数</strong>，而另一个节点数量小于N+1, 因为选举Leader需要过半数的节点同意，所以我们可以得出如下结论：</p>
+<blockquote>
+<p>有了过半机制，对于一个Zookeeper集群，要么没有Leader，要没只有1个Leader，这样就避免了脑裂问题</p>
+</blockquote>
+<h1 id="4-zab-of-consistence">4 ZAB of Consistence</h1>
+<p>建议先看下  <a href="https://mp.weixin.qq.com/s?__biz=MzI4NjI1OTI4Nw==&amp;mid=2247485515&amp;idx=1&amp;sn=60763ddda77928943bfd3d57e0c9256e&amp;scene=21#wechat_redirect">浅谈大数据中的2PC、3PC、Paxos、Raft、ZAB</a> ，不然可能看的吃力。</p>
+<h3 id="41--zab-协议介绍">4.1  ZAB 协议介绍</h3>
+<p>ZAB (Zookeeper Atomic Broadcast <strong>原子广播协议</strong>) 协议是为分布式协调服务ZooKeeper专门设计的一种支持<strong>崩溃恢复</strong>的一致性协议。基于该协议，ZooKeeper 实现了一种主从模式的系统架构来保持集群中各个副本之间的数据一致性。</p>
+<p>分布式系统中leader负责外部客户端的<strong>写</strong>请求。follower服务器负责<strong>读跟同步</strong>。这时需要解决俩问题。</p>
+<ol>
+<li>Leader 服务器是如何把数据更新到所有的Follower的。</li>
+<li>Leader 服务器突然间失效了，集群咋办？</li>
+</ol>
+<p>因此ZAB协议为了解决上面两个问题而设计了两种工作模式，整个 Zookeeper 就是在这两个模式之间切换：</p>
+<ol>
+<li>原子广播模式：把数据更新到所有的follower。</li>
+<li>崩溃恢复模式：Leader发生崩溃时，如何恢复。</li>
+</ol>
+<h3 id="42-原子广播模式">4.2 原子广播模式</h3>
+<p>你可以认为消息广播机制是简化版的 <a href="https://mp.weixin.qq.com/s?__biz=MzI4NjI1OTI4Nw==&amp;mid=2247485515&amp;idx=1&amp;sn=60763ddda77928943bfd3d57e0c9256e&amp;scene=21#wechat_redirect">2PC协议</a>，就是通过如下的机制<strong>保证事务的顺序一致性</strong>的。</p>
+<ol>
+<li><strong>leader</strong>从客户端收到一个写请求后生成一个新的事务并为这个事务生成一个唯一的<code>ZXID</code>，</li>
+<li><strong>leader</strong>将将带有 <strong>zxid</strong> 的消息作为一个提案(<strong>proposal</strong>)分发给所有 <strong>FIFO</strong>队列。</li>
+<li><strong>FIFO</strong>队列取出队头<strong>proposal</strong>给<strong>follower</strong>节点。</li>
+<li>当 <strong>follower</strong> 接收到 <strong>proposal</strong>，先将 <strong>proposal</strong> 写到硬盘，写硬盘成功后再向 <strong>leader</strong> 回一个 <strong>ACK</strong>。</li>
+<li><strong>FIFO</strong>队列把ACK返回给<strong>Leader</strong>。</li>
+<li>当<strong>leader</strong>收到超过一半以上的<strong>follower</strong>的<strong>ack</strong>消息，<strong>leader</strong>会进行<strong>commit</strong>请求，然后再给<strong>FIFO</strong>发送<strong>commit</strong>请求。</li>
+<li>当<strong>follower</strong>收到<strong>commit</strong>请求时，会判断该事务的<strong>ZXID</strong>是不是比历史队列中的任何事务的<strong>ZXID</strong>都小，如果是则提交，如果不是则等待比它更小的事务的<strong>commit</strong>(保证顺序性)</li>
+</ol>
+<h3 id="43-崩溃恢复">4.3 崩溃恢复</h3>
+<p>消息广播过程中，Leader 崩溃了还能保证数据一致吗？当 <strong>Leader</strong> 崩溃会进入崩溃恢复模式。其实主要是对如下两种情况的处理。</p>
+<ol>
+<li><strong>Leader</strong> 在复制数据给所有 <strong>Follwer</strong> 之后崩溃，咋搞？</li>
+<li><strong>Leader</strong> 在收到 Ack 并提交了自己，同时发送了部分 <strong>commit</strong> 出去之后崩溃咋办？</li>
+</ol>
+<p>针对此问题，ZAB 定义了 2 个原则：</p>
+<ol>
+<li>ZAB 协议确保<code>执行</code>那些已经在 Leader 提交的事务最终会被所有服务器提交。</li>
+<li>ZAB 协议确保<code>丢弃</code>那些只在 Leader 提出/复制，但没有提交的事务。</li>
+</ol>
+<p>至于如何实现<strong>确保提交已经被 Leader 提交的事务，同时丢弃已经被跳过的事务</strong>呢？关键点就是依赖上面说到过的 <strong>ZXID</strong>了。</p>
+<h3 id="44-zab-特性">4.4 ZAB 特性</h3>
+<ol>
+<li>一致性保证</li>
+</ol>
+<blockquote>
+<p>可靠提交(Reliable delivery) ：如果一个事务 A 被一个server提交(committed)了，那么它最终一定会被所有的server提交</p>
+</blockquote>
+<ol>
+<li>全局有序(Total order)</li>
+</ol>
+<blockquote>
+<p>假设有A、B两个事务，有一台server先执行A再执行B，那么可以保证所有server上A始终都被在B之前执行</p>
+</blockquote>
+<ol>
+<li>因果有序(Causal order)</li>
+</ol>
+<blockquote>
+<p>如果发送者在事务A提交之后再发送B,那么B必将在A之后执行</p>
+</blockquote>
+<ol>
+<li>高可用性</li>
+</ol>
+<blockquote>
+<p>只要大多数（法定数量）节点启动，系统就行正常运行</p>
+</blockquote>
+<ol>
+<li>可恢复性</li>
+</ol>
+<blockquote>
+<p>当节点下线后重启，它必须保证能恢复到当前正在执行的事务</p>
+</blockquote>
+<h3 id="45-zab-和-paxos-对比">4.5 ZAB 和 Paxos 对比</h3>
+<p>相同点：</p>
+<blockquote>
+<ol>
+<li>两者都存在一个类似于 Leader 进程的角色，由其负责协调多个 Follower 进程的运行.</li>
+<li>Leader 进程都会等待超过半数的 Follower 做出正确的反馈后，才会将一个提案进行提交.</li>
+<li>ZAB 协议中，每个 Proposal 中都包含一个 epoch 值来代表当前的 Leader周期，Paxos 中名字为 Ballot</li>
+</ol>
+</blockquote>
+<p>不同点：</p>
+<blockquote>
+<p>ZAB 用来构建高可用的<strong>分布式数据主备系统</strong>（Zookeeper），Paxos 是用来构建<strong>分布式一致性状态机系统</strong>。</p>
+</blockquote>
+<h1 id="5-zookeeper-零散知识">5 ZooKeeper 零散知识</h1>
+<h3 id="51-常见指令">5.1 常见指令</h3>
+<p>Zookeeper 有三种部署模式：</p>
+<blockquote>
+<ol>
+<li>单机部署：一台机器上运行。</li>
+<li>集群部署：多台机器运行。</li>
+<li>伪集群部署：一台机器启动多个 Zookeeper 实例运行。</li>
+</ol>
+</blockquote>
+<p>部署完毕后常见指令如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">命令基本语法</th>
+<th style="text-align:left">功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">help</td>
+<td style="text-align:left">显示所有操作命令</td>
+</tr>
+<tr>
+<td style="text-align:left">ls path [watch]</td>
+<td style="text-align:left">显示所有操作命令</td>
+</tr>
+<tr>
+<td style="text-align:left">ls path [watch]</td>
+<td style="text-align:left">查看当前节点数据并能看到更新次数等数据</td>
+</tr>
+<tr>
+<td style="text-align:left">create</td>
+<td style="text-align:left">普通创建， -s  含有序列， -e  临时（重启或者超时消失）</td>
+</tr>
+<tr>
+<td style="text-align:left">get path [watch]</td>
+<td style="text-align:left">获得节点的值</td>
+</tr>
+<tr>
+<td style="text-align:left">set</td>
+<td style="text-align:left">设置节点的具体值</td>
+</tr>
+<tr>
+<td style="text-align:left">stat</td>
+<td style="text-align:left">查看节点状态</td>
+</tr>
+<tr>
+<td style="text-align:left">delete</td>
+<td style="text-align:left">删除节点</td>
+</tr>
+<tr>
+<td style="text-align:left">rmr</td>
+<td style="text-align:left">递归删除节点</td>
+</tr>
+</tbody>
+</table>
+<h3 id="52-zookeeper客户端">5.2 Zookeeper客户端</h3>
+<h5 id="521-zookeeper原生客户端">5.2.1. Zookeeper原生客户端</h5>
+<p>Zookeeper客户端是异步的哦！需要引入CountDownLatch 来确保连接好了再做下面操作。Zookeeper原生api是不支持迭代式的创建跟删除路径的，具有如下弊端。</p>
+<blockquote>
+<ol>
+<li>会话的连接是异步的；必须用到回调函数 。</li>
+<li>Watch需要重复注册：看一次watch注册一次 。</li>
+<li>Session重连机制：有时session断开还需要重连接。</li>
+<li>开发复杂性较高：开发相对来说比较琐碎。</li>
+</ol>
+</blockquote>
+<h5 id="522-zkclient">5.2.2. ZkClient</h5>
+<p>开源的zk客户端，在原生API基础上封装，是一个更易于使用的zookeeper客户端，做了如下优化。</p>
+<blockquote>
+<p>优化一 、在session loss和session expire时自动创建新的ZooKeeper实例进行重连。优化二、 将一次性watcher包装为持久watcher。</p>
+</blockquote>
+<h5 id="523-curator">5.2.3. Curator</h5>
+<p>开源的zk客户端，在原生API基础上封装，apache顶级项目。是Netflix公司开源的一套Zookeeper客户端框架。了解过Zookeeper原生API都会清楚其复杂度。Curator帮助我们在其基础上进行封装、实现一些开发细节，包括接连重连、反复注册Watcher和NodeExistsException等。目前已经作为Apache的顶级项目出现，是最流行的Zookeeper客户端之一。</p>
+<h5 id="524-zookeeper图形化客户端工具">5.2.4. Zookeeper图形化客户端工具</h5>
+<p>ZooInspector工具</p>
+<h3 id="53-acl-权限控制机制">5.3 ACL 权限控制机制</h3>
+<p>ACL全称为Access Control List 即访问控制列表，用于控制资源的访问权限。zookeeper利用ACL策略控制节点的访问权限，如节点数据读写、节点创建、节点删除、读取子节点列表、设置节点权限等。</p>
+<h3 id="54-zookeeper使用注意事项">5.4 Zookeeper使用注意事项</h3>
+<ol>
+<li>集群中机器的数量并不是越多越好，一个写操作需要半数以上的节点ack，所以集群节点数越多，整个集群可以抗挂点的节点数越多(越可靠)，但是吞吐量越差。集群的数量必须为奇数。</li>
+<li>zk是基于内存进行读写操作的，有时候会进行消息广播，因此不建议在节点存取容量比较大的数据。</li>
+<li>dataDir目录、dataLogDir两个目录会随着时间推移变得庞大，容易造成硬盘满了。建议自己编写或使用自带的脚本保留最新的n个文件。</li>
+<li>默认最大连接数 默认为60，配置maxClientCnxns参数，配置单个客户端机器创建的最大连接数。</li>
+</ol>
+
+  </article>
+<aside class="sidebar">
+  <section class="sidebar_inner">
+        <h2>刘佳锐</h2>
+      <div class="author_bio">
+        Technologist, perpetual student, continual incremental improvement.
+      </div>
+      <a href='https://Jerrysmd.github.io/about/' class="button mt-1" role="button" title='Read More'>Read More</a>
+    <h2 class="mt-4">Featured Posts</h2>
+    <ul>
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20210427kafka/" class="nav-link" title="KAFKA和消息队列: Kafka &amp; Message Queue">KAFKA和消息队列: Kafka &amp; Message Queue</a>
+      </li>
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20210331spark/" class="nav-link" title="Spark 简介: Spark Guide">Spark 简介: Spark Guide</a>
+      </li>
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20210308scalaintroduction/" class="nav-link" title="Scala 简介: Scala Introduction">Scala 简介: Scala Introduction</a>
+      </li>
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20201109cperformanceoptimization/" class="nav-link" title="C项目性能优化: C Project performance optimization">C项目性能优化: C Project performance optimization</a>
+      </li>
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20201020read_binary_file/" class="nav-link" title="文件读取的高级方法：Advanced method of reading files">文件读取的高级方法：Advanced method of reading files</a>
+      </li>
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20201012hyperscan/" class="nav-link" title="Hyperscan: high-performance multiple regex matching library">Hyperscan: high-performance multiple regex matching library</a>
+      </li>
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20201005hashcode/" class="nav-link" title="C语言实现HashMap: C language realize HashMap">C语言实现HashMap: C language realize HashMap</a>
+      </li>
+    </ul>
+    <h2 class="mt-4">Recent Posts</h2>
+    <ul class="flex-column">
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20210518lifetest/20210518lifetest/" class="nav-link" title="20210518lifeTest">20210518lifeTest</a>
+      </li>
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20210427kafka/" class="nav-link" title="KAFKA和消息队列: Kafka &amp; Message Queue">KAFKA和消息队列: Kafka &amp; Message Queue</a>
+      </li>
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20210331spark/" class="nav-link" title="Spark 简介: Spark Guide">Spark 简介: Spark Guide</a>
+      </li>
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20210326hdfsnfs/" class="nav-link" title="HDFS &amp; NFS">HDFS &amp; NFS</a>
+      </li>
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20210308scalaintroduction/" class="nav-link" title="Scala 简介: Scala Introduction">Scala 简介: Scala Introduction</a>
+      </li>
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20210222javastatic/" class="nav-link" title="Static Keyword in Java">Static Keyword in Java</a>
+      </li>
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20210129copyinjava/" class="nav-link" title="Shallow Copy and Deep Copy in JAVA">Shallow Copy and Deep Copy in JAVA</a>
+      </li>
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20210126gitcontribution/" class="nav-link" title="Git Contribution">Git Contribution</a>
+      </li>
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20201207u32/" class="nav-link" title="Various data types in C">Various data types in C</a>
+      </li>
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20201125structsize/" class="nav-link" title="The size of structure in C">The size of structure in C</a>
+      </li>
+    </ul>
+    <div>
+      <h2 class="mt-4 taxonomy" id="categories-section">Categories</h2>
+      <nav class="tags_nav">
+        <a href='https://Jerrysmd.github.io/categories/technology/' class="post_tag button button_translucent" title="technology">
+          TECHNOLOGY
+          <span class="button_tally">25</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/categories/life/' class="post_tag button button_translucent" title="life">
+          LIFE
+          <span class="button_tally">1</span>
+        </a>
+        
+        
+      </nav>
+    </div>
+    <div>
+      <h2 class="mt-4 taxonomy" id="tags-section">Tags</h2>
+      <nav class="tags_nav">
+        <a href='https://Jerrysmd.github.io/tags/c/' class="post_tag button button_translucent" title="c">
+          C
+          <span class="button_tally">15</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/distributed/' class="post_tag button button_translucent" title="distributed">
+          DISTRIBUTED
+          <span class="button_tally">5</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/c&#43;&#43;/' class="post_tag button button_translucent" title="c&#43;&#43;">
+          C&#43;&#43;
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/file/' class="post_tag button button_translucent" title="file">
+          FILE
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/java/' class="post_tag button button_translucent" title="java">
+          JAVA
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/linux/' class="post_tag button button_translucent" title="linux">
+          LINUX
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/sql/' class="post_tag button button_translucent" title="sql">
+          SQL
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/git/' class="post_tag button button_translucent" title="git">
+          GIT
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/hash/' class="post_tag button button_translucent" title="hash">
+          HASH
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/hdfs/' class="post_tag button button_translucent" title="hdfs">
+          HDFS
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/hyperscan/' class="post_tag button button_translucent" title="hyperscan">
+          HYPERSCAN
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/kafka/' class="post_tag button button_translucent" title="kafka">
+          KAFKA
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/music/' class="post_tag button button_translucent" title="music">
+          MUSIC
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/nfs/' class="post_tag button button_translucent" title="nfs">
+          NFS
+          <span class="button_tally">1</span>
+        </a>
+        
+        
+        <br>
+        <div class="post_tags_toggle button">All Tags</div>
+        <div class="post_tags">
+          <div class="tags_list">
+            
+            <a href='https://Jerrysmd.github.io/tags/c/' class=" post_tag button button_translucent" data-position=15 title="c">C<span class="button_tally">15</span>
+            </a>
+            
+            
+            <a href='https://Jerrysmd.github.io/tags/c&#43;&#43;/' class=" post_tag button button_translucent" data-position=3 title="c&#43;&#43;">C&#43;&#43;<span class="button_tally">3</span>
+            </a>
+            
+            
+            <a href='https://Jerrysmd.github.io/tags/distributed/' class=" post_tag button button_translucent" data-position=5 title="distributed">DISTRIBUTED<span class="button_tally">5</span>
+            </a>
+            
+            
+            <a href='https://Jerrysmd.github.io/tags/file/' class=" post_tag button button_translucent" data-position=2 title="file">FILE<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://Jerrysmd.github.io/tags/git/' class=" post_tag button button_translucent" data-position=1 title="git">GIT<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://Jerrysmd.github.io/tags/hash/' class=" post_tag button button_translucent" data-position=1 title="hash">HASH<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://Jerrysmd.github.io/tags/hdfs/' class=" post_tag button button_translucent" data-position=1 title="hdfs">HDFS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://Jerrysmd.github.io/tags/hyperscan/' class=" post_tag button button_translucent" data-position=1 title="hyperscan">HYPERSCAN<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://Jerrysmd.github.io/tags/java/' class=" post_tag button button_translucent" data-position=2 title="java">JAVA<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://Jerrysmd.github.io/tags/kafka/' class=" post_tag button button_translucent" data-position=1 title="kafka">KAFKA<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://Jerrysmd.github.io/tags/linux/' class=" post_tag button button_translucent" data-position=2 title="linux">LINUX<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://Jerrysmd.github.io/tags/music/' class=" post_tag button button_translucent" data-position=1 title="music">MUSIC<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://Jerrysmd.github.io/tags/nfs/' class=" post_tag button button_translucent" data-position=1 title="nfs">NFS<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://Jerrysmd.github.io/tags/python/' class=" post_tag button button_translucent" data-position=1 title="python">PYTHON<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://Jerrysmd.github.io/tags/scala/' class=" post_tag button button_translucent" data-position=1 title="scala">SCALA<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://Jerrysmd.github.io/tags/spark/' class=" post_tag button button_translucent" data-position=1 title="spark">SPARK<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://Jerrysmd.github.io/tags/sql/' class=" post_tag button button_translucent" data-position=2 title="sql">SQL<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://Jerrysmd.github.io/tags/travel/' class=" post_tag button button_translucent" data-position=1 title="travel">TRAVEL<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://Jerrysmd.github.io/tags/zookeeper/' class=" post_tag button button_translucent" data-position=1 title="zookeeper">ZOOKEEPER<span class="button_tally">1</span>
+            </a>
+            
+            <div class="tags_sort"><span title="sort alphabetically">[A~Z]</span><span title="sort by count">[0~9]</span>
+            </div>
+            <span class="tags_hide"><svg class="icon">
+            <use xlink:href="#closeme"></use>
+          </svg></span>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </section>
+</aside>
+
+  
+</div>
+    </main><svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="facebook">
+    <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h151V331h-60v-90h60v-61c0-49.629 40.371-90 90-90h91v90h-91v61h91l-15 90h-76v181h121c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zm0 0"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.001 18.001" id="twitter">
+    <path d="M15.891 4.013c.808-.496 1.343-1.173 1.605-2.034a8.68 8.68 0 0 1-2.351.861c-.703-.756-1.593-1.14-2.66-1.14-1.043 0-1.924.366-2.643 1.078a3.56 3.56 0 0 0-1.076 2.605c0 .309.039.585.117.819-3.076-.105-5.622-1.381-7.628-3.837-.34.601-.51 1.213-.51 1.846 0 1.301.549 2.332 1.645 3.089-.625-.053-1.176-.211-1.645-.47 0 .929.273 1.705.82 2.388a3.623 3.623 0 0 0 2.115 1.291c-.312.08-.641.118-.979.118-.312 0-.533-.026-.664-.083.23.757.664 1.371 1.291 1.841a3.652 3.652 0 0 0 2.152.743C4.148 14.173 2.625 14.69.902 14.69c-.422 0-.721-.006-.902-.038 1.697 1.102 3.586 1.649 5.676 1.649 2.139 0 4.029-.542 5.674-1.626 1.645-1.078 2.859-2.408 3.639-3.974a10.77 10.77 0 0 0 1.172-4.892v-.468a7.788 7.788 0 0 0 1.84-1.921 8.142 8.142 0 0 1-2.11.593z"
+      ></path>
+  </symbol>
+  <symbol aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="mail">
+    <path  d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="calendar">
+    <path d="M452 40h-24V0h-40v40H124V0H84v40H60C26.916 40 0 66.916 0 100v352c0 33.084 26.916 60 60 60h392c33.084 0 60-26.916 60-60V100c0-33.084-26.916-60-60-60zm20 412c0 11.028-8.972 20-20 20H60c-11.028 0-20-8.972-20-20V188h432v264zm0-304H40v-48c0-11.028 8.972-20 20-20h24v40h40V80h264v40h40V80h24c11.028 0 20 8.972 20 20v48z"></path>
+    <path d="M76 230h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zM76 310h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zM76 390h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zm80-80h40v40h-40z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="github">
+    <path d="M255.968 5.329C114.624 5.329 0 120.401 0 262.353c0 113.536 73.344 209.856 175.104 243.872 12.8 2.368 17.472-5.568 17.472-12.384 0-6.112-.224-22.272-.352-43.712-71.2 15.52-86.24-34.464-86.24-34.464-11.616-29.696-28.416-37.6-28.416-37.6-23.264-15.936 1.728-15.616 1.728-15.616 25.696 1.824 39.2 26.496 39.2 26.496 22.848 39.264 59.936 27.936 74.528 21.344 2.304-16.608 8.928-27.936 16.256-34.368-56.832-6.496-116.608-28.544-116.608-127.008 0-28.064 9.984-51.008 26.368-68.992-2.656-6.496-11.424-32.64 2.496-68 0 0 21.504-6.912 70.4 26.336 20.416-5.696 42.304-8.544 64.096-8.64 21.728.128 43.648 2.944 64.096 8.672 48.864-33.248 70.336-26.336 70.336-26.336 13.952 35.392 5.184 61.504 2.56 68 16.416 17.984 26.304 40.928 26.304 68.992 0 98.72-59.84 120.448-116.864 126.816 9.184 7.936 17.376 23.616 17.376 47.584 0 34.368-.32 62.08-.32 70.496 0 6.88 4.608 14.88 17.6 12.352C438.72 472.145 512 375.857 512 262.353 512 120.401 397.376 5.329 255.968 5.329z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" id="gitlab">
+    <path d="M12.3 74.7h54L43.3 3c-1-3.6-6.4-3.6-7.6 0L12.3 74.8z" />
+    <path d="M12.3 74.7L.5 111c-1 3.2 0 6.8 3 8.8l101.6 74-92.5-119z"/>
+    <path d="M105 193.7l-38.6-119h-54l92.7 119z"/>
+    <path d="M105 193.7l38.7-119H66.4l38.7 119z"/>
+    <path d="M105 193.7l38.7-119H198l-93 119z"/>
+    <path d="M198 74.7l11.6 36.2c1 3 0 6.6-3 8.6l-101.5 74 93-119z"/>
+    <path d="M198 74.7h-54.3L167 3c1.2-3.6 6.4-3.6 7.6 0L198 74.8z"/> 
+  </symbol>
+  <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="rss">
+    <circle cx="3.429" cy="20.571" r="3.429"></circle>
+    <path d="M11.429 24h4.57C15.999 15.179 8.821 8.001 0 8v4.572c6.302.001 11.429 5.126 11.429 11.428z"></path>
+    <path d="M24 24C24 10.766 13.234 0 0 0v4.571c10.714 0 19.43 8.714 19.43 19.429z"></path>
+  </symbol>
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="linkedin">
+    <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h362c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zM181 406h-60V196h60zm0-240h-60v-60h60zm210 240h-60V286c0-16.54-13.46-30-30-30s-30 13.46-30 30v120h-60V196h60v11.309C286.719 202.422 296.93 196 316 196c40.691.043 75 36.547 75 79.688zm0 0"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612" id="arrow">
+    <path d="M604.501 440.509L325.398 134.956c-5.331-5.357-12.423-7.627-19.386-7.27-6.989-.357-14.056 1.913-19.387 7.27L7.499 440.509c-9.999 10.024-9.999 26.298 0 36.323s26.223 10.024 36.222 0l262.293-287.164L568.28 476.832c9.999 10.024 26.222 10.024 36.221 0 9.999-10.023 9.999-26.298 0-36.323z"></path>
+  </symbol>
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="carly">
+    <path d="M504.971 239.029L448 182.059V84c0-46.317-37.682-84-84-84h-44c-13.255 0-24 10.745-24 24s10.745 24 24 24h44c19.851 0 36 16.149 36 36v108c0 6.365 2.529 12.47 7.029 16.971L454.059 256l-47.029 47.029A24.002 24.002 0 0 0 400 320v108c0 19.851-16.149 36-36 36h-44c-13.255 0-24 10.745-24 24s10.745 24 24 24h44c46.318 0 84-37.683 84-84v-98.059l56.971-56.971c9.372-9.372 9.372-24.568 0-33.941zM112 192V84c0-19.851 16.149-36 36-36h44c13.255 0 24-10.745 24-24S205.255 0 192 0h-44c-46.318 0-84 37.683-84 84v98.059l-56.971 56.97c-9.373 9.373-9.373 24.568 0 33.941L64 329.941V428c0 46.317 37.682 84 84 84h44c13.255 0 24-10.745 24-24s-10.745-24-24-24h-44c-19.851 0-36-16.149-36-36V320c0-6.365-2.529-12.47-7.029-16.971L57.941 256l47.029-47.029A24.002 24.002 0 0 0 112 192z"></path>
+  </symbol>
+  <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M23 2.75A2.75 2.75 0 0 0 20.25 0H8.75A2.75 2.75 0 0 0 6 2.75v13.5A2.75 2.75 0 0 0 8.75 19h11.5A2.75 2.75 0 0 0 23 16.25zM18.25 14.5h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5zm0-3h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5zm0-3h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5z"></path>
+    <path d="M8.75 20.5a4.255 4.255 0 0 1-4.25-4.25V2.75c0-.086.02-.166.025-.25H3.75A2.752 2.752 0 0 0 1 5.25v16A2.752 2.752 0 0 0 3.75 24h12a2.752 2.752 0 0 0 2.75-2.75v-.75z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.001 512.001" id="closeme">
+    <path d="M284.286 256.002L506.143 34.144c7.811-7.811 7.811-20.475 0-28.285-7.811-7.81-20.475-7.811-28.285 0L256 227.717 34.143 5.859c-7.811-7.811-20.475-7.811-28.285 0-7.81 7.811-7.811 20.475 0 28.285l221.857 221.857L5.858 477.859c-7.811 7.811-7.811 20.475 0 28.285a19.938 19.938 0 0 0 14.143 5.857 19.94 19.94 0 0 0 14.143-5.857L256 284.287l221.857 221.857c3.905 3.905 9.024 5.857 14.143 5.857s10.237-1.952 14.143-5.857c7.811-7.811 7.811-20.475 0-28.285L284.286 256.002z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="open-menu">
+    <path d="M492 236H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20zm0-160H20C8.954 76 0 84.954 0 96s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20zm0 320H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="instagram">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id=youtube>
+    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="stackoverflow">
+    <path d="M21 27v-8h3v11H0V19h3v8h18z"></path><path d="M17.1.2L15 1.8l7.9 10.6 2.1-1.6L17.1.2zm3.7 14.7L10.6 6.4l1.7-2 10.2 8.5-1.7 2zM7.2 12.3l12 5.6 1.1-2.4-12-5.6-1.1 2.4zm-1.8 6.8l13.56 1.96.17-2.38-13.26-2.55-.47 2.97zM19 25H5v-3h14v3z"></path>
+  </symbol>
+</svg>
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<footer class="footer">
+  <div class="footer_inner wrap pale">
+    <img src='https://Jerrysmd.github.io/icons-self/apple-touch-icon.png' class="icon icon_2 transparent" alt="JerrysBlog">
+    <p>Copyright&nbsp;<span class="year"></span>&nbsp;JERRYSBLOG. All Rights Reserved</p><a class="to_top" href="#documentTop">
+  <svg class="icon">
+  <use xlink:href="#arrow"></use>
+</svg>
+</a>
+
+  </div>
+</footer>
+
+    <script type="text/javascript" src="https://Jerrysmd.github.io/js/bundle.min.8eea1aecc57423dab19be8bc94e087c8b1d3ba29f1fe33bd6049448465a91b3a4304ee3bdd1a45447ec2583732e01fc0dbfbb34af1159c3b8b40bf24735bc16d.js" integrity="sha512-juoa7MV0I9qxm&#43;i8lOCHyLHTuinx/jO9YElEhGWpGzpDBO473RpFRH7CWDcy4B/A2/uzSvEVnDuLQL8kc1vBbQ==" crossorigin="anonymous"></script>
+    
+  </body>
+</html>
