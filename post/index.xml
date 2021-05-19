@@ -208,7 +208,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;有了过半机制，对于一个Zookeeper集群，要么没有Leader，要没只有1个Leader，这样就避免了脑裂问题&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h1 id=&#34;4-zab-of-consistence&#34;&gt;4 ZAB of Consistence&lt;/h1&gt;
+&lt;h2 id=&#34;4-zab-of-consistence&#34;&gt;4. ZAB of Consistence&lt;/h2&gt;
 &lt;p&gt;建议先看下  &lt;a href=&#34;https://mp.weixin.qq.com/s?__biz=MzI4NjI1OTI4Nw==&amp;amp;mid=2247485515&amp;amp;idx=1&amp;amp;sn=60763ddda77928943bfd3d57e0c9256e&amp;amp;scene=21#wechat_redirect&#34;&gt;浅谈大数据中的2PC、3PC、Paxos、Raft、ZAB&lt;/a&gt; ，不然可能看的吃力。&lt;/p&gt;
 &lt;h3 id=&#34;41--zab-协议介绍&#34;&gt;4.1  ZAB 协议介绍&lt;/h3&gt;
 &lt;p&gt;ZAB (Zookeeper Atomic Broadcast &lt;strong&gt;原子广播协议&lt;/strong&gt;) 协议是为分布式协调服务ZooKeeper专门设计的一种支持&lt;strong&gt;崩溃恢复&lt;/strong&gt;的一致性协议。基于该协议，ZooKeeper 实现了一种主从模式的系统架构来保持集群中各个副本之间的数据一致性。&lt;/p&gt;
@@ -289,7 +289,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;ZAB 用来构建高可用的&lt;strong&gt;分布式数据主备系统&lt;/strong&gt;（Zookeeper），Paxos 是用来构建&lt;strong&gt;分布式一致性状态机系统&lt;/strong&gt;。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h1 id=&#34;5-zookeeper-零散知识&#34;&gt;5 ZooKeeper 零散知识&lt;/h1&gt;
+&lt;h2 id=&#34;5-zookeeper-零散知识&#34;&gt;5. ZooKeeper 零散知识&lt;/h2&gt;
 &lt;h3 id=&#34;51-常见指令&#34;&gt;5.1 常见指令&lt;/h3&gt;
 &lt;p&gt;Zookeeper 有三种部署模式：&lt;/p&gt;
 &lt;blockquote&gt;

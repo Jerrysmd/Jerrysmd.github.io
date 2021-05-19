@@ -203,10 +203,7 @@ src='https://plausible.io/js/plausible.js'>
         <li><a href="#33-脑裂">3.3 脑裂</a></li>
       </ul>
     </li>
-  </ul>
-
-  <ul>
-    <li>
+    <li><a href="#4-zab-of-consistence">4. ZAB of Consistence</a>
       <ul>
         <li><a href="#41--zab-协议介绍">4.1  ZAB 协议介绍</a></li>
         <li><a href="#42-原子广播模式">4.2 原子广播模式</a></li>
@@ -215,10 +212,7 @@ src='https://plausible.io/js/plausible.js'>
         <li><a href="#45-zab-和-paxos-对比">4.5 ZAB 和 Paxos 对比</a></li>
       </ul>
     </li>
-  </ul>
-
-  <ul>
-    <li>
+    <li><a href="#5-zookeeper-零散知识">5. ZooKeeper 零散知识</a>
       <ul>
         <li><a href="#51-常见指令">5.1 常见指令</a></li>
         <li><a href="#52-zookeeper客户端">5.2 Zookeeper客户端</a></li>
@@ -422,7 +416,7 @@ src='https://plausible.io/js/plausible.js'>
 <blockquote>
 <p>有了过半机制，对于一个Zookeeper集群，要么没有Leader，要没只有1个Leader，这样就避免了脑裂问题</p>
 </blockquote>
-<h1 id="4-zab-of-consistence">4 ZAB of Consistence</h1>
+<h2 id="4-zab-of-consistence">4. ZAB of Consistence</h2>
 <p>建议先看下  <a href="https://mp.weixin.qq.com/s?__biz=MzI4NjI1OTI4Nw==&amp;mid=2247485515&amp;idx=1&amp;sn=60763ddda77928943bfd3d57e0c9256e&amp;scene=21#wechat_redirect">浅谈大数据中的2PC、3PC、Paxos、Raft、ZAB</a> ，不然可能看的吃力。</p>
 <h3 id="41--zab-协议介绍">4.1  ZAB 协议介绍</h3>
 <p>ZAB (Zookeeper Atomic Broadcast <strong>原子广播协议</strong>) 协议是为分布式协调服务ZooKeeper专门设计的一种支持<strong>崩溃恢复</strong>的一致性协议。基于该协议，ZooKeeper 实现了一种主从模式的系统架构来保持集群中各个副本之间的数据一致性。</p>
@@ -503,7 +497,7 @@ src='https://plausible.io/js/plausible.js'>
 <blockquote>
 <p>ZAB 用来构建高可用的<strong>分布式数据主备系统</strong>（Zookeeper），Paxos 是用来构建<strong>分布式一致性状态机系统</strong>。</p>
 </blockquote>
-<h1 id="5-zookeeper-零散知识">5 ZooKeeper 零散知识</h1>
+<h2 id="5-zookeeper-零散知识">5. ZooKeeper 零散知识</h2>
 <h3 id="51-常见指令">5.1 常见指令</h3>
 <p>Zookeeper 有三种部署模式：</p>
 <blockquote>
