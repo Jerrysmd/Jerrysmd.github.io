@@ -740,7 +740,7 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
     </item>
     
     <item>
-      <title>Spark 简介: Spark Guide</title>
+      <title>Spark 简介: Spark Guide (Part 1)</title>
       <link>https://Jerrysmd.github.io/post/20210331spark/</link>
       <pubDate>Wed, 31 Mar 2021 10:28:47 +0800</pubDate>
       
@@ -1067,7 +1067,6 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;li&gt;Checkpoint&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&#34;heading&#34;&gt;&lt;/h3&gt;
         
       </description>
     </item>
