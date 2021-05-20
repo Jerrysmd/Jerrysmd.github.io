@@ -227,7 +227,7 @@ src='https://plausible.io/js/plausible.js'>
 <p><strong>ZooKeeper</strong> 是一个开源的<strong>分布式协调框架</strong>，它的定位是为分布式应用提供一致性服务，是整个大数据体系的<strong>管理员</strong>。<strong>ZooKeeper</strong> 会封装好复杂易出错的关键服务，将高效、稳定、易用的服务提供给用户使用。</p>
 <p>如果上面的官方言语你不太理解，你可以认为 <strong>ZooKeeper</strong> = <strong>文件系统</strong> + <strong>监听通知机制</strong>。</p>
 <h3 id="11-file-system">1.1 File System</h3>
-<p><img src="%22/post/20210519zookeeper/1.png%22" alt="fileSystem"></p>
+<p><img src="/post/20210519zookeeper/1.png" alt="filesys"></p>
 <p><strong>Zookeeper</strong>维护一个类似文件系统的树状数据结构，这种特性使得 <strong>Zookeeper</strong> 不能用于存放大量的数据，每个节点的存放数据上限为<strong>1M</strong>。每个子目录项如 NameService 都被称作为 <strong>znode</strong>(目录节点)。和文件系统一样，我们能够自由的增加、删除<strong>znode</strong>，在一个<strong>znode</strong>下增加、删除子<strong>znode</strong>，唯一的不同在于<strong>znode</strong>是可以存储数据的。默认有四种类型的<strong>znode</strong>：</p>
 <ol>
 <li><strong>持久化目录节点 PERSISTENT</strong>：客户端与zookeeper断开连接后，该节点依旧存在。</li>

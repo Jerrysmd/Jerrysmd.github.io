@@ -19,7 +19,7 @@
 &lt;p&gt;&lt;strong&gt;ZooKeeper&lt;/strong&gt; 是一个开源的&lt;strong&gt;分布式协调框架&lt;/strong&gt;，它的定位是为分布式应用提供一致性服务，是整个大数据体系的&lt;strong&gt;管理员&lt;/strong&gt;。&lt;strong&gt;ZooKeeper&lt;/strong&gt; 会封装好复杂易出错的关键服务，将高效、稳定、易用的服务提供给用户使用。&lt;/p&gt;
 &lt;p&gt;如果上面的官方言语你不太理解，你可以认为 &lt;strong&gt;ZooKeeper&lt;/strong&gt; = &lt;strong&gt;文件系统&lt;/strong&gt; + &lt;strong&gt;监听通知机制&lt;/strong&gt;。&lt;/p&gt;
 &lt;h3 id=&#34;11-file-system&#34;&gt;1.1 File System&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;%22/post/20210519zookeeper/1.png%22&#34; alt=&#34;fileSystem&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20210519zookeeper/1.png&#34; alt=&#34;filesys&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Zookeeper&lt;/strong&gt;维护一个类似文件系统的树状数据结构，这种特性使得 &lt;strong&gt;Zookeeper&lt;/strong&gt; 不能用于存放大量的数据，每个节点的存放数据上限为&lt;strong&gt;1M&lt;/strong&gt;。每个子目录项如 NameService 都被称作为 &lt;strong&gt;znode&lt;/strong&gt;(目录节点)。和文件系统一样，我们能够自由的增加、删除&lt;strong&gt;znode&lt;/strong&gt;，在一个&lt;strong&gt;znode&lt;/strong&gt;下增加、删除子&lt;strong&gt;znode&lt;/strong&gt;，唯一的不同在于&lt;strong&gt;znode&lt;/strong&gt;是可以存储数据的。默认有四种类型的&lt;strong&gt;znode&lt;/strong&gt;：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;持久化目录节点 PERSISTENT&lt;/strong&gt;：客户端与zookeeper断开连接后，该节点依旧存在。&lt;/li&gt;
