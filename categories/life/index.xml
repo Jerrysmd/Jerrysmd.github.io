@@ -1,26 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Life on JerrysBlog</title>
+    <title>life on JerrysBlog</title>
     <link>https://Jerrysmd.github.io/categories/life/</link>
-    <description>Recent content in Life on JerrysBlog</description>
+    <description>Recent content in life on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 18 May 2021 15:16:54 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/categories/life/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 24 May 2021 18:27:48 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/categories/life/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>20210518lifeTest</title>
-      <link>https://Jerrysmd.github.io/post/20210518lifetest/20210518lifetest/</link>
-      <pubDate>Tue, 18 May 2021 15:16:54 +0800</pubDate>
+      <title>Lifetest2</title>
+      <link>https://Jerrysmd.github.io/post/20210524lifetest2/lifetest2/</link>
+      <pubDate>Mon, 24 May 2021 18:27:48 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20210518lifetest/20210518lifetest/</guid>
+      <guid>https://Jerrysmd.github.io/post/20210524lifetest2/lifetest2/</guid>
       <description>
         
-          &lt;p&gt;This is a test paragraph this is a test paragraph this is a test paragraph this is a test paragraph this is a test paragraph this is a test paragraph this is a test paragraph this is a test paragraph.&lt;/p&gt;
-&lt;p&gt;This is a test paragraph this is a test paragraph this is a test paragraph this is a test paragraph this is a test paragraph this is a test paragraph this is a test paragraph this is a test paragraph this is a test paragraph this is a test paragraph.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20210518lifeTest/20191011083529_IMG_2606-01.jpeg&#34; alt=&#34;pic1&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20210518lifeTest/20191011083433_IMG_2604-01.jpeg&#34; alt=&#34;pic2&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20210518lifeTest/20191011083753_IMG_2610-01.jpeg&#34; alt=&#34;pic3&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20210518lifeTest/20191011082616_IMG_2594-01.jpeg&#34; alt=&#34;pic4&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20210518lifeTest/20191011082608_IMG_2591-01.jpeg&#34; alt=&#34;pic5&#34;&gt;&lt;/p&gt;
+          &lt;p&gt;This is a test paragraph，only for test use. This is a test paragraph，only for test use. This is a test paragraph，only for test use. This is a test paragraph，only for test use. This is a test paragraph，only for test use. This is a test paragraph，only for test use.&lt;/p&gt;
+&lt;p&gt;This is a test paragraph，only for test use. This is a test paragraph，only for test use. This is a test paragraph，only for test use. This is a test paragraph，only for test use. This is a test paragraph，only for test use.&lt;/p&gt;
         
       </description>
     </item>
