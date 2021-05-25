@@ -139,7 +139,7 @@ src='https://plausible.io/js/plausible.js'>
 </svg></span>
     <span class="post_date">
       Mar 31, 2021</span>
-    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/spark' title="spark" class="post_tag button button_translucent">spark
+    <span class="post_time"> · 4 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/spark' title="spark" class="post_tag button button_translucent">spark
         </a><a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
         </a>
     </span>
@@ -202,8 +202,17 @@ src='https://plausible.io/js/plausible.js'>
         <li><a href="#3-feature">3 Feature</a></li>
         <li><a href="#4-sparkcontext">4 sparkContext</a></li>
         <li><a href="#5-creation-way">5 Creation Way</a></li>
-        <li><a href="#6--operator">6  Operator</a></li>
-        <li><a href="#7-qa">7 Q&amp;A</a></li>
+      </ul>
+    </li>
+    <li><a href="#operator">Operator</a>
+      <ul>
+        <li><a href="#1-map">1 map</a></li>
+        <li><a href="#2-flatmap">2 flatmap</a></li>
+        <li><a href="#3-reducebykey">3 reducebykey</a></li>
+        <li><a href="#4--qa">4  Q&amp;A</a></li>
+        <li><a href="#5-map--mappartitions">5 map &amp; mapPartitions</a></li>
+        <li><a href="#6-filter">6 filter</a></li>
+        <li><a href="#7-sample">7. sample</a></li>
       </ul>
     </li>
   </ul>
@@ -416,19 +425,19 @@ src='https://plausible.io/js/plausible.js'>
 </span><span class="ln">22</span><span class="c1"></span>    <span class="c1">//非原地计算：str.substr 返回新的字符串，非原地计算。字符串不可变，RDD也不可变
 </span><span class="ln">23</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd2</span><span class="k">:</span> <span class="kt">RDD</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="n">rddmap</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">)</span>
 <span class="ln">24</span><span class="o">}</span>
-</code></pre></div><h3 id="6--operator">6  Operator</h3>
-<h4 id="61-map">6.1 map</h4>
+</code></pre></div><h2 id="operator">Operator</h2>
+<h3 id="1-map">1 map</h3>
 <div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="nd">@Test</span>
 <span class="ln"> 2</span><span class="k">def</span> <span class="n">mapTest</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln"> 3</span>    <span class="c1">//创建RDD
 </span><span class="ln"> 4</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd1</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">))</span>
 <span class="ln"> 5</span>    <span class="c1">//2.执行map操作
-</span><span class="ln"> 6</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd2</span> <span class="k">=</span> <span class="n">rddmap</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span> <span class="o">*</span> <span class="mi">10</span><span class="o">)</span>
+</span><span class="ln"> 6</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd2</span> <span class="k">=</span> <span class="n">rdd1</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span> <span class="o">*</span> <span class="mi">10</span><span class="o">)</span>
 <span class="ln"> 7</span>    <span class="c1">//3.得到结果
 </span><span class="ln"> 8</span><span class="c1"></span>    <span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="n">rdd2</span><span class="o">.</span><span class="n">collect</span><span class="o">()</span>
 <span class="ln"> 9</span>    <span class="n">result</span><span class="o">.</span><span class="n">foreach</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="n">item</span><span class="o">))</span>
 <span class="ln">10</span><span class="o">}</span>
-</code></pre></div><h4 id="62-flatmap">6.2 flatmap</h4>
+</code></pre></div><h3 id="2-flatmap">2 flatmap</h3>
 <ol>
 <li>把rdd中的数据转化成数组或集合形式</li>
 <li>把集合展开</li>
@@ -438,19 +447,19 @@ src='https://plausible.io/js/plausible.js'>
 <div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="nd">@Test</span>
 <span class="ln">2</span><span class="k">def</span> <span class="n">flatMapTest</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln">3</span>    <span class="k">val</span> <span class="n">rdd1</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="s">&#34;Hello a&#34;</span><span class="o">,</span><span class="s">&#34;Hello b&#34;</span><span class="o">,</span><span class="s">&#34;Hello c&#34;</span><span class="o">))</span>
-<span class="ln">4</span>    <span class="k">val</span> <span class="n">rdd2</span> <span class="k">=</span> <span class="n">rddflatMap</span><span class="o">(</span> <span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
+<span class="ln">4</span>    <span class="k">val</span> <span class="n">rdd2</span> <span class="k">=</span> <span class="n">rddf1</span><span class="o">.</span><span class="n">latMap</span><span class="o">(</span> <span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
 <span class="ln">5</span>    <span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="n">rdd2</span><span class="o">.</span><span class="n">collect</span><span class="o">()</span>
 <span class="ln">6</span>    <span class="n">result</span><span class="o">.</span><span class="n">foreach</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="n">item</span><span class="o">))</span>
 <span class="ln">7</span>    <span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="o">()</span>
 <span class="ln">8</span><span class="o">}</span>
-</code></pre></div><h4 id="63-reducebykey">6.3 reducebykey</h4>
+</code></pre></div><h3 id="3-reducebykey">3 reducebykey</h3>
 <p>reduceByKey第一步先按照key分组，然后对每一组进行聚合，得到结果。</p>
 <div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="nd">@Test</span>
 <span class="ln"> 2</span><span class="k">def</span> <span class="n">reduceBykeyTest</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln"> 3</span>    <span class="c1">//创建RDD
 </span><span class="ln"> 4</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd1</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="s">&#34;Hello a&#34;</span><span class="o">,</span><span class="s">&#34;Hello b&#34;</span><span class="o">,</span><span class="s">&#34;Hello c&#34;</span><span class="o">))</span>
 <span class="ln"> 5</span>    <span class="c1">//2.处理数据
-</span><span class="ln"> 6</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd2</span> <span class="k">=</span> <span class="n">rddflatMap</span><span class="o">(</span> <span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
+</span><span class="ln"> 6</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd2</span> <span class="k">=</span> <span class="n">rdd1</span><span class="o">.</span><span class="n">flatMap</span><span class="o">(</span> <span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
 <span class="ln"> 7</span>    <span class="o">.</span><span class="n">map</span><span class="o">(</span> <span class="n">item</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">item</span><span class="o">,</span><span class="mi">1</span><span class="o">)</span> <span class="o">)</span>
 <span class="ln"> 8</span>    <span class="o">.</span><span class="n">reduceByKey</span><span class="o">(</span> <span class="o">(</span><span class="n">curr</span><span class="o">,</span> <span class="n">agg</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">curr</span> <span class="o">+</span> <span class="n">agg</span><span class="o">)</span><span class="c1">//curr是当前的总值，agg是单个item的值
 </span><span class="ln"> 9</span><span class="c1"></span>    <span class="c1">//3.得到结果
@@ -459,7 +468,7 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">12</span>    <span class="c1">//4.关闭sc
 </span><span class="ln">13</span><span class="c1"></span>    <span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="o">()</span> 
 <span class="ln">14</span><span class="o">}</span>
-</code></pre></div><h3 id="7-qa">7 Q&amp;A</h3>
+</code></pre></div><h3 id="4--qa">4  Q&amp;A</h3>
 <ol>
 <li>数据量过大，如何处理？</li>
 </ol>
@@ -528,6 +537,25 @@ src='https://plausible.io/js/plausible.js'>
 <li>Checkpoint</li>
 </ol>
 </blockquote>
+<h3 id="5-map--mappartitions">5 map &amp; mapPartitions</h3>
+<blockquote>
+<p>mapPartitions 和 map 算子是一样的，只不过map是针对每一条数据进行转换，mapPartitions针对一整个分区的数据进行转换</p>
+<p>所以</p>
+<ol>
+<li>map 的 func 参数是单条数据，mapPartitions 的 func 参数是一个集合(一个分区整个所有的数据)</li>
+<li>map 的 func 返回值也是单条数据，mapPartition 的 func 返回值是一个集合</li>
+<li>mapPartitionWithIndex 和 mapPartition 的区别是 func 中多分区数量参数</li>
+</ol>
+</blockquote>
+<h3 id="6-filter">6 filter</h3>
+<p>保留满足条件的元素</p>
+<h3 id="7-sample">7. sample</h3>
+<p>filter按照规律过滤，sample则是随机采样</p>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">def</span> <span class="n">sample</span><span class="o">(</span>
+<span class="ln">2</span>    <span class="n">withReplacement</span><span class="k">:</span> <span class="kt">Boolean</span><span class="o">,</span>	<span class="c1">//是否重复取样
+</span><span class="ln">3</span><span class="c1"></span>    <span class="n">fraction</span><span class="k">:</span> <span class="kt">Double</span><span class="o">,</span>			<span class="c1">//取样比例
+</span><span class="ln">4</span><span class="c1"></span>    <span class="n">seed</span><span class="k">:</span> <span class="kt">Long</span> <span class="o">=</span> <span class="nc">Utils</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">nextLong</span><span class="o">)</span><span class="k">:</span> <span class="kt">RDD</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="k">=</span> <span class="o">{...}</span>
+</code></pre></div>
 
   </article>
 <aside class="sidebar">
