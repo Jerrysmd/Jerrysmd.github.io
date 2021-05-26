@@ -214,6 +214,7 @@ src='https://plausible.io/js/plausible.js'>
         <li><a href="#filter">filter</a></li>
         <li><a href="#sample">sample</a></li>
         <li><a href="#mapvalues">mapValues</a></li>
+        <li><a href="#collection-operation">collection operation</a></li>
       </ul>
     </li>
   </ul>
@@ -558,6 +559,10 @@ src='https://plausible.io/js/plausible.js'>
 </span><span class="ln">4</span><span class="c1"></span>    <span class="n">seed</span><span class="k">:</span> <span class="kt">Long</span> <span class="o">=</span> <span class="nc">Utils</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">nextLong</span><span class="o">)</span><span class="k">:</span> <span class="kt">RDD</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="k">=</span> <span class="o">{...}</span>
 </code></pre></div><h3 id="mapvalues">mapValues</h3>
 <p>mapValue也是map，map作用于全部数据，mapValue作用于value</p>
+<h3 id="collection-operation">collection operation</h3>
+<p>交集：rdd1.intersection(rdd2)</p>
+<p>并集：rdd1.union(rdd2)</p>
+<p>差集：rdd1.subract(rdd2)</p>
 
   </article>
 <aside class="sidebar">

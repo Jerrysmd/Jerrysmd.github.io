@@ -354,6 +354,10 @@
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;seed&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;Long&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Utils&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;random&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nextLong&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;RDD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{...}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;mapvalues&#34;&gt;mapValues&lt;/h3&gt;
 &lt;p&gt;mapValue也是map，map作用于全部数据，mapValue作用于value&lt;/p&gt;
+&lt;h3 id=&#34;collection-operation&#34;&gt;collection operation&lt;/h3&gt;
+&lt;p&gt;交集：rdd1.intersection(rdd2)&lt;/p&gt;
+&lt;p&gt;并集：rdd1.union(rdd2)&lt;/p&gt;
+&lt;p&gt;差集：rdd1.subract(rdd2)&lt;/p&gt;
         
       </description>
     </item>
