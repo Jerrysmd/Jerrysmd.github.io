@@ -215,6 +215,7 @@ src='https://plausible.io/js/plausible.js'>
         <li><a href="#sample">sample</a></li>
         <li><a href="#mapvalues">mapValues</a></li>
         <li><a href="#collection-operation">collection operation</a></li>
+        <li><a href="#groupbykey">groupByKey</a></li>
       </ul>
     </li>
   </ul>
@@ -563,6 +564,13 @@ src='https://plausible.io/js/plausible.js'>
 <p>交集：rdd1.intersection(rdd2)</p>
 <p>并集：rdd1.union(rdd2)</p>
 <p>差集：rdd1.subract(rdd2)</p>
+<h3 id="groupbykey">groupByKey</h3>
+<p>聚合操作：reduceByKey -&gt;按照key分组，然后把每一组数据reduce</p>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">((</span><span class="s">&#34;a&#34;</span><span class="o">,</span><span class="mi">1</span><span class="o">),(</span><span class="s">&#34;a&#34;</span><span class="o">,</span><span class="mi">1</span><span class="o">),(</span><span class="s">&#34;b&#34;</span><span class="o">,</span><span class="mi">1</span><span class="o">)))</span>
+<span class="ln">2</span>  <span class="o">.</span><span class="n">groupByKey</span><span class="o">()</span>
+<span class="ln">3</span>  <span class="o">.</span><span class="n">collect</span><span class="o">()</span>
+<span class="ln">4</span>  <span class="o">.</span><span class="n">foreach</span><span class="o">(</span><span class="n">println</span><span class="o">(</span><span class="k">_</span><span class="o">))</span>
+</code></pre></div>
 
   </article>
 <aside class="sidebar">
