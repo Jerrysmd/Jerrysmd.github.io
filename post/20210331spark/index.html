@@ -206,16 +206,17 @@ src='https://plausible.io/js/plausible.js'>
     </li>
     <li><a href="#operator">Operator</a>
       <ul>
-        <li><a href="#map">map</a></li>
-        <li><a href="#flatmap">flatmap</a></li>
-        <li><a href="#reducebykey">reducebykey</a></li>
+        <li><a href="#map">map()</a></li>
+        <li><a href="#flatmap">flatmap()</a></li>
+        <li><a href="#reducebykey">reducebykey()</a></li>
         <li><a href="#qa">Q&amp;A</a></li>
-        <li><a href="#map--mappartitions">map &amp; mapPartitions</a></li>
-        <li><a href="#filter">filter</a></li>
-        <li><a href="#sample">sample</a></li>
-        <li><a href="#mapvalues">mapValues</a></li>
+        <li><a href="#map--mappartitions">map() &amp; mapPartitions()</a></li>
+        <li><a href="#filter">filter()</a></li>
+        <li><a href="#sample">sample()</a></li>
+        <li><a href="#mapvalues">mapValues()</a></li>
         <li><a href="#collection-operation">collection operation</a></li>
-        <li><a href="#groupbykey">groupByKey</a></li>
+        <li><a href="#groupbykey">groupByKey()</a></li>
+        <li><a href="#combinebykey">combineByKey()</a></li>
       </ul>
     </li>
   </ul>
@@ -429,7 +430,7 @@ src='https://plausible.io/js/plausible.js'>
 </span><span class="ln">23</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd2</span><span class="k">:</span> <span class="kt">RDD</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="n">rddmap</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">)</span>
 <span class="ln">24</span><span class="o">}</span>
 </code></pre></div><h2 id="operator">Operator</h2>
-<h3 id="map">map</h3>
+<h3 id="map">map()</h3>
 <div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="nd">@Test</span>
 <span class="ln"> 2</span><span class="k">def</span> <span class="n">mapTest</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln"> 3</span>    <span class="c1">//创建RDD
@@ -440,7 +441,7 @@ src='https://plausible.io/js/plausible.js'>
 </span><span class="ln"> 8</span><span class="c1"></span>    <span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="n">rdd2</span><span class="o">.</span><span class="n">collect</span><span class="o">()</span>
 <span class="ln"> 9</span>    <span class="n">result</span><span class="o">.</span><span class="n">foreach</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="n">item</span><span class="o">))</span>
 <span class="ln">10</span><span class="o">}</span>
-</code></pre></div><h3 id="flatmap">flatmap</h3>
+</code></pre></div><h3 id="flatmap">flatmap()</h3>
 <ol>
 <li>把rdd中的数据转化成数组或集合形式</li>
 <li>把集合展开</li>
@@ -455,7 +456,7 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">6</span>    <span class="n">result</span><span class="o">.</span><span class="n">foreach</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="n">item</span><span class="o">))</span>
 <span class="ln">7</span>    <span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="o">()</span>
 <span class="ln">8</span><span class="o">}</span>
-</code></pre></div><h3 id="reducebykey">reducebykey</h3>
+</code></pre></div><h3 id="reducebykey">reducebykey()</h3>
 <p>reduceByKey第一步先按照key分组，然后对每一组进行聚合，得到结果。</p>
 <div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="nd">@Test</span>
 <span class="ln"> 2</span><span class="k">def</span> <span class="n">reduceBykeyTest</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
@@ -540,7 +541,7 @@ src='https://plausible.io/js/plausible.js'>
 <li>Checkpoint</li>
 </ol>
 </blockquote>
-<h3 id="map--mappartitions">map &amp; mapPartitions</h3>
+<h3 id="map--mappartitions">map() &amp; mapPartitions()</h3>
 <blockquote>
 <p>mapPartitions 和 map 算子是一样的，只不过map是针对每一条数据进行转换，mapPartitions针对一整个分区的数据进行转换</p>
 <p>所以</p>
@@ -550,27 +551,29 @@ src='https://plausible.io/js/plausible.js'>
 <li>mapPartitionWithIndex 和 mapPartition 的区别是 func 中多分区数量参数</li>
 </ol>
 </blockquote>
-<h3 id="filter">filter</h3>
+<h3 id="filter">filter()</h3>
 <p>保留满足条件的元素</p>
-<h3 id="sample">sample</h3>
+<h3 id="sample">sample()</h3>
 <p>filter按照规律过滤，sample则是随机采样</p>
 <div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">def</span> <span class="n">sample</span><span class="o">(</span>
 <span class="ln">2</span>    <span class="n">withReplacement</span><span class="k">:</span> <span class="kt">Boolean</span><span class="o">,</span>	<span class="c1">//是否重复取样
 </span><span class="ln">3</span><span class="c1"></span>    <span class="n">fraction</span><span class="k">:</span> <span class="kt">Double</span><span class="o">,</span>			<span class="c1">//取样比例
 </span><span class="ln">4</span><span class="c1"></span>    <span class="n">seed</span><span class="k">:</span> <span class="kt">Long</span> <span class="o">=</span> <span class="nc">Utils</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">nextLong</span><span class="o">)</span><span class="k">:</span> <span class="kt">RDD</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="k">=</span> <span class="o">{...}</span>
-</code></pre></div><h3 id="mapvalues">mapValues</h3>
+</code></pre></div><h3 id="mapvalues">mapValues()</h3>
 <p>mapValue也是map，map作用于全部数据，mapValue作用于value</p>
 <h3 id="collection-operation">collection operation</h3>
 <p>交集：rdd1.intersection(rdd2)</p>
 <p>并集：rdd1.union(rdd2)</p>
 <p>差集：rdd1.subract(rdd2)</p>
-<h3 id="groupbykey">groupByKey</h3>
-<p>聚合操作：reduceByKey -&gt;按照key分组，然后把每一组数据reduce</p>
+<h3 id="groupbykey">groupByKey()</h3>
+<p>聚合操作：</p>
+<p>reduceByKey -&gt;按照key分组，然后把每一组数据reduce。reduceByKey在map端combiner能减少IO，一个分区放多个数据。</p>
+<p>groupByKey 运算结果的格式：（k，（value1，value2）），没有减少IO</p>
 <div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">((</span><span class="s">&#34;a&#34;</span><span class="o">,</span><span class="mi">1</span><span class="o">),(</span><span class="s">&#34;a&#34;</span><span class="o">,</span><span class="mi">1</span><span class="o">),(</span><span class="s">&#34;b&#34;</span><span class="o">,</span><span class="mi">1</span><span class="o">)))</span>
 <span class="ln">2</span>  <span class="o">.</span><span class="n">groupByKey</span><span class="o">()</span>
 <span class="ln">3</span>  <span class="o">.</span><span class="n">collect</span><span class="o">()</span>
 <span class="ln">4</span>  <span class="o">.</span><span class="n">foreach</span><span class="o">(</span><span class="n">println</span><span class="o">(</span><span class="k">_</span><span class="o">))</span>
-</code></pre></div>
+</code></pre></div><h3 id="combinebykey">combineByKey()</h3>
 
   </article>
 <aside class="sidebar">
@@ -582,6 +585,9 @@ src='https://plausible.io/js/plausible.js'>
       <a href='https://Jerrysmd.github.io/about/' class="button mt-1" role="button" title='Read More'>Read More</a>
     <h2 class="mt-4">Featured Posts</h2>
     <ul>
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20210526apparchitecturedevelopment/apparchitecturedevelopment/" class="nav-link" title="应用架构演进历程: The Development of App Architecture">应用架构演进历程: The Development of App Architecture</a>
+      </li>
       <li>
         <a href="https://Jerrysmd.github.io/post/20210519zookeeper/zookeeper/" class="nav-link" title="Zookeeper核心知识点: Key points of ZooKeeper">Zookeeper核心知识点: Key points of ZooKeeper</a>
       </li>
@@ -607,6 +613,12 @@ src='https://plausible.io/js/plausible.js'>
     <h2 class="mt-4">Recent Posts</h2>
     <ul class="flex-column">
       <li>
+        <a href="https://Jerrysmd.github.io/post/20210526apparchitecturedevelopment/apparchitecturedevelopment/" class="nav-link" title="应用架构演进历程: The Development of App Architecture">应用架构演进历程: The Development of App Architecture</a>
+      </li>
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20210526finalkeywordinjava/finalkeywordinjava/" class="nav-link" title="Final 关键字: Final Key Word In Java">Final 关键字: Final Key Word In Java</a>
+      </li>
+      <li>
         <a href="https://Jerrysmd.github.io/post/20210519zookeeper/zookeeper/" class="nav-link" title="Zookeeper核心知识点: Key points of ZooKeeper">Zookeeper核心知识点: Key points of ZooKeeper</a>
       </li>
       <li>
@@ -630,19 +642,13 @@ src='https://plausible.io/js/plausible.js'>
       <li>
         <a href="https://Jerrysmd.github.io/post/20201207u32/" class="nav-link" title="Various data types in C">Various data types in C</a>
       </li>
-      <li>
-        <a href="https://Jerrysmd.github.io/post/20201125structsize/" class="nav-link" title="The size of structure in C">The size of structure in C</a>
-      </li>
-      <li>
-        <a href="https://Jerrysmd.github.io/post/20201117typedef/" class="nav-link" title="Typedef介绍: The descriptions of typedef">Typedef介绍: The descriptions of typedef</a>
-      </li>
     </ul>
     <div>
       <h2 class="mt-4 taxonomy" id="categories-section">Categories</h2>
       <nav class="tags_nav">
         <a href='https://Jerrysmd.github.io/categories/technology/' class="post_tag button button_translucent" title="technology">
           TECHNOLOGY
-          <span class="button_tally">25</span>
+          <span class="button_tally">27</span>
         </a>
         
         
@@ -658,7 +664,7 @@ src='https://plausible.io/js/plausible.js'>
         
         <a href='https://Jerrysmd.github.io/tags/distribution/' class="post_tag button button_translucent" title="distribution">
           DISTRIBUTION
-          <span class="button_tally">5</span>
+          <span class="button_tally">6</span>
         </a>
         
         <a href='https://Jerrysmd.github.io/tags/c&#43;&#43;/' class="post_tag button button_translucent" title="c&#43;&#43;">
@@ -666,13 +672,13 @@ src='https://plausible.io/js/plausible.js'>
           <span class="button_tally">3</span>
         </a>
         
-        <a href='https://Jerrysmd.github.io/tags/file/' class="post_tag button button_translucent" title="file">
-          FILE
-          <span class="button_tally">2</span>
-        </a>
-        
         <a href='https://Jerrysmd.github.io/tags/java/' class="post_tag button button_translucent" title="java">
           JAVA
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/file/' class="post_tag button button_translucent" title="file">
+          FILE
           <span class="button_tally">2</span>
         </a>
         
@@ -735,7 +741,7 @@ src='https://plausible.io/js/plausible.js'>
             </a>
             
             
-            <a href='https://Jerrysmd.github.io/tags/distribution/' class=" post_tag button button_translucent" data-position=5 title="distribution">DISTRIBUTION<span class="button_tally">5</span>
+            <a href='https://Jerrysmd.github.io/tags/distribution/' class=" post_tag button button_translucent" data-position=6 title="distribution">DISTRIBUTION<span class="button_tally">6</span>
             </a>
             
             
@@ -759,7 +765,7 @@ src='https://plausible.io/js/plausible.js'>
             </a>
             
             
-            <a href='https://Jerrysmd.github.io/tags/java/' class=" post_tag button button_translucent" data-position=2 title="java">JAVA<span class="button_tally">2</span>
+            <a href='https://Jerrysmd.github.io/tags/java/' class=" post_tag button button_translucent" data-position=3 title="java">JAVA<span class="button_tally">3</span>
             </a>
             
             

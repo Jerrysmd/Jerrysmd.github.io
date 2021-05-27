@@ -5,7 +5,30 @@
     <link>https://Jerrysmd.github.io/tags/distribution/</link>
     <description>Recent content in distribution on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 19 May 2021 16:07:17 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/distribution/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 26 May 2021 17:17:50 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/distribution/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>应用架构演进历程: The Development of App Architecture</title>
+      <link>https://Jerrysmd.github.io/post/20210526apparchitecturedevelopment/apparchitecturedevelopment/</link>
+      <pubDate>Wed, 26 May 2021 17:17:50 +0800</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/20210526apparchitecturedevelopment/apparchitecturedevelopment/</guid>
+      <description>
+        
+          &lt;p&gt;The features of large applications: high availability, high concurrency and big data. High availability: system need to provide service without interruption. High concurrency: still stable under the big access. Big data: store and manage big data well.&lt;/p&gt;
+&lt;h2 id=&#34;最简单的架构&#34;&gt;最简单的架构&lt;/h2&gt;
+&lt;p&gt;开始数据量少，所以只需一台服务器&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20210526appArchitectureDevelopment/&#34; alt=&#34;smapleArchitecture&#34;&gt;&lt;/p&gt;
+&lt;p&gt;应用程序、文件、数据库往往都部署在一台服务器上，应用程序部署在Tomcat服务器上，数据库可以使用MySQL&lt;/p&gt;
+&lt;h2 id=&#34;应用于数据服务分隔&#34;&gt;应用于数据服务分隔&lt;/h2&gt;
+&lt;p&gt;随着业务越来越复杂，访问量越来越大，导致性能越来越差，存储空间严重不足，这时我们考虑把服务器增加到三台。分离出应用服务器、数据库服务器、文件服务器。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20210526appArchitectureDevelopment/&#34; alt=&#34;appSeparateData&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;应用服务器集群&#34;&gt;应用服务器集群&lt;/h2&gt;
+&lt;p&gt;在高并发、大流量的情况下，一台服务器是肯定处理不过来的，这个时候增加服务器，部署集群提供服务，来分担每台服务器的压力。部署集群的另一个好处是可伸缩性。比如双十一增加服务器分摊流量，双十一过后再减少服务器。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20210526appArchitectureDevelopment/&#34; alt=&#34;Cluster&#34;&gt;&lt;/p&gt;
+        
+      </description>
+    </item>
+    
     <item>
       <title>Zookeeper核心知识点: Key points of ZooKeeper</title>
       <link>https://Jerrysmd.github.io/post/20210519zookeeper/zookeeper/</link>
@@ -937,7 +960,7 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;23&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;val&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rdd2&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;RDD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;Int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rddmap&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;item&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;item&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;24&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;operator&#34;&gt;Operator&lt;/h2&gt;
-&lt;h3 id=&#34;map&#34;&gt;map&lt;/h3&gt;
+&lt;h3 id=&#34;map&#34;&gt;map()&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-scala&#34; data-lang=&#34;scala&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;nd&#34;&gt;@Test&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mapTest&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;Unit&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;//创建RDD
@@ -948,7 +971,7 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;val&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rdd2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;collect&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;foreach&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;item&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;item&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;))&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;flatmap&#34;&gt;flatmap&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;flatmap&#34;&gt;flatmap()&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;把rdd中的数据转化成数组或集合形式&lt;/li&gt;
 &lt;li&gt;把集合展开&lt;/li&gt;
@@ -963,7 +986,7 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;foreach&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;item&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;item&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;))&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;sc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stop&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;reducebykey&#34;&gt;reducebykey&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;reducebykey&#34;&gt;reducebykey()&lt;/h3&gt;
 &lt;p&gt;reduceByKey第一步先按照key分组，然后对每一组进行聚合，得到结果。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-scala&#34; data-lang=&#34;scala&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;nd&#34;&gt;@Test&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;reduceBykeyTest&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;Unit&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
@@ -1048,7 +1071,7 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;li&gt;Checkpoint&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&#34;map--mappartitions&#34;&gt;map &amp;amp; mapPartitions&lt;/h3&gt;
+&lt;h3 id=&#34;map--mappartitions&#34;&gt;map() &amp;amp; mapPartitions()&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;mapPartitions 和 map 算子是一样的，只不过map是针对每一条数据进行转换，mapPartitions针对一整个分区的数据进行转换&lt;/p&gt;
 &lt;p&gt;所以&lt;/p&gt;
@@ -1058,27 +1081,29 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;li&gt;mapPartitionWithIndex 和 mapPartition 的区别是 func 中多分区数量参数&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&#34;filter&#34;&gt;filter&lt;/h3&gt;
+&lt;h3 id=&#34;filter&#34;&gt;filter()&lt;/h3&gt;
 &lt;p&gt;保留满足条件的元素&lt;/p&gt;
-&lt;h3 id=&#34;sample&#34;&gt;sample&lt;/h3&gt;
+&lt;h3 id=&#34;sample&#34;&gt;sample()&lt;/h3&gt;
 &lt;p&gt;filter按照规律过滤，sample则是随机采样&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-scala&#34; data-lang=&#34;scala&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sample&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;withReplacement&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;Boolean&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;	&lt;span class=&#34;c1&#34;&gt;//是否重复取样
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;fraction&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;Double&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;			&lt;span class=&#34;c1&#34;&gt;//取样比例
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;seed&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;Long&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Utils&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;random&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nextLong&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;RDD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{...}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;mapvalues&#34;&gt;mapValues&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;mapvalues&#34;&gt;mapValues()&lt;/h3&gt;
 &lt;p&gt;mapValue也是map，map作用于全部数据，mapValue作用于value&lt;/p&gt;
 &lt;h3 id=&#34;collection-operation&#34;&gt;collection operation&lt;/h3&gt;
 &lt;p&gt;交集：rdd1.intersection(rdd2)&lt;/p&gt;
 &lt;p&gt;并集：rdd1.union(rdd2)&lt;/p&gt;
 &lt;p&gt;差集：rdd1.subract(rdd2)&lt;/p&gt;
-&lt;h3 id=&#34;groupbykey&#34;&gt;groupByKey&lt;/h3&gt;
-&lt;p&gt;聚合操作：reduceByKey -&amp;gt;按照key分组，然后把每一组数据reduce&lt;/p&gt;
+&lt;h3 id=&#34;groupbykey&#34;&gt;groupByKey()&lt;/h3&gt;
+&lt;p&gt;聚合操作：&lt;/p&gt;
+&lt;p&gt;reduceByKey -&amp;gt;按照key分组，然后把每一组数据reduce。reduceByKey在map端combiner能减少IO，一个分区放多个数据。&lt;/p&gt;
+&lt;p&gt;groupByKey 运算结果的格式：（k，（value1，value2）），没有减少IO&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-scala&#34; data-lang=&#34;scala&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;parallelize&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;Seq&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;a&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;),(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;a&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;),(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;b&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)))&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;  &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;groupByKey&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;  &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;collect&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;  &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;foreach&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;_&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;combinebykey&#34;&gt;combineByKey()&lt;/h3&gt;
         
       </description>
     </item>
