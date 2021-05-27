@@ -204,7 +204,7 @@ src='https://plausible.io/js/plausible.js'>
         <li><a href="#5-creation-way">5 Creation Way</a></li>
       </ul>
     </li>
-    <li><a href="#operator">Operator</a>
+    <li><a href="#transformation-operator">Transformation Operator</a>
       <ul>
         <li><a href="#map">map()</a></li>
         <li><a href="#flatmap">flatmap()</a></li>
@@ -217,6 +217,12 @@ src='https://plausible.io/js/plausible.js'>
         <li><a href="#collection-operation">collection operation</a></li>
         <li><a href="#groupbykey">groupByKey()</a></li>
         <li><a href="#combinebykey">combineByKey()</a></li>
+        <li><a href="#foldbykey">foldByKey()</a></li>
+        <li><a href="#aggregatebykey">aggregateByKey()</a></li>
+        <li><a href="#join">join()</a></li>
+        <li><a href="#sortby">sortBy()</a></li>
+        <li><a href="#coalesce">coalesce()</a></li>
+        <li><a href="#summary">summary</a></li>
       </ul>
     </li>
   </ul>
@@ -429,7 +435,7 @@ src='https://plausible.io/js/plausible.js'>
 </span><span class="ln">22</span><span class="c1"></span>    <span class="c1">//非原地计算：str.substr 返回新的字符串，非原地计算。字符串不可变，RDD也不可变
 </span><span class="ln">23</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd2</span><span class="k">:</span> <span class="kt">RDD</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="n">rddmap</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">)</span>
 <span class="ln">24</span><span class="o">}</span>
-</code></pre></div><h2 id="operator">Operator</h2>
+</code></pre></div><h2 id="transformation-operator">Transformation Operator</h2>
 <h3 id="map">map()</h3>
 <div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="nd">@Test</span>
 <span class="ln"> 2</span><span class="k">def</span> <span class="n">mapTest</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
@@ -574,6 +580,28 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">3</span>  <span class="o">.</span><span class="n">collect</span><span class="o">()</span>
 <span class="ln">4</span>  <span class="o">.</span><span class="n">foreach</span><span class="o">(</span><span class="n">println</span><span class="o">(</span><span class="k">_</span><span class="o">))</span>
 </code></pre></div><h3 id="combinebykey">combineByKey()</h3>
+<p>接收三个参数：</p>
+<p>转化数据的函数（初始函数，作用于第一条数据，用于开启整个计算）</p>
+<p>在分区上进行聚合</p>
+<p>把所有的分区的聚合结果聚合为最终结果</p>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="n">rdd</span><span class="o">.</span><span class="n">combineBykey</span><span class="o">(</span>
+<span class="ln">2</span>	<span class="n">createCombiner</span> <span class="k">=</span> <span class="n">curr</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">curr</span><span class="o">,</span><span class="mi">1</span><span class="o">),</span> 
+<span class="ln">3</span>    <span class="n">mergeValue</span> <span class="k">=</span> <span class="o">(</span><span class="n">curr</span><span class="k">:</span> <span class="o">(</span><span class="kt">Double</span><span class="o">,</span> <span class="kt">Int</span><span class="o">),</span> <span class="n">nextValue</span><span class="k">:</span> <span class="kt">Double</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">curr</span><span class="o">.</span><span class="n">_1</span> <span class="o">+</span> <span class="n">nextValue</span><span class="o">,</span> <span class="n">curr</span><span class="o">.</span><span class="n">_2</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)),</span>
+<span class="ln">4</span>    <span class="n">mergeCombiners</span> <span class="k">=</span> <span class="o">(</span><span class="n">curr</span><span class="k">:</span> <span class="o">(</span><span class="kt">Double</span><span class="o">,</span><span class="kt">Int</span><span class="o">),</span> <span class="n">agg</span><span class="k">:</span> <span class="o">(</span><span class="kt">Double</span><span class="o">,</span> <span class="kt">Int</span><span class="o">))</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">curr</span><span class="o">.</span><span class="n">_1</span> <span class="o">+</span> <span class="n">agg</span><span class="o">.</span><span class="n">_1</span><span class="o">,</span> <span class="n">curr</span><span class="o">.</span><span class="n">_2</span> <span class="o">+</span> <span class="n">agg</span><span class="o">.</span><span class="n">_2</span><span class="o">)</span>
+<span class="ln">5</span><span class="o">)</span>
+<span class="ln">6</span><span class="n">result</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="n">_1</span><span class="o">,</span> <span class="n">item</span><span class="o">.</span><span class="n">_2</span><span class="o">.</span><span class="n">_1</span> <span class="o">/</span> <span class="n">item</span><span class="o">.</span><span class="n">_2</span><span class="o">.</span><span class="n">_2</span><span class="o">))</span>
+</code></pre></div><h3 id="foldbykey">foldByKey()</h3>
+<p>功能等同于reduceByKey()，增加了初始值。reduceByKey底层是combineByKey()，foldByKey()底层是aggregateByKey()。</p>
+<h3 id="aggregatebykey">aggregateByKey()</h3>
+<h3 id="join">join()</h3>
+<p>按照相同的Key进行连接</p>
+<h3 id="sortby">sortBy()</h3>
+<p>排序：sortBy()，sortByKey()</p>
+<h3 id="coalesce">coalesce()</h3>
+<p>一般涉及到分区操作的算子常见的有两个，repartition和coalesce，都可以调大或者调小分区数量</p>
+<h3 id="summary">summary</h3>
+<p>所有的转化操作的算子都是惰性的，在执行时候不会调度运行求得结果，而只是生成了对应的RDD</p>
+<p>只有在Action操作的时候，才会真的运行</p>
 
   </article>
 <aside class="sidebar">
