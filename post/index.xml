@@ -5,7 +5,20 @@
     <link>https://Jerrysmd.github.io/post/</link>
     <description>Recent content in Posts on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 26 May 2021 17:17:50 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 27 May 2021 17:20:52 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Spark 简介: Spark Guide, Part Ⅱ</title>
+      <link>https://Jerrysmd.github.io/post/20210527sparkguide2/sparkguide2/</link>
+      <pubDate>Thu, 27 May 2021 17:20:52 +0800</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/20210527sparkguide2/sparkguide2/</guid>
+      <description>
+        
+          &lt;p&gt;Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.&lt;/p&gt;
+        
+      </description>
+    </item>
+    
     <item>
       <title>应用架构演进历程: The Development of App Architecture</title>
       <link>https://Jerrysmd.github.io/post/20210526apparchitecturedevelopment/apparchitecturedevelopment/</link>

@@ -1,8 +1,8 @@
 
 <!DOCTYPE html>
-<html lang="en" data-figures="" data-mode="dim">
+<html lang="en" data-figures="true" class="page" data-mode="dim">
   <head>
-<title>zookeeper | JerrysBlog</title>
+<title>Spark 简介: Spark Guide, Part Ⅱ | JerrysBlog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,21 +28,20 @@ src='https://plausible.io/js/plausible.js'>
 <meta property="og:locale" content="en" />
 
 <meta property="og:type" content="article">
-<meta name="description" content="">
+<meta name="description" content="Article description.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@0x4c2">
-<meta name="twitter:title" content="zookeeper" />
-<meta property="og:url" content="https://Jerrysmd.github.io/tags/zookeeper/" />
-<meta property="og:title" content="zookeeper" />
-<meta property="og:description" content="" />
-<meta property="og:image" content="https://Jerrysmd.github.io/images/thumbnail.png" />
+<meta name="twitter:title" content="Spark 简介: Spark Guide, Part Ⅱ" />
+<meta property="og:url" content="https://Jerrysmd.github.io/post/20210527sparkguide2/sparkguide2/" />
+<meta property="og:title" content="Spark 简介: Spark Guide, Part Ⅱ" />
+<meta property="og:description" content="Article description." />
+<meta property="og:image" content="https://Jerrysmd.github.io/images/distribution2.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://Jerrysmd.github.io/icons-self/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://Jerrysmd.github.io/icons-self/favicon-32x32.png">
 <link rel="manifest" href="https://Jerrysmd.github.io/icons-self/site.webmanifest">
 
-<link rel="canonical" href="https://Jerrysmd.github.io/tags/zookeeper/">
-<link rel="alternate" type="application/rss+xml" href="https://Jerrysmd.github.io/tags/zookeeper/index.xml" title="JerrysBlog" />
+<link rel="canonical" href="https://Jerrysmd.github.io/post/20210527sparkguide2/sparkguide2/">
 
     
 
@@ -60,8 +59,7 @@ src='https://plausible.io/js/plausible.js'>
   
   
     
-  
-  <body data-code="7" data-lines="true" id="documentTop">
+  <body data-code="40" data-lines="true" id="documentTop">
 
 <header class="nav_header" >
   <nav class="nav"><a href='https://Jerrysmd.github.io/' class="nav_brand nav_item" title="JerrysBlog">
@@ -131,35 +129,29 @@ src='https://plausible.io/js/plausible.js'>
 </header>
 
     <main>
-
+  
 <div class="grid-inverse wrap content">
-  <ul class="posts" id="posts">
-      <li class="post_item">
-  <div class="excerpt">
-    <div class="excerpt_header">
-      <h3 class="post_link">
-        <a href="https://Jerrysmd.github.io/post/20210519zookeeper/zookeeper/" title="Zookeeper核心知识点: Key points of ZooKeeper">Zookeeper核心知识点: Key points of ZooKeeper</a>
-      </h3>
-      
+  <article class="post_content">
+    <h1 class="post_title">Spark 简介: Spark Guide, Part Ⅱ</h1>
   <div class="post_meta">
     <span><svg class="icon">
   <use xlink:href="#calendar"></use>
 </svg></span>
     <span class="post_date">
-      May 19, 2021</span>
-    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/zookeeper' title="zookeeper" class="post_tag button button_translucent">zookeeper
-        </a><a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
+      May 27, 2021</span>
+    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
+        </a><a href='https://Jerrysmd.github.io/tags/spark' title="spark" class="post_tag button button_translucent">spark
         </a>
     </span>
     <span class="page_only">&nbsp;·
   <div class="post_share">
     Share on:
-    <a href="https://twitter.com/intent/tweet?text=Zookeeper%e6%a0%b8%e5%bf%83%e7%9f%a5%e8%af%86%e7%82%b9%3a%20Key%20points%20of%20ZooKeeper&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20210519zookeeper%2fzookeeper%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
+    <a href="https://twitter.com/intent/tweet?text=Spark%20%e7%ae%80%e4%bb%8b%3a%20Spark%20Guide%2c%20Part%20%e2%85%a1&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20210527sparkguide2%2fsparkguide2%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
       <svg class="icon">
   <use xlink:href="#twitter"></use>
 </svg>
     </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20210519zookeeper%2fzookeeper%2f&t=Zookeeper%e6%a0%b8%e5%bf%83%e7%9f%a5%e8%af%86%e7%82%b9%3a%20Key%20points%20of%20ZooKeeper" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20210527sparkguide2%2fsparkguide2%2f&t=Spark%20%e7%ae%80%e4%bb%8b%3a%20Spark%20Guide%2c%20Part%20%e2%85%a1" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
       <svg class="icon">
   <use xlink:href="#facebook"></use>
 </svg>
@@ -169,7 +161,7 @@ src='https://plausible.io/js/plausible.js'>
   <use xlink:href="#linkedin"></use>
 </svg>
     </a>
-    <a href="https://Jerrysmd.github.io/post/20210519zookeeper/zookeeper/" title="Copy Link" class="link link_yank">
+    <a href="https://Jerrysmd.github.io/post/20210527sparkguide2/sparkguide2/" title="Copy Link" class="link link_yank">
       <svg class="icon">
   <use xlink:href="#copy"></use>
 </svg>
@@ -178,29 +170,13 @@ src='https://plausible.io/js/plausible.js'>
   </span>
   </div>
 
-    </div>
-    <div class="excerpt_footer partition">
-      <div class="excerpt_thumbnail">
-        <img src='https://Jerrysmd.github.io/images/cloud.png' alt="Zookeeper核心知识点: Key points of ZooKeeper">
-      </div>
-      
-        <div>
-          <p class="pale">
-            
-              <p>ZooKeeper is an open source distributed coordination framework. It is positioned to provide consistent services for distributed applications and is the administrator of the entire big data system. ZooKeeper will encapsulate key services that are complex and error-prone, and provide users with efficient, stable, and …</p>
-            
-          </p>
-          <a href="https://Jerrysmd.github.io/post/20210519zookeeper/zookeeper/" title="Read More" class="excerpt_more button">Read More</a>
-        </div>
-      </div>
-    </div>
-  </li>
+    
+    
+    <h2>Overview</h2>
+    <nav id="TableOfContents"></nav>
+    <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
 
-    <li>
-
-
-    </li>
-  </ul>
+  </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
         <h2>刘佳锐</h2>
@@ -238,9 +214,6 @@ src='https://plausible.io/js/plausible.js'>
     <h2 class="mt-4">Recent Posts</h2>
     <ul class="flex-column">
       <li>
-        <a href="https://Jerrysmd.github.io/post/20210527sparkguide2/sparkguide2/" class="nav-link" title="Spark 简介: Spark Guide, Part Ⅱ">Spark 简介: Spark Guide, Part Ⅱ</a>
-      </li>
-      <li>
         <a href="https://Jerrysmd.github.io/post/20210526apparchitecturedevelopment/apparchitecturedevelopment/" class="nav-link" title="应用架构演进历程: The Development of App Architecture">应用架构演进历程: The Development of App Architecture</a>
       </li>
       <li>
@@ -266,6 +239,9 @@ src='https://plausible.io/js/plausible.js'>
       </li>
       <li>
         <a href="https://Jerrysmd.github.io/post/20210129copyinjava/" class="nav-link" title="Shallow Copy and Deep Copy in JAVA">Shallow Copy and Deep Copy in JAVA</a>
+      </li>
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20210126gitcontribution/" class="nav-link" title="Git Contribution">Git Contribution</a>
       </li>
     </ul>
     <div>
@@ -437,9 +413,8 @@ src='https://plausible.io/js/plausible.js'>
   </section>
 </aside>
 
+  
 </div>
-
-
     </main><svg width="0" height="0" class="hidden">
   <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="facebook">
     <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h151V331h-60v-90h60v-61c0-49.629 40.371-90 90-90h91v90h-91v61h91l-15 90h-76v181h121c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zm0 0"></path>
