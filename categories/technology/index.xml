@@ -15,6 +15,63 @@
       <description>
         
           &lt;p&gt;Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.&lt;/p&gt;
+&lt;h2 id=&#34;action-operator&#34;&gt;Action Operator&lt;/h2&gt;
+&lt;h3 id=&#34;reducet-t---u&#34;&gt;reduce((T, T) - U)&lt;/h3&gt;
+&lt;p&gt;对整个结果集规约，最终生成一条数据，是整个数据集的总汇&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;reduceByKey和reduce有什么区别：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;reduce是action算子，reduceByKey是一个转换算子&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;RDD里有一万条数据，大部分key是相同的，有10个不同的key生成10条数据&lt;/p&gt;
+&lt;p&gt;reduce生成1条数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;reduceByKey是按Key分组，然后把每组聚合&lt;/p&gt;
+&lt;p&gt;reduce是针对一整个数据集进行聚合&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;reduceByKey是对KV数据进行计算&lt;/p&gt;
+&lt;p&gt;reduce可针对所有类型数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;reduce算子是一个shuffle操作吗？&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;shuffle操作分为mapper和reducer，mapper将数据放入paritioner的函数计算，求得往哪个reducer里放&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;reduce操作没有mapper和reducer，因为reduce算子会作用于RDD中的每个分区，然后分区求得局部结果，最终汇总到Driver中求得最终结果&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;RDD有五大属性，partitioner在shuffle过程中使用&lt;/p&gt;
+&lt;p&gt;paritioner只有kv型的RDD才有&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;collect&#34;&gt;collect()&lt;/h3&gt;
+&lt;p&gt;以数组的形式返回数据集中所有元素&lt;/p&gt;
+&lt;h3 id=&#34;countbykey&#34;&gt;countByKey()&lt;/h3&gt;
+&lt;p&gt;count和countByKey&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;countByKey结果：Map(Key -&amp;gt; Key的count)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;调用Action会生成一个job，job会运行获取结果，所以在两个job中有大量的log&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;数据倾斜：解决数据倾斜的问题，需要先通过countByKey查看Key对应的数量&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;first&#34;&gt;first()&lt;/h3&gt;
+&lt;p&gt;返回第一个元素&lt;/p&gt;
+&lt;h3 id=&#34;taken&#34;&gt;take(N)&lt;/h3&gt;
+&lt;p&gt;返回前N个元素&lt;/p&gt;
+&lt;h3 id=&#34;takesamplewithreplacement-fract&#34;&gt;takeSample(withReplacement, fract)&lt;/h3&gt;
+&lt;p&gt;类似于sample，区别这是action，直接返回结果&lt;/p&gt;
         
       </description>
     </item>

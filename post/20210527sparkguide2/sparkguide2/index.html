@@ -173,8 +173,78 @@ src='https://plausible.io/js/plausible.js'>
     
     
     <h2>Overview</h2>
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#action-operator">Action Operator</a>
+      <ul>
+        <li><a href="#reducet-t---u">reduce((T, T) - U)</a></li>
+        <li><a href="#collect">collect()</a></li>
+        <li><a href="#countbykey">countByKey()</a></li>
+        <li><a href="#first">first()</a></li>
+        <li><a href="#taken">take(N)</a></li>
+        <li><a href="#takesamplewithreplacement-fract">takeSample(withReplacement, fract)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
+<h2 id="action-operator">Action Operator</h2>
+<h3 id="reducet-t---u">reduce((T, T) - U)</h3>
+<p>对整个结果集规约，最终生成一条数据，是整个数据集的总汇</p>
+<blockquote>
+<p>reduceByKey和reduce有什么区别：</p>
+<ol>
+<li>
+<p>reduce是action算子，reduceByKey是一个转换算子</p>
+</li>
+<li>
+<p>RDD里有一万条数据，大部分key是相同的，有10个不同的key生成10条数据</p>
+<p>reduce生成1条数据</p>
+</li>
+<li>
+<p>reduceByKey是按Key分组，然后把每组聚合</p>
+<p>reduce是针对一整个数据集进行聚合</p>
+</li>
+<li>
+<p>reduceByKey是对KV数据进行计算</p>
+<p>reduce可针对所有类型数据</p>
+</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>reduce算子是一个shuffle操作吗？</p>
+<ol>
+<li>
+<p>shuffle操作分为mapper和reducer，mapper将数据放入paritioner的函数计算，求得往哪个reducer里放</p>
+</li>
+<li>
+<p>reduce操作没有mapper和reducer，因为reduce算子会作用于RDD中的每个分区，然后分区求得局部结果，最终汇总到Driver中求得最终结果</p>
+</li>
+<li>
+<p>RDD有五大属性，partitioner在shuffle过程中使用</p>
+<p>paritioner只有kv型的RDD才有</p>
+</li>
+</ol>
+</blockquote>
+<h3 id="collect">collect()</h3>
+<p>以数组的形式返回数据集中所有元素</p>
+<h3 id="countbykey">countByKey()</h3>
+<p>count和countByKey</p>
+<ul>
+<li>countByKey结果：Map(Key -&gt; Key的count)</li>
+</ul>
+<blockquote>
+<p>调用Action会生成一个job，job会运行获取结果，所以在两个job中有大量的log</p>
+</blockquote>
+<blockquote>
+<p>数据倾斜：解决数据倾斜的问题，需要先通过countByKey查看Key对应的数量</p>
+</blockquote>
+<h3 id="first">first()</h3>
+<p>返回第一个元素</p>
+<h3 id="taken">take(N)</h3>
+<p>返回前N个元素</p>
+<h3 id="takesamplewithreplacement-fract">takeSample(withReplacement, fract)</h3>
+<p>类似于sample，区别这是action，直接返回结果</p>
 
   </article>
 <aside class="sidebar">
