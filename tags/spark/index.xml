@@ -70,8 +70,9 @@
 &lt;p&gt;返回第一个元素&lt;/p&gt;
 &lt;h3 id=&#34;taken&#34;&gt;take(N)&lt;/h3&gt;
 &lt;p&gt;返回前N个元素&lt;/p&gt;
-&lt;h3 id=&#34;takesamplewithreplacement-fract&#34;&gt;takeSample(withReplacement, fract)&lt;/h3&gt;
+&lt;h3 id=&#34;takesamplewithreplacement-num&#34;&gt;takeSample(withReplacement, num)&lt;/h3&gt;
 &lt;p&gt;类似于sample，区别这是action，直接返回结果&lt;/p&gt;
+&lt;p&gt;withReplacement：取数据有无放回&lt;/p&gt;
         
       </description>
     </item>
