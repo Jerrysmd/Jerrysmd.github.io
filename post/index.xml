@@ -102,7 +102,21 @@
 &lt;span class=&#34;ln&#34;&gt;21&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;//5. 关闭sc
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;22&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;sc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stop&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;23&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;rdd-feature&#34;&gt;RDD Feature&lt;/h2&gt;
+&lt;h3 id=&#34;rdds-shuffle-and-partition&#34;&gt;RDD&#39;s shuffle and partition&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;RDD经常需要通过读取外部系统的数据来创建，外部存储系统往往是支持分片的。RDD需要支持分区，来和外部系统的分片一一对应&lt;/li&gt;
+&lt;li&gt;RDD的分区是一个并行计算的实现手段&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;partition-function&#34;&gt;partition function&lt;/h4&gt;
+&lt;p&gt;RDD使用分区来分布式处理，当使用RDD读取数据时，会尽量在屋里上靠近数据源。比如读HDFS或Cassandra时，会尽量的保持RDD的分区和数据源的分区数，分区模式一一对应&lt;/p&gt;
+&lt;h4 id=&#34;partition-and-shuffle-relation&#34;&gt;partition and shuffle relation&lt;/h4&gt;
+&lt;p&gt;分区主要用来实现并行计算，和shuffle没什么关系，但数据处理时&lt;/p&gt;
+&lt;h4 id=&#34;shuffle-feature&#34;&gt;shuffle feature&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;只有KV型的RDD才会有Shuffle操作&lt;/li&gt;
+&lt;li&gt;早期版本spark的shuffle算法是 hash base shuffle，后来改为 sort base shuffle，更适合大吞吐量的场景&lt;/li&gt;
+&lt;/ul&gt;
         
       </description>
     </item>

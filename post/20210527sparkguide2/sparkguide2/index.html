@@ -188,6 +188,11 @@ src='https://plausible.io/js/plausible.js'>
     </li>
     <li><a href="#data-type-in-rdd">Data Type in RDD</a></li>
     <li><a href="#practice">Practice</a></li>
+    <li><a href="#rdd-feature">RDD Feature</a>
+      <ul>
+        <li><a href="#rdds-shuffle-and-partition">RDD's shuffle and partition</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
@@ -278,7 +283,21 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">21</span>    <span class="c1">//5. 关闭sc
 </span><span class="ln">22</span><span class="c1"></span>    <span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="o">()</span>
 <span class="ln">23</span><span class="o">}</span>
-</code></pre></div>
+</code></pre></div><h2 id="rdd-feature">RDD Feature</h2>
+<h3 id="rdds-shuffle-and-partition">RDD's shuffle and partition</h3>
+<ol>
+<li>RDD经常需要通过读取外部系统的数据来创建，外部存储系统往往是支持分片的。RDD需要支持分区，来和外部系统的分片一一对应</li>
+<li>RDD的分区是一个并行计算的实现手段</li>
+</ol>
+<h4 id="partition-function">partition function</h4>
+<p>RDD使用分区来分布式处理，当使用RDD读取数据时，会尽量在屋里上靠近数据源。比如读HDFS或Cassandra时，会尽量的保持RDD的分区和数据源的分区数，分区模式一一对应</p>
+<h4 id="partition-and-shuffle-relation">partition and shuffle relation</h4>
+<p>分区主要用来实现并行计算，和shuffle没什么关系，但数据处理时</p>
+<h4 id="shuffle-feature">shuffle feature</h4>
+<ul>
+<li>只有KV型的RDD才会有Shuffle操作</li>
+<li>早期版本spark的shuffle算法是 hash base shuffle，后来改为 sort base shuffle，更适合大吞吐量的场景</li>
+</ul>
 
   </article>
 <aside class="sidebar">
