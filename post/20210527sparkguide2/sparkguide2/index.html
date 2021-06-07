@@ -187,6 +187,7 @@ src='https://plausible.io/js/plausible.js'>
       </ul>
     </li>
     <li><a href="#data-type-in-rdd">Data Type in RDD</a></li>
+    <li><a href="#practice">Practice</a></li>
   </ul>
 </nav>
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
@@ -194,7 +195,7 @@ src='https://plausible.io/js/plausible.js'>
 <h3 id="reducet-t---u">reduce((T, T) - U)</h3>
 <p>对整个结果集规约，最终生成一条数据，是整个数据集的总汇</p>
 <blockquote>
-<p>reduceByKey和reduce有什么区别：</p>
+<p><strong>reduceByKey和reduce有什么区别：</strong></p>
 <ol>
 <li>
 <p>reduce是action算子，reduceByKey是一个转换算子</p>
@@ -212,9 +213,7 @@ src='https://plausible.io/js/plausible.js'>
 <p>reduce可针对所有类型数据</p>
 </li>
 </ol>
-</blockquote>
-<blockquote>
-<p>reduce算子是一个shuffle操作吗？</p>
+<p><strong>reduce算子是一个shuffle操作吗？</strong></p>
 <ol>
 <li>
 <p>shuffle操作分为mapper和reducer，mapper将数据放入paritioner的函数计算，求得往哪个reducer里放</p>
@@ -237,8 +236,6 @@ src='https://plausible.io/js/plausible.js'>
 </ul>
 <blockquote>
 <p>调用Action会生成一个job，job会运行获取结果，所以在两个job中有大量的log</p>
-</blockquote>
-<blockquote>
 <p>数据倾斜：解决数据倾斜的问题，需要先通过countByKey查看Key对应的数量</p>
 </blockquote>
 <h3 id="first">first()</h3>
@@ -257,6 +254,31 @@ src='https://plausible.io/js/plausible.js'>
 <li>KV类型</li>
 <li>数字类型</li>
 </ul>
+<h2 id="practice">Practice</h2>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="nd">@Test</span>
+<span class="ln"> 2</span><span class="k">def</span> <span class="n">process</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<span class="ln"> 3</span>    <span class="c1">//1. 创建sc对象
+</span><span class="ln"> 4</span><span class="c1"></span>    <span class="k">val</span> <span class="n">conf</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkConf</span><span class="o">().</span><span class="n">setMaster</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">).</span><span class="n">setAppName</span><span class="o">(</span><span class="s">&#34;practice&#34;</span><span class="o">)</span>
+<span class="ln"> 5</span>    <span class="k">val</span> <span class="n">sc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkContext</span><span class="o">(</span><span class="n">conf</span><span class="o">)</span>
+<span class="ln"> 6</span>    
+<span class="ln"> 7</span>    <span class="c1">//2. 读取文件
+</span><span class="ln"> 8</span><span class="c1"></span>    <span class="c1">//1,2010,1,1,0,4,NA,NA,NA,NA,-21,43,1021,-11,NW,1.79,0,0
+</span><span class="ln"> 9</span><span class="c1"></span>    <span class="k">val</span> <span class="n">source</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">textFile</span><span class="o">(</span><span class="s">&#34;dataset/parctive.csv&#34;</span><span class="o">)</span>
+<span class="ln">10</span>    
+<span class="ln">11</span>    <span class="c1">//3. 处理数据
+</span><span class="ln">12</span><span class="c1"></span>    <span class="k">val</span> <span class="n">resultRDD</span> <span class="k">=</span> <span class="n">source</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="o">((</span><span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34;,&#34;</span><span class="o">)(</span><span class="mi">1</span><span class="o">),</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34;,&#34;</span><span class="o">)(</span><span class="mi">2</span><span class="o">)),</span><span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34;,&#34;</span><span class="o">)(</span><span class="mi">6</span><span class="o">)))</span>
+<span class="ln">13</span>    <span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="nc">StringUtils</span><span class="o">.</span><span class="n">isNotEmpty</span><span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="n">_2</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span> <span class="n">item</span><span class="o">.</span><span class="n">_2</span><span class="o">.</span><span class="n">equalsIgnoreCase</span><span class="o">(</span><span class="s">&#34;NA&#34;</span><span class="o">))</span>
+<span class="ln">14</span>    <span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="n">_1</span><span class="o">,</span> <span class="n">item</span><span class="o">.</span><span class="n">_2</span><span class="o">.</span><span class="n">toInt</span><span class="o">))</span>
+<span class="ln">15</span>    <span class="o">.</span><span class="n">reduceByKey</span><span class="o">((</span><span class="n">curr</span><span class="o">,</span><span class="n">agg</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">curr</span> <span class="o">+</span> <span class="n">agg</span><span class="o">)</span>
+<span class="ln">16</span>    <span class="o">.</span><span class="n">sortBy</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">_2</span><span class="o">,</span> <span class="n">ascending</span> <span class="k">=</span> <span class="kc">false</span><span class="o">)</span>
+<span class="ln">17</span>    
+<span class="ln">18</span>    <span class="c1">//4. 获取结果
+</span><span class="ln">19</span><span class="c1"></span>    <span class="n">resultRDD</span><span class="o">.</span><span class="n">take</span><span class="o">(</span><span class="mi">10</span><span class="o">).</span><span class="n">foreach</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="n">item</span><span class="o">))</span>
+<span class="ln">20</span>    
+<span class="ln">21</span>    <span class="c1">//5. 关闭sc
+</span><span class="ln">22</span><span class="c1"></span>    <span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="o">()</span>
+<span class="ln">23</span><span class="o">}</span>
+</code></pre></div>
 
   </article>
 <aside class="sidebar">
