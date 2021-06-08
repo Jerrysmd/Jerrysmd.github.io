@@ -139,7 +139,7 @@ src='https://plausible.io/js/plausible.js'>
 </svg></span>
     <span class="post_date">
       May 27, 2021</span>
-    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
+    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
         </a><a href='https://Jerrysmd.github.io/tags/spark' title="spark" class="post_tag button button_translucent">spark
         </a>
     </span>
@@ -292,12 +292,16 @@ src='https://plausible.io/js/plausible.js'>
 <h4 id="partition-function">partition function</h4>
 <p>RDD使用分区来分布式处理，当使用RDD读取数据时，会尽量在屋里上靠近数据源。比如读HDFS或Cassandra时，会尽量的保持RDD的分区和数据源的分区数，分区模式一一对应</p>
 <h4 id="partition-and-shuffle-relation">partition and shuffle relation</h4>
-<p>分区主要用来实现并行计算，和shuffle没什么关系，但数据处理时</p>
+<p>分区主要用来实现并行计算，和shuffle没什么关系，但数据处理时，例如reduceByKey，groupByKey等聚合操作，需要把Key相同的Value拉取到一起进行计算，这个时候因为这些Key的相同的Value可能会在不同的分区，所以理解分区才能理解shuffle的根本原理</p>
 <h4 id="shuffle-feature">shuffle feature</h4>
 <ul>
 <li>只有KV型的RDD才会有Shuffle操作</li>
 <li>早期版本spark的shuffle算法是 hash base shuffle，后来改为 sort base shuffle，更适合大吞吐量的场景</li>
 </ul>
+<h4 id="check-partition">check partition</h4>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">conf</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkConf</span><span class="o">().</span><span class="n">setMaster</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">).</span><span class="n">setAppName</span><span class="o">(</span><span class="s">&#34;practice&#34;</span><span class="o">)</span><span class="c1">//开启6
+</span><span class="ln">2</span><span class="c1"></span><span class="k">val</span> <span class="n">sc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkContext</span><span class="o">(</span><span class="n">conf</span><span class="o">)</span>
+</code></pre></div>
 
   </article>
 <aside class="sidebar">
