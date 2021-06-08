@@ -291,6 +291,9 @@ src='https://plausible.io/js/plausible.js'>
 </ol>
 <h4 id="partition-function">partition function</h4>
 <p>RDD使用分区来分布式处理，当使用RDD读取数据时，会尽量在屋里上靠近数据源。比如读HDFS或Cassandra时，会尽量的保持RDD的分区和数据源的分区数，分区模式一一对应</p>
+<h4 id="shuffle">shuffle</h4>
+<p>从mapper端到reducer端</p>
+<p>Spark支持宽依赖的转换，例如groupByKey和reduceByKey。在这些依赖项中，计算单个分区中的记录所需的数据可以来自于父数据集的许多分区中。要执行这些转换，具有相同key的所有元组必须最终位于同一分区中，由同一任务处理。为了满足这一要求，Spark产生一个shuffle，它在集群内部传输数据，并产生一个带有一组新分区的新stage。</p>
 <h4 id="partition-and-shuffle-relation">partition and shuffle relation</h4>
 <p>分区主要用来实现并行计算，和shuffle没什么关系，但数据处理时，例如reduceByKey，groupByKey等聚合操作，需要把Key相同的Value拉取到一起进行计算，这个时候因为这些Key的相同的Value可能会在不同的分区，所以理解分区才能理解shuffle的根本原理</p>
 <h4 id="shuffle-feature">shuffle feature</h4>
@@ -308,11 +311,16 @@ src='https://plausible.io/js/plausible.js'>
 </code></pre></div><ol start="2">
 <li>通过读取文件创建的时候指定分区数</li>
 </ol>
-<p>查看方法</p>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">rdd1</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">6</span><span class="o">,</span> <span class="mi">7</span><span class="o">),</span> <span class="mi">3</span><span class="o">)</span>	<span class="c1">//指定分区数3
+</span><span class="ln">2</span><span class="c1"></span><span class="k">val</span> <span class="n">rdd2</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">testFile</span><span class="o">(</span><span class="s">&#34;hdfs://node01:8020/data/test.txt&#34;</span><span class="o">,</span> <span class="mi">6</span><span class="o">)</span>	<span class="c1">//这里指定的是最小分区数6
+</span></code></pre></div><p>查看方法</p>
 <ol>
 <li>通过WebUI查看。端口：4040</li>
 <li>通过partitions来查看。rdd1.partitions.size</li>
 </ol>
+<h4 id="重分区">重分区</h4>
+<p>coalesce(num, true)</p>
+<p>repartitions(num)</p>
 
   </article>
 <aside class="sidebar">
