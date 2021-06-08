@@ -299,9 +299,20 @@ src='https://plausible.io/js/plausible.js'>
 <li>早期版本spark的shuffle算法是 hash base shuffle，后来改为 sort base shuffle，更适合大吞吐量的场景</li>
 </ul>
 <h4 id="check-partition">check partition</h4>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">conf</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkConf</span><span class="o">().</span><span class="n">setMaster</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">).</span><span class="n">setAppName</span><span class="o">(</span><span class="s">&#34;practice&#34;</span><span class="o">)</span><span class="c1">//开启6
+<p>指定分区数</p>
+<ol>
+<li>通过本地集合创建的时候指定分区数</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">conf</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkConf</span><span class="o">().</span><span class="n">setMaster</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">).</span><span class="n">setAppName</span><span class="o">(</span><span class="s">&#34;practice&#34;</span><span class="o">)</span><span class="c1">//创建App并开启6个分区
 </span><span class="ln">2</span><span class="c1"></span><span class="k">val</span> <span class="n">sc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkContext</span><span class="o">(</span><span class="n">conf</span><span class="o">)</span>
-</code></pre></div>
+</code></pre></div><ol start="2">
+<li>通过读取文件创建的时候指定分区数</li>
+</ol>
+<p>查看方法</p>
+<ol>
+<li>通过WebUI查看。端口：4040</li>
+<li>通过partitions来查看。rdd1.partitions.size</li>
+</ol>
 
   </article>
 <aside class="sidebar">
