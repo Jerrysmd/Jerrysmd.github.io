@@ -294,6 +294,15 @@ src='https://plausible.io/js/plausible.js'>
 <h4 id="shuffle">shuffle</h4>
 <p>从mapper端到reducer端</p>
 <p>Spark支持宽依赖的转换，例如groupByKey和reduceByKey。在这些依赖项中，计算单个分区中的记录所需的数据可以来自于父数据集的许多分区中。要执行这些转换，具有相同key的所有元组必须最终位于同一分区中，由同一任务处理。为了满足这一要求，Spark产生一个shuffle，它在集群内部传输数据，并产生一个带有一组新分区的新stage。</p>
+<ul>
+<li>Hash base shuffle</li>
+</ul>
+<p>Reduce 找到每个Mapper中对应自己哈希桶拉取数据</p>
+<p>缺点：过多占用资源占用</p>
+<ul>
+<li>Sort base shuffle</li>
+</ul>
+<p>先按照partition ID 排序， 后按照Key的HashCode排序</p>
 <h4 id="partition-and-shuffle-relation">partition and shuffle relation</h4>
 <p>分区主要用来实现并行计算，和shuffle没什么关系，但数据处理时，例如reduceByKey，groupByKey等聚合操作，需要把Key相同的Value拉取到一起进行计算，这个时候因为这些Key的相同的Value可能会在不同的分区，所以理解分区才能理解shuffle的根本原理</p>
 <h4 id="shuffle-feature">shuffle feature</h4>
