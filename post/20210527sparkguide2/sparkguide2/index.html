@@ -191,6 +191,7 @@ src='https://plausible.io/js/plausible.js'>
     <li><a href="#rdd-feature">RDD Feature</a>
       <ul>
         <li><a href="#rdds-shuffle-and-partition">RDD's shuffle and partition</a></li>
+        <li><a href="#rdd-cache">RDD Cache</a></li>
       </ul>
     </li>
   </ul>
@@ -330,6 +331,16 @@ src='https://plausible.io/js/plausible.js'>
 <h4 id="重分区">重分区</h4>
 <p>coalesce(num, true)</p>
 <p>repartitions(num)</p>
+<h3 id="rdd-cache">RDD Cache</h3>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="c1">//1. 取出IP
+</span><span class="ln">2</span><span class="c1"></span><span class="k">val</span> <span class="n">countRDD</span> <span class="k">=</span> <span class="n">source</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">)(</span><span class="mi">0</span><span class="o">),</span> <span class="mi">1</span><span class="o">))</span>
+<span class="ln">3</span><span class="c1">//2. 数据清洗
+</span><span class="ln">4</span><span class="c1"></span><span class="k">val</span> <span class="n">cleanRDD</span> <span class="k">=</span> <span class="n">countRDD</span><span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="nc">StingUtils</span><span class="o">.</span><span class="n">isNotEmpty</span><span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="n">_1</span><span class="o">))</span>
+<span class="ln">5</span><span class="c1">//3. 统计ip的出现次数
+</span><span class="ln">6</span><span class="c1"></span><span class="k">val</span> <span class="n">aggRDD</span> <span class="k">=</span> <span class="n">cleanRDD</span><span class="o">.</span><span class="n">reduceBykey</span><span class="o">((</span><span class="n">curr</span><span class="o">,</span><span class="n">agg</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">curr</span> <span class="o">+</span> <span class="n">agg</span><span class="o">)</span>
+<span class="ln">7</span><span class="c1">//4. 统计出现最少的ip
+</span><span class="ln">8</span><span class="c1"></span><span class="k">val</span> <span class="n">leastIP</span> 
+</code></pre></div>
 
   </article>
 <aside class="sidebar">
