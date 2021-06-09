@@ -341,8 +341,11 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln"> 7</span><span class="c1">//4. 统计出现最少的ip
 </span><span class="ln"> 8</span><span class="c1"></span><span class="k">val</span> <span class="n">leastIP</span> <span class="k">=</span> <span class="n">aggRDD</span><span class="o">.</span><span class="n">sortBy</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">_2</span><span class="o">,</span> <span class="n">ascending</span> <span class="k">=</span> <span class="kc">true</span><span class="o">).</span><span class="n">first</span><span class="o">()</span>
 <span class="ln"> 9</span><span class="c1">//5. 统计出现最多的ip
-</span><span class="ln">10</span><span class="c1"></span><span class="k">val</span>
-</code></pre></div>
+</span><span class="ln">10</span><span class="c1"></span><span class="k">val</span> <span class="n">mostIP</span> <span class="k">=</span> <span class="n">aggRDD</span><span class="o">.</span><span class="n">sortBy</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">_2</span><span class="o">,</span> <span class="n">ascending</span> <span class="k">=</span> <span class="kc">false</span><span class="o">).</span><span class="n">first</span><span class="o">()</span>
+<span class="ln">11</span>
+<span class="ln">12</span><span class="n">println</span><span class="o">(</span><span class="n">leastIP</span><span class="o">,</span> <span class="n">mostIP</span><span class="o">)</span>
+</code></pre></div><p>第一次统计job（一个Action算子）执行了两个shuffle(reduceByKey，sortByKey)</p>
+<p>第二次统计job（一个Action算子）执行了两个shuffle(reduceByKey，sortByKey)</p>
 
   </article>
 <aside class="sidebar">
