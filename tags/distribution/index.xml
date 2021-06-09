@@ -226,7 +226,7 @@
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;先序列化&lt;/td&gt;
-&lt;td&gt;false:对象 / true:序列化过后的值&lt;/td&gt;
+&lt;td&gt;false:存储对象 / true:存储序列化过后的二进制值&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;是否副本&lt;/td&gt;
