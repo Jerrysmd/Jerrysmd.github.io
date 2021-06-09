@@ -139,7 +139,7 @@ src='https://plausible.io/js/plausible.js'>
 </svg></span>
     <span class="post_date">
       May 27, 2021</span>
-    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
+    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
         </a><a href='https://Jerrysmd.github.io/tags/spark' title="spark" class="post_tag button button_translucent">spark
         </a>
     </span>
@@ -353,8 +353,39 @@ src='https://plausible.io/js/plausible.js'>
 <p><strong>使用缓存的意义：</strong></p>
 <ol>
 <li>减少shuffle操作</li>
-<li>容错，减少：rdd1-&gt;rdd2-&gt;rdd3，若rdd3算错会再次计算rdd1和rdd2整个流程。</li>
+<li>容错，减少开销：rdd1-&gt;rdd2-&gt;rdd3，若rdd3算错会再次计算rdd1和rdd2整个流程。</li>
 </ol>
+<p><strong>缓存API:</strong></p>
+<p>cache()或persist(null/level)</p>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="c1">//1. 处理
+</span><span class="ln"> 2</span><span class="c1"></span><span class="k">val</span> <span class="n">countRDD</span> <span class="k">=</span> <span class="n">source</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">)(</span><span class="mi">0</span><span class="o">),</span> <span class="mi">1</span><span class="o">))</span>
+<span class="ln"> 3</span><span class="k">val</span> <span class="n">cleanRDD</span> <span class="k">=</span> <span class="n">countRDD</span><span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="nc">StingUtils</span><span class="o">.</span><span class="n">isNotEmpty</span><span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="n">_1</span><span class="o">))</span>
+<span class="ln"> 4</span><span class="k">val</span> <span class="n">aggRDD</span> <span class="k">=</span> <span class="n">cleanRDD</span><span class="o">.</span><span class="n">reduceBykey</span><span class="o">((</span><span class="n">curr</span><span class="o">,</span><span class="n">agg</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">curr</span> <span class="o">+</span> <span class="n">agg</span><span class="o">)</span>
+<span class="ln"> 5</span>
+<span class="ln"> 6</span><span class="c1">//2. cache
+</span><span class="ln"> 7</span><span class="c1"></span><span class="n">aggRDD</span> <span class="k">=</span> <span class="n">aggRDD</span><span class="o">.</span><span class="n">cache</span><span class="o">()</span>
+<span class="ln"> 8</span>
+<span class="ln"> 9</span><span class="c1">//3. 两个RDD的action操作
+</span><span class="ln">10</span><span class="c1"></span><span class="k">val</span> <span class="n">leastIP</span> <span class="k">=</span> <span class="n">aggRDD</span><span class="o">.</span><span class="n">sortBy</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">_2</span><span class="o">,</span> <span class="n">ascending</span> <span class="k">=</span> <span class="kc">true</span><span class="o">).</span><span class="n">first</span><span class="o">()</span>
+<span class="ln">11</span><span class="k">val</span> <span class="n">mostIP</span> <span class="k">=</span> <span class="n">aggRDD</span><span class="o">.</span><span class="n">sortBy</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">_2</span><span class="o">,</span> <span class="n">ascending</span> <span class="k">=</span> <span class="kc">false</span><span class="o">).</span><span class="n">first</span><span class="o">()</span>
+<span class="ln">12</span>
+<span class="ln">13</span><span class="n">println</span><span class="o">(</span><span class="n">leastIP</span><span class="o">,</span> <span class="n">mostIP</span><span class="o">)</span>
+<span class="ln">14</span><span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="o">()</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="c1">//1. 处理
+</span><span class="ln"> 2</span><span class="c1"></span><span class="k">val</span> <span class="n">countRDD</span> <span class="k">=</span> <span class="n">source</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">)(</span><span class="mi">0</span><span class="o">),</span> <span class="mi">1</span><span class="o">))</span>
+<span class="ln"> 3</span><span class="k">val</span> <span class="n">cleanRDD</span> <span class="k">=</span> <span class="n">countRDD</span><span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="nc">StingUtils</span><span class="o">.</span><span class="n">isNotEmpty</span><span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="n">_1</span><span class="o">))</span>
+<span class="ln"> 4</span><span class="k">val</span> <span class="n">aggRDD</span> <span class="k">=</span> <span class="n">cleanRDD</span><span class="o">.</span><span class="n">reduceBykey</span><span class="o">((</span><span class="n">curr</span><span class="o">,</span><span class="n">agg</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">curr</span> <span class="o">+</span> <span class="n">agg</span><span class="o">)</span>
+<span class="ln"> 5</span>
+<span class="ln"> 6</span><span class="c1">//2. cache
+</span><span class="ln"> 7</span><span class="c1"></span><span class="n">aggRDD</span> <span class="k">=</span> <span class="n">aggRDD</span><span class="o">.</span><span class="n">persist</span><span class="o">(</span><span class="n">storageLevel</span><span class="o">.</span><span class="nc">MEMORY_ONLY</span><span class="o">)</span>
+<span class="ln"> 8</span>
+<span class="ln"> 9</span><span class="c1">//3. 两个RDD的action操作
+</span><span class="ln">10</span><span class="c1"></span><span class="k">val</span> <span class="n">leastIP</span> <span class="k">=</span> <span class="n">aggRDD</span><span class="o">.</span><span class="n">sortBy</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">_2</span><span class="o">,</span> <span class="n">ascending</span> <span class="k">=</span> <span class="kc">true</span><span class="o">).</span><span class="n">first</span><span class="o">()</span>
+<span class="ln">11</span><span class="k">val</span> <span class="n">mostIP</span> <span class="k">=</span> <span class="n">aggRDD</span><span class="o">.</span><span class="n">sortBy</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">_2</span><span class="o">,</span> <span class="n">ascending</span> <span class="k">=</span> <span class="kc">false</span><span class="o">).</span><span class="n">first</span><span class="o">()</span>
+<span class="ln">12</span>
+<span class="ln">13</span><span class="n">println</span><span class="o">(</span><span class="n">leastIP</span><span class="o">,</span> <span class="n">mostIP</span><span class="o">)</span>
+<span class="ln">14</span><span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="o">()</span>
+</code></pre></div>
 
   </article>
 <aside class="sidebar">
