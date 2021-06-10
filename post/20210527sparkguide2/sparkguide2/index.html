@@ -394,8 +394,13 @@ src='https://plausible.io/js/plausible.js'>
 <p>edits中主要存放Editlog，FsImage保存了当前系统中所有目录和文件的信息，这个FsImage其实就是一个Checkpoint。</p>
 <ol>
 <li>每一次修改文件的时候，都会在Edits中添加一条记录。</li>
-<li>在一定条件满足的情况下，把edits删掉添加一个新的FSimage，包含了系统当前最新的状态。</li>
+<li>在一定条件满足的情况下，把edits删掉添加一个新的FSimage，包含了系统当前最新的状态。好处：增加速度，提高稳定性</li>
 </ol>
+<blockquote>
+<p><strong>Checkpoint和Cache的区别：</strong></p>
+<p>Cache可以吧RDD计算出来放到内存中，但RDD的依赖链(相当于NameNode中的Edits日志)是不能丢的，若出现错误，只能重计算出来。</p>
+<p>Checkpoint把结果存放在HDFS这类存储中，就变成了可靠的数据，如果出错了，则通过复制HDFS中的文件来实现容错。</p>
+</blockquote>
 
   </article>
 <aside class="sidebar">
