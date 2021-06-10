@@ -208,6 +208,12 @@
 &lt;p&gt;MEMORY_ONLY_SER: 更加节省空间&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Checkpoint：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;斩断RDD的依赖链，并且将数据存储在可靠的存储引擎中，例如HDFS&lt;/p&gt;
+&lt;p&gt;HDFS的NameNode中主要职责就是维护两个文件，一个是edits，另一个是fsimage。&lt;/p&gt;
+&lt;p&gt;edits中主要存放Editlog，FsImage保存了当前系统中所有目录和文件的信息，这个FsImage其实就是一个Checkpoint。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;每一次修改文件的时候，都会在Edits中添加一条记录。&lt;/li&gt;
+&lt;li&gt;在一定条件满足的情况下，把edits删掉添加一个新的FSimage，包含了系统当前最新的状态。&lt;/li&gt;
+&lt;/ol&gt;
         
       </description>
     </item>

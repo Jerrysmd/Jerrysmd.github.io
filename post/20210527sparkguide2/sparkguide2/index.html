@@ -390,6 +390,12 @@ src='https://plausible.io/js/plausible.js'>
 <p>MEMORY_ONLY_SER: 更加节省空间</p>
 <p><strong>Checkpoint：</strong></p>
 <p>斩断RDD的依赖链，并且将数据存储在可靠的存储引擎中，例如HDFS</p>
+<p>HDFS的NameNode中主要职责就是维护两个文件，一个是edits，另一个是fsimage。</p>
+<p>edits中主要存放Editlog，FsImage保存了当前系统中所有目录和文件的信息，这个FsImage其实就是一个Checkpoint。</p>
+<ol>
+<li>每一次修改文件的时候，都会在Edits中添加一条记录。</li>
+<li>在一定条件满足的情况下，把edits删掉添加一个新的FSimage，包含了系统当前最新的状态。</li>
+</ol>
 
   </article>
 <aside class="sidebar">
