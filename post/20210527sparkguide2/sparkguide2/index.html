@@ -386,36 +386,10 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">13</span><span class="n">println</span><span class="o">(</span><span class="n">leastIP</span><span class="o">,</span> <span class="n">mostIP</span><span class="o">)</span>
 <span class="ln">14</span><span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="o">()</span>
 </code></pre></div><p><strong>缓存级别：</strong></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>磁盘缓存</td>
-<td></td>
-</tr>
-<tr>
-<td>内存缓存</td>
-<td></td>
-</tr>
-<tr>
-<td>堆外缓存</td>
-<td></td>
-</tr>
-<tr>
-<td>先序列化</td>
-<td>false:存储对象 / true:存储序列化过后的二进制值</td>
-</tr>
-<tr>
-<td>是否副本</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<p>MEMORY_ONLY: CPU效率最高</p>
+<p>MEMORY_ONLY_SER: 更加节省空间</p>
+<p><strong>Checkpoint：</strong></p>
+<p>斩断RDD的依赖链，并且将数据存储在可靠的存储引擎中，例如HDFS</p>
 
   </article>
 <aside class="sidebar">
