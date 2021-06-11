@@ -402,6 +402,7 @@ src='https://plausible.io/js/plausible.js'>
 <p>Checkpoint把结果存放在HDFS这类存储中，就变成了可靠的数据，如果出错了，则通过复制HDFS中的文件来实现容错。</p>
 </blockquote>
 <p><strong>如何使用：</strong></p>
+<p>两步：</p>
 <div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">val</span> <span class="n">conf</span> <span class="k">=</span> <span class="k">new</span><span class="o">.</span><span class="nc">SparkConf</span><span class="o">().</span><span class="n">setMaster</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">).</span><span class="n">setAppName</span><span class="o">(</span><span class="s">&#34;debug_string&#34;</span><span class="o">)</span>
 <span class="ln"> 2</span><span class="c1">//1. setCheckPointDir
 </span><span class="ln"> 3</span><span class="c1"></span><span class="n">sc</span><span class="o">.</span><span class="n">setCheckpointDir</span><span class="o">(</span><span class="s">&#34;checkpoint&#34;</span><span class="o">)</span>
@@ -415,7 +416,7 @@ src='https://plausible.io/js/plausible.js'>
 </span><span class="ln">11</span><span class="c1"></span><span class="n">interimRDD</span><span class="o">.</span><span class="n">checkpoint</span><span class="o">()</span>
 <span class="ln">12</span><span class="n">interimRDD</span><span class="o">.</span><span class="n">collect</span><span class="o">().</span><span class="n">foreach</span><span class="o">(</span><span class="n">println</span><span class="o">(</span><span class="k">_</span><span class="o">))</span>
 <span class="ln">13</span>
-<span class="ln">14</span>
+<span class="ln">14</span><span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="o">()</span>
 </code></pre></div>
 
   </article>
