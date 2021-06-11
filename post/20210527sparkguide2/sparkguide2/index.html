@@ -192,8 +192,10 @@ src='https://plausible.io/js/plausible.js'>
       <ul>
         <li><a href="#rdds-shuffle-and-partition">RDD's shuffle and partition</a></li>
         <li><a href="#rdd-cache">RDD Cache</a></li>
+        <li><a href="#checkpoint">Checkpoint</a></li>
       </ul>
     </li>
+    <li><a href="#spark">Spark</a></li>
   </ul>
 </nav>
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
@@ -388,7 +390,7 @@ src='https://plausible.io/js/plausible.js'>
 </code></pre></div><p><strong>缓存级别：</strong></p>
 <p>MEMORY_ONLY: CPU效率最高</p>
 <p>MEMORY_ONLY_SER: 更加节省空间</p>
-<p><strong>Checkpoint：</strong></p>
+<h3 id="checkpoint">Checkpoint</h3>
 <p>斩断RDD的依赖链，并且将数据存储在可靠的存储引擎中，例如HDFS</p>
 <p>HDFS的NameNode中主要职责就是维护两个文件，一个是edits，另一个是fsimage。</p>
 <p>edits中主要存放Editlog，FsImage保存了当前系统中所有目录和文件的信息，这个FsImage其实就是一个Checkpoint。</p>
@@ -412,12 +414,12 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln"> 7</span>				<span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="nc">StringUtils</span><span class="o">.</span><span class="n">isNotBlank</span><span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="n">_1</span><span class="o">))</span>
 <span class="ln"> 8</span>				<span class="o">.</span><span class="n">reduceByKey</span><span class="o">((</span><span class="n">curr</span><span class="o">,</span> <span class="n">agg</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">curr</span> <span class="o">+</span> <span class="n">agg</span><span class="o">)</span>
 <span class="ln"> 9</span>
-<span class="ln">10</span><span class="c1">//2. setCheckPoint：是一个action操作，也就是说如果调用checkpoint，则会重新计算一下RDD，然后把结果存在HDFS或者本地
+<span class="ln">10</span><span class="c1">//2. setCheckPoint：是一个action操作，也就是说如果调用checkpoint，则会重新计算一下RDD，然后把结果存在HDFS或者本地目录中
 </span><span class="ln">11</span><span class="c1"></span><span class="n">interimRDD</span><span class="o">.</span><span class="n">checkpoint</span><span class="o">()</span>
 <span class="ln">12</span><span class="n">interimRDD</span><span class="o">.</span><span class="n">collect</span><span class="o">().</span><span class="n">foreach</span><span class="o">(</span><span class="n">println</span><span class="o">(</span><span class="k">_</span><span class="o">))</span>
 <span class="ln">13</span>
 <span class="ln">14</span><span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="o">()</span>
-</code></pre></div>
+</code></pre></div><h2 id="spark">Spark</h2>
 
   </article>
 <aside class="sidebar">
