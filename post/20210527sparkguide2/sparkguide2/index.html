@@ -404,7 +404,7 @@ src='https://plausible.io/js/plausible.js'>
 <p><strong>如何使用：</strong></p>
 <p>两步：</p>
 <div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">val</span> <span class="n">conf</span> <span class="k">=</span> <span class="k">new</span><span class="o">.</span><span class="nc">SparkConf</span><span class="o">().</span><span class="n">setMaster</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">).</span><span class="n">setAppName</span><span class="o">(</span><span class="s">&#34;debug_string&#34;</span><span class="o">)</span>
-<span class="ln"> 2</span><span class="c1">//1. setCheckPointDir
+<span class="ln"> 2</span><span class="c1">//1. setCheckPointDir：设置保存目录，也可以设置为HDFS上的目录
 </span><span class="ln"> 3</span><span class="c1"></span><span class="n">sc</span><span class="o">.</span><span class="n">setCheckpointDir</span><span class="o">(</span><span class="s">&#34;checkpoint&#34;</span><span class="o">)</span>
 <span class="ln"> 4</span>
 <span class="ln"> 5</span><span class="k">val</span> <span class="n">interimRDD</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">textFile</span><span class="o">(</span><span class="s">&#34;dataset/test.txt&#34;</span><span class="o">)</span>
@@ -412,7 +412,7 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln"> 7</span>				<span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="nc">StringUtils</span><span class="o">.</span><span class="n">isNotBlank</span><span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="n">_1</span><span class="o">))</span>
 <span class="ln"> 8</span>				<span class="o">.</span><span class="n">reduceByKey</span><span class="o">((</span><span class="n">curr</span><span class="o">,</span> <span class="n">agg</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">curr</span> <span class="o">+</span> <span class="n">agg</span><span class="o">)</span>
 <span class="ln"> 9</span>
-<span class="ln">10</span><span class="c1">//2. setCheckPoint
+<span class="ln">10</span><span class="c1">//2. setCheckPoint：是一个action操作，也就是说如果调用checkpoint，则会重新计算一下RDD，然后把结果存在HDFS或者本地
 </span><span class="ln">11</span><span class="c1"></span><span class="n">interimRDD</span><span class="o">.</span><span class="n">checkpoint</span><span class="o">()</span>
 <span class="ln">12</span><span class="n">interimRDD</span><span class="o">.</span><span class="n">collect</span><span class="o">().</span><span class="n">foreach</span><span class="o">(</span><span class="n">println</span><span class="o">(</span><span class="k">_</span><span class="o">))</span>
 <span class="ln">13</span>
