@@ -195,7 +195,7 @@ src='https://plausible.io/js/plausible.js'>
         <li><a href="#checkpoint">Checkpoint</a></li>
       </ul>
     </li>
-    <li><a href="#spark">Spark</a></li>
+    <li><a href="#spark-running-process">Spark Running Process</a></li>
   </ul>
 </nav>
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
@@ -419,7 +419,21 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">12</span><span class="n">interimRDD</span><span class="o">.</span><span class="n">collect</span><span class="o">().</span><span class="n">foreach</span><span class="o">(</span><span class="n">println</span><span class="o">(</span><span class="k">_</span><span class="o">))</span>
 <span class="ln">13</span>
 <span class="ln">14</span><span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="o">()</span>
-</code></pre></div><h2 id="spark">Spark</h2>
+</code></pre></div><h2 id="spark-running-process">Spark Running Process</h2>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="c1">//1. 创建sc对象
+</span><span class="ln"> 2</span><span class="c1">//2. 创建数据集
+</span><span class="ln"> 3</span><span class="c1"></span><span class="k">val</span> <span class="n">textRDD</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="s">&#34;hadoop spark&#34;</span><span class="o">,</span> <span class="s">&#34;hadoop flume&#34;</span><span class="o">,</span> <span class="s">&#34;spark soo&#34;</span><span class="o">))</span>
+<span class="ln"> 4</span><span class="c1">//3. 数据处理
+</span><span class="ln"> 5</span><span class="c1">//	1.拆词2.赋予初始词频3.聚合4.将结果转为字符串
+</span><span class="ln"> 6</span><span class="c1"></span><span class="k">val</span> <span class="n">splitRDD</span> <span class="k">=</span> <span class="n">textRDD</span><span class="o">.</span><span class="n">flatMap</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
+<span class="ln"> 7</span><span class="k">val</span> <span class="n">tupleRDD</span> <span class="k">=</span> <span class="n">splitRDD</span><span class="o">.</span><span class="n">map</span><span class="o">((</span><span class="k">_</span><span class="o">,</span> <span class="mi">1</span><span class="o">))</span>
+<span class="ln"> 8</span><span class="k">val</span> <span class="n">reduceRDD</span> <span class="k">=</span> <span class="n">tupleRDD</span><span class="o">.</span><span class="n">reduceByKey</span><span class="o">(</span><span class="k">_</span> <span class="o">+</span> <span class="k">_</span><span class="o">)</span>
+<span class="ln"> 9</span><span class="k">val</span> <span class="n">strRDD</span> <span class="k">=</span> <span class="n">reduceRDD</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="s">s&#34;</span><span class="si">${</span><span class="n">item</span><span class="o">.</span><span class="n">_1</span><span class="si">}</span><span class="s">, </span><span class="si">${</span><span class="n">item</span><span class="o">.</span><span class="n">_2</span><span class="si">}</span><span class="s">&#34;</span><span class="o">)</span>
+<span class="ln">10</span><span class="c1">//4. 结果获取
+</span><span class="ln">11</span><span class="c1"></span><span class="n">strRDD</span><span class="o">.</span><span class="n">collect</span><span class="o">().</span><span class="n">foreach</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="k">_</span><span class="o">))</span>
+<span class="ln">12</span><span class="c1">//5. 关闭sc
+</span><span class="ln">13</span><span class="c1"></span><span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="o">())</span>
+</code></pre></div>
 
   </article>
 <aside class="sidebar">
