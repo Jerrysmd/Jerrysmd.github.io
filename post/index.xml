@@ -5,7 +5,51 @@
     <link>https://Jerrysmd.github.io/post/</link>
     <description>Recent content in Posts on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 27 May 2021 17:20:52 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 15 Jun 2021 09:26:00 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hive重点: Hive Key Points</title>
+      <link>https://Jerrysmd.github.io/post/20210615hivekeypoint/hivekeypoint/</link>
+      <pubDate>Tue, 15 Jun 2021 09:26:00 +0800</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/20210615hivekeypoint/hivekeypoint/</guid>
+      <description>
+        
+          &lt;p&gt;Hive is a Hadoop-based data warehouse tool that maps structured data files into a database table and provides complete SQL query functionality that converts SQL statements into MapReduce tasks for execution. It is very suitable for statistical analysis of data warehouse.&lt;/p&gt;
+&lt;h3 id=&#34;hive的两张表关联使用mapreduce怎么实现&#34;&gt;Hive的两张表关联，使用MapReduce怎么实现？&lt;/h3&gt;
+&lt;p&gt;如果其中有一张表为小表，直接使用map端join的方式（map端加载小表）进行聚合。&lt;/p&gt;
+&lt;p&gt;如果两张都是大表，那么采用联合key，联合key的第一个组成部分是join on中的公共字段，第二部分是一个flag，0代表表A，1代表表B，由此让Reduce区分客户信息和订单信息；在Mapper中同时处理两张表的信息，将join on公共字段相同的数据划分到同一个分区中，进而传递到一个Reduce中，然后在Reduce中实现聚合。&lt;/p&gt;
+&lt;h3 id=&#34;hive的特点hive和rdbms有什么异同&#34;&gt;Hive的特点，Hive和RDBMS有什么异同？&lt;/h3&gt;
+&lt;p&gt;hive是基于Hadoop的一个数据仓库工具，可以将结构化的数据文件映射为一张数据库表，并提供完整的sql查询功能，可以将sql语句转换为MapReduce任务进行运行。其优点是学习成本低，可以通过类SQL语句快速实现简单的MapReduce统计，不必开发专门的MapReduce应用，十分适合数据仓库的统计分析，但是Hive不支持实时查询。&lt;/p&gt;
+&lt;p&gt;Hive与关系型数据库的区别：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20210615hiveKeyPoint/hqlDifferents.png&#34; alt=&#34;hqlDifferents&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;hive中-sort-byorder-bycluster-bydistrbute-by各代表什么意思&#34;&gt;hive中 Sort By，Order By，Cluster By，Distrbute By各代表什么意思？&lt;/h3&gt;
+&lt;p&gt;Order by：会对输入做全局排序，因此只有一个reducer（多个reducer无法保证全局有序）。只有一个reducer，会导致当输入规模较大时，需要较长的计算时间。&lt;/p&gt;
+&lt;p&gt;Sort by：不是全局排序，其在数据进入reducer前完成排序。&lt;/p&gt;
+&lt;p&gt;Distribute by：按照指定的字段对数据进行划分输出到不同的reduce中。&lt;/p&gt;
+&lt;p&gt;Cluster by：除了具有 distribute by 的功能外还兼具 sort by 的功能。&lt;/p&gt;
+&lt;h3 id=&#34;hive中splitcoalesce及collect_list函数的用法举例&#34;&gt;Hive中split、coalesce及collect_list函数的用法（举例）？&lt;/h3&gt;
+&lt;p&gt;split将字符串转化为数组，即：split(&#39;a,b,c,d&#39; , &#39;,&#39;) ==&amp;gt; [&amp;quot;a&amp;quot;,&amp;quot;b&amp;quot;,&amp;quot;c&amp;quot;,&amp;quot;d&amp;quot;]。&lt;/p&gt;
+&lt;p&gt;coalesce(T v1, T v2, …) 返回参数中的第一个非空值；如果所有值都为 NULL，那么返回NULL。&lt;/p&gt;
+&lt;p&gt;collect_list列出该字段所有的值，不去重 =&amp;gt; select collect_list(id) from table。&lt;/p&gt;
+&lt;h3 id=&#34;hive有哪些方式保存元数据各有哪些特点&#34;&gt;Hive有哪些方式保存元数据，各有哪些特点？&lt;/h3&gt;
+&lt;p&gt;Hive支持三种不同的元存储服务器，分别为：内嵌式元存储服务器、本地元存储服务器、远程元存储服务器，每种存储方式使用不同的配置参数。&lt;/p&gt;
+&lt;p&gt;内嵌式元存储主要用于单元测试，在该模式下每次只有一个进程可以连接到元存储，Derby是内嵌式元存储的默认数据库。&lt;/p&gt;
+&lt;p&gt;在本地模式下，每个Hive客户端都会打开到数据存储的连接并在该连接上请求SQL查询。&lt;/p&gt;
+&lt;p&gt;在远程模式下，所有的Hive客户端都将打开一个到元数据服务器的连接，该服务器依次查询元数据，元数据服务器和客户端之间使用Thrift协议通信。&lt;/p&gt;
+&lt;h3 id=&#34;hive内部表和外部表的区别&#34;&gt;Hive内部表和外部表的区别？&lt;/h3&gt;
+&lt;p&gt;创建表时：创建内部表时，会将数据移动到数据仓库指向的路径；若创建外部表，仅记录数据所在的路径，不对数据的位置做任何改变。&lt;/p&gt;
+&lt;p&gt;删除表时：在删除表的时候，内部表的元数据和数据会被一起删除， 而外部表只删除元数据，不删除数据。这样外部表相对来说更加安全些，数据组织也更加灵活，方便共享源数据。&lt;/p&gt;
+&lt;h3 id=&#34;hive的函数udfudafudtf的区别&#34;&gt;Hive的函数：UDF、UDAF、UDTF的区别？&lt;/h3&gt;
+&lt;p&gt;UDF：单行进入，单行输出&lt;/p&gt;
+&lt;p&gt;UDAF：多行进入，单行输出&lt;/p&gt;
+&lt;p&gt;UDTF：单行输入，多行输出&lt;/p&gt;
+&lt;h3 id=&#34;所有的hive任务都会有mapreduce的执行吗&#34;&gt;所有的Hive任务都会有MapReduce的执行吗？&lt;/h3&gt;
+&lt;p&gt;不是，从Hive0.10.0版本开始，对于简单的不需要聚合的类似SELECT  from&lt;/p&gt;
+&lt;p&gt;LIMIT n语句，不需要起MapReduce job，直接通过Fetch task获取数据。&lt;/p&gt;
+        
+      </description>
+    </item>
+    
     <item>
       <title>Spark 简介: Spark Guide, Part Ⅱ</title>
       <link>https://Jerrysmd.github.io/post/20210527sparkguide2/sparkguide2/</link>
