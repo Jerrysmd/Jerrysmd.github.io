@@ -362,20 +362,21 @@
 &lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//5. 关闭sc
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stop&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;())&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;Node1:&lt;/li&gt;
+&lt;li&gt;Node1主节点:&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Master Daemon&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Master Daemon&lt;/strong&gt;： 负责管理Master节点， 协调资源的获取，以及连接Worker节点来运行Executor，是spark集群中的协调节点&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Node2:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Worker Daemon&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Driver&lt;/p&gt;
-&lt;p&gt;Executor Backend&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Worker Daemon&lt;/strong&gt;： 也称之为Slaves，是spark集群中的计算节点，用于和Master交互和并管理&lt;/p&gt;
+&lt;p&gt;Driver， 当一个spark job 提交后，会创建sparkContext，worker会启动对应的Executor&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Driver&lt;/strong&gt;: Action算子操作获取的结果，会把结果存放在Driver中&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Executor Backend&lt;/strong&gt;：Worker用于控制Executor的启停，其实worker是通过 Executor Backend来进行控制的。 Executor Backend是一个进程（是一个JVM实例），持有一个Executor对象。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Executor&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Executor&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Task   Task   Task&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -383,7 +384,6 @@
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Node1主节点上运行：Master Daemon&lt;/p&gt;
         
       </description>
     </item>
