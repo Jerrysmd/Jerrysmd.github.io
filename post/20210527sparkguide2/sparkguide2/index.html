@@ -433,7 +433,29 @@ src='https://plausible.io/js/plausible.js'>
 </span><span class="ln">11</span><span class="c1"></span><span class="n">strRDD</span><span class="o">.</span><span class="n">collect</span><span class="o">().</span><span class="n">foreach</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="k">_</span><span class="o">))</span>
 <span class="ln">12</span><span class="c1">//5. 关闭sc
 </span><span class="ln">13</span><span class="c1"></span><span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="o">())</span>
-</code></pre></div>
+</code></pre></div><ul>
+<li>Node1:</li>
+</ul>
+<blockquote>
+<p><strong>Master Daemon</strong></p>
+</blockquote>
+<ul>
+<li>
+<p>Node2:</p>
+<blockquote>
+<p><strong>Worker Daemon</strong></p>
+<p>Driver</p>
+<p>Executor Backend</p>
+<blockquote>
+<p>Executor</p>
+<blockquote>
+<p>Task   Task   Task</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<p>Node1主节点上运行：Master Daemon</p>
 
   </article>
 <aside class="sidebar">
