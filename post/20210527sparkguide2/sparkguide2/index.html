@@ -437,25 +437,34 @@ src='https://plausible.io/js/plausible.js'>
 <li>Node1主节点:</li>
 </ul>
 <blockquote>
-<p><strong>Master Daemon</strong>： 负责管理Master节点， 协调资源的获取，以及连接Worker节点来运行Executor，是spark集群中的协调节点</p>
+<blockquote>
+<p><strong>Master Daemon</strong>：</p>
+<p>负责管理Master节点， 协调资源的获取，以及连接Worker节点来运行Executor，是spark集群中的协调节点</p>
+</blockquote>
 </blockquote>
 <ul>
-<li>
-<p>Node2:</p>
+<li>Node2:</li>
+</ul>
 <blockquote>
-<p><strong>Worker Daemon</strong>： 也称之为Slaves，是spark集群中的计算节点，用于和Master交互和并管理</p>
-<p>Driver， 当一个spark job 提交后，会创建sparkContext，worker会启动对应的Executor</p>
-<p><strong>Driver</strong>: Action算子操作获取的结果，会把结果存放在Driver中</p>
-<p><strong>Executor Backend</strong>：Worker用于控制Executor的启停，其实worker是通过 Executor Backend来进行控制的。 Executor Backend是一个进程（是一个JVM实例），持有一个Executor对象。</p>
+<blockquote>
+<p><strong>Worker Daemon</strong>：</p>
+<p>也称之为Slaves，是spark集群中的计算节点，用于和Master交互和并管理Driver， 当一个spark job 提交后，会创建sparkContext，worker会启动对应的Executor</p>
+</blockquote>
+<blockquote>
+<p><strong>Driver</strong>:</p>
+<p>ction算子操作获取的结果，会把结果存放在Driver中</p>
+</blockquote>
+<blockquote>
+<p><strong>Executor Backend</strong>：</p>
+<p>Worker用于控制Executor的启停，其实worker是通过 Executor Backend来进行控制的。 Executor Backend是一个进程（是一个JVM实例），持有一个Executor对象。</p>
 <blockquote>
 <p><strong>Executor</strong></p>
 <blockquote>
-<p>Task   Task   Task</p>
+<p>Task1   Task2   Task3</p>
 </blockquote>
 </blockquote>
 </blockquote>
-</li>
-</ul>
+</blockquote>
 
   </article>
 <aside class="sidebar">
