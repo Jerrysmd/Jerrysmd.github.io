@@ -408,6 +408,15 @@
 &lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;    &lt;span class=&#34;kt&#34;&gt;|&lt;/span&gt;  &lt;span class=&#34;kt&#34;&gt;MapPartitionsRDD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;flatMap&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;test&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;scala&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;9&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;[]&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;    &lt;span class=&#34;kt&#34;&gt;|&lt;/span&gt;  &lt;span class=&#34;kt&#34;&gt;ParallelCollectionRDD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;parallelize&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;test&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;scala&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;6&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;[]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20210527sparkGuide2/RDDlogic.png&#34; alt=&#34;RDDlogic&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;物理执行图&#34;&gt;物理执行图&lt;/h4&gt;
+&lt;p&gt;当触发Action执行的时候，这一组互相依赖的RDD要被处理，所以要转化为可运行的物理执行图，调度到集群中执行。&lt;/p&gt;
+&lt;p&gt;因为大部分RDD是不真正存放数据的，只是数据从中流转，所以不能直接在集群中运行RDD，要有一种pipeline的思想，需要将这组RDD转为Stage和Task，从而运行Task，优化整体执行速度。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20210527sparkGuide2/RDDphysic.png&#34; alt=&#34;RDDphysic&#34;&gt;&lt;/p&gt;
+&lt;p&gt;小结：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;① -&amp;gt; ① -&amp;gt; ① 在第一个stage中，每一个这样的执行流程是一个Task，也就是在同一个Stage中的所有RDD的对应分区，在同一个Task中执行&lt;/li&gt;
+&lt;li&gt;Stage的划分是由Shuffle操作来确定的，有Shuffle的地方，Stage断开&lt;/li&gt;
+&lt;/ul&gt;
         
       </description>
     </item>
