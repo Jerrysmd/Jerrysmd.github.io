@@ -195,11 +195,7 @@ src='https://plausible.io/js/plausible.js'>
         <li><a href="#checkpoint">Checkpoint</a></li>
       </ul>
     </li>
-    <li><a href="#spark-running-process">Spark Running Process</a>
-      <ul>
-        <li></li>
-      </ul>
-    </li>
+    <li><a href="#spark-running-process">Spark Running Process</a></li>
   </ul>
 </nav>
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
@@ -437,7 +433,7 @@ src='https://plausible.io/js/plausible.js'>
 </span><span class="ln">11</span><span class="c1"></span><span class="n">strRDD</span><span class="o">.</span><span class="n">collect</span><span class="o">().</span><span class="n">foreach</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="k">_</span><span class="o">))</span>
 <span class="ln">12</span><span class="c1">//5. 关闭sc
 </span><span class="ln">13</span><span class="c1"></span><span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="o">()</span>
-</code></pre></div><h4 id="集群组成">集群组成</h4>
+</code></pre></div><p><strong>集群组成</strong></p>
 <ul>
 <li>Node1主节点:</li>
 </ul>
@@ -470,7 +466,7 @@ src='https://plausible.io/js/plausible.js'>
 </blockquote>
 </blockquote>
 </blockquote>
-<h4 id="逻辑执行图">逻辑执行图</h4>
+<p><strong>逻辑执行图</strong></p>
 <div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">val</span> <span class="n">textRDD</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="s">&#34;hadoop spark&#34;</span><span class="o">,</span> <span class="s">&#34;hadoop flume&#34;</span><span class="o">,</span> <span class="s">&#34;spark soo&#34;</span><span class="o">))</span>
 <span class="ln"> 2</span><span class="k">val</span> <span class="n">splitRDD</span> <span class="k">=</span> <span class="n">textRDD</span><span class="o">.</span><span class="n">flatMap</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
 <span class="ln"> 3</span><span class="k">val</span> <span class="n">tupleRDD</span> <span class="k">=</span> <span class="n">splitRDD</span><span class="o">.</span><span class="n">map</span><span class="o">((</span><span class="k">_</span><span class="o">,</span> <span class="mi">1</span><span class="o">))</span>
@@ -484,7 +480,7 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">11</span>    <span class="kt">|</span>  <span class="kt">MapPartitionsRDD</span><span class="o">[</span><span class="err">1</span><span class="o">]</span> <span class="n">at</span> <span class="n">flatMap</span> <span class="n">at</span> <span class="n">test</span><span class="o">.</span><span class="n">scala</span><span class="k">:</span><span class="err">9</span> <span class="err">[]</span>
 <span class="ln">12</span>    <span class="kt">|</span>  <span class="kt">ParallelCollectionRDD</span><span class="o">[</span><span class="err">0</span><span class="o">]</span> <span class="n">at</span> <span class="n">parallelize</span> <span class="n">at</span> <span class="n">test</span><span class="o">.</span><span class="n">scala</span><span class="k">:</span><span class="err">6</span> <span class="err">[]</span>
 </code></pre></div><p><img src="/post/20210527sparkGuide2/RDDlogic.png" alt="RDDlogic"></p>
-<h4 id="物理执行图">物理执行图</h4>
+<p><strong>物理执行图</strong></p>
 <p>当触发Action执行的时候，这一组互相依赖的RDD要被处理，所以要转化为可运行的物理执行图，调度到集群中执行。</p>
 <p>因为大部分RDD是不真正存放数据的，只是数据从中流转，所以不能直接在集群中运行RDD，要有一种pipeline的思想，需要将这组RDD转为Stage和Task，从而运行Task，优化整体执行速度。</p>
 <p><img src="/post/20210527sparkGuide2/RDDphysic.png" alt="RDDphysic"></p>
