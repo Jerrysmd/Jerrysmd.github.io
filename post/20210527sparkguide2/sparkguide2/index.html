@@ -489,6 +489,15 @@ src='https://plausible.io/js/plausible.js'>
 <li>① -&gt; ① -&gt; ① 在第一个stage中，每一个这样的执行流程是一个Task，也就是在同一个Stage中的所有RDD的对应分区，在同一个Task中执行</li>
 <li>Stage的划分是由Shuffle操作来确定的，有Shuffle的地方，Stage断开</li>
 </ul>
+<p><strong>数据流动</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">sc</span> <span class="k">=</span> <span class="o">...</span>
+<span class="ln">2</span><span class="k">val</span> <span class="n">textRDD</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="s">&#34;Hadoop Spark&#34;</span><span class="o">,</span> <span class="s">&#34;Hadoop Flume&#34;</span><span class="o">,</span> <span class="s">&#34;Spark Squad&#34;</span><span class="o">))</span>
+<span class="ln">3</span><span class="k">val</span> <span class="n">splitRDD</span> <span class="k">=</span> <span class="n">textRDD</span><span class="o">.</span><span class="n">flatMap</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
+<span class="ln">4</span><span class="k">val</span> <span class="n">tupleRDD</span> <span class="k">=</span> <span class="n">splitRDD</span><span class="o">.</span><span class="n">map</span><span class="o">((</span><span class="k">_</span><span class="o">,</span><span class="mi">1</span><span class="o">))</span>
+<span class="ln">5</span><span class="k">val</span> <span class="n">reduceRDD</span> <span class="k">=</span> <span class="n">tupleRDD</span><span class="o">.</span><span class="n">reduceByKey</span><span class="o">(</span><span class="k">_</span> <span class="o">+</span> <span class="k">_</span><span class="o">)</span>
+<span class="ln">6</span><span class="k">val</span> <span class="n">strRDD</span> <span class="k">=</span> <span class="n">reduceRDD</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="s">s&#34;</span><span class="si">${</span><span class="n">item</span><span class="o">.</span><span class="n">_1</span><span class="o">,</span> <span class="n">$</span><span class="si">{</span><span class="n">item</span><span class="o">.</span><span class="n">_2</span><span class="si">}}</span><span class="s">&#34;</span><span class="o">)</span>
+<span class="ln">7</span><span class="n">strRDD</span><span class="o">.</span><span class="n">collect</span><span class="o">.</span><span class="n">foreach</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="n">item</span><span class="o">))</span>
+</code></pre></div>
 
   </article>
 <aside class="sidebar">
