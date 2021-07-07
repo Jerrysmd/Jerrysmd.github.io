@@ -500,7 +500,7 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">7</span><span class="n">strRDD</span><span class="o">.</span><span class="n">collect</span><span class="o">.</span><span class="n">foreach</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="n">item</span><span class="o">))</span>
 </code></pre></div><p><strong>Job和Stage的关系</strong></p>
 <p>Job是一个最大的调度单位，DAGScheduler会首先创建一个Job的相关信息，然后去调度Job，但是没办法直接调度Job。</p>
-<p><strong>为什么Job需要切分</strong></p>
+<p>​	<strong>为什么Job需要切分</strong></p>
 <ul>
 <li>
 <p>因为job的含义是对整个RDD求值，但RDD之间可能有一些宽依赖</p>
@@ -513,6 +513,42 @@ src='https://plausible.io/js/plausible.js'>
 <p>所以，一个Job是无法计算完整的RDD血统的</p>
 </li>
 </ul>
+<p>​	<strong>Stage和Task的关系</strong></p>
+<ol>
+<li>
+<p>Stage中的RDD之间是窄依赖：</p>
+<p>窄依赖RDD理论上可以放在同一个Pipeline中执行的</p>
+</li>
+<li>
+<p>RDD还有分区：</p>
+<p>一个RDD只是一个概念，而真正存放和处理数据时，都是以分区作为单位的</p>
+<p>Stage对应的是多个整体上的RDD，而真正的运行是需要针对RDD的分区来进行的</p>
+</li>
+<li>
+<p>一个Task对应一个RDD的分区：</p>
+<p>一个比Stage粒度更细的单元叫做Task，Stage是由Task组成的，之所以有Task这个概念，是因为Stage针对整个RDD，而计算的时候，要针对RDD的分区。</p>
+</li>
+<li>
+<p>总结：</p>
+<ul>
+<li>
+<p>Job&gt;Stage&gt;Task</p>
+</li>
+<li>
+<p>一个Job由多个Stage组成(这个取决有多少个宽依赖)，一个Stage由多个Task组成（这个取决有多少个分区数量</p>
+</li>
+<li>
+<p>而Stage中经常会有一组Task需要同时执行，所以针对每一个Task来进行调度太过频繁没有意义，所以每个Stage中的Task们会被收集起来，放入一个TaskSet集合中。</p>
+</li>
+<li>
+<p>一个Stage有一个TaskSet</p>
+</li>
+<li>
+<p>TaskSet中Task的个数由Stage中的最大分区数决定</p>
+</li>
+</ul>
+</li>
+</ol>
 
   </article>
 <aside class="sidebar">
