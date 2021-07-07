@@ -498,7 +498,21 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">5</span><span class="k">val</span> <span class="n">reduceRDD</span> <span class="k">=</span> <span class="n">tupleRDD</span><span class="o">.</span><span class="n">reduceByKey</span><span class="o">(</span><span class="k">_</span> <span class="o">+</span> <span class="k">_</span><span class="o">)</span>
 <span class="ln">6</span><span class="k">val</span> <span class="n">strRDD</span> <span class="k">=</span> <span class="n">reduceRDD</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="s">s&#34;</span><span class="si">${</span><span class="n">item</span><span class="o">.</span><span class="n">_1</span><span class="o">,</span> <span class="n">$</span><span class="si">{</span><span class="n">item</span><span class="o">.</span><span class="n">_2</span><span class="si">}}</span><span class="s">&#34;</span><span class="o">)</span>
 <span class="ln">7</span><span class="n">strRDD</span><span class="o">.</span><span class="n">collect</span><span class="o">.</span><span class="n">foreach</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="n">item</span><span class="o">))</span>
-</code></pre></div>
+</code></pre></div><p><strong>Job和Stage的关系</strong></p>
+<p>Job是一个最大的调度单位，DAGScheduler会首先创建一个Job的相关信息，然后去调度Job，但是没办法直接调度Job。</p>
+<p><strong>为什么Job需要切分</strong></p>
+<ul>
+<li>
+<p>因为job的含义是对整个RDD求值，但RDD之间可能有一些宽依赖</p>
+</li>
+<li>
+<p>如果遇到宽依赖的话，两个RDD之间需要进行数据拉取和复制</p>
+<p>那么一个RDD就必须等待它所依赖的RDD所有分区先计算完成，然后再进行拉取</p>
+</li>
+<li>
+<p>所以，一个Job是无法计算完整的RDD血统的</p>
+</li>
+</ul>
 
   </article>
 <aside class="sidebar">
