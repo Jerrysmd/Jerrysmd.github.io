@@ -15,6 +15,8 @@
       <description>
         
           &lt;p&gt;Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.&lt;/p&gt;
+&lt;h2 id=&#34;advanced-operation&#34;&gt;Advanced Operation&lt;/h2&gt;
+&lt;h3 id=&#34;closure&#34;&gt;closure&lt;/h3&gt;
         
       </description>
     </item>
