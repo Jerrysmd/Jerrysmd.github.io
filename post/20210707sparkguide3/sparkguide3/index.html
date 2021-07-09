@@ -186,6 +186,23 @@ src='https://plausible.io/js/plausible.js'>
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
 <h2 id="advanced-operation">Advanced Operation</h2>
 <h3 id="closure">closure</h3>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">test</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<span class="ln"> 2</span>    <span class="k">val</span> <span class="n">f</span> <span class="k">=</span> <span class="n">closure</span><span class="o">()</span>
+<span class="ln"> 3</span>    <span class="n">f</span><span class="o">(</span><span class="mi">5</span><span class="o">)</span>
+<span class="ln"> 4</span><span class="o">}</span>
+<span class="ln"> 5</span><span class="k">def</span> <span class="n">closure</span><span class="o">()</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=&gt;</span> <span class="nc">Double</span> <span class="k">=</span> <span class="o">{</span>
+<span class="ln"> 6</span>    <span class="k">val</span> <span class="n">factor</span> <span class="k">=</span> <span class="mf">3.14</span>
+<span class="ln"> 7</span>    <span class="k">val</span> <span class="n">areaFunction</span> <span class="k">=</span> <span class="o">(</span><span class="n">r</span><span class="k">:</span> <span class="kt">int</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="o">{</span>
+<span class="ln"> 8</span>        <span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="o">(</span><span class="n">r</span><span class="o">,</span><span class="mi">2</span><span class="o">)</span> <span class="o">*</span> <span class="n">factor</span>
+<span class="ln"> 9</span>    <span class="o">}</span>
+<span class="ln">10</span>    <span class="n">areaFunction</span>
+<span class="ln">11</span><span class="o">}</span>
+</code></pre></div><ol>
+<li>f就是闭包，闭包的本质就是一个函数</li>
+<li>在scala中函数是一个特殊的类型，FunctionX</li>
+<li>闭包也是一个FunctionX类型的对象</li>
+<li>闭包是一个对象</li>
+</ol>
 
   </article>
 <aside class="sidebar">
