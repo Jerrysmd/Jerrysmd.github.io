@@ -203,6 +203,17 @@ src='https://plausible.io/js/plausible.js'>
 <li>闭包也是一个FunctionX类型的对象</li>
 <li>闭包是一个对象</li>
 </ol>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">class</span> <span class="nc">MyClass</span><span class="o">{</span>
+<span class="ln"> 2</span>    <span class="k">val</span> <span class="n">field</span> <span class="k">=</span> <span class="s">&#34;Hello&#34;</span>
+<span class="ln"> 3</span>    <span class="k">def</span> <span class="n">doStuff</span><span class="o">(</span><span class="n">rdd</span><span class="k">:</span> <span class="kt">RDD</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">RDD</span> <span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="k">=</span> <span class="o">{</span>
+<span class="ln"> 4</span>        <span class="n">rdd</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">x</span> <span class="k">=&gt;</span> <span class="n">field</span> <span class="o">+</span> <span class="n">x</span><span class="o">)</span>
+<span class="ln"> 5</span>        <span class="c1">//引用Myclass对象中的一个成员变量，说明其可以访问MyClass这个类的总用域，也是一个闭包。封闭的是MyClass这个作用域。
+</span><span class="ln"> 6</span><span class="c1"></span>        <span class="c1">//在将其分发的不同的Executor中执行的时候，其依赖MyClass这个类当前的对象，因为其封闭了这个作用域。MyClass和函数都要一起被序列化。发到不同的结点中执行。
+</span><span class="ln"> 7</span><span class="c1"></span>        <span class="c1">//1. 如果MyClass不能被序列化，将会报错
+</span><span class="ln"> 8</span><span class="c1"></span>        <span class="c1">//2. 如果在这个闭包中，依赖了一个外部很大的集合，那么这个集合会随着每一个Task分发
+</span><span class="ln"> 9</span><span class="c1"></span>    <span class="o">}</span>
+<span class="ln">10</span><span class="o">}</span>
+</code></pre></div>
 
   </article>
 <aside class="sidebar">
