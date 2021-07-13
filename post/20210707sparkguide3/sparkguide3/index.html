@@ -253,6 +253,16 @@ src='https://plausible.io/js/plausible.js'>
 </span><span class="ln">13</span><span class="c1">//在使用广播之后，复制次数和executor数量一致
 </span><span class="ln">14</span><span class="c1"></span><span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="n">r</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">bc</span><span class="o">.</span><span class="n">value</span><span class="o">(</span><span class="n">item</span><span class="o">)).</span><span class="n">collect</span><span class="o">()</span>
 </code></pre></div><h2 id="sparksql">SparkSQL</h2>
+<ul>
+<li>Spark的RDD主要用于处理非结构化数据和半结构化数据</li>
+<li>SparkSQL主要用于处理结构化数据</li>
+</ul>
+<p>优势：</p>
+<ul>
+<li>虽然SparkSQL是基于RDD的，但是SparkSQL的速度比RDD要快很多</li>
+<li>SparkSQL提供了更好的外部数据源读写支持</li>
+<li>SparkSQL提供了直接访问列的能力</li>
+</ul>
 
   </article>
 <aside class="sidebar">
