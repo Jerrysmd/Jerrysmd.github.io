@@ -180,6 +180,7 @@ src='https://plausible.io/js/plausible.js'>
       <ul>
         <li><a href="#closure">closure</a></li>
         <li><a href="#global-accumulator">Global accumulator</a></li>
+        <li><a href="#broadcast">Broadcast</a></li>
       </ul>
     </li>
   </ul>
@@ -218,17 +219,18 @@ src='https://plausible.io/js/plausible.js'>
 <ol>
 <li>
 <p>在任意地方创建long accumulator</p>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">counter</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">longAccumulator</span><span class="o">(</span><span class="s">&#34;counter&#34;</span><span class="o">)</span>
-</code></pre></div></li>
+</li>
 <li>
 <p>累加</p>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">)).</span><span class="n">foreach</span><span class="o">(</span><span class="n">counter</span><span class="o">.</span><span class="n">add</span><span class="o">(</span><span class="k">_</span><span class="o">))</span>
-</code></pre></div></li>
+</li>
 <li>
 <p>结果</p>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="n">counter</span><span class="o">.</span><span class="n">value</span>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">counter</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">longAccumulator</span><span class="o">(</span><span class="s">&#34;counter&#34;</span><span class="o">)</span>
+<span class="ln">2</span><span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">)).</span><span class="n">foreach</span><span class="o">(</span><span class="n">counter</span><span class="o">.</span><span class="n">add</span><span class="o">(</span><span class="k">_</span><span class="o">))</span>
+<span class="ln">3</span><span class="n">counter</span><span class="o">.</span><span class="n">value</span>
 </code></pre></div></li>
 </ol>
+<h3 id="broadcast">Broadcast</h3>
 
   </article>
 <aside class="sidebar">
