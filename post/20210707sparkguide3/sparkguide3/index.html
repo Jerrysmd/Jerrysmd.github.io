@@ -183,6 +183,7 @@ src='https://plausible.io/js/plausible.js'>
         <li><a href="#broadcast">Broadcast</a></li>
       </ul>
     </li>
+    <li><a href="#sparksql">sparkSQL</a></li>
   </ul>
 </nav>
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
@@ -251,7 +252,7 @@ src='https://plausible.io/js/plausible.js'>
 </span><span class="ln">12</span><span class="c1">//在使用广播之前，复制map了task数量份
 </span><span class="ln">13</span><span class="c1">//在使用广播之后，复制次数和executor数量一致
 </span><span class="ln">14</span><span class="c1"></span><span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="n">r</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">bc</span><span class="o">.</span><span class="n">value</span><span class="o">(</span><span class="n">item</span><span class="o">)).</span><span class="n">collect</span><span class="o">()</span>
-</code></pre></div>
+</code></pre></div><h2 id="sparksql">sparkSQL</h2>
 
   </article>
 <aside class="sidebar">
