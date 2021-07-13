@@ -231,6 +231,27 @@ src='https://plausible.io/js/plausible.js'>
 </code></pre></div></li>
 </ol>
 <h3 id="broadcast">Broadcast</h3>
+<p>广播变量允许将一个Read-Only的变量缓存到集群中的每个节点上，而不是传递给每一个Task一个副本</p>
+<ul>
+<li>集群中的每个节点指的是一个机器</li>
+<li>每一个Task，一个Task是一个Stage中的最小处理单元，一个Executor中可以有多个Stage，每个Stage有多个Task</li>
+</ul>
+<p>所以在需要多个Stage的多个Task中使用相同数据的情况下，广播特别有用</p>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">val</span> <span class="n">v</span> <span class="k">=</span> <span class="nc">Map</span><span class="o">(</span><span class="s">&#34;Spark&#34;</span> <span class="o">-&gt;</span> <span class="s">&#34;http[123]&#34;</span><span class="o">,</span> <span class="s">&#34;scala&#34;</span> <span class="o">-&gt;</span> <span class="s">&#34;http[456]&#34;</span><span class="o">)</span>
+<span class="ln"> 2</span>
+<span class="ln"> 3</span><span class="k">val</span> <span class="n">config</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkConf</span><span class="o">().</span><span class="n">setMaster</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">).</span><span class="n">setAppName</span><span class="o">(</span><span class="s">&#34;bc&#34;</span><span class="o">)</span>
+<span class="ln"> 4</span><span class="k">val</span> <span class="n">sc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkContext</span><span class="o">(</span><span class="n">config</span><span class="o">)</span>
+<span class="ln"> 5</span>
+<span class="ln"> 6</span><span class="c1">//创建广播
+</span><span class="ln"> 7</span><span class="c1"></span><span class="k">val</span> <span class="n">bc</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">broadcast</span><span class="o">(</span><span class="n">v</span><span class="o">)</span>
+<span class="ln"> 8</span>
+<span class="ln"> 9</span><span class="k">val</span> <span class="n">r</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="s">&#34;Spark&#34;</span><span class="o">,</span> <span class="s">&#34;Scala&#34;</span><span class="o">))</span>
+<span class="ln">10</span>
+<span class="ln">11</span><span class="c1">//使用广播变量代替直接引用集合，只会复制和executor一样的数量
+</span><span class="ln">12</span><span class="c1">//在使用广播之前，复制map了task数量份
+</span><span class="ln">13</span><span class="c1">//在使用广播之后，复制次数和executor数量一致
+</span><span class="ln">14</span><span class="c1"></span><span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="n">r</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">bc</span><span class="o">.</span><span class="n">value</span><span class="o">(</span><span class="n">item</span><span class="o">)).</span><span class="n">collect</span><span class="o">()</span>
+</code></pre></div>
 
   </article>
 <aside class="sidebar">
