@@ -140,7 +140,7 @@ src='https://plausible.io/js/plausible.js'>
 </svg></span>
     <span class="post_date">
       Jul 7, 2021</span>
-    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
+    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
         </a><a href='https://Jerrysmd.github.io/tags/spark' title="spark" class="post_tag button button_translucent">spark
         </a>
     </span>
@@ -263,6 +263,22 @@ src='https://plausible.io/js/plausible.js'>
 <li>SparkSQL提供了更好的外部数据源读写支持</li>
 <li>SparkSQL提供了直接访问列的能力</li>
 </ul>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">case</span> <span class="k">class</span> <span class="nc">Person</span><span class="o">(</span><span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">age</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span>
+<span class="ln"> 2</span>
+<span class="ln"> 3</span><span class="k">val</span> <span class="n">spark</span><span class="k">:</span> <span class="kt">SparkSession</span> <span class="o">=</span> <span class="k">new</span> <span class="n">sql</span><span class="o">.</span><span class="nc">SparkSession</span><span class="o">.</span><span class="nc">Builder</span><span class="o">()</span>
+<span class="ln"> 4</span>	<span class="o">.</span><span class="n">appName</span><span class="o">(</span><span class="s">&#34;hello&#34;</span><span class="o">)</span>
+<span class="ln"> 5</span>	<span class="o">.</span><span class="n">master</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">)</span>
+<span class="ln"> 6</span>	<span class="o">.</span><span class="n">getOrCreate</span><span class="o">()</span>
+<span class="ln"> 7</span>
+<span class="ln"> 8</span><span class="n">impart</span> <span class="n">spark</span><span class="o">.</span><span class="n">implicits</span><span class="o">.</span><span class="k">_</span>
+<span class="ln"> 9</span>
+<span class="ln">10</span><span class="k">val</span> <span class="n">personRDD</span><span class="k">:</span> <span class="kt">RDD</span><span class="o">[</span><span class="kt">people</span><span class="o">]</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sparkContext</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span> <span class="mi">10</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span> <span class="mi">15</span><span class="o">)))</span>
+<span class="ln">11</span><span class="k">val</span> <span class="n">personDS</span><span class="k">:</span> <span class="kt">Dataset</span><span class="o">[</span><span class="kt">Person</span><span class="o">]</span> <span class="k">=</span> <span class="nc">PersonRDD</span><span class="o">.</span><span class="n">toDS</span><span class="o">()</span>
+<span class="ln">12</span><span class="k">val</span> <span class="n">teenagers</span><span class="k">:</span> <span class="kt">Dataset</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="k">=</span> <span class="nc">PersonDS</span><span class="o">.</span><span class="n">where</span><span class="o">(</span>&#39;age <span class="o">&gt;</span> <span class="mi">10</span><span class="o">)</span>
+<span class="ln">13</span>	<span class="o">.</span><span class="n">where</span><span class="o">(</span>&#39;age <span class="o">&lt;</span> <span class="mi">20</span><span class="o">)</span>
+<span class="ln">14</span>	<span class="o">.</span><span class="n">select</span><span class="o">(</span>&#39;name<span class="o">)</span>
+<span class="ln">15</span>	<span class="o">.</span><span class="n">as</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span>
+</code></pre></div>
 
   </article>
 <aside class="sidebar">
