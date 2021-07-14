@@ -298,6 +298,70 @@ src='https://plausible.io/js/plausible.js'>
 </li>
 </ul>
 <h2 id="dataset--dataframe">Dataset &amp; DataFrame</h2>
+<p><strong>RDD 优点：</strong></p>
+<ol>
+<li>
+<p>JVM对象组成的分布式数据集合</p>
+</li>
+<li>
+<p>不可变并且有容错能力</p>
+</li>
+<li>
+<p>可处理机构化和非结构化的数据</p>
+</li>
+<li>
+<p>支持函数式转换</p>
+</li>
+</ol>
+<p><strong>RDD缺点：</strong></p>
+<ol>
+<li>
+<p>没有Schema</p>
+</li>
+<li>
+<p>用户自己优化程序</p>
+</li>
+<li>
+<p>从不同的数据源读取数据非常困难</p>
+</li>
+<li>
+<p>合并多个数据源中的数据也非常困难</p>
+</li>
+</ol>
+<p><strong>DataFrame的优点：</strong></p>
+<ol>
+<li>
+<p>Row对象组成的分布式数据集</p>
+</li>
+<li>
+<p>不可变并且有容错能力</p>
+</li>
+<li>
+<p>处理结构化数据</p>
+</li>
+<li>
+<p>自带优化器Catalyset,可自动优化程序</p>
+</li>
+<li>
+<p>Data source API</p>
+</li>
+<li>
+<p>DataFrame让Spark对结构化数据有了处理能力</p>
+</li>
+</ol>
+<p><strong>DataFrame的缺点：</strong></p>
+<ol>
+<li>编译时不能类型转化安全检查，运行时才能确定是否有问题</li>
+<li>对于对象支持不友好，rdd内部数据直接以java对象存储，dataframe内存存储的是row对象而不能是自定义对象</li>
+</ol>
+<p><strong>Dataset的优点：</strong></p>
+<ol>
+<li>DateSet整合了RDD和DataFrame的优点，支持结构化和非结构化数据</li>
+<li>和RDD一样，支持自定义对象存储</li>
+<li>和DataFrame一样，支持结构化数据的sql查询</li>
+<li>采用堆外内存存储，gc友好</li>
+<li>类型转化安全，代码友好</li>
+</ol>
 <div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">dataset1</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln"> 2</span>    <span class="c1">//1.创建SparkSession
 </span><span class="ln"> 3</span><span class="c1"></span>    <span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="k">new</span> <span class="n">sql</span><span class="o">.</span><span class="nc">SparkSession</span><span class="o">.</span><span class="nc">Builder</span><span class="o">()</span>
