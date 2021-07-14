@@ -298,6 +298,28 @@ src='https://plausible.io/js/plausible.js'>
 </li>
 </ul>
 <h2 id="dataset--dataframe">Dataset &amp; DataFrame</h2>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">dataset1</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<span class="ln"> 2</span>    <span class="c1">//1.创建SparkSession
+</span><span class="ln"> 3</span><span class="c1"></span>    <span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="k">new</span> <span class="n">sql</span><span class="o">.</span><span class="nc">SparkSession</span><span class="o">.</span><span class="nc">Builder</span><span class="o">()</span>
+<span class="ln"> 4</span>    	<span class="o">.</span><span class="n">master</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">)</span>
+<span class="ln"> 5</span>    	<span class="o">.</span><span class="n">appName</span><span class="o">(</span><span class="s">&#34;dateset1&#34;</span><span class="o">)</span>
+<span class="ln"> 6</span>    	<span class="o">.</span><span class="n">getOrCreate</span><span class="o">()</span>
+<span class="ln"> 7</span>    <span class="c1">//2.导入隐式转化
+</span><span class="ln"> 8</span><span class="c1"></span>    <span class="k">import</span> <span class="nn">spark.implicits._</span>
+<span class="ln"> 9</span>    
+<span class="ln">10</span>    <span class="c1">//3.demo
+</span><span class="ln">11</span><span class="c1"></span>    <span class="k">val</span> <span class="n">sourceRDD</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sparkContext</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span> <span class="mi">10</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span> <span class="mi">15</span><span class="o">)))</span>
+<span class="ln">12</span>    <span class="k">val</span> <span class="n">dataset</span> <span class="k">=</span> <span class="n">sourceRDD</span><span class="o">.</span><span class="n">toDS</span><span class="o">()</span>
+<span class="ln">13</span>    
+<span class="ln">14</span>    <span class="c1">//Dataset支持强类型API
+</span><span class="ln">15</span><span class="c1"></span>    <span class="n">dataset</span><span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">age</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
+<span class="ln">16</span>    <span class="c1">//Dataset支持弱类型API
+</span><span class="ln">17</span><span class="c1"></span>    <span class="n">dataset</span><span class="o">.</span><span class="n">filter</span><span class="o">(</span> &#39;age <span class="o">&gt;</span> <span class="mi">10</span> <span class="o">).</span><span class="n">show</span><span class="o">()</span>
+<span class="ln">18</span>    <span class="n">dataset</span><span class="o">.</span><span class="n">filter</span><span class="o">(</span> <span class="n">$</span><span class="s">&#34;age&#34;</span> <span class="o">&gt;</span> <span class="mi">10</span> <span class="o">).</span><span class="n">show</span><span class="o">()</span>
+<span class="ln">19</span>    <span class="c1">//Dataset可以直接编写SQL表达式
+</span><span class="ln">20</span><span class="c1"></span>    <span class="n">dataset</span><span class="o">.</span><span class="n">filter</span><span class="o">(</span> <span class="s">&#34;age &gt; 10&#34;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
+<span class="ln">21</span><span class="o">}</span>
+</code></pre></div>
 
   </article>
 <aside class="sidebar">
