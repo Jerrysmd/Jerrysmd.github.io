@@ -106,7 +106,24 @@
 &lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;	&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;where&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&amp;#39;age &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;	&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&amp;#39;name&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;	&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;as&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;RDD和SparkSQL运行时的区别&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;RDD的运行流程：&lt;/p&gt;
+&lt;p&gt;RDD-&amp;gt;DAGScheduler-&amp;gt;TaskScheduleri-&amp;gt;Worker&lt;/p&gt;
+&lt;p&gt;先将RDD解析为由Stage组成的DAG，后将Stage转为Task直接运行&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;SparkSQL的运行流程：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;解析SQL，并且生成AST（抽象语法树）&lt;/li&gt;
+&lt;li&gt;在AST中加入元数据信息，做这一步主要是为了一些优化，例如 col = col 这样的条件&lt;/li&gt;
+&lt;li&gt;对已经加入元数据的AST，输入优化器，进行优化（例如：谓词下推，列值裁剪）&lt;/li&gt;
+&lt;li&gt;生成的AST其实最终还没办法直接运行，这个AST是逻辑计划，结束后，需要生成物理计划，从而生成RDD来运行。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;dataset--dataframe&#34;&gt;Dataset &amp;amp; DataFrame&lt;/h2&gt;
         
       </description>
     </item>
