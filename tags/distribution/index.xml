@@ -84,6 +84,7 @@
 &lt;ul&gt;
 &lt;li&gt;Spark的RDD主要用于处理非结构化数据和半结构化数据&lt;/li&gt;
 &lt;li&gt;SparkSQL主要用于处理结构化数据&lt;/li&gt;
+&lt;li&gt;SparkSQL支持：命令式、SQL&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;优势：&lt;/p&gt;
 &lt;ul&gt;
