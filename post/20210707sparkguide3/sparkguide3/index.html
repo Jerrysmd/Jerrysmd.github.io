@@ -400,7 +400,12 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">17</span>    
 <span class="ln">18</span>    <span class="n">spark</span><span class="o">.</span><span class="n">stop</span><span class="o">()</span>
 <span class="ln">19</span><span class="o">}</span>
-</code></pre></div>
+</code></pre></div><p>DataFrame &amp; Dataset 区别：</p>
+<ol>
+<li>DataFrame是Dataset的一种特殊情况，DataFrame是Dataset[Row]的别名</li>
+<li>DataFrame表达的含义是一个支持函数式操作的表，而Dataset表达是一个类似RDD的东西，Dataset可以处理任何对象</li>
+<li>DataFrame中存放的是Row对象，而Dataset中可以存放任何类型的对象</li>
+</ol>
 
   </article>
 <aside class="sidebar">

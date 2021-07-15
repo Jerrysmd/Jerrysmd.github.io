@@ -227,7 +227,12 @@
 &lt;span class=&#34;ln&#34;&gt;17&lt;/span&gt;    
 &lt;span class=&#34;ln&#34;&gt;18&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;spark&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stop&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;19&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;DataFrame &amp;amp; Dataset 区别：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;DataFrame是Dataset的一种特殊情况，DataFrame是Dataset[Row]的别名&lt;/li&gt;
+&lt;li&gt;DataFrame表达的含义是一个支持函数式操作的表，而Dataset表达是一个类似RDD的东西，Dataset可以处理任何对象&lt;/li&gt;
+&lt;li&gt;DataFrame中存放的是Row对象，而Dataset中可以存放任何类型的对象&lt;/li&gt;
+&lt;/ol&gt;
         
       </description>
     </item>
