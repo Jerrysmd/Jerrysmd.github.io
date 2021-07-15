@@ -315,12 +315,12 @@ src='https://plausible.io/js/plausible.js'>
 <p>判断地址是否相同</p>
 <div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="ln">1</span><span class="n">x</span> <span class="ow">is</span> <span class="n">y</span>
 <span class="ln">2</span><span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">y</span>
-<span class="ln">3</span><span class="mf">1.</span><span class="err">字符串：字符串值相同，</span><span class="n">ID相同</span><span class="err">。</span>
-<span class="ln">4</span><span class="mf">2.</span><span class="err">列表、字典、集合：无论什么情况</span><span class="n">ID都不同</span>
+<span class="ln">3</span><span class="mf">1.</span><span class="n">字符串</span><span class="err">：</span><span class="n">字符串值相同</span><span class="err">，</span><span class="n">ID相同</span><span class="err">。</span>
+<span class="ln">4</span><span class="mf">2.</span><span class="n">列表</span><span class="err">、</span><span class="n">字典</span><span class="err">、</span><span class="n">集合</span><span class="err">：</span><span class="n">无论什么情况ID都不同</span>
 </code></pre></div><h2 id="3-成员检测运算">3. 成员检测运算</h2>
 <div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="ln">1</span><span class="n">val1</span> <span class="ow">in</span> <span class="n">val2</span> 
 <span class="ln">2</span><span class="n">val1</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">val2</span> 
-<span class="ln">3</span><span class="o">//</span><span class="err">检测一个数据是否在容器中</span>
+<span class="ln">3</span><span class="o">//</span><span class="n">检测一个数据是否在容器中</span>
 </code></pre></div><h2 id="4-流程控制">4. 流程控制</h2>
 <div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="ln"> 1</span><span class="mf">1.</span>
 <span class="ln"> 2</span><span class="k">if</span> <span class="n">___</span><span class="p">:</span>
@@ -331,7 +331,7 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln"> 7</span><span class="k">while</span> <span class="n">___</span><span class="p">:</span>
 <span class="ln"> 8</span><span class="k">else</span><span class="p">:</span>
 <span class="ln"> 9</span><span class="mf">3.</span>
-<span class="ln">10</span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="err">容器</span><span class="p">:</span>
+<span class="ln">10</span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">容器</span><span class="p">:</span>
 </code></pre></div><h2 id="5-函数">5. 函数</h2>
 <table>
 <thead>
@@ -366,8 +366,8 @@ src='https://plausible.io/js/plausible.js'>
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="ln">1</span><span class="k">print</span><span class="p">(</span><span class="nb">locals</span><span class="p">())</span> <span class="o">//</span><span class="err">获取当前作用域的局部变量</span>
-<span class="ln">2</span><span class="k">print</span><span class="p">(</span><span class="nb">globals</span><span class="p">())</span> <span class="o">//</span><span class="err">获取当前作用域的全局变量</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="ln">1</span><span class="nb">print</span><span class="p">(</span><span class="nb">locals</span><span class="p">())</span> <span class="o">//</span><span class="n">获取当前作用域的局部变量</span>
+<span class="ln">2</span><span class="nb">print</span><span class="p">(</span><span class="nb">globals</span><span class="p">())</span> <span class="o">//</span><span class="n">获取当前作用域的全局变量</span>
 </code></pre></div><h2 id="6-迭代器">6. 迭代器</h2>
 <ol>
 <li>能被next()函数调用并不断返回下一个值的对象</li>
@@ -384,7 +384,7 @@ src='https://plausible.io/js/plausible.js'>
 </ol>
 <div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="ln">1</span><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
 <span class="ln">2</span><span class="n">result</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">list1</span><span class="p">)</span>
-<span class="ln">3</span><span class="k">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
+<span class="ln">3</span><span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
 </code></pre></div>
 
   </article>
