@@ -422,7 +422,13 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">3</span>
 <span class="ln">4</span><span class="k">val</span> <span class="n">ds</span><span class="k">:</span> <span class="kt">Dataset</span><span class="o">[</span><span class="kt">person</span><span class="o">]</span> <span class="k">=</span> <span class="n">personList</span><span class="o">.</span><span class="n">toDS</span><span class="o">()</span>
 <span class="ln">5</span><span class="n">ds</span><span class="o">.</span><span class="n">map</span><span class="o">((</span><span class="n">person</span><span class="k">:</span> <span class="kt">Person</span> <span class="o">=&gt;</span> <span class="nc">Person</span><span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="n">name</span><span class="o">,</span> <span class="n">person</span><span class="o">.</span><span class="n">age</span> <span class="o">*</span> <span class="mi">2</span><span class="o">)))</span>
-</code></pre></div>
+</code></pre></div><ol start="5">
+<li>
+<p>DataFrame只能做到运行时类型检查，Dataset能做到编译和运行都有类型检查</p>
+<p>DataFrame弱类型是编译时不安全(df.groupBy(&quot;name, school&quot;))</p>
+<p>Dataset所代表的操作，是类型安全的，编译时安全的(ds.filter(person =&gt; person.name))</p>
+</li>
+</ol>
 
   </article>
 <aside class="sidebar">

@@ -249,7 +249,13 @@
 &lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;val&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ds&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;Dataset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;person&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;personList&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;toDS&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ds&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;map&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;person&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;Person&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Person&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;person&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;person&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;age&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;DataFrame只能做到运行时类型检查，Dataset能做到编译和运行都有类型检查&lt;/p&gt;
+&lt;p&gt;DataFrame弱类型是编译时不安全(df.groupBy(&amp;quot;name, school&amp;quot;))&lt;/p&gt;
+&lt;p&gt;Dataset所代表的操作，是类型安全的，编译时安全的(ds.filter(person =&amp;gt; person.name))&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
         
       </description>
     </item>
