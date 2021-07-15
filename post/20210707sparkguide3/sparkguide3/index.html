@@ -140,7 +140,7 @@ src='https://plausible.io/js/plausible.js'>
 </svg></span>
     <span class="post_date">
       Jul 7, 2021</span>
-    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
+    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
         </a><a href='https://Jerrysmd.github.io/tags/spark' title="spark" class="post_tag button button_translucent">spark
         </a>
     </span>
@@ -380,6 +380,26 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">18</span>    <span class="n">dataset</span><span class="o">.</span><span class="n">filter</span><span class="o">(</span> <span class="n">$</span><span class="s">&#34;age&#34;</span> <span class="o">&gt;</span> <span class="mi">10</span> <span class="o">).</span><span class="n">show</span><span class="o">()</span>
 <span class="ln">19</span>    <span class="c1">//Dataset可以直接编写SQL表达式
 </span><span class="ln">20</span><span class="c1"></span>    <span class="n">dataset</span><span class="o">.</span><span class="n">filter</span><span class="o">(</span> <span class="s">&#34;age &gt; 10&#34;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
+</code></pre></div><p><strong>DataFrame Practice:</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">dataframe1</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<span class="ln"> 2</span>    <span class="c1">//1. 创建SparkSession
+</span><span class="ln"> 3</span><span class="c1"></span>    <span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="nc">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">()</span>
+<span class="ln"> 4</span>    	<span class="o">.</span><span class="n">master</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">)</span>
+<span class="ln"> 5</span>    	<span class="o">.</span><span class="n">appName</span><span class="o">(</span><span class="s">&#34;pm analysis&#34;</span><span class="o">)</span>
+<span class="ln"> 6</span>    	<span class="o">.</span><span class="n">getOrCreate</span><span class="o">()</span>
+<span class="ln"> 7</span>    <span class="c1">//2.读取数据集
+</span><span class="ln"> 8</span><span class="c1"></span>    <span class="k">val</span> <span class="n">souceDF</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span>
+<span class="ln"> 9</span>    	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;header&#34;</span><span class="o">,</span> <span class="n">value</span> <span class="k">=</span> <span class="kc">true</span><span class="o">)</span>
+<span class="ln">10</span>    	<span class="o">.</span><span class="n">csv</span><span class="o">(</span><span class="s">&#34;dataset/beijingPM.csv&#34;</span><span class="o">)</span>
+<span class="ln">11</span>    <span class="c1">//3.处理数据集
+</span><span class="ln">12</span><span class="c1"></span>    <span class="n">sourceDF</span><span class="o">.</span><span class="n">select</span><span class="o">(</span>&#39;year<span class="o">,</span> &#39;month<span class="o">,</span> &#39;PM_Dongsi<span class="o">)</span>
+<span class="ln">13</span>    	<span class="o">.</span><span class="n">where</span><span class="o">(</span>&#39;PM_Dongsi <span class="o">=!=</span> <span class="s">&#34;NA&#34;</span><span class="o">)</span>
+<span class="ln">14</span>    	<span class="o">.</span><span class="n">groupBy</span><span class="o">(</span>&#39;year<span class="o">,</span> &#39;month<span class="o">)</span>
+<span class="ln">15</span>    	<span class="o">.</span><span class="n">count</span><span class="o">()</span>
+<span class="ln">16</span>    	<span class="o">.</span><span class="n">show</span><span class="o">()</span>
+<span class="ln">17</span>    
+<span class="ln">18</span>    <span class="n">spark</span><span class="o">.</span><span class="n">stop</span><span class="o">()</span>
+<span class="ln">19</span><span class="o">}</span>
 </code></pre></div>
 
   </article>
