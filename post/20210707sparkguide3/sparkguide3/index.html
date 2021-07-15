@@ -410,9 +410,19 @@ src='https://plausible.io/js/plausible.js'>
 </li>
 <li>
 <p><strong>DataFrame中存放的是Row对象，而Dataset中可以存放任何类型的对象</strong></p>
-<p>DataFrame是弱类型，Dataset是强类型</p>
+</li>
+<li>
+<p>DataFrame是弱类型，Dataset是强类型。DataFrame的操作方式和Dataset是一样的，但是对于强类型的操作而言，他们处理的类型是不同的</p>
+<p>DataFrame在进行强类型操作的时候，例如map算子，所处理的数据类型永远是Row</p>
+<p>而Dataset，其中是什么类型，他就处理什么类型。</p>
 </li>
 </ol>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">df</span><span class="k">:</span> <span class="kt">DataFrame</span> <span class="o">=</span> <span class="n">personList</span><span class="o">.</span><span class="n">toDF</span><span class="o">()</span>
+<span class="ln">2</span><span class="n">df</span><span class="o">.</span><span class="n">map</span><span class="o">(</span> <span class="o">(</span><span class="n">row</span><span class="k">:</span> <span class="kt">Row</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">Row</span><span class="o">(</span><span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">),</span> <span class="n">row</span><span class="o">,</span><span class="n">getAs</span><span class="o">[</span><span class="kt">Int</span><span class="o">](</span><span class="mi">1</span><span class="o">)</span> <span class="o">*</span> <span class="mi">2</span><span class="o">))(</span><span class="nc">RowEncoder</span><span class="o">.</span><span class="n">apply</span><span class="o">(</span><span class="n">df</span><span class="o">.</span><span class="n">schema</span><span class="o">))</span>
+<span class="ln">3</span>
+<span class="ln">4</span><span class="k">val</span> <span class="n">ds</span><span class="k">:</span> <span class="kt">Dataset</span><span class="o">[</span><span class="kt">person</span><span class="o">]</span> <span class="k">=</span> <span class="n">personList</span><span class="o">.</span><span class="n">toDS</span><span class="o">()</span>
+<span class="ln">5</span><span class="n">ds</span><span class="o">.</span><span class="n">map</span><span class="o">((</span><span class="n">person</span><span class="k">:</span> <span class="kt">Person</span> <span class="o">=&gt;</span> <span class="nc">Person</span><span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="n">name</span><span class="o">,</span> <span class="n">person</span><span class="o">.</span><span class="n">age</span> <span class="o">*</span> <span class="mi">2</span><span class="o">)))</span>
+</code></pre></div>
 
   </article>
 <aside class="sidebar">
