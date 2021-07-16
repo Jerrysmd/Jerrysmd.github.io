@@ -185,6 +185,7 @@ src='https://plausible.io/js/plausible.js'>
     </li>
     <li><a href="#sparksql">SparkSQL</a></li>
     <li><a href="#dataset--dataframe">Dataset &amp; DataFrame</a></li>
+    <li><a href="#row">Row</a></li>
   </ul>
 </nav>
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
@@ -429,6 +430,25 @@ src='https://plausible.io/js/plausible.js'>
 <p>Dataset所代表的操作，是类型安全的，编译时安全的(ds.filter(person =&gt; person.name))</p>
 </li>
 </ol>
+<h2 id="row">Row</h2>
+<p>DataFrame就是Row集合加上Schema信息</p>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">case</span> <span class="k">class</span> <span class="nc">Person</span><span class="o">(</span><span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">age</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span>
+<span class="ln"> 2</span><span class="k">def</span> <span class="n">row</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<span class="ln"> 3</span>    <span class="c1">//1.Row如何创建，是什么
+</span><span class="ln"> 4</span><span class="c1"></span>    <span class="c1">//row对象必须配合Schema对象才会有列名
+</span><span class="ln"> 5</span><span class="c1"></span>    <span class="k">val</span> <span class="n">person</span> <span class="k">=</span> <span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span> <span class="mi">15</span><span class="o">)</span>
+<span class="ln"> 6</span>    <span class="k">val</span> <span class="n">row</span> <span class="k">=</span> <span class="nc">Row</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span> <span class="mi">15</span><span class="o">)</span>
+<span class="ln"> 7</span>    
+<span class="ln"> 8</span>    <span class="c1">//2.如何从Row中获取数据
+</span><span class="ln"> 9</span><span class="c1"></span>    <span class="n">row</span><span class="o">.</span><span class="n">getString</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
+<span class="ln">10</span>    <span class="n">row</span><span class="o">.</span><span class="n">getInt</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+<span class="ln">11</span>    
+<span class="ln">12</span>    <span class="c1">//3.Row也是样例类
+</span><span class="ln">13</span><span class="c1"></span>    <span class="n">row</span> <span class="k">match</span><span class="o">{</span>
+<span class="ln">14</span>        <span class="k">case</span> <span class="nc">Row</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">age</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">age</span><span class="o">)</span>
+<span class="ln">15</span>    <span class="o">}</span>
+<span class="ln">16</span><span class="o">}</span>
+</code></pre></div>
 
   </article>
 <aside class="sidebar">
