@@ -183,9 +183,12 @@ src='https://plausible.io/js/plausible.js'>
         <li><a href="#broadcast">Broadcast</a></li>
       </ul>
     </li>
-    <li><a href="#sparksql">SparkSQL</a></li>
-    <li><a href="#dataset--dataframe">Dataset &amp; DataFrame</a></li>
-    <li><a href="#row">Row</a></li>
+    <li><a href="#sparksql">SparkSQL</a>
+      <ul>
+        <li><a href="#dataset--dataframe">Dataset &amp; DataFrame</a></li>
+        <li><a href="#row">Row</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
@@ -298,7 +301,7 @@ src='https://plausible.io/js/plausible.js'>
 </ol>
 </li>
 </ul>
-<h2 id="dataset--dataframe">Dataset &amp; DataFrame</h2>
+<h3 id="dataset--dataframe">Dataset &amp; DataFrame</h3>
 <p><strong>RDD 优点：</strong></p>
 <ol>
 <li>
@@ -430,7 +433,7 @@ src='https://plausible.io/js/plausible.js'>
 <p>Dataset所代表的操作，是类型安全的，编译时安全的(ds.filter(person =&gt; person.name))</p>
 </li>
 </ol>
-<h2 id="row">Row</h2>
+<h3 id="row">Row</h3>
 <p>DataFrame就是Row集合加上Schema信息</p>
 <div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">case</span> <span class="k">class</span> <span class="nc">Person</span><span class="o">(</span><span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">age</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span>
 <span class="ln"> 2</span><span class="k">def</span> <span class="n">row</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
