@@ -190,6 +190,7 @@ src='https://plausible.io/js/plausible.js'>
         <li><a href="#reader">Reader</a></li>
         <li><a href="#writer">Writer</a></li>
         <li><a href="#parquet">Parquet</a></li>
+        <li><a href="#hive-partition">Hive Partition</a></li>
       </ul>
     </li>
   </ul>
@@ -512,8 +513,28 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln"> 9</span>    <span class="c1">//读取Parquet格式文件
 </span><span class="ln">10</span><span class="c1"></span>    <span class="n">spark</span><span class="o">.</span><span class="n">read</span>
 <span class="ln">11</span>    	<span class="o">.</span><span class="n">load</span><span class="o">(</span><span class="s">&#34;dataset/bj_PM&#34;</span><span class="o">)</span>
-<span class="ln">12</span>    	
+<span class="ln">12</span>    	<span class="o">.</span><span class="n">show</span><span class="o">()</span>
 <span class="ln">13</span><span class="o">}</span>
+</code></pre></div><h3 id="hive-partition">Hive Partition</h3>
+<p>表分区的概念不仅在parquet上有，其他格式的文件也可以指定表分区</p>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">parquetPartions</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">={</span>
+<span class="ln"> 2</span>    <span class="k">val</span> <span class="n">df</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span>
+<span class="ln"> 3</span>    	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;header&#34;</span><span class="o">,</span><span class="n">value</span> <span class="k">=</span> <span class="kc">true</span><span class="o">)</span>
+<span class="ln"> 4</span>    	<span class="o">.</span><span class="n">csv</span><span class="o">(</span><span class="s">&#34;dataset/BJPM.csv&#34;</span><span class="o">)</span>
+<span class="ln"> 5</span>    
+<span class="ln"> 6</span>    <span class="c1">//分区表形式写文件
+</span><span class="ln"> 7</span><span class="c1"></span>    <span class="n">df</span><span class="o">.</span><span class="n">write</span>
+<span class="ln"> 8</span>    <span class="o">.</span><span class="n">partitionBy</span><span class="o">(</span><span class="s">&#34;year&#34;</span><span class="o">,</span> <span class="s">&#34;month&#34;</span><span class="o">)</span>
+<span class="ln"> 9</span>    <span class="o">.</span><span class="n">save</span><span class="o">(</span><span class="n">dataset</span><span class="o">/</span><span class="n">bjPM4</span><span class="o">)</span>
+<span class="ln">10</span>    
+<span class="ln">11</span>    <span class="c1">//读文件
+</span><span class="ln">12</span><span class="c1"></span>    <span class="c1">//写分区的时候，分区列不会包含在生成的文件中
+</span><span class="ln">13</span><span class="c1"></span>    <span class="c1">//直接通过文件来进行读取的话，分区信息会丢失
+</span><span class="ln">14</span><span class="c1"></span>    <span class="c1">//spark SQL自动发现分区
+</span><span class="ln">15</span><span class="c1"></span>    <span class="n">spark</span><span class="o">.</span><span class="n">read</span>
+<span class="ln">16</span>    	<span class="o">.</span><span class="n">parquet</span><span class="o">(</span><span class="s">&#34;dataset/bjPM4&#34;</span><span class="o">)</span>
+<span class="ln">17</span>    	<span class="o">.</span><span class="n">printSchema</span><span class="o">()</span>
+<span class="ln">18</span><span class="o">}</span>
 </code></pre></div>
 
   </article>
