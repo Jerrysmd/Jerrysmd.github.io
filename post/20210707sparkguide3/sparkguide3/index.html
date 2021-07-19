@@ -494,6 +494,13 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">14</span>    
 <span class="ln">15</span><span class="o">}</span>
 </code></pre></div><h3 id="parquet">Parquet</h3>
+<p>Parquet属于Hadoop生态圈的一种<strong>新型列式存储</strong>格式，既然属于Hadoop生态圈，因此也兼容大多圈内计算框架（Hadoop、Spark），另外Parquet是平台、语言无关的，这使得它的适用性很广，只要相关语言有对应支持的类库就可以用；</p>
+<p>Parquet的优劣对比：</p>
+<ul>
+<li>支持嵌套结构，这点对比同样是列式存储的OCR具备一定优势；</li>
+<li>适用于OLAP场景，对比CSV等行式存储结构，列示存储支持<strong>映射下推</strong>和<strong>谓词下推</strong>，减少磁盘IO；</li>
+<li>同样的压缩方式下，列式存储因为每一列都是同构的，因此可以使用更高效的压缩方法；</li>
+</ul>
 <div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">parquet</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln"> 2</span>    <span class="c1">//read
 </span><span class="ln"> 3</span><span class="c1"></span>    <span class="k">val</span> <span class="n">df</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;header&#34;</span><span class="o">,</span> <span class="kc">true</span><span class="o">).</span><span class="n">csv</span><span class="o">(</span><span class="s">&#34;dataset/bjPM.csv&#34;</span><span class="o">)</span>
@@ -505,7 +512,7 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln"> 9</span>    <span class="c1">//读取Parquet格式文件
 </span><span class="ln">10</span><span class="c1"></span>    <span class="n">spark</span><span class="o">.</span><span class="n">read</span>
 <span class="ln">11</span>    	<span class="o">.</span><span class="n">load</span><span class="o">(</span><span class="s">&#34;dataset/bj_PM&#34;</span><span class="o">)</span>
-<span class="ln">12</span>    
+<span class="ln">12</span>    	
 <span class="ln">13</span><span class="o">}</span>
 </code></pre></div>
 
