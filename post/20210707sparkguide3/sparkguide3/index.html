@@ -502,9 +502,11 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln"> 6</span>    	<span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="s">&#34;parquet&#34;</span><span class="o">)</span>
 <span class="ln"> 7</span>    	<span class="o">.</span><span class="n">mode</span><span class="o">(</span><span class="nc">Savemode</span><span class="o">.</span><span class="nc">Overwrite</span><span class="o">)</span>
 <span class="ln"> 8</span>    	<span class="o">.</span><span class="n">save</span><span class="o">(</span><span class="s">&#34;dataset/bj_PM&#34;</span><span class="o">)</span>
-<span class="ln"> 9</span>    <span class="o">/</span>
-<span class="ln">10</span>    
-<span class="ln">11</span><span class="o">}</span>
+<span class="ln"> 9</span>    <span class="c1">//读取Parquet格式文件
+</span><span class="ln">10</span><span class="c1"></span>    <span class="n">spark</span><span class="o">.</span><span class="n">read</span>
+<span class="ln">11</span>    	<span class="o">.</span><span class="n">load</span><span class="o">(</span><span class="s">&#34;dataset/bj_PM&#34;</span><span class="o">)</span>
+<span class="ln">12</span>    
+<span class="ln">13</span><span class="o">}</span>
 </code></pre></div>
 
   </article>
