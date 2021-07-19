@@ -190,7 +190,9 @@ src='https://plausible.io/js/plausible.js'>
         <li><a href="#reader">Reader</a></li>
         <li><a href="#writer">Writer</a></li>
         <li><a href="#parquet">Parquet</a></li>
-        <li><a href="#hive-partition">Hive Partition</a></li>
+        <li><a href="#partition">Partition</a></li>
+        <li><a href="#json">JSON</a></li>
+        <li><a href="#hive">Hive</a></li>
       </ul>
     </li>
   </ul>
@@ -515,7 +517,7 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">11</span>    	<span class="o">.</span><span class="n">load</span><span class="o">(</span><span class="s">&#34;dataset/bj_PM&#34;</span><span class="o">)</span>
 <span class="ln">12</span>    	<span class="o">.</span><span class="n">show</span><span class="o">()</span>
 <span class="ln">13</span><span class="o">}</span>
-</code></pre></div><h3 id="hive-partition">Hive Partition</h3>
+</code></pre></div><h3 id="partition">Partition</h3>
 <p>表分区的概念不仅在parquet上有，其他格式的文件也可以指定表分区</p>
 <div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">parquetPartions</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">={</span>
 <span class="ln"> 2</span>    <span class="k">val</span> <span class="n">df</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span>
@@ -535,7 +537,12 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">16</span>    	<span class="o">.</span><span class="n">parquet</span><span class="o">(</span><span class="s">&#34;dataset/bjPM4&#34;</span><span class="o">)</span>
 <span class="ln">17</span>    	<span class="o">.</span><span class="n">printSchema</span><span class="o">()</span>
 <span class="ln">18</span><span class="o">}</span>
-</code></pre></div>
+</code></pre></div><h3 id="json">JSON</h3>
+<ul>
+<li>toJSON: 把Dataset[Object]转为Dataset[JsonString]</li>
+<li>可以直接从RDD读取JSON的DataFrame，把RDD[JsonString]转为Dataset[Object]</li>
+</ul>
+<h3 id="hive">Hive</h3>
 
   </article>
 <aside class="sidebar">
