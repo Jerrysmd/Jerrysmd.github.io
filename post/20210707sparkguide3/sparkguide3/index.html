@@ -200,7 +200,7 @@ src='https://plausible.io/js/plausible.js'>
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
 <h2 id="advanced-operation">Advanced Operation</h2>
 <h3 id="closure">closure</h3>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">test</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">test</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln"> 2</span>    <span class="k">val</span> <span class="n">f</span> <span class="k">=</span> <span class="n">closure</span><span class="o">()</span>
 <span class="ln"> 3</span>    <span class="n">f</span><span class="o">(</span><span class="mi">5</span><span class="o">)</span>
 <span class="ln"> 4</span><span class="o">}</span>
@@ -217,7 +217,7 @@ src='https://plausible.io/js/plausible.js'>
 <li>闭包也是一个FunctionX类型的对象</li>
 <li>闭包是一个对象</li>
 </ol>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">class</span> <span class="nc">MyClass</span><span class="o">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">class</span> <span class="nc">MyClass</span><span class="o">{</span>
 <span class="ln"> 2</span>    <span class="k">val</span> <span class="n">field</span> <span class="k">=</span> <span class="s">&#34;Hello&#34;</span>
 <span class="ln"> 3</span>    <span class="k">def</span> <span class="n">doStuff</span><span class="o">(</span><span class="n">rdd</span><span class="k">:</span> <span class="kt">RDD</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">RDD</span> <span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="k">=</span> <span class="o">{</span>
 <span class="ln"> 4</span>        <span class="n">rdd</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">x</span> <span class="k">=&gt;</span> <span class="n">field</span> <span class="o">+</span> <span class="n">x</span><span class="o">)</span>
@@ -237,7 +237,7 @@ src='https://plausible.io/js/plausible.js'>
 </li>
 <li>
 <p>结果</p>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">counter</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">longAccumulator</span><span class="o">(</span><span class="s">&#34;counter&#34;</span><span class="o">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">counter</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">longAccumulator</span><span class="o">(</span><span class="s">&#34;counter&#34;</span><span class="o">)</span>
 <span class="ln">2</span><span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">)).</span><span class="n">foreach</span><span class="o">(</span><span class="n">counter</span><span class="o">.</span><span class="n">add</span><span class="o">(</span><span class="k">_</span><span class="o">))</span>
 <span class="ln">3</span><span class="n">counter</span><span class="o">.</span><span class="n">value</span>
 </code></pre></div></li>
@@ -249,7 +249,7 @@ src='https://plausible.io/js/plausible.js'>
 <li>每一个Task，一个Task是一个Stage中的最小处理单元，一个Executor中可以有多个Stage，每个Stage有多个Task</li>
 </ul>
 <p>所以在需要多个Stage的多个Task中使用相同数据的情况下，广播特别有用</p>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">val</span> <span class="n">v</span> <span class="k">=</span> <span class="nc">Map</span><span class="o">(</span><span class="s">&#34;Spark&#34;</span> <span class="o">-&gt;</span> <span class="s">&#34;http[123]&#34;</span><span class="o">,</span> <span class="s">&#34;scala&#34;</span> <span class="o">-&gt;</span> <span class="s">&#34;http[456]&#34;</span><span class="o">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">val</span> <span class="n">v</span> <span class="k">=</span> <span class="nc">Map</span><span class="o">(</span><span class="s">&#34;Spark&#34;</span> <span class="o">-&gt;</span> <span class="s">&#34;http[123]&#34;</span><span class="o">,</span> <span class="s">&#34;scala&#34;</span> <span class="o">-&gt;</span> <span class="s">&#34;http[456]&#34;</span><span class="o">)</span>
 <span class="ln"> 2</span>
 <span class="ln"> 3</span><span class="k">val</span> <span class="n">config</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkConf</span><span class="o">().</span><span class="n">setMaster</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">).</span><span class="n">setAppName</span><span class="o">(</span><span class="s">&#34;bc&#34;</span><span class="o">)</span>
 <span class="ln"> 4</span><span class="k">val</span> <span class="n">sc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkContext</span><span class="o">(</span><span class="n">config</span><span class="o">)</span>
@@ -275,7 +275,7 @@ src='https://plausible.io/js/plausible.js'>
 <li>SparkSQL提供了更好的外部数据源读写支持</li>
 <li>SparkSQL提供了直接访问列的能力</li>
 </ul>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">case</span> <span class="k">class</span> <span class="nc">Person</span><span class="o">(</span><span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">age</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">case</span> <span class="k">class</span> <span class="nc">Person</span><span class="o">(</span><span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">age</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span>
 <span class="ln"> 2</span>
 <span class="ln"> 3</span><span class="k">val</span> <span class="n">spark</span><span class="k">:</span> <span class="kt">SparkSession</span> <span class="o">=</span> <span class="k">new</span> <span class="n">sql</span><span class="o">.</span><span class="nc">SparkSession</span><span class="o">.</span><span class="nc">Builder</span><span class="o">()</span>
 <span class="ln"> 4</span>	<span class="o">.</span><span class="n">appName</span><span class="o">(</span><span class="s">&#34;hello&#34;</span><span class="o">)</span>
@@ -370,7 +370,7 @@ src='https://plausible.io/js/plausible.js'>
 <li>采用堆外内存存储，gc友好</li>
 <li>类型转化安全，代码友好</li>
 </ol>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">dataset1</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">dataset1</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln"> 2</span>    <span class="c1">//1.创建SparkSession
 </span><span class="ln"> 3</span><span class="c1"></span>    <span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="k">new</span> <span class="n">sql</span><span class="o">.</span><span class="nc">SparkSession</span><span class="o">.</span><span class="nc">Builder</span><span class="o">()</span>
 <span class="ln"> 4</span>    	<span class="o">.</span><span class="n">master</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">)</span>
@@ -391,7 +391,7 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">19</span>    <span class="c1">//Dataset可以直接编写SQL表达式
 </span><span class="ln">20</span><span class="c1"></span>    <span class="n">dataset</span><span class="o">.</span><span class="n">filter</span><span class="o">(</span> <span class="s">&#34;age &gt; 10&#34;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
 </code></pre></div><p><strong>DataFrame Practice:</strong></p>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">dataframe1</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">dataframe1</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln"> 2</span>    <span class="c1">//1. 创建SparkSession
 </span><span class="ln"> 3</span><span class="c1"></span>    <span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="nc">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">()</span>
 <span class="ln"> 4</span>    	<span class="o">.</span><span class="n">master</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">)</span>
@@ -427,7 +427,7 @@ src='https://plausible.io/js/plausible.js'>
 <p>而Dataset，其中是什么类型，他就处理什么类型。</p>
 </li>
 </ol>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">df</span><span class="k">:</span> <span class="kt">DataFrame</span> <span class="o">=</span> <span class="n">personList</span><span class="o">.</span><span class="n">toDF</span><span class="o">()</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">df</span><span class="k">:</span> <span class="kt">DataFrame</span> <span class="o">=</span> <span class="n">personList</span><span class="o">.</span><span class="n">toDF</span><span class="o">()</span>
 <span class="ln">2</span><span class="n">df</span><span class="o">.</span><span class="n">map</span><span class="o">(</span> <span class="o">(</span><span class="n">row</span><span class="k">:</span> <span class="kt">Row</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">Row</span><span class="o">(</span><span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">),</span> <span class="n">row</span><span class="o">,</span><span class="n">getAs</span><span class="o">[</span><span class="kt">Int</span><span class="o">](</span><span class="mi">1</span><span class="o">)</span> <span class="o">*</span> <span class="mi">2</span><span class="o">))(</span><span class="nc">RowEncoder</span><span class="o">.</span><span class="n">apply</span><span class="o">(</span><span class="n">df</span><span class="o">.</span><span class="n">schema</span><span class="o">))</span>
 <span class="ln">3</span>
 <span class="ln">4</span><span class="k">val</span> <span class="n">ds</span><span class="k">:</span> <span class="kt">Dataset</span><span class="o">[</span><span class="kt">person</span><span class="o">]</span> <span class="k">=</span> <span class="n">personList</span><span class="o">.</span><span class="n">toDS</span><span class="o">()</span>
@@ -441,7 +441,7 @@ src='https://plausible.io/js/plausible.js'>
 </ol>
 <h3 id="row">Row</h3>
 <p>DataFrame就是Row集合加上Schema信息</p>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">case</span> <span class="k">class</span> <span class="nc">Person</span><span class="o">(</span><span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">age</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">case</span> <span class="k">class</span> <span class="nc">Person</span><span class="o">(</span><span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">age</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span>
 <span class="ln"> 2</span><span class="k">def</span> <span class="n">row</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln"> 3</span>    <span class="c1">//1.Row如何创建，是什么
 </span><span class="ln"> 4</span><span class="c1"></span>    <span class="c1">//row对象必须配合Schema对象才会有列名
@@ -458,7 +458,7 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">15</span>    <span class="o">}</span>
 <span class="ln">16</span><span class="o">}</span>
 </code></pre></div><h3 id="reader">Reader</h3>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">reader1</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">reader1</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln"> 2</span>    <span class="c1">//1.create SparkSession
 </span><span class="ln"> 3</span><span class="c1"></span>    <span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="nc">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">()</span>
 <span class="ln"> 4</span>    	<span class="o">.</span><span class="n">master</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">)</span>
@@ -481,7 +481,7 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">21</span>    	<span class="o">.</span><span class="n">show</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span>
 <span class="ln">22</span><span class="o">}</span>
 </code></pre></div><h3 id="writer">Writer</h3>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">writer1</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">writer1</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln"> 2</span>    <span class="nc">System</span><span class="o">.</span><span class="n">setProperty</span><span class="o">(</span><span class="s">&#34;hodoop.home.dir&#34;</span><span class="o">,</span><span class="s">&#34;c:\\winutils&#34;</span><span class="o">)</span>
 <span class="ln"> 3</span>    <span class="c1">//1.create SparkSession
 </span><span class="ln"> 4</span><span class="c1"></span>    <span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="nc">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">()</span>
@@ -504,7 +504,7 @@ src='https://plausible.io/js/plausible.js'>
 <li>适用于OLAP场景，对比CSV等行式存储结构，列示存储支持<strong>映射下推</strong>和<strong>谓词下推</strong>，减少磁盘IO；</li>
 <li>同样的压缩方式下，列式存储因为每一列都是同构的，因此可以使用更高效的压缩方法；</li>
 </ul>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">parquet</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">parquet</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln"> 2</span>    <span class="c1">//read
 </span><span class="ln"> 3</span><span class="c1"></span>    <span class="k">val</span> <span class="n">df</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;header&#34;</span><span class="o">,</span> <span class="kc">true</span><span class="o">).</span><span class="n">csv</span><span class="o">(</span><span class="s">&#34;dataset/bjPM.csv&#34;</span><span class="o">)</span>
 <span class="ln"> 4</span>    <span class="c1">//把数据写为parquet格式
@@ -519,7 +519,7 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">13</span><span class="o">}</span>
 </code></pre></div><h3 id="partition">Partition</h3>
 <p>表分区的概念不仅在parquet上有，其他格式的文件也可以指定表分区</p>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">parquetPartions</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">={</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">parquetPartions</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">={</span>
 <span class="ln"> 2</span>    <span class="k">val</span> <span class="n">df</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span>
 <span class="ln"> 3</span>    	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;header&#34;</span><span class="o">,</span><span class="n">value</span> <span class="k">=</span> <span class="kc">true</span><span class="o">)</span>
 <span class="ln"> 4</span>    	<span class="o">.</span><span class="n">csv</span><span class="o">(</span><span class="s">&#34;dataset/BJPM.csv&#34;</span><span class="o">)</span>

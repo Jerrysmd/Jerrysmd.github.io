@@ -191,7 +191,7 @@ src='https://plausible.io/js/plausible.js'>
 <li>作为一种通用的数据存储和通信格式被广泛应用。</li>
 <li>描述的数据作为一棵树型的结构而存在。</li>
 </ul>
-<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="ln">1</span><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="ln">1</span><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
 <span class="ln">2</span><span class="nt">&lt;books&gt;</span>
 <span class="ln">3</span>    <span class="nt">&lt;book</span> <span class="na">id=</span><span class="s">&#34;001&#34;</span><span class="nt">&gt;</span>
 <span class="ln">4</span>        <span class="nt">&lt;author&gt;</span>wanger<span class="nt">&lt;/author&gt;</span>
@@ -200,7 +200,7 @@ src='https://plausible.io/js/plausible.js'>
 </code></pre></div><h2 id="2mxml写入操作">2.mxml写入操作</h2>
 <p><mark>mxml既可以创建写入xml文件，也可以解析xml文件数据</mark>
 写入示例:</p>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="cp">#include</span><span class="cpf">&#34;mxml.h&#34;</span><span class="cp">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="cp">#include</span><span class="cpf">&#34;mxml.h&#34;</span><span class="cp">
 </span><span class="ln"> 2</span><span class="cp"></span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
 <span class="ln"> 3</span><span class="p">{</span>
 <span class="ln"> 4</span>    <span class="c1">// create a new xml
@@ -233,7 +233,7 @@ src='https://plausible.io/js/plausible.js'>
 示例：
 解析的文本：</li>
 </ol>
-<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="ln">1</span><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="ln">1</span><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
 <span class="ln">2</span>
 <span class="ln">3</span><span class="nt">&lt;books&gt;</span>
 <span class="ln">4</span>  <span class="nt">&lt;book</span> <span class="na">id=</span><span class="s">&#34;001&#34;</span><span class="nt">&gt;</span>
@@ -241,7 +241,7 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">6</span>  <span class="nt">&lt;/book&gt;</span>
 <span class="ln">7</span><span class="nt">&lt;/books&gt;</span>
 </code></pre></div><p>代码：</p>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="cp">#include</span><span class="cpf">&#34;mxml.h&#34;</span><span class="cp">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="cp">#include</span><span class="cpf">&#34;mxml.h&#34;</span><span class="cp">
 </span><span class="ln"> 2</span><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span><span class="ln"> 3</span><span class="cp"></span>
 <span class="ln"> 4</span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
@@ -270,11 +270,11 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">27</span>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="ln">28</span><span class="p">}</span>
 </code></pre></div><p>结果：</p>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="n">book</span> <span class="n">id</span> <span class="nl">is</span><span class="p">:</span><span class="mo">001</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="n">book</span> <span class="n">id</span> <span class="nl">is</span><span class="p">:</span><span class="mo">001</span>
 <span class="ln">2</span><span class="n">author</span> <span class="nl">is</span><span class="p">:</span><span class="n">wanger</span>
 </code></pre></div><h2 id="4mxml-for循环解析长文件">4.mxml for循环解析长文件</h2>
 <p>xml文件:</p>
-<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="ln"> 1</span><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="ln"> 1</span><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
 <span class="ln"> 2</span><span class="nt">&lt;proto-meta-dump&gt;</span>
 <span class="ln"> 3</span>	<span class="nt">&lt;proto</span> <span class="na">name=</span><span class="s">&#34;AH&#34;</span><span class="nt">&gt;</span>
 <span class="ln"> 4</span>		<span class="nt">&lt;proto-class&gt;</span>crypto<span class="nt">&lt;/proto-class&gt;</span>
@@ -310,7 +310,7 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">34</span>	...
 <span class="ln">35</span><span class="nt">&lt;/proto-meta-dump&gt;</span>
 </code></pre></div><p>解析代码：</p>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="c1">//open xml file
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="c1">//open xml file
 </span><span class="ln"> 2</span><span class="c1"></span><span class="n">FILE</span><span class="o">*</span> <span class="n">fp</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span><span class="s">&#34;r&#34;</span><span class="p">);</span>
 <span class="ln"> 3</span>
 <span class="ln"> 4</span><span class="c1">//create mxml tree head node

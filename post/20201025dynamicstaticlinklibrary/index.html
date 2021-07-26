@@ -212,7 +212,7 @@ src='https://plausible.io/js/plausible.js'>
 <h3 id="2-静态链接的原理">2. 静态链接的原理</h3>
 <p>由很多目标文件进行链接形成的是静态库，反之静态库也可以简单地看成是一组目标文件的集合，即很多目标文件经过压缩打包后形成的一个文件。</p>
 <p>以下面这个图来简单说明一下从静态链接到可执行文件的过程，根据在源文件中包含的头文件和程序中使用到的库函数，如stdio.h中定义的printf()函数，在libc.a中找到目标文件printf.o(这里暂且不考虑printf()函数的依赖关系)，然后将这个目标文件和我们hello.o这个文件进行链接形成我们的可执行文件。</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>graph TD
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>graph TD
 <span class="ln">2</span>A[Christmas] --&gt;|Get money| B(Go shopping)
 <span class="ln">3</span>B --&gt; C{Let me think}
 <span class="ln">4</span>C --&gt;|One| D[Laptop]

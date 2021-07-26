@@ -203,14 +203,14 @@ src='https://plausible.io/js/plausible.js'>
 <h2 id="条件编译">条件编译</h2>
 <p>条件编译是根据实际定义宏（某类条件）进行代码静态编译的手段。可根据表达式的值或某个特定宏是否被定义来确定编译条件。
 最常见的条件编译是防止重复包含头文件的宏，形式跟下面代码类似：</p>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span> <span class="cp">#ifndef ABCD_H
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span> <span class="cp">#ifndef ABCD_H
 </span><span class="ln">2</span><span class="cp"></span> <span class="cp">#define ABCD_H
 </span><span class="ln">3</span><span class="cp"></span> 
 <span class="ln">4</span> <span class="c1">// ... some declaration codes
 </span><span class="ln">5</span><span class="c1"></span> 
 <span class="ln">6</span> <span class="cp">#endif </span><span class="c1">// #ifndef ABCD_H
 </span></code></pre></div><p>在实现文件中通常有如下类似的定义：</p>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span> <span class="cp">#ifdef _DEBUG
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span> <span class="cp">#ifdef _DEBUG
 </span><span class="ln"> 2</span><span class="cp"></span> 
 <span class="ln"> 3</span> <span class="c1">// ... do some operations
 </span><span class="ln"> 4</span><span class="c1"></span> 
@@ -228,14 +228,14 @@ src='https://plausible.io/js/plausible.js'>
 之后出现的MACRO_NAME将被替代为所定义的标记(tokens)。宏可带参数，而后面的标记也是可选的。</p>
 <p>宏定义，按照是否带参数通常分为对象宏、函数宏两种。
 对象宏: 不带参数的宏被称为&quot;对象宏(objectlike macro)&quot;。对象宏多用于定义常量、通用标识。例如：</p>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="c1">// 常量定义
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="c1">// 常量定义
 </span><span class="ln">2</span><span class="c1"></span><span class="cp">#define MAX_LENGTH 100
 </span><span class="ln">3</span><span class="cp"></span><span class="c1">// 通用标识，日志输出宏
 </span><span class="ln">4</span><span class="c1"></span><span class="cp">#define SLog printf
 </span><span class="ln">5</span><span class="cp"></span><span class="c1">// 预编译宏
 </span><span class="ln">6</span><span class="c1"></span><span class="cp">#define _DEBUG
 </span></code></pre></div><p>函数宏：带参数的宏。利用宏可以提高代码的运行效率: 子程序的调用需要压栈出栈, 这一过程如果过于频繁会耗费掉大量的CPU运算资源。 所以一些代码量小但运行频繁的代码如果采用带参数宏来实现会提高代码的运行效率。但多数c++程序不推荐使用函数宏，调试上有一定难度，可考虑使用c++的inline代替之。例如：</p>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="ln">1</span><span class="c1">// 最小值函数
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="ln">1</span><span class="c1">// 最小值函数
 </span><span class="ln">2</span><span class="c1"></span><span class="cp">#define MIN(a,b) ((a)&gt;(b)? (a):(b))
 </span><span class="ln">3</span><span class="cp"></span><span class="c1">// 安全释放内存函数
 </span><span class="ln">4</span><span class="c1"></span><span class="cp">#define SAFE_DELETE(p) {if(NULL!=p){delete p; p = NULL;}}
@@ -243,11 +243,11 @@ src='https://plausible.io/js/plausible.js'>
 <h3 id="2-defined">2. defined</h3>
 <p>defined用来测试某个宏是否被定义。defined(name): 若宏被定义，则返回1，否则返回0。
 它与#if、#elif、#else结合使用来判断宏是否被定义，乍一看好像它显得多余, 因为已经有了#ifdef和#ifndef。defined可用于在一条判断语句中声明多个判别条件；#ifdef和#ifndef则仅支持判断一个宏是否定义。</p>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="cp">#if defined(VAX) &amp;&amp; defined(UNIX) &amp;&amp; !defined(DEBUG) 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="cp">#if defined(VAX) &amp;&amp; defined(UNIX) &amp;&amp; !defined(DEBUG) 
 </span></code></pre></div><p>和#if、#elif、#else不同，#ifdef、#ifndef、defined测试的宏可以是对象宏，也可以是函数宏。</p>
 <h3 id="3-ifdefifndefelseendif">3. #ifdef、#ifndef、#else、#endif</h3>
 <p>条件编译中相对常用的预编译指令。模式如下：</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>#ifdef ABC
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>#ifdef ABC
 <span class="ln">2</span>// ... codes while definded ABC
 <span class="ln">3</span>#elif (CODE_VERSION &gt; 2)
 <span class="ln">4</span>// ... codes while CODE_VERSION &gt; 2

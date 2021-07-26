@@ -182,15 +182,15 @@ src='https://plausible.io/js/plausible.js'>
 </nav>
     <p>Contribution graph shows activity from public repositories. You can choose to show activity from both public and private repositories, with specific details of your activity in private repositories anonymized.</p>
 <h2 id="update-local-git-config">Update local git config</h2>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>git config --global user.name “github’s Name”
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>git config --global user.name “github’s Name”
 <span class="ln">2</span> 
 <span class="ln">3</span>git config --global user.email <span class="s2">&#34;github@*.com&#34;</span>
 </code></pre></div><h2 id="update-commit-history">Update commit history</h2>
 <p>If you do not want to waste your commit history.</p>
 <p>we can use 'git log' to see the git record</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>git log
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>git log
 </code></pre></div><p>we need to edit all of the history of commit and push.</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln"> 1</span>git filter-branch -f --env-filter <span class="s1">&#39;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln"> 1</span>git filter-branch -f --env-filter <span class="s1">&#39;
 </span><span class="ln"> 2</span><span class="s1">if [ &#34;$GIT_AUTHOR_NAME&#34; = &#34;oldName&#34; ]
 </span><span class="ln"> 3</span><span class="s1">then
 </span><span class="ln"> 4</span><span class="s1">export GIT_AUTHOR_NAME=&#34;newName&#34;
@@ -206,7 +206,7 @@ src='https://plausible.io/js/plausible.js'>
 </span><span class="ln">14</span><span class="s1">fi
 </span><span class="ln">15</span><span class="s1">&#39;</span> HEAD
 </code></pre></div><p>如果无差别把所有都改的话去掉if..fi</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>git filter-branch -f --env-filter <span class="s2">&#34;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>git filter-branch -f --env-filter <span class="s2">&#34;
 </span><span class="ln">2</span><span class="s2">GIT_AUTHOR_NAME=&#39;newName&#39;;
 </span><span class="ln">3</span><span class="s2">GIT_AUTHOR_EMAIL=&#39;newEmail&#39;;
 </span><span class="ln">4</span><span class="s2">GIT_COMMITTER_NAME=&#39;newName&#39;;
@@ -220,17 +220,17 @@ src='https://plausible.io/js/plausible.js'>
 <ol>
 <li>使用强制push的方法:</li>
 </ol>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>git push -u origin master -f
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>git push -u origin master -f
 </code></pre></div><p>这样会使远程修改丢失，一般是不可取的，尤其是多人协作开发的时候。</p>
 <ol start="2">
 <li>push前先将远程repository修改pull下来</li>
 </ol>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>git pull origin master
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>git pull origin master
 <span class="ln">2</span>git push -u origin master
 </code></pre></div><ol start="3">
 <li>若不想merge远程和本地修改，可以先创建新的分支：</li>
 </ol>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>git branch <span class="o">[</span>name<span class="o">]</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>git branch <span class="o">[</span>name<span class="o">]</span>
 <span class="ln">2</span><span class="c1">#然后push</span>
 <span class="ln">3</span>git push -u origin <span class="o">[</span>name<span class="o">]</span>
 </code></pre></div>

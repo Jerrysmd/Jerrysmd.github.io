@@ -307,14 +307,14 @@ src='https://plausible.io/js/plausible.js'>
 </ol>
 <h2 id="running-process">Running Process</h2>
 <h3 id="1-spark-shell-run">1 Spark-Shell Run</h3>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">rdd1</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">textFile</span><span class="o">(</span><span class="s">&#34;/data/wordcount.txt&#34;</span><span class="o">)</span> <span class="c1">//Hadoop默认读取hdfs路径：hdfs:///data/wordcount.txt
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">rdd1</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">textFile</span><span class="o">(</span><span class="s">&#34;/data/wordcount.txt&#34;</span><span class="o">)</span> <span class="c1">//Hadoop默认读取hdfs路径：hdfs:///data/wordcount.txt
 </span><span class="ln">2</span><span class="c1"></span><span class="k">val</span> <span class="n">rdd2</span> <span class="k">=</span> <span class="n">rddflatMap</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
 <span class="ln">3</span><span class="k">val</span> <span class="n">rdd3</span> <span class="k">=</span> <span class="n">rdd2</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">item</span><span class="o">,</span><span class="mi">1</span><span class="o">))</span>
 <span class="ln">4</span><span class="k">val</span> <span class="n">rdd4</span> <span class="k">=</span> <span class="n">rdd3</span><span class="o">.</span><span class="n">reduceByKey</span><span class="o">((</span><span class="n">curr</span><span class="o">,</span><span class="n">agg</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">curr</span> <span class="o">+</span> <span class="n">agg</span><span class="o">)</span>
 <span class="ln">5</span><span class="n">rdd4</span><span class="o">.</span><span class="n">collect</span><span class="o">()</span>
 </code></pre></div><p><img src="/post/picture/sparkDemoRunProcess.png" alt="sparkDemoRunProcess"></p>
 <h3 id="2-local-idea-run">2 Local IDEA Run</h3>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span><span class="kt">Arrary</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span><span class="kt">Arrary</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln"> 2</span>    <span class="c1">// 创建SparkContext
 </span><span class="ln"> 3</span><span class="c1"></span>    <span class="k">val</span> <span class="n">conf</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkConf</span><span class="o">().</span><span class="n">setMaster</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">).</span><span class="n">setAppName</span><span class="o">(</span><span class="s">&#34;word_count&#34;</span><span class="o">)</span>
 <span class="ln"> 4</span>    <span class="k">val</span> <span class="n">sc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkContext</span><span class="o">(</span><span class="n">conf</span><span class="o">)</span>
@@ -346,7 +346,7 @@ src='https://plausible.io/js/plausible.js'>
 <li>Maven打包上传</li>
 <li>在集群中运行</li>
 </ol>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>bin/spark -submit --class cn.demo.spark.rdd.WordCount --master spark://node01:7077 ~/original -spark-0.0.jar
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>bin/spark -submit --class cn.demo.spark.rdd.WordCount --master spark://node01:7077 ~/original -spark-0.0.jar
 </code></pre></div><h2 id="rdd">RDD</h2>
 <h3 id="1-cause-of-creation">1 Cause of creation</h3>
 <p><strong>在RDD出现之前，MapReduce是比较主流的</strong></p>
@@ -397,7 +397,7 @@ src='https://plausible.io/js/plausible.js'>
 <h3 id="4-sparkcontext">4 sparkContext</h3>
 <p>SparkContext是spark功能的主要入口。其代表与spark集群的连接，能够用来在集群上创建RDD、累加器、广播变量。每个JVM里只能存在一个处于激活状态的SparkContext，在创建新的SparkContext之前必须调用stop()来关闭之前的SparkContext。</p>
 <p>每一个Spark应用都是一个SparkContext实例，可以理解为一个SparkContext就是一个spark application的生命周期，一旦SparkContext创建之后，就可以用这个SparkContext来创建RDD、累加器、广播变量，并且可以通过SparkContext访问Spark的服务，运行任务。spark context设置内部服务，并建立与spark执行环境的连接。</p>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="nd">@Test</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="nd">@Test</span>
 <span class="ln"> 2</span><span class="k">def</span> <span class="n">sparkContext</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln"> 3</span>    <span class="c1">//  Spark Context 编写
 </span><span class="ln"> 4</span><span class="c1"></span>    <span class="c1">// 		创建SparkConf
@@ -412,7 +412,7 @@ src='https://plausible.io/js/plausible.js'>
 </span><span class="ln">13</span><span class="c1"></span><span class="o">}</span>
 </code></pre></div><h3 id="5-creation-way">5 Creation Way</h3>
 <p>三种RDD的创建方式</p>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span> <span class="n">通过本地集合创建RDD</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span> <span class="n">通过本地集合创建RDD</span>
 <span class="ln"> 2</span><span class="nd">@Test</span>
 <span class="ln"> 3</span><span class="k">def</span> <span class="n">rddCreationLocal</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln"> 4</span>    <span class="k">val</span> <span class="n">conf</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkConf</span><span class="o">().</span><span class="n">setMaster</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">).</span><span class="n">setAppName</span><span class="o">(</span><span class="s">&#34;spark_context&#34;</span><span class="o">)</span>
@@ -438,7 +438,7 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">24</span><span class="o">}</span>
 </code></pre></div><h2 id="transformation-operator">Transformation Operator</h2>
 <h3 id="map">map()</h3>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="nd">@Test</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="nd">@Test</span>
 <span class="ln"> 2</span><span class="k">def</span> <span class="n">mapTest</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln"> 3</span>    <span class="c1">//创建RDD
 </span><span class="ln"> 4</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd1</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">))</span>
@@ -455,7 +455,7 @@ src='https://plausible.io/js/plausible.js'>
 <li>生成了多条数据</li>
 </ol>
 <p>flatmap是一对多</p>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="nd">@Test</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="nd">@Test</span>
 <span class="ln">2</span><span class="k">def</span> <span class="n">flatMapTest</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln">3</span>    <span class="k">val</span> <span class="n">rdd1</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="s">&#34;Hello a&#34;</span><span class="o">,</span><span class="s">&#34;Hello b&#34;</span><span class="o">,</span><span class="s">&#34;Hello c&#34;</span><span class="o">))</span>
 <span class="ln">4</span>    <span class="k">val</span> <span class="n">rdd2</span> <span class="k">=</span> <span class="n">rddf1</span><span class="o">.</span><span class="n">latMap</span><span class="o">(</span> <span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
@@ -465,7 +465,7 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">8</span><span class="o">}</span>
 </code></pre></div><h3 id="reducebykey">reducebykey()</h3>
 <p>reduceByKey第一步先按照key分组，然后对每一组进行聚合，得到结果。</p>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="nd">@Test</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="nd">@Test</span>
 <span class="ln"> 2</span><span class="k">def</span> <span class="n">reduceBykeyTest</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln"> 3</span>    <span class="c1">//创建RDD
 </span><span class="ln"> 4</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd1</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="s">&#34;Hello a&#34;</span><span class="o">,</span><span class="s">&#34;Hello b&#34;</span><span class="o">,</span><span class="s">&#34;Hello c&#34;</span><span class="o">))</span>
@@ -562,7 +562,7 @@ src='https://plausible.io/js/plausible.js'>
 <p>保留满足条件的元素</p>
 <h3 id="sample">sample()</h3>
 <p>filter按照规律过滤，sample则是随机采样</p>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">def</span> <span class="n">sample</span><span class="o">(</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">def</span> <span class="n">sample</span><span class="o">(</span>
 <span class="ln">2</span>    <span class="n">withReplacement</span><span class="k">:</span> <span class="kt">Boolean</span><span class="o">,</span>	<span class="c1">//是否重复取样
 </span><span class="ln">3</span><span class="c1"></span>    <span class="n">fraction</span><span class="k">:</span> <span class="kt">Double</span><span class="o">,</span>			<span class="c1">//取样比例
 </span><span class="ln">4</span><span class="c1"></span>    <span class="n">seed</span><span class="k">:</span> <span class="kt">Long</span> <span class="o">=</span> <span class="nc">Utils</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">nextLong</span><span class="o">)</span><span class="k">:</span> <span class="kt">RDD</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="k">=</span> <span class="o">{...}</span>
@@ -576,7 +576,7 @@ src='https://plausible.io/js/plausible.js'>
 <p>聚合操作：</p>
 <p>reduceByKey -&gt;按照key分组，然后把每一组数据reduce。reduceByKey在map端combiner能减少IO，一个分区放多个数据。</p>
 <p>groupByKey 运算结果的格式：（k，（value1，value2）），没有减少IO</p>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">((</span><span class="s">&#34;a&#34;</span><span class="o">,</span><span class="mi">1</span><span class="o">),(</span><span class="s">&#34;a&#34;</span><span class="o">,</span><span class="mi">1</span><span class="o">),(</span><span class="s">&#34;b&#34;</span><span class="o">,</span><span class="mi">1</span><span class="o">)))</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">((</span><span class="s">&#34;a&#34;</span><span class="o">,</span><span class="mi">1</span><span class="o">),(</span><span class="s">&#34;a&#34;</span><span class="o">,</span><span class="mi">1</span><span class="o">),(</span><span class="s">&#34;b&#34;</span><span class="o">,</span><span class="mi">1</span><span class="o">)))</span>
 <span class="ln">2</span>  <span class="o">.</span><span class="n">groupByKey</span><span class="o">()</span>
 <span class="ln">3</span>  <span class="o">.</span><span class="n">collect</span><span class="o">()</span>
 <span class="ln">4</span>  <span class="o">.</span><span class="n">foreach</span><span class="o">(</span><span class="n">println</span><span class="o">(</span><span class="k">_</span><span class="o">))</span>
@@ -585,7 +585,7 @@ src='https://plausible.io/js/plausible.js'>
 <p>转化数据的函数（初始函数，作用于第一条数据，用于开启整个计算）</p>
 <p>在分区上进行聚合</p>
 <p>把所有的分区的聚合结果聚合为最终结果</p>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="n">rdd</span><span class="o">.</span><span class="n">combineBykey</span><span class="o">(</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="n">rdd</span><span class="o">.</span><span class="n">combineBykey</span><span class="o">(</span>
 <span class="ln">2</span>	<span class="n">createCombiner</span> <span class="k">=</span> <span class="n">curr</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">curr</span><span class="o">,</span><span class="mi">1</span><span class="o">),</span> 
 <span class="ln">3</span>    <span class="n">mergeValue</span> <span class="k">=</span> <span class="o">(</span><span class="n">curr</span><span class="k">:</span> <span class="o">(</span><span class="kt">Double</span><span class="o">,</span> <span class="kt">Int</span><span class="o">),</span> <span class="n">nextValue</span><span class="k">:</span> <span class="kt">Double</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">curr</span><span class="o">.</span><span class="n">_1</span> <span class="o">+</span> <span class="n">nextValue</span><span class="o">,</span> <span class="n">curr</span><span class="o">.</span><span class="n">_2</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)),</span>
 <span class="ln">4</span>    <span class="n">mergeCombiners</span> <span class="k">=</span> <span class="o">(</span><span class="n">curr</span><span class="k">:</span> <span class="o">(</span><span class="kt">Double</span><span class="o">,</span><span class="kt">Int</span><span class="o">),</span> <span class="n">agg</span><span class="k">:</span> <span class="o">(</span><span class="kt">Double</span><span class="o">,</span> <span class="kt">Int</span><span class="o">))</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">curr</span><span class="o">.</span><span class="n">_1</span> <span class="o">+</span> <span class="n">agg</span><span class="o">.</span><span class="n">_1</span><span class="o">,</span> <span class="n">curr</span><span class="o">.</span><span class="n">_2</span> <span class="o">+</span> <span class="n">agg</span><span class="o">.</span><span class="n">_2</span><span class="o">)</span>

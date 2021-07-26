@@ -190,7 +190,7 @@ src='https://plausible.io/js/plausible.js'>
 <h2 id="1-什么是hashmap">1. 什么是HashMap？</h2>
 <p>存储方式主要有两种<code>线性存储</code>和<code>链式存储</code>，常见的线性存储例如数组，常见的链式存储如链表、二叉树等。哈希表的存储主干为线性存储，这也是它在理想状态(无冲突)下时间复杂度为<code>O(1)</code>的关键所在。普通线性存储的存储内容与索引地址之间没有任何的联系，只能通过索引地址推算出存储内容，不能从存储内容推算出索引地址，是一个<mark>单向不可逆</mark>的过程，而HashMap存储的是一个<mark>&lt;key, value&gt;</mark>的键值对，通过key和索引地址建立了一层关系，这层关系称之为哈希函数(或散列函数)，这样既可以通过key推算出索引地址，也可以通过推算出的索引地址直接定位到键值对，这是一个<mark>双向可逆</mark>的过程。需要注意的一点是HashMap并不直接暴露出键值对的索引地址，但是可以通过哈希函数推算出<code>HashCode</code>，其实HashCode就是真实的索引地址。</p>
 <h2 id="2-定义键值对结构">2. 定义键值对结构</h2>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="k">typedef</span> <span class="k">struct</span> <span class="n">entry</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="k">typedef</span> <span class="k">struct</span> <span class="n">entry</span> <span class="p">{</span>
 <span class="ln">2</span>    <span class="kt">void</span> <span class="o">*</span> <span class="n">key</span><span class="p">;</span>             <span class="c1">// 键
 </span><span class="ln">3</span><span class="c1"></span>    <span class="kt">void</span> <span class="o">*</span> <span class="n">value</span><span class="p">;</span>           <span class="c1">// 值
 </span><span class="ln">4</span><span class="c1"></span>    <span class="k">struct</span> <span class="n">entry</span> <span class="o">*</span> <span class="n">next</span><span class="p">;</span>    <span class="c1">// 冲突链表
@@ -204,7 +204,7 @@ src='https://plausible.io/js/plausible.js'>
 <p><code>size</code>是当前存储键值对的数量，而<code>listSize</code>是当前数组的大小，仔细观察键值对结构会发现，数组的每一项其实都是冲突链表的头节点。因为冲突的存在，就有可能导致size大于listSize，当size大于listSize的时候一定发生了冲突，这时候就会扩容。</p>
 <p>在结构体中放了一些常用的方法，因为C语言本身并没有类的概念，为了便于内部封装(经常会有一个方法调用另一个方法的时候)，可以让用户自定义一个方法而不影响其它方法的调用。举个简单的例子，put方法中调用了hashCode函数，如果想自定义一个hashCode方法，迫不得已还要再实现一个put方法，哪怕put中只改了一行代码。</p>
 <p>结构体定义如下：</p>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="c1">// 哈希结构
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="c1">// 哈希结构
 </span><span class="ln"> 2</span><span class="c1"></span><span class="k">typedef</span> <span class="k">struct</span> <span class="n">hashMap</span> <span class="o">*</span><span class="n">HashMap</span><span class="p">;</span>
 <span class="ln"> 3</span><span class="cp">#define newHashMap() NEW(struct hashMap)
 </span><span class="ln"> 4</span><span class="cp"></span>
@@ -271,7 +271,7 @@ src='https://plausible.io/js/plausible.js'>
 </span><span class="ln">65</span><span class="c1"></span><span class="k">static</span> <span class="kt">void</span> <span class="nf">resetHashMap</span><span class="p">(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="kt">int</span> <span class="n">listSize</span><span class="p">);</span>
 </code></pre></div><p>HashMap的所有属性方法都有一个默认的实现，创建HashMap时可以指定哈希函数和判等函数(用于比较两个key是否相等)，传入NULL时将使用默认函数。这些函数都被设置为了static，在文件外不可访问。</p>
 <h2 id="4-哈希函数">4. 哈希函数</h2>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="kt">int</span> <span class="nf">defaultHashCode</span><span class="p">(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="n">let</span> <span class="n">key</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="kt">int</span> <span class="nf">defaultHashCode</span><span class="p">(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="n">let</span> <span class="n">key</span><span class="p">)</span>
 <span class="ln"> 2</span><span class="p">{</span>
 <span class="ln"> 3</span>    <span class="n">IN_STACK</span><span class="p">;</span>
 <span class="ln"> 4</span>    <span class="n">string</span> <span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="n">key</span><span class="p">;</span>
@@ -290,7 +290,7 @@ src='https://plausible.io/js/plausible.js'>
 </code></pre></div><p>key的类型为void *，是一个任意类型，HashMap本身也没有规定key值一定是string类型，上面的哈希函数只针对string类型，可以根据实际需要替换成其他。</p>
 <h2 id="5-put函数">5. put函数</h2>
 <p>用于在哈希表中存入一个键值对，首先先推算出HashCode，然后判断该地址是否已经有数据，如果已有的key值和存入的key值相同，改变value即可，否则为冲突，需要挂到冲突链尾部，该地址没有数据时直接存储。实现如下：</p>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="kt">void</span> <span class="nf">resetHashMap</span><span class="p">(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="kt">int</span> <span class="n">listSize</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="kt">void</span> <span class="nf">resetHashMap</span><span class="p">(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="kt">int</span> <span class="n">listSize</span><span class="p">)</span> <span class="p">{</span>
 <span class="ln"> 2</span>
 <span class="ln"> 3</span>    <span class="k">if</span> <span class="p">(</span><span class="n">listSize</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
 <span class="ln"> 4</span>
@@ -389,7 +389,7 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">97</span><span class="p">}</span>
 </code></pre></div><p>put函数还有一个重要的功能，当size大于listSize时要主动扩容，这个判定条件看似有些不合理，当size大于listSize的时候可能因为冲突的存在，数组并没有存满，这时候就扩容不是浪费存储空间吗？事实确实如此，但这其实是为了加快检索速度一种妥协的办法，上文提到过，当size大于listSize时一定会发生冲突，因为哈希函数为了不越界，都会将计算出的HashCode进行取余操作，这就导致HashCode的个数一共就listSize个，超过这个个数就一定会冲突，冲突的越多，检索速度就越向O(n)靠拢，为了保证索引速度消耗一定的空间还是比较划算的，扩容时直接将容量变为了当前的两倍，这是考虑到扩容时需要将所有重新计算所有元素的HashCode，较为消耗时间，所以应该尽量的减少扩容次数。</p>
 <h2 id="6-其它函数">6. 其它函数</h2>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln">  1</span><span class="n">let</span> <span class="nf">defaultGet</span><span class="p">(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="n">let</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln">  1</span><span class="n">let</span> <span class="nf">defaultGet</span><span class="p">(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="n">let</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
 <span class="ln">  2</span>    <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">hashCode</span><span class="p">(</span><span class="n">hashMap</span><span class="p">,</span> <span class="n">key</span><span class="p">);</span>
 <span class="ln">  3</span>    <span class="n">Entry</span> <span class="n">entry</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">index</span><span class="p">];</span>
 <span class="ln">  4</span>    <span class="k">while</span> <span class="p">(</span><span class="n">entry</span><span class="o">-&gt;</span><span class="n">key</span> <span class="o">!=</span> <span class="nb">NULL</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">equal</span><span class="p">(</span><span class="n">entry</span><span class="o">-&gt;</span><span class="n">key</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span> <span class="p">{</span>
@@ -506,7 +506,7 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">115</span><span class="p">}</span>
 </code></pre></div><h2 id="7-iterator接口">7. Iterator接口</h2>
 <p>Iterator接口提供了遍历HashMap结构的方法，基本定义如下：</p>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="c1">// 迭代器结构
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="c1">// 迭代器结构
 </span><span class="ln"> 2</span><span class="c1"></span><span class="k">typedef</span> <span class="k">struct</span> <span class="n">hashMapIterator</span> <span class="p">{</span>
 <span class="ln"> 3</span>    <span class="n">Entry</span> <span class="n">entry</span><span class="p">;</span>    <span class="c1">// 迭代器当前指向
 </span><span class="ln"> 4</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">count</span><span class="p">;</span>      <span class="c1">// 迭代次数
@@ -531,7 +531,7 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">23</span><span class="c1">// 释放迭代器内存
 </span><span class="ln">24</span><span class="c1"></span><span class="kt">void</span> <span class="nf">freeHashMapIterator</span><span class="p">(</span><span class="n">HashMapIterator</span> <span class="o">*</span> <span class="n">iterator</span><span class="p">);</span>
 </code></pre></div><p>实现如下:</p>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="n">HashMapIterator</span> <span class="nf">createHashMapIterator</span><span class="p">(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="n">HashMapIterator</span> <span class="nf">createHashMapIterator</span><span class="p">(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">)</span> <span class="p">{</span>
 <span class="ln"> 2</span>    <span class="n">HashMapIterator</span> <span class="n">iterator</span> <span class="o">=</span> <span class="n">newHashMapIterator</span><span class="p">();</span>
 <span class="ln"> 3</span>    <span class="n">iterator</span><span class="o">-&gt;</span><span class="n">hashMap</span> <span class="o">=</span> <span class="n">hashMap</span><span class="p">;</span>
 <span class="ln"> 4</span>    <span class="n">iterator</span><span class="o">-&gt;</span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -568,7 +568,7 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">35</span>    <span class="o">*</span><span class="n">iterator</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
 <span class="ln">36</span><span class="p">}</span>
 </code></pre></div><h2 id="8-使用测试">8. 使用测试</h2>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="cp">#define Put(map, key, value) map-&gt;put(map, (void *)key, (void *)value);
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="cp">#define Put(map, key, value) map-&gt;put(map, (void *)key, (void *)value);
 </span><span class="ln"> 2</span><span class="cp">#define Get(map, key) (char *)map-&gt;get(map, (void *)key)
 </span><span class="ln"> 3</span><span class="cp">#define Remove(map, key) map-&gt;remove(map, (void *)key)
 </span><span class="ln"> 4</span><span class="cp">#define Existe(map, key) map-&gt;exists(map, (void *)key)
@@ -602,7 +602,7 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">32</span>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="ln">33</span><span class="p">}</span>
 </code></pre></div><p>运行结果：</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln"> 1</span>key: 4545, exists: true
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln"> 1</span>key: 4545, exists: true
 <span class="ln"> 2</span>4545: asdfasdfds
 <span class="ln"> 3</span>remove 4545 true
 <span class="ln"> 4</span>remove 4545 false

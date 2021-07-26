@@ -288,10 +288,10 @@ src='https://plausible.io/js/plausible.js'>
 <li>lazy修饰符可以修饰变量，但是这个变量必须是val修饰的</li>
 </ol>
 <p>ps. lazy相当于延迟加载（懒加载），当前变量使用lazy修饰的时候，只要变量不被调用，就不会进行初始化，什么时候调用，什么时候进行初始化</p>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">lazy</span> <span class="k">val</span> <span class="n">words</span> <span class="k">=</span> <span class="n">scala</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="nc">Source</span><span class="o">.</span><span class="n">fromFile</span><span class="o">(</span><span class="s">&#34;/usr/share/dict/words&#34;</span><span class="o">).</span><span class="n">mkString</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">lazy</span> <span class="k">val</span> <span class="n">words</span> <span class="k">=</span> <span class="n">scala</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="nc">Source</span><span class="o">.</span><span class="n">fromFile</span><span class="o">(</span><span class="s">&#34;/usr/share/dict/words&#34;</span><span class="o">).</span><span class="n">mkString</span>
 <span class="ln">2</span><span class="c1">//当val被声明为lazy时，它的初始化将被推迟，直到我们首次对他取值
 </span></code></pre></div><p>懒值对于开销大的初始化语句十分有用。它还可以用来应对其他初始化问题，比如循环依赖。更重要的是，它是开发懒数据结构的基础。</p>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">words</span> <span class="k">=</span> <span class="o">...</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">words</span> <span class="k">=</span> <span class="o">...</span>
 <span class="ln">2</span><span class="c1">//在words被定义时即被取值
 </span><span class="ln">3</span><span class="c1"></span><span class="k">lazy</span> <span class="k">val</span> <span class="n">words</span> <span class="k">=</span> <span class="o">...</span>
 <span class="ln">4</span><span class="c1">//在words被首次使用时取值

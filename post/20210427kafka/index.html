@@ -357,16 +357,16 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 <p><img src="/post/picture/kafkaPartitionLog.png" alt="kafkaPartitionLog"></p>
 <p><strong>实操</strong></p>
 <p>启动zk</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span><span class="nb">cd</span> /usr/local/kara/kafka_2.13-2.6.0/bin
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span><span class="nb">cd</span> /usr/local/kara/kafka_2.13-2.6.0/bin
 <span class="ln">2</span>zookeeper-server-start.sh ../config/zookeeper.properties
 </code></pre></div><p>启动kafka服务器</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>kafka-server-start.sh ../config/server.properties
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>kafka-server-start.sh ../config/server.properties
 </code></pre></div><p>创建topic，4个分区，一个副本</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor <span class="m">1</span> --partitions <span class="m">4</span> --topic partition_test
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor <span class="m">1</span> --partitions <span class="m">4</span> --topic partition_test
 </code></pre></div><p>发送一些消息</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>kafka-console-producer.sh --broker-list localhost:9092 --topic partition_test
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>kafka-console-producer.sh --broker-list localhost:9092 --topic partition_test
 </code></pre></div><p>启动一个consumer</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic partition_test --from-beginning
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic partition_test --from-beginning
 </code></pre></div><p><strong>分区</strong></p>
 <p><strong>partition存储分布</strong></p>
 <p>一个topic下有多个不同partition，每个partition为一个目录，partiton命名规则为<strong>topic名称+有序序号</strong>，第一个partiton序号从0开始，序号最大值为partitions数量减1</p>
@@ -480,7 +480,7 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 <p>传统IO <strong>(4次上下文切换4次拷贝)</strong></p>
 <p>假如将磁盘上的文件读取出来，然后通过网络协议发送给客户端。</p>
 <p>一般需要两个系统调用，<strong>但是一共4次上下文切换，4次拷贝</strong></p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>read(file, tmp_buf, len);
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>read(file, tmp_buf, len);
 <span class="ln">2</span>write(socket, tmp_buf, len);
 </code></pre></div></li>
 <li>
@@ -489,7 +489,7 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 <li>
 <p>mmap(<strong>4次上下文切换3次拷贝</strong>)</p>
 <p>mmap()系统调用函数会直接把内核缓冲区里的数据「<strong>映射</strong>」到用户空间，这样，操作系统内核与用户空间就不需要再进行任何的数据拷贝操作，它替换了read()系统调用函数。</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>buf = mmap(file, len);
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>buf = mmap(file, len);
 <span class="ln">2</span>write(sockfd, buf, len);
 </code></pre></div></li>
 </ul>
@@ -501,7 +501,7 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 <p>其次，该系统调用，可以直接把内核缓冲区里的数据拷贝到 socket 缓冲区里，不再拷贝到用户态，这样就只有 2 次上下文切换，和 3 次数据拷贝。</p>
 </li>
 </ul>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>#include &lt;sys/socket.h&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>#include &lt;sys/socket.h&gt;
 <span class="ln">2</span>ssize_t sendfile(int out_fd, int in_fd, off_t *offset, size_t count);
 </code></pre></div><ul>
 <li>

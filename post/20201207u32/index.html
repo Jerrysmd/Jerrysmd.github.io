@@ -274,7 +274,7 @@ src='https://plausible.io/js/plausible.js'>
 </tbody>
 </table>
 <h3 id="print-format">Print format</h3>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="o">%</span><span class="p">[</span><span class="n">flags</span><span class="p">][</span><span class="n">width</span><span class="p">][.</span><span class="n">prec</span><span class="p">][</span><span class="n">length</span><span class="p">]</span><span class="n">type</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="o">%</span><span class="p">[</span><span class="n">flags</span><span class="p">][</span><span class="n">width</span><span class="p">][.</span><span class="n">prec</span><span class="p">][</span><span class="n">length</span><span class="p">]</span><span class="n">type</span>
 <span class="ln">2</span><span class="o">%</span><span class="p">[</span><span class="err">标志</span><span class="p">][</span><span class="err">最小宽度</span><span class="p">][.</span><span class="err">精度</span><span class="p">][</span><span class="err">类型长度</span><span class="p">]</span><span class="err">类型。</span>
 </code></pre></div><h4 id="1-type">1. Type</h4>
 <table>
@@ -423,7 +423,7 @@ src='https://plausible.io/js/plausible.js'>
 </tbody>
 </table>
 <p>example:</p>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%5d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="mi">1000</span><span class="p">);</span>               <span class="c1">//默认右对齐,左边补空格  			//output:1000
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%5d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="mi">1000</span><span class="p">);</span>               <span class="c1">//默认右对齐,左边补空格  			//output:1000
 </span><span class="ln">2</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%-5d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="mi">1000</span><span class="p">);</span>              <span class="c1">//左对齐,右边补空格 			//output:1000
 </span><span class="ln">3</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%+d %+d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="o">-</span><span class="mi">1000</span><span class="p">);</span>     <span class="c1">//输出正负号					//output:+1000 -1000
 </span><span class="ln">4</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;% d % d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="o">-</span><span class="mi">1000</span><span class="p">);</span>     <span class="c1">//正号用空格替代，负号输出 		//output:1000 -1000
