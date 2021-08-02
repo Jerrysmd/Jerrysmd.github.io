@@ -193,6 +193,7 @@ src='https://plausible.io/js/plausible.js'>
         <li><a href="#partition">Partition</a></li>
         <li><a href="#json">JSON</a></li>
         <li><a href="#hive">Hive</a></li>
+        <li><a href="#jdbc">JDBC</a></li>
       </ul>
     </li>
   </ul>
@@ -543,6 +544,32 @@ src='https://plausible.io/js/plausible.js'>
 <li>可以直接从RDD读取JSON的DataFrame，把RDD[JsonString]转为Dataset[Object]</li>
 </ul>
 <h3 id="hive">Hive</h3>
+<h3 id="jdbc">JDBC</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SCALA" data-lang="SCALA"><span class="ln"> 1</span><span class="c1">//读数据
+</span><span class="ln"> 2</span><span class="c1"></span><span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="nc">SparkSession</span>
+<span class="ln"> 3</span>	<span class="o">.</span><span class="n">builder</span><span class="o">()</span>
+<span class="ln"> 4</span>	<span class="o">.</span><span class="n">appName</span><span class="o">(</span><span class="s">&#34;jdbc example&#34;</span><span class="o">)</span>
+<span class="ln"> 5</span>	<span class="o">.</span><span class="n">master</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">)</span>
+<span class="ln"> 6</span>	<span class="o">.</span><span class="n">getOrCreate</span><span class="o">()</span>
+<span class="ln"> 7</span><span class="k">val</span> <span class="n">schema</span> <span class="k">=</span> <span class="nc">StructType</span><span class="o">(</span>
+<span class="ln"> 8</span>	<span class="nc">List</span><span class="o">(</span>
+<span class="ln"> 9</span>    	<span class="nc">StructField</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">,</span> <span class="nc">StringType</span><span class="o">),</span>
+<span class="ln">10</span>        <span class="nc">StructField</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">,</span> <span class="nc">IntegerType</span><span class="o">),</span>
+<span class="ln">11</span>        <span class="nc">StructField</span><span class="o">(</span><span class="s">&#34;gpa&#34;</span><span class="o">,</span> <span class="nc">FloatType</span><span class="o">),</span>
+<span class="ln">12</span>    <span class="o">)</span>
+<span class="ln">13</span><span class="o">)</span>
+<span class="ln">14</span><span class="k">val</span> <span class="n">studentDF</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span>
+<span class="ln">15</span>	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;delimiter&#34;</span><span class="o">,</span> <span class="s">&#34;\t&#34;</span><span class="o">)</span>
+<span class="ln">16</span>	<span class="o">.</span><span class="n">schema</span><span class="o">(</span><span class="n">schema</span><span class="o">)</span>
+<span class="ln">17</span>	<span class="o">.</span><span class="n">csv</span><span class="o">(</span><span class="s">&#34;dataset/studenttab10k&#34;</span><span class="o">)</span>
+<span class="ln">18</span><span class="c1">//写数据
+</span><span class="ln">19</span><span class="c1"></span><span class="n">studentDF</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="s">&#34;jdbc&#34;</span><span class="o">).</span><span class="n">mode</span><span class="o">(</span><span class="nc">SaveMode</span><span class="o">.</span><span class="nc">Overwrite</span><span class="o">)</span>
+<span class="ln">20</span>	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;url&#34;</span><span class="o">,</span> <span class="s">&#34;jdbc:mysql://node01:3306/spark_test&#34;</span><span class="o">)</span>
+<span class="ln">21</span>	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;dbtable&#34;</span><span class="o">,</span> <span class="s">&#34;student&#34;</span><span class="o">)</span>
+<span class="ln">22</span>	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;user&#34;</span><span class="o">,</span> <span class="s">&#34;spark&#34;</span><span class="o">)</span>
+<span class="ln">23</span>	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;password&#34;</span><span class="o">,</span> <span class="s">&#34;Spark123!&#34;</span><span class="o">)</span>
+<span class="ln">24</span>	<span class="o">.</span><span class="n">save</span><span class="o">()</span>
+</code></pre></div>
 
   </article>
 <aside class="sidebar">
