@@ -545,6 +545,7 @@ src='https://plausible.io/js/plausible.js'>
 </ul>
 <h3 id="hive">Hive</h3>
 <h3 id="jdbc">JDBC</h3>
+<p>MySQL的访问方式有两种：使用本地运行，提交到集群中运行</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SCALA" data-lang="SCALA"><span class="ln"> 1</span><span class="c1">//读数据
 </span><span class="ln"> 2</span><span class="c1"></span><span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="nc">SparkSession</span>
 <span class="ln"> 3</span>	<span class="o">.</span><span class="n">builder</span><span class="o">()</span>
@@ -559,8 +560,8 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">12</span>    <span class="o">)</span>
 <span class="ln">13</span><span class="o">)</span>
 <span class="ln">14</span><span class="k">val</span> <span class="n">studentDF</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span>
-<span class="ln">15</span>	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;delimiter&#34;</span><span class="o">,</span> <span class="s">&#34;\t&#34;</span><span class="o">)</span>
-<span class="ln">16</span>	<span class="o">.</span><span class="n">schema</span><span class="o">(</span><span class="n">schema</span><span class="o">)</span>
+<span class="ln">15</span>	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;delimiter&#34;</span><span class="o">,</span> <span class="s">&#34;\t&#34;</span><span class="o">)</span><span class="c1">//读取文件的分隔符是制表符
+</span><span class="ln">16</span><span class="c1"></span>	<span class="o">.</span><span class="n">schema</span><span class="o">(</span><span class="n">schema</span><span class="o">)</span>
 <span class="ln">17</span>	<span class="o">.</span><span class="n">csv</span><span class="o">(</span><span class="s">&#34;dataset/studenttab10k&#34;</span><span class="o">)</span>
 <span class="ln">18</span><span class="c1">//写数据
 </span><span class="ln">19</span><span class="c1"></span><span class="n">studentDF</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="s">&#34;jdbc&#34;</span><span class="o">).</span><span class="n">mode</span><span class="o">(</span><span class="nc">SaveMode</span><span class="o">.</span><span class="nc">Overwrite</span><span class="o">)</span>
