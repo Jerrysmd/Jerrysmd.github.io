@@ -1,8 +1,8 @@
 
 <!DOCTYPE html>
-<html lang="en" data-figures="" data-mode="dim">
+<html lang="en" data-figures="true" class="page" data-mode="dim">
   <head>
-<title>C&#43;&#43; | JerrysBlog</title>
+<title>Spark 简介: Spark Guide, Part Ⅳ | JerrysBlog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,21 +29,20 @@ src='https://plausible.io/js/plausible.js'>
 <meta property="og:locale" content="en" />
 
 <meta property="og:type" content="article">
-<meta name="description" content="">
+<meta name="description" content="Article description.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@0x4c2">
-<meta name="twitter:title" content="C&#43;&#43;" />
-<meta property="og:url" content="https://Jerrysmd.github.io/tags/c&#43;&#43;/" />
-<meta property="og:title" content="C&#43;&#43;" />
-<meta property="og:description" content="" />
-<meta property="og:image" content="https://Jerrysmd.github.io/images/thumbnail.png" />
+<meta name="twitter:title" content="Spark 简介: Spark Guide, Part Ⅳ" />
+<meta property="og:url" content="https://Jerrysmd.github.io/post/20210803sparkguide4/sparkguide4/" />
+<meta property="og:title" content="Spark 简介: Spark Guide, Part Ⅳ" />
+<meta property="og:description" content="Article description." />
+<meta property="og:image" content="https://Jerrysmd.github.io/images/code3.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://Jerrysmd.github.io/icons_custom/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://Jerrysmd.github.io/icons_custom/favicon-32x32.png">
 <link rel="manifest" href="https://Jerrysmd.github.io/icons_custom/site.webmanifest">
 
-<link rel="canonical" href="https://Jerrysmd.github.io/tags/c&#43;&#43;/">
-<link rel="alternate" type="application/rss+xml" href="https://Jerrysmd.github.io/tags/c++/index.xml" title="JerrysBlog" />
+<link rel="canonical" href="https://Jerrysmd.github.io/post/20210803sparkguide4/sparkguide4/">
 
     
 
@@ -61,8 +60,7 @@ src='https://plausible.io/js/plausible.js'>
   
   
     
-  
-  <body data-code="7" data-lines="true" id="documentTop">
+  <body data-code="40" data-lines="true" id="documentTop">
 
 <header class="nav_header" >
   <nav class="nav"><a href='https://Jerrysmd.github.io/' class="nav_brand nav_item" title="JerrysBlog">
@@ -132,35 +130,29 @@ src='https://plausible.io/js/plausible.js'>
 </header>
 
     <main>
-
+  
 <div class="grid-inverse wrap content">
-  <ul class="posts" id="posts">
-      <li class="post_item">
-  <div class="excerpt">
-    <div class="excerpt_header">
-      <h3 class="post_link">
-        <a href="https://Jerrysmd.github.io/post/20201025dynamicstaticlinklibrary/" title="动态链接和静态链接: Dynamic link library and static link library">动态链接和静态链接: Dynamic link library and static link library</a>
-      </h3>
-      
+  <article class="post_content">
+    <h1 class="post_title">Spark 简介: Spark Guide, Part Ⅳ</h1>
   <div class="post_meta">
     <span><svg class="icon">
   <use xlink:href="#calendar"></use>
 </svg></span>
     <span class="post_date">
-      Oct 25, 2020</span>
-    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/c' title="c" class="post_tag button button_translucent">c
-        </a><a href='https://Jerrysmd.github.io/tags/c&#43;&#43;' title="c&#43;&#43;" class="post_tag button button_translucent">c&#43;&#43;
+      Aug 3, 2021</span>
+    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
+        </a><a href='https://Jerrysmd.github.io/tags/spark' title="spark" class="post_tag button button_translucent">spark
         </a>
     </span>
     <span class="page_only">&nbsp;·
   <div class="post_share">
     Share on:
-    <a href="https://twitter.com/intent/tweet?text=%e5%8a%a8%e6%80%81%e9%93%be%e6%8e%a5%e5%92%8c%e9%9d%99%e6%80%81%e9%93%be%e6%8e%a5%3a%20Dynamic%20link%20library%20and%20static%20link%20library&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201025dynamicstaticlinklibrary%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
+    <a href="https://twitter.com/intent/tweet?text=Spark%20%e7%ae%80%e4%bb%8b%3a%20Spark%20Guide%2c%20Part%20%e2%85%a3&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20210803sparkguide4%2fsparkguide4%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
       <svg class="icon">
   <use xlink:href="#twitter"></use>
 </svg>
     </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201025dynamicstaticlinklibrary%2f&t=%e5%8a%a8%e6%80%81%e9%93%be%e6%8e%a5%e5%92%8c%e9%9d%99%e6%80%81%e9%93%be%e6%8e%a5%3a%20Dynamic%20link%20library%20and%20static%20link%20library" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20210803sparkguide4%2fsparkguide4%2f&t=Spark%20%e7%ae%80%e4%bb%8b%3a%20Spark%20Guide%2c%20Part%20%e2%85%a3" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
       <svg class="icon">
   <use xlink:href="#facebook"></use>
 </svg>
@@ -170,7 +162,7 @@ src='https://plausible.io/js/plausible.js'>
   <use xlink:href="#linkedin"></use>
 </svg>
     </a>
-    <a href="https://Jerrysmd.github.io/post/20201025dynamicstaticlinklibrary/" title="Copy Link" class="link link_yank">
+    <a href="https://Jerrysmd.github.io/post/20210803sparkguide4/sparkguide4/" title="Copy Link" class="link link_yank">
       <svg class="icon">
   <use xlink:href="#copy"></use>
 </svg>
@@ -179,152 +171,13 @@ src='https://plausible.io/js/plausible.js'>
   </span>
   </div>
 
-    </div>
-    <div class="excerpt_footer partition">
-      <div class="excerpt_thumbnail">
-        <img src='https://Jerrysmd.github.io/images/code3.png' alt="动态链接和静态链接: Dynamic link library and static link library">
-      </div>
-      
-        <div>
-          <p class="pale">
-            
-              <p>开发中，我们只需要知道lib是编译时需要的，dll是运行时需要的。如果要完成源代码的编译，有lib就够了。如果要使动态连接的程序运行起来，有dll就够了。本文会更加清晰的了解二者的区别、生成、使用。</p>
-            
-          </p>
-          <a href="https://Jerrysmd.github.io/post/20201025dynamicstaticlinklibrary/" title="Read More" class="excerpt_more button">Read More</a>
-        </div>
-      </div>
-    </div>
-  </li>
+    
+    
+    <h2>Overview</h2>
+    <nav id="TableOfContents"></nav>
+    <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
 
-      <li class="post_item">
-  <div class="excerpt">
-    <div class="excerpt_header">
-      <h3 class="post_link">
-        <a href="https://Jerrysmd.github.io/post/20201015makefile_cmakelist/" title="Makefile Guide">Makefile Guide</a>
-      </h3>
-      
-  <div class="post_meta">
-    <span><svg class="icon">
-  <use xlink:href="#calendar"></use>
-</svg></span>
-    <span class="post_date">
-      Oct 15, 2020</span>
-    <span class="post_time"> · 4 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/c' title="c" class="post_tag button button_translucent">c
-        </a><a href='https://Jerrysmd.github.io/tags/c&#43;&#43;' title="c&#43;&#43;" class="post_tag button button_translucent">c&#43;&#43;
-        </a>
-    </span>
-    <span class="page_only">&nbsp;·
-  <div class="post_share">
-    Share on:
-    <a href="https://twitter.com/intent/tweet?text=Makefile%20Guide&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201015makefile_cmakelist%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <use xlink:href="#twitter"></use>
-</svg>
-    </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201015makefile_cmakelist%2f&t=Makefile%20Guide" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <use xlink:href="#facebook"></use>
-</svg>
-    </a>
-    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="Share on LinkedIn" rel="nofollow">
-      <svg class="icon">
-  <use xlink:href="#linkedin"></use>
-</svg>
-    </a>
-    <a href="https://Jerrysmd.github.io/post/20201015makefile_cmakelist/" title="Copy Link" class="link link_yank">
-      <svg class="icon">
-  <use xlink:href="#copy"></use>
-</svg>
-    </a>
-  </div>
-  </span>
-  </div>
-
-    </div>
-    <div class="excerpt_footer partition">
-      <div class="excerpt_thumbnail">
-        <img src='https://Jerrysmd.github.io/images/code2.png' alt="Makefile Guide">
-      </div>
-      
-        <div>
-          <p class="pale">
-            
-              <p>Makefile定义了一系列的规则来指定，哪些文件需要先编译，哪些文件需要后编译，哪些文件需要重新编译，甚至于进行更复杂的功能操作，因为makefile就像一个Shell脚本一样，其中也可以执行操作系统的命令。makefile带来的好处就是——“自动化编译”，整个工程完全自动编译，极大的提高了软件开发的效率。</p>
-            
-          </p>
-          <a href="https://Jerrysmd.github.io/post/20201015makefile_cmakelist/" title="Read More" class="excerpt_more button">Read More</a>
-        </div>
-      </div>
-    </div>
-  </li>
-
-      <li class="post_item">
-  <div class="excerpt">
-    <div class="excerpt_header">
-      <h3 class="post_link">
-        <a href="https://Jerrysmd.github.io/post/20201012hyperscan/" title="Hyperscan: high-performance multiple regex matching library">Hyperscan: high-performance multiple regex matching library</a>
-      </h3>
-      
-  <div class="post_meta">
-    <span><svg class="icon">
-  <use xlink:href="#calendar"></use>
-</svg></span>
-    <span class="post_date">
-      Oct 12, 2020</span>
-    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/c' title="C" class="post_tag button button_translucent">C
-        </a><a href='https://Jerrysmd.github.io/tags/c&#43;&#43;' title="C&#43;&#43;" class="post_tag button button_translucent">C&#43;&#43;
-        </a><a href='https://Jerrysmd.github.io/tags/hyperscan' title="Hyperscan" class="post_tag button button_translucent">Hyperscan
-        </a>
-    </span>
-    <span class="page_only">&nbsp;·
-  <div class="post_share">
-    Share on:
-    <a href="https://twitter.com/intent/tweet?text=Hyperscan%3a%20high-performance%20multiple%20regex%20matching%20library&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201012hyperscan%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <use xlink:href="#twitter"></use>
-</svg>
-    </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201012hyperscan%2f&t=Hyperscan%3a%20high-performance%20multiple%20regex%20matching%20library" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <use xlink:href="#facebook"></use>
-</svg>
-    </a>
-    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="Share on LinkedIn" rel="nofollow">
-      <svg class="icon">
-  <use xlink:href="#linkedin"></use>
-</svg>
-    </a>
-    <a href="https://Jerrysmd.github.io/post/20201012hyperscan/" title="Copy Link" class="link link_yank">
-      <svg class="icon">
-  <use xlink:href="#copy"></use>
-</svg>
-    </a>
-  </div>
-  </span>
-  </div>
-
-    </div>
-    <div class="excerpt_footer partition">
-      <div class="excerpt_thumbnail">
-        <img src='https://Jerrysmd.github.io/images/search.png' alt="Hyperscan: high-performance multiple regex matching library">
-      </div>
-      
-        <div>
-          <p class="pale">
-            
-              <p>Hyperscan是一款来自于Intel的高性能的正则表达式匹配库。它是基于X86平台以PCRE为原型而开发的。在支持PCRE的大部分语法的前提下，Hyperscan增加了特定的语法和工作模式来保证其在真实网络场景下的实用性。</p>
-            
-          </p>
-          <a href="https://Jerrysmd.github.io/post/20201012hyperscan/" title="Read More" class="excerpt_more button">Read More</a>
-        </div>
-      </div>
-    </div>
-  </li>
-
-    <li>
-    </li>
-  </ul>
+  </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
         <h2>刘佳锐</h2>
@@ -334,9 +187,6 @@ src='https://plausible.io/js/plausible.js'>
       <a href='https://Jerrysmd.github.io/about/' class="button mt-1" role="button" title='Read More'>Read More</a>
     <h2 class="mt-4">Featured Posts</h2>
     <ul>
-      <li>
-        <a href="https://Jerrysmd.github.io/post/20210803sparkguide4/sparkguide4/" class="nav-link" title="Spark 简介: Spark Guide, Part Ⅳ">Spark 简介: Spark Guide, Part Ⅳ</a>
-      </li>
       <li>
         <a href="https://Jerrysmd.github.io/post/20210707sparkguide3/sparkguide3/" class="nav-link" title="Spark 简介: Spark Guide, Part Ⅲ">Spark 简介: Spark Guide, Part Ⅲ</a>
       </li>
@@ -358,12 +208,12 @@ src='https://plausible.io/js/plausible.js'>
       <li>
         <a href="https://Jerrysmd.github.io/post/20210331spark/" class="nav-link" title="Spark 简介: Spark Guide, Part Ⅰ">Spark 简介: Spark Guide, Part Ⅰ</a>
       </li>
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20210308scalaintroduction/" class="nav-link" title="Scala 简介: Scala Introduction">Scala 简介: Scala Introduction</a>
+      </li>
     </ul>
     <h2 class="mt-4">Recent Posts</h2>
     <ul class="flex-column">
-      <li>
-        <a href="https://Jerrysmd.github.io/post/20210803sparkguide4/sparkguide4/" class="nav-link" title="Spark 简介: Spark Guide, Part Ⅳ">Spark 简介: Spark Guide, Part Ⅳ</a>
-      </li>
       <li>
         <a href="https://Jerrysmd.github.io/post/20210707sparkguide3/sparkguide3/" class="nav-link" title="Spark 简介: Spark Guide, Part Ⅲ">Spark 简介: Spark Guide, Part Ⅲ</a>
       </li>
@@ -390,6 +240,9 @@ src='https://plausible.io/js/plausible.js'>
       </li>
       <li>
         <a href="https://Jerrysmd.github.io/post/20210326hdfsnfs/" class="nav-link" title="HDFS &amp; NFS">HDFS &amp; NFS</a>
+      </li>
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20210308scalaintroduction/" class="nav-link" title="Scala 简介: Scala Introduction">Scala 简介: Scala Introduction</a>
       </li>
     </ul>
     <div>
@@ -565,9 +418,8 @@ src='https://plausible.io/js/plausible.js'>
   </section>
 </aside>
 
+  
 </div>
-
-
     </main><svg width="0" height="0" class="hidden">
   <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="facebook">
     <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h151V331h-60v-90h60v-61c0-49.629 40.371-90 90-90h91v90h-91v61h91l-15 90h-76v181h121c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zm0 0"></path>

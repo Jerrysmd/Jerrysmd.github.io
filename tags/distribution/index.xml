@@ -5,7 +5,20 @@
     <link>https://Jerrysmd.github.io/tags/distribution/</link>
     <description>Recent content in distribution on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 07 Jul 2021 11:14:54 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/distribution/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 03 Aug 2021 16:10:33 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/distribution/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Spark 简介: Spark Guide, Part Ⅳ</title>
+      <link>https://Jerrysmd.github.io/post/20210803sparkguide4/sparkguide4/</link>
+      <pubDate>Tue, 03 Aug 2021 16:10:33 +0800</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/20210803sparkguide4/sparkguide4/</guid>
+      <description>
+        
+          &lt;p&gt;Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.&lt;/p&gt;
+        
+      </description>
+    </item>
+    
     <item>
       <title>Spark 简介: Spark Guide, Part Ⅲ</title>
       <link>https://Jerrysmd.github.io/post/20210707sparkguide3/sparkguide3/</link>
