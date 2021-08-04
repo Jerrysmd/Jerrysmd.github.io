@@ -181,11 +181,12 @@ src='https://plausible.io/js/plausible.js'>
     <li><a href="#group">Group</a></li>
     <li><a href="#split">Split</a></li>
     <li><a href="#sort">Sort</a></li>
+    <li><a href="#distinct">Distinct</a></li>
   </ul>
 </nav>
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
 <h2 id="data-type-transformation">Data Type Transformation</h2>
-<p>map:</p>
+<p>flatMap,map,mapPartitions,transform,as:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">class</span> <span class="nc">TypedTransformation</span><span class="o">{</span>
 <span class="ln"> 2</span>    <span class="c1">//1.创建sparksession
 </span><span class="ln"> 3</span><span class="c1"></span>    <span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="nc">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">().</span><span class="n">master</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">).</span><span class="n">appName</span><span class="o">(</span><span class="s">&#34;typed&#34;</span><span class="o">).</span><span class="n">getOrCreate</span><span class="o">()</span>
@@ -264,9 +265,10 @@ src='https://plausible.io/js/plausible.js'>
 </span><span class="ln">7</span><span class="c1"></span><span class="n">ds</span><span class="o">.</span><span class="n">sample</span><span class="o">(</span><span class="n">withReplacement</span> <span class="k">=</span> <span class="kc">false</span><span class="o">,</span> <span class="n">fraction</span> <span class="k">=</span> <span class="mf">0.4</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
 </code></pre></div><h2 id="sort">Sort</h2>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">ds</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">15</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span><span class="mi">20</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">8</span><span class="o">)).</span><span class="n">toDS</span><span class="o">()</span>
-<span class="ln">2</span><span class="n">ds</span><span class="o">.</span><span class="n">orderBy</span><span class="o">(</span>&#39;name<span class="o">.).</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">3</span><span class="n">ds</span><span class="o">.</span><span class="n">sort</span><span class="o">(</span>&#39;name<span class="o">.</span><span class="n">asc</span><span class="o">)</span>
-</code></pre></div>
+<span class="ln">2</span><span class="n">ds</span><span class="o">.</span><span class="n">orderBy</span><span class="o">(</span>&#39;name<span class="o">.</span><span class="n">desc</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
+<span class="ln">3</span><span class="n">ds</span><span class="o">.</span><span class="n">sort</span><span class="o">(</span>&#39;name<span class="o">.</span><span class="n">asc</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
+</code></pre></div><h2 id="distinct">Distinct</h2>
+<p>distinct,dropDuplicates:</p>
 
   </article>
 <aside class="sidebar">
