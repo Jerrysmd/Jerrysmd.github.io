@@ -174,8 +174,52 @@ src='https://plausible.io/js/plausible.js'>
     
     
     <h2>Overview</h2>
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#data-type-transformation">Data Type Transformation</a>
+      <ul>
+        <li><a href="#map">map</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
+<h2 id="data-type-transformation">Data Type Transformation</h2>
+<h3 id="map">map</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">class</span> <span class="nc">TypedTransformation</span><span class="o">{</span>
+<span class="ln"> 2</span>    <span class="c1">//1.创建sparksession
+</span><span class="ln"> 3</span><span class="c1"></span>    <span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="nc">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">().</span><span class="n">master</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">).</span><span class="n">appName</span><span class="o">(</span><span class="s">&#34;typed&#34;</span><span class="o">).</span><span class="n">getOrCreate</span><span class="o">()</span>
+<span class="ln"> 4</span>    <span class="k">import</span> <span class="nn">spark.implicits._</span>
+<span class="ln"> 5</span>    
+<span class="ln"> 6</span>    <span class="nd">@Test</span>
+<span class="ln"> 7</span>    <span class="k">def</span> <span class="n">trans</span><span class="o">()</span><span class="k">:</span><span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<span class="ln"> 8</span>        <span class="c1">//flatmap
+</span><span class="ln"> 9</span><span class="c1"></span>        <span class="k">val</span> <span class="n">ds</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">&#34;hello spark&#34;</span><span class="o">,</span> <span class="s">&#34;hello hadoop&#34;</span><span class="o">).</span><span class="n">toDS</span>
+<span class="ln">10</span>        <span class="n">ds</span><span class="o">.</span><span class="n">flatMap</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">)).</span><span class="n">show</span><span class="o">()</span>
+<span class="ln">11</span>        <span class="c1">//map
+</span><span class="ln">12</span><span class="c1"></span>        <span class="k">val</span> <span class="n">ds2</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Persion</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">15</span><span class="o">),</span><span class="nc">Persion</span><span class="o">(</span><span class="s">&#34;lisi&#34;</span><span class="o">,</span><span class="mi">20</span><span class="o">)).</span><span class="n">toDS</span><span class="o">()</span>
+<span class="ln">13</span>        <span class="n">ds2</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">person</span> <span class="k">=&gt;</span> <span class="nc">Person</span><span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="n">name</span><span class="o">,</span> <span class="n">person</span><span class="o">.</span><span class="n">age</span><span class="o">*</span><span class="mi">2</span><span class="o">)).</span><span class="n">show</span><span class="o">()</span>
+<span class="ln">14</span>        <span class="c1">//mappartitions
+</span><span class="ln">15</span><span class="c1"></span>        <span class="n">ds2</span><span class="o">.</span><span class="n">mapPartitions</span><span class="o">{</span>
+<span class="ln">16</span>            <span class="c1">//iter 不能大到每个Executor的内存放不下，不然就会OOM
+</span><span class="ln">17</span><span class="c1"></span>            <span class="c1">//对每个元素进行转换，后生成一个新的集合
+</span><span class="ln">18</span><span class="c1"></span>            <span class="n">iter</span> <span class="o">=&gt;{</span>
+<span class="ln">19</span>                <span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="n">iter</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">person</span> <span class="k">=&gt;</span> <span class="nc">Person</span><span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="n">name</span><span class="o">,</span> <span class="n">person</span><span class="o">.</span><span class="n">age</span> <span class="o">*</span> <span class="mi">2</span><span class="o">))</span>
+<span class="ln">20</span>                <span class="n">result</span>
+<span class="ln">21</span>            <span class="o">}</span>
+<span class="ln">22</span>        <span class="o">}</span>
+<span class="ln">23</span>    <span class="o">}</span>
+<span class="ln">24</span><span class="o">}</span>
+<span class="ln">25</span>
+<span class="ln">26</span><span class="k">def</span> <span class="n">trans1</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<span class="ln">27</span>    <span class="k">val</span> <span class="n">ds</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">rage</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span> <span class="c1">//0-10
+</span><span class="ln">28</span><span class="c1"></span>    <span class="n">ds</span><span class="o">.</span><span class="n">transform</span><span class="o">(</span><span class="n">dataset</span> <span class="k">=&gt;</span> <span class="n">dataset</span><span class="o">.</span><span class="n">withColumn</span><span class="o">(</span><span class="s">&#34;doubled&#34;</span><span class="o">,</span> &#39;id <span class="o">*</span> <span class="mi">2</span><span class="err">&#39;</span><span class="o">))</span>
+<span class="ln">29</span>      <span class="o">.</span><span class="n">show</span><span class="o">()</span>
+<span class="ln">30</span><span class="o">}</span>
+</code></pre></div><p>DF如何转成DS</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="n">rdd</span><span class="o">.</span><span class="n">toDF</span> <span class="o">-&gt;</span> <span class="nc">DataFrame</span> <span class="c1">//toDF把rdd转成DF
+</span><span class="ln">2</span><span class="c1"></span><span class="n">dataFrame</span> <span class="o">-&gt;</span> <span class="nc">Dataset</span> <span class="c1">//DataFrame就是Dataset[Row]
+</span></code></pre></div>
 
   </article>
 <aside class="sidebar">
