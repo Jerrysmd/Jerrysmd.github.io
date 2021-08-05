@@ -728,6 +728,12 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">4</span><span class="c1">//为什么groupBy是无类型的，因为groupBy所生成的对象中的算子是无类型的，针对列进行处理
 </span><span class="ln">5</span><span class="c1"></span><span class="n">ds</span><span class="o">.</span><span class="n">groupBy</span><span class="o">(</span>&#39;name<span class="o">).</span><span class="n">agg</span><span class="o">(</span><span class="n">mean</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">)).</span><span class="n">show</span><span class="o">()</span>
 </code></pre></div><h2 id="column-1">Column</h2>
+<p>7 creation</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">class</span> <span class="nc">Column</span><span class="o">{</span>
+<span class="ln">2</span>    <span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="nc">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">()</span>
+<span class="ln">3</span>    					
+<span class="ln">4</span><span class="o">}</span>
+</code></pre></div>
 
   </article>
 <aside class="sidebar">
