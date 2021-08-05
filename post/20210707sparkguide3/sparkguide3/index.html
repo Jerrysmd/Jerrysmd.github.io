@@ -695,7 +695,7 @@ src='https://plausible.io/js/plausible.js'>
 <h3 id="select">select</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">ds</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">15</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span><span class="mi">20</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">8</span><span class="o">)).</span><span class="n">toDS</span><span class="o">()</span>
 <span class="ln">2</span><span class="n">ds</span><span class="o">.</span><span class="n">sort</span><span class="o">()</span>
-<span class="ln">3</span>  <span class="o">...</span>
+<span class="ln">3</span>  <span class="o">....</span>
 <span class="ln">4</span>  <span class="o">.</span><span class="n">secect</span><span class="o">(</span>&#39;name<span class="o">).</span><span class="n">show</span><span class="o">()</span>
 <span class="ln">5</span>
 <span class="ln">6</span><span class="n">ds</span><span class="o">.</span><span class="n">selectExpr</span><span class="o">(</span><span class="s">&#34;sum(age)&#34;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
