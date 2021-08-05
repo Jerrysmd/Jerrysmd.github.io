@@ -140,7 +140,7 @@ src='https://plausible.io/js/plausible.js'>
 </svg></span>
     <span class="post_date">
       Jul 7, 2021</span>
-    <span class="post_time"> · 5 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
+    <span class="post_time"> · 6 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
         </a><a href='https://Jerrysmd.github.io/tags/spark' title="spark" class="post_tag button button_translucent">spark
         </a>
     </span>
@@ -204,6 +204,11 @@ src='https://plausible.io/js/plausible.js'>
         <li><a href="#sort">Sort</a></li>
         <li><a href="#distinct">Distinct</a></li>
         <li><a href="#collection">Collection</a></li>
+      </ul>
+    </li>
+    <li><a href="#data-typeless-transformation">Data Typeless Transformation</a>
+      <ul>
+        <li><a href="#select">select</a></li>
       </ul>
     </li>
   </ul>
@@ -686,6 +691,14 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">7</span>    <span class="n">ds1</span><span class="o">.</span><span class="n">union</span><span class="o">(</span><span class="n">ds2</span><span class="o">)</span>
 <span class="ln">8</span>    <span class="n">ds1</span><span class="o">.</span><span class="n">limit</span><span class="o">(</span><span class="mi">3</span><span class="o">)</span>
 <span class="ln">9</span><span class="o">}</span>
+</code></pre></div><h2 id="data-typeless-transformation">Data Typeless Transformation</h2>
+<h3 id="select">select</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">ds</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">15</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span><span class="mi">20</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">8</span><span class="o">)).</span><span class="n">toDS</span><span class="o">()</span>
+<span class="ln">2</span><span class="n">ds</span><span class="o">.</span><span class="n">sort</span><span class="o">()</span>
+<span class="ln">3</span>  <span class="o">...</span>
+<span class="ln">4</span>  <span class="o">.</span><span class="n">secect</span><span class="o">(</span>&#39;name<span class="o">).</span><span class="n">show</span><span class="o">()</span>
+<span class="ln">5</span>
+<span class="ln">6</span><span class="n">ds</span><span class="o">.</span><span class="n">selectExpr</span><span class="o">(</span><span class="s">&#34;sum(age)&#34;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
 </code></pre></div>
 
   </article>
