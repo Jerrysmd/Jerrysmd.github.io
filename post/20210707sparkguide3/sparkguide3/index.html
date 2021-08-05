@@ -209,6 +209,7 @@ src='https://plausible.io/js/plausible.js'>
     <li><a href="#data-typeless-transformation">Data Typeless Transformation</a>
       <ul>
         <li><a href="#select">select</a></li>
+        <li><a href="#column">Column</a></li>
       </ul>
     </li>
   </ul>
@@ -702,7 +703,16 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln"> 7</span>
 <span class="ln"> 8</span><span class="k">import</span> <span class="nn">org.apache.spark.sql.funcitons._</span>
 <span class="ln"> 9</span>
-<span class="ln">10</span><span class="n">ds</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">exper</span><span class="o">(</span><span class="s">&#34;sum(age)&#34;</span><span class="o">)).</span><span class="n">sh</span>
+<span class="ln">10</span><span class="n">ds</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">exper</span><span class="o">(</span><span class="s">&#34;sum(age)&#34;</span><span class="o">)).</span><span class="n">show</span><span class="o">()</span>
+</code></pre></div><h3 id="column">Column</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">ds</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">15</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span><span class="mi">20</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">8</span><span class="o">)).</span><span class="n">toDS</span><span class="o">()</span>
+<span class="ln">2</span>
+<span class="ln">3</span><span class="k">import</span> <span class="nn">org.apache.spark.sql.funcitons._</span>
+<span class="ln">4</span><span class="c1">//如果想使用函数的功能
+</span><span class="ln">5</span><span class="c1">//1.使用functions.xx
+</span><span class="ln">6</span><span class="c1">//2.使用表达式，可以使用expr(&#34;...&#34;)随时编写表达式
+</span><span class="ln">7</span><span class="c1"></span><span class="n">ds</span><span class="o">.</span><span class="n">withColumn</span><span class="o">(</span><span class="s">&#34;random&#34;</span><span class="o">,</span><span class="n">expr</span><span class="o">(</span><span class="s">&#34;rand()&#34;</span><span class="o">)).</span><span class="n">show</span><span class="o">()</span>
+<span class="ln">8</span><span class="n">ds</span><span class="o">.</span><span class="n">withColumn</span><span class="o">(</span><span class="s">&#34;name_new&#34;</span><span class="o">,</span>&#39;name<span class="o">).</span><span class="n">sho</span>
 </code></pre></div>
 
   </article>
