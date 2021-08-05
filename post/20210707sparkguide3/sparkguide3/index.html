@@ -210,8 +210,11 @@ src='https://plausible.io/js/plausible.js'>
       <ul>
         <li><a href="#select">select</a></li>
         <li><a href="#column">Column</a></li>
+        <li><a href="#drop">Drop</a></li>
+        <li><a href="#groupby">GroupBy</a></li>
       </ul>
     </li>
+    <li><a href="#column-1">Column</a></li>
   </ul>
 </nav>
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
@@ -705,15 +708,26 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln"> 9</span>
 <span class="ln">10</span><span class="n">ds</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">exper</span><span class="o">(</span><span class="s">&#34;sum(age)&#34;</span><span class="o">)).</span><span class="n">show</span><span class="o">()</span>
 </code></pre></div><h3 id="column">Column</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">val</span> <span class="n">ds</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">15</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span><span class="mi">20</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">8</span><span class="o">)).</span><span class="n">toDS</span><span class="o">()</span>
+<span class="ln"> 2</span>
+<span class="ln"> 3</span><span class="k">import</span> <span class="nn">org.apache.spark.sql.funcitons._</span>
+<span class="ln"> 4</span><span class="c1">//如果想使用函数的功能
+</span><span class="ln"> 5</span><span class="c1">//1.使用functions.xx
+</span><span class="ln"> 6</span><span class="c1">//2.使用表达式，可以使用expr(&#34;...&#34;)随时编写表达式
+</span><span class="ln"> 7</span><span class="c1"></span><span class="n">ds</span><span class="o">.</span><span class="n">withColumn</span><span class="o">(</span><span class="s">&#34;random&#34;</span><span class="o">,</span><span class="n">expr</span><span class="o">(</span><span class="s">&#34;rand()&#34;</span><span class="o">)).</span><span class="n">show</span><span class="o">()</span>
+<span class="ln"> 8</span><span class="n">ds</span><span class="o">.</span><span class="n">withColumn</span><span class="o">(</span><span class="s">&#34;name_new&#34;</span><span class="o">,</span>&#39;name <span class="o">+</span> <span class="o">...).</span><span class="n">show</span><span class="o">()</span>
+<span class="ln"> 9</span><span class="n">ds</span><span class="o">.</span><span class="n">withColumn</span><span class="o">(</span><span class="s">&#34;name_jok&#34;</span><span class="o">,</span>&#39;name <span class="o">===</span> <span class="s">&#34;&#34;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
+<span class="ln">10</span><span class="n">ds</span><span class="o">.</span><span class="n">withColumnRenamed</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">,</span><span class="s">&#34;new_name&#34;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
+</code></pre></div><h3 id="drop">Drop</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">ds</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">15</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span><span class="mi">20</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">8</span><span class="o">)).</span><span class="n">toDS</span><span class="o">()</span>
-<span class="ln">2</span>
-<span class="ln">3</span><span class="k">import</span> <span class="nn">org.apache.spark.sql.funcitons._</span>
-<span class="ln">4</span><span class="c1">//如果想使用函数的功能
-</span><span class="ln">5</span><span class="c1">//1.使用functions.xx
-</span><span class="ln">6</span><span class="c1">//2.使用表达式，可以使用expr(&#34;...&#34;)随时编写表达式
-</span><span class="ln">7</span><span class="c1"></span><span class="n">ds</span><span class="o">.</span><span class="n">withColumn</span><span class="o">(</span><span class="s">&#34;random&#34;</span><span class="o">,</span><span class="n">expr</span><span class="o">(</span><span class="s">&#34;rand()&#34;</span><span class="o">)).</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">8</span><span class="n">ds</span><span class="o">.</span><span class="n">withColumn</span><span class="o">(</span><span class="s">&#34;name_new&#34;</span><span class="o">,</span>&#39;name<span class="o">).</span><span class="n">sho</span>
-</code></pre></div>
+<span class="ln">2</span><span class="n">ds</span><span class="o">.</span><span class="n">drop</span><span class="o">(</span>&#39;age<span class="o">).</span><span class="n">show</span><span class="o">()</span>
+</code></pre></div><h3 id="groupby">GroupBy</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">ds</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">15</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span><span class="mi">20</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">8</span><span class="o">)).</span><span class="n">toDS</span><span class="o">()</span>
+<span class="ln">2</span><span class="c1">//为什么groupByKey是有类型的，最主要的原因是因为groupByKey所生成的对象中的算子是有类型的
+</span><span class="ln">3</span><span class="c1"></span><span class="n">ds</span><span class="o">.</span><span class="n">groupByKey</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="o">).</span><span class="n">mapValues</span><span class="o">()</span>
+<span class="ln">4</span><span class="c1">//为什么groupBy是无类型的，因为groupBy所生成的对象中的算子是无类型的，针对列进行处理
+</span><span class="ln">5</span><span class="c1"></span><span class="n">ds</span><span class="o">.</span><span class="n">groupBy</span><span class="o">(</span>&#39;name<span class="o">).</span><span class="n">agg</span><span class="o">(</span><span class="n">mean</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">)).</span><span class="n">show</span><span class="o">()</span>
+</code></pre></div><h2 id="column-1">Column</h2>
 
   </article>
 <aside class="sidebar">
