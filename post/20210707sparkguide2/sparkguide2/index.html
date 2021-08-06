@@ -218,6 +218,7 @@ src='https://plausible.io/js/plausible.js'>
       <ul>
         <li><a href="#creation">Creation</a></li>
         <li><a href="#type">Type</a></li>
+        <li><a href="#api">API</a></li>
       </ul>
     </li>
   </ul>
@@ -777,7 +778,17 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">41</span>    <span class="o">}</span>
 <span class="ln">42</span><span class="o">}</span>
 </code></pre></div><h3 id="type">Type</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="n">ds</span><span class="o">.</span><span class="n">select</span><span class="o">(</span>&#39;name<span class="o">.</span><span class="n">as</span><span class="o">())</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="n">ds</span><span class="o">.</span><span class="n">select</span><span class="o">(</span>&#39;name <span class="n">as</span> <span class="s">&#34;new_name&#34;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
+<span class="ln">2</span><span class="n">ds</span><span class="o">.</span><span class="n">select</span><span class="o">(</span>&#39;age<span class="o">.</span><span class="n">as</span><span class="o">[</span><span class="kt">Long</span><span class="o">]).</span><span class="n">show</span><span class="o">()</span>
+</code></pre></div><h3 id="api">API</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="c1">//添加新列
+</span><span class="ln">2</span><span class="c1"></span><span class="n">df</span><span class="o">.</span><span class="n">withColun</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">,</span> &#39;age <span class="o">*</span> <span class="mi">2</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
+<span class="ln">3</span><span class="c1">//模糊查询
+</span><span class="ln">4</span><span class="c1"></span><span class="n">ds</span><span class="o">.</span><span class="n">where</span><span class="o">(</span>&#39;name <span class="n">like</span> <span class="s">&#34;zhang%&#34;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
+<span class="ln">5</span><span class="c1">//排序
+</span><span class="ln">6</span><span class="c1"></span><span class="n">ds</span><span class="o">.</span><span class="n">sort</span><span class="o">(</span>&#39;age <span class="n">asc</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
+<span class="ln">7</span><span class="c1">//枚举判断
+</span><span class="ln">8</span><span class="c1"></span><span class="n">ds</span><span class="o">.</span><span class="n">where</span><span class="o">(</span>&#39;name <span class="n">isin</span> <span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="s">&#34;wu&#34;</span><span class="o">,</span><span class="s">&#34;ls&#34;</span><span class="o">)).</span><span class="n">show</span><span class="o">()</span>
 </code></pre></div>
 
   </article>
