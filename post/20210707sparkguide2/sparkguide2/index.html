@@ -221,7 +221,7 @@ src='https://plausible.io/js/plausible.js'>
         <li><a href="#api">API</a></li>
       </ul>
     </li>
-    <li><a href="#heading"></a></li>
+    <li><a href="#na">N/A</a></li>
   </ul>
 </nav>
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
@@ -790,7 +790,14 @@ src='https://plausible.io/js/plausible.js'>
 </span><span class="ln">6</span><span class="c1"></span><span class="n">ds</span><span class="o">.</span><span class="n">sort</span><span class="o">(</span>&#39;age <span class="n">asc</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
 <span class="ln">7</span><span class="c1">//枚举判断
 </span><span class="ln">8</span><span class="c1"></span><span class="n">ds</span><span class="o">.</span><span class="n">where</span><span class="o">(</span>&#39;name <span class="n">isin</span> <span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="s">&#34;wu&#34;</span><span class="o">,</span><span class="s">&#34;ls&#34;</span><span class="o">)).</span><span class="n">show</span><span class="o">()</span>
-</code></pre></div><h2 id="heading"></h2>
+</code></pre></div><h2 id="na">N/A</h2>
+<p>缺失值的处理：</p>
+<blockquote>
+<ol>
+<li>丢弃缺失值的行</li>
+<li>替换初始值</li>
+</ol>
+</blockquote>
 
   </article>
 <aside class="sidebar">

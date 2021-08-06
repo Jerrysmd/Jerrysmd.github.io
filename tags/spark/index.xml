@@ -593,7 +593,14 @@
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ds&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sort&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&amp;#39;age &lt;span class=&#34;n&#34;&gt;asc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//枚举判断
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ds&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;where&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&amp;#39;name &lt;span class=&#34;n&#34;&gt;isin&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;zs&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;wu&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;ls&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)).&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;heading&#34;&gt;&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;na&#34;&gt;N/A&lt;/h2&gt;
+&lt;p&gt;缺失值的处理：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;丢弃缺失值的行&lt;/li&gt;
+&lt;li&gt;替换初始值&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
         
       </description>
     </item>
@@ -1330,7 +1337,7 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/20210527sparkGuide1/sparkFlow.png&#34; alt=&#34;sparkFlow&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20210527sparkGuide1/sparkFlow.png&#34; alt=&#34;sparkFlow&#34;&gt;&lt;/p&gt;
         
       </description>
     </item>
