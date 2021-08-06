@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en" data-figures="true" class="page" data-mode="dim">
   <head>
-<title>Python Introduction | JerrysBlog</title>
+<title>Spark 简介: Spark Guide, Part Ⅳ | JerrysBlog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -32,17 +32,17 @@ src='https://plausible.io/js/plausible.js'>
 <meta name="description" content="Article description.">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@0x4c2">
-<meta name="twitter:title" content="Python Introduction" />
-<meta property="og:url" content="https://Jerrysmd.github.io/post/20201110pythonintroduction/" />
-<meta property="og:title" content="Python Introduction" />
+<meta name="twitter:title" content="Spark 简介: Spark Guide, Part Ⅳ" />
+<meta property="og:url" content="https://Jerrysmd.github.io/post/20210803sparkguide3/sparkguide3/" />
+<meta property="og:title" content="Spark 简介: Spark Guide, Part Ⅳ" />
 <meta property="og:description" content="Article description." />
-<meta property="og:image" content="https://Jerrysmd.github.io/images/code2.png" />
+<meta property="og:image" content="https://Jerrysmd.github.io/images/code3.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://Jerrysmd.github.io/icons_custom/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://Jerrysmd.github.io/icons_custom/favicon-32x32.png">
 <link rel="manifest" href="https://Jerrysmd.github.io/icons_custom/site.webmanifest">
 
-<link rel="canonical" href="https://Jerrysmd.github.io/post/20201110pythonintroduction/">
+<link rel="canonical" href="https://Jerrysmd.github.io/post/20210803sparkguide3/sparkguide3/">
 
     
 
@@ -133,25 +133,26 @@ src='https://plausible.io/js/plausible.js'>
   
 <div class="grid-inverse wrap content">
   <article class="post_content">
-    <h1 class="post_title">Python Introduction</h1>
+    <h1 class="post_title">Spark 简介: Spark Guide, Part Ⅳ</h1>
   <div class="post_meta">
     <span><svg class="icon">
   <use xlink:href="#calendar"></use>
 </svg></span>
     <span class="post_date">
-      Nov 10, 2020</span>
-    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/python' title="python" class="post_tag button button_translucent">python
+      Aug 3, 2021</span>
+    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
+        </a><a href='https://Jerrysmd.github.io/tags/spark' title="spark" class="post_tag button button_translucent">spark
         </a>
     </span>
     <span class="page_only">&nbsp;·
   <div class="post_share">
     Share on:
-    <a href="https://twitter.com/intent/tweet?text=Python%20Introduction&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201110pythonintroduction%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
+    <a href="https://twitter.com/intent/tweet?text=Spark%20%e7%ae%80%e4%bb%8b%3a%20Spark%20Guide%2c%20Part%20%e2%85%a3&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20210803sparkguide3%2fsparkguide3%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
       <svg class="icon">
   <use xlink:href="#twitter"></use>
 </svg>
     </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201110pythonintroduction%2f&t=Python%20Introduction" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20210803sparkguide3%2fsparkguide3%2f&t=Spark%20%e7%ae%80%e4%bb%8b%3a%20Spark%20Guide%2c%20Part%20%e2%85%a3" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
       <svg class="icon">
   <use xlink:href="#facebook"></use>
 </svg>
@@ -161,7 +162,7 @@ src='https://plausible.io/js/plausible.js'>
   <use xlink:href="#linkedin"></use>
 </svg>
     </a>
-    <a href="https://Jerrysmd.github.io/post/20201110pythonintroduction/" title="Copy Link" class="link link_yank">
+    <a href="https://Jerrysmd.github.io/post/20210803sparkguide3/sparkguide3/" title="Copy Link" class="link link_yank">
       <svg class="icon">
   <use xlink:href="#copy"></use>
 </svg>
@@ -173,219 +174,8 @@ src='https://plausible.io/js/plausible.js'>
     
     
     <h2>Overview</h2>
-    <nav id="TableOfContents">
-  <ul>
-    <li><a href="#1-数据类型转换">1. 数据类型转换</a></li>
-    <li><a href="#2-身份运算">2. 身份运算</a></li>
-    <li><a href="#3-成员检测运算">3. 成员检测运算</a></li>
-    <li><a href="#4-流程控制">4. 流程控制</a></li>
-    <li><a href="#5-函数">5. 函数</a></li>
-    <li><a href="#6-迭代器">6. 迭代器</a></li>
-  </ul>
-</nav>
-    <p>Python is dynamically-typed and garbage-collected. It supports multiple programming paradigms, including structured (particularly, procedural), object-oriented and functional programming. Python is often described as a &quot;batteries included&quot; language due to its comprehensive standard library.</p>
-<h2 id="1-数据类型转换">1. 数据类型转换</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:center"></th>
-<th style="text-align:center">整型</th>
-<th style="text-align:center">浮点</th>
-<th style="text-align:center">bool</th>
-<th style="text-align:center">复数</th>
-<th style="text-align:center">string</th>
-<th style="text-align:center">list</th>
-<th style="text-align:center">tuple</th>
-<th style="text-align:center">set</th>
-<th style="text-align:center">dict</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">整型</td>
-<td style="text-align:center">\</td>
-<td style="text-align:center">加.0</td>
-<td style="text-align:center">int(0)</td>
-<td style="text-align:center">加0j</td>
-<td style="text-align:center">任意</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
-</tr>
-<tr>
-<td style="text-align:center">浮点</td>
-<td style="text-align:center">去小数</td>
-<td style="text-align:center">\</td>
-<td style="text-align:center">0.0</td>
-<td style="text-align:center">加0j</td>
-<td style="text-align:center">数据</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
-</tr>
-<tr>
-<td style="text-align:center">bool</td>
-<td style="text-align:center">true1<br>false0</td>
-<td style="text-align:center">true1.0<br>false0.0</td>
-<td style="text-align:center">\</td>
-<td style="text-align:center">true1+0j</td>
-<td style="text-align:center">可以</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
-</tr>
-<tr>
-<td style="text-align:center">复数</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">0j</td>
-<td style="text-align:center">\</td>
-<td style="text-align:center">转换</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
-</tr>
-<tr>
-<td style="text-align:center">string</td>
-<td style="text-align:center">纯数字</td>
-<td style="text-align:center">纯数字</td>
-<td style="text-align:center">''</td>
-<td style="text-align:center">纯数&amp;+0j</td>
-<td style="text-align:center">\</td>
-<td style="text-align:center">每个字符转成每个值</td>
-<td style="text-align:center">每个字符转成每个值</td>
-<td style="text-align:center">每个字符转成每个值+去重</td>
-<td style="text-align:center">×</td>
-</tr>
-<tr>
-<td style="text-align:center">list</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">[]</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">成为</td>
-<td style="text-align:center">\</td>
-<td style="text-align:center">内容不变</td>
-<td style="text-align:center">随机+去重</td>
-<td style="text-align:center">有2个数据的二级列表</td>
-</tr>
-<tr>
-<td style="text-align:center">tuple</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">()</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">str</td>
-<td style="text-align:center">内容不变</td>
-<td style="text-align:center">\</td>
-<td style="text-align:center">随机+去重</td>
-<td style="text-align:center">有2个数据的二级列表</td>
-</tr>
-<tr>
-<td style="text-align:center">set</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">set()</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">格式</td>
-<td style="text-align:center">内容不变+随机</td>
-<td style="text-align:center">内容不变+随机</td>
-<td style="text-align:center">\</td>
-<td style="text-align:center">有2个数据的二级列表</td>
-</tr>
-<tr>
-<td style="text-align:center">dict</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">{}</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">数据</td>
-<td style="text-align:center">仅保留键</td>
-<td style="text-align:center">仅保留键</td>
-<td style="text-align:center">仅保留键</td>
-<td style="text-align:center">\</td>
-</tr>
-</tbody>
-</table>
-<h2 id="2-身份运算">2. 身份运算</h2>
-<p>判断地址是否相同</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="ln">1</span><span class="n">x</span> <span class="ow">is</span> <span class="n">y</span>
-<span class="ln">2</span><span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">y</span>
-<span class="ln">3</span><span class="mf">1.</span><span class="n">字符串</span><span class="err">：</span><span class="n">字符串值相同</span><span class="err">，</span><span class="n">ID相同</span><span class="err">。</span>
-<span class="ln">4</span><span class="mf">2.</span><span class="n">列表</span><span class="err">、</span><span class="n">字典</span><span class="err">、</span><span class="n">集合</span><span class="err">：</span><span class="n">无论什么情况ID都不同</span>
-</code></pre></div><h2 id="3-成员检测运算">3. 成员检测运算</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="ln">1</span><span class="n">val1</span> <span class="ow">in</span> <span class="n">val2</span> 
-<span class="ln">2</span><span class="n">val1</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">val2</span> 
-<span class="ln">3</span><span class="o">//</span><span class="n">检测一个数据是否在容器中</span>
-</code></pre></div><h2 id="4-流程控制">4. 流程控制</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="ln"> 1</span><span class="mf">1.</span>
-<span class="ln"> 2</span><span class="k">if</span> <span class="n">___</span><span class="p">:</span>
-<span class="ln"> 3</span><span class="k">elif</span> <span class="n">___</span><span class="p">:</span>
-<span class="ln"> 4</span><span class="k">elif</span> <span class="n">___</span><span class="p">:</span>
-<span class="ln"> 5</span><span class="k">else</span><span class="p">:</span>
-<span class="ln"> 6</span><span class="mf">2.</span>
-<span class="ln"> 7</span><span class="k">while</span> <span class="n">___</span><span class="p">:</span>
-<span class="ln"> 8</span><span class="k">else</span><span class="p">:</span>
-<span class="ln"> 9</span><span class="mf">3.</span>
-<span class="ln">10</span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">容器</span><span class="p">:</span>
-</code></pre></div><h2 id="5-函数">5. 函数</h2>
-<table>
-<thead>
-<tr>
-<th>def</th>
-<th>func(</th>
-<th>name,</th>
-<th>sex = &quot;male&quot;,</th>
-<th>*args,</th>
-<th>like = &quot;乒乓&quot;,</th>
-<th>**kwargs);</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td>↓</td>
-<td>↓</td>
-<td>↓</td>
-<td>↓</td>
-<td>↓</td>
-<td>↓</td>
-</tr>
-<tr>
-<td></td>
-<td>func(</td>
-<td>&quot;刘佳锐&quot;,</td>
-<td>&quot;男&quot;,</td>
-<td>&quot;乐色&quot;, &quot;垃圾&quot;,</td>
-<td>like = &quot;羽毛球&quot;,</td>
-<td>skin = &quot;yellow&quot;, hobby = &quot;hello&quot;)</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="ln">1</span><span class="nb">print</span><span class="p">(</span><span class="nb">locals</span><span class="p">())</span> <span class="o">//</span><span class="n">获取当前作用域的局部变量</span>
-<span class="ln">2</span><span class="nb">print</span><span class="p">(</span><span class="nb">globals</span><span class="p">())</span> <span class="o">//</span><span class="n">获取当前作用域的全局变量</span>
-</code></pre></div><h2 id="6-迭代器">6. 迭代器</h2>
-<ol>
-<li>能被next()函数调用并不断返回下一个值的对象</li>
-<li>特征：迭代器会生成惰性序列，通过计算把值依次返回</li>
-<li>优点：需要数据的时候，一次取一个可以很大节省内存</li>
-<li>检测：
-<ol>
-<li>from collections import Iterable, Iterator</li>
-<li>isinstance()判断数据类型，返回bool值</li>
-<li>print(isinstance(list1,list1))</li>
-</ol>
-</li>
-<li>Iter：使用iter可把迭代数据变为迭代器</li>
-</ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="ln">1</span><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
-<span class="ln">2</span><span class="n">result</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">list1</span><span class="p">)</span>
-<span class="ln">3</span><span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
-</code></pre></div>
+    <nav id="TableOfContents"></nav>
+    <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
 
   </article>
 <aside class="sidebar">
@@ -397,9 +187,6 @@ src='https://plausible.io/js/plausible.js'>
       <a href='https://Jerrysmd.github.io/about/' class="button mt-1" role="button" title='Read More'>Read More</a>
     <h2 class="mt-4">Featured Posts</h2>
     <ul>
-      <li>
-        <a href="https://Jerrysmd.github.io/post/20210803sparkguide3/sparkguide3/" class="nav-link" title="Spark 简介: Spark Guide, Part Ⅳ">Spark 简介: Spark Guide, Part Ⅳ</a>
-      </li>
       <li>
         <a href="https://Jerrysmd.github.io/post/20210707sparkguide2/sparkguide2/" class="nav-link" title="Spark 简介: Spark Guide, Part Ⅲ">Spark 简介: Spark Guide, Part Ⅲ</a>
       </li>
@@ -421,12 +208,12 @@ src='https://plausible.io/js/plausible.js'>
       <li>
         <a href="https://Jerrysmd.github.io/post/20210308scalaintroduction/" class="nav-link" title="Scala 简介: Scala Introduction">Scala 简介: Scala Introduction</a>
       </li>
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20201109cperformanceoptimization/" class="nav-link" title="C项目性能优化: C Project performance optimization">C项目性能优化: C Project performance optimization</a>
+      </li>
     </ul>
     <h2 class="mt-4">Recent Posts</h2>
     <ul class="flex-column">
-      <li>
-        <a href="https://Jerrysmd.github.io/post/20210803sparkguide3/sparkguide3/" class="nav-link" title="Spark 简介: Spark Guide, Part Ⅳ">Spark 简介: Spark Guide, Part Ⅳ</a>
-      </li>
       <li>
         <a href="https://Jerrysmd.github.io/post/20210707sparkguide2/sparkguide2/" class="nav-link" title="Spark 简介: Spark Guide, Part Ⅲ">Spark 简介: Spark Guide, Part Ⅲ</a>
       </li>
@@ -453,6 +240,9 @@ src='https://plausible.io/js/plausible.js'>
       </li>
       <li>
         <a href="https://Jerrysmd.github.io/post/20210308scalaintroduction/" class="nav-link" title="Scala 简介: Scala Introduction">Scala 简介: Scala Introduction</a>
+      </li>
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20210222javastatic/" class="nav-link" title="Static Keyword in Java">Static Keyword in Java</a>
       </li>
     </ul>
     <div>
