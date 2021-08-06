@@ -214,7 +214,11 @@ src='https://plausible.io/js/plausible.js'>
         <li><a href="#groupby">GroupBy</a></li>
       </ul>
     </li>
-    <li><a href="#column-1">Column</a></li>
+    <li><a href="#column-1">Column</a>
+      <ul>
+        <li><a href="#creation">creation</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
@@ -728,7 +732,7 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">4</span><span class="c1">//为什么groupBy是无类型的，因为groupBy所生成的对象中的算子是无类型的，针对列进行处理
 </span><span class="ln">5</span><span class="c1"></span><span class="n">ds</span><span class="o">.</span><span class="n">groupBy</span><span class="o">(</span>&#39;name<span class="o">).</span><span class="n">agg</span><span class="o">(</span><span class="n">mean</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">)).</span><span class="n">show</span><span class="o">()</span>
 </code></pre></div><h2 id="column-1">Column</h2>
-<p>7 creation</p>
+<h3 id="creation">creation</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">class</span> <span class="nc">Column</span><span class="o">{</span>
 <span class="ln"> 2</span>    <span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="nc">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">()</span>
 <span class="ln"> 3</span>    	<span class="o">.</span><span class="n">master</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">)</span>
@@ -768,7 +772,7 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">37</span>        
 <span class="ln">38</span>        <span class="c1">//6. dataset.apply
 </span><span class="ln">39</span><span class="c1"></span>        <span class="k">val</span> <span class="n">column6</span> <span class="k">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">apply</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">)</span>
-<span class="ln">40</span>        <span class="n">v</span>
+<span class="ln">40</span>        <span class="k">val</span> <span class="n">column7</span> <span class="k">=</span> <span class="n">ds</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">)</span>
 <span class="ln">41</span>    <span class="o">}</span>
 <span class="ln">42</span><span class="o">}</span>
 </code></pre></div>
