@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 03 Aug 2021 16:10:33 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Spark 简介: Spark Guide, Part Ⅳ</title>
+      <title>Spark 简介: Spark Guide, Part Ⅲ</title>
       <link>https://Jerrysmd.github.io/post/20210803sparkguide3/sparkguide3/</link>
       <pubDate>Tue, 03 Aug 2021 16:10:33 +0800</pubDate>
       
@@ -20,7 +20,7 @@
     </item>
     
     <item>
-      <title>Spark 简介: Spark Guide, Part Ⅲ</title>
+      <title>Spark 简介: Spark Guide, Part Ⅱ</title>
       <link>https://Jerrysmd.github.io/post/20210707sparkguide2/sparkguide2/</link>
       <pubDate>Wed, 07 Jul 2021 11:14:54 +0800</pubDate>
       
@@ -574,7 +574,7 @@
 &lt;span class=&#34;ln&#34;&gt;33&lt;/span&gt;        &lt;span class=&#34;k&#34;&gt;val&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;column5&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ds1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;col&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;34&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;ds&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;column5&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;35&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;//为什么要和dataset来绑定呢？
-&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;36&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;36&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;ds&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;join&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ds1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ds&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;col&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;===&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;37&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;38&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
