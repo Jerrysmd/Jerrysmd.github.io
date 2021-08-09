@@ -222,6 +222,7 @@ src='https://plausible.io/js/plausible.js'>
       </ul>
     </li>
     <li><a href="#na">N/A</a></li>
+    <li><a href="#groupby-1">groupBy</a></li>
   </ul>
 </nav>
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
@@ -861,16 +862,25 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">52</span>    <span class="o">}</span>
 <span class="ln">53</span><span class="o">}</span>
 </code></pre></div><p>SparkSQL处理异常字符串:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">def</span> <span class="n">strProcessor</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln">2</span>    <span class="c1">//1.丢弃
-</span><span class="ln">3</span><span class="c1"></span>    <span class="k">import</span> <span class="nn">spark.implicits._</span>
-<span class="ln">4</span>    <span class="n">sourceDF</span><span class="o">.</span><span class="n">where</span><span class="o">(</span>&#39;PM_dongsi <span class="o">=!=</span> <span class="s">&#34;NA&#34;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">5</span>    <span class="c1">//2.替换
-</span><span class="ln">6</span><span class="c1"></span>    <span class="n">sourceDF</span><span class="o">.</span><span class="n">s</span>
-<span class="ln">7</span><span class="o">}</span>
-<span class="ln">8</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">strProcessor</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<span class="ln"> 2</span>    <span class="c1">//1.丢弃
+</span><span class="ln"> 3</span><span class="c1"></span>    <span class="k">import</span> <span class="nn">spark.implicits._</span>
+<span class="ln"> 4</span>    <span class="n">sourceDF</span><span class="o">.</span><span class="n">where</span><span class="o">(</span>&#39;PM_dongsi <span class="o">=!=</span> <span class="s">&#34;NA&#34;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
+<span class="ln"> 5</span>    <span class="c1">//2.替换
+</span><span class="ln"> 6</span><span class="c1"></span>    <span class="k">import</span> <span class="nn">org.apache.spark.sql.functions._</span>
+<span class="ln"> 7</span>    <span class="n">sourceDF</span><span class="o">.</span><span class="n">select</span><span class="o">(</span>
+<span class="ln"> 8</span>     &#39;No <span class="n">as</span> <span class="s">&#34;id&#34;</span><span class="o">,</span> &#39;year<span class="o">,</span> &#39;month<span class="o">,</span> &#39;day<span class="o">,</span>
+<span class="ln"> 9</span>        <span class="n">when</span><span class="o">(</span>&#39;PM_Dongsi <span class="o">===</span> <span class="s">&#34;NA&#34;</span><span class="o">,</span> <span class="nc">Double</span><span class="o">.</span><span class="nc">NaN</span><span class="o">)</span>
+<span class="ln">10</span>        <span class="o">.</span><span class="n">otherwise</span><span class="o">(</span>&#39;PM_Dongsi <span class="n">cast</span> <span class="nc">DoubleType</span><span class="o">)</span>
+<span class="ln">11</span>        <span class="o">.</span><span class="n">as</span><span class="o">(</span><span class="s">&#34;pm&#34;</span><span class="o">)</span>
+<span class="ln">12</span>    <span class="o">).</span><span class="n">show</span><span class="o">()</span>
+<span class="ln">13</span>
+<span class="ln">14</span>    <span class="n">sourceDF</span><span class="o">.</span><span class="n">na</span><span class="o">.</span><span class="n">replace</span><span class="o">(</span><span class="s">&#34;PM_Dongsi&#34;</span><span class="o">,</span> <span class="nc">Map</span><span class="o">(</span><span class="s">&#34;NA&#34;</span> <span class="o">-&gt;</span> <span class="s">&#34;NaN&#34;</span><span class="o">,</span> <span class="s">&#34;NULL&#34;</span> <span class="o">-&gt;</span> <span class="s">&#34;null&#34;</span><span class="o">)).</span><span class="n">show</span><span class="o">()</span>
+<span class="ln">15</span><span class="o">}</span>
+<span class="ln">16</span>
 </code></pre></div></li>
 </ol>
+<h2 id="groupby-1">groupBy</h2>
 
   </article>
 <aside class="sidebar">
