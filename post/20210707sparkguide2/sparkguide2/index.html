@@ -854,9 +854,21 @@ src='https://plausible.io/js/plausible.js'>
 </span><span class="ln">45</span><span class="c1"></span>        <span class="n">sourceDF</span><span class="o">.</span><span class="n">na</span><span class="o">.</span><span class="n">drop</span><span class="o">(</span><span class="s">&#34;any&#34;</span><span class="o">,</span><span class="nc">List</span><span class="o">(</span><span class="s">&#34;year&#34;</span><span class="o">,</span><span class="s">&#34;month&#34;</span><span class="o">,</span><span class="s">&#34;day&#34;</span><span class="o">)).</span><span class="n">show</span><span class="o">()</span>
 <span class="ln">46</span>        <span class="c1">//填充
 </span><span class="ln">47</span><span class="c1"></span>        <span class="c1">//	规则：
-</span><span class="ln">48</span><span class="c1"></span>        <span class="c1">//		1.针对
-</span><span class="ln">49</span><span class="c1"></span>    <span class="o">}</span>
-<span class="ln">50</span><span class="o">}</span>
+</span><span class="ln">48</span><span class="c1"></span>        <span class="c1">//		1.针对所有列默认值填充
+</span><span class="ln">49</span><span class="c1"></span>        <span class="n">sourceDF</span><span class="o">.</span><span class="n">na</span><span class="o">.</span><span class="n">fill</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
+<span class="ln">50</span>        <span class="c1">//		2.针对特定列填充
+</span><span class="ln">51</span><span class="c1"></span>        <span class="n">sourceDF</span><span class="o">.</span><span class="n">na</span><span class="o">.</span><span class="n">fill</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="nc">List</span><span class="o">(</span><span class="s">&#34;year&#34;</span><span class="o">,</span> <span class="s">&#34;month&#34;</span><span class="o">)).</span><span class="n">show</span><span class="o">()</span>
+<span class="ln">52</span>    <span class="o">}</span>
+<span class="ln">53</span><span class="o">}</span>
+</code></pre></div><p>SparkSQL处理异常字符串:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">def</span> <span class="n">strProcessor</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<span class="ln">2</span>    <span class="c1">//1.丢弃
+</span><span class="ln">3</span><span class="c1"></span>    <span class="k">import</span> <span class="nn">spark.implicits._</span>
+<span class="ln">4</span>    <span class="n">sourceDF</span><span class="o">.</span><span class="n">where</span><span class="o">(</span>&#39;PM_dongsi <span class="o">=!=</span> <span class="s">&#34;NA&#34;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
+<span class="ln">5</span>    <span class="c1">//2.替换
+</span><span class="ln">6</span><span class="c1"></span>    <span class="n">sourceDF</span><span class="o">.</span><span class="n">s</span>
+<span class="ln">7</span><span class="o">}</span>
+<span class="ln">8</span>
 </code></pre></div></li>
 </ol>
 
