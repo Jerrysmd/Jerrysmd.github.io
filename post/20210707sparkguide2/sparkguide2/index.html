@@ -807,15 +807,32 @@ src='https://plausible.io/js/plausible.js'>
 <blockquote>
 <p>naf.drop...	naf.fill...</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="n">df</span><span class="o">.</span><span class="n">na</span><span class="o">.</span><span class="n">drop</span><span class="o">.</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">2</span><span class="n">df</span><span class="o">.</span><span class="n">na</span><span class="o">.</span><span class="n">fill</span><span class="o">.</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">3</span>
-<span class="ln">4</span><span class="k">class</span> <span class="nc">NullProcessor</span> <span class="o">{</span>
-<span class="ln">5</span>    <span class="nd">@Test</span>
-<span class="ln">6</span>    <span class="k">def</span> <span class="n">nullAndNaN</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln">7</span>
-<span class="ln">8</span>    <span class="o">}</span>
-<span class="ln">9</span><span class="o">}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="n">df</span><span class="o">.</span><span class="n">na</span><span class="o">.</span><span class="n">drop</span><span class="o">.</span><span class="n">show</span><span class="o">()</span>
+<span class="ln"> 2</span><span class="n">df</span><span class="o">.</span><span class="n">na</span><span class="o">.</span><span class="n">fill</span><span class="o">.</span><span class="n">show</span><span class="o">()</span>
+<span class="ln"> 3</span>
+<span class="ln"> 4</span><span class="k">class</span> <span class="nc">NullProcessor</span> <span class="o">{</span>
+<span class="ln"> 5</span>    <span class="nd">@Test</span>
+<span class="ln"> 6</span>    <span class="k">def</span> <span class="n">nullAndNaN</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<span class="ln"> 7</span>        <span class="c1">//ss
+</span><span class="ln"> 8</span><span class="c1"></span>        <span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="nc">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">()</span>
+<span class="ln"> 9</span>         <span class="o">.</span><span class="n">master</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">)</span>
+<span class="ln">10</span>         <span class="o">.</span><span class="n">appName</span><span class="o">(</span><span class="s">&#34;null processor&#34;</span><span class="o">)</span>
+<span class="ln">11</span>         <span class="o">.</span><span class="n">getOrCreate</span><span class="o">()</span>
+<span class="ln">12</span>        <span class="c1">//导入
+</span><span class="ln">13</span><span class="c1"></span>
+<span class="ln">14</span>        <span class="c1">//读取
+</span><span class="ln">15</span><span class="c1"></span>        <span class="c1">//	1.通过spark-csv自动的推断类型来读取，推断数字的时候会将NaN推断为字符串
+</span><span class="ln">16</span><span class="c1"></span>        <span class="n">spark</span><span class="o">.</span><span class="n">read</span>
+<span class="ln">17</span>         <span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;header&#34;</span><span class="o">,</span> <span class="kc">true</span><span class="o">)</span>
+<span class="ln">18</span>         <span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;inferSchema&#34;</span><span class="o">,</span><span class="kc">true</span><span class="o">)</span>
+<span class="ln">19</span>         <span class="o">.</span><span class="n">csv</span><span class="o">(</span><span class="n">dataset</span><span class="o">/</span><span class="n">ds</span><span class="o">)</span>
+<span class="ln">20</span>        <span class="c1">//	2.直接读取字符串，在后续的操作中使用map算子转换类型
+</span><span class="ln">21</span><span class="c1"></span>        <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="o">().</span><span class="n">map</span><span class="o">(</span><span class="n">row</span> <span class="k">=&gt;</span> <span class="n">row</span><span class="o">...)</span>
+<span class="ln">22</span>        <span class="c1">//	3.指定Schema,不要自动推断
+</span><span class="ln">23</span><span class="c1"></span>        <span class="c1">//丢弃
+</span><span class="ln">24</span><span class="c1"></span>        <span class="c1">//填充
+</span><span class="ln">25</span><span class="c1"></span>    <span class="o">}</span>
+<span class="ln">26</span><span class="o">}</span>
 </code></pre></div></li>
 </ol>
 
