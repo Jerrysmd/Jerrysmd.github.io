@@ -140,7 +140,7 @@ src='https://plausible.io/js/plausible.js'>
 </svg></span>
     <span class="post_date">
       Jul 7, 2021</span>
-    <span class="post_time"> · 6 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
+    <span class="post_time"> · 7 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
         </a><a href='https://Jerrysmd.github.io/tags/spark' title="spark" class="post_tag button button_translucent">spark
         </a>
     </span>
@@ -792,12 +792,32 @@ src='https://plausible.io/js/plausible.js'>
 </span><span class="ln">8</span><span class="c1"></span><span class="n">ds</span><span class="o">.</span><span class="n">where</span><span class="o">(</span>&#39;name <span class="n">isin</span> <span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="s">&#34;wu&#34;</span><span class="o">,</span><span class="s">&#34;ls&#34;</span><span class="o">)).</span><span class="n">show</span><span class="o">()</span>
 </code></pre></div><h2 id="na">N/A</h2>
 <p>缺失值的处理：</p>
-<blockquote>
 <ol>
 <li>丢弃缺失值的行</li>
 <li>替换初始值</li>
 </ol>
+<p>DataFrameNaFunctions</p>
+<ol>
+<li>
+<p>创建</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">naf</span><span class="k">:</span> <span class="kt">DataFrameNaFunctions</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">na</span>
+</code></pre></div></li>
+<li>
+<p>功能</p>
+<blockquote>
+<p>naf.drop...	naf.fill...</p>
 </blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="n">df</span><span class="o">.</span><span class="n">na</span><span class="o">.</span><span class="n">drop</span><span class="o">.</span><span class="n">show</span><span class="o">()</span>
+<span class="ln">2</span><span class="n">df</span><span class="o">.</span><span class="n">na</span><span class="o">.</span><span class="n">fill</span><span class="o">.</span><span class="n">show</span><span class="o">()</span>
+<span class="ln">3</span>
+<span class="ln">4</span><span class="k">class</span> <span class="nc">NullProcessor</span> <span class="o">{</span>
+<span class="ln">5</span>    <span class="nd">@Test</span>
+<span class="ln">6</span>    <span class="k">def</span> <span class="n">nullAndNaN</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<span class="ln">7</span>
+<span class="ln">8</span>    <span class="o">}</span>
+<span class="ln">9</span><span class="o">}</span>
+</code></pre></div></li>
+</ol>
 
   </article>
 <aside class="sidebar">
