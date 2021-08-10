@@ -140,7 +140,7 @@ src='https://plausible.io/js/plausible.js'>
 </svg></span>
     <span class="post_date">
       Jul 7, 2021</span>
-    <span class="post_time"> · 7 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
+    <span class="post_time"> · 8 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
         </a><a href='https://Jerrysmd.github.io/tags/spark' title="spark" class="post_tag button button_translucent">spark
         </a>
     </span>
@@ -882,11 +882,17 @@ src='https://plausible.io/js/plausible.js'>
 </ol>
 <h2 id="groupby-1">groupBy</h2>
 <p>groupBy</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="c1">//分组
-</span><span class="ln">2</span><span class="c1"></span><span class="k">val</span> <span class="n">groupedDF</span> <span class="k">=</span> <span class="n">cleanDF</span><span class="o">.</span><span class="n">groupBy</span><span class="o">(</span><span class="n">$</span><span class="s">&#34;year&#34;</span><span class="o">,</span><span class="n">$</span><span class="s">&#34;month&#34;</span><span class="o">)</span>
-<span class="ln">3</span><span class="c1">//使用functions函数来完成聚合
-</span><span class="ln">4</span><span class="c1"></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions._</span>
-<span class="ln">5</span><span class="n">groupedDF</span><span class="o">.</span><span class="n">agg</span><span class="o">(</span><span class="n">avg</span><span class="o">(</span><span class="n">$</span><span class="s">&#34;pm&#34;</span><span class="o">)</span> <span class="o">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="c1">//分组
+</span><span class="ln"> 2</span><span class="c1"></span><span class="k">val</span> <span class="n">groupedDF</span> <span class="k">=</span> <span class="n">cleanDF</span><span class="o">.</span><span class="n">groupBy</span><span class="o">(</span><span class="n">$</span><span class="s">&#34;year&#34;</span><span class="o">,</span><span class="n">$</span><span class="s">&#34;month&#34;</span><span class="o">)</span>
+<span class="ln"> 3</span><span class="c1">//使用functions函数来完成聚合
+</span><span class="ln"> 4</span><span class="c1"></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions._</span>
+<span class="ln"> 5</span><span class="n">groupedDF</span><span class="o">.</span><span class="n">agg</span><span class="o">(</span><span class="n">avg</span><span class="o">(</span><span class="n">$</span><span class="s">&#34;pm&#34;</span><span class="o">)</span> <span class="n">as</span> <span class="s">&#34;pm_avg&#34;</span><span class="o">)</span>
+<span class="ln"> 6</span>	<span class="o">.</span><span class="n">orderBy</span><span class="o">(</span><span class="n">$</span><span class="s">&#34;pm_avg&#34;</span><span class="o">.</span><span class="n">desc</span><span class="o">)</span>
+<span class="ln"> 7</span>
+<span class="ln"> 8</span><span class="c1">//分组第二种方式
+</span><span class="ln"> 9</span><span class="c1"></span><span class="n">groupedDF</span><span class="o">.</span><span class="n">avg</span><span class="o">(</span><span class="s">&#34;pm&#34;</span><span class="o">)</span>
+<span class="ln">10</span>	<span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">$</span><span class="s">&#34;avg(pm)&#34;</span> <span class="n">as</span> <span class="s">&#34;pm_avg&#34;</span><span class="o">)</span>
+<span class="ln">11</span>	<span class="o">.</span><span class="n">orderBy</span><span class="o">(</span><span class="s">&#34;pm_avg&#34;</span><span class="o">)</span>
 </code></pre></div><p>rollup</p>
 <p>cube</p>
 
