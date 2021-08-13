@@ -720,7 +720,46 @@
 &lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;	&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sort&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;$source&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;asc_nulls_last&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;$year&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;asc_nulls_last&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;RelationalGroupedDataset&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;groupBy, rollup, cube后的数据类型都是RelationalGroupedDataset&lt;/p&gt;
-&lt;p&gt;RelationalGroupedDataset并不是DataFrame&lt;/p&gt;
+&lt;p&gt;RelationalGroupedDataset并不是DataFrame，所以其中并没有DataFrame的方法，只有如下一些聚合相关的方法，下列方法调用后会生成DataFrame对象，然后就可以再次使用DataFrame的算子进行操作&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;操作符&lt;/th&gt;
+&lt;th&gt;解释&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;avg&lt;/td&gt;
+&lt;td&gt;average&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;count&lt;/td&gt;
+&lt;td&gt;count&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;max&lt;/td&gt;
+&lt;td&gt;max&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;min&lt;/td&gt;
+&lt;td&gt;min&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;mean&lt;/td&gt;
+&lt;td&gt;average&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;sum&lt;/td&gt;
+&lt;td&gt;sum&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;agg&lt;/td&gt;
+&lt;td&gt;聚合，可以使用sql.funcitons中的函数来配合进行操作&lt;br&gt;&lt;code&gt;pmDf.groupBy($year).agg(avg($pm) as &amp;quot;pm_avg&amp;quot;)&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;relate&#34;&gt;relate&lt;/h2&gt;
         
       </description>
     </item>

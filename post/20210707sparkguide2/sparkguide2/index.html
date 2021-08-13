@@ -210,6 +210,7 @@ src='https://plausible.io/js/plausible.js'>
     </li>
     <li><a href="#na">N/A</a></li>
     <li><a href="#groupby-1">groupBy</a></li>
+    <li><a href="#relate">relate</a></li>
   </ul>
 </nav>
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
@@ -918,7 +919,46 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">4</span>	<span class="o">.</span><span class="n">sort</span><span class="o">(</span><span class="nc">$source</span><span class="o">.</span><span class="n">asc_nulls_last</span><span class="o">,</span> <span class="nc">$year</span><span class="o">.</span><span class="n">asc_nulls_last</span><span class="o">)</span>
 </code></pre></div><p><strong>RelationalGroupedDataset</strong></p>
 <p>groupBy, rollup, cube后的数据类型都是RelationalGroupedDataset</p>
-<p>RelationalGroupedDataset并不是DataFrame</p>
+<p>RelationalGroupedDataset并不是DataFrame，所以其中并没有DataFrame的方法，只有如下一些聚合相关的方法，下列方法调用后会生成DataFrame对象，然后就可以再次使用DataFrame的算子进行操作</p>
+<table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>avg</td>
+<td>average</td>
+</tr>
+<tr>
+<td>count</td>
+<td>count</td>
+</tr>
+<tr>
+<td>max</td>
+<td>max</td>
+</tr>
+<tr>
+<td>min</td>
+<td>min</td>
+</tr>
+<tr>
+<td>mean</td>
+<td>average</td>
+</tr>
+<tr>
+<td>sum</td>
+<td>sum</td>
+</tr>
+<tr>
+<td>agg</td>
+<td>聚合，可以使用sql.funcitons中的函数来配合进行操作<br><code>pmDf.groupBy($year).agg(avg($pm) as &quot;pm_avg&quot;)</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="relate">relate</h2>
 
   </article>
 <aside class="sidebar">
