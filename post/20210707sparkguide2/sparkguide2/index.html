@@ -868,7 +868,7 @@ src='https://plausible.io/js/plausible.js'>
 </code></pre></div></li>
 </ol>
 <h2 id="groupby-1">groupBy</h2>
-<p>groupBy</p>
+<p><strong>groupBy</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="c1">//分组
 </span><span class="ln"> 2</span><span class="c1"></span><span class="k">val</span> <span class="n">groupedDF</span> <span class="k">=</span> <span class="n">cleanDF</span><span class="o">.</span><span class="n">groupBy</span><span class="o">(</span><span class="n">$</span><span class="s">&#34;year&#34;</span><span class="o">,</span><span class="n">$</span><span class="s">&#34;month&#34;</span><span class="o">)</span>
 <span class="ln"> 3</span><span class="c1">//使用functions函数来完成聚合
@@ -880,7 +880,7 @@ src='https://plausible.io/js/plausible.js'>
 </span><span class="ln"> 9</span><span class="c1"></span><span class="n">groupedDF</span><span class="o">.</span><span class="n">avg</span><span class="o">(</span><span class="s">&#34;pm&#34;</span><span class="o">)</span>
 <span class="ln">10</span>	<span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">$</span><span class="s">&#34;avg(pm)&#34;</span> <span class="n">as</span> <span class="s">&#34;pm_avg&#34;</span><span class="o">)</span>
 <span class="ln">11</span>	<span class="o">.</span><span class="n">orderBy</span><span class="o">(</span><span class="s">&#34;pm_avg&#34;</span><span class="o">)</span>
-</code></pre></div><p>多维聚合</p>
+</code></pre></div><p><strong>多维聚合</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="c1">//requirement 1:不同年，不同来源PM值的平均数
 </span><span class="ln"> 2</span><span class="c1"></span><span class="k">val</span> <span class="n">postAndYearDF</span> <span class="k">=</span> <span class="n">pmFinal</span><span class="o">.</span><span class="n">groupBy</span><span class="o">(</span>&#39;source<span class="o">,</span>&#39;year<span class="o">)</span>
 <span class="ln"> 3</span>	<span class="o">.</span><span class="n">agg</span><span class="o">(</span><span class="n">avg</span><span class="o">(</span><span class="nc">$pm</span><span class="o">)</span> <span class="n">as</span> <span class="s">&#34;pm&#34;</span><span class="o">)</span>
@@ -893,8 +893,8 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">10</span><span class="c1">//合并在同一个结果集中
 </span><span class="ln">11</span><span class="c1"></span><span class="n">postAndYearDF</span><span class="o">.</span><span class="n">union</span><span class="o">(</span><span class="n">postDF</span><span class="o">)</span>
 <span class="ln">12</span>	<span class="o">.</span><span class="n">sort</span><span class="o">(</span><span class="nc">$source</span><span class="o">,</span> <span class="nc">$year</span> <span class="n">asc_nulls_last</span><span class="o">,</span> <span class="nc">$pm</span><span class="o">)</span>
-</code></pre></div><p>rollup</p>
-<p>滚动分组：rollup(A, B)，生成三列：AB分组，A分组，null(全局)的分组</p>
+</code></pre></div><p><strong>rollup</strong></p>
+<p>滚动分组：rollup(A, B)，生成三列：AB分组，A null分组，null(全局)的分组</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="c1">//requirement 1: 每个城市，每年的销售额
 </span><span class="ln"> 2</span><span class="c1">//requirement 2: 每个城市，一共的销售额
 </span><span class="ln"> 3</span><span class="c1">//requirement 3: 总体销售额
@@ -909,7 +909,14 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">12</span><span class="n">sales</span><span class="o">.</span><span class="n">rollup</span><span class="o">(</span><span class="nc">$city</span><span class="o">,</span> <span class="nc">$year</span><span class="o">)</span>
 <span class="ln">13</span>	<span class="o">.</span><span class="n">agg</span><span class="o">(</span><span class="n">sum</span><span class="o">(</span><span class="nc">$amount</span><span class="o">)</span> <span class="n">as</span> <span class="s">&#34;amount&#34;</span><span class="o">)</span>
 <span class="ln">14</span>	<span class="o">.</span><span class="n">sort</span><span class="o">(</span><span class="nc">$city</span> <span class="n">asc</span> <span class="n">asc_nulls_last</span><span class="o">,</span> <span class="nc">$year</span><span class="o">.</span><span class="n">asc_nulls_last</span><span class="o">)</span>
-</code></pre></div><p>cube</p>
+</code></pre></div><p><strong>cube</strong></p>
+<p>rollup对参数顺序有要求，cube是对rollup的弥补</p>
+<p>rollup(A, B)，生成四列：AB分组，A null分组，null B分组，null(全局)的分组</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions._</span>
+<span class="ln">2</span><span class="n">pmFinal</span><span class="o">.</span><span class="n">cube</span><span class="o">(</span><span class="nc">$source</span><span class="o">,</span> <span class="nc">$year</span><span class="o">)</span>
+<span class="ln">3</span>	<span class="o">.</span><span class="n">agg</span><span class="o">(</span><span class="n">avg</span><span class="o">(</span><span class="nc">$pm</span><span class="o">)</span> <span class="n">as</span> <span class="s">&#34;pm&#34;</span><span class="o">)</span>
+<span class="ln">4</span>	<span class="o">.</span><span class="n">sort</span><span class="o">(</span><span class="nc">$source</span><span class="o">.</span><span class="n">asc_nulls_last</span><span class="o">,</span> <span class="nc">$year</span><span class="o">.</span><span class="n">asc_</span><span class="o">)</span>
+</code></pre></div>
 
   </article>
 <aside class="sidebar">
