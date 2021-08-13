@@ -894,6 +894,7 @@ src='https://plausible.io/js/plausible.js'>
 </span><span class="ln">11</span><span class="c1"></span><span class="n">postAndYearDF</span><span class="o">.</span><span class="n">union</span><span class="o">(</span><span class="n">postDF</span><span class="o">)</span>
 <span class="ln">12</span>	<span class="o">.</span><span class="n">sort</span><span class="o">(</span><span class="nc">$source</span><span class="o">,</span> <span class="nc">$year</span> <span class="n">asc_nulls_last</span><span class="o">,</span> <span class="nc">$pm</span><span class="o">)</span>
 </code></pre></div><p>rollup</p>
+<p>滚动分组：rollup(A, B)，生成三列：AB分组，A分组，null(全局)的分组</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="c1">//requirement 1: 每个城市，每年的销售额
 </span><span class="ln"> 2</span><span class="c1">//requirement 2: 每个城市，一共的销售额
 </span><span class="ln"> 3</span><span class="c1">//requirement 3: 总体销售额
