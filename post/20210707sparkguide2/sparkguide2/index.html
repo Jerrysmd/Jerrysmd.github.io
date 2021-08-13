@@ -915,8 +915,10 @@ src='https://plausible.io/js/plausible.js'>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions._</span>
 <span class="ln">2</span><span class="n">pmFinal</span><span class="o">.</span><span class="n">cube</span><span class="o">(</span><span class="nc">$source</span><span class="o">,</span> <span class="nc">$year</span><span class="o">)</span>
 <span class="ln">3</span>	<span class="o">.</span><span class="n">agg</span><span class="o">(</span><span class="n">avg</span><span class="o">(</span><span class="nc">$pm</span><span class="o">)</span> <span class="n">as</span> <span class="s">&#34;pm&#34;</span><span class="o">)</span>
-<span class="ln">4</span>	<span class="o">.</span><span class="n">sort</span><span class="o">(</span><span class="nc">$source</span><span class="o">.</span><span class="n">asc_nulls_last</span><span class="o">,</span> <span class="nc">$year</span><span class="o">.</span><span class="n">asc_</span><span class="o">)</span>
-</code></pre></div>
+<span class="ln">4</span>	<span class="o">.</span><span class="n">sort</span><span class="o">(</span><span class="nc">$source</span><span class="o">.</span><span class="n">asc_nulls_last</span><span class="o">,</span> <span class="nc">$year</span><span class="o">.</span><span class="n">asc_nulls_last</span><span class="o">)</span>
+</code></pre></div><p><strong>RelationalGroupedDataset</strong></p>
+<p>groupBy, rollup, cube后的数据类型都是RelationalGroupedDataset</p>
+<p>RelationalGroupedDataset并不是DataFrame</p>
 
   </article>
 <aside class="sidebar">
