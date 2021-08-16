@@ -995,7 +995,18 @@ src='https://plausible.io/js/plausible.js'>
 <p>内连接的结果只有连接上的数据，而全外连接可以包含没有连接上的数据。</p>
 <p><strong>leftouter</strong></p>
 <p>左外连接</p>
-<p>全外连接含没有连接上的数据，左外连接只包含左边没有连接上的数据</p>
+<p>全外连接含没有连接上的数据，左外连接只包含左边没有连接上的数据。</p>
+<p><strong>semi&amp;anti</strong></p>
+<p>Semi-join
+通常出现在使用了exists或in的sql中，所谓semi-join即在两表关联时，当第二个表中存在一个或多个匹配记录时，返回第一个表的记录；
+与普通join的区别在于semi-join时，第一个表里的记录最多只返回一次；</p>
+<p>Anti-join
+而anti-join则与semi-join相反，即当在第二张表没有发现匹配记录时，才会返回第一张表里的记录；
+当使用not exists/not in的时候会用到，两者在处理null值的时候会有所区别</p>
+<ol>
+<li>使用not in且相应列有not null约束</li>
+<li>not exists，不保证每次都用到anti-join代</li>
+</ol>
 
   </article>
 <aside class="sidebar">
