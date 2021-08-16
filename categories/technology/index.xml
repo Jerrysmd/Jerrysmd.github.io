@@ -808,6 +808,9 @@
 &lt;li&gt;使用not in且相应列有not null约束&lt;/li&gt;
 &lt;li&gt;not exists，不保证每次都用到anti-join代&lt;/li&gt;
 &lt;/ol&gt;
+&lt;h2 id=&#34;udf&#34;&gt;UDF&lt;/h2&gt;
+&lt;p&gt;自定义列操作函数&lt;/p&gt;
+&lt;h2 id=&#34;window&#34;&gt;Window&lt;/h2&gt;
         
       </description>
     </item>
