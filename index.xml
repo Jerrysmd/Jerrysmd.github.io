@@ -778,17 +778,25 @@
 &lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;16&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;cross&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;交叉连接&lt;/p&gt;
+&lt;p&gt;交叉连接，笛卡尔积&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-scala&#34; data-lang=&#34;scala&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;crossJoin&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;Unit&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;person&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;crossJoin&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cities&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;    	&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;where&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;person&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;col&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;cityId&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;===&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cities&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;col&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;))&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;    
-&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;    
-&lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;    
-&lt;span class=&#34;ln&#34;&gt;8&lt;/span&gt;    
-&lt;span class=&#34;ln&#34;&gt;9&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;spark&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sql&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;select u.id, u.name, from person u cross join cities c&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;where u.cityId = c.id&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; 
+&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;inner&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;交集&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;person&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;inner&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;join&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cities&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;on&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;person&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cityId&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cities&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;id&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-scala&#34; data-lang=&#34;scala&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;person&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;join&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;right&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cities&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;           &lt;span class=&#34;n&#34;&gt;joinExprs&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;person&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;cityId&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;===&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;citeis&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;),&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;           &lt;span class=&#34;n&#34;&gt;joinType&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;inner&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;outer&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;全外连接&lt;/p&gt;
+&lt;p&gt;内连接的结果只有连接上的数据，而全外连接可以包含没有连接上的数据。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;leftouter&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;左外连接&lt;/p&gt;
+&lt;p&gt;全外连接含没有连接上的数据，左外连接只包含左边没有连接上的数据&lt;/p&gt;
         
       </description>
     </item>

@@ -127,7 +127,7 @@ src='https://plausible.io/js/plausible.js'>
 </svg></span>
     <span class="post_date">
       Jul 7, 2021</span>
-    <span class="post_time"> · 8 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
+    <span class="post_time"> · 9 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
         </a><a href='https://Jerrysmd.github.io/tags/spark' title="spark" class="post_tag button button_translucent">spark
         </a>
     </span>
@@ -977,17 +977,25 @@ src='https://plausible.io/js/plausible.js'>
 <span class="ln">15</span>    <span class="o">}</span>
 <span class="ln">16</span><span class="o">}</span>
 </code></pre></div><p><strong>cross</strong></p>
-<p>交叉连接</p>
+<p>交叉连接，笛卡尔积</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">def</span> <span class="n">crossJoin</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln">2</span>    <span class="n">person</span><span class="o">.</span><span class="n">crossJoin</span><span class="o">(</span><span class="n">cities</span><span class="o">)</span>
 <span class="ln">3</span>    	<span class="o">.</span><span class="n">where</span><span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="n">col</span><span class="o">(</span><span class="s">&#34;cityId&#34;</span><span class="o">)</span> <span class="o">===</span> <span class="n">cities</span><span class="o">.</span><span class="n">col</span><span class="o">(</span><span class="s">&#34;id&#34;</span><span class="o">))</span>
-<span class="ln">4</span>    <span class="n">s</span>
-<span class="ln">5</span>    
-<span class="ln">6</span>    
-<span class="ln">7</span>    
-<span class="ln">8</span>    
-<span class="ln">9</span><span class="o">}</span>
-</code></pre></div>
+<span class="ln">4</span>
+<span class="ln">5</span>    <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&#34;select u.id, u.name, from person u cross join cities c&#34;</span> <span class="o">+</span> <span class="s">&#34;where u.cityId = c.id&#34;</span><span class="o">)</span> 
+<span class="ln">6</span><span class="o">}</span>
+</code></pre></div><p><strong>inner</strong></p>
+<p>交集</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="ln">1</span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">person</span><span class="w"> </span><span class="k">inner</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">cities</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">cityId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cities</span><span class="p">.</span><span class="n">id</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="n">person</span><span class="o">.</span><span class="n">join</span><span class="o">(</span><span class="n">right</span> <span class="k">=</span> <span class="n">cities</span><span class="o">,</span>
+<span class="ln">2</span>           <span class="n">joinExprs</span> <span class="k">=</span> <span class="n">person</span><span class="o">(</span><span class="s">&#34;cityId&#34;</span><span class="o">)</span> <span class="o">===</span> <span class="n">citeis</span><span class="o">(</span><span class="s">&#34;id&#34;</span><span class="o">),</span>
+<span class="ln">3</span>           <span class="n">joinType</span> <span class="k">=</span> <span class="s">&#34;inner&#34;</span><span class="o">)</span>
+</code></pre></div><p><strong>outer</strong></p>
+<p>全外连接</p>
+<p>内连接的结果只有连接上的数据，而全外连接可以包含没有连接上的数据。</p>
+<p><strong>leftouter</strong></p>
+<p>左外连接</p>
+<p>全外连接含没有连接上的数据，左外连接只包含左边没有连接上的数据</p>
 
   </article>
 <aside class="sidebar">
