@@ -210,7 +210,7 @@ src='https://plausible.io/js/plausible.js'>
     </li>
     <li><a href="#na">N/A</a></li>
     <li><a href="#groupby-1">groupBy</a></li>
-    <li><a href="#relate">relate</a></li>
+    <li><a href="#join">Join</a></li>
   </ul>
 </nav>
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
@@ -958,7 +958,19 @@ src='https://plausible.io/js/plausible.js'>
 </tr>
 </tbody>
 </table>
-<h2 id="relate">relate</h2>
+<h2 id="join">Join</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">class</span> <span class="nc">JoinProcessor</span><span class="o">{</span>
+<span class="ln"> 2</span>    <span class="c1">//create Spark
+</span><span class="ln"> 3</span><span class="c1"></span>    <span class="c1">//import implici
+</span><span class="ln"> 4</span><span class="c1"></span>    <span class="nd">@Test</span>
+<span class="ln"> 5</span>    <span class="k">def</span> <span class="n">introJoin</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<span class="ln"> 6</span>        <span class="k">val</span> <span class="n">person</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">((</span><span class="mi">0</span><span class="o">,</span> <span class="s">&#34;Lu&#34;</span><span class="o">,</span> <span class="mi">0</span><span class="o">),</span> <span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="s">&#34;Li&#34;</span><span class="o">,</span> <span class="mi">0</span><span class="o">),</span> <span class="o">(</span><span class="mi">2</span><span class="o">,</span><span class="s">&#34;Tim&#34;</span><span class="o">,</span> <span class="mi">0</span><span class="o">))</span>
+<span class="ln"> 7</span>        	<span class="o">.</span><span class="n">toDF</span><span class="o">(</span><span class="s">&#34;id&#34;</span><span class="o">,</span> <span class="s">&#34;name&#34;</span><span class="o">,</span> <span class="s">&#34;cityID&#34;</span><span class="o">)</span>
+<span class="ln"> 8</span>        <span class="k">val</span> <span class="n">cities</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">((</span><span class="mi">0</span><span class="o">,</span> <span class="s">&#34;BJ&#34;</span><span class="o">),</span> <span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="s">&#34;SH&#34;</span><span class="o">),</span> <span class="o">(</span><span class="mi">2</span><span class="o">,</span><span class="s">&#34;GZ&#34;</span><span class="o">))</span>
+<span class="ln"> 9</span>        	<span class="o">.</span><span class="n">toDF</span><span class="o">(</span><span class="s">&#34;id&#34;</span><span class="o">,</span> <span class="s">&#34;name&#34;</span><span class="o">)</span>
+<span class="ln">10</span>    <span class="o">}</span>
+<span class="ln">11</span><span class="o">}</span>
+</code></pre></div>
 
   </article>
 <aside class="sidebar">
