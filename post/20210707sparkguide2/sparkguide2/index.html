@@ -232,7 +232,7 @@ src='https://plausible.io/js/plausible.js'>
     <li><a href="#groupby-1">groupBy</a></li>
     <li><a href="#table-join">Table Join</a></li>
     <li><a href="#udf">UDF</a></li>
-    <li><a href="#window">Window</a></li>
+    <li><a href="#over-rank">Over Rank</a></li>
   </ul>
 </nav>
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
@@ -1031,7 +1031,17 @@ src='https://plausible.io/js/plausible.js'>
 </ol>
 <h2 id="udf">UDF</h2>
 <p>自定义列操作函数</p>
-<h2 id="window">Window</h2>
+<h2 id="over-rank">Over Rank</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="c1">//1定义窗口
+</span><span class="ln">2</span><span class="c1"></span><span class="k">val</span> <span class="n">window</span> <span class="k">=</span> <span class="nc">Window</span><span class="o">.</span><span class="n">partitionBy</span><span class="o">(</span><span class="nc">$category</span><span class="o">)</span>
+<span class="ln">3</span>	<span class="o">.</span><span class="n">orderBy</span><span class="o">(</span><span class="nc">$revenue</span><span class="o">.</span><span class="n">desc</span><span class="o">)</span>
+<span class="ln">4</span>
+<span class="ln">5</span><span class="c1">//2处理数据
+</span><span class="ln">6</span><span class="c1"></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions._</span>
+<span class="ln">7</span><span class="n">source</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="nc">$production</span><span class="o">,</span> <span class="nc">$category</span><span class="o">,</span> <span class="n">dense_rank</span><span class="o">()</span> <span class="n">over</span> <span class="n">window</span> <span class="n">as</span> <span class="s">&#34;rank&#34;</span><span class="o">)</span>
+<span class="ln">8</span>	<span class="o">.</span><span class="n">where</span><span class="o">(</span><span class="nc">$rank</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="o">)</span>
+<span class="ln">9</span>	<span class="o">.</span><span class="n">show</span><span class="o">()</span>
+</code></pre></div>
 
   </article>
 <aside class="sidebar">
