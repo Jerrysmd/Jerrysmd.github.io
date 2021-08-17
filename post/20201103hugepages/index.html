@@ -221,7 +221,6 @@ src='https://plausible.io/js/plausible.js'>
 </code></pre></div><p>这种方法会加载libhugetlbfs库，用来替换标准库。具体的操作就是替换标准的malloc为大页的malloc。此时，程序申请内存就是大页内存了。</p>
 <h2 id="大页内存的使用场景">大页内存的使用场景</h2>
 <p>任何优化手段都有它适用的范围，大页内存也不例外。只有耗费的内存巨大、访存随机而且访存是瓶颈的程序大页内存才会带来很明显的性能提升。</p>
-
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
