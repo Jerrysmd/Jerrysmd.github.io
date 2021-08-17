@@ -1,30 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
-    <loc>https://Jerrysmd.github.io/</loc>
-    <lastmod>2020-11-11T10:42:49+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://Jerrysmd.github.io/zh-cn/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://Jerrysmd.github.io/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/tags/c/</loc>
-    <lastmod>2020-11-11T10:42:49+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/categories/</loc>
-    <lastmod>2020-11-11T10:42:49+08:00</lastmod>
+    <loc>https://Jerrysmd.github.io/en/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
@@ -33,143 +11,22 @@
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://Jerrysmd.github.io/categories/"
+                href="https://Jerrysmd.github.io/en/categories/"
                 />
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/post/</loc>
-    <lastmod>2020-11-11T10:42:49+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/tags/</loc>
-    <lastmod>2020-11-11T10:42:49+08:00</lastmod>
+  </url><url>
+    <loc>https://Jerrysmd.github.io/en/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https://Jerrysmd.github.io/zh-cn/tags/"
+                href="https://Jerrysmd.github.io/zh-cn/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://Jerrysmd.github.io/tags/"
+                href="https://Jerrysmd.github.io/en/"
                 />
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/categories/technology/</loc>
-    <lastmod>2020-11-11T10:42:49+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/post/20201111%E6%9D%A1%E4%BB%B6%E7%BC%96%E8%AF%91%E6%8C%87%E4%BB%A4/</loc>
-    <lastmod>2020-11-11T10:42:49+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/post/20201109%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</loc>
-    <lastmod>2020-11-09T20:04:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/post/20201104gdb_debug/</loc>
-    <lastmod>2020-11-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/tags/linux/</loc>
-    <lastmod>2020-11-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/post/20201103%E5%A4%A7%E9%A1%B5%E5%86%85%E5%AD%98/</loc>
-    <lastmod>2020-11-03T13:04:09-08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/post/20201102regex_paper/</loc>
-    <lastmod>2020-11-02T22:02:10-08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/tags/tag_name1/</loc>
-    <lastmod>2020-11-02T22:02:10-08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/tags/tag_name2/</loc>
-    <lastmod>2020-11-02T22:02:10-08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/post/20201025%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%92%8C%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5/</loc>
-    <lastmod>2020-10-25T22:01:19-08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/tags/file/</loc>
-    <lastmod>2020-10-20T18:39:37-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/post/20201020read_binary_file/</loc>
-    <lastmod>2020-10-20T18:39:37-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/post/20201018sqlcipher/</loc>
-    <lastmod>2020-10-18T21:58:51-08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/post/20201015makefile_cmakelist/</loc>
-    <lastmod>2020-10-15T21:59:46-08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/tags/c&#43;&#43;/</loc>
-    <lastmod>2020-10-12T05:42:44-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/tags/hyperscan/</loc>
-    <lastmod>2020-10-12T05:42:44-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/post/20201012hyperscan/</loc>
-    <lastmod>2020-10-12T05:42:44-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/post/20201010getline/</loc>
-    <lastmod>2020-10-10T21:58:13-08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/post/20201007mxml/</loc>
-    <lastmod>2020-10-07T21:57:23-08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/post/20201005hashcode/</loc>
-    <lastmod>2020-10-05T21:56:51-08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/tags/markdown/</loc>
-    <lastmod>2020-10-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/post/20201002markdown-syntax/</loc>
-    <lastmod>2020-10-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/series/</loc>
-    <lastmod>2020-10-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://Jerrysmd.github.io/en/series/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
@@ -178,42 +35,19 @@
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://Jerrysmd.github.io/series/"
+                href="https://Jerrysmd.github.io/en/series/"
+                />
+  </url><url>
+    <loc>https://Jerrysmd.github.io/en/tags/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://Jerrysmd.github.io/zh-cn/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://Jerrysmd.github.io/en/tags/"
                 />
   </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/series/themes-guide/</loc>
-    <lastmod>2020-10-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/tags/git/</loc>
-    <lastmod>2020-10-01T05:06:59-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/categories/guide/</loc>
-    <lastmod>2020-10-01T05:06:59-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/post/20201001updatablog/</loc>
-    <lastmod>2020-10-01T05:06:59-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/about/</loc>
-    <lastmod>2020-10-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/archives/</loc>
-    <lastmod>2019-05-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Jerrysmd.github.io/tags/index/</loc>
-  </url>
-  
 </urlset>
