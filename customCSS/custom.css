@@ -4,11 +4,10 @@ img {
     padding: 0
 }
 
-.post_tag,
-.post_share {
-    margin: 0px 5px
-}
-
 h3.post_link {
     margin: 5px 0;
+}
+
+a.post_tag.button.button_translucent {
+    margin: 0px 5px;
 }
