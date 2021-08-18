@@ -137,72 +137,39 @@
   <ul>
     <li><a href="#spark-introduction">Spark Introduction</a>
       <ul>
-        <li><a href="#1-spark-component">1 Spark Component</a></li>
-        <li><a href="#2-spark--hadoop">2 Spark &amp; Hadoop</a></li>
+        <li></li>
       </ul>
     </li>
     <li><a href="#spark-cluster">Spark Cluster</a>
       <ul>
-        <li><a href="#1-cluster--relation">1 Cluster  relation</a></li>
-        <li><a href="#2-build-cluster">2 Build Cluster</a></li>
-        <li><a href="#3-high-availability">3 High Availability</a></li>
+        <li></li>
       </ul>
     </li>
     <li><a href="#running-process">Running Process</a>
       <ul>
-        <li><a href="#1-spark-shell-run">1 Spark-Shell Run</a></li>
-        <li><a href="#2-local-idea-run">2 Local IDEA Run</a></li>
-        <li><a href="#3--submit-run">3  Submit Run</a></li>
+        <li></li>
       </ul>
     </li>
     <li><a href="#rdd">RDD</a>
       <ul>
-        <li><a href="#1-cause-of-creation">1 Cause of creation</a></li>
-        <li><a href="#2-resilient-distributed-datasets">2 Resilient Distributed Datasets</a></li>
-        <li><a href="#3-feature">3 Feature</a></li>
-        <li><a href="#4-sparkcontext">4 sparkContext</a></li>
-        <li><a href="#5-creation-way">5 Creation Way</a></li>
+        <li></li>
       </ul>
     </li>
     <li><a href="#transformation-operator">Transformation Operator</a>
       <ul>
-        <li><a href="#map">map()</a></li>
-        <li><a href="#flatmap">flatmap()</a></li>
-        <li><a href="#reducebykey">reducebykey()</a></li>
-        <li><a href="#qa">Q&amp;A</a></li>
-        <li><a href="#map--mappartitions">map() &amp; mapPartitions()</a></li>
-        <li><a href="#filter">filter()</a></li>
-        <li><a href="#sample">sample()</a></li>
-        <li><a href="#mapvalues">mapValues()</a></li>
-        <li><a href="#collection-operation">collection operation</a></li>
-        <li><a href="#groupbykey">groupByKey()</a></li>
-        <li><a href="#combinebykey">combineByKey()</a></li>
-        <li><a href="#foldbykey">foldByKey()</a></li>
-        <li><a href="#aggregatebykey">aggregateByKey()</a></li>
-        <li><a href="#join">join()</a></li>
-        <li><a href="#sortby">sortBy()</a></li>
-        <li><a href="#coalesce">coalesce()</a></li>
-        <li><a href="#summary">summary</a></li>
+        <li></li>
       </ul>
     </li>
     <li><a href="#action-operator">Action Operator</a>
       <ul>
-        <li><a href="#reducet-t---u">reduce((T, T) - U)</a></li>
-        <li><a href="#collect">collect()</a></li>
-        <li><a href="#countbykey">countByKey()</a></li>
-        <li><a href="#first">first()</a></li>
-        <li><a href="#taken">take(N)</a></li>
-        <li><a href="#takesamplewithreplacement-num">takeSample(withReplacement, num)</a></li>
-        <li><a href="#first-1">first()</a></li>
+        <li></li>
       </ul>
     </li>
     <li><a href="#data-type-in-rdd">Data Type in RDD</a></li>
     <li><a href="#practice">Practice</a></li>
     <li><a href="#rdd-feature">RDD Feature</a>
       <ul>
-        <li><a href="#rdds-shuffle-and-partition">RDD's shuffle and partition</a></li>
-        <li><a href="#rdd-cache">RDD Cache</a></li>
-        <li><a href="#checkpoint">Checkpoint</a></li>
+        <li></li>
       </ul>
     </li>
     <li><a href="#spark-running-process">Spark Running Process</a></li>
@@ -210,13 +177,13 @@
 </nav>
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
 <h2 id="spark-introduction">Spark Introduction</h2>
-<h3 id="1-spark-component">1 Spark Component</h3>
+<h4 id="1-spark-component">1 Spark Component</h4>
 <ul>
 <li>Spark提供了批处理（RDDs），结构化查询（DataFrame），流计算（SparkStreaming），机器学习（MLib），图计算（GraphX）等组件</li>
 <li>这些组件均是依托于通用的计算引擎RDDs而构建出，所以spark-core的RDDs是整个Spark的基础</li>
 </ul>
 <p><img src="/post/picture/sparkStructure.png" alt="sparkStructure"></p>
-<h3 id="2-spark--hadoop">2 Spark &amp; Hadoop</h3>
+<h4 id="2-spark--hadoop">2 Spark &amp; Hadoop</h4>
 <table>
 <thead>
 <tr>
@@ -254,7 +221,7 @@
 </tbody>
 </table>
 <h2 id="spark-cluster">Spark Cluster</h2>
-<h3 id="1-cluster--relation">1 Cluster  relation</h3>
+<h4 id="1-cluster--relation">1 Cluster  relation</h4>
 <p><img src="/post/picture/clusterManager.png" alt="clusterManager"></p>
 <ul>
 <li>Driver：该进程调用Spark程序的main方法，并且启动SparkContext</li>
@@ -269,7 +236,7 @@
 <li>资源申请完毕，在Worker中启动Executor</li>
 <li>Driver将程序转化为Tasks，分发给Executor执行</li>
 </ol>
-<h3 id="2-build-cluster">2 Build Cluster</h3>
+<h4 id="2-build-cluster">2 Build Cluster</h4>
 <ol>
 <li>Download Spark</li>
 <li>Upload</li>
@@ -278,7 +245,7 @@
 <li>Distribute:  scp -r spark node02: $PWD</li>
 <li>Start</li>
 </ol>
-<h3 id="3-high-availability">3 High Availability</h3>
+<h4 id="3-high-availability">3 High Availability</h4>
 <p>对于 Spark Standalone 集群来说，当Worker调度出现问题时，会自动的弹性容错，将出错的Task调度到其他Worker执行。</p>
 <p>但对于Master来说，是会出现单点失败的，为了避免可能出现的单点失败问题，Spark提供了两种方式满足高可用</p>
 <ol>
@@ -286,14 +253,14 @@
 <li>使用文件系统做主备切换</li>
 </ol>
 <h2 id="running-process">Running Process</h2>
-<h3 id="1-spark-shell-run">1 Spark-Shell Run</h3>
+<h4 id="1-spark-shell-run">1 Spark-Shell Run</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">rdd1</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">textFile</span><span class="o">(</span><span class="s">&#34;/data/wordcount.txt&#34;</span><span class="o">)</span> <span class="c1">//Hadoop默认读取hdfs路径：hdfs:///data/wordcount.txt
 </span><span class="ln">2</span><span class="c1"></span><span class="k">val</span> <span class="n">rdd2</span> <span class="k">=</span> <span class="n">rddflatMap</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
 <span class="ln">3</span><span class="k">val</span> <span class="n">rdd3</span> <span class="k">=</span> <span class="n">rdd2</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">item</span><span class="o">,</span><span class="mi">1</span><span class="o">))</span>
 <span class="ln">4</span><span class="k">val</span> <span class="n">rdd4</span> <span class="k">=</span> <span class="n">rdd3</span><span class="o">.</span><span class="n">reduceByKey</span><span class="o">((</span><span class="n">curr</span><span class="o">,</span><span class="n">agg</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">curr</span> <span class="o">+</span> <span class="n">agg</span><span class="o">)</span>
 <span class="ln">5</span><span class="n">rdd4</span><span class="o">.</span><span class="n">collect</span><span class="o">()</span>
 </code></pre></div><p><img src="/post/picture/sparkDemoRunProcess.png" alt="sparkDemoRunProcess"></p>
-<h3 id="2-local-idea-run">2 Local IDEA Run</h3>
+<h4 id="2-local-idea-run">2 Local IDEA Run</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span><span class="kt">Arrary</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln"> 2</span>    <span class="c1">// 创建SparkContext
 </span><span class="ln"> 3</span><span class="c1"></span>    <span class="k">val</span> <span class="n">conf</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkConf</span><span class="o">().</span><span class="n">setMaster</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">).</span><span class="n">setAppName</span><span class="o">(</span><span class="s">&#34;word_count&#34;</span><span class="o">)</span>
@@ -316,7 +283,7 @@
 </span><span class="ln">20</span><span class="c1"></span>    <span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="n">rdd4</span><span class="o">.</span><span class="n">collect</span><span class="o">()</span>
 <span class="ln">21</span>    <span class="n">result</span><span class="o">.</span><span class="n">foreach</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="n">item</span><span class="o">))</span>
 <span class="ln">22</span><span class="o">}</span>
-</code></pre></div><h3 id="3--submit-run">3  Submit Run</h3>
+</code></pre></div><h4 id="3--submit-run">3  Submit Run</h4>
 <ol>
 <li>修改代码
 <ol>
@@ -328,12 +295,12 @@
 </ol>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>bin/spark -submit --class cn.demo.spark.rdd.WordCount --master spark://node01:7077 ~/original -spark-0.0.jar
 </code></pre></div><h2 id="rdd">RDD</h2>
-<h3 id="1-cause-of-creation">1 Cause of creation</h3>
+<h4 id="1-cause-of-creation">1 Cause of creation</h4>
 <p><strong>在RDD出现之前，MapReduce是比较主流的</strong></p>
 <p>但多个MapReduce任务之间没有基于内存的数据共享方式，只能通过磁盘来进行共享，这种方式明显比较低效。</p>
 <p><strong>RDD如何解决迭代计算非常低效的问题</strong></p>
 <p>在Spark中，最终Job3从逻辑上的计算过程是：Job3 = (Job1.map).filter，整个过程是共享内存的，而不需要中间结果存放在可靠的分布式文件系统中。</p>
-<h3 id="2-resilient-distributed-datasets">2 Resilient Distributed Datasets</h3>
+<h4 id="2-resilient-distributed-datasets">2 Resilient Distributed Datasets</h4>
 <p>分布式</p>
 <blockquote>
 <p>RDD支持分区，可以运行在集群中</p>
@@ -352,7 +319,7 @@
 <li>RDD也可以缓存起来，相当于存储具体数据</li>
 </ul>
 </blockquote>
-<h3 id="3-feature">3 Feature</h3>
+<h4 id="3-feature">3 Feature</h4>
 <ol>
 <li>RDD是数据集</li>
 </ol>
@@ -374,7 +341,7 @@
 <p>RDD需要容错，可以惰性求值，可以移动计算，所以很难支持修改，显著降低问题的复杂度。</p>
 </blockquote>
 <p><img src="/post/picture/sparkRdd.png" alt="sparkRdd"></p>
-<h3 id="4-sparkcontext">4 sparkContext</h3>
+<h4 id="4-sparkcontext">4 sparkContext</h4>
 <p>SparkContext是spark功能的主要入口。其代表与spark集群的连接，能够用来在集群上创建RDD、累加器、广播变量。每个JVM里只能存在一个处于激活状态的SparkContext，在创建新的SparkContext之前必须调用stop()来关闭之前的SparkContext。</p>
 <p>每一个Spark应用都是一个SparkContext实例，可以理解为一个SparkContext就是一个spark application的生命周期，一旦SparkContext创建之后，就可以用这个SparkContext来创建RDD、累加器、广播变量，并且可以通过SparkContext访问Spark的服务，运行任务。spark context设置内部服务，并建立与spark执行环境的连接。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="nd">@Test</span>
@@ -390,7 +357,7 @@
 </span><span class="ln">11</span><span class="c1"></span>    
 <span class="ln">12</span>    <span class="c1">//2. 关闭SparkContext，释放集群资源
 </span><span class="ln">13</span><span class="c1"></span><span class="o">}</span>
-</code></pre></div><h3 id="5-creation-way">5 Creation Way</h3>
+</code></pre></div><h4 id="5-creation-way">5 Creation Way</h4>
 <p>三种RDD的创建方式</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span> <span class="n">通过本地集合创建RDD</span>
 <span class="ln"> 2</span><span class="nd">@Test</span>
@@ -417,7 +384,7 @@
 </span><span class="ln">23</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd2</span><span class="k">:</span> <span class="kt">RDD</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="n">rddmap</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">)</span>
 <span class="ln">24</span><span class="o">}</span>
 </code></pre></div><h2 id="transformation-operator">Transformation Operator</h2>
-<h3 id="map">map()</h3>
+<h4 id="map">map()</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="nd">@Test</span>
 <span class="ln"> 2</span><span class="k">def</span> <span class="n">mapTest</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln"> 3</span>    <span class="c1">//创建RDD
@@ -428,7 +395,7 @@
 </span><span class="ln"> 8</span><span class="c1"></span>    <span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="n">rdd2</span><span class="o">.</span><span class="n">collect</span><span class="o">()</span>
 <span class="ln"> 9</span>    <span class="n">result</span><span class="o">.</span><span class="n">foreach</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="n">item</span><span class="o">))</span>
 <span class="ln">10</span><span class="o">}</span>
-</code></pre></div><h3 id="flatmap">flatmap()</h3>
+</code></pre></div><h4 id="flatmap">flatmap()</h4>
 <ol>
 <li>把rdd中的数据转化成数组或集合形式</li>
 <li>把集合展开</li>
@@ -443,7 +410,7 @@
 <span class="ln">6</span>    <span class="n">result</span><span class="o">.</span><span class="n">foreach</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="n">item</span><span class="o">))</span>
 <span class="ln">7</span>    <span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="o">()</span>
 <span class="ln">8</span><span class="o">}</span>
-</code></pre></div><h3 id="reducebykey">reducebykey()</h3>
+</code></pre></div><h4 id="reducebykey">reducebykey()</h4>
 <p>reduceByKey第一步先按照key分组，然后对每一组进行聚合，得到结果。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="nd">@Test</span>
 <span class="ln"> 2</span><span class="k">def</span> <span class="n">reduceBykeyTest</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
@@ -459,7 +426,7 @@
 <span class="ln">12</span>    <span class="c1">//4.关闭sc
 </span><span class="ln">13</span><span class="c1"></span>    <span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="o">()</span> 
 <span class="ln">14</span><span class="o">}</span>
-</code></pre></div><h3 id="qa">Q&amp;A</h3>
+</code></pre></div><h4 id="qa">Q&amp;A</h4>
 <ol>
 <li>数据量过大，如何处理？</li>
 </ol>
@@ -528,7 +495,7 @@
 <li>Checkpoint</li>
 </ol>
 </blockquote>
-<h3 id="map--mappartitions">map() &amp; mapPartitions()</h3>
+<h4 id="map--mappartitions">map() &amp; mapPartitions()</h4>
 <blockquote>
 <p>mapPartitions 和 map 算子是一样的，只不过map是针对每一条数据进行转换，mapPartitions针对一整个分区的数据进行转换</p>
 <p>所以</p>
@@ -538,21 +505,21 @@
 <li>mapPartitionWithIndex 和 mapPartition 的区别是 func 中多分区数量参数</li>
 </ol>
 </blockquote>
-<h3 id="filter">filter()</h3>
+<h4 id="filter">filter()</h4>
 <p>保留满足条件的元素</p>
-<h3 id="sample">sample()</h3>
+<h4 id="sample">sample()</h4>
 <p>filter按照规律过滤，sample则是随机采样</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">def</span> <span class="n">sample</span><span class="o">(</span>
 <span class="ln">2</span>    <span class="n">withReplacement</span><span class="k">:</span> <span class="kt">Boolean</span><span class="o">,</span>	<span class="c1">//是否重复取样
 </span><span class="ln">3</span><span class="c1"></span>    <span class="n">fraction</span><span class="k">:</span> <span class="kt">Double</span><span class="o">,</span>			<span class="c1">//取样比例
 </span><span class="ln">4</span><span class="c1"></span>    <span class="n">seed</span><span class="k">:</span> <span class="kt">Long</span> <span class="o">=</span> <span class="nc">Utils</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">nextLong</span><span class="o">)</span><span class="k">:</span> <span class="kt">RDD</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="k">=</span> <span class="o">{...}</span>
-</code></pre></div><h3 id="mapvalues">mapValues()</h3>
+</code></pre></div><h4 id="mapvalues">mapValues()</h4>
 <p>mapValue也是map，map作用于全部数据，mapValue作用于value</p>
-<h3 id="collection-operation">collection operation</h3>
+<h4 id="collection-operation">collection operation</h4>
 <p>交集：rdd1.intersection(rdd2)</p>
 <p>并集：rdd1.union(rdd2)</p>
 <p>差集：rdd1.subract(rdd2)</p>
-<h3 id="groupbykey">groupByKey()</h3>
+<h4 id="groupbykey">groupByKey()</h4>
 <p>聚合操作：</p>
 <p>reduceByKey -&gt;按照key分组，然后把每一组数据reduce。reduceByKey在map端combiner能减少IO，一个分区放多个数据。</p>
 <p>groupByKey 运算结果的格式：（k，（value1，value2）），没有减少IO</p>
@@ -560,7 +527,7 @@
 <span class="ln">2</span>  <span class="o">.</span><span class="n">groupByKey</span><span class="o">()</span>
 <span class="ln">3</span>  <span class="o">.</span><span class="n">collect</span><span class="o">()</span>
 <span class="ln">4</span>  <span class="o">.</span><span class="n">foreach</span><span class="o">(</span><span class="n">println</span><span class="o">(</span><span class="k">_</span><span class="o">))</span>
-</code></pre></div><h3 id="combinebykey">combineByKey()</h3>
+</code></pre></div><h4 id="combinebykey">combineByKey()</h4>
 <p>接收三个参数：</p>
 <p>转化数据的函数（初始函数，作用于第一条数据，用于开启整个计算）</p>
 <p>在分区上进行聚合</p>
@@ -571,20 +538,20 @@
 <span class="ln">4</span>    <span class="n">mergeCombiners</span> <span class="k">=</span> <span class="o">(</span><span class="n">curr</span><span class="k">:</span> <span class="o">(</span><span class="kt">Double</span><span class="o">,</span><span class="kt">Int</span><span class="o">),</span> <span class="n">agg</span><span class="k">:</span> <span class="o">(</span><span class="kt">Double</span><span class="o">,</span> <span class="kt">Int</span><span class="o">))</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">curr</span><span class="o">.</span><span class="n">_1</span> <span class="o">+</span> <span class="n">agg</span><span class="o">.</span><span class="n">_1</span><span class="o">,</span> <span class="n">curr</span><span class="o">.</span><span class="n">_2</span> <span class="o">+</span> <span class="n">agg</span><span class="o">.</span><span class="n">_2</span><span class="o">)</span>
 <span class="ln">5</span><span class="o">)</span>
 <span class="ln">6</span><span class="n">result</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="n">_1</span><span class="o">,</span> <span class="n">item</span><span class="o">.</span><span class="n">_2</span><span class="o">.</span><span class="n">_1</span> <span class="o">/</span> <span class="n">item</span><span class="o">.</span><span class="n">_2</span><span class="o">.</span><span class="n">_2</span><span class="o">))</span>
-</code></pre></div><h3 id="foldbykey">foldByKey()</h3>
+</code></pre></div><h4 id="foldbykey">foldByKey()</h4>
 <p>功能等同于reduceByKey()，增加了初始值。reduceByKey底层是combineByKey()，foldByKey()底层是aggregateByKey()。</p>
-<h3 id="aggregatebykey">aggregateByKey()</h3>
-<h3 id="join">join()</h3>
+<h4 id="aggregatebykey">aggregateByKey()</h4>
+<h4 id="join">join()</h4>
 <p>按照相同的Key进行连接</p>
-<h3 id="sortby">sortBy()</h3>
+<h4 id="sortby">sortBy()</h4>
 <p>排序：sortBy()，sortByKey()</p>
-<h3 id="coalesce">coalesce()</h3>
+<h4 id="coalesce">coalesce()</h4>
 <p>一般涉及到分区操作的算子常见的有两个，repartition和coalesce，都可以调大或者调小分区数量</p>
-<h3 id="summary">summary</h3>
+<h4 id="summary">summary</h4>
 <p>所有的转化操作的算子都是惰性的，在执行时候不会调度运行求得结果，而只是生成了对应的RDD</p>
 <p>只有在Action操作的时候，才会真的运行</p>
 <h2 id="action-operator">Action Operator</h2>
-<h3 id="reducet-t---u">reduce((T, T) - U)</h3>
+<h4 id="reducet-t---u">reduce((T, T) - U)</h4>
 <p>对整个结果集规约，最终生成一条数据，是整个数据集的总汇</p>
 <blockquote>
 <p><strong>reduceByKey和reduce有什么区别：</strong></p>
@@ -619,9 +586,9 @@
 </li>
 </ol>
 </blockquote>
-<h3 id="collect">collect()</h3>
+<h4 id="collect">collect()</h4>
 <p>以数组的形式返回数据集中所有元素</p>
-<h3 id="countbykey">countByKey()</h3>
+<h4 id="countbykey">countByKey()</h4>
 <p>count和countByKey</p>
 <ul>
 <li>countByKey结果：Map(Key -&gt; Key的count)</li>
@@ -630,14 +597,14 @@
 <p>调用Action会生成一个job，job会运行获取结果，所以在两个job中有大量的log</p>
 <p>数据倾斜：解决数据倾斜的问题，需要先通过countByKey查看Key对应的数量</p>
 </blockquote>
-<h3 id="first">first()</h3>
+<h4 id="first">first()</h4>
 <p>返回第一个元素</p>
-<h3 id="taken">take(N)</h3>
+<h4 id="taken">take(N)</h4>
 <p>返回前N个元素</p>
-<h3 id="takesamplewithreplacement-num">takeSample(withReplacement, num)</h3>
+<h4 id="takesamplewithreplacement-num">takeSample(withReplacement, num)</h4>
 <p>类似于sample，区别这是action，直接返回结果</p>
 <p>withReplacement：取数据有无放回</p>
-<h3 id="first-1">first()</h3>
+<h4 id="first-1">first()</h4>
 <p>first()速度相比其他方法最快</p>
 <h2 id="data-type-in-rdd">Data Type in RDD</h2>
 <p>RDD中存放的数据类型</p>
@@ -671,14 +638,14 @@
 </span><span class="ln">22</span><span class="c1"></span>    <span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="o">()</span>
 <span class="ln">23</span><span class="o">}</span>
 </code></pre></div><h2 id="rdd-feature">RDD Feature</h2>
-<h3 id="rdds-shuffle-and-partition">RDD's shuffle and partition</h3>
+<h4 id="rdds-shuffle-and-partition">RDD's shuffle and partition</h4>
 <ol>
 <li>RDD经常需要通过读取外部系统的数据来创建，外部存储系统往往是支持分片的。RDD需要支持分区，来和外部系统的分片一一对应</li>
 <li>RDD的分区是一个并行计算的实现手段</li>
 </ol>
-<h4 id="partition-function">partition function</h4>
+<h5 id="partition-function">partition function</h5>
 <p>RDD使用分区来分布式处理，当使用RDD读取数据时，会尽量在屋里上靠近数据源。比如读HDFS或Cassandra时，会尽量的保持RDD的分区和数据源的分区数，分区模式一一对应</p>
-<h4 id="shuffle">shuffle</h4>
+<h5 id="shuffle">shuffle</h5>
 <p>从mapper端到reducer端</p>
 <p>Spark支持宽依赖的转换，例如groupByKey和reduceByKey。在这些依赖项中，计算单个分区中的记录所需的数据可以来自于父数据集的许多分区中。要执行这些转换，具有相同key的所有元组必须最终位于同一分区中，由同一任务处理。为了满足这一要求，Spark产生一个shuffle，它在集群内部传输数据，并产生一个带有一组新分区的新stage。</p>
 <ul>
@@ -690,14 +657,14 @@
 <li>Sort base shuffle</li>
 </ul>
 <p>先按照partition ID 排序， 后按照Key的HashCode排序</p>
-<h4 id="partition-and-shuffle-relation">partition and shuffle relation</h4>
+<h5 id="partition-and-shuffle-relation">partition and shuffle relation</h5>
 <p>分区主要用来实现并行计算，和shuffle没什么关系，但数据处理时，例如reduceByKey，groupByKey等聚合操作，需要把Key相同的Value拉取到一起进行计算，这个时候因为这些Key的相同的Value可能会在不同的分区，所以理解分区才能理解shuffle的根本原理</p>
-<h4 id="shuffle-feature">shuffle feature</h4>
+<h5 id="shuffle-feature">shuffle feature</h5>
 <ul>
 <li>只有KV型的RDD才会有Shuffle操作</li>
 <li>早期版本spark的shuffle算法是 hash base shuffle，后来改为 sort base shuffle，更适合大吞吐量的场景</li>
 </ul>
-<h4 id="check-partition">check partition</h4>
+<h5 id="check-partition">check partition</h5>
 <p>指定分区数</p>
 <ol>
 <li>通过本地集合创建的时候指定分区数</li>
@@ -714,10 +681,10 @@
 <li>通过WebUI查看。端口：4040</li>
 <li>通过partitions来查看。rdd1.partitions.size</li>
 </ol>
-<h4 id="重分区">重分区</h4>
+<h5 id="重分区">重分区</h5>
 <p>coalesce(num, true)</p>
 <p>repartitions(num)</p>
-<h3 id="rdd-cache">RDD Cache</h3>
+<h4 id="rdd-cache">RDD Cache</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="c1">//1. 取出IP
 </span><span class="ln"> 2</span><span class="c1"></span><span class="k">val</span> <span class="n">countRDD</span> <span class="k">=</span> <span class="n">source</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">)(</span><span class="mi">0</span><span class="o">),</span> <span class="mi">1</span><span class="o">))</span>
 <span class="ln"> 3</span><span class="c1">//2. 数据清洗
@@ -774,7 +741,7 @@
 </code></pre></div><p><strong>缓存级别：</strong></p>
 <p>MEMORY_ONLY: CPU效率最高</p>
 <p>MEMORY_ONLY_SER: 更加节省空间</p>
-<h3 id="checkpoint">Checkpoint</h3>
+<h4 id="checkpoint">Checkpoint</h4>
 <p>斩断RDD的依赖链，并且将数据存储在可靠的存储引擎中，例如HDFS</p>
 <p>HDFS的NameNode中主要职责就是维护两个文件，一个是edits，另一个是fsimage。</p>
 <p>edits中主要存放Editlog，FsImage保存了当前系统中所有目录和文件的信息，这个FsImage其实就是一个Checkpoint。</p>

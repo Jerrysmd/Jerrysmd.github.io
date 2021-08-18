@@ -137,47 +137,27 @@
   <ul>
     <li><a href="#advanced-operation">Advanced Operation</a>
       <ul>
-        <li><a href="#closure">closure</a></li>
-        <li><a href="#global-accumulator">Global accumulator</a></li>
-        <li><a href="#broadcast">Broadcast</a></li>
+        <li></li>
       </ul>
     </li>
     <li><a href="#sparksql">SparkSQL</a>
       <ul>
-        <li><a href="#dataset--dataframe">Dataset &amp; DataFrame</a></li>
-        <li><a href="#row">Row</a></li>
-        <li><a href="#reader">Reader</a></li>
-        <li><a href="#writer">Writer</a></li>
-        <li><a href="#parquet">Parquet</a></li>
-        <li><a href="#partition">Partition</a></li>
-        <li><a href="#json">JSON</a></li>
-        <li><a href="#hive">Hive</a></li>
-        <li><a href="#jdbc">JDBC</a></li>
+        <li></li>
       </ul>
     </li>
     <li><a href="#data-type-transformation">Data Type Transformation</a>
       <ul>
-        <li><a href="#filter">Filter</a></li>
-        <li><a href="#group">Group</a></li>
-        <li><a href="#split">Split</a></li>
-        <li><a href="#sort">Sort</a></li>
-        <li><a href="#distinct">Distinct</a></li>
-        <li><a href="#collection">Collection</a></li>
+        <li></li>
       </ul>
     </li>
     <li><a href="#data-typeless-transformation">Data Typeless Transformation</a>
       <ul>
-        <li><a href="#select">select</a></li>
-        <li><a href="#column">Column</a></li>
-        <li><a href="#drop">Drop</a></li>
-        <li><a href="#groupby">GroupBy</a></li>
+        <li></li>
       </ul>
     </li>
     <li><a href="#column-1">Column</a>
       <ul>
-        <li><a href="#creation">Creation</a></li>
-        <li><a href="#type">Type</a></li>
-        <li><a href="#api">API</a></li>
+        <li></li>
       </ul>
     </li>
     <li><a href="#na">N/A</a></li>
@@ -189,7 +169,7 @@
 </nav>
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
 <h2 id="advanced-operation">Advanced Operation</h2>
-<h3 id="closure">closure</h3>
+<h4 id="closure">closure</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">test</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln"> 2</span>    <span class="k">val</span> <span class="n">f</span> <span class="k">=</span> <span class="n">closure</span><span class="o">()</span>
 <span class="ln"> 3</span>    <span class="n">f</span><span class="o">(</span><span class="mi">5</span><span class="o">)</span>
@@ -217,7 +197,7 @@
 </span><span class="ln"> 8</span><span class="c1"></span>        <span class="c1">//2. 如果在这个闭包中，依赖了一个外部很大的集合，那么这个集合会随着每一个Task分发
 </span><span class="ln"> 9</span><span class="c1"></span>    <span class="o">}</span>
 <span class="ln">10</span><span class="o">}</span>
-</code></pre></div><h3 id="global-accumulator">Global accumulator</h3>
+</code></pre></div><h4 id="global-accumulator">Global accumulator</h4>
 <ol>
 <li>
 <p>在任意地方创建long accumulator</p>
@@ -232,7 +212,7 @@
 <span class="ln">3</span><span class="n">counter</span><span class="o">.</span><span class="n">value</span>
 </code></pre></div></li>
 </ol>
-<h3 id="broadcast">Broadcast</h3>
+<h4 id="broadcast">Broadcast</h4>
 <p>广播变量允许将一个Read-Only的变量缓存到集群中的每个节点上，而不是传递给每一个Task一个副本</p>
 <ul>
 <li>集群中的每个节点指的是一个机器</li>
@@ -297,7 +277,7 @@
 </ol>
 </li>
 </ul>
-<h3 id="dataset--dataframe">Dataset &amp; DataFrame</h3>
+<h4 id="dataset--dataframe">Dataset &amp; DataFrame</h4>
 <p><strong>RDD 优点：</strong></p>
 <ol>
 <li>
@@ -429,7 +409,7 @@
 <p>Dataset所代表的操作，是类型安全的，编译时安全的(ds.filter(person =&gt; person.name))</p>
 </li>
 </ol>
-<h3 id="row">Row</h3>
+<h4 id="row">Row</h4>
 <p>DataFrame就是Row集合加上Schema信息</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">case</span> <span class="k">class</span> <span class="nc">Person</span><span class="o">(</span><span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">age</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span>
 <span class="ln"> 2</span><span class="k">def</span> <span class="n">row</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
@@ -447,7 +427,7 @@
 <span class="ln">14</span>        <span class="k">case</span> <span class="nc">Row</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">age</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">age</span><span class="o">)</span>
 <span class="ln">15</span>    <span class="o">}</span>
 <span class="ln">16</span><span class="o">}</span>
-</code></pre></div><h3 id="reader">Reader</h3>
+</code></pre></div><h4 id="reader">Reader</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">reader1</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln"> 2</span>    <span class="c1">//1.create SparkSession
 </span><span class="ln"> 3</span><span class="c1"></span>    <span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="nc">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">()</span>
@@ -470,7 +450,7 @@
 <span class="ln">20</span>    	<span class="o">.</span><span class="n">csv</span><span class="o">(</span><span class="s">&#34;dataset/bjPM.csv&#34;</span><span class="o">)</span>
 <span class="ln">21</span>    	<span class="o">.</span><span class="n">show</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span>
 <span class="ln">22</span><span class="o">}</span>
-</code></pre></div><h3 id="writer">Writer</h3>
+</code></pre></div><h4 id="writer">Writer</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">writer1</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln"> 2</span>    <span class="nc">System</span><span class="o">.</span><span class="n">setProperty</span><span class="o">(</span><span class="s">&#34;hodoop.home.dir&#34;</span><span class="o">,</span><span class="s">&#34;c:\\winutils&#34;</span><span class="o">)</span>
 <span class="ln"> 3</span>    <span class="c1">//1.create SparkSession
@@ -486,7 +466,7 @@
 <span class="ln">13</span>    <span class="n">df</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="s">&#34;json&#34;</span><span class="o">).</span><span class="n">save</span><span class="o">(</span><span class="s">&#34;dataset/bjPM2.json&#34;</span><span class="o">)</span>
 <span class="ln">14</span>    
 <span class="ln">15</span><span class="o">}</span>
-</code></pre></div><h3 id="parquet">Parquet</h3>
+</code></pre></div><h4 id="parquet">Parquet</h4>
 <p>Parquet属于Hadoop生态圈的一种<strong>新型列式存储</strong>格式，既然属于Hadoop生态圈，因此也兼容大多圈内计算框架（Hadoop、Spark），另外Parquet是平台、语言无关的，这使得它的适用性很广，只要相关语言有对应支持的类库就可以用；</p>
 <p>Parquet的优劣对比：</p>
 <ul>
@@ -507,7 +487,7 @@
 <span class="ln">11</span>    	<span class="o">.</span><span class="n">load</span><span class="o">(</span><span class="s">&#34;dataset/bj_PM&#34;</span><span class="o">)</span>
 <span class="ln">12</span>    	<span class="o">.</span><span class="n">show</span><span class="o">()</span>
 <span class="ln">13</span><span class="o">}</span>
-</code></pre></div><h3 id="partition">Partition</h3>
+</code></pre></div><h4 id="partition">Partition</h4>
 <p>表分区的概念不仅在parquet上有，其他格式的文件也可以指定表分区</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">parquetPartions</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">={</span>
 <span class="ln"> 2</span>    <span class="k">val</span> <span class="n">df</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span>
@@ -527,12 +507,12 @@
 <span class="ln">16</span>    	<span class="o">.</span><span class="n">parquet</span><span class="o">(</span><span class="s">&#34;dataset/bjPM4&#34;</span><span class="o">)</span>
 <span class="ln">17</span>    	<span class="o">.</span><span class="n">printSchema</span><span class="o">()</span>
 <span class="ln">18</span><span class="o">}</span>
-</code></pre></div><h3 id="json">JSON</h3>
+</code></pre></div><h4 id="json">JSON</h4>
 <ul>
 <li>toJSON: 把Dataset[Object]转为Dataset[JsonString]</li>
 <li>可以直接从RDD读取JSON的DataFrame，把RDD[JsonString]转为Dataset[Object]</li>
 </ul>
-<h3 id="hive">Hive</h3>
+<h4 id="hive">Hive</h4>
 <p>整合什么内容</p>
 <blockquote>
 <ul>
@@ -622,7 +602,7 @@
 </span></code></pre></div></li>
 </ol>
 </blockquote>
-<h3 id="jdbc">JDBC</h3>
+<h4 id="jdbc">JDBC</h4>
 <p>MySQL的访问方式有两种：使用本地运行，提交到集群中运行</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SCALA" data-lang="SCALA"><span class="ln"> 1</span><span class="c1">//读数据
 </span><span class="ln"> 2</span><span class="c1"></span><span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="nc">SparkSession</span>
@@ -709,12 +689,12 @@
 <span class="ln">22</span>
 <span class="ln">23</span><span class="c1">//输出
 </span><span class="ln">24</span><span class="c1"></span><span class="n">ds</span><span class="o">.</span><span class="n">show</span><span class="o">()</span>
-</code></pre></div><h3 id="filter">Filter</h3>
+</code></pre></div><h4 id="filter">Filter</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">def</span> <span class="n">filter</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln">2</span>    <span class="k">val</span> <span class="n">ds</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">15</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span><span class="mi">20</span><span class="o">)).</span><span class="n">toDS</span><span class="o">()</span>
 <span class="ln">3</span>    <span class="n">ds</span><span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="n">person</span> <span class="k">=&gt;</span> <span class="n">person</span><span class="o">.</span><span class="n">age</span> <span class="o">&gt;</span> <span class="mi">15</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
 <span class="ln">4</span><span class="o">}</span>
-</code></pre></div><h3 id="group">Group</h3>
+</code></pre></div><h4 id="group">Group</h4>
 <p>groupByKey:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">ds</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">15</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span><span class="mi">20</span><span class="o">)).</span><span class="n">toDS</span><span class="o">()</span>
 <span class="ln">2</span><span class="k">val</span> <span class="n">grouped</span><span class="k">:</span> <span class="kt">KeyValueGroupedDataset</span><span class="o">[</span><span class="kt">String</span>, <span class="kt">Person</span><span class="o">]</span> <span class="k">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">groupByKey</span><span class="o">(</span><span class="n">person</span> <span class="k">=&gt;</span> <span class="n">person</span><span class="o">.</span><span class="n">name</span><span class="o">)</span>
@@ -722,7 +702,7 @@
 <span class="ln">4</span>
 <span class="ln">5</span><span class="n">result</span><span class="o">.</span><span class="n">show</span><span class="o">()</span>
 <span class="ln">6</span>
-</code></pre></div><h3 id="split">Split</h3>
+</code></pre></div><h4 id="split">Split</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">ds</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">range</span><span class="o">(</span><span class="mi">15</span><span class="o">)</span>
 <span class="ln">2</span><span class="c1">//randomSplit, the number of part, weight
 </span><span class="ln">3</span><span class="c1"></span><span class="k">val</span> <span class="n">datasets</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">Dataset</span><span class="o">[</span><span class="kt">lang.Long</span><span class="o">]]</span> <span class="k">=</span><span class="n">ds</span><span class="o">.</span><span class="n">randomSplit</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">))</span>
@@ -730,11 +710,11 @@
 <span class="ln">5</span>
 <span class="ln">6</span><span class="c1">//split
 </span><span class="ln">7</span><span class="c1"></span><span class="n">ds</span><span class="o">.</span><span class="n">sample</span><span class="o">(</span><span class="n">withReplacement</span> <span class="k">=</span> <span class="kc">false</span><span class="o">,</span> <span class="n">fraction</span> <span class="k">=</span> <span class="mf">0.4</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
-</code></pre></div><h3 id="sort">Sort</h3>
+</code></pre></div><h4 id="sort">Sort</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">ds</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">15</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span><span class="mi">20</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">8</span><span class="o">)).</span><span class="n">toDS</span><span class="o">()</span>
 <span class="ln">2</span><span class="n">ds</span><span class="o">.</span><span class="n">orderBy</span><span class="o">(</span>&#39;name<span class="o">.</span><span class="n">desc</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
 <span class="ln">3</span><span class="n">ds</span><span class="o">.</span><span class="n">sort</span><span class="o">(</span>&#39;name<span class="o">.</span><span class="n">asc</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
-</code></pre></div><h3 id="distinct">Distinct</h3>
+</code></pre></div><h4 id="distinct">Distinct</h4>
 <p>distinct,dropDuplicates:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">def</span> <span class="n">dropDuplicates</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln">2</span>    <span class="k">val</span> <span class="n">ds</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">15</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span><span class="mi">20</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">8</span><span class="o">)).</span><span class="n">toDS</span><span class="o">()</span>
@@ -743,7 +723,7 @@
 <span class="ln">5</span>    <span class="c1">//指定列去重
 </span><span class="ln">6</span><span class="c1"></span>    <span class="n">ds</span><span class="o">.</span><span class="n">dropDuplicates</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
 <span class="ln">7</span><span class="o">}</span>
-</code></pre></div><h3 id="collection">Collection</h3>
+</code></pre></div><h4 id="collection">Collection</h4>
 <p>差集、交集、并集、limit</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">def</span> <span class="n">collection</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">={</span>
 <span class="ln">2</span>    <span class="k">val</span> <span class="n">ds1</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">range</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">10</span><span class="o">)</span>
@@ -755,7 +735,7 @@
 <span class="ln">8</span>    <span class="n">ds1</span><span class="o">.</span><span class="n">limit</span><span class="o">(</span><span class="mi">3</span><span class="o">)</span>
 <span class="ln">9</span><span class="o">}</span>
 </code></pre></div><h2 id="data-typeless-transformation">Data Typeless Transformation</h2>
-<h3 id="select">select</h3>
+<h4 id="select">select</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">val</span> <span class="n">ds</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">15</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span><span class="mi">20</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">8</span><span class="o">)).</span><span class="n">toDS</span><span class="o">()</span>
 <span class="ln"> 2</span><span class="n">ds</span><span class="o">.</span><span class="n">sort</span><span class="o">()</span>
 <span class="ln"> 3</span>  <span class="o">....</span>
@@ -766,7 +746,7 @@
 <span class="ln"> 8</span><span class="k">import</span> <span class="nn">org.apache.spark.sql.funcitons._</span>
 <span class="ln"> 9</span>
 <span class="ln">10</span><span class="n">ds</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">exper</span><span class="o">(</span><span class="s">&#34;sum(age)&#34;</span><span class="o">)).</span><span class="n">show</span><span class="o">()</span>
-</code></pre></div><h3 id="column">Column</h3>
+</code></pre></div><h4 id="column">Column</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">val</span> <span class="n">ds</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">15</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span><span class="mi">20</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">8</span><span class="o">)).</span><span class="n">toDS</span><span class="o">()</span>
 <span class="ln"> 2</span>
 <span class="ln"> 3</span><span class="k">import</span> <span class="nn">org.apache.spark.sql.funcitons._</span>
@@ -777,17 +757,17 @@
 <span class="ln"> 8</span><span class="n">ds</span><span class="o">.</span><span class="n">withColumn</span><span class="o">(</span><span class="s">&#34;name_new&#34;</span><span class="o">,</span>&#39;name <span class="o">+</span> <span class="o">...).</span><span class="n">show</span><span class="o">()</span>
 <span class="ln"> 9</span><span class="n">ds</span><span class="o">.</span><span class="n">withColumn</span><span class="o">(</span><span class="s">&#34;name_jok&#34;</span><span class="o">,</span>&#39;name <span class="o">===</span> <span class="s">&#34;&#34;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
 <span class="ln">10</span><span class="n">ds</span><span class="o">.</span><span class="n">withColumnRenamed</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">,</span><span class="s">&#34;new_name&#34;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
-</code></pre></div><h3 id="drop">Drop</h3>
+</code></pre></div><h4 id="drop">Drop</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">ds</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">15</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span><span class="mi">20</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">8</span><span class="o">)).</span><span class="n">toDS</span><span class="o">()</span>
 <span class="ln">2</span><span class="n">ds</span><span class="o">.</span><span class="n">drop</span><span class="o">(</span>&#39;age<span class="o">).</span><span class="n">show</span><span class="o">()</span>
-</code></pre></div><h3 id="groupby">GroupBy</h3>
+</code></pre></div><h4 id="groupby">GroupBy</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">ds</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">15</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span><span class="mi">20</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">8</span><span class="o">)).</span><span class="n">toDS</span><span class="o">()</span>
 <span class="ln">2</span><span class="c1">//为什么groupByKey是有类型的，最主要的原因是因为groupByKey所生成的对象中的算子是有类型的
 </span><span class="ln">3</span><span class="c1"></span><span class="n">ds</span><span class="o">.</span><span class="n">groupByKey</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="o">).</span><span class="n">mapValues</span><span class="o">()</span>
 <span class="ln">4</span><span class="c1">//为什么groupBy是无类型的，因为groupBy所生成的对象中的算子是无类型的，针对列进行处理
 </span><span class="ln">5</span><span class="c1"></span><span class="n">ds</span><span class="o">.</span><span class="n">groupBy</span><span class="o">(</span>&#39;name<span class="o">).</span><span class="n">agg</span><span class="o">(</span><span class="n">mean</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">)).</span><span class="n">show</span><span class="o">()</span>
 </code></pre></div><h2 id="column-1">Column</h2>
-<h3 id="creation">Creation</h3>
+<h4 id="creation">Creation</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">class</span> <span class="nc">Column</span><span class="o">{</span>
 <span class="ln"> 2</span>    <span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="nc">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">()</span>
 <span class="ln"> 3</span>    	<span class="o">.</span><span class="n">master</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">)</span>
@@ -830,10 +810,10 @@
 <span class="ln">40</span>        <span class="k">val</span> <span class="n">column7</span> <span class="k">=</span> <span class="n">ds</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">)</span>
 <span class="ln">41</span>    <span class="o">}</span>
 <span class="ln">42</span><span class="o">}</span>
-</code></pre></div><h3 id="type">Type</h3>
+</code></pre></div><h4 id="type">Type</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="n">ds</span><span class="o">.</span><span class="n">select</span><span class="o">(</span>&#39;name <span class="n">as</span> <span class="s">&#34;new_name&#34;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
 <span class="ln">2</span><span class="n">ds</span><span class="o">.</span><span class="n">select</span><span class="o">(</span>&#39;age<span class="o">.</span><span class="n">as</span><span class="o">[</span><span class="kt">Long</span><span class="o">]).</span><span class="n">show</span><span class="o">()</span>
-</code></pre></div><h3 id="api">API</h3>
+</code></pre></div><h4 id="api">API</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="c1">//添加新列
 </span><span class="ln">2</span><span class="c1"></span><span class="n">df</span><span class="o">.</span><span class="n">withColun</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">,</span> &#39;age <span class="o">*</span> <span class="mi">2</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
 <span class="ln">3</span><span class="c1">//模糊查询
