@@ -5,7 +5,31 @@
     <link>https://Jerrysmd.github.io/post/</link>
     <description>Recent content in Posts on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 07 Jul 2021 11:14:54 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 03 Aug 2021 16:10:33 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Spark 简介: Spark Guide, Part Ⅲ</title>
+      <link>https://Jerrysmd.github.io/post/20210803sparkguide3/sparkguide3/</link>
+      <pubDate>Tue, 03 Aug 2021 16:10:33 +0800</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/20210803sparkguide3/sparkguide3/</guid>
+      <description>
+        
+          &lt;p&gt;Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.&lt;/p&gt;
+&lt;h2 id=&#34;project&#34;&gt;Project&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;业务场景&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;统计出租车利用率，也就是有乘客乘坐的时间和无乘客空跑的时间比例。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;技术要点&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;数据清洗&lt;/li&gt;
+&lt;li&gt;Json解析&lt;/li&gt;
+&lt;li&gt;地理位置信息处理&lt;/li&gt;
+&lt;li&gt;探索性数据分析&lt;/li&gt;
+&lt;li&gt;会话分析&lt;/li&gt;
+&lt;/ol&gt;
+        
+      </description>
+    </item>
+    
     <item>
       <title>Spark 简介: Spark Guide, Part Ⅱ</title>
       <link>https://Jerrysmd.github.io/post/20210707sparkguide2/sparkguide2/</link>
