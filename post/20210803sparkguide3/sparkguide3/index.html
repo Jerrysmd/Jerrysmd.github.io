@@ -151,6 +151,25 @@
 <li>会话分析</li>
 </ol>
 <p><strong>数据读取</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">class</span> <span class="nc">TaxiAnalysisRunner</span><span class="o">{</span>
+<span class="ln"> 2</span>    <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<span class="ln"> 3</span>        <span class="c1">//1创建SparkSession
+</span><span class="ln"> 4</span><span class="c1"></span>        <span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="nc">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">()</span>
+<span class="ln"> 5</span>        	<span class="o">.</span><span class="n">master</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">)</span>
+<span class="ln"> 6</span>        	<span class="o">.</span><span class="n">appName</span><span class="o">(</span><span class="s">&#34;taxi&#34;</span><span class="o">)</span>
+<span class="ln"> 7</span>        	<span class="o">.</span><span class="n">getOrCreate</span><span class="o">()</span>
+<span class="ln"> 8</span>        
+<span class="ln"> 9</span>        <span class="c1">//2导入隐式转换和函数
+</span><span class="ln">10</span><span class="c1"></span>        <span class="k">import</span> <span class="nn">spark.implicits._</span>
+<span class="ln">11</span>        <span class="k">import</span> <span class="nn">org.apache.spark.sql.functions._</span>
+<span class="ln">12</span>        
+<span class="ln">13</span>        <span class="c1">//3数据读取
+</span><span class="ln">14</span><span class="c1"></span>        <span class="k">val</span> <span class="n">taxiRspark</span><span class="o">.</span><span class="n">read</span>
+<span class="ln">15</span>        	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;header&#34;</span><span class="o">,</span> <span class="n">value</span> <span class="k">=</span> <span class="kc">true</span><span class="o">)</span>
+<span class="ln">16</span>        	<span class="o">.</span><span class="n">csv</span><span class="o">(</span><span class="s">&#34;dataset/half_trip.csv&#34;</span><span class="o">)</span>
+<span class="ln">17</span>    <span class="o">}</span>
+<span class="ln">18</span><span class="o">}</span>
+</code></pre></div>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
