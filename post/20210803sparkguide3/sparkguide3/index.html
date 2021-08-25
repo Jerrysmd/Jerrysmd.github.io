@@ -182,12 +182,13 @@
 <span class="ln">10</span>    <span class="n">dropOffY</span><span class="k">:</span> <span class="kt">Double</span>
 <span class="ln">11</span><span class="o">)</span>
 </code></pre></div><p><strong>转换操作</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="c1">//dataframe[Row] 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="c1">//dataframe[Row] =&gt; dataset[]
 </span><span class="ln">2</span><span class="c1"></span><span class="n">taxiRaw</span><span class="o">.</span><span class="n">rdd</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">parse</span><span class="o">)</span>
 <span class="ln">3</span>
 <span class="ln">4</span><span class="k">def</span> <span class="n">parse</span><span class="o">(</span><span class="n">row</span><span class="k">:</span> <span class="kt">Row</span><span class="o">)</span><span class="k">:</span> <span class="kt">Trip</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln">5</span>    <span class="n">trip</span>
-<span class="ln">6</span><span class="o">}</span>
+<span class="ln">5</span>    
+<span class="ln">6</span>    <span class="n">T</span>
+<span class="ln">7</span><span class="o">}</span>
 </code></pre></div>
   </article>
 <aside class="sidebar">
