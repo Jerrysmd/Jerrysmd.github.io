@@ -164,11 +164,23 @@
 <span class="ln">11</span>        <span class="k">import</span> <span class="nn">org.apache.spark.sql.functions._</span>
 <span class="ln">12</span>        
 <span class="ln">13</span>        <span class="c1">//3数据读取
-</span><span class="ln">14</span><span class="c1"></span>        <span class="k">val</span> <span class="n">taxiRspark</span><span class="o">.</span><span class="n">read</span>
+</span><span class="ln">14</span><span class="c1"></span>        <span class="k">val</span> <span class="n">taxiRaspark</span><span class="o">.</span><span class="n">read</span>
 <span class="ln">15</span>        	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;header&#34;</span><span class="o">,</span> <span class="n">value</span> <span class="k">=</span> <span class="kc">true</span><span class="o">)</span>
 <span class="ln">16</span>        	<span class="o">.</span><span class="n">csv</span><span class="o">(</span><span class="s">&#34;dataset/half_trip.csv&#34;</span><span class="o">)</span>
 <span class="ln">17</span>    <span class="o">}</span>
 <span class="ln">18</span><span class="o">}</span>
+</code></pre></div><p><strong>抽象数据类</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="c1">//dataframe是ROW类型的dataset
+</span><span class="ln"> 2</span><span class="c1">//读取的dataframe是row类型的，如果是dataset[trip]把类型抽象，对数据方便处理
+</span><span class="ln"> 3</span><span class="c1"></span><span class="k">case</span> <span class="k">class</span> <span class="nc">Trip</span><span class="o">(</span>
+<span class="ln"> 4</span>	<span class="n">license</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span>
+<span class="ln"> 5</span>    <span class="n">pickUpTime</span><span class="k">:</span> <span class="kt">Long</span><span class="o">,</span>
+<span class="ln"> 6</span>    <span class="n">dropOffTime</span><span class="k">:</span> <span class="kt">Long</span><span class="o">,</span>
+<span class="ln"> 7</span>    <span class="n">pickUpX</span><span class="k">:</span> <span class="kt">Double</span><span class="o">,</span>
+<span class="ln"> 8</span>    <span class="n">pickUpy</span><span class="k">:</span> <span class="kt">Double</span><span class="o">,</span>
+<span class="ln"> 9</span>    <span class="n">dropOffX</span><span class="k">:</span> <span class="kt">Double</span><span class="o">,</span>
+<span class="ln">10</span>    <span class="n">dropOffY</span><span class="k">:</span> <span class="kt">Double</span>
+<span class="ln">11</span><span class="o">)</span>
 </code></pre></div>
   </article>
 <aside class="sidebar">
