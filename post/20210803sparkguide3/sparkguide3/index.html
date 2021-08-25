@@ -124,7 +124,7 @@
 </svg></span>
     <span class="post_date">
       Aug 3, 2021</span>
-    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
+    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
         </a><a href='https://Jerrysmd.github.io/tags/spark' title="spark" class="post_tag button button_translucent">spark
         </a>
     </span>
@@ -187,12 +187,12 @@
 <span class="ln"> 3</span>
 <span class="ln"> 4</span><span class="k">def</span> <span class="n">parse</span><span class="o">(</span><span class="n">row</span><span class="k">:</span> <span class="kt">Row</span><span class="o">)</span><span class="k">:</span> <span class="kt">Trip</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln"> 5</span>    <span class="k">val</span> <span class="n">richRow</span> <span class="k">=</span> <span class="k">new</span> <span class="n">richRow</span><span class="o">(</span><span class="n">row</span><span class="o">)</span>
-<span class="ln"> 6</span>    <span class="k">val</span> <span class="n">license</span> <span class="k">=</span> <span class="n">richRow</span><span class="o">.</span><span class="n">getAs</span><span class="o">[</span><span class="kt">String</span><span class="o">](</span><span class="s">&#34;hack_license&#34;</span><span class="o">)</span>
-<span class="ln"> 7</span>    <span class="k">val</span> <span class="n">pickUpTime</span>
-<span class="ln"> 8</span>    <span class="k">val</span> <span class="n">dropOffTime</span>
-<span class="ln"> 9</span>    <span class="k">val</span> <span class="n">pickUpX</span>
-<span class="ln">10</span>    <span class="k">val</span> <span class="n">pickUpy</span>
-<span class="ln">11</span>    <span class="k">val</span> <span class="n">dropOffX</span>
+<span class="ln"> 6</span>    <span class="k">val</span> <span class="n">license</span> <span class="k">=</span> <span class="n">richRow</span><span class="o">.</span><span class="n">getAs</span><span class="o">[</span><span class="kt">String</span><span class="o">](</span><span class="s">&#34;hack_license&#34;</span><span class="o">).</span><span class="n">orNull</span>
+<span class="ln"> 7</span>    <span class="k">val</span> <span class="n">pickUpTime</span> <span class="k">=</span> <span class="n">richRow</span><span class="o">.</span><span class="n">getAs</span><span class="o">[</span><span class="kt">String</span><span class="o">](</span><span class="s">&#34;...&#34;</span><span class="o">).</span><span class="n">orNull</span>
+<span class="ln"> 8</span>    <span class="k">val</span> <span class="n">dropOffTime</span> <span class="k">=</span> <span class="n">richRow</span><span class="o">.</span><span class="n">getAs</span><span class="o">[</span><span class="kt">String</span><span class="o">](</span><span class="s">&#34;...&#34;</span><span class="o">).</span><span class="n">orNull</span>
+<span class="ln"> 9</span>    <span class="k">val</span> <span class="n">pickUpX</span> <span class="k">=</span> <span class="n">richRow</span><span class="o">.</span><span class="n">getAs</span><span class="o">[</span><span class="kt">String</span><span class="o">](</span><span class="s">&#34;...&#34;</span><span class="o">).</span><span class="n">orNull</span>
+<span class="ln">10</span>    <span class="k">val</span> <span class="n">pickUpy</span> <span class="k">=</span> <span class="n">richRow</span><span class="o">.</span><span class="n">getAs</span><span class="o">[</span><span class="kt">String</span><span class="o">](</span><span class="s">&#34;...&#34;</span><span class="o">).</span><span class="n">orNull</span>
+<span class="ln">11</span>    <span class="k">val</span> <span class="n">dropOffX</span> <span class="k">=</span> <span class="n">richRow</span><span class="o">.</span><span class="n">getAs</span><span class="o">[</span><span class="kt">String</span><span class="o">](</span><span class="s">&#34;...&#34;</span><span class="o">).</span><span class="n">orNull</span>
 <span class="ln">12</span>    <span class="k">val</span> <span class="n">dropOffY</span>
 <span class="ln">13</span>    <span class="nc">Trip</span><span class="o">(</span><span class="n">license</span><span class="err">，</span> <span class="n">pickUpTime</span><span class="o">,</span> <span class="n">dropOffTime</span><span class="o">,</span> <span class="n">pickUpX</span><span class="o">,</span> <span class="n">pickUpy</span><span class="o">,</span> <span class="n">dropOffX</span><span class="o">,</span> <span class="n">dropOffY</span><span class="o">)</span>
 <span class="ln">14</span><span class="o">}</span>
@@ -202,7 +202,7 @@
 <span class="ln">18</span>        <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">.</span><span class="n">isNullAt</span><span class="o">(</span><span class="n">row</span><span class="o">.</span><span class="n">fieldIndex</span><span class="o">(</span><span class="n">field</span><span class="o">))){</span>
 <span class="ln">19</span>            <span class="nc">None</span>
 <span class="ln">20</span>        <span class="o">}</span><span class="k">else</span><span class="o">{</span>
-<span class="ln">21</span>            <span class="nc">Some</span><span class="o">(</span><span class="n">row</span><span class="o">.</span><span class="n">getAs</span><span class="o">[](</span><span class="n">field</span><span class="o">))</span>
+<span class="ln">21</span>            <span class="nc">Some</span><span class="o">(</span><span class="n">row</span><span class="o">.</span><span class="n">getAs</span><span class="o">[</span><span class="kt">T</span><span class="o">](</span><span class="n">field</span><span class="o">))</span>
 <span class="ln">22</span>        <span class="o">}</span>
 <span class="ln">23</span>        
 <span class="ln">24</span>        
