@@ -188,12 +188,12 @@
 <span class="ln"> 4</span><span class="k">def</span> <span class="n">parse</span><span class="o">(</span><span class="n">row</span><span class="k">:</span> <span class="kt">Row</span><span class="o">)</span><span class="k">:</span> <span class="kt">Trip</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln"> 5</span>    <span class="k">val</span> <span class="n">richRow</span> <span class="k">=</span> <span class="k">new</span> <span class="n">richRow</span><span class="o">(</span><span class="n">row</span><span class="o">)</span>
 <span class="ln"> 6</span>    <span class="k">val</span> <span class="n">license</span> <span class="k">=</span> <span class="n">richRow</span><span class="o">.</span><span class="n">getAs</span><span class="o">[</span><span class="kt">String</span><span class="o">](</span><span class="s">&#34;hack_license&#34;</span><span class="o">).</span><span class="n">orNull</span>
-<span class="ln"> 7</span>    <span class="k">val</span> <span class="n">pickUpTime</span> <span class="k">=</span> <span class="n">richRow</span><span class="o">.</span><span class="n">getAs</span><span class="o">[</span><span class="kt">String</span><span class="o">](</span><span class="s">&#34;...&#34;</span><span class="o">).</span><span class="n">orNull</span>
-<span class="ln"> 8</span>    <span class="k">val</span> <span class="n">dropOffTime</span> <span class="k">=</span> <span class="n">richRow</span><span class="o">.</span><span class="n">getAs</span><span class="o">[</span><span class="kt">String</span><span class="o">](</span><span class="s">&#34;...&#34;</span><span class="o">).</span><span class="n">orNull</span>
-<span class="ln"> 9</span>    <span class="k">val</span> <span class="n">pickUpX</span> <span class="k">=</span> <span class="n">richRow</span><span class="o">.</span><span class="n">getAs</span><span class="o">[</span><span class="kt">String</span><span class="o">](</span><span class="s">&#34;...&#34;</span><span class="o">).</span><span class="n">orNull</span>
-<span class="ln">10</span>    <span class="k">val</span> <span class="n">pickUpy</span> <span class="k">=</span> <span class="n">richRow</span><span class="o">.</span><span class="n">getAs</span><span class="o">[</span><span class="kt">String</span><span class="o">](</span><span class="s">&#34;...&#34;</span><span class="o">).</span><span class="n">orNull</span>
-<span class="ln">11</span>    <span class="k">val</span> <span class="n">dropOffX</span> <span class="k">=</span> <span class="n">richRow</span><span class="o">.</span><span class="n">getAs</span><span class="o">[</span><span class="kt">String</span><span class="o">](</span><span class="s">&#34;...&#34;</span><span class="o">).</span><span class="n">orNull</span>
-<span class="ln">12</span>    <span class="k">val</span> <span class="n">dropOffY</span> <span class="k">=</span> <span class="n">richRow</span><span class="o">.</span><span class="n">getAs</span><span class="o">[</span><span class="kt">String</span><span class="o">](</span><span class="s">&#34;...&#34;</span><span class="o">).</span><span class="n">orNull</span>
+<span class="ln"> 7</span>    <span class="k">val</span> <span class="n">pickUpTime</span> <span class="k">=</span> <span class="n">parseTime</span><span class="o">(</span><span class="n">richRow</span><span class="o">,</span> <span class="s">&#34;...&#34;</span><span class="o">)</span>
+<span class="ln"> 8</span>    <span class="k">val</span> <span class="n">dropOffTime</span> <span class="k">=</span> <span class="n">parseTime</span><span class="o">(</span><span class="n">richRow</span><span class="o">,</span> <span class="s">&#34;...&#34;</span><span class="o">)</span>
+<span class="ln"> 9</span>    <span class="k">val</span> <span class="n">pickUpX</span> <span class="k">=</span> <span class="n">parseLocation</span><span class="o">(</span><span class="n">richRow</span><span class="o">,</span> <span class="s">&#34;...&#34;</span><span class="o">)</span>
+<span class="ln">10</span>    <span class="k">val</span> <span class="n">pickUpy</span> <span class="k">=</span> <span class="n">parseLocation</span><span class="o">(</span><span class="n">richRow</span><span class="o">,</span> <span class="s">&#34;...&#34;</span><span class="o">)</span>
+<span class="ln">11</span>    <span class="k">val</span> <span class="n">dropOffX</span> <span class="k">=</span> <span class="n">parseLocation</span><span class="o">(</span><span class="n">richRow</span><span class="o">,</span> <span class="s">&#34;...&#34;</span><span class="o">)</span>
+<span class="ln">12</span>    <span class="k">val</span> <span class="n">dropOffY</span> <span class="k">=</span> <span class="n">parseLocation</span><span class="o">(</span><span class="n">richRow</span><span class="o">,</span> <span class="s">&#34;...&#34;</span><span class="o">)</span>
 <span class="ln">13</span>    <span class="nc">Trip</span><span class="o">(</span><span class="n">license</span><span class="err">，</span> <span class="n">pickUpTime</span><span class="o">,</span> <span class="n">dropOffTime</span><span class="o">,</span> <span class="n">pickUpX</span><span class="o">,</span> <span class="n">pickUpy</span><span class="o">,</span> <span class="n">dropOffX</span><span class="o">,</span> <span class="n">dropOffY</span><span class="o">)</span>
 <span class="ln">14</span><span class="o">}</span>
 <span class="ln">15</span>
@@ -206,6 +206,17 @@
 <span class="ln">22</span>        <span class="o">}</span>
 <span class="ln">23</span>    <span class="o">}</span>
 <span class="ln">24</span><span class="o">}</span>
+<span class="ln">25</span><span class="k">def</span> <span class="n">parseTime</span><span class="o">(</span><span class="n">row</span><span class="k">:</span> <span class="kt">RichRow</span><span class="o">,</span> <span class="n">field</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span><span class="k">:</span> <span class="kt">Long</span> <span class="o">=</span> <span class="o">{</span>
+<span class="ln">26</span>    <span class="c1">//规定格式
+</span><span class="ln">27</span><span class="c1"></span>    <span class="k">val</span> <span class="n">pattern</span> <span class="k">=</span> <span class="s">&#34;yyyy-MM-dd HH:mm:ss&#34;</span>
+<span class="ln">28</span>    <span class="n">v</span>
+<span class="ln">29</span>    <span class="c1">//执行转换
+</span><span class="ln">30</span><span class="c1"></span><span class="o">}</span>
+<span class="ln">31</span>
+<span class="ln">32</span><span class="k">def</span> <span class="n">parseLocation</span><span class="o">(</span><span class="n">row</span><span class="k">:</span> <span class="kt">RickRow</span><span class="o">,</span> <span class="n">field</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span><span class="k">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="o">{</span>
+<span class="ln">33</span>    
+<span class="ln">34</span><span class="o">}</span>
+<span class="ln">35</span>
 </code></pre></div>
   </article>
 <aside class="sidebar">
