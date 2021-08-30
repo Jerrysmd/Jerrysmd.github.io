@@ -181,7 +181,7 @@
 <span class="ln"> 9</span>    <span class="n">dropOffX</span><span class="k">:</span> <span class="kt">Double</span><span class="o">,</span>
 <span class="ln">10</span>    <span class="n">dropOffY</span><span class="k">:</span> <span class="kt">Double</span>
 <span class="ln">11</span><span class="o">)</span>
-</code></pre></div><p><strong>转换、清洗</strong></p>
+</code></pre></div><p><strong>转换DF类型、清洗异常数据</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="c1">//dataframe[Row] =&gt; dataset[]
 </span><span class="ln"> 2</span><span class="c1"></span><span class="k">val</span> <span class="n">taxiParsed</span><span class="k">:</span><span class="kt">RDD</span><span class="o">[</span><span class="kt">Either</span><span class="o">[</span><span class="kt">Trip</span>,<span class="o">(</span><span class="kt">Row</span>,<span class="kt">Exception</span><span class="o">)]]</span> <span class="k">=</span> <span class="n">taxiRaw</span><span class="o">.</span><span class="n">rdd</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">safe</span><span class="o">(</span><span class="n">parse</span><span class="o">))</span>
 <span class="ln"> 3</span><span class="c1">//异常数据
@@ -242,7 +242,7 @@
 <span class="ln">58</span>        <span class="o">}</span>
 <span class="ln">59</span>    <span class="o">}</span>
 <span class="ln">60</span><span class="o">}</span>
-</code></pre></div>
+</code></pre></div><p><strong>统计分布</strong></p>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
