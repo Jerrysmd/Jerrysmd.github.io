@@ -243,6 +243,22 @@
 <span class="ln">59</span>    <span class="o">}</span>
 <span class="ln">60</span><span class="o">}</span>
 </code></pre></div><p><strong>统计分布</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="c1">//编写udf，将毫秒转为小时单位
+</span><span class="ln"> 2</span><span class="c1"></span><span class="k">val</span> <span class="n">hours</span> <span class="k">=</span> <span class="o">(</span><span class="n">pickUpTime</span><span class="k">:</span> <span class="kt">Long</span><span class="o">,</span> <span class="n">dropOffTime</span><span class="k">:</span> <span class="kt">Long</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="o">{</span>
+<span class="ln"> 3</span>    <span class="k">val</span> <span class="n">duration</span> <span class="k">=</span> <span class="n">dropOffTime</span> <span class="o">-</span> <span class="n">pickUpTime</span>
+<span class="ln"> 4</span>    <span class="k">val</span> <span class="n">hours</span> <span class="k">=</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="nc">HOURS</span><span class="o">.</span><span class="n">convert</span><span class="o">(</span><span class="n">duration</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="nc">MILLISECONDS</span><span class="o">)</span>
+<span class="ln"> 5</span>    <span class="n">hours</span>
+<span class="ln"> 6</span><span class="o">}</span>
+<span class="ln"> 7</span><span class="k">val</span> <span class="n">hoursUDF</span> <span class="k">=</span> <span class="n">udf</span><span class="o">(</span><span class="n">hours</span><span class="o">)</span>
+<span class="ln"> 8</span><span class="c1">//统计
+</span><span class="ln"> 9</span><span class="c1"></span><span class="n">taxiGood</span><span class="o">.</span><span class="n">groupBy</span><span class="o">(</span><span class="n">hoursUDF</span><span class="o">(</span><span class="n">$</span><span class="s">&#34;pickUpTime&#34;</span><span class="o">,</span><span class="n">$</span><span class="s">&#34;dropOffTime&#34;</span><span class="o">)</span> <span class="n">as</span> <span class="s">&#34;duration&#34;</span><span class="o">)</span>
+<span class="ln">10</span>	<span class="o">.</span><span class="n">count</span><span class="o">()</span>
+<span class="ln">11</span>	<span class="o">.</span><span class="n">sort</span><span class="o">(</span><span class="s">&#34;duration&#34;</span><span class="o">)</span>
+<span class="ln">12</span>	<span class="o">.</span><span class="n">show</span><span class="o">()</span>
+<span class="ln">13</span><span class="c1">//直方图
+</span><span class="ln">14</span><span class="c1"></span><span class="n">spark</span><span class="o">.</span><span class="n">udf</span><span class="o">.</span><span class="n">register</span><span class="o">(</span><span class="s">&#34;hours&#34;</span><span class="o">,</span> <span class="n">hours</span><span class="o">)</span>
+<span class="ln">15</span><span class="k">val</span> <span class="n">taxiClean</span> <span class="k">=</span> <span class="n">taxiGood</span><span class="o">.</span><span class="n">where</span><span class="o">(</span><span class="s">&#34;hours(pickUpTime, dropOffTime) BETWEEN 0 AND 3&#34;</span><span class="o">)</span>
+</code></pre></div>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
