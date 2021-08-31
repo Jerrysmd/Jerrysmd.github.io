@@ -300,10 +300,13 @@
 <span class="ln">16</span>        <span class="nc">GeometryEngine</span><span class="o">.</span><span class="n">contains</span><span class="o">(</span><span class="n">feature</span><span class="o">.</span><span class="n">getGeometry</span><span class="o">(),</span> <span class="k">new</span> <span class="nc">Point</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">),</span> <span class="nc">SpatialReference</span><span class="o">.</span><span class="n">create</span><span class="o">(</span><span class="mi">4326</span><span class="o">))</span>
 <span class="ln">17</span>    <span class="o">})</span>
 <span class="ln">18</span>    <span class="c1">//2转为区域信息
-</span><span class="ln">19</span><span class="c1"></span>    <span class="k">val</span> <span class="n">bfeatureHit</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">feature</span> <span class="k">=&gt;</span> <span class="n">feature</span><span class="o">.</span><span class="n">properties</span><span class="o">(</span><span class="s">&#34;borought&#34;</span><span class="o">)).</span><span class="n">getOrElse</span><span class="o">(</span><span class="s">&#34;NA&#34;</span><span class="o">)</span>
-<span class="ln">20</span><span class="o">}</span>
-<span class="ln">21</span><span class="c1">//5统计信息
-</span></code></pre></div>
+</span><span class="ln">19</span><span class="c1"></span>    <span class="k">val</span> <span class="n">borough</span> <span class="k">=</span> <span class="n">featureHit</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">feature</span> <span class="k">=&gt;</span> <span class="n">feature</span><span class="o">.</span><span class="n">properties</span><span class="o">(</span><span class="s">&#34;borought&#34;</span><span class="o">)).</span><span class="n">getOrElse</span><span class="o">(</span><span class="s">&#34;NA&#34;</span><span class="o">)</span>
+<span class="ln">20</span>    <span class="n">borough</span>
+<span class="ln">21</span><span class="o">}</span>
+<span class="ln">22</span><span class="c1">//5统计信息
+</span><span class="ln">23</span><span class="c1"></span><span class="k">val</span> <span class="n">broughUDF</span> <span class="k">=</span> <span class="n">udf</span><span class="o">(</span><span class="n">boroughLookUp</span><span class="o">)</span>
+<span class="ln">24</span><span class="n">taxiClean</span><span class="o">.</span><span class="n">groupBy</span><span class="o">(</span><span class="n">broughUDF</span><span class="o">(</span>&#39;dropOffX<span class="o">,</span>&#39;dropOff<span class="o">))</span>
+</code></pre></div>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
