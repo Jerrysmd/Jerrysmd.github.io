@@ -124,7 +124,7 @@
 </svg></span>
     <span class="post_date">
       Aug 3, 2021</span>
-    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
+    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
         </a><a href='https://Jerrysmd.github.io/tags/spark' title="spark" class="post_tag button button_translucent">spark
         </a>
     </span>
@@ -258,6 +258,10 @@
 <span class="ln">13</span><span class="c1">//直方图
 </span><span class="ln">14</span><span class="c1"></span><span class="n">spark</span><span class="o">.</span><span class="n">udf</span><span class="o">.</span><span class="n">register</span><span class="o">(</span><span class="s">&#34;hours&#34;</span><span class="o">,</span> <span class="n">hours</span><span class="o">)</span>
 <span class="ln">15</span><span class="k">val</span> <span class="n">taxiClean</span> <span class="k">=</span> <span class="n">taxiGood</span><span class="o">.</span><span class="n">where</span><span class="o">(</span><span class="s">&#34;hours(pickUpTime, dropOffTime) BETWEEN 0 AND 3&#34;</span><span class="o">)</span>
+</code></pre></div><p><strong>JSON地理信息</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">case</span> <span class="k">class</span> <span class="nc">FeatureCollection</span><span class="o">(</span><span class="n">features</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Feature</span><span class="o">])</span>
+<span class="ln">2</span>
+<span class="ln">3</span><span class="k">case</span> <span class="k">class</span> <span class="nc">Feature</span><span class="o">(</span><span class="nc">Properties</span><span class="k">:</span> <span class="kt">Map</span><span class="o">[</span><span class="kt">String</span>, <span class="kt">String</span><span class="o">],</span> <span class="n">geometry</span><span class="k">:</span><span class="o">)</span>
 </code></pre></div>
   </article>
 <aside class="sidebar">
