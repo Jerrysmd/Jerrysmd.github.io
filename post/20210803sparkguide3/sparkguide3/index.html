@@ -259,9 +259,22 @@
 </span><span class="ln">14</span><span class="c1"></span><span class="n">spark</span><span class="o">.</span><span class="n">udf</span><span class="o">.</span><span class="n">register</span><span class="o">(</span><span class="s">&#34;hours&#34;</span><span class="o">,</span> <span class="n">hours</span><span class="o">)</span>
 <span class="ln">15</span><span class="k">val</span> <span class="n">taxiClean</span> <span class="k">=</span> <span class="n">taxiGood</span><span class="o">.</span><span class="n">where</span><span class="o">(</span><span class="s">&#34;hours(pickUpTime, dropOffTime) BETWEEN 0 AND 3&#34;</span><span class="o">)</span>
 </code></pre></div><p><strong>JSON地理信息</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">case</span> <span class="k">class</span> <span class="nc">FeatureCollection</span><span class="o">(</span><span class="n">features</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Feature</span><span class="o">])</span>
-<span class="ln">2</span>
-<span class="ln">3</span><span class="k">case</span> <span class="k">class</span> <span class="nc">Feature</span><span class="o">(</span><span class="nc">Properties</span><span class="k">:</span> <span class="kt">Map</span><span class="o">[</span><span class="kt">String</span>, <span class="kt">String</span><span class="o">],</span> <span class="n">geometry</span><span class="k">:</span><span class="o">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">case</span> <span class="k">class</span> <span class="nc">FeatureCollection</span><span class="o">(</span><span class="n">features</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Feature</span><span class="o">])</span>
+<span class="ln"> 2</span>
+<span class="ln"> 3</span><span class="k">case</span> <span class="k">class</span> <span class="nc">Feature</span><span class="o">(</span><span class="nc">Properties</span><span class="k">:</span> <span class="kt">Map</span><span class="o">[</span><span class="kt">String</span>, <span class="kt">String</span><span class="o">],</span> <span class="n">geometry</span><span class="k">:</span> <span class="kt">JObject</span><span class="o">)</span>
+<span class="ln"> 4</span>
+<span class="ln"> 5</span><span class="k">object</span> <span class="nc">FeatureExtraction</span><span class="o">{</span>
+<span class="ln"> 6</span>    
+<span class="ln"> 7</span>    <span class="c1">//JSON解析
+</span><span class="ln"> 8</span><span class="c1"></span>    <span class="k">def</span> <span class="n">parseJson</span><span class="o">(</span><span class="n">json</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span><span class="k">:</span> <span class="kt">FeatureCollection</span> <span class="o">=</span> <span class="o">{</span>
+<span class="ln"> 9</span>        <span class="c1">//1导入一个formats隐式转换
+</span><span class="ln">10</span><span class="c1"></span>        <span class="k">implicit</span> <span class="k">val</span> <span class="n">formats</span> <span class="k">=</span> <span class="nc">Serialization</span><span class="o">.</span><span class="n">formats</span><span class="o">(</span><span class="nc">NoTypeHints</span><span class="o">)</span>
+<span class="ln">11</span>        <span class="c1">//2JSON -&gt; Obj
+</span><span class="ln">12</span><span class="c1"></span>        <span class="k">import</span> <span class="nn">org.json4s.jackson.Serialization.read</span>
+<span class="ln">13</span>        <span class="k">val</span> <span class="n">featureCollection</span> <span class="k">=</span> <span class="n">read</span><span class="o">[</span><span class="kt">FeatureCollection</span><span class="o">](</span><span class="n">json</span><span class="o">)</span>
+<span class="ln">14</span>        <span class="n">featureCollection</span>
+<span class="ln">15</span>    <span class="o">}</span>
+<span class="ln">16</span><span class="o">}</span>
 </code></pre></div>
   </article>
 <aside class="sidebar">
