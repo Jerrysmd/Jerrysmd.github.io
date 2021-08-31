@@ -287,7 +287,7 @@
 </span><span class="ln">3</span><span class="c1"></span><span class="k">val</span> <span class="n">geoJson</span> <span class="k">=</span> <span class="nc">Source</span><span class="o">.</span><span class="n">fromFile</span><span class="o">(</span><span class="s">&#34;dataset/districts.geojson&#34;</span><span class="o">).</span><span class="n">mkString</span>
 <span class="ln">4</span><span class="k">val</span> <span class="n">featureColleciton</span> <span class="k">=</span> <span class="nc">FeatureExtraction</span><span class="o">.</span><span class="n">parseJson</span><span class="o">(</span><span class="n">geoJson</span><span class="o">)</span>
 <span class="ln">5</span><span class="c1">//2排序
-</span><span class="ln">6</span><span class="c1">//把大的区域放在前面，更
+</span><span class="ln">6</span><span class="c1">//理论上大的区域数量多，把大的区域放在前面，减少搜索次数
 </span><span class="ln">7</span><span class="c1">//3广播
 </span><span class="ln">8</span><span class="c1">//4UDF
 </span><span class="ln">9</span><span class="c1">//5统计信息
