@@ -306,6 +306,18 @@
 <span class="ln">22</span><span class="c1">//5统计信息
 </span><span class="ln">23</span><span class="c1"></span><span class="k">val</span> <span class="n">broughUDF</span> <span class="k">=</span> <span class="n">udf</span><span class="o">(</span><span class="n">boroughLookUp</span><span class="o">)</span>
 <span class="ln">24</span><span class="n">taxiClean</span><span class="o">.</span><span class="n">groupBy</span><span class="o">(</span><span class="n">broughUDF</span><span class="o">(</span>&#39;dropOffX<span class="o">,</span>&#39;dropOff<span class="o">))</span>
+</code></pre></div><p><strong>会话统计</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="c1">//过滤没有经纬度的数据
+</span><span class="ln"> 2</span><span class="c1"></span><span class="n">taxiClean</span><span class="o">.</span><span class="n">where</span><span class="o">(</span><span class="s">&#34;dropOffX != 0 and dropOffY != 0 and pickUp...&#34;</span><span class="o">)</span>
+<span class="ln"> 3</span>	<span class="o">.</span><span class="n">repartition</span><span class="o">(</span>&#39;license<span class="o">)</span>
+<span class="ln"> 4</span>	<span class="o">.</span><span class="n">sortWithinPartitions</span><span class="o">(</span>&#39;license<span class="o">,</span> &#39;pickUpTime<span class="o">)</span>
+<span class="ln"> 5</span>
+<span class="ln"> 6</span><span class="c1">//求得时间差
+</span><span class="ln"> 7</span><span class="c1"></span><span class="n">sessions</span><span class="o">.</span><span class="n">mapPartitions</span><span class="o">(</span><span class="n">trips</span> <span class="k">=&gt;</span> <span class="o">{</span>
+<span class="ln"> 8</span>    <span class="n">trips</span><span class="o">.</span><span class="n">sliding</span><span class="o">(</span><span class="mi">2</span><span class="o">)</span><span class="c1">//长度为2的窗口，移动
+</span><span class="ln"> 9</span><span class="c1"></span>    	<span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">2</span><span class="o">)</span>
+<span class="ln">10</span>    	<span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="n">p</span> <span class="k">=&gt;</span> <span class="n">p</span><span class="o">)</span>
+<span class="ln">11</span><span class="o">})</span>
 </code></pre></div>
   </article>
 <aside class="sidebar">
