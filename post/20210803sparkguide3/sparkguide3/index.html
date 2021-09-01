@@ -124,7 +124,7 @@
 </svg></span>
     <span class="post_date">
       Aug 3, 2021</span>
-    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
+    <span class="post_time"> · 4 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
         </a><a href='https://Jerrysmd.github.io/tags/spark' title="spark" class="post_tag button button_translucent">spark
         </a>
     </span>
@@ -136,6 +136,7 @@
     <nav id="TableOfContents">
   <ul>
     <li><a href="#project">Project</a></li>
+    <li><a href="#sparkstreaming">SparkStreaming</a></li>
   </ul>
 </nav>
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
@@ -308,17 +309,28 @@
 <span class="ln">24</span><span class="n">taxiClean</span><span class="o">.</span><span class="n">groupBy</span><span class="o">(</span><span class="n">broughUDF</span><span class="o">(</span>&#39;dropOffX<span class="o">,</span>&#39;dropOff<span class="o">))</span>
 </code></pre></div><p><strong>会话统计</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="c1">//过滤没有经纬度的数据
-</span><span class="ln"> 2</span><span class="c1"></span><span class="n">taxiClean</span><span class="o">.</span><span class="n">where</span><span class="o">(</span><span class="s">&#34;dropOffX != 0 and dropOffY != 0 and pickUp...&#34;</span><span class="o">)</span>
+</span><span class="ln"> 2</span><span class="c1"></span><span class="k">val</span> <span class="n">sessions</span> <span class="k">=</span> <span class="n">taxiClean</span><span class="o">.</span><span class="n">where</span><span class="o">(</span><span class="s">&#34;dropOffX != 0 and dropOffY != 0 and pickUp...&#34;</span><span class="o">)</span>
 <span class="ln"> 3</span>	<span class="o">.</span><span class="n">repartition</span><span class="o">(</span>&#39;license<span class="o">)</span>
 <span class="ln"> 4</span>	<span class="o">.</span><span class="n">sortWithinPartitions</span><span class="o">(</span>&#39;license<span class="o">,</span> &#39;pickUpTime<span class="o">)</span>
 <span class="ln"> 5</span>
 <span class="ln"> 6</span><span class="c1">//求得时间差
-</span><span class="ln"> 7</span><span class="c1"></span><span class="n">sessions</span><span class="o">.</span><span class="n">mapPartitions</span><span class="o">(</span><span class="n">trips</span> <span class="k">=&gt;</span> <span class="o">{</span>
-<span class="ln"> 8</span>    <span class="n">trips</span><span class="o">.</span><span class="n">sliding</span><span class="o">(</span><span class="mi">2</span><span class="o">)</span><span class="c1">//长度为2的窗口，移动
-</span><span class="ln"> 9</span><span class="c1"></span>    	<span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">2</span><span class="o">)</span>
-<span class="ln">10</span>    	<span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="n">p</span> <span class="k">=&gt;</span> <span class="n">p</span><span class="o">)</span>
-<span class="ln">11</span><span class="o">})</span>
-</code></pre></div>
+</span><span class="ln"> 7</span><span class="c1"></span><span class="k">def</span> <span class="n">boroughDuration</span><span class="o">(</span><span class="n">t1</span><span class="k">:</span> <span class="kt">Trip</span><span class="o">,</span> <span class="n">t2</span><span class="k">:</span> <span class="kt">Trip</span><span class="o">)</span><span class="k">:</span> <span class="o">(</span><span class="kt">String</span><span class="o">,</span> <span class="kt">Long</span><span class="o">)</span> <span class="k">=</span> <span class="o">{</span>
+<span class="ln"> 8</span>    <span class="k">val</span> <span class="n">borough</span> <span class="k">=</span> <span class="n">boroughLookUp</span><span class="o">(</span><span class="n">t1</span><span class="o">.</span><span class="n">dropOffX</span><span class="o">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">dropOffY</span><span class="o">)</span>
+<span class="ln"> 9</span>    <span class="k">val</span> <span class="n">duration</span> <span class="k">=</span> <span class="o">(</span><span class="n">t2</span><span class="o">.</span><span class="n">pickUpTime</span> <span class="o">-</span> <span class="n">t1</span><span class="o">.</span><span class="n">dropOffTime</span><span class="o">)/</span><span class="mi">1000</span>
+<span class="ln">10</span>    <span class="o">(</span><span class="n">borough</span><span class="o">,</span> <span class="n">duration</span><span class="o">)</span>
+<span class="ln">11</span><span class="o">}</span>
+<span class="ln">12</span>
+<span class="ln">13</span><span class="k">val</span> <span class="n">boroughtDuration</span> <span class="k">=</span> <span class="n">sessions</span><span class="o">.</span><span class="n">mapPartitions</span><span class="o">(</span><span class="n">trips</span> <span class="k">=&gt;</span> <span class="o">{</span>
+<span class="ln">14</span>    <span class="n">trips</span><span class="o">.</span><span class="n">sliding</span><span class="o">(</span><span class="mi">2</span><span class="o">)</span><span class="c1">//长度为2的窗口，移动
+</span><span class="ln">15</span><span class="c1"></span>    	<span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">2</span><span class="o">)</span>
+<span class="ln">16</span>    	<span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="n">p</span> <span class="k">=&gt;</span> <span class="n">p</span><span class="o">.</span><span class="n">head</span><span class="o">.</span><span class="n">license</span> <span class="o">==</span> <span class="n">p</span><span class="o">.</span><span class="n">last</span><span class="o">.</span><span class="n">license</span><span class="o">)</span>
+<span class="ln">17</span>    <span class="n">viter</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">p</span> <span class="k">=&gt;</span> <span class="n">boroughDuration</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="n">head</span><span class="o">,</span> <span class="n">p</span><span class="o">.</span><span class="n">last</span><span class="o">))</span>
+<span class="ln">18</span><span class="o">}).</span><span class="n">toDF</span><span class="o">(</span><span class="s">&#34;borough&#34;</span><span class="o">,</span> <span class="s">&#34;seconds&#34;</span><span class="o">)</span>
+<span class="ln">19</span>
+<span class="ln">20</span><span class="n">boroughtDuration</span><span class="o">.</span><span class="n">where</span><span class="o">(</span><span class="s">&#34;seconds &gt; 0&#34;</span><span class="o">)</span>
+<span class="ln">21</span>	<span class="o">.</span><span class="n">groupBy</span><span class="o">(</span><span class="s">&#34;borough&#34;</span><span class="o">)</span>
+<span class="ln">22</span>	<span class="o">.</span><span class="n">agg</span><span class="o">(</span><span class="n">avg</span><span class="o">(</span>&#39;seconds<span class="o">),</span> <span class="n">stddev</span><span class="o">(</span>&#39;seconds<span class="o">))</span>
+</code></pre></div><h2 id="sparkstreaming">SparkStreaming</h2>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
