@@ -206,6 +206,9 @@
 &lt;span class=&#34;ln&#34;&gt;21&lt;/span&gt;	&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;groupBy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;borough&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;22&lt;/span&gt;	&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;agg&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;avg&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&amp;#39;seconds&lt;span class=&#34;o&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;stddev&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&amp;#39;seconds&lt;span class=&#34;o&#34;&gt;))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;sparkstreaming&#34;&gt;SparkStreaming&lt;/h2&gt;
+&lt;p&gt;批处理：HDFS&lt;/p&gt;
+&lt;p&gt;流处理：Kafka&lt;/p&gt;
+&lt;p&gt;混合处理：流式计算和批处理结合&lt;/p&gt;
         
       </description>
     </item>
