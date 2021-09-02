@@ -331,14 +331,24 @@
 <span class="ln">21</span>	<span class="o">.</span><span class="n">groupBy</span><span class="o">(</span><span class="s">&#34;borough&#34;</span><span class="o">)</span>
 <span class="ln">22</span>	<span class="o">.</span><span class="n">agg</span><span class="o">(</span><span class="n">avg</span><span class="o">(</span>&#39;seconds<span class="o">),</span> <span class="n">stddev</span><span class="o">(</span>&#39;seconds<span class="o">))</span>
 </code></pre></div><h2 id="sparkstreaming">SparkStreaming</h2>
+<p>处理架构</p>
+<blockquote>
 <p>批处理：HDFS</p>
 <p>流处理：Kafka</p>
 <p>混合处理：流式计算和批处理结合</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="n">o</span> <span class="nc">StreamingWordCount</span> <span class="o">{</span>
+</blockquote>
+<p>Netcat</p>
+<blockquote>
+<p>Netcat以在两台设备上面相互交互，即侦听模式/传输模式</p>
+<blockquote>
+<p>Telnet功能、获取banner信息、传输文本信息、传输文件/目录、加密传输文件，默认不加密、远程控制、加密所有流量、流媒体服务器、远程克隆硬盘</p>
+</blockquote>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">object</span> <span class="nc">StreamingWordCount</span> <span class="o">{</span>
 <span class="ln"> 2</span>    <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln"> 3</span>        <span class="k">val</span> <span class="n">sparkConf</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkConff</span><span class="o">().</span><span class="n">setAppName</span><span class="o">(</span><span class="s">&#34;stream word count&#34;</span><span class="o">).</span><span class="n">setMaster</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">)</span>
-<span class="ln"> 4</span>        <span class="k">val</span> <span class="n">ssc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">StreamingContext</span><span class="o">(</span><span class="n">sparkConf</span><span class="o">,</span> <span class="nc">Seconds</span><span class="o">(</span><span class="mi">1</span><span class="o">))</span>
-<span class="ln"> 5</span>        
+<span class="ln"> 4</span>        <span class="k">val</span> <span class="n">ssc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">StreamingContext</span><span class="o">(</span><span class="n">sparkConf</span><span class="o">,</span> <span class="nc">Seconds</span><span class="o">(</span><span class="mi">1</span><span class="o">))</span><span class="c1">//批次时间，每1秒收集一次数据
+</span><span class="ln"> 5</span><span class="c1"></span>        
 <span class="ln"> 6</span>        <span class="k">val</span> <span class="n">lines</span><span class="k">:</span> <span class="kt">ReceiverInputDStream</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="k">=</span> <span class="n">ssc</span><span class="o">.</span><span class="n">socketTextStream</span><span class="o">(</span>
 <span class="ln"> 7</span>           <span class="n">hostnmae</span> <span class="k">=</span> <span class="s">&#34;192.168.169.101&#34;</span><span class="o">,</span>
 <span class="ln"> 8</span>            <span class="n">port</span> <span class="k">=</span> <span class="mi">9999</span><span class="o">,</span>
