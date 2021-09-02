@@ -334,6 +334,19 @@
 <p>批处理：HDFS</p>
 <p>流处理：Kafka</p>
 <p>混合处理：流式计算和批处理结合</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">class</span> <span class="nc">StreamingWordCount</span> <span class="o">{</span>
+<span class="ln"> 2</span>    <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<span class="ln"> 3</span>        <span class="k">val</span> <span class="n">sparkConf</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkConff</span><span class="o">().</span><span class="n">setAppName</span><span class="o">(</span><span class="s">&#34;stream word count&#34;</span><span class="o">).</span><span class="n">setMaster</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">)</span>
+<span class="ln"> 4</span>        <span class="k">val</span> <span class="n">ssc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">StreamingContext</span><span class="o">(</span><span class="n">sparkConf</span><span class="o">,</span> <span class="nc">Seconds</span><span class="o">(</span><span class="mi">1</span><span class="o">))</span>
+<span class="ln"> 5</span>        
+<span class="ln"> 6</span>        <span class="k">val</span> <span class="n">lines</span><span class="k">:</span> <span class="kt">ReceiverInputDStream</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="k">=</span> <span class="n">ssc</span><span class="o">.</span><span class="n">socketTextStream</span><span class="o">(</span>
+<span class="ln"> 7</span>           <span class="n">hostnmae</span> <span class="k">=</span> <span class="s">&#34;192.168.169.101&#34;</span><span class="o">,</span>
+<span class="ln"> 8</span>            <span class="n">port</span> <span class="k">=</span> <span class="mi">9999</span><span class="o">,</span>
+<span class="ln"> 9</span>            
+<span class="ln">10</span>        <span class="o">)</span>
+<span class="ln">11</span>    <span class="o">}</span>
+<span class="ln">12</span><span class="o">}</span>
+</code></pre></div>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
