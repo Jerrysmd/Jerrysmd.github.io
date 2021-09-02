@@ -351,26 +351,27 @@
 </span><span class="ln"> 5</span><span class="c1"></span>        <span class="c1">//在创建Streaming Context的时候也要用到conf，说明Spark Streaming是基于Spark Core的
 </span><span class="ln"> 6</span><span class="c1"></span>        <span class="c1">//在执行master的时候，不能指定一个线程：因为在Streaming运行的时候，需要开一个新的线程去一直监听数据的获取
 </span><span class="ln"> 7</span><span class="c1"></span>        <span class="c1">//socketTextStream方法会创建一个DStream，监听Socket输入，当做文本处理
-</span><span class="ln"> 8</span><span class="c1"></span>        <span class="k">val</span> <span class="n">lines</span><span class="k">:</span> <span class="kt">ReceiverInputDStream</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="k">=</span> <span class="n">ssc</span><span class="o">.</span><span class="n">socketTextStream</span><span class="o">(</span>
-<span class="ln"> 9</span>           <span class="n">hostnmae</span> <span class="k">=</span> <span class="s">&#34;192.168.169.101&#34;</span><span class="o">,</span>
-<span class="ln">10</span>            <span class="n">port</span> <span class="k">=</span> <span class="mi">9999</span><span class="o">,</span>
-<span class="ln">11</span>            <span class="n">storageLevel</span> <span class="k">=</span> <span class="nc">StoreageLevel</span><span class="o">.</span><span class="nc">MEMORY_AND_DISK_SER</span>
-<span class="ln">12</span>        <span class="o">)</span>
-<span class="ln">13</span>        
-<span class="ln">14</span>        <span class="c1">//2数据处理
-</span><span class="ln">15</span><span class="c1"></span>        <span class="c1">//	1拆分单词
-</span><span class="ln">16</span><span class="c1"></span>        <span class="k">val</span> <span class="n">words</span> <span class="k">=</span> <span class="n">lines</span><span class="o">.</span><span class="n">flatMap</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
-<span class="ln">17</span>        <span class="c1">//	2转换单词
-</span><span class="ln">18</span><span class="c1"></span>        <span class="k">val</span> <span class="n">tuples</span> <span class="k">=</span> <span class="n">words</span><span class="o">.</span><span class="n">map</span><span class="o">((</span><span class="k">_</span><span class="o">,</span> <span class="mi">1</span><span class="o">))</span>
-<span class="ln">19</span>        <span class="c1">//	3词频reduce
-</span><span class="ln">20</span><span class="c1"></span>        <span class="k">val</span> <span class="n">counts</span> <span class="k">=</span> <span class="n">tuples</span><span class="o">.</span><span class="n">reduceByKey</span><span class="o">(</span><span class="k">_</span> <span class="o">+</span> <span class="k">_</span><span class="o">)</span>
-<span class="ln">21</span>        
-<span class="ln">22</span>        <span class="n">ssc</span><span class="o">.</span><span class="n">start</span><span class="o">()</span>
-<span class="ln">23</span>        
-<span class="ln">24</span>        <span class="c1">// main方法执行完毕后整个程序就会退出，所以需要阻塞主线程
-</span><span class="ln">25</span><span class="c1"></span>        <span class="n">ssc</span><span class="o">.</span><span class="n">awaitTermination</span><span class="o">()</span>
-<span class="ln">26</span>    <span class="o">}</span>
-<span class="ln">27</span><span class="o">}</span>
+</span><span class="ln"> 8</span><span class="c1"></span>        <span class="c1">//DStream可以理解是一个流式的RDD
+</span><span class="ln"> 9</span><span class="c1"></span>        <span class="k">val</span> <span class="n">lines</span><span class="k">:</span> <span class="kt">ReceiverInputDStream</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="k">=</span> <span class="n">ssc</span><span class="o">.</span><span class="n">socketTextStream</span><span class="o">(</span>
+<span class="ln">10</span>           <span class="n">hostnmae</span> <span class="k">=</span> <span class="s">&#34;192.168.169.101&#34;</span><span class="o">,</span>
+<span class="ln">11</span>            <span class="n">port</span> <span class="k">=</span> <span class="mi">9999</span><span class="o">,</span>
+<span class="ln">12</span>            <span class="n">storageLevel</span> <span class="k">=</span> <span class="nc">StoreageLevel</span><span class="o">.</span><span class="nc">MEMORY_AND_DISK_SER</span>
+<span class="ln">13</span>        <span class="o">)</span>
+<span class="ln">14</span>        
+<span class="ln">15</span>        <span class="c1">//2数据处理
+</span><span class="ln">16</span><span class="c1"></span>        <span class="c1">//	1拆分单词
+</span><span class="ln">17</span><span class="c1"></span>        <span class="k">val</span> <span class="n">words</span> <span class="k">=</span> <span class="n">lines</span><span class="o">.</span><span class="n">flatMap</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
+<span class="ln">18</span>        <span class="c1">//	2转换单词
+</span><span class="ln">19</span><span class="c1"></span>        <span class="k">val</span> <span class="n">tuples</span> <span class="k">=</span> <span class="n">words</span><span class="o">.</span><span class="n">map</span><span class="o">((</span><span class="k">_</span><span class="o">,</span> <span class="mi">1</span><span class="o">))</span>
+<span class="ln">20</span>        <span class="c1">//	3词频reduce
+</span><span class="ln">21</span><span class="c1"></span>        <span class="k">val</span> <span class="n">counts</span> <span class="k">=</span> <span class="n">tuples</span><span class="o">.</span><span class="n">reduceByKey</span><span class="o">(</span><span class="k">_</span> <span class="o">+</span> <span class="k">_</span><span class="o">)</span>
+<span class="ln">22</span>        
+<span class="ln">23</span>        <span class="n">ssc</span><span class="o">.</span><span class="n">start</span><span class="o">()</span>
+<span class="ln">24</span>        
+<span class="ln">25</span>        <span class="c1">// main方法执行完毕后整个程序就会退出，所以需要阻塞主线程
+</span><span class="ln">26</span><span class="c1"></span>        <span class="n">ssc</span><span class="o">.</span><span class="n">awaitTermination</span><span class="o">()</span>
+<span class="ln">27</span>    <span class="o">}</span>
+<span class="ln">28</span><span class="o">}</span>
 </code></pre></div>
   </article>
 <aside class="sidebar">
