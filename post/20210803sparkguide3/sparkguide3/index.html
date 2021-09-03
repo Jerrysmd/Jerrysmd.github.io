@@ -137,6 +137,7 @@
   <ul>
     <li><a href="#project">Project</a></li>
     <li><a href="#sparkstreaming">SparkStreaming</a></li>
+    <li><a href="#structuredstreaming">StructuredStreaming</a></li>
   </ul>
 </nav>
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
@@ -390,8 +391,16 @@
 <p>冷备</p>
 <ul>
 <li>WAL 预写日志</li>
+<li>当数据出错时，根据Redo log去重新处理数据</li>
+</ul>
+<p>重放</p>
+<ul>
+<li>有一些上游的外部系统是支持重放的，如 Kafka</li>
+<li>Kafka 可以根据Offset来获取数据</li>
+<li>出错时，只需通过Kafka再次读取即可</li>
 </ul>
 </blockquote>
+<h2 id="structuredstreaming">StructuredStreaming</h2>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">

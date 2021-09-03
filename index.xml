@@ -265,8 +265,16 @@
 &lt;p&gt;冷备&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;WAL 预写日志&lt;/li&gt;
+&lt;li&gt;当数据出错时，根据Redo log去重新处理数据&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;重放&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;有一些上游的外部系统是支持重放的，如 Kafka&lt;/li&gt;
+&lt;li&gt;Kafka 可以根据Offset来获取数据&lt;/li&gt;
+&lt;li&gt;出错时，只需通过Kafka再次读取即可&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
+&lt;h2 id=&#34;structuredstreaming&#34;&gt;StructuredStreaming&lt;/h2&gt;
         
       </description>
     </item>
