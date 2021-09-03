@@ -206,6 +206,12 @@
 &lt;span class=&#34;ln&#34;&gt;21&lt;/span&gt;	&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;groupBy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;borough&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;22&lt;/span&gt;	&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;agg&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;avg&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&amp;#39;seconds&lt;span class=&#34;o&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;stddev&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&amp;#39;seconds&lt;span class=&#34;o&#34;&gt;))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;sparkstreaming&#34;&gt;SparkStreaming&lt;/h2&gt;
+&lt;p&gt;Spark Streaming 的特点&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;处理架构&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;批处理：HDFS&lt;/p&gt;
@@ -216,7 +222,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;Netcat以在两台设备上面相互交互，即侦听模式/传输模式&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Telnet功能、获取banner信息、传输文本信息、传输文件/目录、加密传输文件，默认不加密、远程控制、加密所有流量、流媒体服务器、远程克隆硬盘&lt;/p&gt;
+&lt;p&gt;功能：Telnet功能、获取banner信息、传输文本信息、传输文件/目录、加密传输文件，默认不加密、远程控制、加密所有流量、流媒体服务器、远程克隆硬盘&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-scala&#34; data-lang=&#34;scala&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;object&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;StreamingWordCount&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
