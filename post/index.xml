@@ -209,7 +209,7 @@
 &lt;p&gt;Spark Streaming 的特点&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;/li&gt;
+&lt;li&gt;Spark Streaming 并不是实时流，而是按时间切分小批量，一个一个的小批处理&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;处理架构&lt;/p&gt;
