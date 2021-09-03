@@ -210,6 +210,7 @@
 &lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;Spark Streaming 并不是实时流，而是按时间切分小批量，一个一个的小批处理&lt;/li&gt;
+&lt;li&gt;Spark Streaming 对数据是按照时间切分为一个又一个的RDD，然后针对RDD进行&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;处理架构&lt;/p&gt;
