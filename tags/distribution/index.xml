@@ -252,10 +252,21 @@
 &lt;span class=&#34;ln&#34;&gt;24&lt;/span&gt;        
 &lt;span class=&#34;ln&#34;&gt;25&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// main方法执行完毕后整个程序就会退出，所以需要阻塞主线程
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;26&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;ssc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;awaitTermination&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt;27&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt;28&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt;29&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&#34;ln&#34;&gt;27&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;28&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;容错&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;热备&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;当Receiver获取数据，交给BlockManager存储&lt;/li&gt;
+&lt;li&gt;如果设置了StorageLevel.MEMORY_AND_DISK_SER，则意味着BlockManager 不仅会在本机存储，也会发往其它的主机存储，本质就是冗余备份&lt;/li&gt;
+&lt;li&gt;如果某一个计算失败了，通过冗余的备份，再次进行计算即可&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;冷备&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;WAL 预写日志&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
         
       </description>
     </item>

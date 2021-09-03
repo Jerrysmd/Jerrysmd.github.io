@@ -377,10 +377,21 @@
 <span class="ln">24</span>        
 <span class="ln">25</span>        <span class="c1">// main方法执行完毕后整个程序就会退出，所以需要阻塞主线程
 </span><span class="ln">26</span><span class="c1"></span>        <span class="n">ssc</span><span class="o">.</span><span class="n">awaitTermination</span><span class="o">()</span>
-<span class="ln">27</span>
-<span class="ln">28</span>    <span class="o">}</span>
-<span class="ln">29</span><span class="o">}</span>
-</code></pre></div>
+<span class="ln">27</span>    <span class="o">}</span>
+<span class="ln">28</span><span class="o">}</span>
+</code></pre></div><p><strong>容错</strong></p>
+<blockquote>
+<p>热备</p>
+<ul>
+<li>当Receiver获取数据，交给BlockManager存储</li>
+<li>如果设置了StorageLevel.MEMORY_AND_DISK_SER，则意味着BlockManager 不仅会在本机存储，也会发往其它的主机存储，本质就是冗余备份</li>
+<li>如果某一个计算失败了，通过冗余的备份，再次进行计算即可</li>
+</ul>
+<p>冷备</p>
+<ul>
+<li>WAL 预写日志</li>
+</ul>
+</blockquote>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
