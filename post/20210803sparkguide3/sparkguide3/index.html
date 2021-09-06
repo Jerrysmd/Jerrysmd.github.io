@@ -434,6 +434,19 @@
 <li>Shuffle过程</li>
 <li>Spark Streaming 的 Receiver：kafka传入的数据是序列化的数据</li>
 </ul>
+<p><strong>RDD的序列化</strong></p>
+<p>Kryo是Spark引入的一个外部的序列化工具，可以增快RDD的运行速度</p>
+<p>因为Kryo序列化后的对象更小，序列化和反序列化速度非常快</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">conf</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkConf</span><span class="o">()</span>
+<span class="ln">2</span>	<span class="o">.</span><span class="n">setMaster</span><span class="o">(</span><span class="s">&#34;local[2]&#34;</span><span class="o">)</span>
+<span class="ln">3</span>	<span class="o">.</span><span class="n">setAppName</span><span class="o">(</span><span class="s">&#34;KyroTest&#34;</span><span class="o">)</span>
+<span class="ln">4</span>
+<span class="ln">5</span><span class="n">conf</span><span class="o">.</span><span class="n">set</span><span class="o">(</span><span class="s">&#34;spark.serializer&#34;</span><span class="o">,</span> <span class="s">&#34;org.apache.spark.serializer.KryoSerializer&#34;</span><span class="o">)</span>
+<span class="ln">6</span><span class="n">conf</span><span class="o">.</span><span class="n">registerKryoClasses</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">classOf</span><span class="o">[</span><span class="kt">Person</span><span class="o">]))</span>
+<span class="ln">7</span>
+<span class="ln">8</span><span class="k">val</span> <span class="n">sc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkContext</span><span class="o">(</span><span class="n">conf</span><span class="o">)</span>
+<span class="ln">9</span><span class="n">rdd</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">arr</span> <span class="k">=&gt;</span> <span class="nc">Person</span><span class="o">(</span><span class="n">arr</span><span class="o">(</span><span class="mi">0</span><span class="o">),</span> <span class="n">arr</span><span class="o">(</span><span class="mi">1</span><span class="o">),))</span>
+</code></pre></div>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
