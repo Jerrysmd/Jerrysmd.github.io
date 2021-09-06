@@ -17,7 +17,7 @@
           &lt;p&gt;Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.&lt;/p&gt;
 &lt;h2 id=&#34;project&#34;&gt;Project&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;业务场景&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;统计出租车利用率，也就是有乘客乘坐的时间和无乘客空跑的时间比例。&lt;/p&gt;
+&lt;p&gt;统计出租车利用率(有乘客乘坐的时间和无乘客空跑的时间比例)&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;技术要点&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;数据清洗&lt;/li&gt;
@@ -275,6 +275,18 @@
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;structuredstreaming&#34;&gt;StructuredStreaming&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;编程模型演进&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;RDD：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;针对自定义的数据对象进行处理，可以处理任意类型的对象，比较符合面向对象&lt;/li&gt;
+&lt;li&gt;RDD无法感知数据的结构，无法针对数据结构进行编程&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;DataFrame：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;保留元信息，针对数据结构进行处理，例如根据某一列进行排序或者分组&lt;/li&gt;
+&lt;li&gt;DF在执行的时候会经过catalyst进行优化，并且序列化更加高效，性能会更好&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
         
       </description>
     </item>

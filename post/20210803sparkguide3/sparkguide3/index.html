@@ -143,7 +143,7 @@
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
 <h2 id="project">Project</h2>
 <p><strong>业务场景</strong></p>
-<p>统计出租车利用率，也就是有乘客乘坐的时间和无乘客空跑的时间比例。</p>
+<p>统计出租车利用率(有乘客乘坐的时间和无乘客空跑的时间比例)</p>
 <p><strong>技术要点</strong></p>
 <ol>
 <li>数据清洗</li>
@@ -401,6 +401,18 @@
 </ul>
 </blockquote>
 <h2 id="structuredstreaming">StructuredStreaming</h2>
+<p><strong>编程模型演进</strong></p>
+<p>RDD：</p>
+<ul>
+<li>针对自定义的数据对象进行处理，可以处理任意类型的对象，比较符合面向对象</li>
+<li>RDD无法感知数据的结构，无法针对数据结构进行编程</li>
+</ul>
+<p>DataFrame：</p>
+<ul>
+<li>保留元信息，针对数据结构进行处理，例如根据某一列进行排序或者分组</li>
+<li>DF在执行的时候会经过catalyst进行优化，并且序列化更加高效，性能会更好</li>
+<li></li>
+</ul>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
