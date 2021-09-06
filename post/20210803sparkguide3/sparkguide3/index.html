@@ -124,7 +124,7 @@
 </svg></span>
     <span class="post_date">
       Aug 3, 2021</span>
-    <span class="post_time"> · 4 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
+    <span class="post_time"> · 5 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
         </a><a href='https://Jerrysmd.github.io/tags/spark' title="spark" class="post_tag button button_translucent">spark
         </a>
     </span>
@@ -456,6 +456,17 @@
 <ul>
 <li>对流式数据进行累加词频统计</li>
 </ul>
+<p>整体结构</p>
+<ol>
+<li>Socket Server 发送数据， Structured Streaming 程序接受数据</li>
+<li>Socket Server 使用 Netcat nc 来实现</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">source</span><span class="k">:</span> <span class="kt">spark.readStream</span>
+<span class="ln">2</span>	<span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="s">&#34;socket&#34;</span><span class="o">)</span>
+<span class="ln">3</span>	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;host&#34;</span><span class="o">,</span> <span class="s">&#34;192.168.168.101&#34;</span><span class="o">)</span>
+<span class="ln">4</span>	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;port&#34;</span><span class="o">,</span> <span class="mi">9999</span><span class="o">)</span>
+<span class="ln">5</span>	<span class="o">.</span><span class="n">load</span><span class="o">()</span>
+</code></pre></div>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
