@@ -136,8 +136,8 @@
     <nav id="TableOfContents">
   <ul>
     <li><a href="#project">Project</a></li>
-    <li><a href="#sparkstreaming">SparkStreaming</a></li>
-    <li><a href="#structuredstreaming">StructuredStreaming</a></li>
+    <li><a href="#spark-streaming">Spark Streaming</a></li>
+    <li><a href="#structured-streaming">Structured Streaming</a></li>
   </ul>
 </nav>
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
@@ -331,7 +331,7 @@
 <span class="ln">20</span><span class="n">boroughtDuration</span><span class="o">.</span><span class="n">where</span><span class="o">(</span><span class="s">&#34;seconds &gt; 0&#34;</span><span class="o">)</span>
 <span class="ln">21</span>	<span class="o">.</span><span class="n">groupBy</span><span class="o">(</span><span class="s">&#34;borough&#34;</span><span class="o">)</span>
 <span class="ln">22</span>	<span class="o">.</span><span class="n">agg</span><span class="o">(</span><span class="n">avg</span><span class="o">(</span>&#39;seconds<span class="o">),</span> <span class="n">stddev</span><span class="o">(</span>&#39;seconds<span class="o">))</span>
-</code></pre></div><h2 id="sparkstreaming">SparkStreaming</h2>
+</code></pre></div><h2 id="spark-streaming">Spark Streaming</h2>
 <p>Spark Streaming 的特点</p>
 <blockquote>
 <ul>
@@ -400,7 +400,7 @@
 <li>出错时，只需通过Kafka再次读取即可</li>
 </ul>
 </blockquote>
-<h2 id="structuredstreaming">StructuredStreaming</h2>
+<h2 id="structured-streaming">Structured Streaming</h2>
 <p><strong>编程模型演进</strong></p>
 <p>RDD：</p>
 <ul>
@@ -445,8 +445,12 @@
 <span class="ln">6</span><span class="n">conf</span><span class="o">.</span><span class="n">registerKryoClasses</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">classOf</span><span class="o">[</span><span class="kt">Person</span><span class="o">]))</span>
 <span class="ln">7</span>
 <span class="ln">8</span><span class="k">val</span> <span class="n">sc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkContext</span><span class="o">(</span><span class="n">conf</span><span class="o">)</span>
-<span class="ln">9</span><span class="n">rdd</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">arr</span> <span class="k">=&gt;</span> <span class="nc">Person</span><span class="o">(</span><span class="n">arr</span><span class="o">(</span><span class="mi">0</span><span class="o">),</span> <span class="n">arr</span><span class="o">(</span><span class="mi">1</span><span class="o">),))</span>
-</code></pre></div>
+<span class="ln">9</span><span class="n">rdd</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">arr</span> <span class="k">=&gt;</span> <span class="nc">Person</span><span class="o">(</span><span class="n">arr</span><span class="o">(</span><span class="mi">0</span><span class="o">),</span> <span class="n">arr</span><span class="o">(</span><span class="mi">1</span><span class="o">),</span> <span class="n">arr</span><span class="o">(</span><span class="mi">2</span><span class="o">)))</span>
+</code></pre></div><p><strong>StructuredStreaming区别</strong></p>
+<ol>
+<li>StructuredStreaming相比于SparkStreaming的进步类似于RDD到Dataset的进步</li>
+<li>StructuredStreaming支持连续流模型，类似于Flink那样的实时流</li>
+</ol>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
