@@ -325,6 +325,11 @@
 &lt;li&gt;StructuredStreaming相比于SparkStreaming的进步类似于RDD到Dataset的进步&lt;/li&gt;
 &lt;li&gt;StructuredStreaming支持连续流模型，类似于Flink那样的实时流&lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;StructuredStreaming Project&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;需求&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;对流式数据进行累加词频统计&lt;/li&gt;
+&lt;/ul&gt;
         
       </description>
     </item>
