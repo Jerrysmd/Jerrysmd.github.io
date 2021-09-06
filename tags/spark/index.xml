@@ -294,6 +294,20 @@
 &lt;li&gt;DS结合了RDD和DF的特点，可以处理结构化数据，也可以处理非结构化数据&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;序列化&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;将对象的内容变成二进制或存入文件中保存&lt;/p&gt;
+&lt;p&gt;数据场景：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;持久化对象数据&lt;/li&gt;
+&lt;li&gt;网络中不能传输Java对象，只能将其序列化后传输二进制数据&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;序列化应用场景&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Task分发：Master的driver往Worker的Executor任务分发&lt;/li&gt;
+&lt;li&gt;RDD缓存：序列化后分布式存储&lt;/li&gt;
+&lt;li&gt;广播变量：序列化后分布式存储&lt;/li&gt;
+&lt;li&gt;Shuffle过程&lt;/li&gt;
+&lt;li&gt;Spark Streaming 的 Receiver：kafka传入的数据是序列化的数据&lt;/li&gt;
+&lt;/ul&gt;
         
       </description>
     </item>
