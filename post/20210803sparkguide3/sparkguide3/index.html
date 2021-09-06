@@ -405,14 +405,21 @@
 <p>RDD：</p>
 <ul>
 <li>针对自定义的数据对象进行处理，可以处理任意类型的对象，比较符合面向对象</li>
+<li>RDD处理数据速较慢</li>
 <li>RDD无法感知数据的结构，无法针对数据结构进行编程</li>
 </ul>
 <p>DataFrame：</p>
 <ul>
 <li>保留元信息，针对数据结构进行处理，例如根据某一列进行排序或者分组</li>
 <li>DF在执行的时候会经过catalyst进行优化，并且序列化更加高效，性能会更好</li>
-<li></li>
+<li>DF无法处理非结构化数据，因为DF内部使用Row对象保存数据</li>
+<li>DF的读写框架更加强大，支持多种数据源</li>
 </ul>
+<p>DataSet：</p>
+<ul>
+<li>DS结合了RDD和DF的特点，可以处理结构化数据，也可以处理非结构化数据</li>
+</ul>
+<p><strong>序列化</strong></p>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
