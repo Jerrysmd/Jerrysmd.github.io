@@ -390,6 +390,13 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Project&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;Python程序生成数据到HDFS&lt;/li&gt;
+&lt;li&gt;Structured Streaming 从HDFS中获取数据&lt;/li&gt;
+&lt;li&gt;Structured Streaming 处理数据&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
         
       </description>
     </item>
