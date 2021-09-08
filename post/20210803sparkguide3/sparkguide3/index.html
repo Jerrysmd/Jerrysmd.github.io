@@ -500,10 +500,23 @@
 <li>
 <p>Sqoop</p>
 <blockquote>
-<p>MySQL -&gt; Sqoop -&gt; HDFS[增量]</p>
+<p>MySQL -&gt; Sqoop -&gt; HDFS[增量数据1，增量数据2，... ] -&gt; Structured Streaming -&gt; Hbase</p>
 </blockquote>
 </li>
+<li>
+<p>Ngix</p>
+<blockquote>
+<p>Ngix[log1, log2，... ] -&gt; Flume -&gt; HDFS[增量数据1，增量数据2，... ] -&gt; Structured Streaming -&gt; Hbase</p>
+</blockquote>
+</li>
+<li>
+<p>特点</p>
+<ul>
+<li>会产生大量小文件在HDFS上</li>
 </ul>
+</li>
+</ul>
+<p><strong>Project</strong></p>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">

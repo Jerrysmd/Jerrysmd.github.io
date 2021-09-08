@@ -373,10 +373,23 @@
 &lt;li&gt;
 &lt;p&gt;Sqoop&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;MySQL -&amp;gt; Sqoop -&amp;gt; HDFS[增量]&lt;/p&gt;
+&lt;p&gt;MySQL -&amp;gt; Sqoop -&amp;gt; HDFS[增量数据1，增量数据2，... ] -&amp;gt; Structured Streaming -&amp;gt; Hbase&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ngix&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Ngix[log1, log2，... ] -&amp;gt; Flume -&amp;gt; HDFS[增量数据1，增量数据2，... ] -&amp;gt; Structured Streaming -&amp;gt; Hbase&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;特点&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;会产生大量小文件在HDFS上&lt;/li&gt;
 &lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Project&lt;/strong&gt;&lt;/p&gt;
         
       </description>
     </item>
