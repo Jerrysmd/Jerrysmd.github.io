@@ -547,25 +547,30 @@
 </code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="c1">//Structured Streaming 从HDFS中获取数据
 </span><span class="ln"> 2</span><span class="c1"></span><span class="k">object</span> <span class="nc">HDFSSource</span><span class="o">{</span>
 <span class="ln"> 3</span>    <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln"> 4</span>        <span class="c1">//1.创建SparkSession
-</span><span class="ln"> 5</span><span class="c1"></span>        <span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="nc">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">()</span>
-<span class="ln"> 6</span>        	<span class="o">.</span><span class="n">appName</span><span class="o">(</span><span class="s">&#34;hdfs_souce&#34;</span><span class="o">)</span>
-<span class="ln"> 7</span>        	<span class="o">.</span><span class="n">master</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">)</span>
-<span class="ln"> 8</span>        	<span class="o">.</span><span class="n">getOrCreate</span><span class="o">()</span>
-<span class="ln"> 9</span>        <span class="c1">//2.数据读取
-</span><span class="ln">10</span><span class="c1"></span>        <span class="k">val</span> <span class="n">schema</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">StructType</span><span class="o">()</span>
-<span class="ln">11</span>        	<span class="o">.</span><span class="n">add</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">,</span> <span class="s">&#34;string&#34;</span><span class="o">)</span>
-<span class="ln">12</span>        	<span class="o">.</span><span class="n">add</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">,</span> <span class="s">&#34;integer&#34;</span><span class="o">)</span>
-<span class="ln">13</span>        
-<span class="ln">14</span>        <span class="k">val</span> <span class="n">souce</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">readStream</span>
-<span class="ln">15</span>        	<span class="o">.</span><span class="n">scheme</span><span class="o">(</span><span class="n">schema</span><span class="o">)</span>
-<span class="ln">16</span>        	<span class="o">.</span><span class="n">json</span><span class="o">(</span><span class="s">&#34;hdfs://node01:8020/dataset/dataset&#34;</span><span class="o">)</span>
-<span class="ln">17</span>        
-<span class="ln">18</span>        <span class="c1">//3.输出结果
-</span><span class="ln">19</span><span class="c1"></span>        <span class="n">source</span><span class="o">.</span><span class="n">writeStream</span>
-<span class="ln">20</span>        	<span class="o">.</span><span class="n">outputMode</span><span class="o">(</span><span class="nc">OutputMode</span><span class="o">.</span><span class="n">A</span><span class="o">)</span>
-<span class="ln">21</span>    <span class="o">}</span>
-<span class="ln">22</span><span class="o">}</span>
+<span class="ln"> 4</span>        <span class="nc">System</span><span class="o">.</span><span class="n">setProperty</span><span class="o">(</span><span class="s">&#34;hadoop.home.dir&#34;</span><span class="o">,</span> <span class="s">&#34;C:\\winutil&#34;</span><span class="o">)</span>
+<span class="ln"> 5</span>        
+<span class="ln"> 6</span>        <span class="c1">//1.创建SparkSession
+</span><span class="ln"> 7</span><span class="c1"></span>        <span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="nc">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">()</span>
+<span class="ln"> 8</span>        	<span class="o">.</span><span class="n">appName</span><span class="o">(</span><span class="s">&#34;hdfs_souce&#34;</span><span class="o">)</span>
+<span class="ln"> 9</span>        	<span class="o">.</span><span class="n">master</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">)</span>
+<span class="ln">10</span>        	<span class="o">.</span><span class="n">getOrCreate</span><span class="o">()</span>
+<span class="ln">11</span>        <span class="c1">//2.数据读取
+</span><span class="ln">12</span><span class="c1"></span>        <span class="k">val</span> <span class="n">schema</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">StructType</span><span class="o">()</span>
+<span class="ln">13</span>        	<span class="o">.</span><span class="n">add</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">,</span> <span class="s">&#34;string&#34;</span><span class="o">)</span>
+<span class="ln">14</span>        	<span class="o">.</span><span class="n">add</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">,</span> <span class="s">&#34;integer&#34;</span><span class="o">)</span>
+<span class="ln">15</span>        
+<span class="ln">16</span>        <span class="k">val</span> <span class="n">souce</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">readStream</span>
+<span class="ln">17</span>        	<span class="o">.</span><span class="n">scheme</span><span class="o">(</span><span class="n">schema</span><span class="o">)</span>
+<span class="ln">18</span>        	<span class="o">.</span><span class="n">json</span><span class="o">(</span><span class="s">&#34;hdfs://node01:8020/dataset/dataset&#34;</span><span class="o">)</span>
+<span class="ln">19</span>        
+<span class="ln">20</span>        <span class="c1">//3.输出结果
+</span><span class="ln">21</span><span class="c1"></span>        <span class="n">source</span><span class="o">.</span><span class="n">writeStream</span>
+<span class="ln">22</span>        	<span class="o">.</span><span class="n">outputMode</span><span class="o">(</span><span class="nc">OutputMode</span><span class="o">.</span><span class="nc">Append</span><span class="o">())</span>
+<span class="ln">23</span>        	<span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="s">&#34;console&#34;</span><span class="o">)</span>
+<span class="ln">24</span>        	<span class="o">.</span><span class="n">start</span><span class="o">()</span>
+<span class="ln">25</span>        	<span class="o">.</span><span class="n">awaitTermination</span><span class="o">()</span>
+<span class="ln">26</span>    <span class="o">}</span>
+<span class="ln">27</span><span class="o">}</span>
 </code></pre></div>
   </article>
 <aside class="sidebar">
