@@ -444,7 +444,10 @@
 &lt;span class=&#34;ln&#34;&gt;25&lt;/span&gt;        	&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;awaitTermination&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;26&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;27&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;structured-streaming-kafka&#34;&gt;Structured Streaming Kafka&lt;/h2&gt;
+&lt;p&gt;Kafka是一个 Pub/Sub 系统&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
         
       </description>
     </item>
