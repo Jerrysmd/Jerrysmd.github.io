@@ -447,7 +447,15 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;structured-streaming-kafka&#34;&gt;Structured Streaming Kafka&lt;/h2&gt;
 &lt;p&gt;Kafka是一个 Pub/Sub 系统&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Publisher / Subscriber 发布订阅系统&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;发布者 --&amp;gt;  kafka  --&amp;gt;  订阅者
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;发布订阅系统可以有多个Publisher对应一个Subscriber，例如多个系统都会产生日志，一个日志处理器可以简单的获取所有系统产生的日志&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;test
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
         
       </description>
     </item>
