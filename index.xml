@@ -448,6 +448,13 @@
 &lt;p&gt;Kafka是一个 Pub/Sub 系统&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;graph LR;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;    A--&amp;gt; B &amp;amp; C &amp;amp; D;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;    B--&amp;gt; A &amp;amp; E;
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;    C--&amp;gt; A &amp;amp; E;
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;    D--&amp;gt; A &amp;amp; E;
+&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;    E--&amp;gt; B &amp;amp; C &amp;amp; D;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         
       </description>
     </item>
