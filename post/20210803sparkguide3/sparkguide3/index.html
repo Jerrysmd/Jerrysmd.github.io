@@ -578,11 +578,13 @@
 <ul>
 <li>Publisher / Subscriber 发布订阅系统</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>发布者 --&gt;  kafka  --&gt;  订阅者
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>发布者  --&gt;  kafka  --&gt;  订阅者
 </code></pre></div><ul>
 <li>发布订阅系统可以有多个Publisher对应一个Subscriber，例如多个系统都会产生日志，一个日志处理器可以简单的获取所有系统产生的日志</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>test
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>用户系统  --&gt;
+<span class="ln">2</span>订单系统  --&gt;  kafka  --&gt;  日志处理器
+<span class="ln">3</span>内容系统  --&gt;
 </code></pre></div></blockquote>
   </article>
 <aside class="sidebar">
