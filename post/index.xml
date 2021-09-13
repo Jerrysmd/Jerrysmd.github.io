@@ -458,7 +458,25 @@
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;订单系统  --&amp;gt;  kafka  --&amp;gt;  日志处理器
 &lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;内容系统  --&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;发布订阅系统也可以一个Publisher对应多个Subscriber， 这样就类似于广播了，例如通过这样的方式可以非常轻易的将一个订单的请求&lt;/li&gt;
+&lt;li&gt;发布订阅系统也可以一个Publisher对应多个Subscriber， 这样就类似于广播了，例如通过这样的方式可以非常轻易的将一个订单的请求分发给所有感兴趣的系统，减少耦合性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;                      --&amp;gt;  日志处理器
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt; 用户系统  --&amp;gt;  kafka  --&amp;gt;  日志处理器
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;                      --&amp;gt;  日志处理器
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;大数据系统中，消息系统往往可以作为整个数据平台的入口，左边对接业务系统各个模块，右边对接数据系统各个计算工具&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;  业务系统                     数据系统
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt; [用户系统]  --&amp;gt;         --&amp;gt;  [HDFS]
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt; [订单系统]  --&amp;gt;  kafka  --&amp;gt;  [Structured Streaming]
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt; [服务系统]  --&amp;gt;         --&amp;gt;  [MapReduce]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;Kafka 的特点&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Kafka 非常重要的应用场景就是对接业务系统和数据系统，作为一个数据管道，其需要流通的数据量惊人，所以 Kafka 一定有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;高吞吐量&lt;/li&gt;
+&lt;li&gt;高可靠性&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
         

@@ -586,7 +586,25 @@
 <span class="ln">2</span>订单系统  --&gt;  kafka  --&gt;  日志处理器
 <span class="ln">3</span>内容系统  --&gt;
 </code></pre></div><ul>
-<li>发布订阅系统也可以一个Publisher对应多个Subscriber， 这样就类似于广播了，例如通过这样的方式可以非常轻易的将一个订单的请求</li>
+<li>发布订阅系统也可以一个Publisher对应多个Subscriber， 这样就类似于广播了，例如通过这样的方式可以非常轻易的将一个订单的请求分发给所有感兴趣的系统，减少耦合性</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>                      --&gt;  日志处理器
+<span class="ln">2</span> 用户系统  --&gt;  kafka  --&gt;  日志处理器
+<span class="ln">3</span>                      --&gt;  日志处理器
+</code></pre></div><ul>
+<li>大数据系统中，消息系统往往可以作为整个数据平台的入口，左边对接业务系统各个模块，右边对接数据系统各个计算工具</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>  业务系统                     数据系统
+<span class="ln">2</span> [用户系统]  --&gt;         --&gt;  [HDFS]
+<span class="ln">3</span> [订单系统]  --&gt;  kafka  --&gt;  [Structured Streaming]
+<span class="ln">4</span> [服务系统]  --&gt;         --&gt;  [MapReduce]
+</code></pre></div></blockquote>
+<p>Kafka 的特点</p>
+<blockquote>
+<p>Kafka 非常重要的应用场景就是对接业务系统和数据系统，作为一个数据管道，其需要流通的数据量惊人，所以 Kafka 一定有：</p>
+<ul>
+<li>高吞吐量</li>
+<li>高可靠性</li>
 </ul>
 </blockquote>
   </article>
