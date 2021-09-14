@@ -523,6 +523,23 @@
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;PROJECT&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;需求&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;模拟物联网系统的数据统计&lt;/li&gt;
+&lt;li&gt;使用生产者在 Kafka 的 Topic：Streaming-test 中输入 JSON 数据&lt;/li&gt;
+&lt;li&gt;使用 Structured Streaming 过滤出来家里有人的数据&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;创建 Topic 并输入数据到 Topic&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;使用命令创建 Topic&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;bin/kafka-topics.sh 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
         
       </description>
     </item>
