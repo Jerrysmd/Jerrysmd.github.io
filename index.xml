@@ -520,9 +520,9 @@
 &lt;li&gt;Earlist 从每个 Kafka 分区最开始处开始获取&lt;/li&gt;
 &lt;li&gt;Assign 手动指定每个 Kafka 分区中的 Offset&lt;/li&gt;
 &lt;li&gt;Latest 不再处理之前的消息，只获取流计算启动后新产生的数据&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;PROJECT&lt;/strong&gt;&lt;/p&gt;
         
       </description>
     </item>
