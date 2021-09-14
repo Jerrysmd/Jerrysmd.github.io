@@ -623,8 +623,15 @@
 <span class="ln">3</span>用户注册事件  --&gt;  Topic Order
 </code></pre></div></li>
 <li>
-<p>Kafka 中的 Topic 要</p>
-</li>
+<p>Kafka 中的 Topic 要承受非常大的吞吐量，所以 Topic 应该是可以分片的，应该是分布式的</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>Anatomy of a Topic
+<span class="ln">2</span>
+<span class="ln">3</span>Partition 0 [0][1][2][3]
+<span class="ln">4</span>Partition 1 [0][1]
+<span class="ln">5</span>Partition 3 [0][1][2]
+<span class="ln">6</span>
+<span class="ln">7</span>Old  --&gt;  New
+</code></pre></div></li>
 </ul>
 </blockquote>
   </article>
