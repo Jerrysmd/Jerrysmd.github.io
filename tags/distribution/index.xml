@@ -506,6 +506,23 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Kafka 和 Structured Streaming 整合的结构&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Structured Streaming 中使用 Source 对接外部系统，对接 Kafka 的 Source 叫做 KafkaSource&lt;/li&gt;
+&lt;li&gt;KafkaSource 中会使用 KafkaSourceRDD 来映射外部 Kafka 的 Topic，两者的 Partition 一一对应&lt;/li&gt;
+&lt;li&gt;Structured Streaming 会并行的从 Kafka 中获取数据&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Structured Streaming 读取 Kafka 消息的三种方式&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Earlist 从每个 Kafka 分区最开始处开始获取&lt;/li&gt;
+&lt;li&gt;Assign 手动指定每个 Kafka 分区中的 Offset&lt;/li&gt;
+&lt;li&gt;Latest 不再处理之前的消息，只获取流计算启动后新产生的数据&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
         
       </description>
     </item>
