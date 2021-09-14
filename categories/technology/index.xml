@@ -445,7 +445,7 @@
 &lt;span class=&#34;ln&#34;&gt;26&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;27&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;structured-streaming-kafka&#34;&gt;Structured Streaming Kafka&lt;/h2&gt;
-&lt;p&gt;Kafka是一个 Pub/Sub 系统&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Kafka是一个 Pub/Sub 系统&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;Publisher / Subscriber 发布订阅系统&lt;/li&gt;
@@ -471,12 +471,32 @@
 &lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt; [订单系统]  --&amp;gt;  kafka  --&amp;gt;  [Structured Streaming]
 &lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt; [服务系统]  --&amp;gt;         --&amp;gt;  [MapReduce]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
-&lt;p&gt;Kafka 的特点&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Kafka 的特点&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Kafka 非常重要的应用场景就是对接业务系统和数据系统，作为一个数据管道，其需要流通的数据量惊人，所以 Kafka 一定有：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;高吞吐量&lt;/li&gt;
 &lt;li&gt;高可靠性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Topic 和 Partitions&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;消息和事件经常是不同类型的，例如用户注册是一种消息，订单创建也是一种消息&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;创建订单事件  --&amp;gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;                  kafka  --&amp;gt;  structured Streaming
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;用户注册事件  --&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Kafka 中使用 Topic 来组织不同类型的消息&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;创建订单事件  --&amp;gt;  Topic Order
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;                               --&amp;gt;  structured Streaming
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;用户注册事件  --&amp;gt;  Topic Order
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Kafka 中的 Topic 要&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
         

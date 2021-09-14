@@ -573,7 +573,7 @@
 <span class="ln">26</span>    <span class="o">}</span>
 <span class="ln">27</span><span class="o">}</span>
 </code></pre></div><h2 id="structured-streaming-kafka">Structured Streaming Kafka</h2>
-<p>Kafka是一个 Pub/Sub 系统</p>
+<p><strong>Kafka是一个 Pub/Sub 系统</strong></p>
 <blockquote>
 <ul>
 <li>Publisher / Subscriber 发布订阅系统</li>
@@ -599,12 +599,32 @@
 <span class="ln">3</span> [订单系统]  --&gt;  kafka  --&gt;  [Structured Streaming]
 <span class="ln">4</span> [服务系统]  --&gt;         --&gt;  [MapReduce]
 </code></pre></div></blockquote>
-<p>Kafka 的特点</p>
+<p><strong>Kafka 的特点</strong></p>
 <blockquote>
 <p>Kafka 非常重要的应用场景就是对接业务系统和数据系统，作为一个数据管道，其需要流通的数据量惊人，所以 Kafka 一定有：</p>
 <ul>
 <li>高吞吐量</li>
 <li>高可靠性</li>
+</ul>
+</blockquote>
+<p><strong>Topic 和 Partitions</strong></p>
+<blockquote>
+<ul>
+<li>
+<p>消息和事件经常是不同类型的，例如用户注册是一种消息，订单创建也是一种消息</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>创建订单事件  --&gt;
+<span class="ln">2</span>                  kafka  --&gt;  structured Streaming
+<span class="ln">3</span>用户注册事件  --&gt;
+</code></pre></div></li>
+<li>
+<p>Kafka 中使用 Topic 来组织不同类型的消息</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>创建订单事件  --&gt;  Topic Order
+<span class="ln">2</span>                               --&gt;  structured Streaming
+<span class="ln">3</span>用户注册事件  --&gt;  Topic Order
+</code></pre></div></li>
+<li>
+<p>Kafka 中的 Topic 要</p>
+</li>
 </ul>
 </blockquote>
   </article>
