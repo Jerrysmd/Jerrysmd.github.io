@@ -681,7 +681,7 @@
 <span class="ln"> 3</span>        <span class="c1">//1.创建 SparkSession
 </span><span class="ln"> 4</span><span class="c1"></span>        
 <span class="ln"> 5</span>        <span class="c1">//2.读取 Kafka 数据
-</span><span class="ln"> 6</span><span class="c1"></span>        <span class="k">val</span> <span class="n">source</span><span class="k">:</span> <span class="kt">Dadas</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">readSteam</span>
+</span><span class="ln"> 6</span><span class="c1"></span>        <span class="k">val</span> <span class="n">source</span><span class="k">:</span> <span class="kt">Dadaset</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">readSteam</span>
 <span class="ln"> 7</span>        	<span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="s">&#34;kafka&#34;</span><span class="o">)</span>
 <span class="ln"> 8</span>        	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;kafka.bootstrap.servers&#34;</span><span class="o">,</span> <span class="s">&#34;node01:9092,node02:9092,node03:9092&#34;</span><span class="o">)</span>
 <span class="ln"> 9</span>        	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;subscribe&#34;</span><span class="o">,</span> <span class="s">&#34;streaming_test_1&#34;</span><span class="o">)</span>
@@ -689,8 +689,22 @@
 <span class="ln">11</span>        	<span class="o">.</span><span class="n">load</span><span class="o">()</span>
 <span class="ln">12</span>        	<span class="o">.</span><span class="n">selectExpr</span><span class="o">(</span><span class="s">&#34;CAST(value AS STRING) as value&#34;</span><span class="o">)</span>
 <span class="ln">13</span>        	<span class="o">.</span><span class="n">as</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span>
-<span class="ln">14</span>    <span class="o">}</span>
-<span class="ln">15</span><span class="o">}</span>
+<span class="ln">14</span>        
+<span class="ln">15</span>        <span class="c1">//3.处理数据，Dataset(String) -&gt; Dataset(id, name, category)
+</span><span class="ln">16</span><span class="c1"></span>        <span class="c1">//1::Toy Story (1995)::Animation|Children&#39;s|Comedy
+</span><span class="ln">17</span><span class="c1"></span>        <span class="n">source</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="o">{</span>
+<span class="ln">18</span>            <span class="k">val</span> <span class="n">arr</span> <span class="k">=</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34;::&#34;</span><span class="o">)</span>
+<span class="ln">19</span>            <span class="o">(</span><span class="n">arr</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="n">toInt</span><span class="o">,</span> <span class="n">arr</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="n">toString</span><span class="o">,</span> <span class="n">arr</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="n">toString</span><span class="o">)</span>
+<span class="ln">20</span>        <span class="o">}).</span><span class="n">as</span><span class="o">[(</span><span class="kt">Int</span>, <span class="kt">String</span>, <span class="kt">String</span><span class="o">)].</span><span class="n">toDF</span><span class="o">(</span><span class="s">&#34;id&#34;</span><span class="o">,</span> <span class="s">&#34;name&#34;</span><span class="o">,</span> <span class="s">&#34;category&#34;</span><span class="o">)</span>
+<span class="ln">21</span>        
+<span class="ln">22</span>        <span class="c1">//4.传输HDFS中
+</span><span class="ln">23</span><span class="c1"></span>        <span class="n">result</span><span class="o">.</span><span class="n">writeStream</span>
+<span class="ln">24</span>        	<span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="s">&#34;parquet&#34;</span><span class="o">)</span>
+<span class="ln">25</span>        	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;path&#34;</span><span class="o">,</span> <span class="s">&#34;/dataset/streaming/movies/&#34;</span><span class="o">)</span>
+<span class="ln">26</span>        	<span class="o">.</span><span class="n">start</span><span class="o">()</span>
+<span class="ln">27</span>        
+<span class="ln">28</span>    <span class="o">}</span>
+<span class="ln">29</span><span class="o">}</span>
 </code></pre></div>
   </article>
 <aside class="sidebar">
