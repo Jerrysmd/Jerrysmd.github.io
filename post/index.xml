@@ -591,7 +591,17 @@
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;41&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;//使用foreachWriter
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;42&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;43&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Sink Trigger&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;微批次&lt;/p&gt;
+&lt;p&gt;默认一秒间隔&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;连续流&lt;/p&gt;
+&lt;p&gt;Trigger.Continuous(&amp;quot;1 second&amp;quot;)，只支持Map类的类型操作，不支持聚合，Source和Sink只支持Kafka&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
         
       </description>
     </item>
