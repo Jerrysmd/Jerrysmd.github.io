@@ -536,8 +536,15 @@
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;使用命令创建 Topic&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;bin/kafka-topics.sh 
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;bin/kafka-topics.sh --create streaming-test --replication-factor &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; --partitions &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt; --zookeeper node01:2181
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;开启 Producer&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;bin/kafka-console-producer.sh --broker-list node01:9092,node02:9092,node03:9092 -topic streaming-test
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;把 Json 转为单行输入&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
         
