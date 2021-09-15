@@ -675,6 +675,21 @@
 </li>
 </ol>
 </blockquote>
+<p>Spark 读取 kafka 的 Topic</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">object</span> <span class="nc">KafkaSource</span><span class="o">{</span>
+<span class="ln"> 2</span>    <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<span class="ln"> 3</span>        <span class="c1">//1.创建 SparkSession
+</span><span class="ln"> 4</span><span class="c1"></span>        
+<span class="ln"> 5</span>        <span class="c1">//2.读取 Kafka 数据
+</span><span class="ln"> 6</span><span class="c1"></span>        <span class="k">val</span> <span class="n">source</span><span class="k">:</span> <span class="kt">DataFrame</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">readSteam</span>
+<span class="ln"> 7</span>        	<span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="s">&#34;kafka&#34;</span><span class="o">)</span>
+<span class="ln"> 8</span>        	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;kafka.bootstrap.servers&#34;</span><span class="o">,</span> <span class="s">&#34;node01:9092,node02:9092,node03:9092&#34;</span><span class="o">)</span>
+<span class="ln"> 9</span>        	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;subscribe&#34;</span><span class="o">,</span> <span class="s">&#34;streaming_test_1&#34;</span><span class="o">)</span>
+<span class="ln">10</span>        	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;startingOffsets&#34;</span><span class="o">,</span> <span class="s">&#34;earliest&#34;</span><span class="o">)</span>
+<span class="ln">11</span>        	<span class="o">.</span><span class="n">load</span><span class="o">()</span>
+<span class="ln">12</span>    <span class="o">}</span>
+<span class="ln">13</span><span class="o">}</span>
+</code></pre></div>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
