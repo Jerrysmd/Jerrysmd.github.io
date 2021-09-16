@@ -8,10 +8,10 @@
     <lastBuildDate>Mon, 07 Oct 2019 09:11:47 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/c/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Various data types in C</title>
-      <link>https://Jerrysmd.github.io/post/20191007u32/</link>
+      <link>https://Jerrysmd.github.io/post/20191007u32/u32/</link>
       <pubDate>Mon, 07 Oct 2019 09:11:47 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20191007u32/</guid>
+      <guid>https://Jerrysmd.github.io/post/20191007u32/u32/</guid>
       <description>
         
           &lt;p&gt;C/C++ provides various data types that can be used in your programs.In general, you&#39;d commonly use: int for most variables and &amp;quot;countable&amp;quot; things (for loop counts, variables, events). char for characters and strings. float for general measurable things (seconds, distance, temperature). uint32 for bit manipulations, especially on 32-bit registers.&lt;/p&gt;
@@ -325,10 +325,10 @@
     
     <item>
       <title>The size of structure in C</title>
-      <link>https://Jerrysmd.github.io/post/20190825structsize/</link>
+      <link>https://Jerrysmd.github.io/post/20190825structsize/structsize/</link>
       <pubDate>Sun, 25 Aug 2019 14:38:34 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20190825structsize/</guid>
+      <guid>https://Jerrysmd.github.io/post/20190825structsize/structsize/</guid>
       <description>
         
           &lt;p&gt;The sizeof for a struct is not always equal to the sum of sizeof of each individual member. This is because of the padding added by the compiler to avoid alignment issues. Padding is only added when a structure member is followed by a member with a larger size or at the end of the structure.&lt;/p&gt;
@@ -395,10 +395,10 @@
     
     <item>
       <title>Typedef介绍: The descriptions of typedef</title>
-      <link>https://Jerrysmd.github.io/post/20190717typedef/</link>
+      <link>https://Jerrysmd.github.io/post/20190717typedef/typedef/</link>
       <pubDate>Wed, 17 Jul 2019 09:22:18 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20190717typedef/</guid>
+      <guid>https://Jerrysmd.github.io/post/20190717typedef/typedef/</guid>
       <description>
         
           &lt;p&gt;typedef为C语言的关键字，作用是为一种数据类型定义一个新名字，这里的数据类型包括内部数据类型（int，char等）和自定义的数据类型（struct等）。typedef本身是一种存储类的关键字，与auto、extern、static、register等关键字不能出现在同一个表达式中。&lt;/p&gt;
@@ -473,10 +473,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     
     <item>
       <title>条件编译指令: Conditional compilation directives</title>
-      <link>https://Jerrysmd.github.io/post/20190611conditionalcompilation/</link>
+      <link>https://Jerrysmd.github.io/post/20190611conditionalcompilation/conditionalcompilation/</link>
       <pubDate>Tue, 11 Jun 2019 10:42:49 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20190611conditionalcompilation/</guid>
+      <guid>https://Jerrysmd.github.io/post/20190611conditionalcompilation/conditionalcompilation/</guid>
       <description>
         
           &lt;p&gt;条件编译是根据实际定义宏（某类条件）进行代码静态编译的手段。可根据表达式的值或某个特定宏是否被定义来确定编译条件。c语言中条件编译相关的预编译指令，包括  #define、#undef、#ifdef、#ifndef、#if、#elif、#else、#endif、defined。&lt;/p&gt;
@@ -556,10 +556,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     
     <item>
       <title>C项目性能优化: C Project performance optimization</title>
-      <link>https://Jerrysmd.github.io/post/20190409cperformanceoptimization/</link>
+      <link>https://Jerrysmd.github.io/post/20190409cperformanceoptimization/cperformanceoptimization/</link>
       <pubDate>Tue, 09 Apr 2019 20:04:00 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20190409cperformanceoptimization/</guid>
+      <guid>https://Jerrysmd.github.io/post/20190409cperformanceoptimization/cperformanceoptimization/</guid>
       <description>
         
           &lt;p&gt;大型C项目的性能优化方法和思路。x86项目往低性能处理器上移植时遇到性能瓶颈的性能优化策略。&lt;/p&gt;
@@ -601,10 +601,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     
     <item>
       <title>GDB调试: GDB debug guide</title>
-      <link>https://Jerrysmd.github.io/post/20190304gdb_debug/</link>
+      <link>https://Jerrysmd.github.io/post/20190304gdb_debug/gdb_debug/</link>
       <pubDate>Mon, 04 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20190304gdb_debug/</guid>
+      <guid>https://Jerrysmd.github.io/post/20190304gdb_debug/gdb_debug/</guid>
       <description>
         
           &lt;p&gt;GDB是一个由GNU开源组织发布的、UNIX/LINUX操作系统下的、基于命令行的、功能强大的程序调试工具。 对于一名Linux下工作的c/c++程序员，gdb是必不可少的工具；&lt;/p&gt;
@@ -695,10 +695,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     
     <item>
       <title>大页内存: HugePages</title>
-      <link>https://Jerrysmd.github.io/post/20190203hugepages/</link>
+      <link>https://Jerrysmd.github.io/post/20190203hugepages/hugepages/</link>
       <pubDate>Sun, 03 Feb 2019 13:04:09 -0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20190203hugepages/</guid>
+      <guid>https://Jerrysmd.github.io/post/20190203hugepages/hugepages/</guid>
       <description>
         
           &lt;p&gt;通过增大操作系统页的大小来减小页表，从而避免快表缺失。大页内存优化程序主要是针对其中的malloc机制的，意思就是分配大页，增加tlb的命中率。&lt;/p&gt;
@@ -733,10 +733,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     
     <item>
       <title>动态链接和静态链接: Dynamic link library and static link library</title>
-      <link>https://Jerrysmd.github.io/post/20190125dynamicstaticlinklibrary/</link>
+      <link>https://Jerrysmd.github.io/post/20190125dynamicstaticlinklibrary/dynamicstaticlinklibrary/</link>
       <pubDate>Fri, 25 Jan 2019 22:01:19 -0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20190125dynamicstaticlinklibrary/</guid>
+      <guid>https://Jerrysmd.github.io/post/20190125dynamicstaticlinklibrary/dynamicstaticlinklibrary/</guid>
       <description>
         
           &lt;p&gt;开发中，我们只需要知道lib是编译时需要的，dll是运行时需要的。如果要完成源代码的编译，有lib就够了。如果要使动态连接的程序运行起来，有dll就够了。本文会更加清晰的了解二者的区别、生成、使用。&lt;/p&gt;
@@ -782,10 +782,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     
     <item>
       <title>文件读取的高级方法：Advanced method of reading files</title>
-      <link>https://Jerrysmd.github.io/post/20181220read_binary_file/</link>
+      <link>https://Jerrysmd.github.io/post/20181220read_binary_file/read_binary_file/</link>
       <pubDate>Thu, 20 Dec 2018 18:39:37 -0700</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20181220read_binary_file/</guid>
+      <guid>https://Jerrysmd.github.io/post/20181220read_binary_file/read_binary_file/</guid>
       <description>
         
           &lt;p&gt;读取二进制文件（任何文件都可以，本文以二进制为例），把二进制文件内容全部读取到char*字符串中。配合fseek()和fread()函数实现文件读取的高级方法。&lt;/p&gt;
@@ -930,10 +930,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     
     <item>
       <title>SQLcipher Guide</title>
-      <link>https://Jerrysmd.github.io/post/20181118sqlcipher/</link>
+      <link>https://Jerrysmd.github.io/post/20181118sqlcipher/sqlcipher/</link>
       <pubDate>Sun, 18 Nov 2018 21:58:51 -0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20181118sqlcipher/</guid>
+      <guid>https://Jerrysmd.github.io/post/20181118sqlcipher/sqlcipher/</guid>
       <description>
         
           &lt;p&gt;SQLCipher is based on SQLite, and thus, the majority of the accessible API is identical to the C/C++ interface for SQLite 3. However, SQLCipher does add a number of security specific extensions in the form of PRAGMAs, SQL Functions and C Functions.&lt;/p&gt;
@@ -971,10 +971,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     
     <item>
       <title>Makefile Guide</title>
-      <link>https://Jerrysmd.github.io/post/20180915makefile_cmakelist/</link>
+      <link>https://Jerrysmd.github.io/post/20180915makefile_cmakelist/makefile_cmakelist/</link>
       <pubDate>Sat, 15 Sep 2018 21:59:46 -0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20180915makefile_cmakelist/</guid>
+      <guid>https://Jerrysmd.github.io/post/20180915makefile_cmakelist/makefile_cmakelist/</guid>
       <description>
         
           &lt;p&gt;Makefile定义了一系列的规则来指定，哪些文件需要先编译，哪些文件需要后编译，哪些文件需要重新编译，甚至于进行更复杂的功能操作，因为makefile就像一个Shell脚本一样，其中也可以执行操作系统的命令。makefile带来的好处就是——“自动化编译”，整个工程完全自动编译，极大的提高了软件开发的效率。&lt;/p&gt;
@@ -1294,10 +1294,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     
     <item>
       <title>Hyperscan: high-performance multiple regex matching library</title>
-      <link>https://Jerrysmd.github.io/post/20180812hyperscan/</link>
+      <link>https://Jerrysmd.github.io/post/20180812hyperscan/hyperscan/</link>
       <pubDate>Sun, 12 Aug 2018 05:42:44 -0700</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20180812hyperscan/</guid>
+      <guid>https://Jerrysmd.github.io/post/20180812hyperscan/hyperscan/</guid>
       <description>
         
           &lt;p&gt;Hyperscan是一款来自于Intel的高性能的正则表达式匹配库。它是基于X86平台以PCRE为原型而开发的。在支持PCRE的大部分语法的前提下，Hyperscan增加了特定的语法和工作模式来保证其在真实网络场景下的实用性。&lt;/p&gt;
@@ -1422,10 +1422,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     
     <item>
       <title>文件读取多读取一行空行问题: The problem about file reading one more line</title>
-      <link>https://Jerrysmd.github.io/post/20180610cgetline/</link>
+      <link>https://Jerrysmd.github.io/post/20180610cgetline/cgetline/</link>
       <pubDate>Sun, 10 Jun 2018 21:58:13 -0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20180610cgetline/</guid>
+      <guid>https://Jerrysmd.github.io/post/20180610cgetline/cgetline/</guid>
       <description>
         
           &lt;p&gt;getline()/get()/read()会出现多读一行的现象。造成该原因可能文件本身问题和getline()函数的问题。可以在while处判断时先判断getline()/get()/read()，如果拿到数据再处理。&lt;/p&gt;
@@ -1464,10 +1464,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     
     <item>
       <title>MXML的使用: The description of mxml</title>
-      <link>https://Jerrysmd.github.io/post/20180507mxml/</link>
+      <link>https://Jerrysmd.github.io/post/20180507mxml/mxml/</link>
       <pubDate>Mon, 07 May 2018 21:57:23 -0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20180507mxml/</guid>
+      <guid>https://Jerrysmd.github.io/post/20180507mxml/mxml/</guid>
       <description>
         
           &lt;p&gt;MXML (Minimal XML) is a small, fast and versatile library that reads a whole XML file and puts it in a DOM tree.&lt;/p&gt;
@@ -1651,10 +1651,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     
     <item>
       <title>C语言实现HashMap: C language realize HashMap</title>
-      <link>https://Jerrysmd.github.io/post/20180405hashcode/</link>
+      <link>https://Jerrysmd.github.io/post/20180405hashcode/hashcode/</link>
       <pubDate>Thu, 05 Apr 2018 21:56:51 -0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20180405hashcode/</guid>
+      <guid>https://Jerrysmd.github.io/post/20180405hashcode/hashcode/</guid>
       <description>
         
           &lt;p&gt;哈希表是一种十分重要的数据结构，在很多应用场景下都有用到，本文会对哈希表原理进行简单的剖析，并使用C语言实现一个完整的HashMap。&lt;/p&gt;

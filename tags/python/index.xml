@@ -8,10 +8,10 @@
     <lastBuildDate>Fri, 10 May 2019 09:34:11 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Python Introduction</title>
-      <link>https://Jerrysmd.github.io/post/20190510pythonintroduction/</link>
+      <link>https://Jerrysmd.github.io/post/20190510pythonintroduction/pythonintroduction/</link>
       <pubDate>Fri, 10 May 2019 09:34:11 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20190510pythonintroduction/</guid>
+      <guid>https://Jerrysmd.github.io/post/20190510pythonintroduction/pythonintroduction/</guid>
       <description>
         
           &lt;p&gt;Python is dynamically-typed and garbage-collected. It supports multiple programming paradigms, including structured (particularly, procedural), object-oriented and functional programming. Python is often described as a &amp;quot;batteries included&amp;quot; language due to its comprehensive standard library.&lt;/p&gt;
