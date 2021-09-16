@@ -5,13 +5,13 @@
     <link>https://Jerrysmd.github.io/tags/spark/</link>
     <description>Recent content in spark on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 03 Aug 2021 16:10:33 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/spark/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 03 Aug 2020 16:10:33 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/spark/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Spark 简介: Spark Guide, Part Ⅲ</title>
-      <link>https://Jerrysmd.github.io/post/20210803sparkguide3/sparkguide3/</link>
-      <pubDate>Tue, 03 Aug 2021 16:10:33 +0800</pubDate>
+      <link>https://Jerrysmd.github.io/post/20200803sparkguide3/sparkguide3/</link>
+      <pubDate>Mon, 03 Aug 2020 16:10:33 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20210803sparkguide3/sparkguide3/</guid>
+      <guid>https://Jerrysmd.github.io/post/20200803sparkguide3/sparkguide3/</guid>
       <description>
         
           &lt;p&gt;Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.&lt;/p&gt;
@@ -608,10 +608,10 @@
     
     <item>
       <title>Spark 简介: Spark Guide, Part Ⅱ</title>
-      <link>https://Jerrysmd.github.io/post/20210707sparkguide2/sparkguide2/</link>
-      <pubDate>Wed, 07 Jul 2021 11:14:54 +0800</pubDate>
+      <link>https://Jerrysmd.github.io/post/20200707sparkguide2/sparkguide2/</link>
+      <pubDate>Tue, 07 Jul 2020 11:14:54 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20210707sparkguide2/sparkguide2/</guid>
+      <guid>https://Jerrysmd.github.io/post/20200707sparkguide2/sparkguide2/</guid>
       <description>
         
           &lt;p&gt;Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.&lt;/p&gt;
@@ -1516,10 +1516,10 @@
     
     <item>
       <title>Spark 简介: Spark Guide, Part Ⅰ</title>
-      <link>https://Jerrysmd.github.io/post/20210527sparkguide1/sparkguide1/</link>
-      <pubDate>Thu, 27 May 2021 17:20:52 +0800</pubDate>
+      <link>https://Jerrysmd.github.io/post/20200527sparkguide1/sparkguide1/</link>
+      <pubDate>Wed, 27 May 2020 17:20:52 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20210527sparkguide1/sparkguide1/</guid>
+      <guid>https://Jerrysmd.github.io/post/20200527sparkguide1/sparkguide1/</guid>
       <description>
         
           &lt;p&gt;Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.&lt;/p&gt;

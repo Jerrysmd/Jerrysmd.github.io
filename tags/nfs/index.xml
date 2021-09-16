@@ -5,13 +5,13 @@
     <link>https://Jerrysmd.github.io/tags/nfs/</link>
     <description>Recent content in NFS on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 26 Mar 2021 11:02:36 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/nfs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 26 Mar 2020 11:02:36 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/nfs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>HDFS &amp; NFS</title>
-      <link>https://Jerrysmd.github.io/post/20210326hdfsnfs/</link>
-      <pubDate>Fri, 26 Mar 2021 11:02:36 +0800</pubDate>
+      <link>https://Jerrysmd.github.io/post/20200326hdfsnfs/</link>
+      <pubDate>Thu, 26 Mar 2020 11:02:36 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20210326hdfsnfs/</guid>
+      <guid>https://Jerrysmd.github.io/post/20200326hdfsnfs/</guid>
       <description>
         
           &lt;p&gt;The major difference between the two is Replication/Fault Tolerance. HDFS was designed to survive failures. NFS does not have any fault tolerance built in. Other than fault tolerance, HDFS does support multiple replicas of files. This eliminates (or eases) the common bottleneck of many clients accessing a single file. Since files have multiple replicas, on different physical disks, reading performance scales better than NFS.&lt;/p&gt;

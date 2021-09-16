@@ -5,13 +5,13 @@
     <link>https://Jerrysmd.github.io/</link>
     <description>Recent content on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 03 Aug 2021 16:10:33 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 03 Aug 2020 16:10:33 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Spark 简介: Spark Guide, Part Ⅲ</title>
-      <link>https://Jerrysmd.github.io/post/20210803sparkguide3/sparkguide3/</link>
-      <pubDate>Tue, 03 Aug 2021 16:10:33 +0800</pubDate>
+      <link>https://Jerrysmd.github.io/post/20200803sparkguide3/sparkguide3/</link>
+      <pubDate>Mon, 03 Aug 2020 16:10:33 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20210803sparkguide3/sparkguide3/</guid>
+      <guid>https://Jerrysmd.github.io/post/20200803sparkguide3/sparkguide3/</guid>
       <description>
         
           &lt;p&gt;Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.&lt;/p&gt;
@@ -608,10 +608,10 @@
     
     <item>
       <title>Spark 简介: Spark Guide, Part Ⅱ</title>
-      <link>https://Jerrysmd.github.io/post/20210707sparkguide2/sparkguide2/</link>
-      <pubDate>Wed, 07 Jul 2021 11:14:54 +0800</pubDate>
+      <link>https://Jerrysmd.github.io/post/20200707sparkguide2/sparkguide2/</link>
+      <pubDate>Tue, 07 Jul 2020 11:14:54 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20210707sparkguide2/sparkguide2/</guid>
+      <guid>https://Jerrysmd.github.io/post/20200707sparkguide2/sparkguide2/</guid>
       <description>
         
           &lt;p&gt;Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.&lt;/p&gt;
@@ -1516,10 +1516,10 @@
     
     <item>
       <title>Hive 重点: Hive Key Points</title>
-      <link>https://Jerrysmd.github.io/post/20210615hivekeypoint/hivekeypoint/</link>
-      <pubDate>Tue, 15 Jun 2021 09:26:00 +0800</pubDate>
+      <link>https://Jerrysmd.github.io/post/20200615hivekeypoint/hivekeypoint/</link>
+      <pubDate>Mon, 15 Jun 2020 09:26:00 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20210615hivekeypoint/hivekeypoint/</guid>
+      <guid>https://Jerrysmd.github.io/post/20200615hivekeypoint/hivekeypoint/</guid>
       <description>
         
           &lt;p&gt;Hive is a Hadoop-based data warehouse tool that maps structured data files into a database table and provides complete SQL query functionality that converts SQL statements into MapReduce tasks for execution. It is very suitable for statistical analysis of data warehouse.&lt;/p&gt;
@@ -1628,10 +1628,10 @@
     
     <item>
       <title>Spark 简介: Spark Guide, Part Ⅰ</title>
-      <link>https://Jerrysmd.github.io/post/20210527sparkguide1/sparkguide1/</link>
-      <pubDate>Thu, 27 May 2021 17:20:52 +0800</pubDate>
+      <link>https://Jerrysmd.github.io/post/20200527sparkguide1/sparkguide1/</link>
+      <pubDate>Wed, 27 May 2020 17:20:52 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20210527sparkguide1/sparkguide1/</guid>
+      <guid>https://Jerrysmd.github.io/post/20200527sparkguide1/sparkguide1/</guid>
       <description>
         
           &lt;p&gt;Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.&lt;/p&gt;
@@ -2365,10 +2365,10 @@
     
     <item>
       <title>应用架构演进历程: The Development of App Architecture</title>
-      <link>https://Jerrysmd.github.io/post/20210526apparchitecturedevelopment/apparchitecturedevelopment/</link>
-      <pubDate>Wed, 26 May 2021 17:17:50 +0800</pubDate>
+      <link>https://Jerrysmd.github.io/post/20200526apparchitecturedevelopment/apparchitecturedevelopment/</link>
+      <pubDate>Tue, 26 May 2020 17:17:50 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20210526apparchitecturedevelopment/apparchitecturedevelopment/</guid>
+      <guid>https://Jerrysmd.github.io/post/20200526apparchitecturedevelopment/apparchitecturedevelopment/</guid>
       <description>
         
           &lt;p&gt;The features of large applications: high availability, high concurrency and big data. High availability: system need to provide service without interruption. High concurrency: still stable under the big access. Big data: store and manage big data well.&lt;/p&gt;
@@ -2445,10 +2445,10 @@
     
     <item>
       <title>Final 关键字: Final Key Word In Java</title>
-      <link>https://Jerrysmd.github.io/post/20210526finalkeywordinjava/finalkeywordinjava/</link>
-      <pubDate>Wed, 26 May 2021 15:56:36 +0800</pubDate>
+      <link>https://Jerrysmd.github.io/post/20200526finalkeywordinjava/finalkeywordinjava/</link>
+      <pubDate>Tue, 26 May 2020 15:56:36 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20210526finalkeywordinjava/finalkeywordinjava/</guid>
+      <guid>https://Jerrysmd.github.io/post/20200526finalkeywordinjava/finalkeywordinjava/</guid>
       <description>
         
           &lt;p&gt;Final key word no doubt be mentioned most time in Java language. There are some points about final key word. First of all, final key word can modify three objects: first is modify variables, second is modify way, third is modify class.&lt;/p&gt;
@@ -2481,10 +2481,10 @@
     
     <item>
       <title>Zookeeper核心知识点: Key points of ZooKeeper</title>
-      <link>https://Jerrysmd.github.io/post/20210519zookeeper/zookeeper/</link>
-      <pubDate>Wed, 19 May 2021 16:07:17 +0800</pubDate>
+      <link>https://Jerrysmd.github.io/post/20200519zookeeper/zookeeper/</link>
+      <pubDate>Tue, 19 May 2020 16:07:17 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20210519zookeeper/zookeeper/</guid>
+      <guid>https://Jerrysmd.github.io/post/20200519zookeeper/zookeeper/</guid>
       <description>
         
           &lt;p&gt;ZooKeeper is an open source distributed coordination framework. It is positioned to provide consistent services for distributed applications and is the administrator of the entire big data system. ZooKeeper will encapsulate key services that are complex and error-prone, and provide users with efficient, stable, and easy-to-use services.&lt;/p&gt;
@@ -2854,10 +2854,10 @@
     
     <item>
       <title>KAFKA和消息队列: Kafka &amp; Message Queue</title>
-      <link>https://Jerrysmd.github.io/post/20210427kafka/</link>
-      <pubDate>Tue, 27 Apr 2021 14:21:19 +0800</pubDate>
+      <link>https://Jerrysmd.github.io/post/20200427kafka/</link>
+      <pubDate>Mon, 27 Apr 2020 14:21:19 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20210427kafka/</guid>
+      <guid>https://Jerrysmd.github.io/post/20200427kafka/</guid>
       <description>
         
           &lt;p&gt;Apache Kafka aims to provide a unified, high-throughput, low-latency platform for handling real-time data feeds. Kafka can connect to external systems (for data import/export) via Kafka Connect and provides Kafka Streams, a Java stream processing library. Kafka uses a binary TCP-based protocol that is optimized for efficiency and relies on a &amp;quot;message set&amp;quot; abstraction that naturally groups messages together to reduce the overhead of the network roundtrip. This &amp;quot;leads to larger network packets, larger sequential disk operations, contiguous memory blocks [...] which allows Kafka to turn a bursty stream of random message writes into linear writes.&amp;quot;&lt;/p&gt;
@@ -3195,10 +3195,10 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
     
     <item>
       <title>HDFS &amp; NFS</title>
-      <link>https://Jerrysmd.github.io/post/20210326hdfsnfs/</link>
-      <pubDate>Fri, 26 Mar 2021 11:02:36 +0800</pubDate>
+      <link>https://Jerrysmd.github.io/post/20200326hdfsnfs/</link>
+      <pubDate>Thu, 26 Mar 2020 11:02:36 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20210326hdfsnfs/</guid>
+      <guid>https://Jerrysmd.github.io/post/20200326hdfsnfs/</guid>
       <description>
         
           &lt;p&gt;The major difference between the two is Replication/Fault Tolerance. HDFS was designed to survive failures. NFS does not have any fault tolerance built in. Other than fault tolerance, HDFS does support multiple replicas of files. This eliminates (or eases) the common bottleneck of many clients accessing a single file. Since files have multiple replicas, on different physical disks, reading performance scales better than NFS.&lt;/p&gt;
@@ -3219,10 +3219,10 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
     
     <item>
       <title>Scala 简介: Scala Introduction</title>
-      <link>https://Jerrysmd.github.io/post/20210308scalaintroduction/</link>
-      <pubDate>Mon, 08 Mar 2021 10:16:17 +0800</pubDate>
+      <link>https://Jerrysmd.github.io/post/20200208scalaintroduction/</link>
+      <pubDate>Sat, 08 Feb 2020 10:16:17 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20210308scalaintroduction/</guid>
+      <guid>https://Jerrysmd.github.io/post/20200208scalaintroduction/</guid>
       <description>
         
           &lt;p&gt;Scala combines object-oriented and functional programming in one concise, high-level language. Scala&#39;s static types help avoid bugs in complex applications, and its JVM and JavaScript runtimes let you build high-performance systems with easy access to huge ecosystems of libraries.&lt;/p&gt;
@@ -3462,10 +3462,10 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
     
     <item>
       <title>Static Keyword in Java</title>
-      <link>https://Jerrysmd.github.io/post/20210222javastatic/</link>
-      <pubDate>Mon, 22 Feb 2021 11:20:11 +0800</pubDate>
+      <link>https://Jerrysmd.github.io/post/20200122javastatic/</link>
+      <pubDate>Wed, 22 Jan 2020 11:20:11 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20210222javastatic/</guid>
+      <guid>https://Jerrysmd.github.io/post/20200122javastatic/</guid>
       <description>
         
           &lt;p&gt;The static keyword can be used for variables, methods, code blocks, and inner classes to indicate that a particular member belongs only to a class itself, and not to an object of that class.&lt;/p&gt;
@@ -3594,10 +3594,10 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
     
     <item>
       <title>Shallow Copy and Deep Copy in JAVA</title>
-      <link>https://Jerrysmd.github.io/post/20210129copyinjava/</link>
-      <pubDate>Fri, 29 Jan 2021 22:14:03 +0800</pubDate>
+      <link>https://Jerrysmd.github.io/post/20191229copyinjava/</link>
+      <pubDate>Sun, 29 Dec 2019 22:14:03 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20210129copyinjava/</guid>
+      <guid>https://Jerrysmd.github.io/post/20191229copyinjava/</guid>
       <description>
         
           &lt;p&gt;Cloning is a process of creating an exact copy of an existing object in the memory. In java, clone() method of java.lang.Object class is used for cloning process. This method creates an exact copy of an object on which it is called through field-by-field assignment and returns the reference of that object. Not all the objects in java are eligible for cloning process. The objects which implement Cloneable interface are only eligible for cloning process. Cloneable interface is a marker interface which is used to provide the marker to cloning process. Click here to see more info on clone() method in java.&lt;/p&gt;
@@ -3718,10 +3718,10 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
     
     <item>
       <title>Git Contribution</title>
-      <link>https://Jerrysmd.github.io/post/20210126gitcontribution/</link>
-      <pubDate>Tue, 26 Jan 2021 11:22:47 +0800</pubDate>
+      <link>https://Jerrysmd.github.io/post/20191126gitcontribution/</link>
+      <pubDate>Tue, 26 Nov 2019 11:22:47 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20210126gitcontribution/</guid>
+      <guid>https://Jerrysmd.github.io/post/20191126gitcontribution/</guid>
       <description>
         
           &lt;p&gt;Contribution graph shows activity from public repositories. You can choose to show activity from both public and private repositories, with specific details of your activity in private repositories anonymized.&lt;/p&gt;
@@ -3784,10 +3784,10 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
     
     <item>
       <title>Various data types in C</title>
-      <link>https://Jerrysmd.github.io/post/20201207u32/</link>
-      <pubDate>Mon, 07 Dec 2020 09:11:47 +0800</pubDate>
+      <link>https://Jerrysmd.github.io/post/20191007u32/</link>
+      <pubDate>Mon, 07 Oct 2019 09:11:47 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20201207u32/</guid>
+      <guid>https://Jerrysmd.github.io/post/20191007u32/</guid>
       <description>
         
           &lt;p&gt;C/C++ provides various data types that can be used in your programs.In general, you&#39;d commonly use: int for most variables and &amp;quot;countable&amp;quot; things (for loop counts, variables, events). char for characters and strings. float for general measurable things (seconds, distance, temperature). uint32 for bit manipulations, especially on 32-bit registers.&lt;/p&gt;
@@ -4101,10 +4101,10 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
     
     <item>
       <title>The size of structure in C</title>
-      <link>https://Jerrysmd.github.io/post/20201125structsize/</link>
-      <pubDate>Wed, 25 Nov 2020 14:38:34 +0800</pubDate>
+      <link>https://Jerrysmd.github.io/post/20190825structsize/</link>
+      <pubDate>Sun, 25 Aug 2019 14:38:34 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20201125structsize/</guid>
+      <guid>https://Jerrysmd.github.io/post/20190825structsize/</guid>
       <description>
         
           &lt;p&gt;The sizeof for a struct is not always equal to the sum of sizeof of each individual member. This is because of the padding added by the compiler to avoid alignment issues. Padding is only added when a structure member is followed by a member with a larger size or at the end of the structure.&lt;/p&gt;
@@ -4171,10 +4171,10 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
     
     <item>
       <title>Typedef介绍: The descriptions of typedef</title>
-      <link>https://Jerrysmd.github.io/post/20201117typedef/</link>
-      <pubDate>Tue, 17 Nov 2020 09:22:18 +0800</pubDate>
+      <link>https://Jerrysmd.github.io/post/20190717typedef/</link>
+      <pubDate>Wed, 17 Jul 2019 09:22:18 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20201117typedef/</guid>
+      <guid>https://Jerrysmd.github.io/post/20190717typedef/</guid>
       <description>
         
           &lt;p&gt;typedef为C语言的关键字，作用是为一种数据类型定义一个新名字，这里的数据类型包括内部数据类型（int，char等）和自定义的数据类型（struct等）。typedef本身是一种存储类的关键字，与auto、extern、static、register等关键字不能出现在同一个表达式中。&lt;/p&gt;
@@ -4249,10 +4249,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     
     <item>
       <title>条件编译指令: Conditional compilation directives</title>
-      <link>https://Jerrysmd.github.io/post/20201111conditionalcompilation/</link>
-      <pubDate>Wed, 11 Nov 2020 10:42:49 +0800</pubDate>
+      <link>https://Jerrysmd.github.io/post/20190611conditionalcompilation/</link>
+      <pubDate>Tue, 11 Jun 2019 10:42:49 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20201111conditionalcompilation/</guid>
+      <guid>https://Jerrysmd.github.io/post/20190611conditionalcompilation/</guid>
       <description>
         
           &lt;p&gt;条件编译是根据实际定义宏（某类条件）进行代码静态编译的手段。可根据表达式的值或某个特定宏是否被定义来确定编译条件。c语言中条件编译相关的预编译指令，包括  #define、#undef、#ifdef、#ifndef、#if、#elif、#else、#endif、defined。&lt;/p&gt;
@@ -4332,10 +4332,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     
     <item>
       <title>Python Introduction</title>
-      <link>https://Jerrysmd.github.io/post/20201110pythonintroduction/</link>
-      <pubDate>Tue, 10 Nov 2020 09:34:11 +0800</pubDate>
+      <link>https://Jerrysmd.github.io/post/20190510pythonintroduction/</link>
+      <pubDate>Fri, 10 May 2019 09:34:11 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20201110pythonintroduction/</guid>
+      <guid>https://Jerrysmd.github.io/post/20190510pythonintroduction/</guid>
       <description>
         
           &lt;p&gt;Python is dynamically-typed and garbage-collected. It supports multiple programming paradigms, including structured (particularly, procedural), object-oriented and functional programming. Python is often described as a &amp;quot;batteries included&amp;quot; language due to its comprehensive standard library.&lt;/p&gt;
@@ -4547,10 +4547,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     
     <item>
       <title>C项目性能优化: C Project performance optimization</title>
-      <link>https://Jerrysmd.github.io/post/20201109cperformanceoptimization/</link>
-      <pubDate>Mon, 09 Nov 2020 20:04:00 +0800</pubDate>
+      <link>https://Jerrysmd.github.io/post/20190409cperformanceoptimization/</link>
+      <pubDate>Tue, 09 Apr 2019 20:04:00 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20201109cperformanceoptimization/</guid>
+      <guid>https://Jerrysmd.github.io/post/20190409cperformanceoptimization/</guid>
       <description>
         
           &lt;p&gt;大型C项目的性能优化方法和思路。x86项目往低性能处理器上移植时遇到性能瓶颈的性能优化策略。&lt;/p&gt;
@@ -4592,10 +4592,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     
     <item>
       <title>GDB调试: GDB debug guide</title>
-      <link>https://Jerrysmd.github.io/post/20201104gdb_debug/</link>
-      <pubDate>Wed, 04 Nov 2020 00:00:00 +0000</pubDate>
+      <link>https://Jerrysmd.github.io/post/20190304gdb_debug/</link>
+      <pubDate>Mon, 04 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20201104gdb_debug/</guid>
+      <guid>https://Jerrysmd.github.io/post/20190304gdb_debug/</guid>
       <description>
         
           &lt;p&gt;GDB是一个由GNU开源组织发布的、UNIX/LINUX操作系统下的、基于命令行的、功能强大的程序调试工具。 对于一名Linux下工作的c/c++程序员，gdb是必不可少的工具；&lt;/p&gt;
@@ -4686,10 +4686,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     
     <item>
       <title>大页内存: HugePages</title>
-      <link>https://Jerrysmd.github.io/post/20201103hugepages/</link>
-      <pubDate>Tue, 03 Nov 2020 13:04:09 -0800</pubDate>
+      <link>https://Jerrysmd.github.io/post/20190203hugepages/</link>
+      <pubDate>Sun, 03 Feb 2019 13:04:09 -0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20201103hugepages/</guid>
+      <guid>https://Jerrysmd.github.io/post/20190203hugepages/</guid>
       <description>
         
           &lt;p&gt;通过增大操作系统页的大小来减小页表，从而避免快表缺失。大页内存优化程序主要是针对其中的malloc机制的，意思就是分配大页，增加tlb的命中率。&lt;/p&gt;
@@ -4724,10 +4724,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     
     <item>
       <title>动态链接和静态链接: Dynamic link library and static link library</title>
-      <link>https://Jerrysmd.github.io/post/20201025dynamicstaticlinklibrary/</link>
-      <pubDate>Sun, 25 Oct 2020 22:01:19 -0800</pubDate>
+      <link>https://Jerrysmd.github.io/post/20190125dynamicstaticlinklibrary/</link>
+      <pubDate>Fri, 25 Jan 2019 22:01:19 -0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20201025dynamicstaticlinklibrary/</guid>
+      <guid>https://Jerrysmd.github.io/post/20190125dynamicstaticlinklibrary/</guid>
       <description>
         
           &lt;p&gt;开发中，我们只需要知道lib是编译时需要的，dll是运行时需要的。如果要完成源代码的编译，有lib就够了。如果要使动态连接的程序运行起来，有dll就够了。本文会更加清晰的了解二者的区别、生成、使用。&lt;/p&gt;
@@ -4773,10 +4773,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     
     <item>
       <title>文件读取的高级方法：Advanced method of reading files</title>
-      <link>https://Jerrysmd.github.io/post/20201020read_binary_file/</link>
-      <pubDate>Tue, 20 Oct 2020 18:39:37 -0700</pubDate>
+      <link>https://Jerrysmd.github.io/post/20181220read_binary_file/</link>
+      <pubDate>Thu, 20 Dec 2018 18:39:37 -0700</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20201020read_binary_file/</guid>
+      <guid>https://Jerrysmd.github.io/post/20181220read_binary_file/</guid>
       <description>
         
           &lt;p&gt;读取二进制文件（任何文件都可以，本文以二进制为例），把二进制文件内容全部读取到char*字符串中。配合fseek()和fread()函数实现文件读取的高级方法。&lt;/p&gt;
@@ -4921,10 +4921,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     
     <item>
       <title>SQLcipher Guide</title>
-      <link>https://Jerrysmd.github.io/post/20201018sqlcipher/</link>
-      <pubDate>Sun, 18 Oct 2020 21:58:51 -0800</pubDate>
+      <link>https://Jerrysmd.github.io/post/20181118sqlcipher/</link>
+      <pubDate>Sun, 18 Nov 2018 21:58:51 -0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20201018sqlcipher/</guid>
+      <guid>https://Jerrysmd.github.io/post/20181118sqlcipher/</guid>
       <description>
         
           &lt;p&gt;SQLCipher is based on SQLite, and thus, the majority of the accessible API is identical to the C/C++ interface for SQLite 3. However, SQLCipher does add a number of security specific extensions in the form of PRAGMAs, SQL Functions and C Functions.&lt;/p&gt;
@@ -4962,10 +4962,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     
     <item>
       <title>SQL Introduction</title>
-      <link>https://Jerrysmd.github.io/post/20201017sqlintroduction/</link>
-      <pubDate>Sat, 17 Oct 2020 11:52:36 +0800</pubDate>
+      <link>https://Jerrysmd.github.io/post/20181017sqlintroduction/</link>
+      <pubDate>Wed, 17 Oct 2018 11:52:36 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20201017sqlintroduction/</guid>
+      <guid>https://Jerrysmd.github.io/post/20181017sqlintroduction/</guid>
       <description>
         
           &lt;p&gt;In computer programming, create, read, update, and delete (CRUD) are the four basic functions of persistent storage. Alternate words are sometimes used when defining the four basic functions of CRUD, such as retrieve instead of read, modify instead of update, or destroy instead of delete. CRUD is also sometimes used to describe user interface conventions that facilitate viewing, searching, and changing information, often using computer-based forms and reports.&lt;/p&gt;
@@ -5073,10 +5073,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     
     <item>
       <title>Makefile Guide</title>
-      <link>https://Jerrysmd.github.io/post/20201015makefile_cmakelist/</link>
-      <pubDate>Thu, 15 Oct 2020 21:59:46 -0800</pubDate>
+      <link>https://Jerrysmd.github.io/post/20180915makefile_cmakelist/</link>
+      <pubDate>Sat, 15 Sep 2018 21:59:46 -0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20201015makefile_cmakelist/</guid>
+      <guid>https://Jerrysmd.github.io/post/20180915makefile_cmakelist/</guid>
       <description>
         
           &lt;p&gt;Makefile定义了一系列的规则来指定，哪些文件需要先编译，哪些文件需要后编译，哪些文件需要重新编译，甚至于进行更复杂的功能操作，因为makefile就像一个Shell脚本一样，其中也可以执行操作系统的命令。makefile带来的好处就是——“自动化编译”，整个工程完全自动编译，极大的提高了软件开发的效率。&lt;/p&gt;
@@ -5396,10 +5396,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     
     <item>
       <title>Hyperscan: high-performance multiple regex matching library</title>
-      <link>https://Jerrysmd.github.io/post/20201012hyperscan/</link>
-      <pubDate>Mon, 12 Oct 2020 05:42:44 -0700</pubDate>
+      <link>https://Jerrysmd.github.io/post/20180812hyperscan/</link>
+      <pubDate>Sun, 12 Aug 2018 05:42:44 -0700</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20201012hyperscan/</guid>
+      <guid>https://Jerrysmd.github.io/post/20180812hyperscan/</guid>
       <description>
         
           &lt;p&gt;Hyperscan是一款来自于Intel的高性能的正则表达式匹配库。它是基于X86平台以PCRE为原型而开发的。在支持PCRE的大部分语法的前提下，Hyperscan增加了特定的语法和工作模式来保证其在真实网络场景下的实用性。&lt;/p&gt;
@@ -5524,10 +5524,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     
     <item>
       <title>文件读取多读取一行空行问题: The problem about file reading one more line</title>
-      <link>https://Jerrysmd.github.io/post/20201010cgetline/</link>
-      <pubDate>Sat, 10 Oct 2020 21:58:13 -0800</pubDate>
+      <link>https://Jerrysmd.github.io/post/20180610cgetline/</link>
+      <pubDate>Sun, 10 Jun 2018 21:58:13 -0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20201010cgetline/</guid>
+      <guid>https://Jerrysmd.github.io/post/20180610cgetline/</guid>
       <description>
         
           &lt;p&gt;getline()/get()/read()会出现多读一行的现象。造成该原因可能文件本身问题和getline()函数的问题。可以在while处判断时先判断getline()/get()/read()，如果拿到数据再处理。&lt;/p&gt;
@@ -5566,10 +5566,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     
     <item>
       <title>MXML的使用: The description of mxml</title>
-      <link>https://Jerrysmd.github.io/post/20201007mxml/</link>
-      <pubDate>Wed, 07 Oct 2020 21:57:23 -0800</pubDate>
+      <link>https://Jerrysmd.github.io/post/20180507mxml/</link>
+      <pubDate>Mon, 07 May 2018 21:57:23 -0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20201007mxml/</guid>
+      <guid>https://Jerrysmd.github.io/post/20180507mxml/</guid>
       <description>
         
           &lt;p&gt;MXML (Minimal XML) is a small, fast and versatile library that reads a whole XML file and puts it in a DOM tree.&lt;/p&gt;
@@ -5753,10 +5753,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     
     <item>
       <title>C语言实现HashMap: C language realize HashMap</title>
-      <link>https://Jerrysmd.github.io/post/20201005hashcode/</link>
-      <pubDate>Mon, 05 Oct 2020 21:56:51 -0800</pubDate>
+      <link>https://Jerrysmd.github.io/post/20180405hashcode/</link>
+      <pubDate>Thu, 05 Apr 2018 21:56:51 -0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20201005hashcode/</guid>
+      <guid>https://Jerrysmd.github.io/post/20180405hashcode/</guid>
       <description>
         
           &lt;p&gt;哈希表是一种十分重要的数据结构，在很多应用场景下都有用到，本文会对哈希表原理进行简单的剖析，并使用C语言实现一个完整的HashMap。&lt;/p&gt;
