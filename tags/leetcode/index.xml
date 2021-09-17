@@ -53,6 +53,8 @@
 &lt;span class=&#34;ln&#34;&gt;24&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;eor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;^&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;插入排序&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;时间复杂度：O(N^2)&lt;/p&gt;
+&lt;p&gt;额外空间复杂度：O(1)&lt;/p&gt;
         
       </description>
     </item>
