@@ -86,9 +86,15 @@
 &lt;blockquote&gt;
 &lt;p&gt;例题：&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;在一个有序数组中，找某个数是否存在&lt;/li&gt;
-&lt;li&gt;在一个有序数组中，找 &amp;gt;= 某个数最左侧的位置：二分查找直到左侧没有数&lt;/li&gt;
-&lt;li&gt;无序，相邻数一定不相等，找一个局部最小(i-1 &amp;lt; i &amp;lt; i+1)的数，复杂度能否好于O(N)&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在一个有序数组中，找某个数是否存在&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在一个有序数组中，找 &amp;gt;= 某个数最左侧的位置：二分查找直到左侧没有数&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;无序，相邻数一定不相等，找一个局部最小(i-1 &amp;lt; i &amp;lt; i+1)的数，复杂度能否好于O(N)&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
         
