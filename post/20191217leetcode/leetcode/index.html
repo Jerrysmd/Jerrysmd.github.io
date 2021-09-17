@@ -224,8 +224,17 @@
 </ol>
 </blockquote>
 <p><strong>对数器</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="o">(</span><span class="kt">int</span><span class="o">)(</span><span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">()</span> <span class="o">*</span> <span class="n">N</span><span class="o">)</span> <span class="c1">//会在[0]
-</span></code></pre></div>
+<ul>
+<li>结果对比校验器: 自己控制输入数据使用两种方法或和官方api对比结果</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="o">(</span><span class="kt">int</span><span class="o">)(</span><span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">()</span> <span class="o">*</span> <span class="n">N</span><span class="o">)</span> <span class="c1">//会在[0, N-1]范围内，等概率返回一个整数
+</span><span class="ln">2</span><span class="c1"></span>
+<span class="ln">3</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[(</span><span class="kt">int</span><span class="o">)((</span><span class="n">maxSize</span> <span class="o">+</span> <span class="n">1</span><span class="o">)</span> <span class="o">*</span> <span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">())];</span><span class="c1">//随机长度
+</span><span class="ln">4</span><span class="c1"></span><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+<span class="ln">5</span>    <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)((</span><span class="n">maxValue</span> <span class="o">+</span> <span class="n">1</span><span class="o">)</span> <span class="o">*</span> <span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">())</span> <span class="o">-</span> <span class="o">(</span><span class="kt">int</span><span class="o">)(</span><span class="n">maxValue</span> <span class="o">*</span> <span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">());</span>
+<span class="ln">6</span><span class="o">}</span>
+<span class="ln">7</span><span class="k">return</span> <span class="n">arr</span><span class="o">;</span>
+</code></pre></div>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
