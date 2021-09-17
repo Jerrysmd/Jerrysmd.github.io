@@ -153,13 +153,26 @@
 <span class="ln"> 4</span>    <span class="n">eor</span> <span class="o">^=</span> <span class="n">cur</span><span class="o">;</span> <span class="c1">//[a,a,b,b,c,c,c]  =&gt; a^a^b^b^c^c^c = c
 </span><span class="ln"> 5</span><span class="c1"></span><span class="o">}</span>
 <span class="ln"> 6</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">eor</span><span class="o">);</span>
-<span class="ln"> 7</span><span class="c1">//2.数组中有两个出现奇数次的数
-</span><span class="ln"> 8</span><span class="c1"></span><span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">cur</span> <span class="o">:</span> <span class="n">arr</span><span class="o">){</span>
-<span class="ln"> 9</span>    <span class="n">eor</span> <span class="o">^=</span> <span class="n">cur</span><span class="o">;</span> <span class="c1">//[a,a,b,b,b,c,c,c]  =&gt; a^a^b^b^b^c^c^c 
-</span><span class="ln">10</span><span class="c1"></span><span class="o">}</span>
-<span class="ln">11</span><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">eor</span><span class="o">;</span>
-<span class="ln">12</span>
+<span class="ln"> 7</span>
+<span class="ln"> 8</span><span class="c1">//3.数组中有两个出现奇数次的数
+</span><span class="ln"> 9</span><span class="c1"></span><span class="kt">int</span> <span class="n">eor</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+<span class="ln">10</span><span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">cur</span> <span class="o">:</span> <span class="n">arr</span><span class="o">){</span>
+<span class="ln">11</span>    <span class="n">eor</span> <span class="o">^=</span> <span class="n">cur</span><span class="o">;</span> <span class="c1">//[a,a,b,b,b,c,c,c]  =&gt; a^a^b^b^b^c^c^c = b^c
+</span><span class="ln">12</span><span class="c1"></span><span class="o">}</span>
+<span class="ln">13</span><span class="c1">//eor = b ^ c
+</span><span class="ln">14</span><span class="c1">//eor != 0
+</span><span class="ln">15</span><span class="c1">//eor必然有个一位置上是1, 说明这个位置上b和c不同
+</span><span class="ln">16</span><span class="c1"></span><span class="kt">int</span> <span class="n">rightOne</span> <span class="o">=</span> <span class="n">eor</span> <span class="o">&amp;</span> <span class="o">(~</span><span class="n">eor</span> <span class="o">+</span> <span class="n">1</span><span class="o">);</span>  <span class="c1">//（取反 + 1） &amp; 自己 = 提取出只保留最右侧的1
+</span><span class="ln">17</span><span class="c1"></span>
+<span class="ln">18</span><span class="kt">int</span> <span class="n">result1</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+<span class="ln">19</span><span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">cur</span> <span class="o">:</span> <span class="n">arr</span><span class="o">){</span>
+<span class="ln">20</span>    <span class="k">if</span><span class="o">((</span><span class="n">cur</span> <span class="o">&amp;</span> <span class="n">rightOne</span><span class="o">)</span> <span class="o">==</span> <span class="n">0</span><span class="o">){</span> <span class="c1">//已知在rightOne这个位置上b和c不同，通过(&amp; rightOne)把b和c区分开,别的数是偶数个，异或起来是0不同管
+</span><span class="ln">21</span><span class="c1"></span>        <span class="n">result1</span> <span class="o">^=</span> <span class="n">cur</span><span class="o">;</span> <span class="c1">//这样result1是b或者c
+</span><span class="ln">22</span><span class="c1"></span>    <span class="o">}</span>
+<span class="ln">23</span><span class="o">}</span>
+<span class="ln">24</span><span class="kt">int</span> <span class="n">result2</span> <span class="o">=</span> <span class="n">eor</span> <span class="o">^</span> <span class="n">result1</span><span class="o">;</span>
 </code></pre></div></blockquote>
+<p><strong>插入排序</strong></p>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
