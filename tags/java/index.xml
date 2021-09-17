@@ -386,9 +386,17 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;无序，相邻数一定不相等，找一个局部最小(i-1 &amp;lt; i &amp;lt; i+1)的数，复杂度能否好于O(N)&lt;/p&gt;
-&lt;/li&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;先判断首尾项是否满足要求，若首尾项不满足要求，一定是\进/出，中间一定有低谷拐点。
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;然后判断中间点是否满足要求，若不满足，分为两种情况：
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;1. 斜坡，则一方可与起点或终点组成\进/出。
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;2. 顶峰，则两方向都满足\进/出条件，两个方向都可继续进行二分法
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;直到判断出某个二分法中点满足要求。
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;对数器&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Math&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;random&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;N&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//会在[0]
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         
       </description>
     </item>

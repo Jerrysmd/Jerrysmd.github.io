@@ -215,9 +215,17 @@
 </li>
 <li>
 <p>无序，相邻数一定不相等，找一个局部最小(i-1 &lt; i &lt; i+1)的数，复杂度能否好于O(N)</p>
-</li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>先判断首尾项是否满足要求，若首尾项不满足要求，一定是\进/出，中间一定有低谷拐点。
+<span class="ln">2</span>然后判断中间点是否满足要求，若不满足，分为两种情况：
+<span class="ln">3</span>1. 斜坡，则一方可与起点或终点组成\进/出。
+<span class="ln">4</span>2. 顶峰，则两方向都满足\进/出条件，两个方向都可继续进行二分法
+<span class="ln">5</span>直到判断出某个二分法中点满足要求。
+</code></pre></div></li>
 </ol>
 </blockquote>
+<p><strong>对数器</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="o">(</span><span class="kt">int</span><span class="o">)(</span><span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">()</span> <span class="o">*</span> <span class="n">N</span><span class="o">)</span> <span class="c1">//会在[0]
+</span></code></pre></div>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
