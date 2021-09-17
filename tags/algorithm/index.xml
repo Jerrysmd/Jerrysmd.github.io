@@ -54,13 +54,13 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;插入排序&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;时间复杂度：O(N^2)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;额外空间复杂度：O(1)&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;概念： 将后部分的数据(从第二开始)按照一定的顺序一个一个的插入到前部分有序的表中&lt;/li&gt;
+&lt;li&gt;时间复杂度：O(N^2)&lt;/li&gt;
+&lt;li&gt;额外空间复杂度：O(1)&lt;/li&gt;
 &lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;数据状况不同，时间复杂度不同&lt;/p&gt;
+&lt;/blockquote&gt;
         
       </description>
     </item>
