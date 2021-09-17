@@ -33,7 +33,7 @@
 <meta property="og:url" content="https://Jerrysmd.github.io/post/20191217leetcode/leetcode/" />
 <meta property="og:title" content="LeetCode" />
 <meta property="og:description" content="Article description." />
-<meta property="og:image" content="https://Jerrysmd.github.io/images/.png" />
+<meta property="og:image" content="https://Jerrysmd.github.io/images/code1.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://Jerrysmd.github.io/icons_custom/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://Jerrysmd.github.io/icons_custom/favicon-32x32.png">
@@ -134,8 +134,27 @@
     
     <h2>Overview</h2>
     <nav id="TableOfContents"></nav>
-    <p>insert artical description</p>
-<p>Insert Lead paragraph here.</p>
+    <p>Algorithms are used in every part of computer science. They form the field's backbone. In computer science, an algorithm gives the computer a specific set of instructions, which allows the computer to do everything, be it running a calculator or running a rocket.</p>
+<p><strong>异或运算</strong></p>
+<blockquote>
+<p>特点：</p>
+<ol>
+<li>与自己异或等于0，与0异或等于自己</li>
+<li>遵循交换律和结合律</li>
+</ol>
+<p>例：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="c1">//1.两数交换：
+</span><span class="ln">2</span><span class="c1"></span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">^</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">];</span> <span class="c1">// a = a ^ b
+</span><span class="ln">3</span><span class="c1"></span><span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">^</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">];</span> <span class="c1">// b = (a ^ b) ^ b = a
+</span><span class="ln">4</span><span class="c1"></span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">^</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">];</span> <span class="c1">// a = (a ^ b) ^ a = b
+</span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="c1">//2.数组中有一个出现奇数次的数
+</span><span class="ln">2</span><span class="c1"></span><span class="kt">int</span> <span class="n">eor</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+<span class="ln">3</span><span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">cur</span> <span class="o">:</span> <span class="n">arr</span><span class="o">){</span>
+<span class="ln">4</span>    <span class="n">eor</span> <span class="o">^=</span> <span class="n">cur</span><span class="o">;</span> <span class="c1">//[a,a,b,b,c,c,c]  =&gt; a^a^b^b^c^c^c
+</span><span class="ln">5</span><span class="c1"></span><span class="o">}</span>
+<span class="ln">6</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">eor</span><span class="o">);</span>
+<span class="ln">7</span><span class="c1">//2.数组中有一个出现奇数次的数
+</span></code></pre></div></blockquote>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
