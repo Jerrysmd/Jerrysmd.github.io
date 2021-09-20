@@ -124,7 +124,7 @@
 </svg></span>
     <span class="post_date">
       Sep 17, 2019</span>
-    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/java' title="java" class="post_tag button button_translucent">java
+    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/java' title="java" class="post_tag button button_translucent">java
         </a><a href='https://Jerrysmd.github.io/tags/leetcode' title="leetcode" class="post_tag button button_translucent">leetcode
         </a><a href='https://Jerrysmd.github.io/tags/algorithm' title="algorithm" class="post_tag button button_translucent">algorithm
         </a>
@@ -223,9 +223,15 @@
 </code></pre></div></li>
 </ol>
 </blockquote>
+<p><strong>求中间数</strong></p>
+<ul>
+<li>mid = (L + R) / 2                 // L + R 可能会越界，这时mid算出负数</li>
+<li>mid = L + (R - L) / 2</li>
+<li>mid = L + (R - L) &gt;&gt; 1        //右移一位比除2快</li>
+</ul>
 <p><strong>对数器</strong></p>
 <ul>
-<li>结果对比校验器: 自己控制输入数据使用两种方法或和官方api对比结果</li>
+<li>结果对比校验器: 自己控制输入数据，使用两种方法或和官方api对比结果</li>
 </ul>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="o">(</span><span class="kt">int</span><span class="o">)(</span><span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">()</span> <span class="o">*</span> <span class="n">N</span><span class="o">)</span> <span class="c1">//会在[0, N-1]范围内，等概率返回一个整数
 </span><span class="ln">2</span><span class="c1"></span>
@@ -234,6 +240,64 @@
 <span class="ln">5</span>    <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)((</span><span class="n">maxValue</span> <span class="o">+</span> <span class="n">1</span><span class="o">)</span> <span class="o">*</span> <span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">())</span> <span class="o">-</span> <span class="o">(</span><span class="kt">int</span><span class="o">)(</span><span class="n">maxValue</span> <span class="o">*</span> <span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">());</span>
 <span class="ln">6</span><span class="o">}</span>
 <span class="ln">7</span><span class="k">return</span> <span class="n">arr</span><span class="o">;</span>
+</code></pre></div><p><strong>递归</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">getMax</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">){</span>
+<span class="ln"> 2</span>    <span class="k">return</span> <span class="n">process</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="n">1</span><span class="o">);</span>
+<span class="ln"> 3</span><span class="o">}</span>
+<span class="ln"> 4</span>
+<span class="ln"> 5</span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">process</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">,</span> <span class="kt">int</span> <span class="n">L</span><span class="o">,</span> <span class="kt">int</span> <span class="n">R</span><span class="o">){</span>
+<span class="ln"> 6</span>    <span class="k">if</span><span class="o">(</span><span class="n">L</span> <span class="o">==</span> <span class="n">R</span><span class="o">){</span>
+<span class="ln"> 7</span>        <span class="k">return</span> <span class="n">arr</span><span class="o">[</span><span class="n">L</span><span class="o">];</span>
+<span class="ln"> 8</span>    <span class="o">}</span>
+<span class="ln"> 9</span>    <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">L</span> <span class="o">+</span> <span class="o">((</span><span class="n">R</span> <span class="o">-</span> <span class="n">L</span><span class="o">)</span> <span class="o">&gt;&gt;</span> <span class="n">1</span><span class="o">);</span>
+<span class="ln">10</span>    <span class="kt">int</span> <span class="n">leftMax</span> <span class="o">=</span> <span class="n">process</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">L</span><span class="o">,</span> <span class="n">mid</span><span class="o">);</span>
+<span class="ln">11</span>    <span class="kt">int</span> <span class="n">rightMax</span> <span class="o">=</span> <span class="n">process</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">mid</span> <span class="o">+</span> <span class="n">1</span><span class="o">,</span> <span class="n">R</span><span class="o">);</span>
+<span class="ln">12</span>    <span class="k">return</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">leftMax</span><span class="o">,</span> <span class="n">rightMax</span><span class="o">);</span>
+<span class="ln">13</span><span class="o">}</span>
+</code></pre></div><p><strong>递归时间复杂度估算</strong></p>
+<ul>
+<li>Master公式： T(N) = a * T (N / b) + 0 (N ^ d)
+<ol>
+<li>log(b, a) &gt; d,	则复杂度为O(N ^ log(b, a))</li>
+<li>log(b, a) = d,	则复杂度为O(N ^ d * logN)</li>
+<li>log(b, a) &lt; d,	则复杂度为O(N ^ d)</li>
+</ol>
+</li>
+</ul>
+<p><strong>归并排序</strong></p>
+<ul>
+<li>概念：将n个元素分成个含n/2个元素的子序列，用合并排序法对两个子序列递归的排序，合并两个已排序的子序列已得到排序结果。</li>
+<li>时间复杂度：使用Master公式： T(N) = 2a +</li>
+<li>代码实现：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">process</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">,</span> <span class="kt">int</span> <span class="n">L</span><span class="o">,</span> <span class="kt">int</span> <span class="n">R</span><span class="o">){</span>
+<span class="ln"> 2</span>    <span class="k">if</span><span class="o">(</span><span class="n">L</span> <span class="o">==</span> <span class="n">R</span><span class="o">){</span>
+<span class="ln"> 3</span>        <span class="k">return</span><span class="o">;</span>
+<span class="ln"> 4</span>    <span class="o">}</span>
+<span class="ln"> 5</span>    <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">L</span> <span class="o">+</span> <span class="o">((</span><span class="n">R</span> <span class="o">-</span> <span class="n">L</span><span class="o">)</span> <span class="o">&gt;&gt;</span> <span class="n">1</span><span class="o">);</span>
+<span class="ln"> 6</span>    <span class="n">process</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">L</span><span class="o">,</span> <span class="n">mid</span><span class="o">);</span>
+<span class="ln"> 7</span>    <span class="n">process</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">mid</span> <span class="o">+</span> <span class="n">1</span><span class="o">,</span> <span class="n">R</span><span class="o">);</span>
+<span class="ln"> 8</span>    <span class="n">merge</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">L</span><span class="o">,</span> <span class="n">mid</span><span class="o">,</span> <span class="n">R</span><span class="o">);</span>
+<span class="ln"> 9</span><span class="o">}</span>
+<span class="ln">10</span>
+<span class="ln">11</span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">merge</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">,</span> <span class="kt">int</span> <span class="n">L</span><span class="o">,</span> <span class="kt">int</span> <span class="n">mid</span><span class="o">,</span> <span class="kt">int</span> <span class="n">R</span><span class="o">){</span>
+<span class="ln">12</span>    <span class="kt">int</span><span class="o">[]</span> <span class="n">extr</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">R</span> <span class="o">-</span> <span class="n">L</span> <span class="o">+</span> <span class="n">1</span><span class="o">];</span>
+<span class="ln">13</span>    <span class="kt">int</span> <span class="n">extri</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+<span class="ln">14</span>    <span class="kt">int</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">L</span><span class="o">;</span>
+<span class="ln">15</span>    <span class="kt">int</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">M</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span>
+<span class="ln">16</span>    <span class="k">while</span><span class="o">(</span><span class="n">p1</span> <span class="o">&lt;=</span> <span class="n">M</span> <span class="o">&amp;&amp;</span> <span class="n">p2</span> <span class="o">&lt;=</span> <span class="n">R</span><span class="o">){</span>
+<span class="ln">17</span>        <span class="n">extr</span><span class="o">[</span><span class="n">i</span><span class="o">++]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">p1</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="n">arr</span><span class="o">[</span><span class="n">p2</span><span class="o">]</span> <span class="o">?</span> <span class="n">arr</span><span class="o">[</span><span class="n">p1</span><span class="o">++]:</span> <span class="n">arr</span><span class="o">[</span><span class="n">p2</span><span class="o">++];</span>
+<span class="ln">18</span>    <span class="o">}</span>
+<span class="ln">19</span>    <span class="k">while</span><span class="o">(</span><span class="n">p1</span> <span class="o">&lt;=</span> <span class="n">M</span><span class="o">){</span>
+<span class="ln">20</span>        <span class="n">extr</span><span class="o">[</span><span class="n">i</span><span class="o">++]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">p1</span><span class="o">++];</span>
+<span class="ln">21</span>    <span class="o">}</span>
+<span class="ln">22</span>    <span class="k">while</span><span class="o">(</span><span class="n">p2</span> <span class="o">&lt;=</span> <span class="n">R</span><span class="o">){</span>
+<span class="ln">23</span>        <span class="n">extr</span><span class="o">[</span><span class="n">i</span><span class="o">++]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">p2</span><span class="o">++];</span>
+<span class="ln">24</span>    <span class="o">}</span>
+<span class="ln">25</span>    <span class="k">for</span><span class="o">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">extra</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+<span class="ln">26</span>        <span class="n">arr</span><span class="o">[</span><span class="n">L</span> <span class="o">+</span> <span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">extra</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+<span class="ln">27</span>    <span class="o">}</span>
+<span class="ln">28</span><span class="o">}</span>
 </code></pre></div>
   </article>
 <aside class="sidebar">
