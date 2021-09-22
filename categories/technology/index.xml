@@ -5,7 +5,21 @@
     <link>https://Jerrysmd.github.io/categories/technology/</link>
     <description>Recent content in Technology on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 03 Aug 2020 16:10:33 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/categories/technology/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Sep 2021 11:18:47 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/categories/technology/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JavaInterview</title>
+      <link>https://Jerrysmd.github.io/post/20210922javainterview/javainterview/</link>
+      <pubDate>Wed, 22 Sep 2021 11:18:47 +0800</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/20210922javainterview/javainterview/</guid>
+      <description>
+        
+          &lt;p&gt;insert artical description&lt;/p&gt;
+&lt;p&gt;Insert Lead paragraph here.&lt;/p&gt;
+        
+      </description>
+    </item>
+    
     <item>
       <title>Spark 简介: Spark Guide, Part Ⅲ</title>
       <link>https://Jerrysmd.github.io/post/20200803sparkguide3/sparkguide3/</link>
@@ -4101,10 +4115,10 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
     
     <item>
       <title>LeetCode</title>
-      <link>https://Jerrysmd.github.io/post/20191217leetcode/leetcode/</link>
+      <link>https://Jerrysmd.github.io/post/20200101leetcode/leetcode/</link>
       <pubDate>Tue, 17 Sep 2019 10:57:11 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20191217leetcode/leetcode/</guid>
+      <guid>https://Jerrysmd.github.io/post/20200101leetcode/leetcode/</guid>
       <description>
         
           &lt;p&gt;Algorithms are used in every part of computer science. They form the field&#39;s backbone. In computer science, an algorithm gives the computer a specific set of instructions, which allows the computer to do everything, be it running a calculator or running a rocket.&lt;/p&gt;
