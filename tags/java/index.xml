@@ -175,6 +175,28 @@
     </item>
     
     <item>
+      <title>Java Interview</title>
+      <link>https://Jerrysmd.github.io/post/20200101javainterview/javainterview/</link>
+      <pubDate>Wed, 01 Jan 2020 11:18:47 +0800</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/20200101javainterview/javainterview/</guid>
+      <description>
+        
+          &lt;p&gt;insert artical description&lt;/p&gt;
+&lt;h2 id=&#34;jvm&#34;&gt;JVM&lt;/h2&gt;
+&lt;p&gt;java从编码到执行&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;javac 将 x.java 文件编码成 x.class 文件&lt;/li&gt;
+&lt;li&gt;JVM中的 ClassLoader 将 x.class 文件装载到内存里，通常也会把 java类库也装载到内存里&lt;/li&gt;
+&lt;li&gt;JVM&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+        
+      </description>
+    </item>
+    
+    <item>
       <title>Shallow Copy and Deep Copy in JAVA</title>
       <link>https://Jerrysmd.github.io/post/20191229copyinjava/copyinjava/</link>
       <pubDate>Sun, 29 Dec 2019 22:14:03 +0800</pubDate>
