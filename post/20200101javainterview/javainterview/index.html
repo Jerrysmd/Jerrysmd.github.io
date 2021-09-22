@@ -143,9 +143,17 @@
 <p>java从编码到执行</p>
 <blockquote>
 <ol>
-<li>javac 将 x.java 文件编码成 x.class 文件</li>
-<li>JVM中的 ClassLoader 将 x.class 文件装载到内存里，通常也会把 java类库也装载到内存里</li>
-<li>JVM</li>
+<li>javac 将 x.java(任何语言) 文件编码成 x.class 文件</li>
+<li>JVM 中的 ClassLoader 将 x.class 文件装载到内存里，通常也会把 java类库也装载到内存里  *jvm是解释执行和编译执行混合的</li>
+<li>JVM 调用 字节码解释器 或 JIT即时编译器(常用的代码使用即时编译，第二次编译的时候直接调用) 来进行解释或编译</li>
+<li>JVM 执行引擎开始执行</li>
+</ol>
+</blockquote>
+<p>JVM</p>
+<blockquote>
+<ol>
+<li>jvm 是一种规范</li>
+<li>它是虚构出来的一台计算机</li>
 </ol>
 </blockquote>
   </article>
