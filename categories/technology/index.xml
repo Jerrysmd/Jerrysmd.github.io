@@ -3627,7 +3627,7 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;li&gt;前4个字节：magic&lt;/li&gt;
 &lt;li&gt;两个字节：minor version&lt;/li&gt;
 &lt;li&gt;两个字节：major version&lt;/li&gt;
-&lt;li&gt;两个字节：constant pool cou常量池个数&lt;/li&gt;
+&lt;li&gt;两个字节：constant pool count 常量池个数 ，2个字节，最多65535个&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
