@@ -3618,6 +3618,13 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;li&gt;它是虚构出来的一台计算机&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;ClassFileFormat&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;二进制字节流&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
         
       </description>
     </item>
