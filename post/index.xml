@@ -3622,7 +3622,11 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;二进制字节流&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
+&lt;li&gt;CLASS文件结构
+&lt;ol&gt;
+&lt;li&gt;版本号: JDK1.8&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
         
