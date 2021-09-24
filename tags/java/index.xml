@@ -210,6 +210,12 @@
 &lt;li&gt;两个字节：minor version&lt;/li&gt;
 &lt;li&gt;两个字节：major version&lt;/li&gt;
 &lt;li&gt;两个字节：constant pool count 常量池个数 ，2个字节，最多65535个&lt;/li&gt;
+&lt;li&gt;常量池结构：
+&lt;ol&gt;
+&lt;li&gt;constant_utf8_info: &lt;strong&gt;tag&lt;/strong&gt;:1,占用空间一个字节。&lt;strong&gt;length&lt;/strong&gt;: utf-8字符串占用的字节数。&lt;strong&gt;bytes&lt;/strong&gt;: 长度位length的字符串&lt;/li&gt;
+&lt;li&gt;constant_integer_info: &lt;strong&gt;tag&lt;/strong&gt;:3,占用空间一个字节。&lt;strong&gt;bytes&lt;/strong&gt;: 4个字节，big-endian（高位在前）存储的int值&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
 &lt;/ul&gt;

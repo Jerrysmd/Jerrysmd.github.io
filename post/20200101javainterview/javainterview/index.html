@@ -166,6 +166,12 @@
 <li>两个字节：minor version</li>
 <li>两个字节：major version</li>
 <li>两个字节：constant pool count 常量池个数 ，2个字节，最多65535个</li>
+<li>常量池结构：
+<ol>
+<li>constant_utf8_info: <strong>tag</strong>:1,占用空间一个字节。<strong>length</strong>: utf-8字符串占用的字节数。<strong>bytes</strong>: 长度位length的字符串</li>
+<li>constant_integer_info: <strong>tag</strong>:3,占用空间一个字节。<strong>bytes</strong>: 4个字节，big-endian（高位在前）存储的int值</li>
+</ol>
+</li>
 </ol>
 </li>
 </ul>
