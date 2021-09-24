@@ -3618,10 +3618,10 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;li&gt;它是虚构出来的一台计算机&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;ClassFileFormat&lt;/p&gt;
+&lt;p&gt;ClassFileFormat/54&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ul&gt;
-&lt;li&gt;二进制字节流&lt;/li&gt;
+&lt;li&gt;​	Q二进制字节流&lt;/li&gt;
 &lt;li&gt;CLASS文件结构
 &lt;ol&gt;
 &lt;li&gt;前4个字节：magic&lt;/li&gt;
