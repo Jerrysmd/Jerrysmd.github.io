@@ -35,7 +35,7 @@
 &lt;p&gt;ClassFileFormat/54&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ul&gt;
-&lt;li&gt;​	Q二进制字节流&lt;/li&gt;
+&lt;li&gt;二进制字节流&lt;/li&gt;
 &lt;li&gt;CLASS文件结构
 &lt;ol&gt;
 &lt;li&gt;前4个字节：magic&lt;/li&gt;
@@ -46,9 +46,10 @@
 &lt;ol&gt;
 &lt;li&gt;constant_utf8_info: &lt;strong&gt;tag&lt;/strong&gt;:1,占用空间一个字节。&lt;strong&gt;length&lt;/strong&gt;: utf-8字符串占用的字节数。&lt;strong&gt;bytes&lt;/strong&gt;: 长度位length的字符串&lt;/li&gt;
 &lt;li&gt;constant_integer_info: &lt;strong&gt;tag&lt;/strong&gt;:3,占用空间一个字节。&lt;strong&gt;bytes&lt;/strong&gt;: 4个字节，big-endian（高位在前）存储的int值&lt;/li&gt;
+&lt;li&gt;constant_methodref_info: &lt;strong&gt;tag&lt;/strong&gt;:10 &lt;strong&gt;index&lt;/strong&gt;:2字节，指向声明方法的类或者接口描述符constant_class_info的索引项 &lt;strong&gt;index&lt;/strong&gt;: 2字节，指向字段描述符constant_nameAndType的索引项&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
-&lt;li&gt;class/super_class&lt;/li&gt;
+&lt;li&gt;class/this_class/super_class&lt;/li&gt;
 &lt;li&gt;interfaces&lt;/li&gt;
 &lt;li&gt;fields&lt;/li&gt;
 &lt;li&gt;methods&lt;/li&gt;

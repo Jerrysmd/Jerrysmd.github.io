@@ -159,7 +159,7 @@
 <p>ClassFileFormat/54</p>
 <blockquote>
 <ul>
-<li>​	Q二进制字节流</li>
+<li>二进制字节流</li>
 <li>CLASS文件结构
 <ol>
 <li>前4个字节：magic</li>
@@ -170,9 +170,10 @@
 <ol>
 <li>constant_utf8_info: <strong>tag</strong>:1,占用空间一个字节。<strong>length</strong>: utf-8字符串占用的字节数。<strong>bytes</strong>: 长度位length的字符串</li>
 <li>constant_integer_info: <strong>tag</strong>:3,占用空间一个字节。<strong>bytes</strong>: 4个字节，big-endian（高位在前）存储的int值</li>
+<li>constant_methodref_info: <strong>tag</strong>:10 <strong>index</strong>:2字节，指向声明方法的类或者接口描述符constant_class_info的索引项 <strong>index</strong>: 2字节，指向字段描述符constant_nameAndType的索引项</li>
 </ol>
 </li>
-<li>class/super_class</li>
+<li>class/this_class/super_class</li>
 <li>interfaces</li>
 <li>fields</li>
 <li>methods</li>
