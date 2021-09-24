@@ -3602,12 +3602,12 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
         
           &lt;p&gt;insert artical description&lt;/p&gt;
 &lt;h2 id=&#34;jvm&#34;&gt;JVM&lt;/h2&gt;
-&lt;p&gt;java从编码到执行&lt;/p&gt;
+&lt;p&gt;Java从编码到执行&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ol&gt;
 &lt;li&gt;javac 将 x.java(任何语言) 文件编码成 x.class 文件&lt;/li&gt;
 &lt;li&gt;JVM 中的 ClassLoader 将 x.class 文件装载到内存里，通常也会把 java类库也装载到内存里&lt;/li&gt;
-&lt;li&gt;JVM 调用 字节码解释器 或 JIT即时编译器(常用的代码使用即时编译，第二次编译的时候直接调用) 来进行解释或编译&lt;/li&gt;
+&lt;li&gt;JVM 调用 字节码解释器 或 JIT即时编译器(常用的代码使用即时编译，第二次编译的时候直接调用) 来进行解释或编译 *jvm是解释执行和编译执行混合的&lt;/li&gt;
 &lt;li&gt;JVM 执行引擎开始执行&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
@@ -3618,7 +3618,7 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;li&gt;它是虚构出来的一台计算机&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;ClassFileFormat/54&lt;/p&gt;
+&lt;p&gt;ClassFileFormat/&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;二进制字节流&lt;/li&gt;
