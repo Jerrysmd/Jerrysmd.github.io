@@ -310,7 +310,7 @@
 &lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;Xmixed: 默认为混合模式，开始解释执行，启动速度较快，对热点代码实行检测和编译&lt;/li&gt;
-&lt;li&gt;Xint: 编译模式，启动很快执行稍慢&lt;/li&gt;
+&lt;li&gt;Xint: 解释模式，启动很快执行稍慢&lt;/li&gt;
 &lt;li&gt;Xcomp: 纯编译模式，执行很快，启动很慢&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
