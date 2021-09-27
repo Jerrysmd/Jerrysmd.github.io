@@ -242,8 +242,8 @@
 &lt;li&gt;混合执行&lt;/li&gt;
 &lt;li&gt;linking
 &lt;ol&gt;
-&lt;li&gt;verification：文件符合jvm规定：0xCAFEBABE...&lt;/li&gt;
-&lt;li&gt;preparation：静态成员变量赋默认值，int = 0...&lt;/li&gt;
+&lt;li&gt;verification：文件符合jvm规定：0xCAFEBABE&amp;hellip;&lt;/li&gt;
+&lt;li&gt;preparation：静态成员变量赋默认值，int = 0&amp;hellip;&lt;/li&gt;
 &lt;li&gt;resolution：类、方法、属性符号应用解析为直接引用，常量池中的各个符号引用解析为指针、偏移量等内存地址的直接引用&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
@@ -273,7 +273,7 @@
 &lt;li&gt;双亲委派是一个孩子向父亲方向，然后父亲向孩子方向的双亲委派过程&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200101javaInterview/classLoading.jpg&#34; alt=&#34;classLoadProcess&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200101javaInterview/classLoading.jpg&#34; alt=&#34;classLoadProcess&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;为什么要做双亲委派&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;安全&lt;/p&gt;
@@ -340,7 +340,7 @@
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Initializing&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//例：
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//例：求 T.count
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(){&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;count&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
@@ -354,7 +354,7 @@
 &lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//T.class load，然后linking，
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//到preparation，静态成员变量赋值默认值。t为null，count为0
-&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//然后到initializing，t先执行构造方法，count赋值为2
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//然后到initializing，t先执行构造方法，count赋值为2, count为2
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;16&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;17&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;T&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;18&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;count&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
@@ -364,7 +364,7 @@
 &lt;span class=&#34;ln&#34;&gt;22&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;count&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;++;&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;23&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;24&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt;25&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//initializing，count赋值为2，t再执行构造方法
+&lt;span class=&#34;ln&#34;&gt;25&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//initializing，count赋值为2，t再执行构造方法 count = 2++ = 3
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         
       </description>
@@ -408,7 +408,7 @@
 &lt;span class=&#34;ln&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;shallow-copy&#34;&gt;Shallow Copy&lt;/h2&gt;
 &lt;p&gt;对于基本类型的的属性，浅拷贝会将属性值复制给新的对象，而对于引用类型的属性，浅拷贝会将引用复制给新的对象。而像&lt;code&gt;String&lt;/code&gt;，&lt;code&gt;Integer&lt;/code&gt;这些引用类型，都是不可变的，拷贝的时候会创建一份新的内存空间来存放值，并且将新的引用指向新的内存空间。不可变类型是特殊的引用类型，我们姑且认为这些被&lt;code&gt;final&lt;/code&gt;标记的引用类型也是复制值。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/ShallowCopy.png&#34; alt=&#34;shallowCopy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/ShallowCopy.png&#34; alt=&#34;shallowCopy&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;浅拷贝功能实现&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;nd&#34;&gt;@Data&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;nd&#34;&gt;@AllArgsConstructor&lt;/span&gt;
@@ -448,7 +448,7 @@
 &lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;User&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;age&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Java&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dept&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Dept&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;deptNo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;研发部&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;deep-copy&#34;&gt;Deep Copy&lt;/h2&gt;
 &lt;p&gt;相较于浅拷贝而言，深拷贝除了会将基本类型的属性复制外，还会将引用类型的属性也会复制。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/DeepCopy.png&#34; alt=&#34;deepCopy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/DeepCopy.png&#34; alt=&#34;deepCopy&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;深拷贝功能实现&lt;/p&gt;
 &lt;p&gt;在拷贝user的时候，同事将user中的dept属性进行拷贝。&lt;/p&gt;
 &lt;p&gt;dept 类：&lt;/p&gt;

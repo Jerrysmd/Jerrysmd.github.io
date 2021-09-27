@@ -160,7 +160,7 @@
 <li>#defined         　与#if, #elif配合使用，判断某个宏是否被定义</li>
 </ul>
 <h2 id="条件编译">条件编译</h2>
-<p>条件编译是根据实际定义宏（某类条件）进行代码静态编译的手段。可根据表达式的值或某个特定宏是否被定义来确定编译条件。
+<p>条件编译是根据实际定义宏（某类条件）进行代码静态编译的手段。可根据表达式的值或某个特定宏是否被定义来确定编译条件。<br />
 最常见的条件编译是防止重复包含头文件的宏，形式跟下面代码类似：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span> <span class="cp">#ifndef ABCD_H
 </span><span class="ln">2</span><span class="cp"></span> <span class="cp">#define ABCD_H
@@ -182,10 +182,10 @@
 <span class="ln">11</span> <span class="cp">#endif
 </span></code></pre></div><h2 id="预编译指令应用举例">预编译指令应用举例</h2>
 <h3 id="1-defineundef">1. #define、#undef</h3>
-<p>#define命令定义一个宏:
-#define		MACRO_NAME[(args)]	[tokens[(opt)]]
+<p>#define命令定义一个宏:<br />
+#define		MACRO_NAME[(args)]	[tokens[(opt)]]<br />
 之后出现的MACRO_NAME将被替代为所定义的标记(tokens)。宏可带参数，而后面的标记也是可选的。</p>
-<p>宏定义，按照是否带参数通常分为对象宏、函数宏两种。
+<p>宏定义，按照是否带参数通常分为对象宏、函数宏两种。<br />
 对象宏: 不带参数的宏被称为&quot;对象宏(objectlike macro)&quot;。对象宏多用于定义常量、通用标识。例如：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="c1">// 常量定义
 </span><span class="ln">2</span><span class="c1"></span><span class="cp">#define MAX_LENGTH 100
@@ -200,7 +200,7 @@
 </span><span class="ln">4</span><span class="c1"></span><span class="cp">#define SAFE_DELETE(p) {if(NULL!=p){delete p; p = NULL;}}
 </span></code></pre></div><p>#undef可以取消宏定义，与#define对应。</p>
 <h3 id="2-defined">2. defined</h3>
-<p>defined用来测试某个宏是否被定义。defined(name): 若宏被定义，则返回1，否则返回0。
+<p>defined用来测试某个宏是否被定义。defined(name): 若宏被定义，则返回1，否则返回0。<br />
 它与#if、#elif、#else结合使用来判断宏是否被定义，乍一看好像它显得多余, 因为已经有了#ifdef和#ifndef。defined可用于在一条判断语句中声明多个判别条件；#ifdef和#ifndef则仅支持判断一个宏是否定义。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="cp">#if defined(VAX) &amp;&amp; defined(UNIX) &amp;&amp; !defined(DEBUG) 
 </span></code></pre></div><p>和#if、#elif、#else不同，#ifdef、#ifndef、defined测试的宏可以是对象宏，也可以是函数宏。</p>
@@ -215,7 +215,7 @@
 <span class="ln">7</span>#endif 
 </code></pre></div><p>#ifdef用于判断某个宏是否定义，和#ifndef功能正好相反，二者仅支持判断单个宏是否已经定义，上面例子中二者可以互换。如果不需要多条件预编译的话，上面例子中的#elif和#else均可以不写。</p>
 <h3 id="4-ifelifelseendif">4. #if、#elif、#else、#endif</h3>
-<p>在判断某个宏是否被定义时，应当避免使用#if，因为该宏的值可能就是被定义为0。而应当使用#ifdef或#ifndef。
+<p>在判断某个宏是否被定义时，应当避免使用#if，因为该宏的值可能就是被定义为0。而应当使用#ifdef或#ifndef。<br />
 注意: #if、#elif之后的宏只能是对象宏。如果宏未定义，或者该宏是函数宏，则编译器可能会有对应宏未定义的警告。</p>
   </article>
 <aside class="sidebar">

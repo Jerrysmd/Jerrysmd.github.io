@@ -21,7 +21,7 @@
 &lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;git config --global user.email &lt;span class=&#34;s2&#34;&gt;&amp;#34;github@*.com&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;update-commit-history&#34;&gt;Update commit history&lt;/h2&gt;
 &lt;p&gt;If you do not want to waste your commit history.&lt;/p&gt;
-&lt;p&gt;we can use &#39;git log&#39; to see the git record&lt;/p&gt;
+&lt;p&gt;we can use &amp;lsquo;git log&amp;rsquo; to see the git record&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;git log
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;we need to edit all of the history of commit and push.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;git filter-branch -f --env-filter &lt;span class=&#34;s1&#34;&gt;&amp;#39;

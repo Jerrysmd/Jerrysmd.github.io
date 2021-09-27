@@ -373,13 +373,13 @@
 &lt;li&gt;
 &lt;p&gt;Sqoop&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;MySQL -&amp;gt; Sqoop -&amp;gt; HDFS[增量数据1，增量数据2，... ] -&amp;gt; Structured Streaming -&amp;gt; Hbase&lt;/p&gt;
+&lt;p&gt;MySQL -&amp;gt; Sqoop -&amp;gt; HDFS[增量数据1，增量数据2，&amp;hellip; ] -&amp;gt; Structured Streaming -&amp;gt; Hbase&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Ngix&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Ngix[log1, log2，... ] -&amp;gt; Flume -&amp;gt; HDFS[增量数据1，增量数据2，... ] -&amp;gt; Structured Streaming -&amp;gt; Hbase&lt;/p&gt;
+&lt;p&gt;Ngix[log1, log2，&amp;hellip; ] -&amp;gt; Flume -&amp;gt; HDFS[增量数据1，增量数据2，&amp;hellip; ] -&amp;gt; Structured Streaming -&amp;gt; Hbase&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;li&gt;
@@ -599,7 +599,7 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;连续流&lt;/p&gt;
-&lt;p&gt;Trigger.Continuous(&amp;quot;1 second&amp;quot;)，只支持Map类的类型操作，不支持聚合，Source和Sink只支持Kafka&lt;/p&gt;
+&lt;p&gt;Trigger.Continuous(&amp;ldquo;1 second&amp;rdquo;)，只支持Map类的类型操作，不支持聚合，Source和Sink只支持Kafka&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
         
@@ -852,7 +852,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;5&#34;&gt;
 &lt;li&gt;
 &lt;p&gt;DataFrame只能做到运行时类型检查，Dataset能做到编译和运行都有类型检查&lt;/p&gt;
-&lt;p&gt;DataFrame弱类型是编译时不安全(df.groupBy(&amp;quot;name, school&amp;quot;))&lt;/p&gt;
+&lt;p&gt;DataFrame弱类型是编译时不安全(df.groupBy(&amp;ldquo;name, school&amp;rdquo;))&lt;/p&gt;
 &lt;p&gt;Dataset所代表的操作，是类型安全的，编译时安全的(ds.filter(person =&amp;gt; person.name))&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
@@ -1005,7 +1005,7 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;启动Hive MetaStore&lt;/p&gt;
-&lt;p&gt;nohup /export/servers/hive/bin/hive --service metastore 2&amp;gt;&amp;amp;1 &amp;gt;&amp;gt; /var/log.log &amp;amp;&lt;/p&gt;
+&lt;p&gt;nohup /export/servers/hive/bin/hive &amp;ndash;service metastore 2&amp;gt;&amp;amp;1 &amp;raquo; /var/log.log &amp;amp;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
@@ -1284,7 +1284,7 @@
 &lt;li&gt;
 &lt;p&gt;功能&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;naf.drop...	naf.fill ...&lt;/p&gt;
+&lt;p&gt;naf.drop&amp;hellip;	naf.fill &amp;hellip;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-scala&#34; data-lang=&#34;scala&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;na&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;drop&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;na&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fill&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
@@ -1487,11 +1487,11 @@
 &lt;p&gt;左外连接&lt;/p&gt;
 &lt;p&gt;全外连接含没有连接上的数据，左外连接只包含左边没有连接上的数据。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;semi&amp;amp;anti&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Semi-join
-通常出现在使用了exists或in的sql中，所谓semi-join即在两表关联时，当第二个表中存在一个或多个匹配记录时，返回第一个表的记录；
+&lt;p&gt;Semi-join&lt;br /&gt;
+通常出现在使用了exists或in的sql中，所谓semi-join即在两表关联时，当第二个表中存在一个或多个匹配记录时，返回第一个表的记录；&lt;br /&gt;
 与普通join的区别在于semi-join时，第一个表里的记录最多只返回一次；&lt;/p&gt;
-&lt;p&gt;Anti-join
-而anti-join则与semi-join相反，即当在第二张表没有发现匹配记录时，才会返回第一张表里的记录；
+&lt;p&gt;Anti-join&lt;br /&gt;
+而anti-join则与semi-join相反，即当在第二张表没有发现匹配记录时，才会返回第一张表里的记录；&lt;br /&gt;
 当使用not exists/not in的时候会用到，两者在处理null值的时候会有所区别&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;使用not in且相应列有not null约束&lt;/li&gt;
@@ -1529,7 +1529,7 @@
 &lt;li&gt;Spark提供了批处理（RDDs），结构化查询（DataFrame），流计算（SparkStreaming），机器学习（MLib），图计算（GraphX）等组件&lt;/li&gt;
 &lt;li&gt;这些组件均是依托于通用的计算引擎RDDs而构建出，所以spark-core的RDDs是整个Spark的基础&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/sparkStructure.png&#34; alt=&#34;sparkStructure&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/sparkStructure.png&#34; alt=&#34;sparkStructure&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;2 Spark &amp;amp; Hadoop&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -1569,7 +1569,7 @@
 &lt;/table&gt;
 &lt;h2 id=&#34;spark-cluster&#34;&gt;Spark Cluster&lt;/h2&gt;
 &lt;p&gt;1 Cluster  relation&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/clusterManager.png&#34; alt=&#34;clusterManager&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/clusterManager.png&#34; alt=&#34;clusterManager&#34; /&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Driver：该进程调用Spark程序的main方法，并且启动SparkContext&lt;/li&gt;
 &lt;li&gt;Cluster Manager：该进程负责和外部集群工具打交道，申请或释放集群资源&lt;/li&gt;
@@ -1606,7 +1606,7 @@
 &lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;val&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rdd3&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rdd2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;map&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;item&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;item&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;))&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;val&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rdd4&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rdd3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;reduceByKey&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;curr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;agg&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;curr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;agg&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rdd4&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;collect&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/sparkDemoRunProcess.png&#34; alt=&#34;sparkDemoRunProcess&#34;&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/sparkDemoRunProcess.png&#34; alt=&#34;sparkDemoRunProcess&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;2 Local IDEA Run&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-scala&#34; data-lang=&#34;scala&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;Arrary&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;])&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;Unit&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;// 创建SparkContext
@@ -1687,7 +1687,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;RDD需要容错，可以惰性求值，可以移动计算，所以很难支持修改，显著降低问题的复杂度。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/sparkRdd.png&#34; alt=&#34;sparkRdd&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/sparkRdd.png&#34; alt=&#34;sparkRdd&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;4 sparkContext&lt;/p&gt;
 &lt;p&gt;SparkContext是spark功能的主要入口。其代表与spark集群的连接，能够用来在集群上创建RDD、累加器、广播变量。每个JVM里只能存在一个处于激活状态的SparkContext，在创建新的SparkContext之前必须调用stop()来关闭之前的SparkContext。&lt;/p&gt;
 &lt;p&gt;每一个Spark应用都是一个SparkContext实例，可以理解为一个SparkContext就是一个spark application的生命周期，一旦SparkContext创建之后，就可以用这个SparkContext来创建RDD、累加器、广播变量，并且可以通过SparkContext访问Spark的服务，运行任务。spark context设置内部服务，并建立与spark执行环境的连接。&lt;/p&gt;
@@ -1784,7 +1784,7 @@
 &lt;li&gt;如何放在集群中运行?&lt;/li&gt;
 &lt;/ol&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/sparkPutFile2Cluster.png&#34; alt=&#34;sparkPutFile2Cluster&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/sparkPutFile2Cluster.png&#34; alt=&#34;sparkPutFile2Cluster&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;并行计算就是同时使用多个计算资源解决一个问题，有四个要点&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;解决的问题可以分解为多个可以并发计算的部分&lt;/li&gt;
@@ -1797,7 +1797,7 @@
 &lt;li&gt;如果放在集群中，如何对整个计算任务进行分解？&lt;/li&gt;
 &lt;/ol&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/sparkFile2Cluster2.png&#34; alt=&#34;sparkFile2Cluster2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/sparkFile2Cluster2.png&#34; alt=&#34;sparkFile2Cluster2&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;概述&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;对于HDFS中的文件，是分为不同的Block&lt;/li&gt;
@@ -1827,7 +1827,7 @@
 &lt;p&gt;&lt;strong&gt;如何通过父级RDD恢复？&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;记录RDD2的父亲是RDD1&lt;/li&gt;
-&lt;li&gt;记录RDD2的计算函数，例如RDD2 = RDD1.map(...)等计算函数&lt;/li&gt;
+&lt;li&gt;记录RDD2的计算函数，例如RDD2 = RDD1.map(&amp;hellip;)等计算函数&lt;/li&gt;
 &lt;li&gt;通过父级RDD和计算函数来恢复RDD2&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
@@ -1985,7 +1985,7 @@
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;22&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;sc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stop&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;23&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;rdd-feature&#34;&gt;RDD Feature&lt;/h2&gt;
-&lt;p&gt;RDD&#39;s shuffle and partition&lt;/p&gt;
+&lt;p&gt;RDD&amp;rsquo;s shuffle and partition&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;RDD经常需要通过读取外部系统的数据来创建，外部存储系统往往是支持分片的。RDD需要支持分区，来和外部系统的分片一一对应&lt;/li&gt;
 &lt;li&gt;RDD的分区是一个并行计算的实现手段&lt;/li&gt;
@@ -2177,11 +2177,11 @@
 &lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;+-&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;MapPartitionsRDD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;map&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;test&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;scala&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;10&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;[]&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;    &lt;span class=&#34;kt&#34;&gt;|&lt;/span&gt;  &lt;span class=&#34;kt&#34;&gt;MapPartitionsRDD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;flatMap&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;test&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;scala&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;9&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;[]&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;    &lt;span class=&#34;kt&#34;&gt;|&lt;/span&gt;  &lt;span class=&#34;kt&#34;&gt;ParallelCollectionRDD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;parallelize&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;test&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;scala&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;6&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;[]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200527sparkGuide1/RDDlogic.png&#34; alt=&#34;RDDlogic&#34;&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200527sparkGuide1/RDDlogic.png&#34; alt=&#34;RDDlogic&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;物理执行图&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;当触发Action执行的时候，这一组互相依赖的RDD要被处理，所以要转化为可运行的物理执行图，调度到集群中执行。&lt;/p&gt;
 &lt;p&gt;因为大部分RDD是不真正存放数据的，只是数据从中流转，所以不能直接在集群中运行RDD，要有一种pipeline的思想，需要将这组RDD转为Stage和Task，从而运行Task，优化整体执行速度。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200527sparkGuide1/RDDphysic.png&#34; alt=&#34;RDDphysic&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200527sparkGuide1/RDDphysic.png&#34; alt=&#34;RDDphysic&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;小结：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;① -&amp;gt; ① -&amp;gt; ① 在第一个stage中，每一个这样的执行流程是一个Task，也就是在同一个Stage中的所有RDD的对应分区，在同一个Task中执行&lt;/li&gt;
@@ -2246,7 +2246,7 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200527sparkGuide1/sparkFlow.png&#34; alt=&#34;sparkFlow&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200527sparkGuide1/sparkFlow.png&#34; alt=&#34;sparkFlow&#34; /&gt;&lt;/p&gt;
         
       </description>
     </item>

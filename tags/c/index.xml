@@ -14,9 +14,9 @@
       <guid>https://Jerrysmd.github.io/post/20191007u32/u32/</guid>
       <description>
         
-          &lt;p&gt;C/C++ provides various data types that can be used in your programs.In general, you&#39;d commonly use: int for most variables and &amp;quot;countable&amp;quot; things (for loop counts, variables, events). char for characters and strings. float for general measurable things (seconds, distance, temperature). uint32 for bit manipulations, especially on 32-bit registers.&lt;/p&gt;
+          &lt;p&gt;C/C++ provides various data types that can be used in your programs.In general, you&amp;rsquo;d commonly use: int for most variables and &amp;ldquo;countable&amp;rdquo; things (for loop counts, variables, events). char for characters and strings. float for general measurable things (seconds, distance, temperature). uint32 for bit manipulations, especially on 32-bit registers.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;int&lt;/strong&gt; for most variables and &amp;quot;countable&amp;quot; things (for loop counts, variables, events)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;int&lt;/strong&gt; for most variables and &amp;ldquo;countable&amp;rdquo; things (for loop counts, variables, events)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;char&lt;/strong&gt; for characters and strings&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;float&lt;/strong&gt; for general measurable things (seconds, distance, temperature)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;uint32_t&lt;/strong&gt; for bit manipulations, especially on 32-bit registers&lt;/li&gt;
@@ -318,7 +318,7 @@
 &lt;/table&gt;
 &lt;h4 id=&#34;5-length&#34;&gt;5. length&lt;/h4&gt;
 &lt;p&gt;类型长度指明待输出数据的长度。因为相同类型可以有不同的长度，比如整型有16bits的short int，32bits的int，也有64bits的long int，浮点型有32bits的单精度float和64bits的双精度double。为了指明同一类型的不同长度，于是乎，类型长度（length）应运而生，成为格式控制字符串的一部分。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/typeInC.jpg&#34; alt=&#34;typeTable&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/typeInC.jpg&#34; alt=&#34;typeTable&#34; /&gt;&lt;/p&gt;
         
       </description>
     </item>
@@ -350,7 +350,7 @@
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt; 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Output:&lt;/p&gt;
 &lt;p&gt;​	Size of struct: 24&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/struct_sizeof_ex1.png&#34; alt=&#34;Output1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/struct_sizeof_ex1.png&#34; alt=&#34;Output1&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;The red portion represents the padding added for data alignment and the green portion represents the struct members. In this case, x (int) is followed by z (double), which is larger in size as compared to x. Hence padding is added after x. Also, padding is needed at the end for data alignment.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Case 2:&lt;/li&gt;
@@ -368,7 +368,7 @@
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt; 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Output:&lt;/p&gt;
 &lt;p&gt;​	Size of struct: 16&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/struct_sizeof_ex2.png&#34; alt=&#34;output2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/struct_sizeof_ex2.png&#34; alt=&#34;output2&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;In this case, the members of the structure are sorted in decreasing order of their sizes. Hence padding is required only at the end.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Case 3:&lt;/li&gt;
@@ -386,7 +386,7 @@
 &lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt; 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Output:&lt;/p&gt;
 &lt;p&gt;​	Size of struct: 16&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/struct_sizeof_ex3.png&#34; alt=&#34;output3&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/struct_sizeof_ex3.png&#34; alt=&#34;output3&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;In this case, y (short int) is followed by x (int) and hence padding is required after y. No padding is needed at the end in this case for data alignment.&lt;/p&gt;
 &lt;p&gt;C language doesn’t allow the compilers to reorder the struct members to reduce the amount of padding. In order to minimize the amount of padding, the struct members must be sorted in a descending order (similar to the case 2).&lt;/p&gt;
         
@@ -410,10 +410,10 @@
 &lt;p&gt;使用typedef定义新类型的方法：在传统的变量声明表达式里用&lt;mark&gt;（新的）类型名&lt;/mark&gt;替换&lt;mark&gt;变量名&lt;/mark&gt;，然后把关键字typedef加在该语句的开头就行了。&lt;/p&gt;
 &lt;p&gt;下面以两个示例，描述typedef的用法步骤。&lt;/p&gt;
 &lt;p&gt;示例1：&lt;/p&gt;
-&lt;p&gt;int a; ———— 传统变量声明表达式
+&lt;p&gt;int a; ———— 传统变量声明表达式&lt;br /&gt;
 typedef int myint_t; ———— 使用新的类型名myint_t替换变量名a。在语句开头加上typedef关键字，myint_t就是我们定义的新类型&lt;/p&gt;
 &lt;p&gt;示例2：&lt;/p&gt;
-&lt;p&gt;void (*pfunA)(int a); ———— 传统变量（函数）声明表达式
+&lt;p&gt;void (*pfunA)(int a); ———— 传统变量（函数）声明表达式&lt;br /&gt;
 typedef void (*PFUNA)(int a); ———— 使用新的类型名PFUNA替换变量名pfunA。在语句开头加上typedef关键字，PFUNA就是我们定义的新类型&lt;/p&gt;
 &lt;h3 id=&#34;22-typedef的作用&#34;&gt;2.2 typedef的作用&lt;/h3&gt;
 &lt;p&gt;typedef的作用有以下几点：&lt;/p&gt;
@@ -432,7 +432,7 @@ typedef void (*PFUNA)(int a); ———— 使用新的类型名PFUNA替换变�
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上述声明引入了PFunCallBack类型作为函数指针的同义字，该函数有两个类型分别为char*和unsigned int参数，以及一个类型为int的返回值。通常，当某个函数的参数是一个回调函数时，可能会用到typedef简化声明。&lt;/p&gt;
 &lt;p&gt;例如，承接上面的示例，我们再列举下列示例：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;RedisSubCommand&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;strKey&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;PFunCallBack&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pFunCallback&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;bool&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;bOnlyOne&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;注意：&lt;/code&gt;类型名PFunCallBack与变量名pFunCallback的大小写区别。
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;注意：&lt;/code&gt;类型名PFunCallBack与变量名pFunCallback的大小写区别。&lt;br /&gt;
 RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返回某个函数（pFunCallback）的地址。在这个示例中，如果不用typedef，RedisSubCommand函数声明如下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;RedisSubCommand&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;strKey&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pFunCallback&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pMsg&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nMsgLen&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;bool&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;bOnlyOne&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt; 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;从上面两条函数声明可以看出，不使用typedef的情况下，RedisSubCommand函数的声明复杂得多，不利于代码的理解，并且增加的出错风险。&lt;/p&gt;
@@ -455,7 +455,7 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;　&lt;span class=&#34;n&#34;&gt;s3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;而使用typedef为char*定义了新类型pStr1后，相关代码等同于为：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;3.1 示例2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;3.1 示例2&lt;br /&gt;
 代码如下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pStr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;test&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
@@ -463,7 +463,7 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
 &lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pStr&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;error:increment of read-only variable &#39;p2&#39;&lt;/code&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;error:increment of read-only variable &#39;p2&#39;&lt;/code&gt;&lt;br /&gt;
 根据错误信息，能够看出p2为只读的常量了，所以p2++出错了。这个问题再一次提醒我们：typedef和#define不同，typedef不是简单的文本替换，上述代码中const pStr p2并不等于const char * p2，pStr是作为一个类型存在的，所以const pStr p2实际上限制了pStr类型的p2变量，对p2常量进行了只读限制。也就是说，const pStr p2和pStr const p2本质上没有区别（可类比const int p2和int const p2），都是对变量p2进行只读限制，只不过此处变量p2的数据类型是我们自己定义的（pStr），而不是系统固有类型（如int）而已。&lt;/p&gt;
 &lt;p&gt;所以，const pStr p2的含义是：限定数据类型为char *的变量p2为只读，因此p2++错误。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;注意：&lt;/code&gt;在本示例中，typedef定义的新类型与编译系统固有的类型没有差别。&lt;/p&gt;
@@ -493,7 +493,7 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
 &lt;li&gt;#defined         　与#if, #elif配合使用，判断某个宏是否被定义&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;条件编译&#34;&gt;条件编译&lt;/h2&gt;
-&lt;p&gt;条件编译是根据实际定义宏（某类条件）进行代码静态编译的手段。可根据表达式的值或某个特定宏是否被定义来确定编译条件。
+&lt;p&gt;条件编译是根据实际定义宏（某类条件）进行代码静态编译的手段。可根据表达式的值或某个特定宏是否被定义来确定编译条件。&lt;br /&gt;
 最常见的条件编译是防止重复包含头文件的宏，形式跟下面代码类似：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;cp&#34;&gt;#ifndef ABCD_H
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt; &lt;span class=&#34;cp&#34;&gt;#define ABCD_H
@@ -515,10 +515,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
 &lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt; &lt;span class=&#34;cp&#34;&gt;#endif
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;预编译指令应用举例&#34;&gt;预编译指令应用举例&lt;/h2&gt;
 &lt;h3 id=&#34;1-defineundef&#34;&gt;1. #define、#undef&lt;/h3&gt;
-&lt;p&gt;#define命令定义一个宏:
-#define		MACRO_NAME[(args)]	[tokens[(opt)]]
+&lt;p&gt;#define命令定义一个宏:&lt;br /&gt;
+#define		MACRO_NAME[(args)]	[tokens[(opt)]]&lt;br /&gt;
 之后出现的MACRO_NAME将被替代为所定义的标记(tokens)。宏可带参数，而后面的标记也是可选的。&lt;/p&gt;
-&lt;p&gt;宏定义，按照是否带参数通常分为对象宏、函数宏两种。
+&lt;p&gt;宏定义，按照是否带参数通常分为对象宏、函数宏两种。&lt;br /&gt;
 对象宏: 不带参数的宏被称为&amp;quot;对象宏(objectlike macro)&amp;quot;。对象宏多用于定义常量、通用标识。例如：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// 常量定义
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;#define MAX_LENGTH 100
@@ -533,7 +533,7 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;#define SAFE_DELETE(p) {if(NULL!=p){delete p; p = NULL;}}
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;#undef可以取消宏定义，与#define对应。&lt;/p&gt;
 &lt;h3 id=&#34;2-defined&#34;&gt;2. defined&lt;/h3&gt;
-&lt;p&gt;defined用来测试某个宏是否被定义。defined(name): 若宏被定义，则返回1，否则返回0。
+&lt;p&gt;defined用来测试某个宏是否被定义。defined(name): 若宏被定义，则返回1，否则返回0。&lt;br /&gt;
 它与#if、#elif、#else结合使用来判断宏是否被定义，乍一看好像它显得多余, 因为已经有了#ifdef和#ifndef。defined可用于在一条判断语句中声明多个判别条件；#ifdef和#ifndef则仅支持判断一个宏是否定义。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;#if defined(VAX) &amp;amp;&amp;amp; defined(UNIX) &amp;amp;&amp;amp; !defined(DEBUG) 
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;和#if、#elif、#else不同，#ifdef、#ifndef、defined测试的宏可以是对象宏，也可以是函数宏。&lt;/p&gt;
@@ -548,7 +548,7 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
 &lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;#endif 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;#ifdef用于判断某个宏是否定义，和#ifndef功能正好相反，二者仅支持判断单个宏是否已经定义，上面例子中二者可以互换。如果不需要多条件预编译的话，上面例子中的#elif和#else均可以不写。&lt;/p&gt;
 &lt;h3 id=&#34;4-ifelifelseendif&#34;&gt;4. #if、#elif、#else、#endif&lt;/h3&gt;
-&lt;p&gt;在判断某个宏是否被定义时，应当避免使用#if，因为该宏的值可能就是被定义为0。而应当使用#ifdef或#ifndef。
+&lt;p&gt;在判断某个宏是否被定义时，应当避免使用#if，因为该宏的值可能就是被定义为0。而应当使用#ifdef或#ifndef。&lt;br /&gt;
 注意: #if、#elif之后的宏只能是对象宏。如果宏未定义，或者该宏是函数宏，则编译器可能会有对应宏未定义的警告。&lt;/p&gt;
         
       </description>
@@ -713,7 +713,7 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
 &lt;h3 id=&#34;1-安装libhugetlbfs库&#34;&gt;1. 安装libhugetlbfs库&lt;/h3&gt;
 &lt;p&gt;libhugetlbfs库实现了大页内存的访问。安装可以通过apt-get或者yum命令完成，如果系统没有该命令，还可以git clone, 然后make生成libhugetlbfs.so文件. 直接使用makefile进行编译：make BUILDTYPE=NATIVEONLY一定要加最后的参数 BUILDTYPE=NATIVEONLY否则会遇见各种错误&lt;/p&gt;
 &lt;h3 id=&#34;2-配置grub启动文件&#34;&gt;2. 配置grub启动文件&lt;/h3&gt;
-&lt;p&gt;具体就是在kernel选项的最后添加几个启动参数：transparent_hugepage=never default_hugepagesz=1G hugepagesz=1Ghugepages=123
+&lt;p&gt;具体就是在kernel选项的最后添加几个启动参数：transparent_hugepage=never default_hugepagesz=1G hugepagesz=1Ghugepages=123&lt;br /&gt;
 这四个参数中，最重要的是后两个，hugepagesz用来设置每页的大小，我们将其设置为1G，其他可选的配置有4K，2M（其中2M是默认）。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;vim /boot/grub/grub.cfg
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;修改完grub.conf后，重启系统。然后运行命令查看大页设置是否生效&lt;/p&gt;
@@ -793,8 +793,8 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
 &lt;ul&gt;
 &lt;li&gt;使用fwrite(dbdata, dblength, 1,fp)把字节流写入二进制文件。在新程序读取二进制文件遇到问题：二进制内容不能向文本一样行读取，也不知道二进制文件长度，在fread()函数中无从下手。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;1creat-file-pointer-and-set-mode-as-rb&#34;&gt;1.creat FILE pointer and set mode as &#39;rb&#39;&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;h2 id=&#34;1creat-file-pointer-and-set-mode-as-rb&#34;&gt;1.creat FILE pointer and set mode as &amp;lsquo;rb&amp;rsquo;&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;FILE&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fopen&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;inputFN&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;rb&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;2check-the-file-pointer-is-not-null&#34;&gt;2.check the FILE pointer is not null&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
@@ -941,7 +941,7 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
 &lt;ol&gt;
 &lt;li&gt;$ git clone &lt;a href=&#34;https://github.com/sqlcipher/sqlcipher.git&#34;&gt;https://github.com/sqlcipher/sqlcipher.git&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;$ cd sqlcipher&lt;/li&gt;
-&lt;li&gt;$ ./configure --enable-tempstore=yes CFLAGS=&amp;quot;-DSQLITE_HAS_CODEC -DSQLITE_TEMP_STORE=2&amp;quot; LDFLAGS=&amp;quot;-lcrypto&amp;quot;&lt;/li&gt;
+&lt;li&gt;$ ./configure &amp;ndash;enable-tempstore=yes CFLAGS=&amp;quot;-DSQLITE_HAS_CODEC -DSQLITE_TEMP_STORE=2&amp;quot; LDFLAGS=&amp;quot;-lcrypto&amp;quot;&lt;/li&gt;
 &lt;li&gt;$ make&lt;/li&gt;
 &lt;li&gt;$ make install &lt;em&gt;#if you want to do a system wide install of SQLCipher&lt;/em&gt;&lt;/li&gt;
 &lt;/ol&gt;
@@ -1001,11 +1001,11 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
 &lt;p&gt;这是一个文件的依赖关系，也就是说，target这一个或多个的目标文件依赖于prerequisites中的文件，其生成规则定义在command中。也就是说，prerequisites中如果有一个以上的文件比target文件要新的话，command所定义的命令就会被执行。&lt;/p&gt;
 &lt;h3 id=&#34;2----含义&#34;&gt;2. $@, $^, $&amp;lt; 含义&lt;/h3&gt;
 &lt;ol&gt;
-&lt;li&gt;$@--目标文件&lt;/li&gt;
-&lt;li&gt;$^--所有的依赖文件&lt;/li&gt;
-&lt;li&gt;$&amp;lt;--第一个依赖文件&lt;/li&gt;
+&lt;li&gt;$@&amp;ndash;目标文件&lt;/li&gt;
+&lt;li&gt;$^&amp;ndash;所有的依赖文件&lt;/li&gt;
+&lt;li&gt;$&amp;lt;&amp;ndash;第一个依赖文件&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;一个示例
+&lt;p&gt;一个示例&lt;br /&gt;
 如果一个工程有3个头文件，和8个C文件，我们为了完成前面所述的那三个规则，我们的Makefile应该是下面的这个样子的。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;edit &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;kbd&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;display&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; \
 &lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;       &lt;span class=&#34;n&#34;&gt;insert&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;search&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;files&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;utils&lt;/span&gt;.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt;
@@ -1074,7 +1074,7 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
 &lt;p&gt;比如我们声明一个变量，objects, OBJECTS,objs,OBJS,或OBJ，表示obj文件。在makefile一开始就定义&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;objects&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; main.o kbd.o command.o display.o &lt;span class=&#34;se&#34;&gt;\
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;		  insert.o search.o files.o utils.o
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;于是，就可以方便的在makefile中以&amp;quot;$(objects)&amp;quot;的方式来使用这个变量了。改良后的makefile如下：&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;于是，就可以方便的在makefile中以&amp;quot;$(objects)&amp;ldquo;的方式来使用这个变量了。改良后的makefile如下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;objects&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; main.o kbd.o command.o display.o &lt;span class=&#34;se&#34;&gt;\
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;		insert.o search.o files.o utils.o
 &lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;edit &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;objects&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;
@@ -1157,7 +1157,7 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
 &lt;p&gt;最后，在Makefile中的命令，必须要以[Tab]键开始。&lt;/p&gt;
 &lt;h3 id=&#34;2-makefile的文件名&#34;&gt;2. Makefile的文件名&lt;/h3&gt;
 &lt;p&gt;默认的情况下，make命令会在当前目录下按顺序找寻文件名为**“GNUmakefile”、“makefile”、“Makefile”**的文件，找到了解释这个文件。在这三个文件名中，最好使用“Makefile”这个文件名，因为，这个文件名第一个字符为大写，这样有一种显目的感觉。最好不要用“GNUmakefile”，这个文件是GNU的make识别的。有另外一些make只对全小写的“makefile”文件名敏感，但是基本上来说，大多数的make都支持“**makefile”和“Makefile”**这两种默认文件名。&lt;/p&gt;
-&lt;p&gt;当然，可以使用别的文件名来书写Makefile，比如：“Make.Linux”，“Make.Solaris”，“Make.AIX”等，如果要****指定特定的Makefile，可以使用make的“-f”和“--file”参数****，如：make -f Make.Linux或make --file Make.AIX。&lt;/p&gt;
+&lt;p&gt;当然，可以使用别的文件名来书写Makefile，比如：“Make.Linux”，“Make.Solaris”，“Make.AIX”等，如果要****指定特定的Makefile，可以使用make的“-f”和“&amp;ndash;file”参数****，如：make -f Make.Linux或make &amp;ndash;file Make.AIX。&lt;/p&gt;
 &lt;h3 id=&#34;3-引用其他的makefile&#34;&gt;3. 引用其他的Makefile&lt;/h3&gt;
 &lt;p&gt;在Makefile使用include关键字可以把别的Makefile包含进来，这很像C语言的#include，被包含的文件会原模原样的放在当前文件的包含位置。include的语法是：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt; include filename
@@ -1169,7 +1169,7 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;include&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;foo.make&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;a.mk&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;b.mk&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;c.mk&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;e.mk&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;f.mk&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;make命令开始时，会把找寻include所指出的其它Makefile，并把其内容安置在当前的位置。就好像C/C++的#include指令一样。如果文件都没有指定绝对路径或是相对路径的话，make会在当前目录下首先寻找，如果当前目录下没有找到，那么，make还会在下面的几个目录下找：&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;如果make执行时，有“-I”或“--include-dir”参数，那么make就会在这个参数所指定的目录下去寻找。&lt;/li&gt;
+&lt;li&gt;如果make执行时，有“-I”或“&amp;ndash;include-dir”参数，那么make就会在这个参数所指定的目录下去寻找。&lt;/li&gt;
 &lt;li&gt;如果目录/include（一般是：/usr/local/bin或/usr/include）存在的话，make也会去找。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;如果有文件没有找到的话，make会生成一条警告信息，但不会马上出现致命错误。它会继续载入其它的文件，一旦完成makefile的读取，make会再重试这些没有找到，或是不能读取的文件，如果还是不行，make才会出现一条致命信息。如果想让make不理那些无法读取的文件，而继续执行，可以在include前加一个减号“-”。如：&lt;/p&gt;
@@ -1227,7 +1227,7 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;3-在规则中使用通配符&#34;&gt;3. 在规则中使用通配符&lt;/h3&gt;
-&lt;p&gt;make支持三各通配符：“*”，“?”和“[...]”。这是和Unix的B-Shell是相同的。&lt;/p&gt;
+&lt;p&gt;make支持三各通配符：“*”，“?”和“[&amp;hellip;]”。这是和Unix的B-Shell是相同的。&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;“~”：波浪号（“~”）字符在文件名中也有比较特殊的用途。如果是“~/test”，这就表示当前用户的$HOME目录下的test目录。而“~hchen/test”则表示用户hchen的宿主目录下的test目录。（这些都是Unix下的小知识了，make也支持）而在Windows或是MS-DOS下，用户没有宿主目录，那么波浪号所指的目录则根据环境变量“HOME”而定。&lt;/li&gt;
 &lt;li&gt;“*”：通配符代替了你一系列的文件，如“&lt;em&gt;.c”表示所以后缀为c的文件。一个需要我们注意的是，如果我们的文件名中有通配符，如：“&lt;/em&gt;”，那么可以用转义字符“\”，如“*”来表示真实的“*”字符，而不是任意长度的字符串。&lt;/li&gt;
@@ -1249,7 +1249,7 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
 &lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;$(objects)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; %.&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt;: %.&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;	&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;CC&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt; -c &lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;CFLAGS&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt; $&amp;lt; -o &lt;span class=&#34;nv&#34;&gt;$@&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;例子中，指明了目标从$objects中获取&lt;/p&gt;
-&lt;p&gt;“%.o”表明要所有以“.o”结尾的目标，也就是&amp;quot;foo.o bar.o&amp;quot;，也就是变量$object集合的模式&lt;/p&gt;
+&lt;p&gt;“%.o”表明要所有以“.o”结尾的目标，也就是&amp;quot;foo.o bar.o&amp;rdquo;，也就是变量$object集合的模式&lt;/p&gt;
 &lt;p&gt;而依赖模式“%.c”则取模式“%.o”的“%”，也就是“foobar”，并为其加下“.c”的后缀，于是，我们的依赖目标就是“foo.c bar.c”&lt;/p&gt;
 &lt;p&gt;而命令中的“$&amp;lt;”和“$@”则是自动化变量，“$&amp;lt;”表示所有的依赖目标集（也就是“foo.c bar.c”），“$@”表示目标集（也褪恰癴oo.o bar.o”）&lt;/p&gt;
 &lt;p&gt;上面的规则展开后等价于：&lt;/p&gt;
@@ -1260,7 +1260,7 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;makefile书写命令&#34;&gt;Makefile书写命令&lt;/h2&gt;
 &lt;h3 id=&#34;1-显示命令&#34;&gt;1. 显示命令&lt;/h3&gt;
 &lt;p&gt;通常，make会把其要执行的命令行在命令执行前输出到屏幕上。当我们用“@”字符在命令行前，那么，这个命令将不被make显示出来，最具代表性的例子是，我们用这个功能来像屏幕显示一些信息。如：&lt;/p&gt;
-&lt;p&gt;@echo 正在编译XXX模块......&lt;/p&gt;
+&lt;p&gt;@echo 正在编译XXX模块&amp;hellip;&amp;hellip;&lt;/p&gt;
 &lt;h3 id=&#34;2赋值命令&#34;&gt;2.赋值命令&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;#  = 是最基本的赋值
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# := 是覆盖之前的值
@@ -1277,16 +1277,16 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
 &lt;span class=&#34;ln&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;8.&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;“check”和“test”&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;这两个伪目标一般用来测试makefile的流程。&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;4-自动化变量&#34;&gt;4. 自动化变量&lt;/h3&gt;
 &lt;ol&gt;
-&lt;li&gt;$@表示规则中的目标文件集。在模式规则中，如果有多个目标，那么，&amp;quot;$@&amp;quot;就是匹配于目标中模式定义的集合。&lt;/li&gt;
-&lt;li&gt;$%仅当目标是函数库文件中，表示规则中的目标成员名。例如，如果一个目标是&amp;quot;foo.a(bar.o)&amp;quot;，那么，&amp;quot;$%&amp;quot;就是&amp;quot;bar.o&amp;quot;，&amp;quot;$@&amp;quot;就是&amp;quot;foo.a&amp;quot;。如果目标不是函数库文件（Unix下是
+&lt;li&gt;$@表示规则中的目标文件集。在模式规则中，如果有多个目标，那么，&amp;quot;$@&amp;ldquo;就是匹配于目标中模式定义的集合。&lt;/li&gt;
+&lt;li&gt;$%仅当目标是函数库文件中，表示规则中的目标成员名。例如，如果一个目标是&amp;quot;foo.a(bar.o)&amp;quot;，那么，&amp;quot;$%&amp;ldquo;就是&amp;quot;bar.o&amp;rdquo;，&amp;quot;$@&amp;ldquo;就是&amp;quot;foo.a&amp;rdquo;。如果目标不是函数库文件（Unix下是&lt;br /&gt;
 [.a]，Windows下是[.lib]），那么，其值为空。&lt;/li&gt;
-&lt;li&gt;$&amp;lt;依赖目标中的第一个目标名字。如果依赖目标是以模式（即&amp;quot;%&amp;quot;）定义的，那么&amp;quot;$&amp;lt;&amp;quot;将是符合模式的一系列的文件集。注意，其是一个一个取出来的。&lt;/li&gt;
+&lt;li&gt;$&amp;lt;依赖目标中的第一个目标名字。如果依赖目标是以模式（即&amp;rdquo;%&amp;quot;）定义的，那么&amp;quot;$&amp;lt;&amp;ldquo;将是符合模式的一系列的文件集。注意，其是一个一个取出来的。&lt;/li&gt;
 &lt;li&gt;$?所有比目标新的依赖目标的集合。以空格分隔。&lt;/li&gt;
 &lt;li&gt;$^所有的依赖目标的集合。以空格分隔。如果在依赖目标中有多个重复的，那个这个变量会去除重复的依赖目标，只保留一份。&lt;/li&gt;
-&lt;li&gt;$+这个变量很像&amp;quot;$^&amp;quot;，也是所有依赖目标的集合。只是它不去除重复的依赖目标。&lt;/li&gt;
-&lt;li&gt;$*这个变量表示目标模式中&amp;quot;%&amp;quot;及其之前的部分。如果目标是&amp;quot;dir/a.foo.b&amp;quot;，并且目标的模式是&amp;quot;a.%.b&amp;quot;，那么，&amp;quot;$*&amp;quot;的值就是&amp;quot;dir /a.foo&amp;quot;。这个变量对于构造有关联的文件名是比
-较有较。如果目标中没有模式的定义，那么&amp;quot;$*&amp;quot;也就不能被推导出，但是，如果目标文件的后缀是 make所识别的，那么&amp;quot;$*&amp;quot;就是除了后缀的那一部分。例如：如果目标是&amp;quot;foo.c&amp;quot;
-，因为&amp;quot;.c&amp;quot;是make所能识别的后缀名，所以，&amp;quot;$*&amp;quot;的值就是&amp;quot;foo&amp;quot;。这个特性是GNU make的，很有可能不兼容于其它版本的make，所以，你应该尽量避免使用&amp;quot;$*&amp;quot;，除非是在隐含规则或是静态模式中。如果目标中的后缀是make所不能识别的，那么&amp;quot;$*&amp;quot;就是空值。&lt;/li&gt;
+&lt;li&gt;$+这个变量很像&amp;rdquo;$^&amp;quot;，也是所有依赖目标的集合。只是它不去除重复的依赖目标。&lt;/li&gt;
+&lt;li&gt;$*这个变量表示目标模式中&amp;quot;%&amp;ldquo;及其之前的部分。如果目标是&amp;quot;dir/a.foo.b&amp;rdquo;，并且目标的模式是&amp;quot;a.%.b&amp;quot;，那么，&amp;quot;$*&amp;ldquo;的值就是&amp;quot;dir /a.foo&amp;rdquo;。这个变量对于构造有关联的文件名是比&lt;br /&gt;
+较有较。如果目标中没有模式的定义，那么&amp;quot;$*&amp;ldquo;也就不能被推导出，但是，如果目标文件的后缀是 make所识别的，那么&amp;rdquo;$*&amp;ldquo;就是除了后缀的那一部分。例如：如果目标是&amp;quot;foo.c&amp;rdquo;&lt;br /&gt;
+，因为&amp;quot;.c&amp;quot;是make所能识别的后缀名，所以，&amp;quot;$*&amp;ldquo;的值就是&amp;quot;foo&amp;rdquo;。这个特性是GNU make的，很有可能不兼容于其它版本的make，所以，你应该尽量避免使用&amp;quot;$*&amp;quot;，除非是在隐含规则或是静态模式中。如果目标中的后缀是make所不能识别的，那么&amp;quot;$*&amp;ldquo;就是空值。&lt;/li&gt;
 &lt;/ol&gt;
         
       </description>
@@ -1317,10 +1317,10 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
 &lt;p&gt;Hyperscan以自动机理论为基础，其工作流程主要分成两个部分：编译期(compiletime)和运行期(run-time)。&lt;/p&gt;
 &lt;h3 id=&#34;31编译期&#34;&gt;3.1编译期&lt;/h3&gt;
 &lt;p&gt;Hyperscan 自带C++编写的正则表达式编译器。如图1所示，它将正则表达式作为输入，针对不同的平台，用户定义的模式及特殊语法，经过复杂的图分析及优化过程，生成对应的数据库。另外，生成的数据库可以被序列化后保存在内存中，以供运行期提取使用。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/Hyperscan-fig-1.jpg&#34; alt=&#34;Hyperscan-fig-1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/Hyperscan-fig-1.jpg&#34; alt=&#34;Hyperscan-fig-1&#34; /&gt;&lt;/p&gt;
 &lt;h3 id=&#34;32运行期&#34;&gt;3.2运行期&lt;/h3&gt;
 &lt;p&gt;Hyperscan的运行期是通过C语言来开发的。图2展示了Hyperscan在运行期的主要流程。用户需要预先分配一段内存来存储临时匹配状态信息，之后利用编译生成的数据库调用Hyperscan内部的匹配引擎(NFA, DFA等)来对输入进行模式匹配。Hyperscan在引擎中使用Intel处理器所具有的SIMD指令进行加速。同时，用户可以通过回调函数来自定义匹配发生后采取的行为。由于生成的数据库是只读的，用户可以在多个CPU核或多线程场景下共享数据库来提升匹配扩展性。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/Hyperscan-fig-2.jpg&#34; alt=&#34;Hyperscan-fig-2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/Hyperscan-fig-2.jpg&#34; alt=&#34;Hyperscan-fig-2&#34; /&gt;&lt;/p&gt;
 &lt;h2 id=&#34;4-hyperscan伪代码&#34;&gt;4. Hyperscan伪代码&lt;/h2&gt;
 &lt;h3 id=&#34;41-编译&#34;&gt;4.1 编译&lt;/h3&gt;
 &lt;p&gt;函数buildDatabase用来编译规则文件中的多个正则表达式，参数mode指定了是BLOCK,STREAM,或者向量模式。&lt;/p&gt;
@@ -1487,7 +1487,7 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
 &lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/book&amp;gt;&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;/books&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;2mxml写入操作&#34;&gt;2.mxml写入操作&lt;/h2&gt;
-&lt;p&gt;&lt;mark&gt;mxml既可以创建写入xml文件，也可以解析xml文件数据&lt;/mark&gt;
+&lt;p&gt;&lt;mark&gt;mxml既可以创建写入xml文件，也可以解析xml文件数据&lt;/mark&gt;&lt;br /&gt;
 写入示例:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt;&lt;span class=&#34;cpf&#34;&gt;&amp;#34;mxml.h&amp;#34;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
@@ -1510,7 +1510,7 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
 &lt;span class=&#34;ln&#34;&gt;19&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;3mxml解析操作&#34;&gt;3.mxml解析操作&lt;/h2&gt;
-&lt;p&gt;解析步骤：
+&lt;p&gt;解析步骤：&lt;br /&gt;
 步骤：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;打开一个xml文件&lt;/li&gt;
@@ -1518,8 +1518,8 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
 &lt;li&gt;查找待提取的节点标签：mxml_node_t *mxmlFindElement(mxml_node_t *node, mxml_node_t *top,const char *name, const char *attr,const char *value, int descend);&lt;/li&gt;
 &lt;li&gt;获取标签属性：const char *mxmlElementGetAttr(mxml_node_t *node, const char *name);&lt;/li&gt;
 &lt;li&gt;获取标签的文本内容： const char *mxmlGetText(mxml_node_t *node, int *whitespace);&lt;/li&gt;
-&lt;li&gt;释放节点，关闭文件
-示例：
+&lt;li&gt;释放节点，关闭文件&lt;br /&gt;
+示例：&lt;br /&gt;
 解析的文本：&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;utf-8&amp;#34;?&amp;gt;&lt;/span&gt;

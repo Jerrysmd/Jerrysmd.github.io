@@ -142,131 +142,131 @@
     <li><a href="#6-迭代器">6. 迭代器</a></li>
   </ul>
 </nav>
-    <p>Python is dynamically-typed and garbage-collected. It supports multiple programming paradigms, including structured (particularly, procedural), object-oriented and functional programming. Python is often described as a &quot;batteries included&quot; language due to its comprehensive standard library.</p>
+    <p>Python is dynamically-typed and garbage-collected. It supports multiple programming paradigms, including structured (particularly, procedural), object-oriented and functional programming. Python is often described as a &ldquo;batteries included&rdquo; language due to its comprehensive standard library.</p>
 <h2 id="1-数据类型转换">1. 数据类型转换</h2>
 <table>
 <thead>
 <tr>
-<th style="text-align:center"></th>
-<th style="text-align:center">整型</th>
-<th style="text-align:center">浮点</th>
-<th style="text-align:center">bool</th>
-<th style="text-align:center">复数</th>
-<th style="text-align:center">string</th>
-<th style="text-align:center">list</th>
-<th style="text-align:center">tuple</th>
-<th style="text-align:center">set</th>
-<th style="text-align:center">dict</th>
+<th align="center"></th>
+<th align="center">整型</th>
+<th align="center">浮点</th>
+<th align="center">bool</th>
+<th align="center">复数</th>
+<th align="center">string</th>
+<th align="center">list</th>
+<th align="center">tuple</th>
+<th align="center">set</th>
+<th align="center">dict</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">整型</td>
-<td style="text-align:center">\</td>
-<td style="text-align:center">加.0</td>
-<td style="text-align:center">int(0)</td>
-<td style="text-align:center">加0j</td>
-<td style="text-align:center">任意</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
+<td align="center">整型</td>
+<td align="center">\</td>
+<td align="center">加.0</td>
+<td align="center">int(0)</td>
+<td align="center">加0j</td>
+<td align="center">任意</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
 </tr>
 <tr>
-<td style="text-align:center">浮点</td>
-<td style="text-align:center">去小数</td>
-<td style="text-align:center">\</td>
-<td style="text-align:center">0.0</td>
-<td style="text-align:center">加0j</td>
-<td style="text-align:center">数据</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
+<td align="center">浮点</td>
+<td align="center">去小数</td>
+<td align="center">\</td>
+<td align="center">0.0</td>
+<td align="center">加0j</td>
+<td align="center">数据</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
 </tr>
 <tr>
-<td style="text-align:center">bool</td>
-<td style="text-align:center">true1<br>false0</td>
-<td style="text-align:center">true1.0<br>false0.0</td>
-<td style="text-align:center">\</td>
-<td style="text-align:center">true1+0j</td>
-<td style="text-align:center">可以</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
+<td align="center">bool</td>
+<td align="center">true1<br>false0</td>
+<td align="center">true1.0<br>false0.0</td>
+<td align="center">\</td>
+<td align="center">true1+0j</td>
+<td align="center">可以</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
 </tr>
 <tr>
-<td style="text-align:center">复数</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">0j</td>
-<td style="text-align:center">\</td>
-<td style="text-align:center">转换</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
+<td align="center">复数</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">0j</td>
+<td align="center">\</td>
+<td align="center">转换</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
 </tr>
 <tr>
-<td style="text-align:center">string</td>
-<td style="text-align:center">纯数字</td>
-<td style="text-align:center">纯数字</td>
-<td style="text-align:center">''</td>
-<td style="text-align:center">纯数&amp;+0j</td>
-<td style="text-align:center">\</td>
-<td style="text-align:center">每个字符转成每个值</td>
-<td style="text-align:center">每个字符转成每个值</td>
-<td style="text-align:center">每个字符转成每个值+去重</td>
-<td style="text-align:center">×</td>
+<td align="center">string</td>
+<td align="center">纯数字</td>
+<td align="center">纯数字</td>
+<td align="center">''</td>
+<td align="center">纯数&amp;+0j</td>
+<td align="center">\</td>
+<td align="center">每个字符转成每个值</td>
+<td align="center">每个字符转成每个值</td>
+<td align="center">每个字符转成每个值+去重</td>
+<td align="center">×</td>
 </tr>
 <tr>
-<td style="text-align:center">list</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">[]</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">成为</td>
-<td style="text-align:center">\</td>
-<td style="text-align:center">内容不变</td>
-<td style="text-align:center">随机+去重</td>
-<td style="text-align:center">有2个数据的二级列表</td>
+<td align="center">list</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">[]</td>
+<td align="center">×</td>
+<td align="center">成为</td>
+<td align="center">\</td>
+<td align="center">内容不变</td>
+<td align="center">随机+去重</td>
+<td align="center">有2个数据的二级列表</td>
 </tr>
 <tr>
-<td style="text-align:center">tuple</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">()</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">str</td>
-<td style="text-align:center">内容不变</td>
-<td style="text-align:center">\</td>
-<td style="text-align:center">随机+去重</td>
-<td style="text-align:center">有2个数据的二级列表</td>
+<td align="center">tuple</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">()</td>
+<td align="center">×</td>
+<td align="center">str</td>
+<td align="center">内容不变</td>
+<td align="center">\</td>
+<td align="center">随机+去重</td>
+<td align="center">有2个数据的二级列表</td>
 </tr>
 <tr>
-<td style="text-align:center">set</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">set()</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">格式</td>
-<td style="text-align:center">内容不变+随机</td>
-<td style="text-align:center">内容不变+随机</td>
-<td style="text-align:center">\</td>
-<td style="text-align:center">有2个数据的二级列表</td>
+<td align="center">set</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">set()</td>
+<td align="center">×</td>
+<td align="center">格式</td>
+<td align="center">内容不变+随机</td>
+<td align="center">内容不变+随机</td>
+<td align="center">\</td>
+<td align="center">有2个数据的二级列表</td>
 </tr>
 <tr>
-<td style="text-align:center">dict</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">{}</td>
-<td style="text-align:center">×</td>
-<td style="text-align:center">数据</td>
-<td style="text-align:center">仅保留键</td>
-<td style="text-align:center">仅保留键</td>
-<td style="text-align:center">仅保留键</td>
-<td style="text-align:center">\</td>
+<td align="center">dict</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">{}</td>
+<td align="center">×</td>
+<td align="center">数据</td>
+<td align="center">仅保留键</td>
+<td align="center">仅保留键</td>
+<td align="center">仅保留键</td>
+<td align="center">\</td>
 </tr>
 </tbody>
 </table>
@@ -298,9 +298,9 @@
 <th>def</th>
 <th>func(</th>
 <th>name,</th>
-<th>sex = &quot;male&quot;,</th>
+<th>sex = &ldquo;male&rdquo;,</th>
 <th>*args,</th>
-<th>like = &quot;乒乓&quot;,</th>
+<th>like = &ldquo;乒乓&rdquo;,</th>
 <th>**kwargs);</th>
 </tr>
 </thead>
@@ -317,11 +317,11 @@
 <tr>
 <td></td>
 <td>func(</td>
-<td>&quot;刘佳锐&quot;,</td>
-<td>&quot;男&quot;,</td>
-<td>&quot;乐色&quot;, &quot;垃圾&quot;,</td>
-<td>like = &quot;羽毛球&quot;,</td>
-<td>skin = &quot;yellow&quot;, hobby = &quot;hello&quot;)</td>
+<td>&ldquo;刘佳锐&rdquo;,</td>
+<td>&ldquo;男&rdquo;,</td>
+<td>&ldquo;乐色&rdquo;, &ldquo;垃圾&rdquo;,</td>
+<td>like = &ldquo;羽毛球&rdquo;,</td>
+<td>skin = &ldquo;yellow&rdquo;, hobby = &ldquo;hello&rdquo;)</td>
 </tr>
 </tbody>
 </table>

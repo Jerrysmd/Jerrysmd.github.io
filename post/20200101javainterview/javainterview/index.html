@@ -198,8 +198,8 @@
 <li>混合执行</li>
 <li>linking
 <ol>
-<li>verification：文件符合jvm规定：0xCAFEBABE...</li>
-<li>preparation：静态成员变量赋默认值，int = 0...</li>
+<li>verification：文件符合jvm规定：0xCAFEBABE&hellip;</li>
+<li>preparation：静态成员变量赋默认值，int = 0&hellip;</li>
 <li>resolution：类、方法、属性符号应用解析为直接引用，常量池中的各个符号引用解析为指针、偏移量等内存地址的直接引用</li>
 </ol>
 </li>
@@ -229,7 +229,7 @@
 <li>双亲委派是一个孩子向父亲方向，然后父亲向孩子方向的双亲委派过程</li>
 </ul>
 </blockquote>
-<p><img src="/post/20200101javaInterview/classLoading.jpg" alt="classLoadProcess"></p>
+<p><img src="/post/20200101javaInterview/classLoading.jpg" alt="classLoadProcess" /></p>
 <p>为什么要做双亲委派</p>
 <blockquote>
 <p>安全</p>
@@ -296,7 +296,7 @@
 </ul>
 </blockquote>
 <p><strong>Initializing</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="c1">//例：
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="c1">//例：求 T.count
 </span><span class="ln"> 2</span><span class="c1"></span><span class="n">main</span><span class="o">(){</span>
 <span class="ln"> 3</span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">T</span><span class="o">.</span><span class="na">count</span><span class="o">);</span>
 <span class="ln"> 4</span><span class="o">}</span>
@@ -310,7 +310,7 @@
 <span class="ln">12</span><span class="o">}</span>
 <span class="ln">13</span><span class="c1">//T.class load，然后linking，
 </span><span class="ln">14</span><span class="c1">//到preparation，静态成员变量赋值默认值。t为null，count为0
-</span><span class="ln">15</span><span class="c1">//然后到initializing，t先执行构造方法，count赋值为2
+</span><span class="ln">15</span><span class="c1">//然后到initializing，t先执行构造方法，count赋值为2, count为2
 </span><span class="ln">16</span><span class="c1"></span>
 <span class="ln">17</span><span class="kd">class</span> <span class="nc">T</span> <span class="o">{</span>
 <span class="ln">18</span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">2</span><span class="o">;</span>
@@ -320,7 +320,7 @@
 <span class="ln">22</span>        <span class="n">count</span> <span class="o">++;</span>
 <span class="ln">23</span>    <span class="o">}</span>
 <span class="ln">24</span><span class="o">}</span>
-<span class="ln">25</span><span class="c1">//initializing，count赋值为2，t再执行构造方法
+<span class="ln">25</span><span class="c1">//initializing，count赋值为2，t再执行构造方法 count = 2++ = 3
 </span></code></pre></div>
   </article>
 <aside class="sidebar">

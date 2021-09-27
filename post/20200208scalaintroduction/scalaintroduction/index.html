@@ -158,9 +158,9 @@
     <li><a href="#16-xml">16. XML</a></li>
   </ul>
 </nav>
-    <p>Scala combines object-oriented and functional programming in one concise, high-level language. Scala's static types help avoid bugs in complex applications, and its JVM and JavaScript runtimes let you build high-performance systems with easy access to huge ecosystems of libraries.</p>
+    <p>Scala combines object-oriented and functional programming in one concise, high-level language. Scala&rsquo;s static types help avoid bugs in complex applications, and its JVM and JavaScript runtimes let you build high-performance systems with easy access to huge ecosystems of libraries.</p>
 <h2 id="1-repl--scaladoc">1. REPL &amp; Scaladoc</h2>
-<p>Scala解释器读到一个表达式，对它进行求值，将它打印出来，接着再继续读下一个表达式。这个过程被称做Read-Eval-Print-Loop，即：REPL。
+<p>Scala解释器读到一个表达式，对它进行求值，将它打印出来，接着再继续读下一个表达式。这个过程被称做Read-Eval-Print-Loop，即：REPL。<br />
 从技术上讲，scala程序并不是一个解释器。实际发生的是，你输入的内容被快速地编译成字节码，然后这段字节码交由Java虚拟机执行。正因为如此，大多数scala程序员更倾向于将它称做“REPL”</p>
 <p>scala api文档，包含了scala所有的api以及使用说明，class、object、trait、function、method、implicit等</p>
 <p>为什么要查阅Scaladoc：如果只是写一些普通的Scala程序基本够用了；但是如果（在现在，或者未来，实际的工作环境中）要编写复杂的scala程序，那么还是需要参考Scaladoc的。（纯粹用scala开发spark应用程序，应该不会特别复杂；用scala构建类似于spark的公司内的分布式的大型系统）</p>
@@ -177,66 +177,66 @@
 <table>
 <thead>
 <tr>
-<th style="text-align:left">数据类型</th>
-<th style="text-align:left">描述</th>
+<th align="left">数据类型</th>
+<th align="left">描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Byte</td>
-<td style="text-align:left">8位有符号补码整数。数值区间为 -128 到 127</td>
+<td align="left">Byte</td>
+<td align="left">8位有符号补码整数。数值区间为 -128 到 127</td>
 </tr>
 <tr>
-<td style="text-align:left">Short</td>
-<td style="text-align:left">16位有符号补码整数。数值区间为 -32768 到 32767</td>
+<td align="left">Short</td>
+<td align="left">16位有符号补码整数。数值区间为 -32768 到 32767</td>
 </tr>
 <tr>
-<td style="text-align:left">Int</td>
-<td style="text-align:left">32位有符号补码整数。数值区间为 -2147483648 到 2147483647</td>
+<td align="left">Int</td>
+<td align="left">32位有符号补码整数。数值区间为 -2147483648 到 2147483647</td>
 </tr>
 <tr>
-<td style="text-align:left">Long</td>
-<td style="text-align:left">64位有符号补码整数。数值区间为 -9223372036854775808 到 9223372036854775807</td>
+<td align="left">Long</td>
+<td align="left">64位有符号补码整数。数值区间为 -9223372036854775808 到 9223372036854775807</td>
 </tr>
 <tr>
-<td style="text-align:left">Float</td>
-<td style="text-align:left">32 位, IEEE 754 标准的单精度浮点数</td>
+<td align="left">Float</td>
+<td align="left">32 位, IEEE 754 标准的单精度浮点数</td>
 </tr>
 <tr>
-<td style="text-align:left">Double</td>
-<td style="text-align:left">64 位 IEEE 754 标准的双精度浮点数</td>
+<td align="left">Double</td>
+<td align="left">64 位 IEEE 754 标准的双精度浮点数</td>
 </tr>
 <tr>
-<td style="text-align:left">Char</td>
-<td style="text-align:left">16位无符号Unicode字符, 区间值为 U+0000 到 U+FFFF</td>
+<td align="left">Char</td>
+<td align="left">16位无符号Unicode字符, 区间值为 U+0000 到 U+FFFF</td>
 </tr>
 <tr>
-<td style="text-align:left">String</td>
-<td style="text-align:left">字符序列</td>
+<td align="left">String</td>
+<td align="left">字符序列</td>
 </tr>
 <tr>
-<td style="text-align:left">Boolean</td>
-<td style="text-align:left">true或false</td>
+<td align="left">Boolean</td>
+<td align="left">true或false</td>
 </tr>
 <tr>
-<td style="text-align:left">Unit</td>
-<td style="text-align:left">表示无值，和其他语言中void等同。用作不返回任何结果的方法的结果类型。Unit只有一个实例值，写成()。</td>
+<td align="left">Unit</td>
+<td align="left">表示无值，和其他语言中void等同。用作不返回任何结果的方法的结果类型。Unit只有一个实例值，写成()。</td>
 </tr>
 <tr>
-<td style="text-align:left">Null</td>
-<td style="text-align:left">null 或空引用</td>
+<td align="left">Null</td>
+<td align="left">null 或空引用</td>
 </tr>
 <tr>
-<td style="text-align:left">Nothing</td>
-<td style="text-align:left">Nothing类型在Scala的类层级的最底端；它是任何其他类型的子类型。</td>
+<td align="left">Nothing</td>
+<td align="left">Nothing类型在Scala的类层级的最底端；它是任何其他类型的子类型。</td>
 </tr>
 <tr>
-<td style="text-align:left">Any</td>
-<td style="text-align:left">Any是所有其他类的超类</td>
+<td align="left">Any</td>
+<td align="left">Any是所有其他类的超类</td>
 </tr>
 <tr>
-<td style="text-align:left">AnyRef</td>
-<td style="text-align:left">AnyRef类是Scala里所有引用类(reference class)的基类</td>
+<td align="left">AnyRef</td>
+<td align="left">AnyRef类是Scala里所有引用类(reference class)的基类</td>
 </tr>
 </tbody>
 </table>
@@ -274,7 +274,7 @@
 <li>提供初始值时不要使用new</li>
 <li>用()来访问元素</li>
 <li>用for(elem &lt;- arr)来遍历元素</li>
-<li>用for(elem &lt;- arr if ...) yield ... 来将原数据转型为新数组</li>
+<li>用for(elem &lt;- arr if &hellip;) yield &hellip; 来将原数据转型为新数组</li>
 <li>Scala数组和Java数组可以相互操作，用ArrayBuffer，使用scala.collection.JavaConversions中的转换函数</li>
 </ol>
 <h2 id="5-map-and-tuple">5. Map and Tuple</h2>
@@ -323,13 +323,13 @@
 </ol>
 <h2 id="10-fileregex">10. File&amp;Regex</h2>
 <ol>
-<li>Source.fromFile(...).getLines.toArray将交出文件的所有行</li>
-<li>Source.fromFile(...).mkString将以字符串形式交出文件内容</li>
+<li>Source.fromFile(&hellip;).getLines.toArray将交出文件的所有行</li>
+<li>Source.fromFile(&hellip;).mkString将以字符串形式交出文件内容</li>
 <li>将字符串转化为数字，可以用toInt或toDouble方法</li>
 <li>使用Java的PrintWriter来写入文本文件</li>
-<li>&quot;正则&quot;.r是一个Regex对象</li>
-<li>如果你的正则表达式包含反斜杠的话，用&quot;&quot;&quot;...&quot;&quot;&quot;</li>
-<li>如果正则模式包含分组，你可以用如下语法来提取它们的内容for(regex(变量1,...,变量n) &lt;- 字符串)</li>
+<li>&ldquo;正则&rdquo;.r是一个Regex对象</li>
+<li>如果你的正则表达式包含反斜杠的话，用&quot;&quot;&quot;&hellip;&quot;&quot;&quot;</li>
+<li>如果正则模式包含分组，你可以用如下语法来提取它们的内容for(regex(变量1,&hellip;,变量n) &lt;- 字符串)</li>
 </ol>
 <h2 id="11-feature">11. Feature</h2>
 <ol>
@@ -355,7 +355,7 @@
 <li>Scala列表要么是空的，要么拥有一头一尾，其中尾部本身又是一个列表</li>
 <li>集是无先后次序的集合</li>
 <li>用LinkedHashSet保留插入顺序，或者用SortedSet按顺序进行迭代</li>
-<li>+将元素添加到无先后次序的集合中；+:和:+向前或向后追加到序列；++将两个集合串接在一起；-和--移除元素</li>
+<li>+将元素添加到无先后次序的集合中；+:和:+向前或向后追加到序列；++将两个集合串接在一起；-和&ndash;移除元素</li>
 <li>映射、折叠和拉链操作是很有用的技巧，用来将函数或操作应用到集合中的元素</li>
 </ol>
 <h2 id="14-pattern-match">14. Pattern match</h2>
@@ -374,7 +374,7 @@
 <ol>
 <li>可以为类、方法、字段、局部变量、参数、表达式、类型参数以及各种类型定义添加注解</li>
 <li>对于表达式和类型，注解跟在被注解的条目之后</li>
-<li>注解的形式有 @Annotation、@Annotation(value)或@Annotation(name = value1, ...)</li>
+<li>注解的形式有 @Annotation、@Annotation(value)或@Annotation(name = value1, &hellip;)</li>
 <li>@volatile、@transient、@strictfp和@native分别生成等效的Java修饰符</li>
 <li>用@throws来生成与Java兼容的throws规格说明</li>
 <li>@tailrec注解让你校验某个递归函数使用了尾递归优化</li>

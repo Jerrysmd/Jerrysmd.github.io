@@ -14,7 +14,7 @@
       <guid>https://Jerrysmd.github.io/post/20200101leetcode/leetcode/</guid>
       <description>
         
-          &lt;p&gt;Algorithms are used in every part of computer science. They form the field&#39;s backbone. In computer science, an algorithm gives the computer a specific set of instructions, which allows the computer to do everything, be it running a calculator or running a rocket.&lt;/p&gt;
+          &lt;p&gt;Algorithms are used in every part of computer science. They form the field&amp;rsquo;s backbone. In computer science, an algorithm gives the computer a specific set of instructions, which allows the computer to do everything, be it running a calculator or running a rocket.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;异或运算&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;特点：&lt;/p&gt;
@@ -106,7 +106,7 @@
 &lt;ul&gt;
 &lt;li&gt;mid = (L + R) / 2                 // L + R 可能会越界，这时mid算出负数&lt;/li&gt;
 &lt;li&gt;mid = L + (R - L) / 2&lt;/li&gt;
-&lt;li&gt;mid = L + (R - L) &amp;gt;&amp;gt; 1        //右移一位比除2快&lt;/li&gt;
+&lt;li&gt;mid = L + (R - L) &amp;raquo; 1        //右移一位比除2快&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;对数器&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;

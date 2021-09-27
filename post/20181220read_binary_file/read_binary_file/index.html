@@ -135,7 +135,7 @@
     <h2>Overview</h2>
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#1creat-file-pointer-and-set-mode-as-rb">1.creat FILE pointer and set mode as 'rb'</a></li>
+    <li><a href="#1creat-file-pointer-and-set-mode-as-rb">1.creat FILE pointer and set mode as &lsquo;rb&rsquo;</a></li>
     <li><a href="#2check-the-file-pointer-is-not-null">2.check the FILE pointer is not null</a></li>
     <li><a href="#3use-fseekftell-to-get-data-length">3.use fseek/ftell to get data length</a></li>
     <li><a href="#4check-the-datalen">4.check the datalen</a></li>
@@ -151,8 +151,8 @@
 <ul>
 <li>使用fwrite(dbdata, dblength, 1,fp)把字节流写入二进制文件。在新程序读取二进制文件遇到问题：二进制内容不能向文本一样行读取，也不知道二进制文件长度，在fread()函数中无从下手。</li>
 </ul>
-<hr>
-<h2 id="1creat-file-pointer-and-set-mode-as-rb">1.creat FILE pointer and set mode as 'rb'</h2>
+<hr />
+<h2 id="1creat-file-pointer-and-set-mode-as-rb">1.creat FILE pointer and set mode as &lsquo;rb&rsquo;</h2>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="n">FILE</span> <span class="o">*</span><span class="n">f</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">inputFN</span><span class="p">,</span> <span class="s">&#34;rb&#34;</span><span class="p">);</span>
 </code></pre></div><h2 id="2check-the-file-pointer-is-not-null">2.check the FILE pointer is not null</h2>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">f</span><span class="p">)</span> <span class="p">{</span>
