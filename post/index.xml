@@ -3672,7 +3672,7 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;父加载器&lt;/p&gt;
-&lt;p&gt;-父加载器不是&amp;quot;类加载器的加载器&amp;quot;&lt;/p&gt;
+&lt;p&gt;-父加载器不是&amp;quot;类加载器的加载器&amp;quot;，！！也不是&amp;quot;类加载器的父类加载器&amp;quot;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;双亲委派是一个孩子向父亲方向，然后父亲向孩子方向的双亲委派过程&lt;/p&gt;
@@ -3693,6 +3693,10 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;li&gt;
 &lt;p&gt;method Area ：&lt;/p&gt;
 &lt;p&gt;class对象是存储在 method Area 中，method Area 在内存是存储在 metaspace中，也就是 permanent generation。1.8之前叫 permanent generation， 1.8之后叫 metaspace&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;什么时候需要调用loadclass函数？&lt;/p&gt;
+&lt;p&gt;spring 里有动态代理，spring 就调用 loadclass 把 class 加载到缓存&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
         
