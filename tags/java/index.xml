@@ -182,9 +182,9 @@
       <guid>https://Jerrysmd.github.io/post/20200101javainterview/javainterview/</guid>
       <description>
         
-          &lt;p&gt;insert artical description&lt;/p&gt;
+          &lt;p&gt;JVM&lt;/p&gt;
 &lt;h2 id=&#34;jvm&#34;&gt;JVM&lt;/h2&gt;
-&lt;p&gt;Java从编码到执行&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Java从编码到执行&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ol&gt;
 &lt;li&gt;javac 将 x.java(任何语言) 文件编码成 x.class 文件&lt;/li&gt;
@@ -193,14 +193,14 @@
 &lt;li&gt;JVM 执行引擎开始执行&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;JVM&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;JVM&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ol&gt;
 &lt;li&gt;jvm 是一种规范&lt;/li&gt;
 &lt;li&gt;它是虚构出来的一台计算机&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;ClassFileFormat/&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ClassFileFormat&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;二进制字节流&lt;/li&gt;
@@ -225,6 +225,57 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Class Loading Linking Initializing&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;class文件load到内存的过程&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;loading: class文件放到内存&lt;/li&gt;
+&lt;li&gt;linking&lt;/li&gt;
+&lt;li&gt;verification：0xCAFEBABE...&lt;/li&gt;
+&lt;li&gt;preparation：class的静态变量赋默认值&lt;/li&gt;
+&lt;li&gt;resolution：符号应用转化为地址引用&lt;/li&gt;
+&lt;li&gt;initializing：class的静态变量这时才赋为初始值&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;类加载器&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;JVM 是按需动态加载，采用双亲委派机制	
+&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;（自顶向下，进行实际查找和加载child方向）
+&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;Bootstrap   -----&amp;gt; 加载lib/rt.jar charset.jar 等核心类，C++实现
+&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;    |
+&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;Extension   -----&amp;gt; 加载扩展jar包(jre/lib/ext/*.jar)，或由 Djava.ext.dirs指定
+&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;    |
+&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;Application -----&amp;gt; 加载classpath指定内容
+&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;    |
+&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;Custom ClassLoader -----&amp;gt; 自定义 classLoader
+&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;（自底向上检查该类是否已经加载parent方向）
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;双亲委派&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;父加载器&lt;/p&gt;
+&lt;p&gt;-父加载器不是&amp;quot;类加载器的加载器&amp;quot;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;双亲委派是一个孩子向父亲方向，然后父亲向孩子方向的双亲委派过程&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;post/20200101javaInterview/classLoading.jpg&#34; alt=&#34;class load process&#34;&gt;&lt;/p&gt;
+&lt;p&gt;为什么要做双亲委派&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;安全&lt;/p&gt;
+&lt;p&gt;双亲委派机制能够保证类加载器加载某个类时，最终都是由一个加载器加载，确保最终加载结果相同&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;补充&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;class load到内存中有&lt;strong&gt;两块&lt;/strong&gt;东西，一是class二进制文件，二是class对象。其他自己写的对象访问内存中的class对象，通过class对象访问内存中的二进制文件&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;method Area ：&lt;/p&gt;
+&lt;p&gt;class对象是存储在 method Area 中，method Area 在内存是存储在 metaspace中，也就是 permanent generation。1.8之前叫 permanent generation， 1.8之后叫 metaspace&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
         
       </description>
     </item>

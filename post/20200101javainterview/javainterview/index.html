@@ -138,9 +138,9 @@
     <li><a href="#jvm">JVM</a></li>
   </ul>
 </nav>
-    <p>insert artical description</p>
+    <p>JVM</p>
 <h2 id="jvm">JVM</h2>
-<p>Java从编码到执行</p>
+<p><strong>Java从编码到执行</strong></p>
 <blockquote>
 <ol>
 <li>javac 将 x.java(任何语言) 文件编码成 x.class 文件</li>
@@ -149,14 +149,14 @@
 <li>JVM 执行引擎开始执行</li>
 </ol>
 </blockquote>
-<p>JVM</p>
+<p><strong>JVM</strong></p>
 <blockquote>
 <ol>
 <li>jvm 是一种规范</li>
 <li>它是虚构出来的一台计算机</li>
 </ol>
 </blockquote>
-<p>ClassFileFormat/</p>
+<p><strong>ClassFileFormat</strong></p>
 <blockquote>
 <ul>
 <li>二进制字节流</li>
@@ -181,6 +181,57 @@
 </li>
 </ul>
 </blockquote>
+<p><strong>Class Loading Linking Initializing</strong></p>
+<p><strong>class文件load到内存的过程</strong></p>
+<blockquote>
+<ol>
+<li>loading: class文件放到内存</li>
+<li>linking</li>
+<li>verification：0xCAFEBABE...</li>
+<li>preparation：class的静态变量赋默认值</li>
+<li>resolution：符号应用转化为地址引用</li>
+<li>initializing：class的静态变量这时才赋为初始值</li>
+</ol>
+</blockquote>
+<p><strong>类加载器</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln"> 1</span>JVM 是按需动态加载，采用双亲委派机制	
+<span class="ln"> 2</span>（自顶向下，进行实际查找和加载child方向）
+<span class="ln"> 3</span>
+<span class="ln"> 4</span>Bootstrap   -----&gt; 加载lib/rt.jar charset.jar 等核心类，C++实现
+<span class="ln"> 5</span>    |
+<span class="ln"> 6</span>Extension   -----&gt; 加载扩展jar包(jre/lib/ext/*.jar)，或由 Djava.ext.dirs指定
+<span class="ln"> 7</span>    |
+<span class="ln"> 8</span>Application -----&gt; 加载classpath指定内容
+<span class="ln"> 9</span>    |
+<span class="ln">10</span>Custom ClassLoader -----&gt; 自定义 classLoader
+<span class="ln">11</span>
+<span class="ln">12</span>（自底向上检查该类是否已经加载parent方向）
+</code></pre></div><p>双亲委派</p>
+<ul>
+<li>
+<p>父加载器</p>
+<p>-父加载器不是&quot;类加载器的加载器&quot;</p>
+</li>
+<li>
+<p>双亲委派是一个孩子向父亲方向，然后父亲向孩子方向的双亲委派过程</p>
+</li>
+</ul>
+<p><img src="post/20200101javaInterview/classLoading.jpg" alt="class load process"></p>
+<p>为什么要做双亲委派</p>
+<blockquote>
+<p>安全</p>
+<p>双亲委派机制能够保证类加载器加载某个类时，最终都是由一个加载器加载，确保最终加载结果相同</p>
+</blockquote>
+<p>补充</p>
+<ul>
+<li>
+<p>class load到内存中有<strong>两块</strong>东西，一是class二进制文件，二是class对象。其他自己写的对象访问内存中的class对象，通过class对象访问内存中的二进制文件</p>
+</li>
+<li>
+<p>method Area ：</p>
+<p>class对象是存储在 method Area 中，method Area 在内存是存储在 metaspace中，也就是 permanent generation。1.8之前叫 permanent generation， 1.8之后叫 metaspace</p>
+</li>
+</ul>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">

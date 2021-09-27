@@ -802,11 +802,11 @@
 <span class="ln">10</span> <span class="kt">+-</span><span class="o">(</span><span class="err">8</span><span class="o">)</span> <span class="kt">MapPartitionsRDD</span><span class="o">[</span><span class="err">2</span><span class="o">]</span> <span class="n">at</span> <span class="n">map</span> <span class="n">at</span> <span class="n">test</span><span class="o">.</span><span class="n">scala</span><span class="k">:</span><span class="err">10</span> <span class="err">[]</span>
 <span class="ln">11</span>    <span class="kt">|</span>  <span class="kt">MapPartitionsRDD</span><span class="o">[</span><span class="err">1</span><span class="o">]</span> <span class="n">at</span> <span class="n">flatMap</span> <span class="n">at</span> <span class="n">test</span><span class="o">.</span><span class="n">scala</span><span class="k">:</span><span class="err">9</span> <span class="err">[]</span>
 <span class="ln">12</span>    <span class="kt">|</span>  <span class="kt">ParallelCollectionRDD</span><span class="o">[</span><span class="err">0</span><span class="o">]</span> <span class="n">at</span> <span class="n">parallelize</span> <span class="n">at</span> <span class="n">test</span><span class="o">.</span><span class="n">scala</span><span class="k">:</span><span class="err">6</span> <span class="err">[]</span>
-</code></pre></div><p><img src="/post/20210527sparkGuide1/RDDlogic.png" alt="RDDlogic"></p>
+</code></pre></div><p><img src="/post/20200527sparkGuide1/RDDlogic.png" alt="RDDlogic"></p>
 <p><strong>物理执行图</strong></p>
 <p>当触发Action执行的时候，这一组互相依赖的RDD要被处理，所以要转化为可运行的物理执行图，调度到集群中执行。</p>
 <p>因为大部分RDD是不真正存放数据的，只是数据从中流转，所以不能直接在集群中运行RDD，要有一种pipeline的思想，需要将这组RDD转为Stage和Task，从而运行Task，优化整体执行速度。</p>
-<p><img src="/post/20210527sparkGuide1/RDDphysic.png" alt="RDDphysic"></p>
+<p><img src="/post/20200527sparkGuide1/RDDphysic.png" alt="RDDphysic"></p>
 <p>小结：</p>
 <ul>
 <li>① -&gt; ① -&gt; ① 在第一个stage中，每一个这样的执行流程是一个Task，也就是在同一个Stage中的所有RDD的对应分区，在同一个Task中执行</li>
@@ -871,7 +871,7 @@
 </ul>
 </li>
 </ol>
-<p><img src="/post/20210527sparkGuide1/sparkFlow.png" alt="sparkFlow"></p>
+<p><img src="/post/20200527sparkGuide1/sparkFlow.png" alt="sparkFlow"></p>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">

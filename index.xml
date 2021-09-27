@@ -1529,7 +1529,7 @@
 &lt;h2 id=&#34;hive的特点hive和rdbms有什么异同&#34;&gt;Hive的特点，Hive和RDBMS有什么异同？&lt;/h2&gt;
 &lt;p&gt;hive是基于Hadoop的一个数据仓库工具，可以将结构化的数据文件映射为一张数据库表，并提供完整的sql查询功能，可以将sql语句转换为MapReduce任务进行运行。其优点是学习成本低，可以通过类SQL语句快速实现简单的MapReduce统计，不必开发专门的MapReduce应用，十分适合数据仓库的统计分析，但是Hive不支持实时查询。&lt;/p&gt;
 &lt;p&gt;Hive与关系型数据库的区别：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20210615hiveKeyPoint/hqlDifferents.png&#34; alt=&#34;hqlDifferents&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200615hiveKeyPoint/hqlDifferents.png&#34; alt=&#34;hqlDifferents&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;hive中sortbyorderbyclusterbydistrbuteby各代表什么意思&#34;&gt;hive中SortBy，OrderBy，ClusterBy，DistrbuteBy各代表什么意思？&lt;/h2&gt;
 &lt;p&gt;Orderby：会对输入做全局排序，因此只有一个reducer（多个reducer无法保证全局有序）。只有一个reducer，会导致当输入规模较大时，需要较长的计算时间。&lt;/p&gt;
 &lt;p&gt;Sortby：不是全局排序，其在数据进入reducer前完成排序。&lt;/p&gt;
@@ -2289,11 +2289,11 @@
 &lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;+-&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;MapPartitionsRDD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;map&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;test&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;scala&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;10&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;[]&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;    &lt;span class=&#34;kt&#34;&gt;|&lt;/span&gt;  &lt;span class=&#34;kt&#34;&gt;MapPartitionsRDD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;flatMap&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;test&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;scala&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;9&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;[]&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;    &lt;span class=&#34;kt&#34;&gt;|&lt;/span&gt;  &lt;span class=&#34;kt&#34;&gt;ParallelCollectionRDD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;parallelize&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;test&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;scala&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;6&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;[]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20210527sparkGuide1/RDDlogic.png&#34; alt=&#34;RDDlogic&#34;&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200527sparkGuide1/RDDlogic.png&#34; alt=&#34;RDDlogic&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;物理执行图&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;当触发Action执行的时候，这一组互相依赖的RDD要被处理，所以要转化为可运行的物理执行图，调度到集群中执行。&lt;/p&gt;
 &lt;p&gt;因为大部分RDD是不真正存放数据的，只是数据从中流转，所以不能直接在集群中运行RDD，要有一种pipeline的思想，需要将这组RDD转为Stage和Task，从而运行Task，优化整体执行速度。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20210527sparkGuide1/RDDphysic.png&#34; alt=&#34;RDDphysic&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200527sparkGuide1/RDDphysic.png&#34; alt=&#34;RDDphysic&#34;&gt;&lt;/p&gt;
 &lt;p&gt;小结：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;① -&amp;gt; ① -&amp;gt; ① 在第一个stage中，每一个这样的执行流程是一个Task，也就是在同一个Stage中的所有RDD的对应分区，在同一个Task中执行&lt;/li&gt;
@@ -2358,7 +2358,7 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20210527sparkGuide1/sparkFlow.png&#34; alt=&#34;sparkFlow&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200527sparkGuide1/sparkFlow.png&#34; alt=&#34;sparkFlow&#34;&gt;&lt;/p&gt;
         
       </description>
     </item>
@@ -2374,7 +2374,7 @@
           &lt;p&gt;The features of large applications: high availability, high concurrency and big data. High availability: system need to provide service without interruption. High concurrency: still stable under the big access. Big data: store and manage big data well.&lt;/p&gt;
 &lt;h2 id=&#34;最简单的架构&#34;&gt;最简单的架构&lt;/h2&gt;
 &lt;p&gt;开始数据量少，所以只需一台服务器&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20210526appArchitectureDevelopment/smapleArchitecture.png&#34; alt=&#34;smapleArchitecture&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200526appArchitectureDevelopment/smapleArchitecture.png&#34; alt=&#34;smapleArchitecture&#34;&gt;&lt;/p&gt;
 &lt;p&gt;应用程序、文件、数据库往往都部署在一台服务器上，应用程序部署在Tomcat服务器上，数据库可以使用MySQL&lt;/p&gt;
 &lt;h2 id=&#34;应用于数据服务分隔&#34;&gt;应用于数据服务分隔&lt;/h2&gt;
 &lt;p&gt;随着业务越来越复杂，访问量越来越大，导致性能越来越差，存储空间严重不足，这时我们考虑把服务器增加到三台。分离出应用服务器、数据库服务器、文件服务器。&lt;/p&gt;
@@ -2383,10 +2383,10 @@
 &lt;li&gt;数据库服务器需要存储大量的数据以及快速的检索，所以需磁盘的检索速度较快以及存储空间大&lt;/li&gt;
 &lt;li&gt;文件服务器需要存储上传的文件，需要更大的磁盘；现在通常情况下会选择第三方的存储服务&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20210526appArchitectureDevelopment/appSeparateData.png&#34; alt=&#34;appSeparateData&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200526appArchitectureDevelopment/appSeparateData.png&#34; alt=&#34;appSeparateData&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;应用服务器集群&#34;&gt;应用服务器集群&lt;/h2&gt;
 &lt;p&gt;在高并发、大流量的情况下，一台服务器是肯定处理不过来的，这个时候增加服务器，部署集群提供服务，来分担每台服务器的压力。部署集群的另一个好处是可伸缩性。比如双十一增加服务器分摊流量，双十一过后再减少服务器。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20210526appArchitectureDevelopment/Cluster.png&#34; alt=&#34;Cluster&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200526appArchitectureDevelopment/Cluster.png&#34; alt=&#34;Cluster&#34;&gt;&lt;/p&gt;
 &lt;p&gt;如果应用服务器是Tomcat，那么可以部署一个Tomcat的集群，外部在部署一个负载均衡器，可以采用随机、轮询或者一致性哈希算法达将用户的请求分发到不同应用服务集群；通常选择的免费的负载均衡是nginx。在这种架构下，应用服务器的负载将不会是整个应用的瓶颈点；&lt;/p&gt;
 &lt;p&gt;虽然应用程序的处理速度在这种架构下提升了许多，但是又会暴露一个问题，数据库的压力大大增大，导致访问响应延迟，影响整个应用的性能。这种架构还有个问题，通常应用是有状态的，需要记录用户的登录信息，如果每次用户的请求都是随机路由到后端的应用服务器，那么用户的会话将会丢失；解决这个问题两个方案：&lt;/p&gt;
 &lt;ul&gt;
@@ -2395,12 +2395,12 @@
 &lt;/ul&gt;
 &lt;h2 id=&#34;缓存&#34;&gt;缓存&lt;/h2&gt;
 &lt;p&gt;根据二八原则，80%的的业务都是集中访问20%的数据，这20%的数据通常称为热点数据，但是这20%的数据占用的内存也不会小，如果每个应用服务器都存放一份，有些浪费存储空间，所以这时候需要考虑加入分布式缓存服务器（常用的是Redis）；当引入了分布式缓存服务器，再来看上面那个方案的问题，就可以解决了，把用户的会话存放到缓存服务器，不仅可以防止用户数据丢失，效率也不低；架构图如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20210526appArchitectureDevelopment/cache.png&#34; alt=&#34;cache&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200526appArchitectureDevelopment/cache.png&#34; alt=&#34;cache&#34;&gt;&lt;/p&gt;
 &lt;p&gt;由于分布式缓存服务器毕竟存放在远程，需要经过网络，所以取数据还是要花一点时间；本地缓存访问速度更快，但是内存空间有限，并且还会出现和应用程序争抢资源；所以这种架构搭配了分布式缓存和本地缓存，本地缓存存放少量常用热点数据，当本地缓存中没有命中时在去集中式缓存取&lt;/p&gt;
 &lt;p&gt;在引进缓存之后，数据库的访问压力可以的一定的缓解&lt;/p&gt;
 &lt;h2 id=&#34;数据库读写分离&#34;&gt;数据库读写分离&lt;/h2&gt;
 &lt;p&gt;虽然在加入了缓存之后，部分数据可以直接走缓存，不需要访问数据库，但是任然会有一些请求，会访问数据库，比如：缓存失效，缓存未命中；当流量大的时候，数据库的访问量也不小。这时候我们需要考虑搭建数据库集群，读写分离&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20210526appArchitectureDevelopment/rwSeparate.png&#34; alt=&#34;rwSeparate&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200526appArchitectureDevelopment/rwSeparate.png&#34; alt=&#34;rwSeparate&#34;&gt;&lt;/p&gt;
 &lt;p&gt;当应用服务器有写操作时，访问主库，当应用程序有读操作时，访问从库；大多数的应用都是读的操作远远大于写的操作，所以可以配置数据库一主多从来分担数据库的压力；为了让应用程序对应主库和从库无感知，通常需要引入一些读写分离的框架做一个统一的数据访问模块。&lt;/p&gt;
 &lt;p&gt;这种架构通常需要警惕的一个问题是主从延迟，当在高并发的场景下，主库刚写成功，数据库还未成功同步完从库，这时候另一个请求进入读取数据发现不存在；解放方案是在应用程序中高并发的场景下设置强制走主库查询&lt;/p&gt;
 &lt;h2 id=&#34;反向代理和cdn&#34;&gt;反向代理和CDN&lt;/h2&gt;
@@ -2410,7 +2410,7 @@
 &lt;li&gt;减轻后端服务器的压力&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;架构图如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20210526appArchitectureDevelopment/cdn.png&#34; alt=&#34;cdn&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200526appArchitectureDevelopment/cdn.png&#34; alt=&#34;cdn&#34;&gt;&lt;/p&gt;
 &lt;p&gt;CDN: 部署在网络提供商的机房，当用户来访问的时候，从距离用户最近的服务器返回数据，尽快呈现给用户；通常情况下在CDN中缓存的是静态资源（html,js,css），达到动静分离；但是有时候遇到了某些数据访问量特别大的时候，后端会生成静态资源放入到CDN，比如：商城的首页，每个用户进入都需要访问的页面，如果每次请求都进入到后端，那么服务器的压力肯定不小，这种情况下会把首页生成静态的文件缓存到cdn和反向代理服务器&lt;/p&gt;
 &lt;p&gt;反向代理：部署在应用的中心机房，通常也是缓存的静态资源，当用户通过CDN未请求到需要的数据时，先进入反向代理服务器，如果有缓存用户访问的数据，那么直接返回给用户；这里也有特殊情况，对于有些场景下的热点数据，在这里根据用户的请求去分布式缓存服务器中获取，能拿到就直接返回。&lt;/p&gt;
 &lt;p&gt;这种架构已经把缓存做到了4级&lt;/p&gt;
@@ -2423,13 +2423,13 @@
 &lt;p&gt;通常情况下经过了这4级缓存，能够进入到数据库的请求也不多了，很好的释放了数据库的压力&lt;/p&gt;
 &lt;h2 id=&#34;搜索引擎和nosql&#34;&gt;搜索引擎和NoSQL&lt;/h2&gt;
 &lt;p&gt;随着业务的不断扩大，对于数据的存储和查询的需求也越来越复杂，通常情况我们需要引入非关系型数据库，比如搜索引擎和NoSQL数据库&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20210526appArchitectureDevelopment/NoSQL.png&#34; alt=&#34;NoSQL&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200526appArchitectureDevelopment/NoSQL.png&#34; alt=&#34;NoSQL&#34;&gt;&lt;/p&gt;
 &lt;p&gt;有时候我们的查询场景很复杂，需要查询很多数据表，经过一系列的计算才能完成，这时候可以考虑通过数据同步工具（比如canal）拉去数据到大数据平台，使用批处理框架离线计算，把输出的结果存放到搜索引擎或者NoSQL数据库中，应用程序直接查询计算的结果返回给用户。也有可能我们需要汇总多个表的数据做一张宽表，方便应用程序查询&lt;/p&gt;
 &lt;p&gt;由于引入的数据存储方式增多，为了减轻应用程序的管理多个数据源的麻烦，需要封装统一数据访问模块，如果使用的时Java，可以考虑spring-data&lt;/p&gt;
 &lt;h2 id=&#34;业务纵向拆分&#34;&gt;业务纵向拆分&lt;/h2&gt;
 &lt;p&gt;互联网公司通常的宗旨是小步迭代试错快跑，当业务发展到足够大，对于单体应用想要达到这个宗旨是有难度的，随着业务的发展，应用程序越来越大，研发、维护、发布的成本也越来越大，这时候就需要考虑根据业务把单体应用拆分为多个服务，服务之间可以通过RPC远程调用和消息队列来一起完成用户的请求。&lt;/p&gt;
 &lt;p&gt;由于业务的拆分，通常情况下也会相应的对数据库进行拆分，达到一个服务对应一个数据库的理想状态&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20210526appArchitectureDevelopment/vertical.png&#34; alt=&#34;vertical&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200526appArchitectureDevelopment/vertical.png&#34; alt=&#34;vertical&#34;&gt;&lt;/p&gt;
 &lt;p&gt;引入MQ的好处：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;提高系统的可用性：当消费服务器发送故障时，消息还在消息队列中，数据不会丢失&lt;/li&gt;
@@ -2492,7 +2492,7 @@
 &lt;p&gt;&lt;strong&gt;ZooKeeper&lt;/strong&gt; 是一个开源的&lt;strong&gt;分布式协调框架&lt;/strong&gt;，它的定位是为分布式应用提供一致性服务，是整个大数据体系的&lt;strong&gt;管理员&lt;/strong&gt;。&lt;strong&gt;ZooKeeper&lt;/strong&gt; 会封装好复杂易出错的关键服务，将高效、稳定、易用的服务提供给用户使用。&lt;/p&gt;
 &lt;p&gt;如果上面的官方言语你不太理解，你可以认为 &lt;strong&gt;ZooKeeper&lt;/strong&gt; = &lt;strong&gt;文件系统&lt;/strong&gt; + &lt;strong&gt;监听通知机制&lt;/strong&gt;。&lt;/p&gt;
 &lt;h3 id=&#34;11-file-system&#34;&gt;1.1 File System&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20210519zookeeper/1.png&#34; alt=&#34;filesys&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200519zookeeper/1.png&#34; alt=&#34;filesys&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Zookeeper&lt;/strong&gt;维护一个类似文件系统的树状数据结构，这种特性使得 &lt;strong&gt;Zookeeper&lt;/strong&gt; 不能用于存放大量的数据，每个节点的存放数据上限为&lt;strong&gt;1M&lt;/strong&gt;。每个子目录项如 NameService 都被称作为 &lt;strong&gt;znode&lt;/strong&gt;(目录节点)。和文件系统一样，我们能够自由的增加、删除&lt;strong&gt;znode&lt;/strong&gt;，在一个&lt;strong&gt;znode&lt;/strong&gt;下增加、删除子&lt;strong&gt;znode&lt;/strong&gt;，唯一的不同在于&lt;strong&gt;znode&lt;/strong&gt;是可以存储数据的。默认有四种类型的&lt;strong&gt;znode&lt;/strong&gt;：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;持久化目录节点 PERSISTENT&lt;/strong&gt;：客户端与zookeeper断开连接后，该节点依旧存在。&lt;/li&gt;
@@ -2514,7 +2514,7 @@
 &lt;li&gt;客户端回调 Watcher 客户端。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20210519zookeeper/2.webp&#34; alt=&#34;watcher&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200519zookeeper/2.webp&#34; alt=&#34;watcher&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;监听流程&lt;/strong&gt;：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ol&gt;
@@ -2527,7 +2527,7 @@
 &lt;/ol&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;13-feature&#34;&gt;1.3 Feature&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20210519zookeeper/3.png&#34; alt=&#34;feature&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200519zookeeper/3.png&#34; alt=&#34;feature&#34;&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;集群&lt;/strong&gt;：Zookeeper是一个领导者（Leader），多个跟随者（Follower）组成的集群。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;高可用性&lt;/strong&gt;：集群中只要有半数以上节点存活，Zookeeper集群就能正常服务。&lt;/li&gt;
@@ -2567,7 +2567,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;主要是避免了羊群效应，临时节点已经预先存在，所有想要获得锁的线程在它下面创建临时顺序编号目录节点，编号最小的获得锁，用完删除，后面的依次排队获取。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20210519zookeeper/4.png&#34; alt=&#34;distributedLock&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200519zookeeper/4.png&#34; alt=&#34;distributedLock&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;3-负载均衡&#34;&gt;3. 负载均衡&lt;/h3&gt;
 &lt;p&gt;多个相同的jar包在不同的服务器上开启相同的服务，可以通过nginx在服务端进行负载均衡的配置。也可以通过ZooKeeper在客户端进行负载均衡配置。&lt;/p&gt;
 &lt;ol&gt;
@@ -2666,7 +2666,7 @@
 &lt;/blockquote&gt;
 &lt;h5 id=&#34;322-运行时leader选举&#34;&gt;3.2.2 运行时Leader选举&lt;/h5&gt;
 &lt;p&gt;运行时候如果Master节点崩溃了会走恢复模式，新Leader选出前会暂停对外服务，大致可以分为四个阶段  &lt;code&gt;选举&lt;/code&gt;、&lt;code&gt;发现&lt;/code&gt;、&lt;code&gt;同步&lt;/code&gt;、&lt;code&gt;广播&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20210519zookeeper/5.png&#34; alt=&#34;chooseLeader&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200519zookeeper/5.png&#34; alt=&#34;chooseLeader&#34;&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;每个Server会发出一个投票，第一次都是投自己，其中投票信息 = (myid，ZXID)&lt;/li&gt;
 &lt;li&gt;收集来自各个服务器的投票&lt;/li&gt;
@@ -3600,9 +3600,9 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
       <guid>https://Jerrysmd.github.io/post/20200101javainterview/javainterview/</guid>
       <description>
         
-          &lt;p&gt;insert artical description&lt;/p&gt;
+          &lt;p&gt;JVM&lt;/p&gt;
 &lt;h2 id=&#34;jvm&#34;&gt;JVM&lt;/h2&gt;
-&lt;p&gt;Java从编码到执行&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Java从编码到执行&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ol&gt;
 &lt;li&gt;javac 将 x.java(任何语言) 文件编码成 x.class 文件&lt;/li&gt;
@@ -3611,14 +3611,14 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;li&gt;JVM 执行引擎开始执行&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;JVM&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;JVM&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ol&gt;
 &lt;li&gt;jvm 是一种规范&lt;/li&gt;
 &lt;li&gt;它是虚构出来的一台计算机&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;ClassFileFormat/&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ClassFileFormat&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;二进制字节流&lt;/li&gt;
@@ -3643,6 +3643,57 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Class Loading Linking Initializing&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;class文件load到内存的过程&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;loading: class文件放到内存&lt;/li&gt;
+&lt;li&gt;linking&lt;/li&gt;
+&lt;li&gt;verification：0xCAFEBABE...&lt;/li&gt;
+&lt;li&gt;preparation：class的静态变量赋默认值&lt;/li&gt;
+&lt;li&gt;resolution：符号应用转化为地址引用&lt;/li&gt;
+&lt;li&gt;initializing：class的静态变量这时才赋为初始值&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;类加载器&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;JVM 是按需动态加载，采用双亲委派机制	
+&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;（自顶向下，进行实际查找和加载child方向）
+&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;Bootstrap   -----&amp;gt; 加载lib/rt.jar charset.jar 等核心类，C++实现
+&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;    |
+&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;Extension   -----&amp;gt; 加载扩展jar包(jre/lib/ext/*.jar)，或由 Djava.ext.dirs指定
+&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;    |
+&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;Application -----&amp;gt; 加载classpath指定内容
+&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;    |
+&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;Custom ClassLoader -----&amp;gt; 自定义 classLoader
+&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;（自底向上检查该类是否已经加载parent方向）
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;双亲委派&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;父加载器&lt;/p&gt;
+&lt;p&gt;-父加载器不是&amp;quot;类加载器的加载器&amp;quot;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;双亲委派是一个孩子向父亲方向，然后父亲向孩子方向的双亲委派过程&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;post/20200101javaInterview/classLoading.jpg&#34; alt=&#34;class load process&#34;&gt;&lt;/p&gt;
+&lt;p&gt;为什么要做双亲委派&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;安全&lt;/p&gt;
+&lt;p&gt;双亲委派机制能够保证类加载器加载某个类时，最终都是由一个加载器加载，确保最终加载结果相同&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;补充&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;class load到内存中有&lt;strong&gt;两块&lt;/strong&gt;东西，一是class二进制文件，二是class对象。其他自己写的对象访问内存中的class对象，通过class对象访问内存中的二进制文件&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;method Area ：&lt;/p&gt;
+&lt;p&gt;class对象是存储在 method Area 中，method Area 在内存是存储在 metaspace中，也就是 permanent generation。1.8之前叫 permanent generation， 1.8之后叫 metaspace&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
         
       </description>
     </item>

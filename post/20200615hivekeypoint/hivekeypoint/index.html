@@ -165,7 +165,7 @@
 <h2 id="hive的特点hive和rdbms有什么异同">Hive的特点，Hive和RDBMS有什么异同？</h2>
 <p>hive是基于Hadoop的一个数据仓库工具，可以将结构化的数据文件映射为一张数据库表，并提供完整的sql查询功能，可以将sql语句转换为MapReduce任务进行运行。其优点是学习成本低，可以通过类SQL语句快速实现简单的MapReduce统计，不必开发专门的MapReduce应用，十分适合数据仓库的统计分析，但是Hive不支持实时查询。</p>
 <p>Hive与关系型数据库的区别：</p>
-<p><img src="/post/20210615hiveKeyPoint/hqlDifferents.png" alt="hqlDifferents"></p>
+<p><img src="/post/20200615hiveKeyPoint/hqlDifferents.png" alt="hqlDifferents"></p>
 <h2 id="hive中sortbyorderbyclusterbydistrbuteby各代表什么意思">hive中SortBy，OrderBy，ClusterBy，DistrbuteBy各代表什么意思？</h2>
 <p>Orderby：会对输入做全局排序，因此只有一个reducer（多个reducer无法保证全局有序）。只有一个reducer，会导致当输入规模较大时，需要较长的计算时间。</p>
 <p>Sortby：不是全局排序，其在数据进入reducer前完成排序。</p>
