@@ -155,14 +155,12 @@
 <h2 id="gdb的使用">gdb的使用</h2>
 <h3 id="启动gdb">启动gdb</h3>
 <p>编译一个测试程序，-g表示可以调试</p>
-<pre><code class="language-shell">gcc -g demo.c -o demo
-</code></pre>
-<p>启动gdb</p>
-<pre><code class="language-shell">gdb test 
-或者
-gdb -q test //表示不打印gdb版本信息，界面较为干净；
-</code></pre>
-<h3 id="查看源码">查看源码</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>gcc -g demo.c -o demo
+</code></pre></div><p>启动gdb</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>gdb <span class="nb">test</span> 
+<span class="ln">2</span>或者
+<span class="ln">3</span>gdb -q <span class="nb">test</span> //表示不打印gdb版本信息，界面较为干净；
+</code></pre></div><h3 id="查看源码">查看源码</h3>
 <ul>
 <li>list ：简记为 l ，其作用就是列出程序的源代码，默认每次显示10行。</li>
 <li>list 行号：将显示当前文件以“行号”为中心的前后10行代码，如：list 12</li>

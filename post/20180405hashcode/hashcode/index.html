@@ -124,7 +124,7 @@
 </svg></span>
     <span class="post_date">
       Apr 5, 2018</span>
-    <span class="post_time"> · 6 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/c' title="c" class="post_tag button button_translucent">c
+    <span class="post_time"> · 8 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/c' title="c" class="post_tag button button_translucent">c
         </a><a href='https://Jerrysmd.github.io/tags/hash' title="hash" class="post_tag button button_translucent">hash
         </a>
     </span>
@@ -149,438 +149,430 @@
 <h2 id="1-什么是hashmap">1. 什么是HashMap？</h2>
 <p>存储方式主要有两种<code>线性存储</code>和<code>链式存储</code>，常见的线性存储例如数组，常见的链式存储如链表、二叉树等。哈希表的存储主干为线性存储，这也是它在理想状态(无冲突)下时间复杂度为<code>O(1)</code>的关键所在。普通线性存储的存储内容与索引地址之间没有任何的联系，只能通过索引地址推算出存储内容，不能从存储内容推算出索引地址，是一个<mark>单向不可逆</mark>的过程，而HashMap存储的是一个<mark>&lt;key, value&gt;</mark>的键值对，通过key和索引地址建立了一层关系，这层关系称之为哈希函数(或散列函数)，这样既可以通过key推算出索引地址，也可以通过推算出的索引地址直接定位到键值对，这是一个<mark>双向可逆</mark>的过程。需要注意的一点是HashMap并不直接暴露出键值对的索引地址，但是可以通过哈希函数推算出<code>HashCode</code>，其实HashCode就是真实的索引地址。</p>
 <h2 id="2-定义键值对结构">2. 定义键值对结构</h2>
-<pre><code class="language-c">typedef struct entry {
-    void * key;             // 键
-    void * value;           // 值
-    struct entry * next;    // 冲突链表
-}*Entry;
-
-#define newEntry() NEW(struct entry)
-#define newEntryList(length) (Entry)malloc(length * sizeof(struct entry))
-</code></pre>
-<p>哈希冲突是指两个不同的key值得到了一个相同的HashCode，这种情况称之为<mark>哈希冲突</mark>，一个好的哈希函数很大程度上决定了哈希表的性能，不存在一种适合所有哈希表的哈希函数，在很多特定的情景下，需要有针对性的设计哈希函数才能达到理想的效果。当然啦，还是有一些优秀的哈希函数可以应对大多数情况的，对于性能要求不是很高的场景用这些就可以了。使用HashMap的时候难免会发生冲突，常用的方法主要分为两类：<code>再散列法</code>和<code>链地址法</code>。再散列法就是发生冲突时使用另一个哈希函数重新推算，一直到不冲突为止，这种方法有时候会造成数据堆积，就是元素本来的HashCode被其它元素再散列的HashCode占用，被迫再散列，如此恶性循环。链地址法就是在冲突的位置建立一个链表，将冲突值放在链表中，检索的时候需要额外的遍历冲突链表，本文采用的就是链地址法。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="k">typedef</span> <span class="k">struct</span> <span class="n">entry</span> <span class="p">{</span>
+<span class="ln">2</span>    <span class="kt">void</span> <span class="o">*</span> <span class="n">key</span><span class="p">;</span>             <span class="c1">// 键
+</span><span class="ln">3</span><span class="c1"></span>    <span class="kt">void</span> <span class="o">*</span> <span class="n">value</span><span class="p">;</span>           <span class="c1">// 值
+</span><span class="ln">4</span><span class="c1"></span>    <span class="k">struct</span> <span class="n">entry</span> <span class="o">*</span> <span class="n">next</span><span class="p">;</span>    <span class="c1">// 冲突链表
+</span><span class="ln">5</span><span class="c1"></span><span class="p">}</span><span class="o">*</span><span class="n">Entry</span><span class="p">;</span>
+<span class="ln">6</span>
+<span class="ln">7</span><span class="cp">#define newEntry() NEW(struct entry)
+</span><span class="ln">8</span><span class="cp">#define newEntryList(length) (Entry)malloc(length * sizeof(struct entry))
+</span></code></pre></div><p>哈希冲突是指两个不同的key值得到了一个相同的HashCode，这种情况称之为<mark>哈希冲突</mark>，一个好的哈希函数很大程度上决定了哈希表的性能，不存在一种适合所有哈希表的哈希函数，在很多特定的情景下，需要有针对性的设计哈希函数才能达到理想的效果。当然啦，还是有一些优秀的哈希函数可以应对大多数情况的，对于性能要求不是很高的场景用这些就可以了。使用HashMap的时候难免会发生冲突，常用的方法主要分为两类：<code>再散列法</code>和<code>链地址法</code>。再散列法就是发生冲突时使用另一个哈希函数重新推算，一直到不冲突为止，这种方法有时候会造成数据堆积，就是元素本来的HashCode被其它元素再散列的HashCode占用，被迫再散列，如此恶性循环。链地址法就是在冲突的位置建立一个链表，将冲突值放在链表中，检索的时候需要额外的遍历冲突链表，本文采用的就是链地址法。</p>
 <h2 id="3-定义hashmap结构体">3. 定义HashMap结构体</h2>
 <p>HashMap结构的存储本体是一个数组，建立一个<mark>Entry数组</mark>作为存储空间，然后根据传入的key计算出HashCode，当做数组的索引存入数据，读取的时候通过计算出的HashCode可以在数组中直接取出值。</p>
 <p><code>size</code>是当前存储键值对的数量，而<code>listSize</code>是当前数组的大小，仔细观察键值对结构会发现，数组的每一项其实都是冲突链表的头节点。因为冲突的存在，就有可能导致size大于listSize，当size大于listSize的时候一定发生了冲突，这时候就会扩容。</p>
 <p>在结构体中放了一些常用的方法，因为C语言本身并没有类的概念，为了便于内部封装(经常会有一个方法调用另一个方法的时候)，可以让用户自定义一个方法而不影响其它方法的调用。举个简单的例子，put方法中调用了hashCode函数，如果想自定义一个hashCode方法，迫不得已还要再实现一个put方法，哪怕put中只改了一行代码。</p>
 <p>结构体定义如下：</p>
-<pre><code class="language-c">// 哈希结构
-typedef struct hashMap *HashMap;
-#define newHashMap() NEW(struct hashMap)
-
-// 哈希函数类型
-typedef int(*HashCode)(HashMap, void * key);
-
-// 判等函数类型
-typedef Boolean(*Equal)(void * key1, void * key2);
-
-// 添加键函数类型
-typedef void(*Put)(HashMap hashMap, void * key, void * value);
-
-// 获取键对应值的函数类型
-typedef void * (*Get)(HashMap hashMap, void * key);
-
-// 删除键的函数类型
-typedef Boolean(*Remove)(HashMap hashMap, void * key);
-
-// 清空Map的函数类型
-typedef void(*Clear)(HashMap hashMap);
-
-// 判断键值是否存在的函数类型
-typedef Boolean(*Exists)(HashMap hashMap, void * key);
-
-typedef struct hashMap {
-    int size;           // 当前大小
-    int listSize;       // 有效空间大小
-    HashCode hashCode;  // 哈希函数
-    Equal equal;        // 判等函数
-    Entry list;         // 存储区域
-    Put put;            // 添加键的函数
-    Get get;            // 获取键对应值的函数
-    Remove remove;      // 删除键
-    Clear clear;        // 清空Map
-    Exists exists;      // 判断键是否存在
-    Boolean autoAssign;	// 设定是否根据当前数据量动态调整内存大小，默认开启
-}*HashMap;
-
-// 默认哈希函数
-static int defaultHashCode(HashMap hashMap, void * key);
-
-// 默认判断键值是否相等
-static Boolean defaultEqual(void * key1, void * key2);
-
-// 默认添加键值对
-static void defaultPut(HashMap hashMap, void * key, void * value);
-
-// 默认获取键对应值
-static void * defaultGet(HashMap hashMap, void * key);
-
-// 默认删除键
-static Boolean defaultRemove(HashMap hashMap, void * key);
-
-// 默认判断键是否存在
-static Boolean defaultExists(HashMap hashMap, void * key);
-
-// 默认清空Map
-static void defaultClear(HashMap hashMap);
-
-// 创建一个哈希结构
-HashMap createHashMap(HashCode hashCode, Equal equal);
-
-// 重新构建
-static void resetHashMap(HashMap hashMap, int listSize);
-</code></pre>
-<p>HashMap的所有属性方法都有一个默认的实现，创建HashMap时可以指定哈希函数和判等函数(用于比较两个key是否相等)，传入NULL时将使用默认函数。这些函数都被设置为了static，在文件外不可访问。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="c1">// 哈希结构
+</span><span class="ln"> 2</span><span class="c1"></span><span class="k">typedef</span> <span class="k">struct</span> <span class="n">hashMap</span> <span class="o">*</span><span class="n">HashMap</span><span class="p">;</span>
+<span class="ln"> 3</span><span class="cp">#define newHashMap() NEW(struct hashMap)
+</span><span class="ln"> 4</span><span class="cp"></span>
+<span class="ln"> 5</span><span class="c1">// 哈希函数类型
+</span><span class="ln"> 6</span><span class="c1"></span><span class="k">typedef</span> <span class="nf">int</span><span class="p">(</span><span class="o">*</span><span class="n">HashCode</span><span class="p">)(</span><span class="n">HashMap</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">key</span><span class="p">);</span>
+<span class="ln"> 7</span>
+<span class="ln"> 8</span><span class="c1">// 判等函数类型
+</span><span class="ln"> 9</span><span class="c1"></span><span class="k">typedef</span> <span class="nf">Boolean</span><span class="p">(</span><span class="o">*</span><span class="n">Equal</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span> <span class="n">key1</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">key2</span><span class="p">);</span>
+<span class="ln">10</span>
+<span class="ln">11</span><span class="c1">// 添加键函数类型
+</span><span class="ln">12</span><span class="c1"></span><span class="k">typedef</span> <span class="nf">void</span><span class="p">(</span><span class="o">*</span><span class="n">Put</span><span class="p">)(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">key</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">value</span><span class="p">);</span>
+<span class="ln">13</span>
+<span class="ln">14</span><span class="c1">// 获取键对应值的函数类型
+</span><span class="ln">15</span><span class="c1"></span><span class="k">typedef</span> <span class="kt">void</span> <span class="o">*</span> <span class="p">(</span><span class="o">*</span><span class="n">Get</span><span class="p">)(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">key</span><span class="p">);</span>
+<span class="ln">16</span>
+<span class="ln">17</span><span class="c1">// 删除键的函数类型
+</span><span class="ln">18</span><span class="c1"></span><span class="k">typedef</span> <span class="nf">Boolean</span><span class="p">(</span><span class="o">*</span><span class="n">Remove</span><span class="p">)(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">key</span><span class="p">);</span>
+<span class="ln">19</span>
+<span class="ln">20</span><span class="c1">// 清空Map的函数类型
+</span><span class="ln">21</span><span class="c1"></span><span class="k">typedef</span> <span class="nf">void</span><span class="p">(</span><span class="o">*</span><span class="n">Clear</span><span class="p">)(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">);</span>
+<span class="ln">22</span>
+<span class="ln">23</span><span class="c1">// 判断键值是否存在的函数类型
+</span><span class="ln">24</span><span class="c1"></span><span class="k">typedef</span> <span class="nf">Boolean</span><span class="p">(</span><span class="o">*</span><span class="n">Exists</span><span class="p">)(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">key</span><span class="p">);</span>
+<span class="ln">25</span>
+<span class="ln">26</span><span class="k">typedef</span> <span class="k">struct</span> <span class="n">hashMap</span> <span class="p">{</span>
+<span class="ln">27</span>    <span class="kt">int</span> <span class="n">size</span><span class="p">;</span>           <span class="c1">// 当前大小
+</span><span class="ln">28</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">listSize</span><span class="p">;</span>       <span class="c1">// 有效空间大小
+</span><span class="ln">29</span><span class="c1"></span>    <span class="n">HashCode</span> <span class="n">hashCode</span><span class="p">;</span>  <span class="c1">// 哈希函数
+</span><span class="ln">30</span><span class="c1"></span>    <span class="n">Equal</span> <span class="n">equal</span><span class="p">;</span>        <span class="c1">// 判等函数
+</span><span class="ln">31</span><span class="c1"></span>    <span class="n">Entry</span> <span class="n">list</span><span class="p">;</span>         <span class="c1">// 存储区域
+</span><span class="ln">32</span><span class="c1"></span>    <span class="n">Put</span> <span class="n">put</span><span class="p">;</span>            <span class="c1">// 添加键的函数
+</span><span class="ln">33</span><span class="c1"></span>    <span class="n">Get</span> <span class="n">get</span><span class="p">;</span>            <span class="c1">// 获取键对应值的函数
+</span><span class="ln">34</span><span class="c1"></span>    <span class="n">Remove</span> <span class="n">remove</span><span class="p">;</span>      <span class="c1">// 删除键
+</span><span class="ln">35</span><span class="c1"></span>    <span class="n">Clear</span> <span class="n">clear</span><span class="p">;</span>        <span class="c1">// 清空Map
+</span><span class="ln">36</span><span class="c1"></span>    <span class="n">Exists</span> <span class="n">exists</span><span class="p">;</span>      <span class="c1">// 判断键是否存在
+</span><span class="ln">37</span><span class="c1"></span>    <span class="n">Boolean</span> <span class="n">autoAssign</span><span class="p">;</span>	<span class="c1">// 设定是否根据当前数据量动态调整内存大小，默认开启
+</span><span class="ln">38</span><span class="c1"></span><span class="p">}</span><span class="o">*</span><span class="n">HashMap</span><span class="p">;</span>
+<span class="ln">39</span>
+<span class="ln">40</span><span class="c1">// 默认哈希函数
+</span><span class="ln">41</span><span class="c1"></span><span class="k">static</span> <span class="kt">int</span> <span class="nf">defaultHashCode</span><span class="p">(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">key</span><span class="p">);</span>
+<span class="ln">42</span>
+<span class="ln">43</span><span class="c1">// 默认判断键值是否相等
+</span><span class="ln">44</span><span class="c1"></span><span class="k">static</span> <span class="n">Boolean</span> <span class="nf">defaultEqual</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span> <span class="n">key1</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">key2</span><span class="p">);</span>
+<span class="ln">45</span>
+<span class="ln">46</span><span class="c1">// 默认添加键值对
+</span><span class="ln">47</span><span class="c1"></span><span class="k">static</span> <span class="kt">void</span> <span class="nf">defaultPut</span><span class="p">(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">key</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">value</span><span class="p">);</span>
+<span class="ln">48</span>
+<span class="ln">49</span><span class="c1">// 默认获取键对应值
+</span><span class="ln">50</span><span class="c1"></span><span class="k">static</span> <span class="kt">void</span> <span class="o">*</span> <span class="nf">defaultGet</span><span class="p">(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">key</span><span class="p">);</span>
+<span class="ln">51</span>
+<span class="ln">52</span><span class="c1">// 默认删除键
+</span><span class="ln">53</span><span class="c1"></span><span class="k">static</span> <span class="n">Boolean</span> <span class="nf">defaultRemove</span><span class="p">(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">key</span><span class="p">);</span>
+<span class="ln">54</span>
+<span class="ln">55</span><span class="c1">// 默认判断键是否存在
+</span><span class="ln">56</span><span class="c1"></span><span class="k">static</span> <span class="n">Boolean</span> <span class="nf">defaultExists</span><span class="p">(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">key</span><span class="p">);</span>
+<span class="ln">57</span>
+<span class="ln">58</span><span class="c1">// 默认清空Map
+</span><span class="ln">59</span><span class="c1"></span><span class="k">static</span> <span class="kt">void</span> <span class="nf">defaultClear</span><span class="p">(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">);</span>
+<span class="ln">60</span>
+<span class="ln">61</span><span class="c1">// 创建一个哈希结构
+</span><span class="ln">62</span><span class="c1"></span><span class="n">HashMap</span> <span class="nf">createHashMap</span><span class="p">(</span><span class="n">HashCode</span> <span class="n">hashCode</span><span class="p">,</span> <span class="n">Equal</span> <span class="n">equal</span><span class="p">);</span>
+<span class="ln">63</span>
+<span class="ln">64</span><span class="c1">// 重新构建
+</span><span class="ln">65</span><span class="c1"></span><span class="k">static</span> <span class="kt">void</span> <span class="nf">resetHashMap</span><span class="p">(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="kt">int</span> <span class="n">listSize</span><span class="p">);</span>
+</code></pre></div><p>HashMap的所有属性方法都有一个默认的实现，创建HashMap时可以指定哈希函数和判等函数(用于比较两个key是否相等)，传入NULL时将使用默认函数。这些函数都被设置为了static，在文件外不可访问。</p>
 <h2 id="4-哈希函数">4. 哈希函数</h2>
-<pre><code class="language-c">int defaultHashCode(HashMap hashMap, let key)
-{
-    IN_STACK;
-    string k = (string)key;
-    unsigned long h = 0;
-    while (*k) {
-        h = (h &lt;&lt; 4) + *k++;
-        unsigned long g = h &amp; 0xF0000000L;
-        if (g) {
-            h ^= g &gt;&gt; 24;
-        }
-        h &amp;= ~g;
-    }
-    OUT_STACK;
-    return h % hashMap-&gt;listSize;
-}
-</code></pre>
-<p>key的类型为void *，是一个任意类型，HashMap本身也没有规定key值一定是string类型，上面的哈希函数只针对string类型，可以根据实际需要替换成其他。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="kt">int</span> <span class="nf">defaultHashCode</span><span class="p">(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="n">let</span> <span class="n">key</span><span class="p">)</span>
+<span class="ln"> 2</span><span class="p">{</span>
+<span class="ln"> 3</span>    <span class="n">IN_STACK</span><span class="p">;</span>
+<span class="ln"> 4</span>    <span class="n">string</span> <span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="n">key</span><span class="p">;</span>
+<span class="ln"> 5</span>    <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">h</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="ln"> 6</span>    <span class="k">while</span> <span class="p">(</span><span class="o">*</span><span class="n">k</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln"> 7</span>        <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">h</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="o">*</span><span class="n">k</span><span class="o">++</span><span class="p">;</span>
+<span class="ln"> 8</span>        <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">g</span> <span class="o">=</span> <span class="n">h</span> <span class="o">&amp;</span> <span class="mh">0xF0000000L</span><span class="p">;</span>
+<span class="ln"> 9</span>        <span class="k">if</span> <span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln">10</span>            <span class="n">h</span> <span class="o">^=</span> <span class="n">g</span> <span class="o">&gt;&gt;</span> <span class="mi">24</span><span class="p">;</span>
+<span class="ln">11</span>        <span class="p">}</span>
+<span class="ln">12</span>        <span class="n">h</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">g</span><span class="p">;</span>
+<span class="ln">13</span>    <span class="p">}</span>
+<span class="ln">14</span>    <span class="n">OUT_STACK</span><span class="p">;</span>
+<span class="ln">15</span>    <span class="k">return</span> <span class="n">h</span> <span class="o">%</span> <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">listSize</span><span class="p">;</span>
+<span class="ln">16</span><span class="p">}</span>
+</code></pre></div><p>key的类型为void *，是一个任意类型，HashMap本身也没有规定key值一定是string类型，上面的哈希函数只针对string类型，可以根据实际需要替换成其他。</p>
 <h2 id="5-put函数">5. put函数</h2>
 <p>用于在哈希表中存入一个键值对，首先先推算出HashCode，然后判断该地址是否已经有数据，如果已有的key值和存入的key值相同，改变value即可，否则为冲突，需要挂到冲突链尾部，该地址没有数据时直接存储。实现如下：</p>
-<pre><code class="language-c">void resetHashMap(HashMap hashMap, int listSize) {
-
-    if (listSize &lt; 8) return;
-
-    // 键值对临时存储空间
-    Entry tempList = newEntryList(hashMap-&gt;size);
-
-    HashMapIterator iterator = createHashMapIterator(hashMap);
-    int length = hashMap-&gt;size;
-    for (int index = 0; hasNextHashMapIterator(iterator); index++) {
-        // 迭代取出所有键值对
-        iterator = nextHashMapIterator(iterator);
-        tempList[index].key = iterator-&gt;entry-&gt;key;
-        tempList[index].value = iterator-&gt;entry-&gt;value;
-        tempList[index].next = NULL;
-    }
-    freeHashMapIterator(&amp;iterator);
-
-    // 清除原有键值对数据
-    hashMap-&gt;size = 0;
-    for (int i = 0; i &lt; hashMap-&gt;listSize; i++) {
-        Entry current = &amp;hashMap-&gt;list[i];
-        current-&gt;key = NULL;
-        current-&gt;value = NULL;
-        if (current-&gt;next != NULL) {
-            while (current-&gt;next != NULL) {
-                Entry temp = current-&gt;next-&gt;next;
-                free(current-&gt;next);
-                current-&gt;next = temp;
-            }
-        }
-    }
-
-    // 更改内存大小
-    hashMap-&gt;listSize = listSize;
-    Entry relist = (Entry)realloc(hashMap-&gt;list, hashMap-&gt;listSize * sizeof(struct entry));
-    if (relist != NULL) {
-        hashMap-&gt;list = relist;
-        relist = NULL;
-    }
-
-    // 初始化数据
-    for (int i = 0; i &lt; hashMap-&gt;listSize; i++) {
-        hashMap-&gt;list[i].key = NULL;
-        hashMap-&gt;list[i].value = NULL;
-        hashMap-&gt;list[i].next = NULL;
-    }
-
-    // 将所有键值对重新写入内存
-    for (int i = 0; i &lt; length; i++) {
-        Array x = tempList[i].value;
-        hashMap-&gt;put(hashMap, tempList[i].key, tempList[i].value);
-    }
-    free(tempList);
-}
-
-void defaultPut(HashMap hashMap, let key, let value) {
-    if (hashMap-&gt;autoAssign &amp;&amp; hashMap-&gt;size &gt;= hashMap-&gt;listSize) {
-
-        // 内存扩充至原来的两倍
-        // *注: 扩充时考虑的是当前存储元素数量与存储空间的大小关系，而不是存储空间是否已经存满，
-        // 例如: 存储空间为10，存入了10个键值对，但是全部冲突了，所以存储空间空着9个，其余的全部挂在一个上面，
-        // 这样检索的时候和遍历查询没有什么区别了，可以简单这样理解，当我存入第11个键值对的时候一定会发生冲突，
-        // 这是由哈希函数本身的特性(取模)决定的，冲突就会导致检索变慢，所以这时候扩充存储空间，对原有键值对进行
-        // 再次散列，会把冲突的数据再次分散开，加快索引定位速度。
-        resetHashMap(hashMap, hashMap-&gt;listSize * 2);
-    }
-
-    int index = hashMap-&gt;hashCode(hashMap, key);
-    if (hashMap-&gt;list[index].key == NULL) {
-        hashMap-&gt;size++;
-        // 该地址为空时直接存储
-        Array x = value;
-        hashMap-&gt;list[index].key = key;
-        hashMap-&gt;list[index].value = value;
-    }
-    else {
-
-        Entry current = &amp;hashMap-&gt;list[index];
-        while (current != NULL) {
-            if (hashMap-&gt;equal(key, current-&gt;key)) {
-                // 对于键值已经存在的直接覆盖
-                current-&gt;value = value;
-                return;
-            }
-            current = current-&gt;next;
-        };
-
-        // 发生冲突则创建节点挂到相应位置的next上
-        Entry entry = newEntry();
-        entry-&gt;key = key;
-        entry-&gt;value = value;
-        entry-&gt;next = hashMap-&gt;list[index].next;
-        hashMap-&gt;list[index].next = entry;
-        hashMap-&gt;size++;
-    }
-}
-</code></pre>
-<p>put函数还有一个重要的功能，当size大于listSize时要主动扩容，这个判定条件看似有些不合理，当size大于listSize的时候可能因为冲突的存在，数组并没有存满，这时候就扩容不是浪费存储空间吗？事实确实如此，但这其实是为了加快检索速度一种妥协的办法，上文提到过，当size大于listSize时一定会发生冲突，因为哈希函数为了不越界，都会将计算出的HashCode进行取余操作，这就导致HashCode的个数一共就listSize个，超过这个个数就一定会冲突，冲突的越多，检索速度就越向O(n)靠拢，为了保证索引速度消耗一定的空间还是比较划算的，扩容时直接将容量变为了当前的两倍，这是考虑到扩容时需要将所有重新计算所有元素的HashCode，较为消耗时间，所以应该尽量的减少扩容次数。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="kt">void</span> <span class="nf">resetHashMap</span><span class="p">(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="kt">int</span> <span class="n">listSize</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln"> 2</span>
+<span class="ln"> 3</span>    <span class="k">if</span> <span class="p">(</span><span class="n">listSize</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+<span class="ln"> 4</span>
+<span class="ln"> 5</span>    <span class="c1">// 键值对临时存储空间
+</span><span class="ln"> 6</span><span class="c1"></span>    <span class="n">Entry</span> <span class="n">tempList</span> <span class="o">=</span> <span class="n">newEntryList</span><span class="p">(</span><span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">);</span>
+<span class="ln"> 7</span>
+<span class="ln"> 8</span>    <span class="n">HashMapIterator</span> <span class="n">iterator</span> <span class="o">=</span> <span class="n">createHashMapIterator</span><span class="p">(</span><span class="n">hashMap</span><span class="p">);</span>
+<span class="ln"> 9</span>    <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">;</span>
+<span class="ln">10</span>    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">hasNextHashMapIterator</span><span class="p">(</span><span class="n">iterator</span><span class="p">);</span> <span class="n">index</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln">11</span>        <span class="c1">// 迭代取出所有键值对
+</span><span class="ln">12</span><span class="c1"></span>        <span class="n">iterator</span> <span class="o">=</span> <span class="n">nextHashMapIterator</span><span class="p">(</span><span class="n">iterator</span><span class="p">);</span>
+<span class="ln">13</span>        <span class="n">tempList</span><span class="p">[</span><span class="n">index</span><span class="p">].</span><span class="n">key</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">-&gt;</span><span class="n">entry</span><span class="o">-&gt;</span><span class="n">key</span><span class="p">;</span>
+<span class="ln">14</span>        <span class="n">tempList</span><span class="p">[</span><span class="n">index</span><span class="p">].</span><span class="n">value</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">-&gt;</span><span class="n">entry</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">;</span>
+<span class="ln">15</span>        <span class="n">tempList</span><span class="p">[</span><span class="n">index</span><span class="p">].</span><span class="n">next</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="ln">16</span>    <span class="p">}</span>
+<span class="ln">17</span>    <span class="n">freeHashMapIterator</span><span class="p">(</span><span class="o">&amp;</span><span class="n">iterator</span><span class="p">);</span>
+<span class="ln">18</span>
+<span class="ln">19</span>    <span class="c1">// 清除原有键值对数据
+</span><span class="ln">20</span><span class="c1"></span>    <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="ln">21</span>    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">listSize</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln">22</span>        <span class="n">Entry</span> <span class="n">current</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="ln">23</span>        <span class="n">current</span><span class="o">-&gt;</span><span class="n">key</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="ln">24</span>        <span class="n">current</span><span class="o">-&gt;</span><span class="n">value</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="ln">25</span>        <span class="k">if</span> <span class="p">(</span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln">26</span>            <span class="k">while</span> <span class="p">(</span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln">27</span>                <span class="n">Entry</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+<span class="ln">28</span>                <span class="n">free</span><span class="p">(</span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">);</span>
+<span class="ln">29</span>                <span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+<span class="ln">30</span>            <span class="p">}</span>
+<span class="ln">31</span>        <span class="p">}</span>
+<span class="ln">32</span>    <span class="p">}</span>
+<span class="ln">33</span>
+<span class="ln">34</span>    <span class="c1">// 更改内存大小
+</span><span class="ln">35</span><span class="c1"></span>    <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">listSize</span> <span class="o">=</span> <span class="n">listSize</span><span class="p">;</span>
+<span class="ln">36</span>    <span class="n">Entry</span> <span class="n">relist</span> <span class="o">=</span> <span class="p">(</span><span class="n">Entry</span><span class="p">)</span><span class="n">realloc</span><span class="p">(</span><span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">,</span> <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">listSize</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">entry</span><span class="p">));</span>
+<span class="ln">37</span>    <span class="k">if</span> <span class="p">(</span><span class="n">relist</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln">38</span>        <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">list</span> <span class="o">=</span> <span class="n">relist</span><span class="p">;</span>
+<span class="ln">39</span>        <span class="n">relist</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="ln">40</span>    <span class="p">}</span>
+<span class="ln">41</span>
+<span class="ln">42</span>    <span class="c1">// 初始化数据
+</span><span class="ln">43</span><span class="c1"></span>    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">listSize</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln">44</span>        <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">key</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="ln">45</span>        <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">value</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="ln">46</span>        <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">next</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="ln">47</span>    <span class="p">}</span>
+<span class="ln">48</span>
+<span class="ln">49</span>    <span class="c1">// 将所有键值对重新写入内存
+</span><span class="ln">50</span><span class="c1"></span>    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln">51</span>        <span class="n">Array</span> <span class="n">x</span> <span class="o">=</span> <span class="n">tempList</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">value</span><span class="p">;</span>
+<span class="ln">52</span>        <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">put</span><span class="p">(</span><span class="n">hashMap</span><span class="p">,</span> <span class="n">tempList</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">key</span><span class="p">,</span> <span class="n">tempList</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">value</span><span class="p">);</span>
+<span class="ln">53</span>    <span class="p">}</span>
+<span class="ln">54</span>    <span class="n">free</span><span class="p">(</span><span class="n">tempList</span><span class="p">);</span>
+<span class="ln">55</span><span class="p">}</span>
+<span class="ln">56</span>
+<span class="ln">57</span><span class="kt">void</span> <span class="nf">defaultPut</span><span class="p">(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="n">let</span> <span class="n">key</span><span class="p">,</span> <span class="n">let</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln">58</span>    <span class="k">if</span> <span class="p">(</span><span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">autoAssign</span> <span class="o">&amp;&amp;</span> <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">&gt;=</span> <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">listSize</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln">59</span>
+<span class="ln">60</span>        <span class="c1">// 内存扩充至原来的两倍
+</span><span class="ln">61</span><span class="c1"></span>        <span class="c1">// *注: 扩充时考虑的是当前存储元素数量与存储空间的大小关系，而不是存储空间是否已经存满，
+</span><span class="ln">62</span><span class="c1"></span>        <span class="c1">// 例如: 存储空间为10，存入了10个键值对，但是全部冲突了，所以存储空间空着9个，其余的全部挂在一个上面，
+</span><span class="ln">63</span><span class="c1"></span>        <span class="c1">// 这样检索的时候和遍历查询没有什么区别了，可以简单这样理解，当我存入第11个键值对的时候一定会发生冲突，
+</span><span class="ln">64</span><span class="c1"></span>        <span class="c1">// 这是由哈希函数本身的特性(取模)决定的，冲突就会导致检索变慢，所以这时候扩充存储空间，对原有键值对进行
+</span><span class="ln">65</span><span class="c1"></span>        <span class="c1">// 再次散列，会把冲突的数据再次分散开，加快索引定位速度。
+</span><span class="ln">66</span><span class="c1"></span>        <span class="n">resetHashMap</span><span class="p">(</span><span class="n">hashMap</span><span class="p">,</span> <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">listSize</span> <span class="o">*</span> <span class="mi">2</span><span class="p">);</span>
+<span class="ln">67</span>    <span class="p">}</span>
+<span class="ln">68</span>
+<span class="ln">69</span>    <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">hashCode</span><span class="p">(</span><span class="n">hashMap</span><span class="p">,</span> <span class="n">key</span><span class="p">);</span>
+<span class="ln">70</span>    <span class="k">if</span> <span class="p">(</span><span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">index</span><span class="p">].</span><span class="n">key</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln">71</span>        <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">size</span><span class="o">++</span><span class="p">;</span>
+<span class="ln">72</span>        <span class="c1">// 该地址为空时直接存储
+</span><span class="ln">73</span><span class="c1"></span>        <span class="n">Array</span> <span class="n">x</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+<span class="ln">74</span>        <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">index</span><span class="p">].</span><span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="p">;</span>
+<span class="ln">75</span>        <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">index</span><span class="p">].</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+<span class="ln">76</span>    <span class="p">}</span>
+<span class="ln">77</span>    <span class="k">else</span> <span class="p">{</span>
+<span class="ln">78</span>
+<span class="ln">79</span>        <span class="n">Entry</span> <span class="n">current</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">index</span><span class="p">];</span>
+<span class="ln">80</span>        <span class="k">while</span> <span class="p">(</span><span class="n">current</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln">81</span>            <span class="k">if</span> <span class="p">(</span><span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">equal</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">current</span><span class="o">-&gt;</span><span class="n">key</span><span class="p">))</span> <span class="p">{</span>
+<span class="ln">82</span>                <span class="c1">// 对于键值已经存在的直接覆盖
+</span><span class="ln">83</span><span class="c1"></span>                <span class="n">current</span><span class="o">-&gt;</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+<span class="ln">84</span>                <span class="k">return</span><span class="p">;</span>
+<span class="ln">85</span>            <span class="p">}</span>
+<span class="ln">86</span>            <span class="n">current</span> <span class="o">=</span> <span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+<span class="ln">87</span>        <span class="p">};</span>
+<span class="ln">88</span>
+<span class="ln">89</span>        <span class="c1">// 发生冲突则创建节点挂到相应位置的next上
+</span><span class="ln">90</span><span class="c1"></span>        <span class="n">Entry</span> <span class="n">entry</span> <span class="o">=</span> <span class="n">newEntry</span><span class="p">();</span>
+<span class="ln">91</span>        <span class="n">entry</span><span class="o">-&gt;</span><span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="p">;</span>
+<span class="ln">92</span>        <span class="n">entry</span><span class="o">-&gt;</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+<span class="ln">93</span>        <span class="n">entry</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">index</span><span class="p">].</span><span class="n">next</span><span class="p">;</span>
+<span class="ln">94</span>        <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">index</span><span class="p">].</span><span class="n">next</span> <span class="o">=</span> <span class="n">entry</span><span class="p">;</span>
+<span class="ln">95</span>        <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">size</span><span class="o">++</span><span class="p">;</span>
+<span class="ln">96</span>    <span class="p">}</span>
+<span class="ln">97</span><span class="p">}</span>
+</code></pre></div><p>put函数还有一个重要的功能，当size大于listSize时要主动扩容，这个判定条件看似有些不合理，当size大于listSize的时候可能因为冲突的存在，数组并没有存满，这时候就扩容不是浪费存储空间吗？事实确实如此，但这其实是为了加快检索速度一种妥协的办法，上文提到过，当size大于listSize时一定会发生冲突，因为哈希函数为了不越界，都会将计算出的HashCode进行取余操作，这就导致HashCode的个数一共就listSize个，超过这个个数就一定会冲突，冲突的越多，检索速度就越向O(n)靠拢，为了保证索引速度消耗一定的空间还是比较划算的，扩容时直接将容量变为了当前的两倍，这是考虑到扩容时需要将所有重新计算所有元素的HashCode，较为消耗时间，所以应该尽量的减少扩容次数。</p>
 <h2 id="6-其它函数">6. 其它函数</h2>
-<pre><code class="language-c">let defaultGet(HashMap hashMap, let key) {
-    int index = hashMap-&gt;hashCode(hashMap, key);
-    Entry entry = &amp;hashMap-&gt;list[index];
-    while (entry-&gt;key != NULL &amp;&amp; !hashMap-&gt;equal(entry-&gt;key, key)) {
-        entry = entry-&gt;next;
-    }
-    return entry-&gt;value;
-}
-
-Boolean defaultRemove(HashMap hashMap, let key) {
-    int index = hashMap-&gt;hashCode(hashMap, key);
-    Entry entry = &amp;hashMap-&gt;list[index];
-    if (entry-&gt;key == NULL) {
-        return False;
-    }
-    Boolean result = False;
-    if (hashMap-&gt;equal(entry-&gt;key, key)) {
-        hashMap-&gt;size--;
-        if (entry-&gt;next != NULL) {
-            Entry temp = entry-&gt;next;
-            entry-&gt;key = temp-&gt;key;
-            entry-&gt;value = temp-&gt;value;
-            entry-&gt;next = temp-&gt;next;
-            free(temp);
-        }
-        else {
-            entry-&gt;key = entry-&gt;value = NULL;
-        }
-        result = True;
-    }
-    else {
-        Entry p = entry;
-        entry = entry-&gt;next;
-        while (entry != NULL) {
-            if (hashMap-&gt;equal(entry-&gt;key, key)) {
-                hashMap-&gt;size--;
-                p-&gt;next = entry-&gt;next;
-                free(entry);
-                result = True;
-                break;
-            }
-            p = entry;
-            entry = entry-&gt;next;
-        };
-    }
-
-    // 如果空间占用不足一半，则释放多余内存
-    if (result &amp;&amp; hashMap-&gt;autoAssign &amp;&amp;  hashMap-&gt;size &lt; hashMap-&gt;listSize / 2) {
-        resetHashMap(hashMap, hashMap-&gt;listSize / 2);
-    }
-    return result;
-}
-
-Boolean defaultExists(HashMap hashMap, let key) {
-    int index = hashMap-&gt;hashCode(hashMap, key);
-    Entry entry = &amp;hashMap-&gt;list[index];
-    if (entry-&gt;key == NULL) {
-        return False;
-    }
-    if (hashMap-&gt;equal(entry-&gt;key, key)) {
-        return True;
-    }
-    if (entry-&gt;next != NULL) {
-        do {
-            if (hashMap-&gt;equal(entry-&gt;key, key)) {
-                return True;
-            }
-            entry = entry-&gt;next;
-
-        } while (entry != NULL);
-        return False;
-    }
-    else {
-        return False;
-    }
-}
-
-void defaultClear(HashMap hashMap) {
-    for (int i = 0; i &lt; hashMap-&gt;listSize; i++) {
-        // 释放冲突值内存
-        Entry entry = hashMap-&gt;list[i].next;
-        while (entry != NULL) {
-            Entry next = entry-&gt;next;
-            free(entry);
-            entry = next;
-        }
-        hashMap-&gt;list[i].next = NULL;
-    }
-    // 释放存储空间
-    free(hashMap-&gt;list);
-    hashMap-&gt;list = NULL;
-    hashMap-&gt;size = -1;
-    hashMap-&gt;listSize = 0;
-}
-
-HashMap createHashMap(HashCode hashCode, Equal equal) {
-    HashMap hashMap = newHashMap();
-    hashMap-&gt;size = 0;
-    hashMap-&gt;listSize = 8;
-    hashMap-&gt;hashCode = hashCode == NULL ? defaultHashCode : hashCode;
-    hashMap-&gt;equal = equal == NULL ? defaultEqual : equal;
-    hashMap-&gt;exists = defaultExists;
-    hashMap-&gt;get = defaultGet;
-    hashMap-&gt;put = defaultPut;
-    hashMap-&gt;remove = defaultRemove;
-    hashMap-&gt;clear = defaultClear;
-    hashMap-&gt;autoAssign = True; 
-    // 起始分配8个内存空间，溢出时会自动扩充
-    hashMap-&gt;list = newEntryList(hashMap-&gt;listSize);
-    Entry p = hashMap-&gt;list;
-    for (int i = 0; i &lt; hashMap-&gt;listSize; i++) {
-        p[i].key = p[i].value = p[i].next = NULL;
-    }
-    return hashMap;
-}
-</code></pre>
-<h2 id="7-iterator接口">7. Iterator接口</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln">  1</span><span class="n">let</span> <span class="nf">defaultGet</span><span class="p">(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="n">let</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln">  2</span>    <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">hashCode</span><span class="p">(</span><span class="n">hashMap</span><span class="p">,</span> <span class="n">key</span><span class="p">);</span>
+<span class="ln">  3</span>    <span class="n">Entry</span> <span class="n">entry</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">index</span><span class="p">];</span>
+<span class="ln">  4</span>    <span class="k">while</span> <span class="p">(</span><span class="n">entry</span><span class="o">-&gt;</span><span class="n">key</span> <span class="o">!=</span> <span class="nb">NULL</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">equal</span><span class="p">(</span><span class="n">entry</span><span class="o">-&gt;</span><span class="n">key</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span> <span class="p">{</span>
+<span class="ln">  5</span>        <span class="n">entry</span> <span class="o">=</span> <span class="n">entry</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+<span class="ln">  6</span>    <span class="p">}</span>
+<span class="ln">  7</span>    <span class="k">return</span> <span class="n">entry</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">;</span>
+<span class="ln">  8</span><span class="p">}</span>
+<span class="ln">  9</span>
+<span class="ln"> 10</span><span class="n">Boolean</span> <span class="nf">defaultRemove</span><span class="p">(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="n">let</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln"> 11</span>    <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">hashCode</span><span class="p">(</span><span class="n">hashMap</span><span class="p">,</span> <span class="n">key</span><span class="p">);</span>
+<span class="ln"> 12</span>    <span class="n">Entry</span> <span class="n">entry</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">index</span><span class="p">];</span>
+<span class="ln"> 13</span>    <span class="k">if</span> <span class="p">(</span><span class="n">entry</span><span class="o">-&gt;</span><span class="n">key</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln"> 14</span>        <span class="k">return</span> <span class="n">False</span><span class="p">;</span>
+<span class="ln"> 15</span>    <span class="p">}</span>
+<span class="ln"> 16</span>    <span class="n">Boolean</span> <span class="n">result</span> <span class="o">=</span> <span class="n">False</span><span class="p">;</span>
+<span class="ln"> 17</span>    <span class="k">if</span> <span class="p">(</span><span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">equal</span><span class="p">(</span><span class="n">entry</span><span class="o">-&gt;</span><span class="n">key</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span> <span class="p">{</span>
+<span class="ln"> 18</span>        <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">size</span><span class="o">--</span><span class="p">;</span>
+<span class="ln"> 19</span>        <span class="k">if</span> <span class="p">(</span><span class="n">entry</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln"> 20</span>            <span class="n">Entry</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">entry</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+<span class="ln"> 21</span>            <span class="n">entry</span><span class="o">-&gt;</span><span class="n">key</span> <span class="o">=</span> <span class="n">temp</span><span class="o">-&gt;</span><span class="n">key</span><span class="p">;</span>
+<span class="ln"> 22</span>            <span class="n">entry</span><span class="o">-&gt;</span><span class="n">value</span> <span class="o">=</span> <span class="n">temp</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">;</span>
+<span class="ln"> 23</span>            <span class="n">entry</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">temp</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+<span class="ln"> 24</span>            <span class="n">free</span><span class="p">(</span><span class="n">temp</span><span class="p">);</span>
+<span class="ln"> 25</span>        <span class="p">}</span>
+<span class="ln"> 26</span>        <span class="k">else</span> <span class="p">{</span>
+<span class="ln"> 27</span>            <span class="n">entry</span><span class="o">-&gt;</span><span class="n">key</span> <span class="o">=</span> <span class="n">entry</span><span class="o">-&gt;</span><span class="n">value</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="ln"> 28</span>        <span class="p">}</span>
+<span class="ln"> 29</span>        <span class="n">result</span> <span class="o">=</span> <span class="n">True</span><span class="p">;</span>
+<span class="ln"> 30</span>    <span class="p">}</span>
+<span class="ln"> 31</span>    <span class="k">else</span> <span class="p">{</span>
+<span class="ln"> 32</span>        <span class="n">Entry</span> <span class="n">p</span> <span class="o">=</span> <span class="n">entry</span><span class="p">;</span>
+<span class="ln"> 33</span>        <span class="n">entry</span> <span class="o">=</span> <span class="n">entry</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+<span class="ln"> 34</span>        <span class="k">while</span> <span class="p">(</span><span class="n">entry</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln"> 35</span>            <span class="k">if</span> <span class="p">(</span><span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">equal</span><span class="p">(</span><span class="n">entry</span><span class="o">-&gt;</span><span class="n">key</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span> <span class="p">{</span>
+<span class="ln"> 36</span>                <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">size</span><span class="o">--</span><span class="p">;</span>
+<span class="ln"> 37</span>                <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">entry</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+<span class="ln"> 38</span>                <span class="n">free</span><span class="p">(</span><span class="n">entry</span><span class="p">);</span>
+<span class="ln"> 39</span>                <span class="n">result</span> <span class="o">=</span> <span class="n">True</span><span class="p">;</span>
+<span class="ln"> 40</span>                <span class="k">break</span><span class="p">;</span>
+<span class="ln"> 41</span>            <span class="p">}</span>
+<span class="ln"> 42</span>            <span class="n">p</span> <span class="o">=</span> <span class="n">entry</span><span class="p">;</span>
+<span class="ln"> 43</span>            <span class="n">entry</span> <span class="o">=</span> <span class="n">entry</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+<span class="ln"> 44</span>        <span class="p">};</span>
+<span class="ln"> 45</span>    <span class="p">}</span>
+<span class="ln"> 46</span>
+<span class="ln"> 47</span>    <span class="c1">// 如果空间占用不足一半，则释放多余内存
+</span><span class="ln"> 48</span><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">&amp;&amp;</span> <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">autoAssign</span> <span class="o">&amp;&amp;</span>  <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">&lt;</span> <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">listSize</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln"> 49</span>        <span class="n">resetHashMap</span><span class="p">(</span><span class="n">hashMap</span><span class="p">,</span> <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">listSize</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+<span class="ln"> 50</span>    <span class="p">}</span>
+<span class="ln"> 51</span>    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="ln"> 52</span><span class="p">}</span>
+<span class="ln"> 53</span>
+<span class="ln"> 54</span><span class="n">Boolean</span> <span class="nf">defaultExists</span><span class="p">(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">,</span> <span class="n">let</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln"> 55</span>    <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">hashCode</span><span class="p">(</span><span class="n">hashMap</span><span class="p">,</span> <span class="n">key</span><span class="p">);</span>
+<span class="ln"> 56</span>    <span class="n">Entry</span> <span class="n">entry</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">index</span><span class="p">];</span>
+<span class="ln"> 57</span>    <span class="k">if</span> <span class="p">(</span><span class="n">entry</span><span class="o">-&gt;</span><span class="n">key</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln"> 58</span>        <span class="k">return</span> <span class="n">False</span><span class="p">;</span>
+<span class="ln"> 59</span>    <span class="p">}</span>
+<span class="ln"> 60</span>    <span class="k">if</span> <span class="p">(</span><span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">equal</span><span class="p">(</span><span class="n">entry</span><span class="o">-&gt;</span><span class="n">key</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span> <span class="p">{</span>
+<span class="ln"> 61</span>        <span class="k">return</span> <span class="n">True</span><span class="p">;</span>
+<span class="ln"> 62</span>    <span class="p">}</span>
+<span class="ln"> 63</span>    <span class="k">if</span> <span class="p">(</span><span class="n">entry</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln"> 64</span>        <span class="k">do</span> <span class="p">{</span>
+<span class="ln"> 65</span>            <span class="k">if</span> <span class="p">(</span><span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">equal</span><span class="p">(</span><span class="n">entry</span><span class="o">-&gt;</span><span class="n">key</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span> <span class="p">{</span>
+<span class="ln"> 66</span>                <span class="k">return</span> <span class="n">True</span><span class="p">;</span>
+<span class="ln"> 67</span>            <span class="p">}</span>
+<span class="ln"> 68</span>            <span class="n">entry</span> <span class="o">=</span> <span class="n">entry</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+<span class="ln"> 69</span>
+<span class="ln"> 70</span>        <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">entry</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">);</span>
+<span class="ln"> 71</span>        <span class="k">return</span> <span class="n">False</span><span class="p">;</span>
+<span class="ln"> 72</span>    <span class="p">}</span>
+<span class="ln"> 73</span>    <span class="k">else</span> <span class="p">{</span>
+<span class="ln"> 74</span>        <span class="k">return</span> <span class="n">False</span><span class="p">;</span>
+<span class="ln"> 75</span>    <span class="p">}</span>
+<span class="ln"> 76</span><span class="p">}</span>
+<span class="ln"> 77</span>
+<span class="ln"> 78</span><span class="kt">void</span> <span class="nf">defaultClear</span><span class="p">(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln"> 79</span>    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">listSize</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln"> 80</span>        <span class="c1">// 释放冲突值内存
+</span><span class="ln"> 81</span><span class="c1"></span>        <span class="n">Entry</span> <span class="n">entry</span> <span class="o">=</span> <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">next</span><span class="p">;</span>
+<span class="ln"> 82</span>        <span class="k">while</span> <span class="p">(</span><span class="n">entry</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln"> 83</span>            <span class="n">Entry</span> <span class="n">next</span> <span class="o">=</span> <span class="n">entry</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+<span class="ln"> 84</span>            <span class="n">free</span><span class="p">(</span><span class="n">entry</span><span class="p">);</span>
+<span class="ln"> 85</span>            <span class="n">entry</span> <span class="o">=</span> <span class="n">next</span><span class="p">;</span>
+<span class="ln"> 86</span>        <span class="p">}</span>
+<span class="ln"> 87</span>        <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">next</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="ln"> 88</span>    <span class="p">}</span>
+<span class="ln"> 89</span>    <span class="c1">// 释放存储空间
+</span><span class="ln"> 90</span><span class="c1"></span>    <span class="n">free</span><span class="p">(</span><span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">);</span>
+<span class="ln"> 91</span>    <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">list</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="ln"> 92</span>    <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="ln"> 93</span>    <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">listSize</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="ln"> 94</span><span class="p">}</span>
+<span class="ln"> 95</span>
+<span class="ln"> 96</span><span class="n">HashMap</span> <span class="nf">createHashMap</span><span class="p">(</span><span class="n">HashCode</span> <span class="n">hashCode</span><span class="p">,</span> <span class="n">Equal</span> <span class="n">equal</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln"> 97</span>    <span class="n">HashMap</span> <span class="n">hashMap</span> <span class="o">=</span> <span class="n">newHashMap</span><span class="p">();</span>
+<span class="ln"> 98</span>    <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="ln"> 99</span>    <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">listSize</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+<span class="ln">100</span>    <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">hashCode</span> <span class="o">=</span> <span class="n">hashCode</span> <span class="o">==</span> <span class="nb">NULL</span> <span class="o">?</span> <span class="nl">defaultHashCode</span> <span class="p">:</span> <span class="n">hashCode</span><span class="p">;</span>
+<span class="ln">101</span>    <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">equal</span> <span class="o">=</span> <span class="n">equal</span> <span class="o">==</span> <span class="nb">NULL</span> <span class="o">?</span> <span class="nl">defaultEqual</span> <span class="p">:</span> <span class="n">equal</span><span class="p">;</span>
+<span class="ln">102</span>    <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">exists</span> <span class="o">=</span> <span class="n">defaultExists</span><span class="p">;</span>
+<span class="ln">103</span>    <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">get</span> <span class="o">=</span> <span class="n">defaultGet</span><span class="p">;</span>
+<span class="ln">104</span>    <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">put</span> <span class="o">=</span> <span class="n">defaultPut</span><span class="p">;</span>
+<span class="ln">105</span>    <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">remove</span> <span class="o">=</span> <span class="n">defaultRemove</span><span class="p">;</span>
+<span class="ln">106</span>    <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">clear</span> <span class="o">=</span> <span class="n">defaultClear</span><span class="p">;</span>
+<span class="ln">107</span>    <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">autoAssign</span> <span class="o">=</span> <span class="n">True</span><span class="p">;</span> 
+<span class="ln">108</span>    <span class="c1">// 起始分配8个内存空间，溢出时会自动扩充
+</span><span class="ln">109</span><span class="c1"></span>    <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">list</span> <span class="o">=</span> <span class="n">newEntryList</span><span class="p">(</span><span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">listSize</span><span class="p">);</span>
+<span class="ln">110</span>    <span class="n">Entry</span> <span class="n">p</span> <span class="o">=</span> <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">;</span>
+<span class="ln">111</span>    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">listSize</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln">112</span>        <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">key</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">value</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">next</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="ln">113</span>    <span class="p">}</span>
+<span class="ln">114</span>    <span class="k">return</span> <span class="n">hashMap</span><span class="p">;</span>
+<span class="ln">115</span><span class="p">}</span>
+</code></pre></div><h2 id="7-iterator接口">7. Iterator接口</h2>
 <p>Iterator接口提供了遍历HashMap结构的方法，基本定义如下：</p>
-<pre><code class="language-c">// 迭代器结构
-typedef struct hashMapIterator {
-    Entry entry;    // 迭代器当前指向
-    int count;      // 迭代次数
-    int hashCode;   // 键值对的哈希值
-    HashMap hashMap;
-}*HashMapIterator;
-
-#define newHashMapIterator() NEW(struct hashMapIterator)
-
-// 创建一个哈希结构
-HashMap createHashMap(HashCode hashCode, Equal equal);
-
-// 创建哈希结构迭代器
-HashMapIterator createHashMapIterator(HashMap hashMap);
-
-// 迭代器是否有下一个
-Boolean hasNextHashMapIterator(HashMapIterator iterator);
-
-// 迭代到下一次
-HashMapIterator nextHashMapIterator(HashMapIterator iterator);
-
-// 释放迭代器内存
-void freeHashMapIterator(HashMapIterator * iterator);
-</code></pre>
-<p>实现如下:</p>
-<pre><code class="language-c">HashMapIterator createHashMapIterator(HashMap hashMap) {
-    HashMapIterator iterator = newHashMapIterator();
-    iterator-&gt;hashMap = hashMap;
-    iterator-&gt;count = 0;
-    iterator-&gt;hashCode = -1;
-    iterator-&gt;entry = NULL;
-    return iterator;
-}
-
-Boolean hasNextHashMapIterator(HashMapIterator iterator) {
-    return iterator-&gt;count &lt; iterator-&gt;hashMap-&gt;size ? True : False;
-}
-
-HashMapIterator nextHashMapIterator(HashMapIterator iterator) {
-    if (hasNextHashMapIterator(iterator)) {
-        if (iterator-&gt;entry != NULL &amp;&amp; iterator-&gt;entry-&gt;next != NULL) {
-            iterator-&gt;count++;
-            iterator-&gt;entry = iterator-&gt;entry-&gt;next;
-            return iterator;
-        }
-        while (++iterator-&gt;hashCode &lt; iterator-&gt;hashMap-&gt;listSize) {
-            Entry entry = &amp;iterator-&gt;hashMap-&gt;list[iterator-&gt;hashCode];
-            if (entry-&gt;key != NULL) {
-                iterator-&gt;count++;
-                iterator-&gt;entry = entry;
-                break;
-            }
-        }
-    }
-    return iterator;
-}
-
-void freeHashMapIterator(HashMapIterator * iterator) {
-    free(*iterator);
-    *iterator = NULL;
-}
-</code></pre>
-<h2 id="8-使用测试">8. 使用测试</h2>
-<pre><code class="language-c">#define Put(map, key, value) map-&gt;put(map, (void *)key, (void *)value);
-#define Get(map, key) (char *)map-&gt;get(map, (void *)key)
-#define Remove(map, key) map-&gt;remove(map, (void *)key)
-#define Existe(map, key) map-&gt;exists(map, (void *)key)
-
-int main() {
-
-    HashMap map = createHashMap(NULL, NULL);
-    Put(map, &quot;asdfasdf&quot;, &quot;asdfasdfds&quot;);
-    Put(map, &quot;sasdasd&quot;, &quot;asdfasdfds&quot;);
-    Put(map, &quot;asdhfgh&quot;, &quot;asdfasdfds&quot;);
-    Put(map, &quot;4545&quot;, &quot;asdfasdfds&quot;);
-    Put(map, &quot;asdfaasdasdsdf&quot;, &quot;asdfasdfds&quot;);
-    Put(map, &quot;asdasg&quot;, &quot;asdfasdfds&quot;);
-    Put(map, &quot;qweqeqwe&quot;, &quot;asdfasdfds&quot;);
-
-    printf(&quot;key: 4545, exists: %s\n&quot;, Existe(map, &quot;4545&quot;) ? &quot;true&quot; : &quot;false&quot;);
-    printf(&quot;4545: %s\n&quot;, Get(map, &quot;4545&quot;));
-    printf(&quot;remove 4545 %s\n&quot;, Remove(map, &quot;4545&quot;) ? &quot;true&quot; : &quot;false&quot;);
-    printf(&quot;remove 4545 %s\n&quot;, Remove(map, &quot;4545&quot;) ? &quot;true&quot; : &quot;false&quot;);
-    printf(&quot;key: 4545, exists: %s\n&quot;, Existe(map, &quot;4545&quot;) ? &quot;true&quot; : &quot;false&quot;);
-
-    HashMapIterator iterator = createHashMapIterator(map);
-    while (hasNextHashMapIterator(iterator)) {
-        iterator = nextHashMapIterator(iterator);
-        printf(&quot;{ key: %s, value: %s, hashcode: %d }\n&quot;,
-            (char *)iterator-&gt;entry-&gt;key, (char *)iterator-&gt;entry-&gt;value, iterator-&gt;hashCode);
-    }
-    map-&gt;clear(map);
-    freeHashMapIterator(&amp;iterator);
-
-    return 0;
-}
-</code></pre>
-<p>运行结果：</p>
-<pre><code>key: 4545, exists: true
-4545: asdfasdfds
-remove 4545 true
-remove 4545 false
-key: 4545, exists: false
-{ key: asdfasdf, value: asdfasdfds, hashcode: 2 }
-{ key: asdhfgh, value: asdfasdfds, hashcode: 2 }
-{ key: sasdasd, value: asdfasdfds, hashcode: 2 }
-{ key: asdfaasdasdsdf, value: asdfasdfds, hashcode: 6 }
-{ key: asdasg, value: asdfasdfds, hashcode: 7 }
-{ key: qweqeqwe, value: asdfasdfds, hashcode: 9 }
-</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="c1">// 迭代器结构
+</span><span class="ln"> 2</span><span class="c1"></span><span class="k">typedef</span> <span class="k">struct</span> <span class="n">hashMapIterator</span> <span class="p">{</span>
+<span class="ln"> 3</span>    <span class="n">Entry</span> <span class="n">entry</span><span class="p">;</span>    <span class="c1">// 迭代器当前指向
+</span><span class="ln"> 4</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">count</span><span class="p">;</span>      <span class="c1">// 迭代次数
+</span><span class="ln"> 5</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">hashCode</span><span class="p">;</span>   <span class="c1">// 键值对的哈希值
+</span><span class="ln"> 6</span><span class="c1"></span>    <span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">;</span>
+<span class="ln"> 7</span><span class="p">}</span><span class="o">*</span><span class="n">HashMapIterator</span><span class="p">;</span>
+<span class="ln"> 8</span>
+<span class="ln"> 9</span><span class="cp">#define newHashMapIterator() NEW(struct hashMapIterator)
+</span><span class="ln">10</span><span class="cp"></span>
+<span class="ln">11</span><span class="c1">// 创建一个哈希结构
+</span><span class="ln">12</span><span class="c1"></span><span class="n">HashMap</span> <span class="nf">createHashMap</span><span class="p">(</span><span class="n">HashCode</span> <span class="n">hashCode</span><span class="p">,</span> <span class="n">Equal</span> <span class="n">equal</span><span class="p">);</span>
+<span class="ln">13</span>
+<span class="ln">14</span><span class="c1">// 创建哈希结构迭代器
+</span><span class="ln">15</span><span class="c1"></span><span class="n">HashMapIterator</span> <span class="nf">createHashMapIterator</span><span class="p">(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">);</span>
+<span class="ln">16</span>
+<span class="ln">17</span><span class="c1">// 迭代器是否有下一个
+</span><span class="ln">18</span><span class="c1"></span><span class="n">Boolean</span> <span class="nf">hasNextHashMapIterator</span><span class="p">(</span><span class="n">HashMapIterator</span> <span class="n">iterator</span><span class="p">);</span>
+<span class="ln">19</span>
+<span class="ln">20</span><span class="c1">// 迭代到下一次
+</span><span class="ln">21</span><span class="c1"></span><span class="n">HashMapIterator</span> <span class="nf">nextHashMapIterator</span><span class="p">(</span><span class="n">HashMapIterator</span> <span class="n">iterator</span><span class="p">);</span>
+<span class="ln">22</span>
+<span class="ln">23</span><span class="c1">// 释放迭代器内存
+</span><span class="ln">24</span><span class="c1"></span><span class="kt">void</span> <span class="nf">freeHashMapIterator</span><span class="p">(</span><span class="n">HashMapIterator</span> <span class="o">*</span> <span class="n">iterator</span><span class="p">);</span>
+</code></pre></div><p>实现如下:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="n">HashMapIterator</span> <span class="nf">createHashMapIterator</span><span class="p">(</span><span class="n">HashMap</span> <span class="n">hashMap</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln"> 2</span>    <span class="n">HashMapIterator</span> <span class="n">iterator</span> <span class="o">=</span> <span class="n">newHashMapIterator</span><span class="p">();</span>
+<span class="ln"> 3</span>    <span class="n">iterator</span><span class="o">-&gt;</span><span class="n">hashMap</span> <span class="o">=</span> <span class="n">hashMap</span><span class="p">;</span>
+<span class="ln"> 4</span>    <span class="n">iterator</span><span class="o">-&gt;</span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="ln"> 5</span>    <span class="n">iterator</span><span class="o">-&gt;</span><span class="n">hashCode</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="ln"> 6</span>    <span class="n">iterator</span><span class="o">-&gt;</span><span class="n">entry</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="ln"> 7</span>    <span class="k">return</span> <span class="n">iterator</span><span class="p">;</span>
+<span class="ln"> 8</span><span class="p">}</span>
+<span class="ln"> 9</span>
+<span class="ln">10</span><span class="n">Boolean</span> <span class="nf">hasNextHashMapIterator</span><span class="p">(</span><span class="n">HashMapIterator</span> <span class="n">iterator</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln">11</span>    <span class="k">return</span> <span class="n">iterator</span><span class="o">-&gt;</span><span class="n">count</span> <span class="o">&lt;</span> <span class="n">iterator</span><span class="o">-&gt;</span><span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">?</span> <span class="nl">True</span> <span class="p">:</span> <span class="n">False</span><span class="p">;</span>
+<span class="ln">12</span><span class="p">}</span>
+<span class="ln">13</span>
+<span class="ln">14</span><span class="n">HashMapIterator</span> <span class="nf">nextHashMapIterator</span><span class="p">(</span><span class="n">HashMapIterator</span> <span class="n">iterator</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln">15</span>    <span class="k">if</span> <span class="p">(</span><span class="n">hasNextHashMapIterator</span><span class="p">(</span><span class="n">iterator</span><span class="p">))</span> <span class="p">{</span>
+<span class="ln">16</span>        <span class="k">if</span> <span class="p">(</span><span class="n">iterator</span><span class="o">-&gt;</span><span class="n">entry</span> <span class="o">!=</span> <span class="nb">NULL</span> <span class="o">&amp;&amp;</span> <span class="n">iterator</span><span class="o">-&gt;</span><span class="n">entry</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln">17</span>            <span class="n">iterator</span><span class="o">-&gt;</span><span class="n">count</span><span class="o">++</span><span class="p">;</span>
+<span class="ln">18</span>            <span class="n">iterator</span><span class="o">-&gt;</span><span class="n">entry</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">-&gt;</span><span class="n">entry</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+<span class="ln">19</span>            <span class="k">return</span> <span class="n">iterator</span><span class="p">;</span>
+<span class="ln">20</span>        <span class="p">}</span>
+<span class="ln">21</span>        <span class="k">while</span> <span class="p">(</span><span class="o">++</span><span class="n">iterator</span><span class="o">-&gt;</span><span class="n">hashCode</span> <span class="o">&lt;</span> <span class="n">iterator</span><span class="o">-&gt;</span><span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">listSize</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln">22</span>            <span class="n">Entry</span> <span class="n">entry</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">iterator</span><span class="o">-&gt;</span><span class="n">hashMap</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">[</span><span class="n">iterator</span><span class="o">-&gt;</span><span class="n">hashCode</span><span class="p">];</span>
+<span class="ln">23</span>            <span class="k">if</span> <span class="p">(</span><span class="n">entry</span><span class="o">-&gt;</span><span class="n">key</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln">24</span>                <span class="n">iterator</span><span class="o">-&gt;</span><span class="n">count</span><span class="o">++</span><span class="p">;</span>
+<span class="ln">25</span>                <span class="n">iterator</span><span class="o">-&gt;</span><span class="n">entry</span> <span class="o">=</span> <span class="n">entry</span><span class="p">;</span>
+<span class="ln">26</span>                <span class="k">break</span><span class="p">;</span>
+<span class="ln">27</span>            <span class="p">}</span>
+<span class="ln">28</span>        <span class="p">}</span>
+<span class="ln">29</span>    <span class="p">}</span>
+<span class="ln">30</span>    <span class="k">return</span> <span class="n">iterator</span><span class="p">;</span>
+<span class="ln">31</span><span class="p">}</span>
+<span class="ln">32</span>
+<span class="ln">33</span><span class="kt">void</span> <span class="nf">freeHashMapIterator</span><span class="p">(</span><span class="n">HashMapIterator</span> <span class="o">*</span> <span class="n">iterator</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln">34</span>    <span class="n">free</span><span class="p">(</span><span class="o">*</span><span class="n">iterator</span><span class="p">);</span>
+<span class="ln">35</span>    <span class="o">*</span><span class="n">iterator</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="ln">36</span><span class="p">}</span>
+</code></pre></div><h2 id="8-使用测试">8. 使用测试</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="cp">#define Put(map, key, value) map-&gt;put(map, (void *)key, (void *)value);
+</span><span class="ln"> 2</span><span class="cp">#define Get(map, key) (char *)map-&gt;get(map, (void *)key)
+</span><span class="ln"> 3</span><span class="cp">#define Remove(map, key) map-&gt;remove(map, (void *)key)
+</span><span class="ln"> 4</span><span class="cp">#define Existe(map, key) map-&gt;exists(map, (void *)key)
+</span><span class="ln"> 5</span><span class="cp"></span>
+<span class="ln"> 6</span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="ln"> 7</span>
+<span class="ln"> 8</span>    <span class="n">HashMap</span> <span class="n">map</span> <span class="o">=</span> <span class="n">createHashMap</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+<span class="ln"> 9</span>    <span class="n">Put</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="s">&#34;asdfasdf&#34;</span><span class="p">,</span> <span class="s">&#34;asdfasdfds&#34;</span><span class="p">);</span>
+<span class="ln">10</span>    <span class="n">Put</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="s">&#34;sasdasd&#34;</span><span class="p">,</span> <span class="s">&#34;asdfasdfds&#34;</span><span class="p">);</span>
+<span class="ln">11</span>    <span class="n">Put</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="s">&#34;asdhfgh&#34;</span><span class="p">,</span> <span class="s">&#34;asdfasdfds&#34;</span><span class="p">);</span>
+<span class="ln">12</span>    <span class="n">Put</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="s">&#34;4545&#34;</span><span class="p">,</span> <span class="s">&#34;asdfasdfds&#34;</span><span class="p">);</span>
+<span class="ln">13</span>    <span class="n">Put</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="s">&#34;asdfaasdasdsdf&#34;</span><span class="p">,</span> <span class="s">&#34;asdfasdfds&#34;</span><span class="p">);</span>
+<span class="ln">14</span>    <span class="n">Put</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="s">&#34;asdasg&#34;</span><span class="p">,</span> <span class="s">&#34;asdfasdfds&#34;</span><span class="p">);</span>
+<span class="ln">15</span>    <span class="n">Put</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="s">&#34;qweqeqwe&#34;</span><span class="p">,</span> <span class="s">&#34;asdfasdfds&#34;</span><span class="p">);</span>
+<span class="ln">16</span>
+<span class="ln">17</span>    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;key: 4545, exists: %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">Existe</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="s">&#34;4545&#34;</span><span class="p">)</span> <span class="o">?</span> <span class="s">&#34;true&#34;</span> <span class="o">:</span> <span class="s">&#34;false&#34;</span><span class="p">);</span>
+<span class="ln">18</span>    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;4545: %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">Get</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="s">&#34;4545&#34;</span><span class="p">));</span>
+<span class="ln">19</span>    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;remove 4545 %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">Remove</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="s">&#34;4545&#34;</span><span class="p">)</span> <span class="o">?</span> <span class="s">&#34;true&#34;</span> <span class="o">:</span> <span class="s">&#34;false&#34;</span><span class="p">);</span>
+<span class="ln">20</span>    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;remove 4545 %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">Remove</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="s">&#34;4545&#34;</span><span class="p">)</span> <span class="o">?</span> <span class="s">&#34;true&#34;</span> <span class="o">:</span> <span class="s">&#34;false&#34;</span><span class="p">);</span>
+<span class="ln">21</span>    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;key: 4545, exists: %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">Existe</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="s">&#34;4545&#34;</span><span class="p">)</span> <span class="o">?</span> <span class="s">&#34;true&#34;</span> <span class="o">:</span> <span class="s">&#34;false&#34;</span><span class="p">);</span>
+<span class="ln">22</span>
+<span class="ln">23</span>    <span class="n">HashMapIterator</span> <span class="n">iterator</span> <span class="o">=</span> <span class="n">createHashMapIterator</span><span class="p">(</span><span class="n">map</span><span class="p">);</span>
+<span class="ln">24</span>    <span class="k">while</span> <span class="p">(</span><span class="n">hasNextHashMapIterator</span><span class="p">(</span><span class="n">iterator</span><span class="p">))</span> <span class="p">{</span>
+<span class="ln">25</span>        <span class="n">iterator</span> <span class="o">=</span> <span class="n">nextHashMapIterator</span><span class="p">(</span><span class="n">iterator</span><span class="p">);</span>
+<span class="ln">26</span>        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;{ key: %s, value: %s, hashcode: %d }</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span>
+<span class="ln">27</span>            <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">iterator</span><span class="o">-&gt;</span><span class="n">entry</span><span class="o">-&gt;</span><span class="n">key</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">iterator</span><span class="o">-&gt;</span><span class="n">entry</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">,</span> <span class="n">iterator</span><span class="o">-&gt;</span><span class="n">hashCode</span><span class="p">);</span>
+<span class="ln">28</span>    <span class="p">}</span>
+<span class="ln">29</span>    <span class="n">map</span><span class="o">-&gt;</span><span class="n">clear</span><span class="p">(</span><span class="n">map</span><span class="p">);</span>
+<span class="ln">30</span>    <span class="n">freeHashMapIterator</span><span class="p">(</span><span class="o">&amp;</span><span class="n">iterator</span><span class="p">);</span>
+<span class="ln">31</span>
+<span class="ln">32</span>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="ln">33</span><span class="p">}</span>
+</code></pre></div><p>运行结果：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln"> 1</span>key: 4545, exists: true
+<span class="ln"> 2</span>4545: asdfasdfds
+<span class="ln"> 3</span>remove 4545 true
+<span class="ln"> 4</span>remove 4545 false
+<span class="ln"> 5</span>key: 4545, exists: false
+<span class="ln"> 6</span>{ key: asdfasdf, value: asdfasdfds, hashcode: 2 }
+<span class="ln"> 7</span>{ key: asdhfgh, value: asdfasdfds, hashcode: 2 }
+<span class="ln"> 8</span>{ key: sasdasd, value: asdfasdfds, hashcode: 2 }
+<span class="ln"> 9</span>{ key: asdfaasdasdsdf, value: asdfasdfds, hashcode: 6 }
+<span class="ln">10</span>{ key: asdasg, value: asdfasdfds, hashcode: 7 }
+<span class="ln">11</span>{ key: qweqeqwe, value: asdfasdfds, hashcode: 9 }
+</code></pre></div>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">

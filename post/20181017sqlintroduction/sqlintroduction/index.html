@@ -124,7 +124,7 @@
 </svg></span>
     <span class="post_date">
       Oct 17, 2018</span>
-    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/sql' title="sql" class="post_tag button button_translucent">sql
+    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/sql' title="sql" class="post_tag button button_translucent">sql
         </a>
     </span>
   </div>
@@ -161,36 +161,34 @@
 <h3 id="2-group-by">2. Group by</h3>
 <p>GROUP BY 语句用于结合聚合函数，根据一个或多个列对结果集进行分组。</p>
 <p>实例：</p>
-<pre><code class="language-sql">mysql&gt; SELECT * FROM access_log;
-+-----+---------+-------+------------+
-| aid | site_id | count | date       |
-+-----+---------+-------+------------+
-|   1 |       1 |    45 | 2016-05-10 |
-|   2 |       3 |   100 | 2016-05-13 |
-|   3 |       1 |   230 | 2016-05-14 |
-|   4 |       2 |    10 | 2016-05-14 |
-|   5 |       5 |   205 | 2016-05-14 |
-|   6 |       4 |    13 | 2016-05-15 |
-|   7 |       3 |   220 | 2016-05-15 |
-|   8 |       5 |   545 | 2016-05-16 |
-|   9 |       3 |   201 | 2016-05-17 |
-+-----+---------+-------+------------+
-9 rows in set (0.00 sec)
-</code></pre>
-<pre><code class="language-sql">SELECT site_id, SUM(access_log.count) AS nums
-FROM access_log GROUP BY site_id;
-+---------+------+
-| site_id | nums |
-+---------+------+
-|   1     |  275 |
-|   2     |   10 |
-|   3     |  521 |
-|   4     |   13 |
-|   5     |  750 |
-+---------+------+
-
-</code></pre>
-<h3 id="3-聚集函数">3. 聚集函数</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="ln"> 1</span><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">access_log</span><span class="p">;</span><span class="w">
+</span><span class="ln"> 2</span><span class="w"></span><span class="o">+</span><span class="c1">-----+---------+-------+------------+
+</span><span class="ln"> 3</span><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">aid</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">site_id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">count</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nb">date</span><span class="w">       </span><span class="o">|</span><span class="w">
+</span><span class="ln"> 4</span><span class="w"></span><span class="o">+</span><span class="c1">-----+---------+-------+------------+
+</span><span class="ln"> 5</span><span class="c1"></span><span class="o">|</span><span class="w">   </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w">       </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w">    </span><span class="mi">45</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">10</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="ln"> 6</span><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">2</span><span class="w"> </span><span class="o">|</span><span class="w">       </span><span class="mi">3</span><span class="w"> </span><span class="o">|</span><span class="w">   </span><span class="mi">100</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">13</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="ln"> 7</span><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">3</span><span class="w"> </span><span class="o">|</span><span class="w">       </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w">   </span><span class="mi">230</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">14</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="ln"> 8</span><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">4</span><span class="w"> </span><span class="o">|</span><span class="w">       </span><span class="mi">2</span><span class="w"> </span><span class="o">|</span><span class="w">    </span><span class="mi">10</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">14</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="ln"> 9</span><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">5</span><span class="w"> </span><span class="o">|</span><span class="w">       </span><span class="mi">5</span><span class="w"> </span><span class="o">|</span><span class="w">   </span><span class="mi">205</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">14</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="ln">10</span><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">6</span><span class="w"> </span><span class="o">|</span><span class="w">       </span><span class="mi">4</span><span class="w"> </span><span class="o">|</span><span class="w">    </span><span class="mi">13</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">15</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="ln">11</span><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">7</span><span class="w"> </span><span class="o">|</span><span class="w">       </span><span class="mi">3</span><span class="w"> </span><span class="o">|</span><span class="w">   </span><span class="mi">220</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">15</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="ln">12</span><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">8</span><span class="w"> </span><span class="o">|</span><span class="w">       </span><span class="mi">5</span><span class="w"> </span><span class="o">|</span><span class="w">   </span><span class="mi">545</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">16</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="ln">13</span><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">9</span><span class="w"> </span><span class="o">|</span><span class="w">       </span><span class="mi">3</span><span class="w"> </span><span class="o">|</span><span class="w">   </span><span class="mi">201</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">17</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="ln">14</span><span class="w"></span><span class="o">+</span><span class="c1">-----+---------+-------+------------+
+</span><span class="ln">15</span><span class="c1"></span><span class="mi">9</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="ln"> 1</span><span class="k">SELECT</span><span class="w"> </span><span class="n">site_id</span><span class="p">,</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">access_log</span><span class="p">.</span><span class="k">count</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">nums</span><span class="w">
+</span><span class="ln"> 2</span><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">access_log</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">site_id</span><span class="p">;</span><span class="w">
+</span><span class="ln"> 3</span><span class="w"></span><span class="o">+</span><span class="c1">---------+------+
+</span><span class="ln"> 4</span><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">site_id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">nums</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="ln"> 5</span><span class="w"></span><span class="o">+</span><span class="c1">---------+------+
+</span><span class="ln"> 6</span><span class="c1"></span><span class="o">|</span><span class="w">   </span><span class="mi">1</span><span class="w">     </span><span class="o">|</span><span class="w">  </span><span class="mi">275</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="ln"> 7</span><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">2</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mi">10</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="ln"> 8</span><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">3</span><span class="w">     </span><span class="o">|</span><span class="w">  </span><span class="mi">521</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="ln"> 9</span><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">4</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mi">13</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="ln">10</span><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">5</span><span class="w">     </span><span class="o">|</span><span class="w">  </span><span class="mi">750</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="ln">11</span><span class="w"></span><span class="o">+</span><span class="c1">---------+------+
+</span><span class="ln">12</span><span class="c1"></span><span class="w">
+</span></code></pre></div><h3 id="3-聚集函数">3. 聚集函数</h3>
 <table>
 <thead>
 <tr>
@@ -215,25 +213,22 @@ FROM access_log GROUP BY site_id;
 </table>
 <h3 id="4-having">4. Having</h3>
 <p>HAVING 子句可以让我们筛选分组后的各组数据。</p>
-<pre><code class="language-sql">查询每个班中人数大于2的班级号：
-select count(1) as n, classid from stu group by classid having n&gt;2;
-or
-select classid from stu group by classid having count(1)&gt;2;
-</code></pre>
-<h3 id="5-order-by">5. Order by</h3>
-<pre><code class="language-sql">... order by n, classid;
-1.先按n排序
-2.在不改n排序的情况下排classid
-</code></pre>
-<h3 id="6-limit">6. Limit</h3>
-<pre><code class="language-sql">... limit 1, 10;
-# 检索记录行 2-10
-</code></pre>
-<h3 id="7-join">7. Join</h3>
-<pre><code class="language-sql">stu join class on classid = class.id
-# join 会把左表的每一行分别与右表每一行拼接
-# on 做筛选
-</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="ln">1</span><span class="err">查询每个班中人数大于</span><span class="mi">2</span><span class="err">的班级号：</span><span class="w">
+</span><span class="ln">2</span><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">classid</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">stu</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">classid</span><span class="w"> </span><span class="k">having</span><span class="w"> </span><span class="n">n</span><span class="o">&gt;</span><span class="mi">2</span><span class="p">;</span><span class="w">
+</span><span class="ln">3</span><span class="w"></span><span class="k">or</span><span class="w">
+</span><span class="ln">4</span><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="n">classid</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">stu</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">classid</span><span class="w"> </span><span class="k">having</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">2</span><span class="p">;</span><span class="w">
+</span></code></pre></div><h3 id="5-order-by">5. Order by</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="ln">1</span><span class="p">...</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">classid</span><span class="p">;</span><span class="w">
+</span><span class="ln">2</span><span class="w"></span><span class="mi">1</span><span class="p">.</span><span class="err">先按</span><span class="n">n排序</span><span class="w">
+</span><span class="ln">3</span><span class="w"></span><span class="mi">2</span><span class="p">.</span><span class="err">在不改</span><span class="n">n排序的情况下排classid</span><span class="w">
+</span></code></pre></div><h3 id="6-limit">6. Limit</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="ln">1</span><span class="p">...</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w">
+</span><span class="ln">2</span><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="err">检索记录行</span><span class="w"> </span><span class="mi">2</span><span class="o">-</span><span class="mi">10</span><span class="w">
+</span></code></pre></div><h3 id="7-join">7. Join</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="ln">1</span><span class="n">stu</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">classid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">class</span><span class="p">.</span><span class="n">id</span><span class="w">
+</span><span class="ln">2</span><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="err">会把左表的每一行分别与右表每一行拼接</span><span class="w">
+</span><span class="ln">3</span><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="err">做筛选</span><span class="w">
+</span></code></pre></div>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">

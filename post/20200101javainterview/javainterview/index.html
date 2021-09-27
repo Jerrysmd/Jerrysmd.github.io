@@ -207,20 +207,19 @@
 </ol>
 </blockquote>
 <p><strong>类加载器</strong></p>
-<pre><code>JVM 是按需动态加载，采用双亲委派机制	
-（自顶向下，进行实际查找和加载child方向）
-
-Bootstrap   -----&gt; 加载lib/rt.jar charset.jar 等核心类，C++实现
-    |
-Extension   -----&gt; 加载扩展jar包(jre/lib/ext/*.jar)，或由 Djava.ext.dirs指定
-    |
-Application -----&gt; 加载classpath指定内容
-    |
-Custom ClassLoader -----&gt; 自定义 classLoader
-
-（自底向上检查该类是否已经加载parent方向）
-</code></pre>
-<p>双亲委派</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln"> 1</span>JVM 是按需动态加载，采用双亲委派机制	
+<span class="ln"> 2</span>（自顶向下，进行实际查找和加载child方向）
+<span class="ln"> 3</span>
+<span class="ln"> 4</span>Bootstrap   -----&gt; 加载lib/rt.jar charset.jar 等核心类，C++实现
+<span class="ln"> 5</span>    |
+<span class="ln"> 6</span>Extension   -----&gt; 加载扩展jar包(jre/lib/ext/*.jar)，或由 Djava.ext.dirs指定
+<span class="ln"> 7</span>    |
+<span class="ln"> 8</span>Application -----&gt; 加载classpath指定内容
+<span class="ln"> 9</span>    |
+<span class="ln">10</span>Custom ClassLoader -----&gt; 自定义 classLoader
+<span class="ln">11</span>
+<span class="ln">12</span>（自底向上检查该类是否已经加载parent方向）
+</code></pre></div><p>双亲委派</p>
 <blockquote>
 <ul>
 <li>父加载器</li>
@@ -297,32 +296,32 @@ Custom ClassLoader -----&gt; 自定义 classLoader
 </ul>
 </blockquote>
 <p><strong>Initializing</strong></p>
-<pre><code class="language-java">//例：求 T.count
-main(){
-    System.out.println(T.count);
-}
-class T {
-    public static T t = new T();
-    public static int count = 2;
-    
-    private T(){
-        count ++;
-    }
-}
-//T.class load，然后linking，
-//到preparation，静态成员变量赋值默认值。t为null，count为0
-//然后到initializing，t先执行构造方法，count赋值为2, count为2
-
-class T {
-    public static int count = 2;
-    public static T t = new T();
-    
-    private T(){
-        count ++;
-    }
-}
-//initializing，count赋值为2，t再执行构造方法 count = 2++ = 3
-</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="c1">//例：求 T.count
+</span><span class="ln"> 2</span><span class="c1"></span><span class="n">main</span><span class="o">(){</span>
+<span class="ln"> 3</span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">T</span><span class="o">.</span><span class="na">count</span><span class="o">);</span>
+<span class="ln"> 4</span><span class="o">}</span>
+<span class="ln"> 5</span><span class="kd">class</span> <span class="nc">T</span> <span class="o">{</span>
+<span class="ln"> 6</span>    <span class="kd">public</span> <span class="kd">static</span> <span class="n">T</span> <span class="n">t</span> <span class="o">=</span> <span class="k">new</span> <span class="n">T</span><span class="o">();</span>
+<span class="ln"> 7</span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">2</span><span class="o">;</span>
+<span class="ln"> 8</span>    
+<span class="ln"> 9</span>    <span class="kd">private</span> <span class="nf">T</span><span class="o">(){</span>
+<span class="ln">10</span>        <span class="n">count</span> <span class="o">++;</span>
+<span class="ln">11</span>    <span class="o">}</span>
+<span class="ln">12</span><span class="o">}</span>
+<span class="ln">13</span><span class="c1">//T.class load，然后linking，
+</span><span class="ln">14</span><span class="c1">//到preparation，静态成员变量赋值默认值。t为null，count为0
+</span><span class="ln">15</span><span class="c1">//然后到initializing，t先执行构造方法，count赋值为2, count为2
+</span><span class="ln">16</span><span class="c1"></span>
+<span class="ln">17</span><span class="kd">class</span> <span class="nc">T</span> <span class="o">{</span>
+<span class="ln">18</span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">2</span><span class="o">;</span>
+<span class="ln">19</span>    <span class="kd">public</span> <span class="kd">static</span> <span class="n">T</span> <span class="n">t</span> <span class="o">=</span> <span class="k">new</span> <span class="n">T</span><span class="o">();</span>
+<span class="ln">20</span>    
+<span class="ln">21</span>    <span class="kd">private</span> <span class="nf">T</span><span class="o">(){</span>
+<span class="ln">22</span>        <span class="n">count</span> <span class="o">++;</span>
+<span class="ln">23</span>    <span class="o">}</span>
+<span class="ln">24</span><span class="o">}</span>
+<span class="ln">25</span><span class="c1">//initializing，count赋值为2，t再执行构造方法 count = 2++ = 3
+</span></code></pre></div>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">

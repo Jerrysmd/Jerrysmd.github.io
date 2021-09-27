@@ -153,35 +153,31 @@
 <p><strong>Insert Lead paragraph here.</strong></p>
 <h2 id="1-问题原因">1. 问题原因</h2>
 <h3 id="1-问题1-文件末尾存在回车">1. 问题1: 文件末尾存在回车</h3>
-<pre><code class="language-c">　　while (!feof(fp))
-　　{
-　　	fgets(buffer,256,fp);
-　　	j++;
-　　}
-</code></pre>
-<p>feof（）这个函数是用来判断指针是否已经到达文件尾部的。若fp已经指向文件末尾，则feof（fp）函数值为“真”，即返回非零值；否则返回0。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span>　　<span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">feof</span><span class="p">(</span><span class="n">fp</span><span class="p">))</span>
+<span class="ln">2</span>　　<span class="p">{</span>
+<span class="ln">3</span>　　	<span class="n">fgets</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="mi">256</span><span class="p">,</span><span class="n">fp</span><span class="p">);</span>
+<span class="ln">4</span>　　	<span class="n">j</span><span class="o">++</span><span class="p">;</span>
+<span class="ln">5</span>　　<span class="p">}</span>
+</code></pre></div><p>feof（）这个函数是用来判断指针是否已经到达文件尾部的。若fp已经指向文件末尾，则feof（fp）函数值为“真”，即返回非零值；否则返回0。</p>
 <p>如果文件还有换行或者空格的时候， 他会继续循环。</p>
 <h3 id="2问题2-getlines1024n函数">2.问题2: getline(s,1024,'\n')函数</h3>
-<pre><code class="language-c">　　while(!feof(s))
-　　{
-    　　infile.getline(s,1024,'\n');
-　　}
-</code></pre>
-<p>最后语句<mark>infile.getline(s,1024,'\n')</mark>未读到内容，出错后，变量s的内容并没改变，程序仍可继续执行，使s中的原数据再使用了一次。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span>　　<span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">feof</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+<span class="ln">2</span>　　<span class="p">{</span>
+<span class="ln">3</span>    　　<span class="n">infile</span><span class="p">.</span><span class="n">getline</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="sc">&#39;\n&#39;</span><span class="p">);</span>
+<span class="ln">4</span>　　<span class="p">}</span>
+</code></pre></div><p>最后语句<mark>infile.getline(s,1024,'\n')</mark>未读到内容，出错后，变量s的内容并没改变，程序仍可继续执行，使s中的原数据再使用了一次。</p>
 <h2 id="2-解决方法">2. 解决方法</h2>
 <h3 id="1-fgets放到while里判断">1. fgets放到while里判断</h3>
-<pre><code class="language-c">　　while (fgets(buffer,256,fp))
-　　{
-　　	j++;
-　　}
-</code></pre>
-<h3 id="2getline放到while里判断">2.getline放到while里判断</h3>
-<pre><code class="language-c">　　while(infile.getline(s,1024,'\n'))
-　　{
-　　　　.......
-　　}
-</code></pre>
-<p>即infile.getline(s,1024,'\n')正确读到数据后再处理。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span>　　<span class="k">while</span> <span class="p">(</span><span class="n">fgets</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="mi">256</span><span class="p">,</span><span class="n">fp</span><span class="p">))</span>
+<span class="ln">2</span>　　<span class="p">{</span>
+<span class="ln">3</span>　　	<span class="n">j</span><span class="o">++</span><span class="p">;</span>
+<span class="ln">4</span>　　<span class="p">}</span>
+</code></pre></div><h3 id="2getline放到while里判断">2.getline放到while里判断</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span>　　<span class="k">while</span><span class="p">(</span><span class="n">infile</span><span class="p">.</span><span class="n">getline</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="sc">&#39;\n&#39;</span><span class="p">))</span>
+<span class="ln">2</span>　　<span class="p">{</span>
+<span class="ln">3</span>　　　　<span class="p">.......</span>
+<span class="ln">4</span>　　<span class="p">}</span>
+</code></pre></div><p>即infile.getline(s,1024,'\n')正确读到数据后再处理。</p>
 <p>同理，对get()/read()等都类似处理。</p>
   </article>
 <aside class="sidebar">

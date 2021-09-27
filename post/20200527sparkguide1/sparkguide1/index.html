@@ -226,38 +226,36 @@
 </ol>
 <h2 id="running-process">Running Process</h2>
 <p>1 Spark-Shell Run</p>
-<pre><code class="language-scala">val rdd1 = sc.textFile(&quot;/data/wordcount.txt&quot;) //Hadoop默认读取hdfs路径：hdfs:///data/wordcount.txt
-val rdd2 = rddflatMap(item =&gt; item.split(&quot; &quot;))
-val rdd3 = rdd2.map(item =&gt; (item,1))
-val rdd4 = rdd3.reduceByKey((curr,agg) =&gt; curr + agg)
-rdd4.collect()
-</code></pre>
-<p><img src="/post/picture/sparkDemoRunProcess.png" alt="sparkDemoRunProcess"></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">rdd1</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">textFile</span><span class="o">(</span><span class="s">&#34;/data/wordcount.txt&#34;</span><span class="o">)</span> <span class="c1">//Hadoop默认读取hdfs路径：hdfs:///data/wordcount.txt
+</span><span class="ln">2</span><span class="c1"></span><span class="k">val</span> <span class="n">rdd2</span> <span class="k">=</span> <span class="n">rddflatMap</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
+<span class="ln">3</span><span class="k">val</span> <span class="n">rdd3</span> <span class="k">=</span> <span class="n">rdd2</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">item</span><span class="o">,</span><span class="mi">1</span><span class="o">))</span>
+<span class="ln">4</span><span class="k">val</span> <span class="n">rdd4</span> <span class="k">=</span> <span class="n">rdd3</span><span class="o">.</span><span class="n">reduceByKey</span><span class="o">((</span><span class="n">curr</span><span class="o">,</span><span class="n">agg</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">curr</span> <span class="o">+</span> <span class="n">agg</span><span class="o">)</span>
+<span class="ln">5</span><span class="n">rdd4</span><span class="o">.</span><span class="n">collect</span><span class="o">()</span>
+</code></pre></div><p><img src="/post/picture/sparkDemoRunProcess.png" alt="sparkDemoRunProcess"></p>
 <p>2 Local IDEA Run</p>
-<pre><code class="language-scala">def main(args:Arrary[String]): Unit = {
-    // 创建SparkContext
-    val conf = new SparkConf().setMaster(&quot;local[6]&quot;).setAppName(&quot;word_count&quot;)
-    val sc = new SparkContext(conf)
-    
-    //2. 加载文件
-    //	准备文件
-    //	2.读取文件
-    val rdd1 = sc.testFile(path = &quot;dataset/wordcount.txt&quot;)
-    
-    //3. 处理
-    //	拆分为多个单词
-    val rdd2 = rddflatMap(item =&gt; item.split(&quot; &quot;))
-    //	2.把每个单词指定一个词频
-    val rdd3 = rdd2.map(item =&gt; (item,1))
-    //	3.聚合
-    val rdd4 = rdd3.reduceByKey((curr,agg) =&gt; curr + agg)
-    
-    //4.得到结果
-    val result = rdd4.collect()
-    result.foreach(item =&gt; println(item))
-}
-</code></pre>
-<p>3  Submit Run</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span><span class="kt">Arrary</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<span class="ln"> 2</span>    <span class="c1">// 创建SparkContext
+</span><span class="ln"> 3</span><span class="c1"></span>    <span class="k">val</span> <span class="n">conf</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkConf</span><span class="o">().</span><span class="n">setMaster</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">).</span><span class="n">setAppName</span><span class="o">(</span><span class="s">&#34;word_count&#34;</span><span class="o">)</span>
+<span class="ln"> 4</span>    <span class="k">val</span> <span class="n">sc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkContext</span><span class="o">(</span><span class="n">conf</span><span class="o">)</span>
+<span class="ln"> 5</span>    
+<span class="ln"> 6</span>    <span class="c1">//2. 加载文件
+</span><span class="ln"> 7</span><span class="c1"></span>    <span class="c1">//	准备文件
+</span><span class="ln"> 8</span><span class="c1"></span>    <span class="c1">//	2.读取文件
+</span><span class="ln"> 9</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd1</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">testFile</span><span class="o">(</span><span class="n">path</span> <span class="k">=</span> <span class="s">&#34;dataset/wordcount.txt&#34;</span><span class="o">)</span>
+<span class="ln">10</span>    
+<span class="ln">11</span>    <span class="c1">//3. 处理
+</span><span class="ln">12</span><span class="c1"></span>    <span class="c1">//	拆分为多个单词
+</span><span class="ln">13</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd2</span> <span class="k">=</span> <span class="n">rddflatMap</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
+<span class="ln">14</span>    <span class="c1">//	2.把每个单词指定一个词频
+</span><span class="ln">15</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd3</span> <span class="k">=</span> <span class="n">rdd2</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">item</span><span class="o">,</span><span class="mi">1</span><span class="o">))</span>
+<span class="ln">16</span>    <span class="c1">//	3.聚合
+</span><span class="ln">17</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd4</span> <span class="k">=</span> <span class="n">rdd3</span><span class="o">.</span><span class="n">reduceByKey</span><span class="o">((</span><span class="n">curr</span><span class="o">,</span><span class="n">agg</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">curr</span> <span class="o">+</span> <span class="n">agg</span><span class="o">)</span>
+<span class="ln">18</span>    
+<span class="ln">19</span>    <span class="c1">//4.得到结果
+</span><span class="ln">20</span><span class="c1"></span>    <span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="n">rdd4</span><span class="o">.</span><span class="n">collect</span><span class="o">()</span>
+<span class="ln">21</span>    <span class="n">result</span><span class="o">.</span><span class="n">foreach</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="n">item</span><span class="o">))</span>
+<span class="ln">22</span><span class="o">}</span>
+</code></pre></div><p>3  Submit Run</p>
 <ol>
 <li>修改代码
 <ol>
@@ -267,9 +265,8 @@ rdd4.collect()
 <li>Maven打包上传</li>
 <li>在集群中运行</li>
 </ol>
-<pre><code class="language-shell">bin/spark -submit --class cn.demo.spark.rdd.WordCount --master spark://node01:7077 ~/original -spark-0.0.jar
-</code></pre>
-<h2 id="rdd">RDD</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>bin/spark -submit --class cn.demo.spark.rdd.WordCount --master spark://node01:7077 ~/original -spark-0.0.jar
+</code></pre></div><h2 id="rdd">RDD</h2>
 <p>1 Cause of creation</p>
 <p><strong>在RDD出现之前，MapReduce是比较主流的</strong></p>
 <p>但多个MapReduce任务之间没有基于内存的数据共享方式，只能通过磁盘来进行共享，这种方式明显比较低效。</p>
@@ -319,94 +316,89 @@ rdd4.collect()
 <p>4 sparkContext</p>
 <p>SparkContext是spark功能的主要入口。其代表与spark集群的连接，能够用来在集群上创建RDD、累加器、广播变量。每个JVM里只能存在一个处于激活状态的SparkContext，在创建新的SparkContext之前必须调用stop()来关闭之前的SparkContext。</p>
 <p>每一个Spark应用都是一个SparkContext实例，可以理解为一个SparkContext就是一个spark application的生命周期，一旦SparkContext创建之后，就可以用这个SparkContext来创建RDD、累加器、广播变量，并且可以通过SparkContext访问Spark的服务，运行任务。spark context设置内部服务，并建立与spark执行环境的连接。</p>
-<pre><code class="language-scala">@Test
-def sparkContext(): Unit = {
-    //  Spark Context 编写
-    // 		创建SparkConf
-    val conf = new SparkConf().setMaster(&quot;local[6]&quot;).setAppName(&quot;spark_context&quot;)
-    //		2.创建SparkContext
-    val sc = new SparkContext(conf)
-    
-    //SparkContext身为大入口API，应该能够创建RDD，并且设置参数，设置Jar包
-    //sc...
-    
-    //2. 关闭SparkContext，释放集群资源
-}
-</code></pre>
-<p>5 Creation Way</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="nd">@Test</span>
+<span class="ln"> 2</span><span class="k">def</span> <span class="n">sparkContext</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<span class="ln"> 3</span>    <span class="c1">//  Spark Context 编写
+</span><span class="ln"> 4</span><span class="c1"></span>    <span class="c1">// 		创建SparkConf
+</span><span class="ln"> 5</span><span class="c1"></span>    <span class="k">val</span> <span class="n">conf</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkConf</span><span class="o">().</span><span class="n">setMaster</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">).</span><span class="n">setAppName</span><span class="o">(</span><span class="s">&#34;spark_context&#34;</span><span class="o">)</span>
+<span class="ln"> 6</span>    <span class="c1">//		2.创建SparkContext
+</span><span class="ln"> 7</span><span class="c1"></span>    <span class="k">val</span> <span class="n">sc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkContext</span><span class="o">(</span><span class="n">conf</span><span class="o">)</span>
+<span class="ln"> 8</span>    
+<span class="ln"> 9</span>    <span class="c1">//SparkContext身为大入口API，应该能够创建RDD，并且设置参数，设置Jar包
+</span><span class="ln">10</span><span class="c1"></span>    <span class="c1">//sc...
+</span><span class="ln">11</span><span class="c1"></span>    
+<span class="ln">12</span>    <span class="c1">//2. 关闭SparkContext，释放集群资源
+</span><span class="ln">13</span><span class="c1"></span><span class="o">}</span>
+</code></pre></div><p>5 Creation Way</p>
 <p>三种RDD的创建方式</p>
-<pre><code class="language-scala"> 通过本地集合创建RDD
-@Test
-def rddCreationLocal(): Unit = {
-    val conf = new SparkConf().setMaster(&quot;local[6]&quot;).setAppName(&quot;spark_context&quot;)
-    val sc = new SparkContext(conf)
-    val rdd1 = sc.parallelize(Seq(&quot;Hello1&quot;, &quot;Hello2&quot;, &quot;Hello3&quot;), 2)
-    val rdd2 = sc.makeRDD(seq, 2) // parallelize和makeRDD区别：parallelize可以不指定分区数
-}
-2. 通过外部数据创建RDD
-@Test
-def rddCreationFiles(): Unit = {
-    sc.textFile(&quot;/.../...&quot;)
-    //testFile: 传入* hdfs://   file://   /.../...(这种方式分为在集群还是本地执行，在集群中读的是hdfs，本地读本地文件)
-    //2.是否支持分区：支持，在hdfs中由hdfs文件的block决定
-    //3.支持什么平台：支持aws和阿里云...
-}
-3. 通过RDD衍生新的RDD
-@Test
-def rddCreationFromRDD(): Unit = {
-    val rdd1 = sc.parallelize(Seq(1,2,3))
-    //通过在rdd上执行算子操作，会生成新的rdd
-    //非原地计算：str.substr 返回新的字符串，非原地计算。字符串不可变，RDD也不可变
-    val rdd2: RDD[Int] = rddmap(item =&gt; item)
-}
-</code></pre>
-<h2 id="transformation-operator">Transformation Operator</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span> <span class="n">通过本地集合创建RDD</span>
+<span class="ln"> 2</span><span class="nd">@Test</span>
+<span class="ln"> 3</span><span class="k">def</span> <span class="n">rddCreationLocal</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<span class="ln"> 4</span>    <span class="k">val</span> <span class="n">conf</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkConf</span><span class="o">().</span><span class="n">setMaster</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">).</span><span class="n">setAppName</span><span class="o">(</span><span class="s">&#34;spark_context&#34;</span><span class="o">)</span>
+<span class="ln"> 5</span>    <span class="k">val</span> <span class="n">sc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkContext</span><span class="o">(</span><span class="n">conf</span><span class="o">)</span>
+<span class="ln"> 6</span>    <span class="k">val</span> <span class="n">rdd1</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="s">&#34;Hello1&#34;</span><span class="o">,</span> <span class="s">&#34;Hello2&#34;</span><span class="o">,</span> <span class="s">&#34;Hello3&#34;</span><span class="o">),</span> <span class="mi">2</span><span class="o">)</span>
+<span class="ln"> 7</span>    <span class="k">val</span> <span class="n">rdd2</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">makeRDD</span><span class="o">(</span><span class="n">seq</span><span class="o">,</span> <span class="mi">2</span><span class="o">)</span> <span class="c1">// parallelize和makeRDD区别：parallelize可以不指定分区数
+</span><span class="ln"> 8</span><span class="c1"></span><span class="o">}</span>
+<span class="ln"> 9</span><span class="mf">2.</span> <span class="n">通过外部数据创建RDD</span>
+<span class="ln">10</span><span class="nd">@Test</span>
+<span class="ln">11</span><span class="k">def</span> <span class="n">rddCreationFiles</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<span class="ln">12</span>    <span class="n">sc</span><span class="o">.</span><span class="n">textFile</span><span class="o">(</span><span class="s">&#34;/.../...&#34;</span><span class="o">)</span>
+<span class="ln">13</span>    <span class="c1">//testFile: 传入* hdfs://   file://   /.../...(这种方式分为在集群还是本地执行，在集群中读的是hdfs，本地读本地文件)
+</span><span class="ln">14</span><span class="c1"></span>    <span class="c1">//2.是否支持分区：支持，在hdfs中由hdfs文件的block决定
+</span><span class="ln">15</span><span class="c1"></span>    <span class="c1">//3.支持什么平台：支持aws和阿里云...
+</span><span class="ln">16</span><span class="c1"></span><span class="o">}</span>
+<span class="ln">17</span><span class="mf">3.</span> <span class="n">通过RDD衍生新的RDD</span>
+<span class="ln">18</span><span class="nd">@Test</span>
+<span class="ln">19</span><span class="k">def</span> <span class="n">rddCreationFromRDD</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<span class="ln">20</span>    <span class="k">val</span> <span class="n">rdd1</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">))</span>
+<span class="ln">21</span>    <span class="c1">//通过在rdd上执行算子操作，会生成新的rdd
+</span><span class="ln">22</span><span class="c1"></span>    <span class="c1">//非原地计算：str.substr 返回新的字符串，非原地计算。字符串不可变，RDD也不可变
+</span><span class="ln">23</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd2</span><span class="k">:</span> <span class="kt">RDD</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="n">rddmap</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">)</span>
+<span class="ln">24</span><span class="o">}</span>
+</code></pre></div><h2 id="transformation-operator">Transformation Operator</h2>
 <p>map()</p>
-<pre><code class="language-scala">@Test
-def mapTest(): Unit = {
-    //创建RDD
-    val rdd1 = sc.parallelize(Seq(1,2,3))
-    //2.执行map操作
-    val rdd2 = rdd1.map(item =&gt; item * 10)
-    //3.得到结果
-    val result = rdd2.collect()
-    result.foreach(item =&gt; println(item))
-}
-</code></pre>
-<p>flatmap()</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="nd">@Test</span>
+<span class="ln"> 2</span><span class="k">def</span> <span class="n">mapTest</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<span class="ln"> 3</span>    <span class="c1">//创建RDD
+</span><span class="ln"> 4</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd1</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">))</span>
+<span class="ln"> 5</span>    <span class="c1">//2.执行map操作
+</span><span class="ln"> 6</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd2</span> <span class="k">=</span> <span class="n">rdd1</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span> <span class="o">*</span> <span class="mi">10</span><span class="o">)</span>
+<span class="ln"> 7</span>    <span class="c1">//3.得到结果
+</span><span class="ln"> 8</span><span class="c1"></span>    <span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="n">rdd2</span><span class="o">.</span><span class="n">collect</span><span class="o">()</span>
+<span class="ln"> 9</span>    <span class="n">result</span><span class="o">.</span><span class="n">foreach</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="n">item</span><span class="o">))</span>
+<span class="ln">10</span><span class="o">}</span>
+</code></pre></div><p>flatmap()</p>
 <ol>
 <li>把rdd中的数据转化成数组或集合形式</li>
 <li>把集合展开</li>
 <li>生成了多条数据</li>
 </ol>
 <p>flatmap是一对多</p>
-<pre><code class="language-scala">@Test
-def flatMapTest(): Unit = {
-    val rdd1 = sc.parallelize(Seq(&quot;Hello a&quot;,&quot;Hello b&quot;,&quot;Hello c&quot;))
-    val rdd2 = rddf1.latMap( item =&gt; item.split(&quot; &quot;))
-    val result = rdd2.collect()
-    result.foreach(item =&gt; println(item))
-    sc.stop()
-}
-</code></pre>
-<p>reducebykey()</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="nd">@Test</span>
+<span class="ln">2</span><span class="k">def</span> <span class="n">flatMapTest</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<span class="ln">3</span>    <span class="k">val</span> <span class="n">rdd1</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="s">&#34;Hello a&#34;</span><span class="o">,</span><span class="s">&#34;Hello b&#34;</span><span class="o">,</span><span class="s">&#34;Hello c&#34;</span><span class="o">))</span>
+<span class="ln">4</span>    <span class="k">val</span> <span class="n">rdd2</span> <span class="k">=</span> <span class="n">rddf1</span><span class="o">.</span><span class="n">latMap</span><span class="o">(</span> <span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
+<span class="ln">5</span>    <span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="n">rdd2</span><span class="o">.</span><span class="n">collect</span><span class="o">()</span>
+<span class="ln">6</span>    <span class="n">result</span><span class="o">.</span><span class="n">foreach</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="n">item</span><span class="o">))</span>
+<span class="ln">7</span>    <span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="o">()</span>
+<span class="ln">8</span><span class="o">}</span>
+</code></pre></div><p>reducebykey()</p>
 <p>reduceByKey第一步先按照key分组，然后对每一组进行聚合，得到结果。</p>
-<pre><code class="language-scala">@Test
-def reduceBykeyTest(): Unit = {
-    //创建RDD
-    val rdd1 = sc.parallelize(Seq(&quot;Hello a&quot;,&quot;Hello b&quot;,&quot;Hello c&quot;))
-    //2.处理数据
-    val rdd2 = rdd1.flatMap( item =&gt; item.split(&quot; &quot;))
-    .map( item =&gt; (item,1) )
-    .reduceByKey( (curr, agg) =&gt; curr + agg)//curr是当前的总值，agg是单个item的值
-    //3.得到结果
-    val result = rdd2.collect()
-    result.foreach(item =&gt; println(item))
-    //4.关闭sc
-    sc.stop() 
-}
-</code></pre>
-<p>Q&amp;A</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="nd">@Test</span>
+<span class="ln"> 2</span><span class="k">def</span> <span class="n">reduceBykeyTest</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<span class="ln"> 3</span>    <span class="c1">//创建RDD
+</span><span class="ln"> 4</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd1</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="s">&#34;Hello a&#34;</span><span class="o">,</span><span class="s">&#34;Hello b&#34;</span><span class="o">,</span><span class="s">&#34;Hello c&#34;</span><span class="o">))</span>
+<span class="ln"> 5</span>    <span class="c1">//2.处理数据
+</span><span class="ln"> 6</span><span class="c1"></span>    <span class="k">val</span> <span class="n">rdd2</span> <span class="k">=</span> <span class="n">rdd1</span><span class="o">.</span><span class="n">flatMap</span><span class="o">(</span> <span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
+<span class="ln"> 7</span>    <span class="o">.</span><span class="n">map</span><span class="o">(</span> <span class="n">item</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">item</span><span class="o">,</span><span class="mi">1</span><span class="o">)</span> <span class="o">)</span>
+<span class="ln"> 8</span>    <span class="o">.</span><span class="n">reduceByKey</span><span class="o">(</span> <span class="o">(</span><span class="n">curr</span><span class="o">,</span> <span class="n">agg</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">curr</span> <span class="o">+</span> <span class="n">agg</span><span class="o">)</span><span class="c1">//curr是当前的总值，agg是单个item的值
+</span><span class="ln"> 9</span><span class="c1"></span>    <span class="c1">//3.得到结果
+</span><span class="ln">10</span><span class="c1"></span>    <span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="n">rdd2</span><span class="o">.</span><span class="n">collect</span><span class="o">()</span>
+<span class="ln">11</span>    <span class="n">result</span><span class="o">.</span><span class="n">foreach</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="n">item</span><span class="o">))</span>
+<span class="ln">12</span>    <span class="c1">//4.关闭sc
+</span><span class="ln">13</span><span class="c1"></span>    <span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="o">()</span> 
+<span class="ln">14</span><span class="o">}</span>
+</code></pre></div><p>Q&amp;A</p>
 <ol>
 <li>数据量过大，如何处理？</li>
 </ol>
@@ -489,12 +481,11 @@ def reduceBykeyTest(): Unit = {
 <p>保留满足条件的元素</p>
 <p>sample()</p>
 <p>filter按照规律过滤，sample则是随机采样</p>
-<pre><code class="language-scala">def sample(
-    withReplacement: Boolean,	//是否重复取样
-    fraction: Double,			//取样比例
-    seed: Long = Utils.random.nextLong): RDD[T] = {...}
-</code></pre>
-<p>mapValues()</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">def</span> <span class="n">sample</span><span class="o">(</span>
+<span class="ln">2</span>    <span class="n">withReplacement</span><span class="k">:</span> <span class="kt">Boolean</span><span class="o">,</span>	<span class="c1">//是否重复取样
+</span><span class="ln">3</span><span class="c1"></span>    <span class="n">fraction</span><span class="k">:</span> <span class="kt">Double</span><span class="o">,</span>			<span class="c1">//取样比例
+</span><span class="ln">4</span><span class="c1"></span>    <span class="n">seed</span><span class="k">:</span> <span class="kt">Long</span> <span class="o">=</span> <span class="nc">Utils</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">nextLong</span><span class="o">)</span><span class="k">:</span> <span class="kt">RDD</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="k">=</span> <span class="o">{...}</span>
+</code></pre></div><p>mapValues()</p>
 <p>mapValue也是map，map作用于全部数据，mapValue作用于value</p>
 <p>collection operation</p>
 <p>交集：rdd1.intersection(rdd2)</p>
@@ -504,24 +495,22 @@ def reduceBykeyTest(): Unit = {
 <p>聚合操作：</p>
 <p>reduceByKey -&gt;按照key分组，然后把每一组数据reduce。reduceByKey在map端combiner能减少IO，一个分区放多个数据。</p>
 <p>groupByKey 运算结果的格式：（k，（value1，value2）），没有减少IO</p>
-<pre><code class="language-scala">sc.parallelize(Seq((&quot;a&quot;,1),(&quot;a&quot;,1),(&quot;b&quot;,1)))
-  .groupByKey()
-  .collect()
-  .foreach(println(_))
-</code></pre>
-<p>combineByKey()</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">((</span><span class="s">&#34;a&#34;</span><span class="o">,</span><span class="mi">1</span><span class="o">),(</span><span class="s">&#34;a&#34;</span><span class="o">,</span><span class="mi">1</span><span class="o">),(</span><span class="s">&#34;b&#34;</span><span class="o">,</span><span class="mi">1</span><span class="o">)))</span>
+<span class="ln">2</span>  <span class="o">.</span><span class="n">groupByKey</span><span class="o">()</span>
+<span class="ln">3</span>  <span class="o">.</span><span class="n">collect</span><span class="o">()</span>
+<span class="ln">4</span>  <span class="o">.</span><span class="n">foreach</span><span class="o">(</span><span class="n">println</span><span class="o">(</span><span class="k">_</span><span class="o">))</span>
+</code></pre></div><p>combineByKey()</p>
 <p>接收三个参数：</p>
 <p>转化数据的函数（初始函数，作用于第一条数据，用于开启整个计算）</p>
 <p>在分区上进行聚合</p>
 <p>把所有的分区的聚合结果聚合为最终结果</p>
-<pre><code class="language-scala">val result = rdd.combineBykey(
-	createCombiner = curr =&gt; (curr,1), 
-    mergeValue = (curr: (Double, Int), nextValue: Double) =&gt; (curr._1 + nextValue, curr._2 + 1)),
-    mergeCombiners = (curr: (Double,Int), agg: (Double, Int)) =&gt; (curr._1 + agg._1, curr._2 + agg._2)
-)
-result.map(item =&gt; (item._1, item._2._1 / item._2._2))
-</code></pre>
-<p>foldByKey()</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="n">rdd</span><span class="o">.</span><span class="n">combineBykey</span><span class="o">(</span>
+<span class="ln">2</span>	<span class="n">createCombiner</span> <span class="k">=</span> <span class="n">curr</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">curr</span><span class="o">,</span><span class="mi">1</span><span class="o">),</span> 
+<span class="ln">3</span>    <span class="n">mergeValue</span> <span class="k">=</span> <span class="o">(</span><span class="n">curr</span><span class="k">:</span> <span class="o">(</span><span class="kt">Double</span><span class="o">,</span> <span class="kt">Int</span><span class="o">),</span> <span class="n">nextValue</span><span class="k">:</span> <span class="kt">Double</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">curr</span><span class="o">.</span><span class="n">_1</span> <span class="o">+</span> <span class="n">nextValue</span><span class="o">,</span> <span class="n">curr</span><span class="o">.</span><span class="n">_2</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)),</span>
+<span class="ln">4</span>    <span class="n">mergeCombiners</span> <span class="k">=</span> <span class="o">(</span><span class="n">curr</span><span class="k">:</span> <span class="o">(</span><span class="kt">Double</span><span class="o">,</span><span class="kt">Int</span><span class="o">),</span> <span class="n">agg</span><span class="k">:</span> <span class="o">(</span><span class="kt">Double</span><span class="o">,</span> <span class="kt">Int</span><span class="o">))</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">curr</span><span class="o">.</span><span class="n">_1</span> <span class="o">+</span> <span class="n">agg</span><span class="o">.</span><span class="n">_1</span><span class="o">,</span> <span class="n">curr</span><span class="o">.</span><span class="n">_2</span> <span class="o">+</span> <span class="n">agg</span><span class="o">.</span><span class="n">_2</span><span class="o">)</span>
+<span class="ln">5</span><span class="o">)</span>
+<span class="ln">6</span><span class="n">result</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="n">_1</span><span class="o">,</span> <span class="n">item</span><span class="o">.</span><span class="n">_2</span><span class="o">.</span><span class="n">_1</span> <span class="o">/</span> <span class="n">item</span><span class="o">.</span><span class="n">_2</span><span class="o">.</span><span class="n">_2</span><span class="o">))</span>
+</code></pre></div><p>foldByKey()</p>
 <p>功能等同于reduceByKey()，增加了初始值。reduceByKey底层是combineByKey()，foldByKey()底层是aggregateByKey()。</p>
 <p>aggregateByKey()</p>
 <p>join()</p>
@@ -597,31 +586,30 @@ result.map(item =&gt; (item._1, item._2._1 / item._2._2))
 <li>数字类型</li>
 </ul>
 <h2 id="practice">Practice</h2>
-<pre><code class="language-scala">@Test
-def process(): Unit = {
-    //1. 创建sc对象
-    val conf = new SparkConf().setMaster(&quot;local[6]&quot;).setAppName(&quot;practice&quot;)
-    val sc = new SparkContext(conf)
-    
-    //2. 读取文件
-    //1,2010,1,1,0,4,NA,NA,NA,NA,-21,43,1021,-11,NW,1.79,0,0
-    val source = sc.textFile(&quot;dataset/parctive.csv&quot;)
-    
-    //3. 处理数据
-    val resultRDD = source.map(item =&gt; ((item.split(&quot;,&quot;)(1), item.split(&quot;,&quot;)(2)),item.split(&quot;,&quot;)(6)))
-    .filter(item =&gt; StringUtils.isNotEmpty(item._2) &amp;&amp; ! item._2.equalsIgnoreCase(&quot;NA&quot;))
-    .map(item =&gt; (item._1, item._2.toInt))
-    .reduceByKey((curr,agg) =&gt; curr + agg)
-    .sortBy(item =&gt; item._2, ascending = false)
-    
-    //4. 获取结果
-    resultRDD.take(10).foreach(item =&gt; println(item))
-    
-    //5. 关闭sc
-    sc.stop()
-}
-</code></pre>
-<h2 id="rdd-feature">RDD Feature</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="nd">@Test</span>
+<span class="ln"> 2</span><span class="k">def</span> <span class="n">process</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+<span class="ln"> 3</span>    <span class="c1">//1. 创建sc对象
+</span><span class="ln"> 4</span><span class="c1"></span>    <span class="k">val</span> <span class="n">conf</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkConf</span><span class="o">().</span><span class="n">setMaster</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">).</span><span class="n">setAppName</span><span class="o">(</span><span class="s">&#34;practice&#34;</span><span class="o">)</span>
+<span class="ln"> 5</span>    <span class="k">val</span> <span class="n">sc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkContext</span><span class="o">(</span><span class="n">conf</span><span class="o">)</span>
+<span class="ln"> 6</span>    
+<span class="ln"> 7</span>    <span class="c1">//2. 读取文件
+</span><span class="ln"> 8</span><span class="c1"></span>    <span class="c1">//1,2010,1,1,0,4,NA,NA,NA,NA,-21,43,1021,-11,NW,1.79,0,0
+</span><span class="ln"> 9</span><span class="c1"></span>    <span class="k">val</span> <span class="n">source</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">textFile</span><span class="o">(</span><span class="s">&#34;dataset/parctive.csv&#34;</span><span class="o">)</span>
+<span class="ln">10</span>    
+<span class="ln">11</span>    <span class="c1">//3. 处理数据
+</span><span class="ln">12</span><span class="c1"></span>    <span class="k">val</span> <span class="n">resultRDD</span> <span class="k">=</span> <span class="n">source</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="o">((</span><span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34;,&#34;</span><span class="o">)(</span><span class="mi">1</span><span class="o">),</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34;,&#34;</span><span class="o">)(</span><span class="mi">2</span><span class="o">)),</span><span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34;,&#34;</span><span class="o">)(</span><span class="mi">6</span><span class="o">)))</span>
+<span class="ln">13</span>    <span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="nc">StringUtils</span><span class="o">.</span><span class="n">isNotEmpty</span><span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="n">_2</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span> <span class="n">item</span><span class="o">.</span><span class="n">_2</span><span class="o">.</span><span class="n">equalsIgnoreCase</span><span class="o">(</span><span class="s">&#34;NA&#34;</span><span class="o">))</span>
+<span class="ln">14</span>    <span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="n">_1</span><span class="o">,</span> <span class="n">item</span><span class="o">.</span><span class="n">_2</span><span class="o">.</span><span class="n">toInt</span><span class="o">))</span>
+<span class="ln">15</span>    <span class="o">.</span><span class="n">reduceByKey</span><span class="o">((</span><span class="n">curr</span><span class="o">,</span><span class="n">agg</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">curr</span> <span class="o">+</span> <span class="n">agg</span><span class="o">)</span>
+<span class="ln">16</span>    <span class="o">.</span><span class="n">sortBy</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">_2</span><span class="o">,</span> <span class="n">ascending</span> <span class="k">=</span> <span class="kc">false</span><span class="o">)</span>
+<span class="ln">17</span>    
+<span class="ln">18</span>    <span class="c1">//4. 获取结果
+</span><span class="ln">19</span><span class="c1"></span>    <span class="n">resultRDD</span><span class="o">.</span><span class="n">take</span><span class="o">(</span><span class="mi">10</span><span class="o">).</span><span class="n">foreach</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="n">item</span><span class="o">))</span>
+<span class="ln">20</span>    
+<span class="ln">21</span>    <span class="c1">//5. 关闭sc
+</span><span class="ln">22</span><span class="c1"></span>    <span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="o">()</span>
+<span class="ln">23</span><span class="o">}</span>
+</code></pre></div><h2 id="rdd-feature">RDD Feature</h2>
 <p>RDD&rsquo;s shuffle and partition</p>
 <ol>
 <li>RDD经常需要通过读取外部系统的数据来创建，外部存储系统往往是支持分片的。RDD需要支持分区，来和外部系统的分片一一对应</li>
@@ -653,16 +641,14 @@ def process(): Unit = {
 <ol>
 <li>通过本地集合创建的时候指定分区数</li>
 </ol>
-<pre><code class="language-scala">val conf = new SparkConf().setMaster(&quot;local[6]&quot;).setAppName(&quot;practice&quot;)//创建App并开启6个分区
-val sc = new SparkContext(conf)
-</code></pre>
-<ol start="2">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">conf</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkConf</span><span class="o">().</span><span class="n">setMaster</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">).</span><span class="n">setAppName</span><span class="o">(</span><span class="s">&#34;practice&#34;</span><span class="o">)</span><span class="c1">//创建App并开启6个分区
+</span><span class="ln">2</span><span class="c1"></span><span class="k">val</span> <span class="n">sc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkContext</span><span class="o">(</span><span class="n">conf</span><span class="o">)</span>
+</code></pre></div><ol start="2">
 <li>通过读取文件创建的时候指定分区数</li>
 </ol>
-<pre><code class="language-scala">val rdd1 = sc.parallelize(Seq(1, 2, 3, 4, 5, 6, 7), 3)	//指定分区数3
-val rdd2 = sc.testFile(&quot;hdfs://node01:8020/data/test.txt&quot;, 6)	//这里指定的是最小分区数6
-</code></pre>
-<p>查看方法</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">rdd1</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">6</span><span class="o">,</span> <span class="mi">7</span><span class="o">),</span> <span class="mi">3</span><span class="o">)</span>	<span class="c1">//指定分区数3
+</span><span class="ln">2</span><span class="c1"></span><span class="k">val</span> <span class="n">rdd2</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">testFile</span><span class="o">(</span><span class="s">&#34;hdfs://node01:8020/data/test.txt&#34;</span><span class="o">,</span> <span class="mi">6</span><span class="o">)</span>	<span class="c1">//这里指定的是最小分区数6
+</span></code></pre></div><p>查看方法</p>
 <ol>
 <li>通过WebUI查看。端口：4040</li>
 <li>通过partitions来查看。rdd1.partitions.size</li>
@@ -671,21 +657,20 @@ val rdd2 = sc.testFile(&quot;hdfs://node01:8020/data/test.txt&quot;, 6)	//这里
 <p>coalesce(num, true)</p>
 <p>repartitions(num)</p>
 <p>RDD Cache</p>
-<pre><code class="language-scala">//1. 取出IP
-val countRDD = source.map(item =&gt; (item.split(&quot; &quot;)(0), 1))
-//2. 数据清洗
-val cleanRDD = countRDD.filter(item =&gt; StingUtils.isNotEmpty(item._1))
-//3. 统计ip的出现次数
-val aggRDD = cleanRDD.reduceBykey((curr,agg) =&gt; curr + agg)
-//4. 统计出现最少的ip
-val leastIP = aggRDD.sortBy(item =&gt; item._2, ascending = true).first()
-//5. 统计出现最多的ip
-val mostIP = aggRDD.sortBy(item =&gt; item._2, ascending = false).first()
-
-println(leastIP, mostIP)
-sc.stop()
-</code></pre>
-<p>第一次统计job（一个Action算子）执行了两个shuffle(reduceByKey，sortByKey)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="c1">//1. 取出IP
+</span><span class="ln"> 2</span><span class="c1"></span><span class="k">val</span> <span class="n">countRDD</span> <span class="k">=</span> <span class="n">source</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">)(</span><span class="mi">0</span><span class="o">),</span> <span class="mi">1</span><span class="o">))</span>
+<span class="ln"> 3</span><span class="c1">//2. 数据清洗
+</span><span class="ln"> 4</span><span class="c1"></span><span class="k">val</span> <span class="n">cleanRDD</span> <span class="k">=</span> <span class="n">countRDD</span><span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="nc">StingUtils</span><span class="o">.</span><span class="n">isNotEmpty</span><span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="n">_1</span><span class="o">))</span>
+<span class="ln"> 5</span><span class="c1">//3. 统计ip的出现次数
+</span><span class="ln"> 6</span><span class="c1"></span><span class="k">val</span> <span class="n">aggRDD</span> <span class="k">=</span> <span class="n">cleanRDD</span><span class="o">.</span><span class="n">reduceBykey</span><span class="o">((</span><span class="n">curr</span><span class="o">,</span><span class="n">agg</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">curr</span> <span class="o">+</span> <span class="n">agg</span><span class="o">)</span>
+<span class="ln"> 7</span><span class="c1">//4. 统计出现最少的ip
+</span><span class="ln"> 8</span><span class="c1"></span><span class="k">val</span> <span class="n">leastIP</span> <span class="k">=</span> <span class="n">aggRDD</span><span class="o">.</span><span class="n">sortBy</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">_2</span><span class="o">,</span> <span class="n">ascending</span> <span class="k">=</span> <span class="kc">true</span><span class="o">).</span><span class="n">first</span><span class="o">()</span>
+<span class="ln"> 9</span><span class="c1">//5. 统计出现最多的ip
+</span><span class="ln">10</span><span class="c1"></span><span class="k">val</span> <span class="n">mostIP</span> <span class="k">=</span> <span class="n">aggRDD</span><span class="o">.</span><span class="n">sortBy</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">_2</span><span class="o">,</span> <span class="n">ascending</span> <span class="k">=</span> <span class="kc">false</span><span class="o">).</span><span class="n">first</span><span class="o">()</span>
+<span class="ln">11</span>
+<span class="ln">12</span><span class="n">println</span><span class="o">(</span><span class="n">leastIP</span><span class="o">,</span> <span class="n">mostIP</span><span class="o">)</span>
+<span class="ln">13</span><span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="o">()</span>
+</code></pre></div><p>第一次统计job（一个Action算子）执行了两个shuffle(reduceByKey，sortByKey)</p>
 <p>第二次统计job（一个Action算子）执行了两个shuffle(reduceByKey，sortByKey)</p>
 <p>转换算子的作用：生成RDD，以及RDD之间的依赖关系</p>
 <p>Action算子的作用：生成job，执行job</p>
@@ -697,37 +682,35 @@ sc.stop()
 </ol>
 <p><strong>缓存API:</strong></p>
 <p>cache()或persist(null/level)</p>
-<pre><code class="language-scala">//1. 处理
-val countRDD = source.map(item =&gt; (item.split(&quot; &quot;)(0), 1))
-val cleanRDD = countRDD.filter(item =&gt; StingUtils.isNotEmpty(item._1))
-val aggRDD = cleanRDD.reduceBykey((curr,agg) =&gt; curr + agg)
-
-//2. cache
-aggRDD = aggRDD.cache()
-
-//3. 两个RDD的action操作
-val leastIP = aggRDD.sortBy(item =&gt; item._2, ascending = true).first()
-val mostIP = aggRDD.sortBy(item =&gt; item._2, ascending = false).first()
-
-println(leastIP, mostIP)
-sc.stop()
-</code></pre>
-<pre><code class="language-scala">//1. 处理
-val countRDD = source.map(item =&gt; (item.split(&quot; &quot;)(0), 1))
-val cleanRDD = countRDD.filter(item =&gt; StingUtils.isNotEmpty(item._1))
-val aggRDD = cleanRDD.reduceBykey((curr,agg) =&gt; curr + agg)
-
-//2. cache
-aggRDD = aggRDD.persist(storageLevel.MEMORY_ONLY)
-
-//3. 两个RDD的action操作
-val leastIP = aggRDD.sortBy(item =&gt; item._2, ascending = true).first()
-val mostIP = aggRDD.sortBy(item =&gt; item._2, ascending = false).first()
-
-println(leastIP, mostIP)
-sc.stop()
-</code></pre>
-<p><strong>缓存级别：</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="c1">//1. 处理
+</span><span class="ln"> 2</span><span class="c1"></span><span class="k">val</span> <span class="n">countRDD</span> <span class="k">=</span> <span class="n">source</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">)(</span><span class="mi">0</span><span class="o">),</span> <span class="mi">1</span><span class="o">))</span>
+<span class="ln"> 3</span><span class="k">val</span> <span class="n">cleanRDD</span> <span class="k">=</span> <span class="n">countRDD</span><span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="nc">StingUtils</span><span class="o">.</span><span class="n">isNotEmpty</span><span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="n">_1</span><span class="o">))</span>
+<span class="ln"> 4</span><span class="k">val</span> <span class="n">aggRDD</span> <span class="k">=</span> <span class="n">cleanRDD</span><span class="o">.</span><span class="n">reduceBykey</span><span class="o">((</span><span class="n">curr</span><span class="o">,</span><span class="n">agg</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">curr</span> <span class="o">+</span> <span class="n">agg</span><span class="o">)</span>
+<span class="ln"> 5</span>
+<span class="ln"> 6</span><span class="c1">//2. cache
+</span><span class="ln"> 7</span><span class="c1"></span><span class="n">aggRDD</span> <span class="k">=</span> <span class="n">aggRDD</span><span class="o">.</span><span class="n">cache</span><span class="o">()</span>
+<span class="ln"> 8</span>
+<span class="ln"> 9</span><span class="c1">//3. 两个RDD的action操作
+</span><span class="ln">10</span><span class="c1"></span><span class="k">val</span> <span class="n">leastIP</span> <span class="k">=</span> <span class="n">aggRDD</span><span class="o">.</span><span class="n">sortBy</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">_2</span><span class="o">,</span> <span class="n">ascending</span> <span class="k">=</span> <span class="kc">true</span><span class="o">).</span><span class="n">first</span><span class="o">()</span>
+<span class="ln">11</span><span class="k">val</span> <span class="n">mostIP</span> <span class="k">=</span> <span class="n">aggRDD</span><span class="o">.</span><span class="n">sortBy</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">_2</span><span class="o">,</span> <span class="n">ascending</span> <span class="k">=</span> <span class="kc">false</span><span class="o">).</span><span class="n">first</span><span class="o">()</span>
+<span class="ln">12</span>
+<span class="ln">13</span><span class="n">println</span><span class="o">(</span><span class="n">leastIP</span><span class="o">,</span> <span class="n">mostIP</span><span class="o">)</span>
+<span class="ln">14</span><span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="o">()</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="c1">//1. 处理
+</span><span class="ln"> 2</span><span class="c1"></span><span class="k">val</span> <span class="n">countRDD</span> <span class="k">=</span> <span class="n">source</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">)(</span><span class="mi">0</span><span class="o">),</span> <span class="mi">1</span><span class="o">))</span>
+<span class="ln"> 3</span><span class="k">val</span> <span class="n">cleanRDD</span> <span class="k">=</span> <span class="n">countRDD</span><span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="nc">StingUtils</span><span class="o">.</span><span class="n">isNotEmpty</span><span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="n">_1</span><span class="o">))</span>
+<span class="ln"> 4</span><span class="k">val</span> <span class="n">aggRDD</span> <span class="k">=</span> <span class="n">cleanRDD</span><span class="o">.</span><span class="n">reduceBykey</span><span class="o">((</span><span class="n">curr</span><span class="o">,</span><span class="n">agg</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">curr</span> <span class="o">+</span> <span class="n">agg</span><span class="o">)</span>
+<span class="ln"> 5</span>
+<span class="ln"> 6</span><span class="c1">//2. cache
+</span><span class="ln"> 7</span><span class="c1"></span><span class="n">aggRDD</span> <span class="k">=</span> <span class="n">aggRDD</span><span class="o">.</span><span class="n">persist</span><span class="o">(</span><span class="n">storageLevel</span><span class="o">.</span><span class="nc">MEMORY_ONLY</span><span class="o">)</span>
+<span class="ln"> 8</span>
+<span class="ln"> 9</span><span class="c1">//3. 两个RDD的action操作
+</span><span class="ln">10</span><span class="c1"></span><span class="k">val</span> <span class="n">leastIP</span> <span class="k">=</span> <span class="n">aggRDD</span><span class="o">.</span><span class="n">sortBy</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">_2</span><span class="o">,</span> <span class="n">ascending</span> <span class="k">=</span> <span class="kc">true</span><span class="o">).</span><span class="n">first</span><span class="o">()</span>
+<span class="ln">11</span><span class="k">val</span> <span class="n">mostIP</span> <span class="k">=</span> <span class="n">aggRDD</span><span class="o">.</span><span class="n">sortBy</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">_2</span><span class="o">,</span> <span class="n">ascending</span> <span class="k">=</span> <span class="kc">false</span><span class="o">).</span><span class="n">first</span><span class="o">()</span>
+<span class="ln">12</span>
+<span class="ln">13</span><span class="n">println</span><span class="o">(</span><span class="n">leastIP</span><span class="o">,</span> <span class="n">mostIP</span><span class="o">)</span>
+<span class="ln">14</span><span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="o">()</span>
+</code></pre></div><p><strong>缓存级别：</strong></p>
 <p>MEMORY_ONLY: CPU效率最高</p>
 <p>MEMORY_ONLY_SER: 更加节省空间</p>
 <p>Checkpoint</p>
@@ -745,37 +728,35 @@ sc.stop()
 </blockquote>
 <p><strong>如何使用：</strong></p>
 <p>两步：</p>
-<pre><code class="language-scala">val conf = new.SparkConf().setMaster(&quot;local[6]&quot;).setAppName(&quot;debug_string&quot;)
-//1. setCheckPointDir：设置保存目录，也可以设置为HDFS上的目录
-sc.setCheckpointDir(&quot;checkpoint&quot;)
-
-val interimRDD = sc.textFile(&quot;dataset/test.txt&quot;)
-				.map(item =&gt; (item.split(&quot; &quot;)(0), 1))
-				.filter(item =&gt; StringUtils.isNotBlank(item._1))
-				.reduceByKey((curr, agg) =&gt; curr + agg)
-
-//2. setCheckPoint：是一个action操作，也就是说如果调用checkpoint，则会重新计算一下RDD，然后把结果存在HDFS或者本地目录中
-interimRDD.checkpoint()
-interimRDD.collect().foreach(println(_))
-
-sc.stop()
-</code></pre>
-<h2 id="spark-running-process">Spark Running Process</h2>
-<pre><code class="language-scala">//1. 创建sc对象
-//2. 创建数据集
-val textRDD = sc.parallelize(Seq(&quot;hadoop spark&quot;, &quot;hadoop flume&quot;, &quot;spark soo&quot;))
-//3. 数据处理
-//	1.拆词2.赋予初始词频3.聚合4.将结果转为字符串
-val splitRDD = textRDD.flatMap(_.split(&quot; &quot;))
-val tupleRDD = splitRDD.map((_, 1))
-val reduceRDD = tupleRDD.reduceByKey(_ + _)
-val strRDD = reduceRDD.map(item =&gt; s&quot;${item._1}, ${item._2}&quot;)
-//4. 结果获取
-strRDD.collect().foreach(item =&gt; println(_))
-//5. 关闭sc
-sc.stop()
-</code></pre>
-<p><strong>集群组成</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">val</span> <span class="n">conf</span> <span class="k">=</span> <span class="k">new</span><span class="o">.</span><span class="nc">SparkConf</span><span class="o">().</span><span class="n">setMaster</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">).</span><span class="n">setAppName</span><span class="o">(</span><span class="s">&#34;debug_string&#34;</span><span class="o">)</span>
+<span class="ln"> 2</span><span class="c1">//1. setCheckPointDir：设置保存目录，也可以设置为HDFS上的目录
+</span><span class="ln"> 3</span><span class="c1"></span><span class="n">sc</span><span class="o">.</span><span class="n">setCheckpointDir</span><span class="o">(</span><span class="s">&#34;checkpoint&#34;</span><span class="o">)</span>
+<span class="ln"> 4</span>
+<span class="ln"> 5</span><span class="k">val</span> <span class="n">interimRDD</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">textFile</span><span class="o">(</span><span class="s">&#34;dataset/test.txt&#34;</span><span class="o">)</span>
+<span class="ln"> 6</span>				<span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">)(</span><span class="mi">0</span><span class="o">),</span> <span class="mi">1</span><span class="o">))</span>
+<span class="ln"> 7</span>				<span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="nc">StringUtils</span><span class="o">.</span><span class="n">isNotBlank</span><span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="n">_1</span><span class="o">))</span>
+<span class="ln"> 8</span>				<span class="o">.</span><span class="n">reduceByKey</span><span class="o">((</span><span class="n">curr</span><span class="o">,</span> <span class="n">agg</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">curr</span> <span class="o">+</span> <span class="n">agg</span><span class="o">)</span>
+<span class="ln"> 9</span>
+<span class="ln">10</span><span class="c1">//2. setCheckPoint：是一个action操作，也就是说如果调用checkpoint，则会重新计算一下RDD，然后把结果存在HDFS或者本地目录中
+</span><span class="ln">11</span><span class="c1"></span><span class="n">interimRDD</span><span class="o">.</span><span class="n">checkpoint</span><span class="o">()</span>
+<span class="ln">12</span><span class="n">interimRDD</span><span class="o">.</span><span class="n">collect</span><span class="o">().</span><span class="n">foreach</span><span class="o">(</span><span class="n">println</span><span class="o">(</span><span class="k">_</span><span class="o">))</span>
+<span class="ln">13</span>
+<span class="ln">14</span><span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="o">()</span>
+</code></pre></div><h2 id="spark-running-process">Spark Running Process</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="c1">//1. 创建sc对象
+</span><span class="ln"> 2</span><span class="c1">//2. 创建数据集
+</span><span class="ln"> 3</span><span class="c1"></span><span class="k">val</span> <span class="n">textRDD</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="s">&#34;hadoop spark&#34;</span><span class="o">,</span> <span class="s">&#34;hadoop flume&#34;</span><span class="o">,</span> <span class="s">&#34;spark soo&#34;</span><span class="o">))</span>
+<span class="ln"> 4</span><span class="c1">//3. 数据处理
+</span><span class="ln"> 5</span><span class="c1">//	1.拆词2.赋予初始词频3.聚合4.将结果转为字符串
+</span><span class="ln"> 6</span><span class="c1"></span><span class="k">val</span> <span class="n">splitRDD</span> <span class="k">=</span> <span class="n">textRDD</span><span class="o">.</span><span class="n">flatMap</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
+<span class="ln"> 7</span><span class="k">val</span> <span class="n">tupleRDD</span> <span class="k">=</span> <span class="n">splitRDD</span><span class="o">.</span><span class="n">map</span><span class="o">((</span><span class="k">_</span><span class="o">,</span> <span class="mi">1</span><span class="o">))</span>
+<span class="ln"> 8</span><span class="k">val</span> <span class="n">reduceRDD</span> <span class="k">=</span> <span class="n">tupleRDD</span><span class="o">.</span><span class="n">reduceByKey</span><span class="o">(</span><span class="k">_</span> <span class="o">+</span> <span class="k">_</span><span class="o">)</span>
+<span class="ln"> 9</span><span class="k">val</span> <span class="n">strRDD</span> <span class="k">=</span> <span class="n">reduceRDD</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="s">s&#34;</span><span class="si">${</span><span class="n">item</span><span class="o">.</span><span class="n">_1</span><span class="si">}</span><span class="s">, </span><span class="si">${</span><span class="n">item</span><span class="o">.</span><span class="n">_2</span><span class="si">}</span><span class="s">&#34;</span><span class="o">)</span>
+<span class="ln">10</span><span class="c1">//4. 结果获取
+</span><span class="ln">11</span><span class="c1"></span><span class="n">strRDD</span><span class="o">.</span><span class="n">collect</span><span class="o">().</span><span class="n">foreach</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="k">_</span><span class="o">))</span>
+<span class="ln">12</span><span class="c1">//5. 关闭sc
+</span><span class="ln">13</span><span class="c1"></span><span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="o">()</span>
+</code></pre></div><p><strong>集群组成</strong></p>
 <ul>
 <li>Node1主节点:</li>
 </ul>
@@ -809,20 +790,19 @@ sc.stop()
 </blockquote>
 </blockquote>
 <p><strong>逻辑执行图</strong></p>
-<pre><code class="language-scala">val textRDD = sc.parallelize(Seq(&quot;hadoop spark&quot;, &quot;hadoop flume&quot;, &quot;spark soo&quot;))
-val splitRDD = textRDD.flatMap(_.split(&quot; &quot;))
-val tupleRDD = splitRDD.map((_, 1))
-val reduceRDD = tupleRDD.reduceByKey(_ + _)
-val strRDD = reduceRDD.map(item =&gt; s&quot;${item._1}, ${item._2}&quot;)
-println(strRDD.toDebugString)
-
-(8) MapPartitionsRDD[4] at map at test.scala:12 []
- |  ShuffledRDD[3] at reduceByKey at test.scala:11 []
- +-(8) MapPartitionsRDD[2] at map at test.scala:10 []
-    |  MapPartitionsRDD[1] at flatMap at test.scala:9 []
-    |  ParallelCollectionRDD[0] at parallelize at test.scala:6 []
-</code></pre>
-<p><img src="/post/20200527sparkGuide1/RDDlogic.png" alt="RDDlogic"></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">val</span> <span class="n">textRDD</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="s">&#34;hadoop spark&#34;</span><span class="o">,</span> <span class="s">&#34;hadoop flume&#34;</span><span class="o">,</span> <span class="s">&#34;spark soo&#34;</span><span class="o">))</span>
+<span class="ln"> 2</span><span class="k">val</span> <span class="n">splitRDD</span> <span class="k">=</span> <span class="n">textRDD</span><span class="o">.</span><span class="n">flatMap</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
+<span class="ln"> 3</span><span class="k">val</span> <span class="n">tupleRDD</span> <span class="k">=</span> <span class="n">splitRDD</span><span class="o">.</span><span class="n">map</span><span class="o">((</span><span class="k">_</span><span class="o">,</span> <span class="mi">1</span><span class="o">))</span>
+<span class="ln"> 4</span><span class="k">val</span> <span class="n">reduceRDD</span> <span class="k">=</span> <span class="n">tupleRDD</span><span class="o">.</span><span class="n">reduceByKey</span><span class="o">(</span><span class="k">_</span> <span class="o">+</span> <span class="k">_</span><span class="o">)</span>
+<span class="ln"> 5</span><span class="k">val</span> <span class="n">strRDD</span> <span class="k">=</span> <span class="n">reduceRDD</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="s">s&#34;</span><span class="si">${</span><span class="n">item</span><span class="o">.</span><span class="n">_1</span><span class="si">}</span><span class="s">, </span><span class="si">${</span><span class="n">item</span><span class="o">.</span><span class="n">_2</span><span class="si">}</span><span class="s">&#34;</span><span class="o">)</span>
+<span class="ln"> 6</span><span class="n">println</span><span class="o">(</span><span class="n">strRDD</span><span class="o">.</span><span class="n">toDebugString</span><span class="o">)</span>
+<span class="ln"> 7</span>
+<span class="ln"> 8</span><span class="o">(</span><span class="mi">8</span><span class="o">)</span> <span class="nc">MapPartitionsRDD</span><span class="o">[</span><span class="err">4</span><span class="o">]</span> <span class="n">at</span> <span class="n">map</span> <span class="n">at</span> <span class="n">test</span><span class="o">.</span><span class="n">scala</span><span class="k">:</span><span class="err">12</span> <span class="err">[]</span>
+<span class="ln"> 9</span> <span class="kt">|</span>  <span class="kt">ShuffledRDD</span><span class="o">[</span><span class="err">3</span><span class="o">]</span> <span class="n">at</span> <span class="n">reduceByKey</span> <span class="n">at</span> <span class="n">test</span><span class="o">.</span><span class="n">scala</span><span class="k">:</span><span class="err">11</span> <span class="err">[]</span>
+<span class="ln">10</span> <span class="kt">+-</span><span class="o">(</span><span class="err">8</span><span class="o">)</span> <span class="kt">MapPartitionsRDD</span><span class="o">[</span><span class="err">2</span><span class="o">]</span> <span class="n">at</span> <span class="n">map</span> <span class="n">at</span> <span class="n">test</span><span class="o">.</span><span class="n">scala</span><span class="k">:</span><span class="err">10</span> <span class="err">[]</span>
+<span class="ln">11</span>    <span class="kt">|</span>  <span class="kt">MapPartitionsRDD</span><span class="o">[</span><span class="err">1</span><span class="o">]</span> <span class="n">at</span> <span class="n">flatMap</span> <span class="n">at</span> <span class="n">test</span><span class="o">.</span><span class="n">scala</span><span class="k">:</span><span class="err">9</span> <span class="err">[]</span>
+<span class="ln">12</span>    <span class="kt">|</span>  <span class="kt">ParallelCollectionRDD</span><span class="o">[</span><span class="err">0</span><span class="o">]</span> <span class="n">at</span> <span class="n">parallelize</span> <span class="n">at</span> <span class="n">test</span><span class="o">.</span><span class="n">scala</span><span class="k">:</span><span class="err">6</span> <span class="err">[]</span>
+</code></pre></div><p><img src="/post/20200527sparkGuide1/RDDlogic.png" alt="RDDlogic"></p>
 <p><strong>物理执行图</strong></p>
 <p>当触发Action执行的时候，这一组互相依赖的RDD要被处理，所以要转化为可运行的物理执行图，调度到集群中执行。</p>
 <p>因为大部分RDD是不真正存放数据的，只是数据从中流转，所以不能直接在集群中运行RDD，要有一种pipeline的思想，需要将这组RDD转为Stage和Task，从而运行Task，优化整体执行速度。</p>
@@ -833,15 +813,14 @@ println(strRDD.toDebugString)
 <li>Stage的划分是由Shuffle操作来确定的，有Shuffle的地方，Stage断开</li>
 </ul>
 <p><strong>数据流动</strong></p>
-<pre><code class="language-scala">val sc = ...
-val textRDD = sc.parallelize(Seq(&quot;Hadoop Spark&quot;, &quot;Hadoop Flume&quot;, &quot;Spark Squad&quot;))
-val splitRDD = textRDD.flatMap(_.split(&quot; &quot;))
-val tupleRDD = splitRDD.map((_,1))
-val reduceRDD = tupleRDD.reduceByKey(_ + _)
-val strRDD = reduceRDD.map(item =&gt; s&quot;${item._1, ${item._2}}&quot;)
-strRDD.collect.foreach(item =&gt; println(item))
-</code></pre>
-<p><strong>Job和Stage的关系</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">sc</span> <span class="k">=</span> <span class="o">...</span>
+<span class="ln">2</span><span class="k">val</span> <span class="n">textRDD</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="s">&#34;Hadoop Spark&#34;</span><span class="o">,</span> <span class="s">&#34;Hadoop Flume&#34;</span><span class="o">,</span> <span class="s">&#34;Spark Squad&#34;</span><span class="o">))</span>
+<span class="ln">3</span><span class="k">val</span> <span class="n">splitRDD</span> <span class="k">=</span> <span class="n">textRDD</span><span class="o">.</span><span class="n">flatMap</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
+<span class="ln">4</span><span class="k">val</span> <span class="n">tupleRDD</span> <span class="k">=</span> <span class="n">splitRDD</span><span class="o">.</span><span class="n">map</span><span class="o">((</span><span class="k">_</span><span class="o">,</span><span class="mi">1</span><span class="o">))</span>
+<span class="ln">5</span><span class="k">val</span> <span class="n">reduceRDD</span> <span class="k">=</span> <span class="n">tupleRDD</span><span class="o">.</span><span class="n">reduceByKey</span><span class="o">(</span><span class="k">_</span> <span class="o">+</span> <span class="k">_</span><span class="o">)</span>
+<span class="ln">6</span><span class="k">val</span> <span class="n">strRDD</span> <span class="k">=</span> <span class="n">reduceRDD</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="s">s&#34;</span><span class="si">${</span><span class="n">item</span><span class="o">.</span><span class="n">_1</span><span class="o">,</span> <span class="n">$</span><span class="si">{</span><span class="n">item</span><span class="o">.</span><span class="n">_2</span><span class="si">}}</span><span class="s">&#34;</span><span class="o">)</span>
+<span class="ln">7</span><span class="n">strRDD</span><span class="o">.</span><span class="n">collect</span><span class="o">.</span><span class="n">foreach</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="n">item</span><span class="o">))</span>
+</code></pre></div><p><strong>Job和Stage的关系</strong></p>
 <p>Job是一个最大的调度单位，DAGScheduler会首先创建一个Job的相关信息，然后去调度Job，但是没办法直接调度Job。</p>
 <p>​	<strong>为什么Job需要切分</strong></p>
 <ul>

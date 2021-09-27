@@ -143,33 +143,27 @@
     <p>Final key word no doubt be mentioned most time in Java language. There are some points about final key word. First of all, final key word can modify three objects: first is modify variables, second is modify way, third is modify class.</p>
 <h2 id="final-关键字修饰变量">final 关键字修饰变量</h2>
 <p>在使用final修饰变量时，又可以分为两种情况：一种是基本数据类型的变量，另一种是引用类型的变量。final关键字在修饰基本数据类型时必须对变量赋予初始值，因此final也常常和static关键字一起用来声明常量值。final正好限制了必须赋值，static声明了静态变量。</p>
-<pre><code class="language-java">final static String str = &quot;Hollow world&quot;;
-</code></pre>
-<p>修饰引用变量时，该引用变量如果已经被赋值则不可以再被赋值，否则也会出现不能编译的情况</p>
-<pre><code class="language-java">//定义一个main对象并实例化
-final Main main = new Main();
-//被final关键字修饰后，再次对Main对象进行赋值就会报错
-main = new Main();
-</code></pre>
-<h2 id="final关键字修饰方法">final关键字修饰方法</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">final</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;Hollow world&#34;</span><span class="o">;</span>
+</code></pre></div><p>修饰引用变量时，该引用变量如果已经被赋值则不可以再被赋值，否则也会出现不能编译的情况</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="c1">//定义一个main对象并实例化
+</span><span class="ln">2</span><span class="c1"></span><span class="kd">final</span> <span class="n">Main</span> <span class="n">main</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Main</span><span class="o">();</span>
+<span class="ln">3</span><span class="c1">//被final关键字修饰后，再次对Main对象进行赋值就会报错
+</span><span class="ln">4</span><span class="c1"></span><span class="n">main</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Main</span><span class="o">();</span>
+</code></pre></div><h2 id="final关键字修饰方法">final关键字修饰方法</h2>
 <p>通过final修饰的方法是不能被子类的方法重写的。一般情况下，一个方法确定好不再修改可以使用final，因为final修饰的方法是在程序编译的时候就被动态绑定了不用等到程序运行的时候被动态绑定，这样就大大提高了执行效率。</p>
-<pre><code class="language-java">public final void method(){
-	System.out.println(&quot;It is final method&quot;);
-}
-</code></pre>
-<h2 id="final关键字修饰类">final关键字修饰类</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">public</span> <span class="kd">final</span> <span class="kt">void</span> <span class="nf">method</span><span class="o">(){</span>
+<span class="ln">2</span>	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;It is final method&#34;</span><span class="o">);</span>
+<span class="ln">3</span><span class="o">}</span>
+</code></pre></div><h2 id="final关键字修饰类">final关键字修饰类</h2>
 <p>被final修饰的类叫final类，final类是不能被继承的，这也就以为这final类的功能是比较完整的。因此，jdk中有很多类使用final修饰的，它们不需要被继承，其中，最常见的就是String类。</p>
-<pre><code class="language-java">public final class String implements java.io.Serializable, Comparable&lt;String&gt;
-</code></pre>
-<pre><code class="language-java">public final class Integer extends Number implements ...
-</code></pre>
-<pre><code class="language-java">public final class Long extends Number implements ...
-</code></pre>
-<p>包括其他的装饰类都是被final关键字修饰的，它自身提供的方法和功能也是非常完备的。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">String</span> <span class="kd">implements</span> <span class="n">java</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">Serializable</span><span class="o">,</span> <span class="n">Comparable</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">Integer</span> <span class="kd">extends</span> <span class="n">Number</span> <span class="kd">implements</span> <span class="o">...</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">Long</span> <span class="kd">extends</span> <span class="n">Number</span> <span class="kd">implements</span> <span class="o">...</span>
+</code></pre></div><p>包括其他的装饰类都是被final关键字修饰的，它自身提供的方法和功能也是非常完备的。</p>
 <h2 id="static关键字的不同">static关键字的不同</h2>
 <p>final static 成对出现的频率也是比较高的，使用static修饰的变量只会在类加载的时候被初始化，不会因为对象的再次创建而改变。</p>
-<pre><code class="language-java">static double num = Math.random();
-</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">static</span> <span class="kt">double</span> <span class="n">num</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">();</span>
+</code></pre></div>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">

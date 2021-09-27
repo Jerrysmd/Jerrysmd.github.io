@@ -177,22 +177,17 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/kafkaPartitionLog.png&#34; alt=&#34;kafkaPartitionLog&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;实操&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;启动zk&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;cd /usr/local/kara/kafka_2.13-2.6.0/bin
-zookeeper-server-start.sh ../config/zookeeper.properties
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;启动kafka服务器&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;kafka-server-start.sh ../config/server.properties
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;创建topic，4个分区，一个副本&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 4 --topic partition_test
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;发送一些消息&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;kafka-console-producer.sh --broker-list localhost:9092 --topic partition_test
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;启动一个consumer&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic partition_test --from-beginning
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;分区&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /usr/local/kara/kafka_2.13-2.6.0/bin
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;zookeeper-server-start.sh ../config/zookeeper.properties
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;启动kafka服务器&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;kafka-server-start.sh ../config/server.properties
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;创建topic，4个分区，一个副本&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; --partitions &lt;span class=&#34;m&#34;&gt;4&lt;/span&gt; --topic partition_test
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;发送一些消息&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;kafka-console-producer.sh --broker-list localhost:9092 --topic partition_test
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;启动一个consumer&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic partition_test --from-beginning
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;分区&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;partition存储分布&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;一个topic下有多个不同partition，每个partition为一个目录，partiton命名规则为&lt;strong&gt;topic名称+有序序号&lt;/strong&gt;，第一个partiton序号从0开始，序号最大值为partitions数量减1&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;partition文件存储&lt;/strong&gt;&lt;/p&gt;
@@ -305,20 +300,18 @@ zookeeper-server-start.sh ../config/zookeeper.properties
 &lt;p&gt;传统IO &lt;strong&gt;(4次上下文切换4次拷贝)&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;假如将磁盘上的文件读取出来，然后通过网络协议发送给客户端。&lt;/p&gt;
 &lt;p&gt;一般需要两个系统调用，&lt;strong&gt;但是一共4次上下文切换，4次拷贝&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;read(file, tmp_buf, len);
-write(socket, tmp_buf, len);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;read(file, tmp_buf, len);
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;write(socket, tmp_buf, len);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;要想提高文件传输的性能，就需要减少「用户态与内核态的上下文切换」和「内存拷贝」的次数&lt;/strong&gt;。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;mmap(&lt;strong&gt;4次上下文切换3次拷贝&lt;/strong&gt;)&lt;/p&gt;
 &lt;p&gt;mmap()系统调用函数会直接把内核缓冲区里的数据「&lt;strong&gt;映射&lt;/strong&gt;」到用户空间，这样，操作系统内核与用户空间就不需要再进行任何的数据拷贝操作，它替换了read()系统调用函数。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;buf = mmap(file, len);
-write(sockfd, buf, len);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;buf = mmap(file, len);
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;write(sockfd, buf, len);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -328,10 +321,9 @@ write(sockfd, buf, len);
 &lt;p&gt;其次，该系统调用，可以直接把内核缓冲区里的数据拷贝到 socket 缓冲区里，不再拷贝到用户态，这样就只有 2 次上下文切换，和 3 次数据拷贝。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre&gt;&lt;code&gt;#include &amp;lt;sys/socket.h&amp;gt;
-ssize_t sendfile(int out_fd, int in_fd, off_t *offset, size_t count);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;#include &amp;lt;sys/socket.h&amp;gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;ssize_t sendfile(int out_fd, int in_fd, off_t *offset, size_t count);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;它的前两个参数分别是目的端和源端的文件描述符，后面两个参数是源端的偏移量和复制数据的长度，返回值是实际复制数据的长度。&lt;/p&gt;
 &lt;/li&gt;

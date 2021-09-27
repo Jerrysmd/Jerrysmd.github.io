@@ -83,20 +83,19 @@
 &lt;/ol&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;类加载器&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;JVM 是按需动态加载，采用双亲委派机制	
-（自顶向下，进行实际查找和加载child方向）
-
-Bootstrap   -----&amp;gt; 加载lib/rt.jar charset.jar 等核心类，C++实现
-    |
-Extension   -----&amp;gt; 加载扩展jar包(jre/lib/ext/*.jar)，或由 Djava.ext.dirs指定
-    |
-Application -----&amp;gt; 加载classpath指定内容
-    |
-Custom ClassLoader -----&amp;gt; 自定义 classLoader
-
-（自底向上检查该类是否已经加载parent方向）
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;双亲委派&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;JVM 是按需动态加载，采用双亲委派机制	
+&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;（自顶向下，进行实际查找和加载child方向）
+&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;Bootstrap   -----&amp;gt; 加载lib/rt.jar charset.jar 等核心类，C++实现
+&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;    |
+&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;Extension   -----&amp;gt; 加载扩展jar包(jre/lib/ext/*.jar)，或由 Djava.ext.dirs指定
+&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;    |
+&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;Application -----&amp;gt; 加载classpath指定内容
+&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;    |
+&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;Custom ClassLoader -----&amp;gt; 自定义 classLoader
+&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;（自底向上检查该类是否已经加载parent方向）
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;双亲委派&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;父加载器&lt;/li&gt;
@@ -173,32 +172,32 @@ Custom ClassLoader -----&amp;gt; 自定义 classLoader
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Initializing&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//例：求 T.count
-main(){
-    System.out.println(T.count);
-}
-class T {
-    public static T t = new T();
-    public static int count = 2;
-    
-    private T(){
-        count ++;
-    }
-}
-//T.class load，然后linking，
-//到preparation，静态成员变量赋值默认值。t为null，count为0
-//然后到initializing，t先执行构造方法，count赋值为2, count为2
-
-class T {
-    public static int count = 2;
-    public static T t = new T();
-    
-    private T(){
-        count ++;
-    }
-}
-//initializing，count赋值为2，t再执行构造方法 count = 2++ = 3
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//例：求 T.count
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(){&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;count&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;T&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;T&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;count&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;    
+&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(){&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;count&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;++;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//T.class load，然后linking，
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//到preparation，静态成员变量赋值默认值。t为null，count为0
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//然后到initializing，t先执行构造方法，count赋值为2, count为2
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;16&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;17&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;T&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;18&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;count&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;19&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;T&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;20&lt;/span&gt;    
+&lt;span class=&#34;ln&#34;&gt;21&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(){&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;22&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;count&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;++;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;23&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;24&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;25&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//initializing，count赋值为2，t再执行构造方法 count = 2++ = 3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         
       </description>
     </item>
@@ -220,37 +219,35 @@ class T {
 &lt;li&gt;遵循交换律和结合律&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;例：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//1.两数交换：
-arr[i] = arr[i] ^ arr[j]; // a = a ^ b
-arr[j] = arr[i] ^ arr[j]; // b = (a ^ b) ^ b = a
-arr[i] = arr[i] ^ arr[j]; // a = (a ^ b) ^ a = b
-&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//2.数组中有一个出现奇数次的数
-int eor = 0;
-for(int cur : arr){
-    eor ^= cur; //[a,a,b,b,c,c,c]  =&amp;gt; a^a^b^b^c^c^c = c
-}
-System.out.println(eor);
-
-//3.数组中有两个出现奇数次的数
-int eor = 0;
-for(int cur : arr){
-    eor ^= cur; //[a,a,b,b,b,c,c,c]  =&amp;gt; a^a^b^b^b^c^c^c = b^c
-}
-//eor = b ^ c
-//eor != 0
-//eor必然有个一位置上是1, 说明这个位置上b和c不同
-int rightOne = eor &amp;amp; (~eor + 1);  //（取反 + 1） &amp;amp; 自己 = 提取出只保留最右侧的1
-
-int result1 = 0;
-for(int cur : arr){
-    if((cur &amp;amp; rightOne) == 0){ //已知在rightOne这个位置上b和c不同，通过(&amp;amp; rightOne)把b和c区分开,别的数是偶数个，异或起来是0不同管
-        result1 ^= cur; //这样result1是b或者c
-    }
-}
-int result2 = eor ^ result1;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//1.两数交换：
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;^&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;];&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// a = a ^ b
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;^&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;];&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// b = (a ^ b) ^ b = a
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;^&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;];&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// a = (a ^ b) ^ a = b
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//2.数组中有一个出现奇数次的数
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;eor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cur&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;){&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;eor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;^=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cur&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//[a,a,b,b,c,c,c]  =&amp;gt; a^a^b^b^c^c^c = c
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;eor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//3.数组中有两个出现奇数次的数
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;eor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cur&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;){&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;eor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;^=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cur&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//[a,a,b,b,b,c,c,c]  =&amp;gt; a^a^b^b^b^c^c^c = b^c
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//eor = b ^ c
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//eor != 0
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//eor必然有个一位置上是1, 说明这个位置上b和c不同
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;16&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rightOne&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;eor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(~&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;eor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;//（取反 + 1） &amp;amp; 自己 = 提取出只保留最右侧的1
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;17&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;18&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;19&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cur&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;){&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;20&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cur&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rightOne&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;){&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//已知在rightOne这个位置上b和c不同，通过(&amp;amp; rightOne)把b和c区分开,别的数是偶数个，异或起来是0不同管
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;21&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;result1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;^=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cur&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//这样result1是b或者c
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;22&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;23&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;24&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;eor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;^&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;插入排序&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;概念： 将后部分的数据(从第二开始)按照一定的顺序一个一个的插入到前部分有序的表中&lt;/li&gt;
@@ -263,23 +260,22 @@ int result2 = eor ^ result1;
 &lt;li&gt;时间复杂度是按照&lt;strong&gt;最差情况&lt;/strong&gt;考虑&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static void insertionSort(int[] arr) {
-    if (arr == null || arr.length &amp;lt; 2){
-        return;
-    }
-    for (int i = 1; i &amp;lt; arr.length; i++){
-        for(int j = i - 1; j &amp;gt;= 0 &amp;amp;&amp;amp; arr[j] &amp;gt; arr[j+1]; j--){
-            swap(arr, j, j+1);
-        }
-    }
-}
-public static void swap(int[] arr, int i, int j){
-    arr[i] = arr[i] ^ arr[j]; 
-	arr[j] = arr[i] ^ arr[j]; 
-	arr[i] = arr[i] ^ arr[j];
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;二分查找&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;insertionSort&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;length&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;){&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++){&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;        &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;];&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;--){&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;            &lt;span class=&#34;n&#34;&gt;swap&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;        &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;swap&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;){&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;^&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;];&lt;/span&gt; 
+&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;	&lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;^&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;];&lt;/span&gt; 
+&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;	&lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;^&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;];&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;二分查找&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;时间复杂度：O(logN)  (logN默认指log以2为底)&lt;/li&gt;
 &lt;/ul&gt;
@@ -294,13 +290,12 @@ public static void swap(int[] arr, int i, int j){
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;无序，相邻数一定不相等，找一个局部最小(i-1 &amp;lt; i &amp;lt; i+1)的数，复杂度能否好于O(N)&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;先判断首尾项是否满足要求，若首尾项不满足要求，一定是\进/出，中间一定有低谷拐点。
-然后判断中间点是否满足要求，若不满足，分为两种情况：
-1. 斜坡，则一方可与起点或终点组成\进/出。
-2. 顶峰，则两方向都满足\进/出条件，两个方向都可继续进行二分法
-直到判断出某个二分法中点满足要求。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;先判断首尾项是否满足要求，若首尾项不满足要求，一定是\进/出，中间一定有低谷拐点。
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;然后判断中间点是否满足要求，若不满足，分为两种情况：
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;1. 斜坡，则一方可与起点或终点组成\进/出。
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;2. 顶峰，则两方向都满足\进/出条件，两个方向都可继续进行二分法
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;直到判断出某个二分法中点满足要求。
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;求中间数&lt;/strong&gt;&lt;/p&gt;
@@ -313,30 +308,28 @@ public static void swap(int[] arr, int i, int j){
 &lt;ul&gt;
 &lt;li&gt;结果对比校验器: 自己控制输入数据，使用两种方法或和官方api对比结果&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;(int)(Math.random() * N) //会在[0, N-1]范围内，等概率返回一个整数
-
-int[] arr = new int[(int)((maxSize + 1) * Math.random())];//随机长度
-for (int i = 0; i &amp;lt; arr.length; i++){
-    arr[i] = (int)((maxValue + 1) * Math.random()) - (int)(maxValue * Math.random());
-}
-return arr;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;递归&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static int getMax(int[] arr){
-    return process(arr, 0, arr.length - 1);
-}
-
-public static int process(int[] arr, int L, int R){
-    if(L == R){
-        return arr[L];
-    }
-    int mid = L + ((R - L) &amp;gt;&amp;gt; 1);
-    int leftMax = process(arr, L, mid);
-    int rightMax = process(arr, mid + 1, R);
-    return Math.max(leftMax, rightMax);
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;递归时间复杂度估算&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Math&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;random&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;N&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//会在[0, N-1]范围内，等概率返回一个整数
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;maxSize&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Math&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;random&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;())];&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//随机长度
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++){&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;maxValue&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Math&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;random&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;())&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;maxValue&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Math&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;random&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;());&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;递归&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;getMax&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;){&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;process&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;length&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;process&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;L&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;){&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;L&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;){&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;L&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;];&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;L&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;R&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;L&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;leftMax&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;process&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;L&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mid&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rightMax&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;process&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Math&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;max&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;leftMax&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rightMax&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;递归时间复杂度估算&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Master公式： T(N) = a * T (N / b) + 0 (N ^ d)
 &lt;ol&gt;
@@ -352,35 +345,35 @@ public static int process(int[] arr, int L, int R){
 &lt;li&gt;时间复杂度：使用Master公式： T(N) = 2a +&lt;/li&gt;
 &lt;li&gt;代码实现：&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static void process(int[] arr, int L, int R){
-    if(L == R){
-        return;
-    }
-    int mid = L + ((R - L) &amp;gt;&amp;gt; 1);
-    process(arr, L, mid);
-    process(arr, mid + 1, R);
-    merge(arr, L, mid, R);
-}
-
-public static void merge(int[] arr, int L, int mid, int R){
-    int[] extr = new int[R - L + 1];
-    int extri = 0;
-    int p1 = L;
-    int p2 = M + 1;
-    while(p1 &amp;lt;= M &amp;amp;&amp;amp; p2 &amp;lt;= R){
-        extr[i++] = arr[p1] &amp;lt;= arr[p2] ? arr[p1++]: arr[p2++];
-    }
-    while(p1 &amp;lt;= M){
-        extr[i++] = arr[p1++];
-    }
-    while(p2 &amp;lt;= R){
-        extr[i++] = arr[p2++];
-    }
-    for(i = 0; i &amp;lt; extra.length; i++){
-        arr[L + i] = extra[i];
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;process&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;L&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;){&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;L&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;){&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;L&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;R&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;L&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;process&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;L&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mid&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;process&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;merge&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;L&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mid&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;merge&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;L&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mid&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;){&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;extr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;R&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;L&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;];&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;extri&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;L&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;M&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;16&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;while&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;M&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;){&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;17&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;extr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++]:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++];&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;18&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;19&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;while&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;M&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;){&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;20&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;extr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++];&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;21&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;22&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;while&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;){&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;23&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;extr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++];&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;24&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;25&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;extra&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++){&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;26&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;L&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;extra&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;];&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;27&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;28&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         
       </description>
     </item>

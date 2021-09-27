@@ -189,11 +189,10 @@
 <li>如果这个工程的头文件被改变了，那么我们需要编译引用了这几个头文件的C文件，并链接目标程序。</li>
 </ol>
 <h3 id="1-makefile-规则">1. Makefile 规则</h3>
-<pre><code class="language-makefile">target... : prerequisites ...
-	command
-...
-</code></pre>
-<p>target也就是一个目标文件，可以是Object File，也可以是执行文件。还可以是一个标签（Label）</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="ln">1</span><span class="nf">target... </span><span class="o">:</span> <span class="n">prerequisites</span> ...
+<span class="ln">2</span>	<span class="nb">command</span>
+<span class="ln">3</span><span class="err">...</span>
+</code></pre></div><p>target也就是一个目标文件，可以是Object File，也可以是执行文件。还可以是一个标签（Label）</p>
 <p>prerequisites就是，要生成那个target所需的文件或是目标。</p>
 <p>command也就是make需要执行的命令。(任意的shell命令)</p>
 <p>这是一个文件的依赖关系，也就是说，target这一个或多个的目标文件依赖于prerequisites中的文件，其生成规则定义在command中。也就是说，prerequisites中如果有一个以上的文件比target文件要新的话，command所定义的命令就会被执行。</p>
@@ -205,40 +204,39 @@
 </ol>
 <p>一个示例<br>
 如果一个工程有3个头文件，和8个C文件，我们为了完成前面所述的那三个规则，我们的Makefile应该是下面的这个样子的。</p>
-<pre><code class="language-makefile">edit : main.o kbd.o command.o display.o \
-       insert.o search.o files.o utils.o
-       cc -o edit main.o kbd.o command.o display.o \
-           insert.o search.o files.o utils.o
-
-main.o : main.c defs.h
-         cc -c main.c
-
-kbd.o : kbd.c defs.h command.h
-        cc -c kbd.c
-
-command.o : command.c defs.h command.h
-            cc -c command.c
-
-display.o : display.c defs.h buffer.h
-            cc -c display.c
-
-insert.o : insert.c defs.h buffer.h
-           cc -c insert.c
-
-search.o : search.c defs.h buffer.h
-           cc -c search.c
-
-files.o : files.c defs.h buffer.h command.h
-          cc -c files.c
-
-utils.o : utils.c defs.h
-          cc -c utils.c
-
-clean :
-           rm edit main.o kbd.o command.o display.o \
-              insert.o search.o files.o utils.o
-</code></pre>
-<p>反斜杠（\）是换行符的意思。这样比较便于Makefile的易读。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="ln"> 1</span><span class="nf">edit </span><span class="o">:</span> <span class="n">main</span>.<span class="n">o</span> <span class="n">kbd</span>.<span class="n">o</span> <span class="n">command</span>.<span class="n">o</span> <span class="n">display</span>.<span class="n">o</span> \
+<span class="ln"> 2</span>       <span class="n">insert</span>.<span class="n">o</span> <span class="n">search</span>.<span class="n">o</span> <span class="n">files</span>.<span class="n">o</span> <span class="n">utils</span>.<span class="n">o</span>
+<span class="ln"> 3</span>       cc -o edit main.o kbd.o command.o display.o <span class="se">\
+</span><span class="ln"> 4</span><span class="se"></span>           insert.o search.o files.o utils.o
+<span class="ln"> 5</span>
+<span class="ln"> 6</span><span class="nf">main.o </span><span class="o">:</span> <span class="n">main</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span>
+<span class="ln"> 7</span>         cc -c main.c
+<span class="ln"> 8</span>
+<span class="ln"> 9</span><span class="nf">kbd.o </span><span class="o">:</span> <span class="n">kbd</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">command</span>.<span class="n">h</span>
+<span class="ln">10</span>        cc -c kbd.c
+<span class="ln">11</span>
+<span class="ln">12</span><span class="nf">command.o </span><span class="o">:</span> <span class="n">command</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">command</span>.<span class="n">h</span>
+<span class="ln">13</span>            cc -c command.c
+<span class="ln">14</span>
+<span class="ln">15</span><span class="nf">display.o </span><span class="o">:</span> <span class="n">display</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span>
+<span class="ln">16</span>            cc -c display.c
+<span class="ln">17</span>
+<span class="ln">18</span><span class="nf">insert.o </span><span class="o">:</span> <span class="n">insert</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span>
+<span class="ln">19</span>           cc -c insert.c
+<span class="ln">20</span>
+<span class="ln">21</span><span class="nf">search.o </span><span class="o">:</span> <span class="n">search</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span>
+<span class="ln">22</span>           cc -c search.c
+<span class="ln">23</span>
+<span class="ln">24</span><span class="nf">files.o </span><span class="o">:</span> <span class="n">files</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span> <span class="n">command</span>.<span class="n">h</span>
+<span class="ln">25</span>          cc -c files.c
+<span class="ln">26</span>
+<span class="ln">27</span><span class="nf">utils.o </span><span class="o">:</span> <span class="n">utils</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span>
+<span class="ln">28</span>          cc -c utils.c
+<span class="ln">29</span>
+<span class="ln">30</span><span class="nf">clean </span><span class="o">:</span>
+<span class="ln">31</span>           rm edit main.o kbd.o command.o display.o <span class="se">\
+</span><span class="ln">32</span><span class="se"></span>              insert.o search.o files.o utils.o
+</code></pre></div><p>反斜杠（\）是换行符的意思。这样比较便于Makefile的易读。</p>
 <p>在这个makefile中，目标文件（target）包含：执行文件edit和中间目标文件（*.o），依赖文件（prerequisites）就是冒号后面的那些 .c 文件和 .h文件。每一个 .o 文件都有一组依赖文件，而这些 .o 文件又是执行文件 edit 的依赖文件。依赖关系的实质上就是说明了目标文件是由哪些文件生成的，换言之，目标文件是哪些文件更新的。</p>
 <p>在定义好依赖关系后，后续的那一行定义了如何生成目标文件的操作系统命令，一定要以一个Tab键作为开头。记住，make并不管命令是怎么工作的，他只管执行所定义的命令。make会比较targets文件和prerequisites文件的修改日期，如果prerequisites文件的日期要比targets文件的日期要新，或者target不存在的话，那么，make就会执行后续定义的命令。</p>
 <h3 id="3-make是如何工作的">3. make是如何工作的</h3>
@@ -265,88 +263,81 @@ clean :
 </ol>
 <h3 id="4-makefile中使用变量">4. makefile中使用变量</h3>
 <p>以edit的规则为例：</p>
-<pre><code class="language-makefile">edit:main.o kbd.o command.o display.o \
-	 insert.o search.o files.o utills.o
-cc -o edit main.o kbd.o command.o display.o \
-		   insert.o search.o files.o utils.o
-</code></pre>
-<p>看到[.o]文件的字符串被重复了两次，如果我们的工程需要加入新的[.o]文件，那么需要在两个地方加。因为此时的makefile并不复杂。当makefile变得复杂我们就有可能忘掉某个地方，而导致编译失败。所以为了makefile的易维护，在makefile中可以使用变量。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="ln">1</span><span class="nf">edit</span><span class="o">:</span><span class="n">main</span>.<span class="n">o</span> <span class="n">kbd</span>.<span class="n">o</span> <span class="n">command</span>.<span class="n">o</span> <span class="n">display</span>.<span class="n">o</span> \
+<span class="ln">2</span>	 <span class="n">insert</span>.<span class="n">o</span> <span class="n">search</span>.<span class="n">o</span> <span class="n">files</span>.<span class="n">o</span> <span class="n">utills</span>.<span class="n">o</span>
+<span class="ln">3</span><span class="err">cc</span> <span class="err">-o</span> <span class="err">edit</span> <span class="err">main.o</span> <span class="err">kbd.o</span> <span class="err">command.o</span> <span class="err">display.o</span> <span class="err">\</span>
+<span class="ln">4</span>		   <span class="err">insert.o</span> <span class="err">search.o</span> <span class="err">files.o</span> <span class="err">utils.o</span>
+</code></pre></div><p>看到[.o]文件的字符串被重复了两次，如果我们的工程需要加入新的[.o]文件，那么需要在两个地方加。因为此时的makefile并不复杂。当makefile变得复杂我们就有可能忘掉某个地方，而导致编译失败。所以为了makefile的易维护，在makefile中可以使用变量。</p>
 <p>比如我们声明一个变量，objects, OBJECTS,objs,OBJS,或OBJ，表示obj文件。在makefile一开始就定义</p>
-<pre><code class="language-makefile">objects = main.o kbd.o command.o display.o \
-		  insert.o search.o files.o utils.o
-</code></pre>
-<p>于是，就可以方便的在makefile中以&quot;$(objects)&ldquo;的方式来使用这个变量了。改良后的makefile如下：</p>
-<pre><code class="language-makefile">objects = main.o kbd.o command.o display.o \
-		insert.o search.o files.o utils.o
-edit : $(objects)
-		cc -o edit $(objects)
-main.o : main.c defs.h
-		cc -c main.c
-command.o : command.c defs.h command.h
-			cc -c command.c
-display.o : display.c defs.h buffer.h
-           cc -c display.c
-insert.o : insert.c defs.h buffer.h
-           cc -c insert.c
-search.o : search.c defs.h buffer.h
-           cc -c search.c
-files.o : files.c defs.h buffer.h command.h
-           cc -c files.c
-utils.o : utils.c defs.h
-           cc -c utils.c
-clean :
-	rm edit $(objects)
-</code></pre>
-<p>于是如果有新的 .o 文件加入，只需修改一下 objects 变量就可以了。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="ln">1</span><span class="nv">objects</span> <span class="o">=</span> main.o kbd.o command.o display.o <span class="se">\
+</span><span class="ln">2</span><span class="se"></span>		  insert.o search.o files.o utils.o
+</code></pre></div><p>于是，就可以方便的在makefile中以&quot;$(objects)&ldquo;的方式来使用这个变量了。改良后的makefile如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="ln"> 1</span><span class="nv">objects</span> <span class="o">=</span> main.o kbd.o command.o display.o <span class="se">\
+</span><span class="ln"> 2</span><span class="se"></span>		insert.o search.o files.o utils.o
+<span class="ln"> 3</span><span class="nf">edit </span><span class="o">:</span> <span class="k">$(</span><span class="nv">objects</span><span class="k">)</span>
+<span class="ln"> 4</span>		cc -o edit <span class="k">$(</span>objects<span class="k">)</span>
+<span class="ln"> 5</span><span class="nf">main.o </span><span class="o">:</span> <span class="n">main</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span>
+<span class="ln"> 6</span>		cc -c main.c
+<span class="ln"> 7</span><span class="nf">command.o </span><span class="o">:</span> <span class="n">command</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">command</span>.<span class="n">h</span>
+<span class="ln"> 8</span>			cc -c command.c
+<span class="ln"> 9</span><span class="nf">display.o </span><span class="o">:</span> <span class="n">display</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span>
+<span class="ln">10</span>           cc -c display.c
+<span class="ln">11</span><span class="nf">insert.o </span><span class="o">:</span> <span class="n">insert</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span>
+<span class="ln">12</span>           cc -c insert.c
+<span class="ln">13</span><span class="nf">search.o </span><span class="o">:</span> <span class="n">search</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span>
+<span class="ln">14</span>           cc -c search.c
+<span class="ln">15</span><span class="nf">files.o </span><span class="o">:</span> <span class="n">files</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span> <span class="n">command</span>.<span class="n">h</span>
+<span class="ln">16</span>           cc -c files.c
+<span class="ln">17</span><span class="nf">utils.o </span><span class="o">:</span> <span class="n">utils</span>.<span class="n">c</span> <span class="n">defs</span>.<span class="n">h</span>
+<span class="ln">18</span>           cc -c utils.c
+<span class="ln">19</span><span class="nf">clean </span><span class="o">:</span>
+<span class="ln">20</span>	rm edit <span class="k">$(</span>objects<span class="k">)</span>
+</code></pre></div><p>于是如果有新的 .o 文件加入，只需修改一下 objects 变量就可以了。</p>
 <h3 id="5-make自动推导">5. make自动推导</h3>
 <p>GNU的make很强大，它可以自动推导文件以及文件依赖关系后面的命令，于是我们没有必要在每个[.o]文件写上依赖关系。make会自动识别，并自己推导命令。</p>
 <p>只要make找到一个[.o]文件，它就会自动的把[.c]文件加在依赖关系中，如果make找到一个whatever.o，那么whatever.c等whatever.o的依赖文件，并且cc -c whatever.c也会被推导出来。于是makefile可以又一次简化。</p>
-<pre><code class="language-makefile">objects = main.o kbd.o command.o display.o \
-		insert.o seaerch.o files.o utils.o
-edit : $(objects)
-	cc -o edit $(objects)
-main.o : defs.h
-kbd.o : defs.h command.h
-command.o : defs.h command.h
-display.o : defs.h buffer.h
-insert.o : defs.h buffer.h
-search.o : defs.h buffer.h
-files.o : defs.h buffer.h command.h
-utils.o : defs.h
-
-.PHONY : clean
-clean :
-		rm edit $(objects)
-</code></pre>
-<p>这就是make的“隐晦规则”。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="ln"> 1</span><span class="nv">objects</span> <span class="o">=</span> main.o kbd.o command.o display.o <span class="se">\
+</span><span class="ln"> 2</span><span class="se"></span>		insert.o seaerch.o files.o utils.o
+<span class="ln"> 3</span><span class="nf">edit </span><span class="o">:</span> <span class="k">$(</span><span class="nv">objects</span><span class="k">)</span>
+<span class="ln"> 4</span>	cc -o edit <span class="k">$(</span>objects<span class="k">)</span>
+<span class="ln"> 5</span><span class="nf">main.o </span><span class="o">:</span> <span class="n">defs</span>.<span class="n">h</span>
+<span class="ln"> 6</span><span class="nf">kbd.o </span><span class="o">:</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">command</span>.<span class="n">h</span>
+<span class="ln"> 7</span><span class="nf">command.o </span><span class="o">:</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">command</span>.<span class="n">h</span>
+<span class="ln"> 8</span><span class="nf">display.o </span><span class="o">:</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span>
+<span class="ln"> 9</span><span class="nf">insert.o </span><span class="o">:</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span>
+<span class="ln">10</span><span class="nf">search.o </span><span class="o">:</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span>
+<span class="ln">11</span><span class="nf">files.o </span><span class="o">:</span> <span class="n">defs</span>.<span class="n">h</span> <span class="n">buffer</span>.<span class="n">h</span> <span class="n">command</span>.<span class="n">h</span>
+<span class="ln">12</span><span class="nf">utils.o </span><span class="o">:</span> <span class="n">defs</span>.<span class="n">h</span>
+<span class="ln">13</span>
+<span class="ln">14</span><span class="nf">.PHONY </span><span class="o">:</span> <span class="n">clean</span>
+<span class="ln">15</span><span class="nf">clean </span><span class="o">:</span>
+<span class="ln">16</span>		rm edit <span class="k">$(</span>objects<span class="k">)</span>
+</code></pre></div><p>这就是make的“隐晦规则”。</p>
 <p>.PHONY表示，clean是个伪目标文件</p>
 <h3 id="6-makefile的收缩">6. makefile的收缩</h3>
 <p>收拢起来</p>
-<pre><code class="language-makefile">objects = main.o kbd.o command.o display.o \
-    	insert.o search.o files.o utils.o
-edit : $(objects)
-		cc -o edit $(objects)
-$(objects) : defs.h
-kbd.o command.o files.o : command.h
-display.o insert.o search.o files.o : buffer.h
-
-.PHONY : clean
-clean:
-	rm edit $(objects)
-</code></pre>
-<p>虽然makefile变得很简单，但我们的文件依赖关系会显得凌乱，新增.o文件不好管理</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="ln"> 1</span><span class="nv">objects</span> <span class="o">=</span> main.o kbd.o command.o display.o <span class="se">\
+</span><span class="ln"> 2</span><span class="se"></span>    	insert.o search.o files.o utils.o
+<span class="ln"> 3</span><span class="nf">edit </span><span class="o">:</span> <span class="k">$(</span><span class="nv">objects</span><span class="k">)</span>
+<span class="ln"> 4</span>		cc -o edit <span class="k">$(</span>objects<span class="k">)</span>
+<span class="ln"> 5</span><span class="nf">$(objects) </span><span class="o">:</span> <span class="n">defs</span>.<span class="n">h</span>
+<span class="ln"> 6</span><span class="nf">kbd.o command.o files.o </span><span class="o">:</span> <span class="n">command</span>.<span class="n">h</span>
+<span class="ln"> 7</span><span class="nf">display.o insert.o search.o files.o </span><span class="o">:</span> <span class="n">buffer</span>.<span class="n">h</span>
+<span class="ln"> 8</span>
+<span class="ln"> 9</span><span class="nf">.PHONY </span><span class="o">:</span> <span class="n">clean</span>
+<span class="ln">10</span><span class="nf">clean</span><span class="o">:</span>
+<span class="ln">11</span>	rm edit <span class="k">$(</span>objects<span class="k">)</span>
+</code></pre></div><p>虽然makefile变得很简单，但我们的文件依赖关系会显得凌乱，新增.o文件不好管理</p>
 <h3 id="7-清空目标文件的规则">7. 清空目标文件的规则</h3>
 <p>每个Makefile中都应该写一个清空目标文件(.o和执行文件)的规则。</p>
 <p>一般的风格是：</p>
-<pre><code class="language-makefile">clean:
-	rm edit $(objects)
-</code></pre>
-<p>更稳健的做法是：</p>
-<pre><code class="language-makefile">.PHONY: clean
-clean:
-	-rm edit $(objects)
-</code></pre>
-<p>.PHONY表示clean是一个“伪目标”，向make说明，不管是否有这个文件，这个目标就是“伪目标”。只要有这个声明，不管是否有“clean”文件，要运行“clean”这个目标，只有“make clean”这样。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="ln">1</span><span class="nf">clean</span><span class="o">:</span>
+<span class="ln">2</span>	rm edit <span class="k">$(</span>objects<span class="k">)</span>
+</code></pre></div><p>更稳健的做法是：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="ln">1</span><span class="nf">.PHONY</span><span class="o">:</span> <span class="n">clean</span>
+<span class="ln">2</span><span class="nf">clean</span><span class="o">:</span>
+<span class="ln">3</span>	-rm edit <span class="k">$(</span>objects<span class="k">)</span>
+</code></pre></div><p>.PHONY表示clean是一个“伪目标”，向make说明，不管是否有这个文件，这个目标就是“伪目标”。只要有这个声明，不管是否有“clean”文件，要运行“clean”这个目标，只有“make clean”这样。</p>
 <p>而在rm命令前面加了一个减号表示也许某些文件出现问题，但不用管，继续往后执行。</p>
 <p>当然，clean的规则不要放在文件的开头，不然，这就会变成make的默认目标。</p>
 <p>“clean从来都是放在文件的最后”</p>
@@ -366,24 +357,21 @@ clean:
 <p>当然，可以使用别的文件名来书写Makefile，比如：“Make.Linux”，“Make.Solaris”，“Make.AIX”等，如果要****指定特定的Makefile，可以使用make的“-f”和“&ndash;file”参数****，如：make -f Make.Linux或make &ndash;file Make.AIX。</p>
 <h3 id="3-引用其他的makefile">3. 引用其他的Makefile</h3>
 <p>在Makefile使用include关键字可以把别的Makefile包含进来，这很像C语言的#include，被包含的文件会原模原样的放在当前文件的包含位置。include的语法是：</p>
-<pre><code class="language-makefile"> include filename
- #filename可以是当前操作系统Shell的文件模式（可以保含路径和通配符）
-</code></pre>
-<p><strong>在include前面可以有一些空字符，但是绝不能是[Tab]键开始。include和可以用一个或多个空格隔开。</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="ln">1</span> include filename
+<span class="ln">2</span> <span class="c1">#filename可以是当前操作系统Shell的文件模式（可以保含路径和通配符）</span>
+</code></pre></div><p><strong>在include前面可以有一些空字符，但是绝不能是[Tab]键开始。include和可以用一个或多个空格隔开。</strong></p>
 <p>举个例子，有这样几个Makefile：a.mk、b.mk、c.mk，还有一个文件叫foo.make，以及一个变量$(bar)，其包含了e.mk和f.mk，那么，下面的语句：</p>
-<pre><code class="language-makefile">include foo.make *.mk $(bar)
-#等价于：
-include foo.make a.mk b.mk c.mk e.mk f.mk
-</code></pre>
-<p>make命令开始时，会把找寻include所指出的其它Makefile，并把其内容安置在当前的位置。就好像C/C++的#include指令一样。如果文件都没有指定绝对路径或是相对路径的话，make会在当前目录下首先寻找，如果当前目录下没有找到，那么，make还会在下面的几个目录下找：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="ln">1</span><span class="err">include</span> <span class="err">foo.make</span> <span class="err">*.mk</span> <span class="k">$(</span><span class="nv">bar</span><span class="k">)</span>
+<span class="ln">2</span><span class="c">#等价于：
+</span><span class="ln">3</span><span class="c"></span><span class="err">include</span> <span class="err">foo.make</span> <span class="err">a.mk</span> <span class="err">b.mk</span> <span class="err">c.mk</span> <span class="err">e.mk</span> <span class="err">f.mk</span>
+</code></pre></div><p>make命令开始时，会把找寻include所指出的其它Makefile，并把其内容安置在当前的位置。就好像C/C++的#include指令一样。如果文件都没有指定绝对路径或是相对路径的话，make会在当前目录下首先寻找，如果当前目录下没有找到，那么，make还会在下面的几个目录下找：</p>
 <ol>
 <li>如果make执行时，有“-I”或“&ndash;include-dir”参数，那么make就会在这个参数所指定的目录下去寻找。</li>
 <li>如果目录/include（一般是：/usr/local/bin或/usr/include）存在的话，make也会去找。</li>
 </ol>
 <p>如果有文件没有找到的话，make会生成一条警告信息，但不会马上出现致命错误。它会继续载入其它的文件，一旦完成makefile的读取，make会再重试这些没有找到，或是不能读取的文件，如果还是不行，make才会出现一条致命信息。如果想让make不理那些无法读取的文件，而继续执行，可以在include前加一个减号“-”。如：</p>
-<pre><code class="language-makefile">-include&lt;filename&gt;
-</code></pre>
-<p>其表示，无论include过程中出现什么错误，都不要报错继续执行。和其它版本make兼容的相关命令是sinclude，其作用和这一个是一样的。这个变量中的值是其它的Makefile，用空格分隔。只是，它和include不同的是，从这个环境变量中引入的Makefile的“目标”不会起作用，如果环境变量中定义的文件发现错误，make也会不理。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="ln">1</span><span class="err">-include&lt;filename&gt;</span>
+</code></pre></div><p>其表示，无论include过程中出现什么错误，都不要报错继续执行。和其它版本make兼容的相关命令是sinclude，其作用和这一个是一样的。这个变量中的值是其它的Makefile，用空格分隔。只是，它和include不同的是，从这个环境变量中引入的Makefile的“目标”不会起作用，如果环境变量中定义的文件发现错误，make也会不理。</p>
 <h3 id="4-环境变量makefiles">4. 环境变量Makefiles</h3>
 <p>如果当前环境中定义了环境变量Makefiles，那么make会把这个变量中的值做一个类似于include的动作。这个变量中的值是其它的Makefile，用空格分隔。只是，它和include不同的是，从这个环境变中引入的Makefile的“目标”不会起作用，如果环境变量中定义的文件发现错误，make也会不理。</p>
 <p>但还是建议不要使用这个环境变量，因为只要这个变量一旦被定义，那么当使用make时，所有的Makefile都会受到它的影响，这绝不是想看到的。在这里提这个事，只是为了告诉大家，也许有时候Makefile出现了怪事，那么可以看看当前环境中有没有定义这个变量。</p>
@@ -405,22 +393,20 @@ include foo.make a.mk b.mk c.mk e.mk f.mk
 <p>规则包含两个部分，一个是<strong>依赖关系</strong>，一个是<strong>生成目标的方法</strong>。</p>
 <p><strong>在Makefile中，规则的顺序是很重要的</strong>，因为，<strong>Makefile中只应该有一个最终目标</strong>，其它的目标都是被这个目标所连带出来的，所以一定要让make知道你的最终目标是什么。一般来说，定义在Makefile中的目标可能会有很多，但是第一条规则中的目标将被确立为最终的目标。如果第一条规则中的目标有很多个，那么，第一个目标会成为最终的目标。make所完成的也就是这个目标。</p>
 <p>规则举例</p>
-<pre><code class="language-makefile"> foo.o: foo.c defs.h       # foo模块
-        cc -c -g foo.c
-</code></pre>
-<p>foo.o是我们的目标，foo.c和defs.h是目标所依赖的源文件，而只有一个命令“cc -c -g foo.c”（以Tab键开头）</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="ln">1</span> foo.o: foo.c defs.h       <span class="c1"># foo模块</span>
+<span class="ln">2</span>        cc -c -g foo.c
+</code></pre></div><p>foo.o是我们的目标，foo.c和defs.h是目标所依赖的源文件，而只有一个命令“cc -c -g foo.c”（以Tab键开头）</p>
 <ol>
 <li>文件的依赖关系，foo.o依赖于foo.c和defs.h的文件，如果foo.c和defs.h的文件日期要比foo.o文件日期要新，或是foo.o不存在，那么依赖关系发生。</li>
 <li>如果生成（或更新）foo.o文件。也就是那个cc命令，其说明了，如何生成foo.o这个文件。（当然foo.c文件include了defs.h文件）</li>
 </ol>
 <h3 id="2-规则的语法">2. 规则的语法</h3>
-<pre><code class="language-makefile">targets : prerequisites
-		command
-#或：
-targets : prerequisites ; command
-		command
-</code></pre>
-<ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="ln">1</span><span class="nf">targets </span><span class="o">:</span> <span class="n">prerequisites</span>
+<span class="ln">2</span>		<span class="nb">command</span>
+<span class="ln">3</span><span class="c">#或：
+</span><span class="ln">4</span><span class="c"></span><span class="nf">targets </span><span class="o">:</span> <span class="n">prerequisites</span> ; <span class="n">command</span>
+<span class="ln">5</span>		<span class="nb">command</span>
+</code></pre></div><ul>
 <li>
 <p>targets是文件名，以空格分开，可以使用通配符。一般来说，我们的目标基本上是一个文件，但也有可能是多个文件。</p>
 </li>
@@ -445,10 +431,9 @@ targets : prerequisites ; command
 </ol>
 <h3 id="4-静态模式">4. 静态模式</h3>
 <p>静态模式可以更加容易地定义多目标的规则，可以让我们的规则变得更加的有弹性和灵活。语法：</p>
-<pre><code class="language-makefile">&lt;targets...&gt;: &lt;target-pattern&gt;: &lt;prereq-patterns ...&gt;
-	&lt;commands&gt;
-</code></pre>
-<p>targets定义了一系列的目标文件，可以有通配符。是目标的一个集合。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="ln">1</span><span class="nf">&lt;targets...&gt;</span><span class="o">:</span> &lt;<span class="n">target</span>-<span class="n">pattern</span>&gt;: &lt;<span class="n">prereq</span>-<span class="n">patterns</span> ...&gt;
+<span class="ln">2</span>	&lt;commands&gt;
+</code></pre></div><p>targets定义了一系列的目标文件，可以有通配符。是目标的一个集合。</p>
 <p>target-parrtern是指明了targets的模式，也就是的目标集模式。</p>
 <p>prereq-parrterns是目标的依赖模式，它对target-parrtern形成的模式再进行一次依赖目标的定义。</p>
 <p>说明:</p>
@@ -456,42 +441,38 @@ targets : prerequisites ; command
 <p>而如果我们的<prereq-parrterns>定义成“%.c”，意思是对<target-parrtern>所形成的目标集进行二次定义，其计算方法是，取<target-parrtern>模式中的“%”（也就是去掉了[.o]这个结尾），并为其加上[.c]这个结尾，形成的新集合。</p>
 <p>所以，我们的“目标模式”或是“依赖模式”中都应该有“%”这个字符</p>
 <p>实例：</p>
-<pre><code class="language-makefile">objects = foo.o bar.o
-all: $(objects)
-$(objects): %.o: %.c
-	$(CC) -c $(CFLAGS) $&lt; -o $@
-</code></pre>
-<p>例子中，指明了目标从$objects中获取</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="ln">1</span><span class="nv">objects</span> <span class="o">=</span> foo.o bar.o
+<span class="ln">2</span><span class="nf">all</span><span class="o">:</span> <span class="k">$(</span><span class="nv">objects</span><span class="k">)</span>
+<span class="ln">3</span><span class="nf">$(objects)</span><span class="o">:</span> %.<span class="n">o</span>: %.<span class="n">c</span>
+<span class="ln">4</span>	<span class="k">$(</span>CC<span class="k">)</span> -c <span class="k">$(</span>CFLAGS<span class="k">)</span> $&lt; -o <span class="nv">$@</span>
+</code></pre></div><p>例子中，指明了目标从$objects中获取</p>
 <p>“%.o”表明要所有以“.o”结尾的目标，也就是&quot;foo.o bar.o&rdquo;，也就是变量$object集合的模式</p>
 <p>而依赖模式“%.c”则取模式“%.o”的“%”，也就是“foobar”，并为其加下“.c”的后缀，于是，我们的依赖目标就是“foo.c bar.c”</p>
 <p>而命令中的“$&lt;”和“$@”则是自动化变量，“$&lt;”表示所有的依赖目标集（也就是“foo.c bar.c”），“$@”表示目标集（也褪恰癴oo.o bar.o”）</p>
 <p>上面的规则展开后等价于：</p>
-<pre><code class="language-makefile">foo.o : foo.c
-	$(CC) -c $(CFLAGS) foo.c -o foo.o
-bar.o : bar.c
-	$(CC) -c $(CFLAGS) bar.c -o bar.o
-</code></pre>
-<h2 id="makefile书写命令">Makefile书写命令</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="ln">1</span><span class="nf">foo.o </span><span class="o">:</span> <span class="n">foo</span>.<span class="n">c</span>
+<span class="ln">2</span>	<span class="k">$(</span>CC<span class="k">)</span> -c <span class="k">$(</span>CFLAGS<span class="k">)</span> foo.c -o foo.o
+<span class="ln">3</span><span class="nf">bar.o </span><span class="o">:</span> <span class="n">bar</span>.<span class="n">c</span>
+<span class="ln">4</span>	<span class="k">$(</span>CC<span class="k">)</span> -c <span class="k">$(</span>CFLAGS<span class="k">)</span> bar.c -o bar.o
+</code></pre></div><h2 id="makefile书写命令">Makefile书写命令</h2>
 <h3 id="1-显示命令">1. 显示命令</h3>
 <p>通常，make会把其要执行的命令行在命令执行前输出到屏幕上。当我们用“@”字符在命令行前，那么，这个命令将不被make显示出来，最具代表性的例子是，我们用这个功能来像屏幕显示一些信息。如：</p>
 <p>@echo 正在编译XXX模块&hellip;&hellip;</p>
 <h3 id="2赋值命令">2.赋值命令</h3>
-<pre><code class="language-makefile">#  = 是最基本的赋值
-# := 是覆盖之前的值
-# ?= 是如果没有被赋值过就赋予等号后面的值
-# += 是添加等号后面的值
-</code></pre>
-<h3 id="3-指定目标">3. 指定目标</h3>
-<pre><code class="language-makefile">1. “all”       这个伪目标是所有目标的目标，其功能一般是编译所有的目标。
-2. “clean”     这个伪目标功能是删除所有被make创建的文件。
-3. “install”   这个伪目标功能是安装已编译好的程序，其实就是把目标执行文件拷贝到指定的目标中去。
-4. “print”     这个伪目标的功能是例出改变过的源文件。
-5. “tar”       这个伪目标功能是把源程序打包备份。也就是一个tar文件。
-6. “dist”      这个伪目标功能是创建一个压缩文件，一般是把tar文件压成Z文件。或是gz文件。
-7. “TAGS”      这个伪目标功能是更新所有的目标，以备完整地重编译使用。
-8. “check”和“test”   这两个伪目标一般用来测试makefile的流程。
-</code></pre>
-<h3 id="4-自动化变量">4. 自动化变量</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="ln">1</span><span class="c">#  = 是最基本的赋值
+</span><span class="ln">2</span><span class="c"># := 是覆盖之前的值
+</span><span class="ln">3</span><span class="c"># ?= 是如果没有被赋值过就赋予等号后面的值
+</span><span class="ln">4</span><span class="c"># += 是添加等号后面的值
+</span></code></pre></div><h3 id="3-指定目标">3. 指定目标</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="ln">1</span><span class="err">1.</span> <span class="err">“all”</span>       <span class="err">这个伪目标是所有目标的目标，其功能一般是编译所有的目标。</span>
+<span class="ln">2</span><span class="err">2.</span> <span class="err">“clean”</span>     <span class="err">这个伪目标功能是删除所有被make创建的文件。</span>
+<span class="ln">3</span><span class="err">3.</span> <span class="err">“install”</span>   <span class="err">这个伪目标功能是安装已编译好的程序，其实就是把目标执行文件拷贝到指定的目标中去。</span>
+<span class="ln">4</span><span class="err">4.</span> <span class="err">“print”</span>     <span class="err">这个伪目标的功能是例出改变过的源文件。</span>
+<span class="ln">5</span><span class="err">5.</span> <span class="err">“tar”</span>       <span class="err">这个伪目标功能是把源程序打包备份。也就是一个tar文件。</span>
+<span class="ln">6</span><span class="err">6.</span> <span class="err">“dist”</span>      <span class="err">这个伪目标功能是创建一个压缩文件，一般是把tar文件压成Z文件。或是gz文件。</span>
+<span class="ln">7</span><span class="err">7.</span> <span class="err">“TAGS”</span>      <span class="err">这个伪目标功能是更新所有的目标，以备完整地重编译使用。</span>
+<span class="ln">8</span><span class="err">8.</span> <span class="err">“check”和“test”</span>   <span class="err">这两个伪目标一般用来测试makefile的流程。</span>
+</code></pre></div><h3 id="4-自动化变量">4. 自动化变量</h3>
 <ol>
 <li>$@表示规则中的目标文件集。在模式规则中，如果有多个目标，那么，&quot;$@&ldquo;就是匹配于目标中模式定义的集合。</li>
 <li>$%仅当目标是函数库文件中，表示规则中的目标成员名。例如，如果一个目标是&quot;foo.a(bar.o)&quot;，那么，&quot;$%&ldquo;就是&quot;bar.o&rdquo;，&quot;$@&ldquo;就是&quot;foo.a&rdquo;。如果目标不是函数库文件（Unix下是<br>
