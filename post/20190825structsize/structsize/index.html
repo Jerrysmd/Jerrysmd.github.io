@@ -135,57 +135,60 @@
 <ul>
 <li>Case 1:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="k">struct</span> <span class="n">A</span> <span class="p">{</span>    
-<span class="ln"> 2</span>	<span class="c1">// sizeof(int) = 4 
-</span><span class="ln"> 3</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">x</span><span class="p">;</span> 
-<span class="ln"> 4</span>    <span class="c1">// Padding of 4 bytes 
-</span><span class="ln"> 5</span><span class="c1"></span>
-<span class="ln"> 6</span>    <span class="c1">// sizeof(double) = 8 
-</span><span class="ln"> 7</span><span class="c1"></span>    <span class="kt">double</span> <span class="n">z</span><span class="p">;</span> 
-<span class="ln"> 8</span>    
-<span class="ln"> 9</span>    <span class="c1">// sizeof(short int) = 2 
-</span><span class="ln">10</span><span class="c1"></span>    <span class="kt">short</span> <span class="kt">int</span> <span class="n">y</span><span class="p">;</span> 
-<span class="ln">11</span>    <span class="c1">// Padding of 6 bytes 
-</span><span class="ln">12</span><span class="c1"></span><span class="p">};</span> 
-</code></pre></div><p>Output:</p>
+<pre><code class="language-c">struct A {    
+	// sizeof(int) = 4 
+    int x; 
+    // Padding of 4 bytes 
+
+    // sizeof(double) = 8 
+    double z; 
+    
+    // sizeof(short int) = 2 
+    short int y; 
+    // Padding of 6 bytes 
+}; 
+</code></pre>
+<p>Output:</p>
 <p>​	Size of struct: 24</p>
-<p><img src="/post/picture/struct_sizeof_ex1.png" alt="Output1" /></p>
+<p><img src="/post/picture/struct_sizeof_ex1.png" alt="Output1"></p>
 <p>The red portion represents the padding added for data alignment and the green portion represents the struct members. In this case, x (int) is followed by z (double), which is larger in size as compared to x. Hence padding is added after x. Also, padding is needed at the end for data alignment.</p>
 <ul>
 <li>Case 2:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="k">struct</span> <span class="n">B</span> <span class="p">{</span> 
-<span class="ln"> 2</span>    <span class="c1">// sizeof(double) = 8 
-</span><span class="ln"> 3</span><span class="c1"></span>    <span class="kt">double</span> <span class="n">z</span><span class="p">;</span> 
-<span class="ln"> 4</span>    
-<span class="ln"> 5</span>    <span class="c1">// sizeof(int) = 4 
-</span><span class="ln"> 6</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">x</span><span class="p">;</span> 
-<span class="ln"> 7</span>    
-<span class="ln"> 8</span>    <span class="c1">// sizeof(short int) = 2 
-</span><span class="ln"> 9</span><span class="c1"></span>    <span class="kt">short</span> <span class="kt">int</span> <span class="n">y</span><span class="p">;</span> 
-<span class="ln">10</span>    <span class="c1">// Padding of 2 bytes 
-</span><span class="ln">11</span><span class="c1"></span><span class="p">};</span> 
-</code></pre></div><p>Output:</p>
+<pre><code class="language-c">struct B { 
+    // sizeof(double) = 8 
+    double z; 
+    
+    // sizeof(int) = 4 
+    int x; 
+    
+    // sizeof(short int) = 2 
+    short int y; 
+    // Padding of 2 bytes 
+}; 
+</code></pre>
+<p>Output:</p>
 <p>​	Size of struct: 16</p>
-<p><img src="/post/picture/struct_sizeof_ex2.png" alt="output2" /></p>
+<p><img src="/post/picture/struct_sizeof_ex2.png" alt="output2"></p>
 <p>In this case, the members of the structure are sorted in decreasing order of their sizes. Hence padding is required only at the end.</p>
 <ul>
 <li>Case 3:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="k">struct</span> <span class="n">C</span> <span class="p">{</span> 
-<span class="ln"> 2</span>    <span class="c1">// sizeof(double) = 8 
-</span><span class="ln"> 3</span><span class="c1"></span>    <span class="kt">double</span> <span class="n">z</span><span class="p">;</span> 
-<span class="ln"> 4</span>    
-<span class="ln"> 5</span>    <span class="c1">// sizeof(short int) = 2 
-</span><span class="ln"> 6</span><span class="c1"></span>    <span class="kt">short</span> <span class="kt">int</span> <span class="n">y</span><span class="p">;</span> 
-<span class="ln"> 7</span>    <span class="c1">// Padding of 2 bytes 
-</span><span class="ln"> 8</span><span class="c1"></span>    
-<span class="ln"> 9</span>    <span class="c1">// sizeof(int) = 4 
-</span><span class="ln">10</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">x</span><span class="p">;</span> 
-<span class="ln">11</span><span class="p">};</span> 
-</code></pre></div><p>Output:</p>
+<pre><code class="language-c">struct C { 
+    // sizeof(double) = 8 
+    double z; 
+    
+    // sizeof(short int) = 2 
+    short int y; 
+    // Padding of 2 bytes 
+    
+    // sizeof(int) = 4 
+    int x; 
+}; 
+</code></pre>
+<p>Output:</p>
 <p>​	Size of struct: 16</p>
-<p><img src="/post/picture/struct_sizeof_ex3.png" alt="output3" /></p>
+<p><img src="/post/picture/struct_sizeof_ex3.png" alt="output3"></p>
 <p>In this case, y (short int) is followed by x (int) and hence padding is required after y. No padding is needed at the end in this case for data alignment.</p>
 <p>C language doesn’t allow the compilers to reorder the struct members to reduce the amount of padding. In order to minimize the amount of padding, the struct members must be sorted in a descending order (similar to the case 2).</p>
   </article>

@@ -144,35 +144,37 @@
 <li>遵循交换律和结合律</li>
 </ol>
 <p>例：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="c1">//1.两数交换：
-</span><span class="ln">2</span><span class="c1"></span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">^</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">];</span> <span class="c1">// a = a ^ b
-</span><span class="ln">3</span><span class="c1"></span><span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">^</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">];</span> <span class="c1">// b = (a ^ b) ^ b = a
-</span><span class="ln">4</span><span class="c1"></span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">^</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">];</span> <span class="c1">// a = (a ^ b) ^ a = b
-</span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="c1">//2.数组中有一个出现奇数次的数
-</span><span class="ln"> 2</span><span class="c1"></span><span class="kt">int</span> <span class="n">eor</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
-<span class="ln"> 3</span><span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">cur</span> <span class="o">:</span> <span class="n">arr</span><span class="o">){</span>
-<span class="ln"> 4</span>    <span class="n">eor</span> <span class="o">^=</span> <span class="n">cur</span><span class="o">;</span> <span class="c1">//[a,a,b,b,c,c,c]  =&gt; a^a^b^b^c^c^c = c
-</span><span class="ln"> 5</span><span class="c1"></span><span class="o">}</span>
-<span class="ln"> 6</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">eor</span><span class="o">);</span>
-<span class="ln"> 7</span>
-<span class="ln"> 8</span><span class="c1">//3.数组中有两个出现奇数次的数
-</span><span class="ln"> 9</span><span class="c1"></span><span class="kt">int</span> <span class="n">eor</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
-<span class="ln">10</span><span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">cur</span> <span class="o">:</span> <span class="n">arr</span><span class="o">){</span>
-<span class="ln">11</span>    <span class="n">eor</span> <span class="o">^=</span> <span class="n">cur</span><span class="o">;</span> <span class="c1">//[a,a,b,b,b,c,c,c]  =&gt; a^a^b^b^b^c^c^c = b^c
-</span><span class="ln">12</span><span class="c1"></span><span class="o">}</span>
-<span class="ln">13</span><span class="c1">//eor = b ^ c
-</span><span class="ln">14</span><span class="c1">//eor != 0
-</span><span class="ln">15</span><span class="c1">//eor必然有个一位置上是1, 说明这个位置上b和c不同
-</span><span class="ln">16</span><span class="c1"></span><span class="kt">int</span> <span class="n">rightOne</span> <span class="o">=</span> <span class="n">eor</span> <span class="o">&amp;</span> <span class="o">(~</span><span class="n">eor</span> <span class="o">+</span> <span class="n">1</span><span class="o">);</span>  <span class="c1">//（取反 + 1） &amp; 自己 = 提取出只保留最右侧的1
-</span><span class="ln">17</span><span class="c1"></span>
-<span class="ln">18</span><span class="kt">int</span> <span class="n">result1</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
-<span class="ln">19</span><span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">cur</span> <span class="o">:</span> <span class="n">arr</span><span class="o">){</span>
-<span class="ln">20</span>    <span class="k">if</span><span class="o">((</span><span class="n">cur</span> <span class="o">&amp;</span> <span class="n">rightOne</span><span class="o">)</span> <span class="o">==</span> <span class="n">0</span><span class="o">){</span> <span class="c1">//已知在rightOne这个位置上b和c不同，通过(&amp; rightOne)把b和c区分开,别的数是偶数个，异或起来是0不同管
-</span><span class="ln">21</span><span class="c1"></span>        <span class="n">result1</span> <span class="o">^=</span> <span class="n">cur</span><span class="o">;</span> <span class="c1">//这样result1是b或者c
-</span><span class="ln">22</span><span class="c1"></span>    <span class="o">}</span>
-<span class="ln">23</span><span class="o">}</span>
-<span class="ln">24</span><span class="kt">int</span> <span class="n">result2</span> <span class="o">=</span> <span class="n">eor</span> <span class="o">^</span> <span class="n">result1</span><span class="o">;</span>
-</code></pre></div></blockquote>
+<pre><code class="language-java">//1.两数交换：
+arr[i] = arr[i] ^ arr[j]; // a = a ^ b
+arr[j] = arr[i] ^ arr[j]; // b = (a ^ b) ^ b = a
+arr[i] = arr[i] ^ arr[j]; // a = (a ^ b) ^ a = b
+</code></pre>
+<pre><code class="language-java">//2.数组中有一个出现奇数次的数
+int eor = 0;
+for(int cur : arr){
+    eor ^= cur; //[a,a,b,b,c,c,c]  =&gt; a^a^b^b^c^c^c = c
+}
+System.out.println(eor);
+
+//3.数组中有两个出现奇数次的数
+int eor = 0;
+for(int cur : arr){
+    eor ^= cur; //[a,a,b,b,b,c,c,c]  =&gt; a^a^b^b^b^c^c^c = b^c
+}
+//eor = b ^ c
+//eor != 0
+//eor必然有个一位置上是1, 说明这个位置上b和c不同
+int rightOne = eor &amp; (~eor + 1);  //（取反 + 1） &amp; 自己 = 提取出只保留最右侧的1
+
+int result1 = 0;
+for(int cur : arr){
+    if((cur &amp; rightOne) == 0){ //已知在rightOne这个位置上b和c不同，通过(&amp; rightOne)把b和c区分开,别的数是偶数个，异或起来是0不同管
+        result1 ^= cur; //这样result1是b或者c
+    }
+}
+int result2 = eor ^ result1;
+</code></pre>
+</blockquote>
 <p><strong>插入排序</strong></p>
 <ul>
 <li>概念： 将后部分的数据(从第二开始)按照一定的顺序一个一个的插入到前部分有序的表中</li>
@@ -185,22 +187,23 @@
 <li>时间复杂度是按照<strong>最差情况</strong>考虑</li>
 </ul>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">insertionSort</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">)</span> <span class="o">{</span>
-<span class="ln"> 2</span>    <span class="k">if</span> <span class="o">(</span><span class="n">arr</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span> <span class="o">&lt;</span> <span class="n">2</span><span class="o">){</span>
-<span class="ln"> 3</span>        <span class="k">return</span><span class="o">;</span>
-<span class="ln"> 4</span>    <span class="o">}</span>
-<span class="ln"> 5</span>    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
-<span class="ln"> 6</span>        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="n">0</span> <span class="o">&amp;&amp;</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="n">1</span><span class="o">];</span> <span class="n">j</span><span class="o">--){</span>
-<span class="ln"> 7</span>            <span class="n">swap</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">j</span><span class="o">,</span> <span class="n">j</span><span class="o">+</span><span class="n">1</span><span class="o">);</span>
-<span class="ln"> 8</span>        <span class="o">}</span>
-<span class="ln"> 9</span>    <span class="o">}</span>
-<span class="ln">10</span><span class="o">}</span>
-<span class="ln">11</span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">swap</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">,</span> <span class="kt">int</span> <span class="n">i</span><span class="o">,</span> <span class="kt">int</span> <span class="n">j</span><span class="o">){</span>
-<span class="ln">12</span>    <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">^</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">];</span> 
-<span class="ln">13</span>	<span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">^</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">];</span> 
-<span class="ln">14</span>	<span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">^</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
-<span class="ln">15</span><span class="o">}</span>
-</code></pre></div><p><strong>二分查找</strong></p>
+<pre><code class="language-java">public static void insertionSort(int[] arr) {
+    if (arr == null || arr.length &lt; 2){
+        return;
+    }
+    for (int i = 1; i &lt; arr.length; i++){
+        for(int j = i - 1; j &gt;= 0 &amp;&amp; arr[j] &gt; arr[j+1]; j--){
+            swap(arr, j, j+1);
+        }
+    }
+}
+public static void swap(int[] arr, int i, int j){
+    arr[i] = arr[i] ^ arr[j]; 
+	arr[j] = arr[i] ^ arr[j]; 
+	arr[i] = arr[i] ^ arr[j];
+}
+</code></pre>
+<p><strong>二分查找</strong></p>
 <ul>
 <li>时间复杂度：O(logN)  (logN默认指log以2为底)</li>
 </ul>
@@ -215,12 +218,13 @@
 </li>
 <li>
 <p>无序，相邻数一定不相等，找一个局部最小(i-1 &lt; i &lt; i+1)的数，复杂度能否好于O(N)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>先判断首尾项是否满足要求，若首尾项不满足要求，一定是\进/出，中间一定有低谷拐点。
-<span class="ln">2</span>然后判断中间点是否满足要求，若不满足，分为两种情况：
-<span class="ln">3</span>1. 斜坡，则一方可与起点或终点组成\进/出。
-<span class="ln">4</span>2. 顶峰，则两方向都满足\进/出条件，两个方向都可继续进行二分法
-<span class="ln">5</span>直到判断出某个二分法中点满足要求。
-</code></pre></div></li>
+<pre><code>先判断首尾项是否满足要求，若首尾项不满足要求，一定是\进/出，中间一定有低谷拐点。
+然后判断中间点是否满足要求，若不满足，分为两种情况：
+1. 斜坡，则一方可与起点或终点组成\进/出。
+2. 顶峰，则两方向都满足\进/出条件，两个方向都可继续进行二分法
+直到判断出某个二分法中点满足要求。
+</code></pre>
+</li>
 </ol>
 </blockquote>
 <p><strong>求中间数</strong></p>
@@ -233,28 +237,30 @@
 <ul>
 <li>结果对比校验器: 自己控制输入数据，使用两种方法或和官方api对比结果</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="o">(</span><span class="kt">int</span><span class="o">)(</span><span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">()</span> <span class="o">*</span> <span class="n">N</span><span class="o">)</span> <span class="c1">//会在[0, N-1]范围内，等概率返回一个整数
-</span><span class="ln">2</span><span class="c1"></span>
-<span class="ln">3</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[(</span><span class="kt">int</span><span class="o">)((</span><span class="n">maxSize</span> <span class="o">+</span> <span class="n">1</span><span class="o">)</span> <span class="o">*</span> <span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">())];</span><span class="c1">//随机长度
-</span><span class="ln">4</span><span class="c1"></span><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
-<span class="ln">5</span>    <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)((</span><span class="n">maxValue</span> <span class="o">+</span> <span class="n">1</span><span class="o">)</span> <span class="o">*</span> <span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">())</span> <span class="o">-</span> <span class="o">(</span><span class="kt">int</span><span class="o">)(</span><span class="n">maxValue</span> <span class="o">*</span> <span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">());</span>
-<span class="ln">6</span><span class="o">}</span>
-<span class="ln">7</span><span class="k">return</span> <span class="n">arr</span><span class="o">;</span>
-</code></pre></div><p><strong>递归</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">getMax</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">){</span>
-<span class="ln"> 2</span>    <span class="k">return</span> <span class="n">process</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="n">1</span><span class="o">);</span>
-<span class="ln"> 3</span><span class="o">}</span>
-<span class="ln"> 4</span>
-<span class="ln"> 5</span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">process</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">,</span> <span class="kt">int</span> <span class="n">L</span><span class="o">,</span> <span class="kt">int</span> <span class="n">R</span><span class="o">){</span>
-<span class="ln"> 6</span>    <span class="k">if</span><span class="o">(</span><span class="n">L</span> <span class="o">==</span> <span class="n">R</span><span class="o">){</span>
-<span class="ln"> 7</span>        <span class="k">return</span> <span class="n">arr</span><span class="o">[</span><span class="n">L</span><span class="o">];</span>
-<span class="ln"> 8</span>    <span class="o">}</span>
-<span class="ln"> 9</span>    <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">L</span> <span class="o">+</span> <span class="o">((</span><span class="n">R</span> <span class="o">-</span> <span class="n">L</span><span class="o">)</span> <span class="o">&gt;&gt;</span> <span class="n">1</span><span class="o">);</span>
-<span class="ln">10</span>    <span class="kt">int</span> <span class="n">leftMax</span> <span class="o">=</span> <span class="n">process</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">L</span><span class="o">,</span> <span class="n">mid</span><span class="o">);</span>
-<span class="ln">11</span>    <span class="kt">int</span> <span class="n">rightMax</span> <span class="o">=</span> <span class="n">process</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">mid</span> <span class="o">+</span> <span class="n">1</span><span class="o">,</span> <span class="n">R</span><span class="o">);</span>
-<span class="ln">12</span>    <span class="k">return</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">leftMax</span><span class="o">,</span> <span class="n">rightMax</span><span class="o">);</span>
-<span class="ln">13</span><span class="o">}</span>
-</code></pre></div><p><strong>递归时间复杂度估算</strong></p>
+<pre><code class="language-java">(int)(Math.random() * N) //会在[0, N-1]范围内，等概率返回一个整数
+
+int[] arr = new int[(int)((maxSize + 1) * Math.random())];//随机长度
+for (int i = 0; i &lt; arr.length; i++){
+    arr[i] = (int)((maxValue + 1) * Math.random()) - (int)(maxValue * Math.random());
+}
+return arr;
+</code></pre>
+<p><strong>递归</strong></p>
+<pre><code class="language-java">public static int getMax(int[] arr){
+    return process(arr, 0, arr.length - 1);
+}
+
+public static int process(int[] arr, int L, int R){
+    if(L == R){
+        return arr[L];
+    }
+    int mid = L + ((R - L) &gt;&gt; 1);
+    int leftMax = process(arr, L, mid);
+    int rightMax = process(arr, mid + 1, R);
+    return Math.max(leftMax, rightMax);
+}
+</code></pre>
+<p><strong>递归时间复杂度估算</strong></p>
 <ul>
 <li>Master公式： T(N) = a * T (N / b) + 0 (N ^ d)
 <ol>
@@ -270,35 +276,35 @@
 <li>时间复杂度：使用Master公式： T(N) = 2a +</li>
 <li>代码实现：</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">process</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">,</span> <span class="kt">int</span> <span class="n">L</span><span class="o">,</span> <span class="kt">int</span> <span class="n">R</span><span class="o">){</span>
-<span class="ln"> 2</span>    <span class="k">if</span><span class="o">(</span><span class="n">L</span> <span class="o">==</span> <span class="n">R</span><span class="o">){</span>
-<span class="ln"> 3</span>        <span class="k">return</span><span class="o">;</span>
-<span class="ln"> 4</span>    <span class="o">}</span>
-<span class="ln"> 5</span>    <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">L</span> <span class="o">+</span> <span class="o">((</span><span class="n">R</span> <span class="o">-</span> <span class="n">L</span><span class="o">)</span> <span class="o">&gt;&gt;</span> <span class="n">1</span><span class="o">);</span>
-<span class="ln"> 6</span>    <span class="n">process</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">L</span><span class="o">,</span> <span class="n">mid</span><span class="o">);</span>
-<span class="ln"> 7</span>    <span class="n">process</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">mid</span> <span class="o">+</span> <span class="n">1</span><span class="o">,</span> <span class="n">R</span><span class="o">);</span>
-<span class="ln"> 8</span>    <span class="n">merge</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">L</span><span class="o">,</span> <span class="n">mid</span><span class="o">,</span> <span class="n">R</span><span class="o">);</span>
-<span class="ln"> 9</span><span class="o">}</span>
-<span class="ln">10</span>
-<span class="ln">11</span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">merge</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">,</span> <span class="kt">int</span> <span class="n">L</span><span class="o">,</span> <span class="kt">int</span> <span class="n">mid</span><span class="o">,</span> <span class="kt">int</span> <span class="n">R</span><span class="o">){</span>
-<span class="ln">12</span>    <span class="kt">int</span><span class="o">[]</span> <span class="n">extr</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">R</span> <span class="o">-</span> <span class="n">L</span> <span class="o">+</span> <span class="n">1</span><span class="o">];</span>
-<span class="ln">13</span>    <span class="kt">int</span> <span class="n">extri</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
-<span class="ln">14</span>    <span class="kt">int</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">L</span><span class="o">;</span>
-<span class="ln">15</span>    <span class="kt">int</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">M</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span>
-<span class="ln">16</span>    <span class="k">while</span><span class="o">(</span><span class="n">p1</span> <span class="o">&lt;=</span> <span class="n">M</span> <span class="o">&amp;&amp;</span> <span class="n">p2</span> <span class="o">&lt;=</span> <span class="n">R</span><span class="o">){</span>
-<span class="ln">17</span>        <span class="n">extr</span><span class="o">[</span><span class="n">i</span><span class="o">++]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">p1</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="n">arr</span><span class="o">[</span><span class="n">p2</span><span class="o">]</span> <span class="o">?</span> <span class="n">arr</span><span class="o">[</span><span class="n">p1</span><span class="o">++]:</span> <span class="n">arr</span><span class="o">[</span><span class="n">p2</span><span class="o">++];</span>
-<span class="ln">18</span>    <span class="o">}</span>
-<span class="ln">19</span>    <span class="k">while</span><span class="o">(</span><span class="n">p1</span> <span class="o">&lt;=</span> <span class="n">M</span><span class="o">){</span>
-<span class="ln">20</span>        <span class="n">extr</span><span class="o">[</span><span class="n">i</span><span class="o">++]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">p1</span><span class="o">++];</span>
-<span class="ln">21</span>    <span class="o">}</span>
-<span class="ln">22</span>    <span class="k">while</span><span class="o">(</span><span class="n">p2</span> <span class="o">&lt;=</span> <span class="n">R</span><span class="o">){</span>
-<span class="ln">23</span>        <span class="n">extr</span><span class="o">[</span><span class="n">i</span><span class="o">++]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">p2</span><span class="o">++];</span>
-<span class="ln">24</span>    <span class="o">}</span>
-<span class="ln">25</span>    <span class="k">for</span><span class="o">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">extra</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
-<span class="ln">26</span>        <span class="n">arr</span><span class="o">[</span><span class="n">L</span> <span class="o">+</span> <span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">extra</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
-<span class="ln">27</span>    <span class="o">}</span>
-<span class="ln">28</span><span class="o">}</span>
-</code></pre></div>
+<pre><code class="language-java">public static void process(int[] arr, int L, int R){
+    if(L == R){
+        return;
+    }
+    int mid = L + ((R - L) &gt;&gt; 1);
+    process(arr, L, mid);
+    process(arr, mid + 1, R);
+    merge(arr, L, mid, R);
+}
+
+public static void merge(int[] arr, int L, int mid, int R){
+    int[] extr = new int[R - L + 1];
+    int extri = 0;
+    int p1 = L;
+    int p2 = M + 1;
+    while(p1 &lt;= M &amp;&amp; p2 &lt;= R){
+        extr[i++] = arr[p1] &lt;= arr[p2] ? arr[p1++]: arr[p2++];
+    }
+    while(p1 &lt;= M){
+        extr[i++] = arr[p1++];
+    }
+    while(p2 &lt;= R){
+        extr[i++] = arr[p2++];
+    }
+    for(i = 0; i &lt; extra.length; i++){
+        arr[L + i] = extra[i];
+    }
+}
+</code></pre>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">

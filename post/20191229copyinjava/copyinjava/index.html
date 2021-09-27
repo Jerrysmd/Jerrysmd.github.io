@@ -142,8 +142,9 @@
     <p>Cloning is a process of creating an exact copy of an existing object in the memory. In java, clone() method of java.lang.Object class is used for cloning process. This method creates an exact copy of an object on which it is called through field-by-field assignment and returns the reference of that object. Not all the objects in java are eligible for cloning process. The objects which implement Cloneable interface are only eligible for cloning process. Cloneable interface is a marker interface which is used to provide the marker to cloning process. Click here to see more info on clone() method in java.</p>
 <h2 id="preface">Preface</h2>
 <p>Object  类中有方法clion()，具体方法如下：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">protected</span> <span class="kd">native</span> <span class="n">Object</span> <span class="nf">clone</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">CloneNotSupportedException</span><span class="o">;</span>
-</code></pre></div><ol>
+<pre><code class="language-java">protected native Object clone() throws CloneNotSupportedException;
+</code></pre>
+<ol>
 <li>该方法由 <code>protected</code> 修饰，java中所有类默认是继承<code>Object</code>类的，重载后的<code>clone()</code>方法为了保证其他类都可以正常调用，修饰符需要改成<code>public</code>。</li>
 <li>该方法是一个<code>native</code>方法，被<code>native</code>修饰的方法实际上是由非Java代码实现的，效率要高于普通的java方法。</li>
 <li>该方法的返回值是<code>Object</code>对象，因此我们需要强转成我们需要的类型。</li>
@@ -151,106 +152,114 @@
 </ol>
 <p>为了演示，我们新建两个实体类<code>Dept</code> 和 <code>User</code>，其中<code>User</code>依赖了<code>Dept</code>，实体类代码如下：</p>
 <p>Dept 类：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="nd">@Data</span>
-<span class="ln">2</span><span class="nd">@AllArgsConstructor</span>
-<span class="ln">3</span><span class="nd">@NoArgsConstructor</span>
-<span class="ln">4</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Dept</span> <span class="o">{</span>
-<span class="ln">5</span>    <span class="kd">private</span> <span class="kt">int</span> <span class="n">deptNo</span><span class="o">;</span>
-<span class="ln">6</span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
-<span class="ln">7</span><span class="o">}</span>
-</code></pre></div><p>User 类：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="nd">@Data</span>
-<span class="ln">2</span><span class="nd">@AllArgsConstructor</span>
-<span class="ln">3</span><span class="nd">@NoArgsConstructor</span>
-<span class="ln">4</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
-<span class="ln">5</span>    <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
-<span class="ln">6</span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
-<span class="ln">7</span>    <span class="kd">private</span> <span class="n">Dept</span> <span class="n">dept</span><span class="o">;</span>
-<span class="ln">8</span><span class="o">}</span>
-</code></pre></div><h2 id="shallow-copy">Shallow Copy</h2>
+<pre><code class="language-java">@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Dept {
+    private int deptNo;
+    private String name;
+}
+</code></pre>
+<p>User 类：</p>
+<pre><code class="language-java">@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class User {
+    private int age;
+    private String name;
+    private Dept dept;
+}
+</code></pre>
+<h2 id="shallow-copy">Shallow Copy</h2>
 <p>对于基本类型的的属性，浅拷贝会将属性值复制给新的对象，而对于引用类型的属性，浅拷贝会将引用复制给新的对象。而像<code>String</code>，<code>Integer</code>这些引用类型，都是不可变的，拷贝的时候会创建一份新的内存空间来存放值，并且将新的引用指向新的内存空间。不可变类型是特殊的引用类型，我们姑且认为这些被<code>final</code>标记的引用类型也是复制值。</p>
-<p><img src="/post/picture/ShallowCopy.png" alt="shallowCopy" /></p>
+<p><img src="/post/picture/ShallowCopy.png" alt="shallowCopy"></p>
 <p><strong>浅拷贝功能实现</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="nd">@Data</span>
-<span class="ln"> 2</span><span class="nd">@AllArgsConstructor</span>
-<span class="ln"> 3</span><span class="nd">@NoArgsConstructor</span>
-<span class="ln"> 4</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="kd">implements</span> <span class="n">Cloneable</span><span class="o">{</span>
-<span class="ln"> 5</span>    <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
-<span class="ln"> 6</span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
-<span class="ln"> 7</span>    <span class="kd">private</span> <span class="n">Dept</span> <span class="n">dept</span><span class="o">;</span>
-<span class="ln"> 8</span>    <span class="nd">@Override</span>
-<span class="ln"> 9</span>    <span class="kd">protected</span> <span class="n">Object</span> <span class="nf">clone</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">CloneNotSupportedException</span> <span class="o">{</span>
-<span class="ln">10</span>        <span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">clone</span><span class="o">();</span>
-<span class="ln">11</span>    <span class="o">}</span>
-<span class="ln">12</span><span class="o">}</span>
-</code></pre></div><p>如何验证我们的结论呢？首先对比被拷贝出的对象和原对象是否相等，不等则说明是新拷贝出的一个对象。其次修改拷贝出对象的基本类型属性，如果原对象的此属性发生了修改，则说明基本类型的属性是同一个，最后修改拷贝出对象的引用类型对象即<code>Dept</code>属性，如果原对象的此属性发生了改变，则说明引用类型的属性是同一个。清楚测试原理后，我们写一段测试代码来验证我们的结论。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">Strign</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="n">thows</span> <span class="n">Exception</span><span class="o">{</span>
-<span class="ln"> 2</span>    <span class="n">Dept</span> <span class="n">dept</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Dept</span><span class="o">(</span><span class="n">12</span><span class="o">,</span><span class="s">&#34;市场部&#34;</span><span class="o">);</span>
-<span class="ln"> 3</span>    <span class="n">User</span> <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="n">User</span><span class="o">(</span><span class="n">18</span><span class="o">,</span><span class="s">&#34;Java&#34;</span><span class="o">,</span> <span class="n">dept</span><span class="o">);</span>
-<span class="ln"> 4</span>    
-<span class="ln"> 5</span>    <span class="n">User</span> <span class="n">user1</span> <span class="o">=</span> <span class="o">(</span><span class="n">User</span><span class="o">)</span><span class="n">user</span><span class="o">.</span><span class="na">clone</span><span class="o">();</span>
-<span class="ln"> 6</span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">user</span> <span class="o">==</span> <span class="n">user1</span><span class="o">);</span>
-<span class="ln"> 7</span>
-<span class="ln"> 8</span>    <span class="n">user1</span><span class="o">.</span><span class="na">setAge</span><span class="o">(</span><span class="n">20</span><span class="o">);</span>
-<span class="ln"> 9</span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
-<span class="ln">10</span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">user1</span><span class="o">);</span>
-<span class="ln">11</span>    
-<span class="ln">12</span>    <span class="n">dept</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;研发部&#34;</span><span class="o">);</span>
-<span class="ln">13</span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
-<span class="ln">14</span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">user1</span><span class="o">);</span>
-<span class="ln">15</span><span class="o">}</span>
-</code></pre></div><p>运行结果如下：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kc">false</span>
-<span class="ln">2</span>
-<span class="ln">3</span><span class="n">User</span><span class="o">{</span><span class="n">age</span><span class="o">=</span><span class="n">18</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">&#39;</span><span class="n">Java</span><span class="err">&#39;</span><span class="o">,</span> <span class="n">dept</span><span class="o">=</span><span class="n">Dept</span><span class="o">{</span><span class="n">deptNo</span><span class="o">=</span><span class="n">12</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">&#39;</span><span class="n">市场部</span><span class="err">&#39;</span><span class="o">}}</span>
-<span class="ln">4</span><span class="n">User</span><span class="o">{</span><span class="n">age</span><span class="o">=</span><span class="n">20</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">&#39;</span><span class="n">Java</span><span class="err">&#39;</span><span class="o">,</span> <span class="n">dept</span><span class="o">=</span><span class="n">Dept</span><span class="o">{</span><span class="n">deptNo</span><span class="o">=</span><span class="n">12</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">&#39;</span><span class="n">市场部</span><span class="err">&#39;</span><span class="o">}}</span>
-<span class="ln">5</span>
-<span class="ln">6</span><span class="n">User</span><span class="o">{</span><span class="n">age</span><span class="o">=</span><span class="n">18</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">&#39;</span><span class="n">Java</span><span class="err">&#39;</span><span class="o">,</span> <span class="n">dept</span><span class="o">=</span><span class="n">Dept</span><span class="o">{</span><span class="n">deptNo</span><span class="o">=</span><span class="n">12</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">&#39;</span><span class="n">研发部</span><span class="err">&#39;</span><span class="o">}}</span>
-<span class="ln">7</span><span class="n">User</span><span class="o">{</span><span class="n">age</span><span class="o">=</span><span class="n">20</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">&#39;</span><span class="n">Java</span><span class="err">&#39;</span><span class="o">,</span> <span class="n">dept</span><span class="o">=</span><span class="n">Dept</span><span class="o">{</span><span class="n">deptNo</span><span class="o">=</span><span class="n">12</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">&#39;</span><span class="n">研发部</span><span class="err">&#39;</span><span class="o">}}</span>
-</code></pre></div><h2 id="deep-copy">Deep Copy</h2>
+<pre><code class="language-java">@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class User implements Cloneable{
+    private int age;
+    private String name;
+    private Dept dept;
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+}
+</code></pre>
+<p>如何验证我们的结论呢？首先对比被拷贝出的对象和原对象是否相等，不等则说明是新拷贝出的一个对象。其次修改拷贝出对象的基本类型属性，如果原对象的此属性发生了修改，则说明基本类型的属性是同一个，最后修改拷贝出对象的引用类型对象即<code>Dept</code>属性，如果原对象的此属性发生了改变，则说明引用类型的属性是同一个。清楚测试原理后，我们写一段测试代码来验证我们的结论。</p>
+<pre><code class="language-java">public static void main(Strign[] args) thows Exception{
+    Dept dept = new Dept(12,&quot;市场部&quot;);
+    User user = new User(18,&quot;Java&quot;, dept);
+    
+    User user1 = (User)user.clone();
+    System.out.println(user == user1);
+
+    user1.setAge(20);
+    System.out.println(user);
+    System.out.println(user1);
+    
+    dept.setName(&quot;研发部&quot;);
+    System.out.println(user);
+    System.out.println(user1);
+}
+</code></pre>
+<p>运行结果如下：</p>
+<pre><code class="language-java">false
+
+User{age=18, name='Java', dept=Dept{deptNo=12, name='市场部'}}
+User{age=20, name='Java', dept=Dept{deptNo=12, name='市场部'}}
+
+User{age=18, name='Java', dept=Dept{deptNo=12, name='研发部'}}
+User{age=20, name='Java', dept=Dept{deptNo=12, name='研发部'}}
+</code></pre>
+<h2 id="deep-copy">Deep Copy</h2>
 <p>相较于浅拷贝而言，深拷贝除了会将基本类型的属性复制外，还会将引用类型的属性也会复制。</p>
-<p><img src="/post/picture/DeepCopy.png" alt="deepCopy" /></p>
+<p><img src="/post/picture/DeepCopy.png" alt="deepCopy"></p>
 <p>深拷贝功能实现</p>
 <p>在拷贝user的时候，同事将user中的dept属性进行拷贝。</p>
 <p>dept 类：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="nd">@Data</span>
-<span class="ln"> 2</span><span class="nd">@AllArgsConstructor</span>
-<span class="ln"> 3</span><span class="nd">@NoArgsXonstructor</span>
-<span class="ln"> 4</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Dept</span> <span class="kd">implements</span> <span class="n">Cloneable</span><span class="o">{</span>
-<span class="ln"> 5</span>    <span class="kd">private</span> <span class="kt">int</span> <span class="n">deptNo</span><span class="o">;</span>
-<span class="ln"> 6</span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
-<span class="ln"> 7</span>    
-<span class="ln"> 8</span>    <span class="nd">@Override</span>
-<span class="ln"> 9</span>    <span class="kd">public</span> <span class="n">Object</span> <span class="nf">clone</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">CloneNotSupportedException</span><span class="o">{</span>
-<span class="ln">10</span>        <span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">clone</span><span class="o">();</span>
-<span class="ln">11</span>    <span class="o">}</span>
-<span class="ln">12</span><span class="o">}</span>
-</code></pre></div><p>user 类：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="nd">@Data</span>
-<span class="ln"> 2</span><span class="nd">@AllArgsConstructor</span>
-<span class="ln"> 3</span><span class="nd">@NoArgsConstructor</span>
-<span class="ln"> 4</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="kd">implements</span> <span class="n">Cloneable</span><span class="o">{</span>
-<span class="ln"> 5</span>
-<span class="ln"> 6</span>    <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
-<span class="ln"> 7</span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
-<span class="ln"> 8</span>    <span class="kd">private</span> <span class="n">Dept</span> <span class="n">dept</span><span class="o">;</span>
-<span class="ln"> 9</span>
-<span class="ln">10</span>    <span class="nd">@Override</span>
-<span class="ln">11</span>    <span class="kd">protected</span> <span class="n">Object</span> <span class="nf">clone</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">CloneNotSupportedException</span> <span class="o">{</span>
-<span class="ln">12</span>        <span class="n">User</span> <span class="n">user</span> <span class="o">=</span> <span class="o">(</span><span class="n">User</span><span class="o">)</span> <span class="kd">super</span><span class="o">.</span><span class="na">clone</span><span class="o">();</span>
-<span class="ln">13</span>        <span class="n">user</span><span class="o">.</span><span class="na">dept</span> <span class="o">=</span> <span class="o">(</span><span class="n">Dept</span><span class="o">)</span> <span class="n">dept</span><span class="o">.</span><span class="na">clone</span><span class="o">();</span>
-<span class="ln">14</span>        <span class="k">return</span> <span class="n">user</span><span class="o">;</span>
-<span class="ln">15</span>    <span class="o">}</span>
-<span class="ln">16</span><span class="o">}</span>
-</code></pre></div><p>使用浅拷贝的测试代码继续测试，运行结果如下：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kc">false</span>
-<span class="ln">2</span>
-<span class="ln">3</span><span class="n">User</span><span class="o">{</span><span class="n">age</span><span class="o">=</span><span class="n">18</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">&#39;</span><span class="n">Java旅途</span><span class="err">&#39;</span><span class="o">,</span> <span class="n">dept</span><span class="o">=</span><span class="n">Dept</span><span class="o">{</span><span class="n">deptNo</span><span class="o">=</span><span class="n">12</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">&#39;</span><span class="n">市场部</span><span class="err">&#39;</span><span class="o">}}</span>
-<span class="ln">4</span><span class="n">User</span><span class="o">{</span><span class="n">age</span><span class="o">=</span><span class="n">20</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">&#39;</span><span class="n">Java旅途</span><span class="err">&#39;</span><span class="o">,</span> <span class="n">dept</span><span class="o">=</span><span class="n">Dept</span><span class="o">{</span><span class="n">deptNo</span><span class="o">=</span><span class="n">12</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">&#39;</span><span class="n">市场部</span><span class="err">&#39;</span><span class="o">}}</span>
-<span class="ln">5</span>
-<span class="ln">6</span><span class="n">User</span><span class="o">{</span><span class="n">age</span><span class="o">=</span><span class="n">18</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">&#39;</span><span class="n">Java旅途</span><span class="err">&#39;</span><span class="o">,</span> <span class="n">dept</span><span class="o">=</span><span class="n">Dept</span><span class="o">{</span><span class="n">deptNo</span><span class="o">=</span><span class="n">12</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">&#39;</span><span class="n">研发部</span><span class="err">&#39;</span><span class="o">}}</span>
-<span class="ln">7</span><span class="n">User</span><span class="o">{</span><span class="n">age</span><span class="o">=</span><span class="n">20</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">&#39;</span><span class="n">Java旅途</span><span class="err">&#39;</span><span class="o">,</span> <span class="n">dept</span><span class="o">=</span><span class="n">Dept</span><span class="o">{</span><span class="n">deptNo</span><span class="o">=</span><span class="n">12</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">&#39;</span><span class="n">市场部</span><span class="err">&#39;</span><span class="o">}}</span>
-</code></pre></div><p>除此之外，还可以利用反序列化实现深拷贝，先将对象序列化成字节流，然后再将字节流序列化成对象，这样就会产生一个新的对象。</p>
+<pre><code class="language-java">@Data
+@AllArgsConstructor
+@NoArgsXonstructor
+public class Dept implements Cloneable{
+    private int deptNo;
+    private String name;
+    
+    @Override
+    public Object clone() throws CloneNotSupportedException{
+        return super.clone();
+    }
+}
+</code></pre>
+<p>user 类：</p>
+<pre><code class="language-java">@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class User implements Cloneable{
+
+    private int age;
+    private String name;
+    private Dept dept;
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        User user = (User) super.clone();
+        user.dept = (Dept) dept.clone();
+        return user;
+    }
+}
+</code></pre>
+<p>使用浅拷贝的测试代码继续测试，运行结果如下：</p>
+<pre><code class="language-java">false
+
+User{age=18, name='Java旅途', dept=Dept{deptNo=12, name='市场部'}}
+User{age=20, name='Java旅途', dept=Dept{deptNo=12, name='市场部'}}
+
+User{age=18, name='Java旅途', dept=Dept{deptNo=12, name='研发部'}}
+User{age=20, name='Java旅途', dept=Dept{deptNo=12, name='市场部'}}
+</code></pre>
+<p>除此之外，还可以利用反序列化实现深拷贝，先将对象序列化成字节流，然后再将字节流序列化成对象，这样就会产生一个新的对象。</p>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">

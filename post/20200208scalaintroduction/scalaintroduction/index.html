@@ -160,7 +160,7 @@
 </nav>
     <p>Scala combines object-oriented and functional programming in one concise, high-level language. Scala&rsquo;s static types help avoid bugs in complex applications, and its JVM and JavaScript runtimes let you build high-performance systems with easy access to huge ecosystems of libraries.</p>
 <h2 id="1-repl--scaladoc">1. REPL &amp; Scaladoc</h2>
-<p>Scala解释器读到一个表达式，对它进行求值，将它打印出来，接着再继续读下一个表达式。这个过程被称做Read-Eval-Print-Loop，即：REPL。<br />
+<p>Scala解释器读到一个表达式，对它进行求值，将它打印出来，接着再继续读下一个表达式。这个过程被称做Read-Eval-Print-Loop，即：REPL。<br>
 从技术上讲，scala程序并不是一个解释器。实际发生的是，你输入的内容被快速地编译成字节码，然后这段字节码交由Java虚拟机执行。正因为如此，大多数scala程序员更倾向于将它称做“REPL”</p>
 <p>scala api文档，包含了scala所有的api以及使用说明，class、object、trait、function、method、implicit等</p>
 <p>为什么要查阅Scaladoc：如果只是写一些普通的Scala程序基本够用了；但是如果（在现在，或者未来，实际的工作环境中）要编写复杂的scala程序，那么还是需要参考Scaladoc的。（纯粹用scala开发spark应用程序，应该不会特别复杂；用scala构建类似于spark的公司内的分布式的大型系统）</p>
@@ -177,66 +177,66 @@
 <table>
 <thead>
 <tr>
-<th align="left">数据类型</th>
-<th align="left">描述</th>
+<th style="text-align:left">数据类型</th>
+<th style="text-align:left">描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Byte</td>
-<td align="left">8位有符号补码整数。数值区间为 -128 到 127</td>
+<td style="text-align:left">Byte</td>
+<td style="text-align:left">8位有符号补码整数。数值区间为 -128 到 127</td>
 </tr>
 <tr>
-<td align="left">Short</td>
-<td align="left">16位有符号补码整数。数值区间为 -32768 到 32767</td>
+<td style="text-align:left">Short</td>
+<td style="text-align:left">16位有符号补码整数。数值区间为 -32768 到 32767</td>
 </tr>
 <tr>
-<td align="left">Int</td>
-<td align="left">32位有符号补码整数。数值区间为 -2147483648 到 2147483647</td>
+<td style="text-align:left">Int</td>
+<td style="text-align:left">32位有符号补码整数。数值区间为 -2147483648 到 2147483647</td>
 </tr>
 <tr>
-<td align="left">Long</td>
-<td align="left">64位有符号补码整数。数值区间为 -9223372036854775808 到 9223372036854775807</td>
+<td style="text-align:left">Long</td>
+<td style="text-align:left">64位有符号补码整数。数值区间为 -9223372036854775808 到 9223372036854775807</td>
 </tr>
 <tr>
-<td align="left">Float</td>
-<td align="left">32 位, IEEE 754 标准的单精度浮点数</td>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">32 位, IEEE 754 标准的单精度浮点数</td>
 </tr>
 <tr>
-<td align="left">Double</td>
-<td align="left">64 位 IEEE 754 标准的双精度浮点数</td>
+<td style="text-align:left">Double</td>
+<td style="text-align:left">64 位 IEEE 754 标准的双精度浮点数</td>
 </tr>
 <tr>
-<td align="left">Char</td>
-<td align="left">16位无符号Unicode字符, 区间值为 U+0000 到 U+FFFF</td>
+<td style="text-align:left">Char</td>
+<td style="text-align:left">16位无符号Unicode字符, 区间值为 U+0000 到 U+FFFF</td>
 </tr>
 <tr>
-<td align="left">String</td>
-<td align="left">字符序列</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">字符序列</td>
 </tr>
 <tr>
-<td align="left">Boolean</td>
-<td align="left">true或false</td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">true或false</td>
 </tr>
 <tr>
-<td align="left">Unit</td>
-<td align="left">表示无值，和其他语言中void等同。用作不返回任何结果的方法的结果类型。Unit只有一个实例值，写成()。</td>
+<td style="text-align:left">Unit</td>
+<td style="text-align:left">表示无值，和其他语言中void等同。用作不返回任何结果的方法的结果类型。Unit只有一个实例值，写成()。</td>
 </tr>
 <tr>
-<td align="left">Null</td>
-<td align="left">null 或空引用</td>
+<td style="text-align:left">Null</td>
+<td style="text-align:left">null 或空引用</td>
 </tr>
 <tr>
-<td align="left">Nothing</td>
-<td align="left">Nothing类型在Scala的类层级的最底端；它是任何其他类型的子类型。</td>
+<td style="text-align:left">Nothing</td>
+<td style="text-align:left">Nothing类型在Scala的类层级的最底端；它是任何其他类型的子类型。</td>
 </tr>
 <tr>
-<td align="left">Any</td>
-<td align="left">Any是所有其他类的超类</td>
+<td style="text-align:left">Any</td>
+<td style="text-align:left">Any是所有其他类的超类</td>
 </tr>
 <tr>
-<td align="left">AnyRef</td>
-<td align="left">AnyRef类是Scala里所有引用类(reference class)的基类</td>
+<td style="text-align:left">AnyRef</td>
+<td style="text-align:left">AnyRef类是Scala里所有引用类(reference class)的基类</td>
 </tr>
 </tbody>
 </table>
@@ -247,16 +247,18 @@
 <li>lazy修饰符可以修饰变量，但是这个变量必须是val修饰的</li>
 </ol>
 <p>ps. lazy相当于延迟加载（懒加载），当前变量使用lazy修饰的时候，只要变量不被调用，就不会进行初始化，什么时候调用，什么时候进行初始化</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">lazy</span> <span class="k">val</span> <span class="n">words</span> <span class="k">=</span> <span class="n">scala</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="nc">Source</span><span class="o">.</span><span class="n">fromFile</span><span class="o">(</span><span class="s">&#34;/usr/share/dict/words&#34;</span><span class="o">).</span><span class="n">mkString</span>
-<span class="ln">2</span><span class="c1">//当val被声明为lazy时，它的初始化将被推迟，直到我们首次对他取值
-</span></code></pre></div><p>懒值对于开销大的初始化语句十分有用。它还可以用来应对其他初始化问题，比如循环依赖。更重要的是，它是开发懒数据结构的基础。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">words</span> <span class="k">=</span> <span class="o">...</span>
-<span class="ln">2</span><span class="c1">//在words被定义时即被取值
-</span><span class="ln">3</span><span class="c1"></span><span class="k">lazy</span> <span class="k">val</span> <span class="n">words</span> <span class="k">=</span> <span class="o">...</span>
-<span class="ln">4</span><span class="c1">//在words被首次使用时取值
-</span><span class="ln">5</span><span class="c1"></span><span class="k">def</span> <span class="n">words</span> <span class="k">=</span> <span class="o">...</span>
-<span class="ln">6</span><span class="c1">//在每一次words被使用时取值
-</span></code></pre></div><h2 id="3-control-and-function">3. Control and Function</h2>
+<pre><code class="language-scala">lazy val words = scala.io.Source.fromFile(&quot;/usr/share/dict/words&quot;).mkString
+//当val被声明为lazy时，它的初始化将被推迟，直到我们首次对他取值
+</code></pre>
+<p>懒值对于开销大的初始化语句十分有用。它还可以用来应对其他初始化问题，比如循环依赖。更重要的是，它是开发懒数据结构的基础。</p>
+<pre><code class="language-scala">val words = ...
+//在words被定义时即被取值
+lazy val words = ...
+//在words被首次使用时取值
+def words = ...
+//在每一次words被使用时取值
+</code></pre>
+<h2 id="3-control-and-function">3. Control and Function</h2>
 <ol>
 <li>if表达式也有值</li>
 <li>块也有值：是它最后一个表达式的值</li>

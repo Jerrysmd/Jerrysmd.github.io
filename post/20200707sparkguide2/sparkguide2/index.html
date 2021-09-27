@@ -124,7 +124,7 @@
 </svg></span>
     <span class="post_date">
       Jul 7, 2020</span>
-    <span class="post_time"> · 9 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
+    <span class="post_time"> · 8 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
         </a><a href='https://Jerrysmd.github.io/tags/spark' title="spark" class="post_tag button button_translucent">spark
         </a>
     </span>
@@ -150,34 +150,36 @@
     <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
 <h2 id="advanced-operation">Advanced Operation</h2>
 <p>closure</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">test</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln"> 2</span>    <span class="k">val</span> <span class="n">f</span> <span class="k">=</span> <span class="n">closure</span><span class="o">()</span>
-<span class="ln"> 3</span>    <span class="n">f</span><span class="o">(</span><span class="mi">5</span><span class="o">)</span>
-<span class="ln"> 4</span><span class="o">}</span>
-<span class="ln"> 5</span><span class="k">def</span> <span class="n">closure</span><span class="o">()</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=&gt;</span> <span class="nc">Double</span> <span class="k">=</span> <span class="o">{</span>
-<span class="ln"> 6</span>    <span class="k">val</span> <span class="n">factor</span> <span class="k">=</span> <span class="mf">3.14</span>
-<span class="ln"> 7</span>    <span class="k">val</span> <span class="n">areaFunction</span> <span class="k">=</span> <span class="o">(</span><span class="n">r</span><span class="k">:</span> <span class="kt">int</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="o">{</span>
-<span class="ln"> 8</span>        <span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="o">(</span><span class="n">r</span><span class="o">,</span><span class="mi">2</span><span class="o">)</span> <span class="o">*</span> <span class="n">factor</span>
-<span class="ln"> 9</span>    <span class="o">}</span>
-<span class="ln">10</span>    <span class="n">areaFunction</span>
-<span class="ln">11</span><span class="o">}</span>
-</code></pre></div><ol>
+<pre><code class="language-scala">def test(): Unit = {
+    val f = closure()
+    f(5)
+}
+def closure(): Int =&gt; Double = {
+    val factor = 3.14
+    val areaFunction = (r: int) =&gt; {
+        math.pow(r,2) * factor
+    }
+    areaFunction
+}
+</code></pre>
+<ol>
 <li>f就是闭包，闭包的本质就是一个函数</li>
 <li>在scala中函数是一个特殊的类型，FunctionX</li>
 <li>闭包也是一个FunctionX类型的对象</li>
 <li>闭包是一个对象</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">class</span> <span class="nc">MyClass</span><span class="o">{</span>
-<span class="ln"> 2</span>    <span class="k">val</span> <span class="n">field</span> <span class="k">=</span> <span class="s">&#34;Hello&#34;</span>
-<span class="ln"> 3</span>    <span class="k">def</span> <span class="n">doStuff</span><span class="o">(</span><span class="n">rdd</span><span class="k">:</span> <span class="kt">RDD</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">RDD</span> <span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="k">=</span> <span class="o">{</span>
-<span class="ln"> 4</span>        <span class="n">rdd</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">x</span> <span class="k">=&gt;</span> <span class="n">field</span> <span class="o">+</span> <span class="n">x</span><span class="o">)</span>
-<span class="ln"> 5</span>        <span class="c1">//引用Myclass对象中的一个成员变量，说明其可以访问MyClass这个类的总用域，也是一个闭包。封闭的是MyClass这个作用域。
-</span><span class="ln"> 6</span><span class="c1"></span>        <span class="c1">//在将其分发的不同的Executor中执行的时候，其依赖MyClass这个类当前的对象，因为其封闭了这个作用域。MyClass和函数都要一起被序列化。发到不同的结点中执行。
-</span><span class="ln"> 7</span><span class="c1"></span>        <span class="c1">//1. 如果MyClass不能被序列化，将会报错
-</span><span class="ln"> 8</span><span class="c1"></span>        <span class="c1">//2. 如果在这个闭包中，依赖了一个外部很大的集合，那么这个集合会随着每一个Task分发
-</span><span class="ln"> 9</span><span class="c1"></span>    <span class="o">}</span>
-<span class="ln">10</span><span class="o">}</span>
-</code></pre></div><p>Global accumulator</p>
+<pre><code class="language-scala">class MyClass{
+    val field = &quot;Hello&quot;
+    def doStuff(rdd: RDD[String]): RDD [String] = {
+        rdd.map(x =&gt; field + x)
+        //引用Myclass对象中的一个成员变量，说明其可以访问MyClass这个类的总用域，也是一个闭包。封闭的是MyClass这个作用域。
+        //在将其分发的不同的Executor中执行的时候，其依赖MyClass这个类当前的对象，因为其封闭了这个作用域。MyClass和函数都要一起被序列化。发到不同的结点中执行。
+        //1. 如果MyClass不能被序列化，将会报错
+        //2. 如果在这个闭包中，依赖了一个外部很大的集合，那么这个集合会随着每一个Task分发
+    }
+}
+</code></pre>
+<p>Global accumulator</p>
 <ol>
 <li>
 <p>在任意地方创建long accumulator</p>
@@ -187,10 +189,11 @@
 </li>
 <li>
 <p>结果</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">counter</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">longAccumulator</span><span class="o">(</span><span class="s">&#34;counter&#34;</span><span class="o">)</span>
-<span class="ln">2</span><span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">)).</span><span class="n">foreach</span><span class="o">(</span><span class="n">counter</span><span class="o">.</span><span class="n">add</span><span class="o">(</span><span class="k">_</span><span class="o">))</span>
-<span class="ln">3</span><span class="n">counter</span><span class="o">.</span><span class="n">value</span>
-</code></pre></div></li>
+<pre><code class="language-scala">val counter = sc.longAccumulator(&quot;counter&quot;)
+val result = sc.parallelize(Seq(1,2,3,4,5)).foreach(counter.add(_))
+counter.value
+</code></pre>
+</li>
 </ol>
 <p>Broadcast</p>
 <p>广播变量允许将一个Read-Only的变量缓存到集群中的每个节点上，而不是传递给每一个Task一个副本</p>
@@ -199,21 +202,22 @@
 <li>每一个Task，一个Task是一个Stage中的最小处理单元，一个Executor中可以有多个Stage，每个Stage有多个Task</li>
 </ul>
 <p>所以在需要多个Stage的多个Task中使用相同数据的情况下，广播特别有用</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">val</span> <span class="n">v</span> <span class="k">=</span> <span class="nc">Map</span><span class="o">(</span><span class="s">&#34;Spark&#34;</span> <span class="o">-&gt;</span> <span class="s">&#34;http[123]&#34;</span><span class="o">,</span> <span class="s">&#34;scala&#34;</span> <span class="o">-&gt;</span> <span class="s">&#34;http[456]&#34;</span><span class="o">)</span>
-<span class="ln"> 2</span>
-<span class="ln"> 3</span><span class="k">val</span> <span class="n">config</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkConf</span><span class="o">().</span><span class="n">setMaster</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">).</span><span class="n">setAppName</span><span class="o">(</span><span class="s">&#34;bc&#34;</span><span class="o">)</span>
-<span class="ln"> 4</span><span class="k">val</span> <span class="n">sc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkContext</span><span class="o">(</span><span class="n">config</span><span class="o">)</span>
-<span class="ln"> 5</span>
-<span class="ln"> 6</span><span class="c1">//创建广播
-</span><span class="ln"> 7</span><span class="c1"></span><span class="k">val</span> <span class="n">bc</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">broadcast</span><span class="o">(</span><span class="n">v</span><span class="o">)</span>
-<span class="ln"> 8</span>
-<span class="ln"> 9</span><span class="k">val</span> <span class="n">r</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="s">&#34;Spark&#34;</span><span class="o">,</span> <span class="s">&#34;Scala&#34;</span><span class="o">))</span>
-<span class="ln">10</span>
-<span class="ln">11</span><span class="c1">//使用广播变量代替直接引用集合，只会复制和executor一样的数量
-</span><span class="ln">12</span><span class="c1">//在使用广播之前，复制map了task数量份
-</span><span class="ln">13</span><span class="c1">//在使用广播之后，复制次数和executor数量一致
-</span><span class="ln">14</span><span class="c1"></span><span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="n">r</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">bc</span><span class="o">.</span><span class="n">value</span><span class="o">(</span><span class="n">item</span><span class="o">)).</span><span class="n">collect</span><span class="o">()</span>
-</code></pre></div><h2 id="sparksql">SparkSQL</h2>
+<pre><code class="language-scala">val v = Map(&quot;Spark&quot; -&gt; &quot;http[123]&quot;, &quot;scala&quot; -&gt; &quot;http[456]&quot;)
+
+val config = new SparkConf().setMaster(&quot;local[6]&quot;).setAppName(&quot;bc&quot;)
+val sc = new SparkContext(config)
+
+//创建广播
+val bc = sc.broadcast(v)
+
+val r = sc.parallelize(Seq(&quot;Spark&quot;, &quot;Scala&quot;))
+
+//使用广播变量代替直接引用集合，只会复制和executor一样的数量
+//在使用广播之前，复制map了task数量份
+//在使用广播之后，复制次数和executor数量一致
+val result = r.map(item =&gt; bc.value(item)).collect()
+</code></pre>
+<h2 id="sparksql">SparkSQL</h2>
 <ul>
 <li>Spark的RDD主要用于处理非结构化数据和半结构化数据</li>
 <li>SparkSQL主要用于处理结构化数据</li>
@@ -225,22 +229,23 @@
 <li>SparkSQL提供了更好的外部数据源读写支持</li>
 <li>SparkSQL提供了直接访问列的能力</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">case</span> <span class="k">class</span> <span class="nc">Person</span><span class="o">(</span><span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">age</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span>
-<span class="ln"> 2</span>
-<span class="ln"> 3</span><span class="k">val</span> <span class="n">spark</span><span class="k">:</span> <span class="kt">SparkSession</span> <span class="o">=</span> <span class="k">new</span> <span class="n">sql</span><span class="o">.</span><span class="nc">SparkSession</span><span class="o">.</span><span class="nc">Builder</span><span class="o">()</span>
-<span class="ln"> 4</span>	<span class="o">.</span><span class="n">appName</span><span class="o">(</span><span class="s">&#34;hello&#34;</span><span class="o">)</span>
-<span class="ln"> 5</span>	<span class="o">.</span><span class="n">master</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">)</span>
-<span class="ln"> 6</span>	<span class="o">.</span><span class="n">getOrCreate</span><span class="o">()</span>
-<span class="ln"> 7</span>
-<span class="ln"> 8</span><span class="n">impart</span> <span class="n">spark</span><span class="o">.</span><span class="n">implicits</span><span class="o">.</span><span class="k">_</span>
-<span class="ln"> 9</span>
-<span class="ln">10</span><span class="k">val</span> <span class="n">personRDD</span><span class="k">:</span> <span class="kt">RDD</span><span class="o">[</span><span class="kt">people</span><span class="o">]</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sparkContext</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span> <span class="mi">10</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span> <span class="mi">15</span><span class="o">)))</span>
-<span class="ln">11</span><span class="k">val</span> <span class="n">personDS</span><span class="k">:</span> <span class="kt">Dataset</span><span class="o">[</span><span class="kt">Person</span><span class="o">]</span> <span class="k">=</span> <span class="nc">PersonRDD</span><span class="o">.</span><span class="n">toDS</span><span class="o">()</span>
-<span class="ln">12</span><span class="k">val</span> <span class="n">teenagers</span><span class="k">:</span> <span class="kt">Dataset</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="k">=</span> <span class="nc">PersonDS</span><span class="o">.</span><span class="n">where</span><span class="o">(</span>&#39;age <span class="o">&gt;</span> <span class="mi">10</span><span class="o">)</span>
-<span class="ln">13</span>	<span class="o">.</span><span class="n">where</span><span class="o">(</span>&#39;age <span class="o">&lt;</span> <span class="mi">20</span><span class="o">)</span>
-<span class="ln">14</span>	<span class="o">.</span><span class="n">select</span><span class="o">(</span>&#39;name<span class="o">)</span>
-<span class="ln">15</span>	<span class="o">.</span><span class="n">as</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span>
-</code></pre></div><p><strong>RDD和SparkSQL运行时的区别</strong></p>
+<pre><code class="language-scala">case class Person(name: String, age: Int)
+
+val spark: SparkSession = new sql.SparkSession.Builder()
+	.appName(&quot;hello&quot;)
+	.master(&quot;local[6]&quot;)
+	.getOrCreate()
+
+impart spark.implicits._
+
+val personRDD: RDD[people] = spark.sparkContext.parallelize(Seq(Person(&quot;zs&quot;, 10),Person(&quot;ls&quot;, 15)))
+val personDS: Dataset[Person] = PersonRDD.toDS()
+val teenagers: Dataset[String] = PersonDS.where('age &gt; 10)
+	.where('age &lt; 20)
+	.select('name)
+	.as[String]
+</code></pre>
+<p><strong>RDD和SparkSQL运行时的区别</strong></p>
 <ul>
 <li>
 <p>RDD的运行流程：</p>
@@ -320,47 +325,49 @@
 <li>采用堆外内存存储，gc友好</li>
 <li>类型转化安全，代码友好</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">dataset1</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln"> 2</span>    <span class="c1">//1.创建SparkSession
-</span><span class="ln"> 3</span><span class="c1"></span>    <span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="k">new</span> <span class="n">sql</span><span class="o">.</span><span class="nc">SparkSession</span><span class="o">.</span><span class="nc">Builder</span><span class="o">()</span>
-<span class="ln"> 4</span>    	<span class="o">.</span><span class="n">master</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">)</span>
-<span class="ln"> 5</span>    	<span class="o">.</span><span class="n">appName</span><span class="o">(</span><span class="s">&#34;dateset1&#34;</span><span class="o">)</span>
-<span class="ln"> 6</span>    	<span class="o">.</span><span class="n">getOrCreate</span><span class="o">()</span>
-<span class="ln"> 7</span>    <span class="c1">//2.导入隐式转化
-</span><span class="ln"> 8</span><span class="c1"></span>    <span class="k">import</span> <span class="nn">spark.implicits._</span>
-<span class="ln"> 9</span>    
-<span class="ln">10</span>    <span class="c1">//3.demo
-</span><span class="ln">11</span><span class="c1"></span>    <span class="k">val</span> <span class="n">sourceRDD</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sparkContext</span><span class="o">.</span><span class="n">parallelize</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span> <span class="mi">10</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span> <span class="mi">15</span><span class="o">)))</span>
-<span class="ln">12</span>    <span class="k">val</span> <span class="n">dataset</span> <span class="k">=</span> <span class="n">sourceRDD</span><span class="o">.</span><span class="n">toDS</span><span class="o">()</span>
-<span class="ln">13</span>    
-<span class="ln">14</span>    <span class="c1">//Dataset支持强类型API
-</span><span class="ln">15</span><span class="c1"></span>    <span class="n">dataset</span><span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">age</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">16</span>    <span class="c1">//Dataset支持弱类型API
-</span><span class="ln">17</span><span class="c1"></span>    <span class="n">dataset</span><span class="o">.</span><span class="n">filter</span><span class="o">(</span> &#39;age <span class="o">&gt;</span> <span class="mi">10</span> <span class="o">).</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">18</span>    <span class="n">dataset</span><span class="o">.</span><span class="n">filter</span><span class="o">(</span> <span class="n">$</span><span class="s">&#34;age&#34;</span> <span class="o">&gt;</span> <span class="mi">10</span> <span class="o">).</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">19</span>    <span class="c1">//Dataset可以直接编写SQL表达式
-</span><span class="ln">20</span><span class="c1"></span>    <span class="n">dataset</span><span class="o">.</span><span class="n">filter</span><span class="o">(</span> <span class="s">&#34;age &gt; 10&#34;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
-</code></pre></div><p><strong>DataFrame Practice:</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">dataframe1</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln"> 2</span>    <span class="c1">//1. 创建SparkSession
-</span><span class="ln"> 3</span><span class="c1"></span>    <span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="nc">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">()</span>
-<span class="ln"> 4</span>    	<span class="o">.</span><span class="n">master</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">)</span>
-<span class="ln"> 5</span>    	<span class="o">.</span><span class="n">appName</span><span class="o">(</span><span class="s">&#34;pm analysis&#34;</span><span class="o">)</span>
-<span class="ln"> 6</span>    	<span class="o">.</span><span class="n">getOrCreate</span><span class="o">()</span>
-<span class="ln"> 7</span>    <span class="c1">//2.读取数据集
-</span><span class="ln"> 8</span><span class="c1"></span>    <span class="k">val</span> <span class="n">souceDF</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span>
-<span class="ln"> 9</span>    	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;header&#34;</span><span class="o">,</span> <span class="n">value</span> <span class="k">=</span> <span class="kc">true</span><span class="o">)</span>
-<span class="ln">10</span>    	<span class="o">.</span><span class="n">csv</span><span class="o">(</span><span class="s">&#34;dataset/beijingPM.csv&#34;</span><span class="o">)</span>
-<span class="ln">11</span>    <span class="c1">//3.处理数据集
-</span><span class="ln">12</span><span class="c1"></span>    <span class="n">sourceDF</span><span class="o">.</span><span class="n">select</span><span class="o">(</span>&#39;year<span class="o">,</span> &#39;month<span class="o">,</span> &#39;PM_Dongsi<span class="o">)</span>
-<span class="ln">13</span>    	<span class="o">.</span><span class="n">where</span><span class="o">(</span>&#39;PM_Dongsi <span class="o">=!=</span> <span class="s">&#34;NA&#34;</span><span class="o">)</span>
-<span class="ln">14</span>    	<span class="o">.</span><span class="n">groupBy</span><span class="o">(</span>&#39;year<span class="o">,</span> &#39;month<span class="o">)</span>
-<span class="ln">15</span>    	<span class="o">.</span><span class="n">count</span><span class="o">()</span>
-<span class="ln">16</span>    	<span class="o">.</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">17</span>    
-<span class="ln">18</span>    <span class="n">spark</span><span class="o">.</span><span class="n">stop</span><span class="o">()</span>
-<span class="ln">19</span><span class="o">}</span>
-</code></pre></div><p>DataFrame &amp; Dataset 区别：</p>
+<pre><code class="language-scala">def dataset1(): Unit = {
+    //1.创建SparkSession
+    val spark = new sql.SparkSession.Builder()
+    	.master(&quot;local[6]&quot;)
+    	.appName(&quot;dateset1&quot;)
+    	.getOrCreate()
+    //2.导入隐式转化
+    import spark.implicits._
+    
+    //3.demo
+    val sourceRDD = spark.sparkContext.parallelize(Seq(Person(&quot;zs&quot;, 10),Person(&quot;ls&quot;, 15)))
+    val dataset = sourceRDD.toDS()
+    
+    //Dataset支持强类型API
+    dataset.filter(item =&gt; item.age &gt; 10).show()
+    //Dataset支持弱类型API
+    dataset.filter( 'age &gt; 10 ).show()
+    dataset.filter( $&quot;age&quot; &gt; 10 ).show()
+    //Dataset可以直接编写SQL表达式
+    dataset.filter( &quot;age &gt; 10&quot;).show()
+</code></pre>
+<p><strong>DataFrame Practice:</strong></p>
+<pre><code class="language-scala">def dataframe1(): Unit = {
+    //1. 创建SparkSession
+    val spark = SparkSession.builder()
+    	.master(&quot;local[6]&quot;)
+    	.appName(&quot;pm analysis&quot;)
+    	.getOrCreate()
+    //2.读取数据集
+    val souceDF = spark.read
+    	.option(&quot;header&quot;, value = true)
+    	.csv(&quot;dataset/beijingPM.csv&quot;)
+    //3.处理数据集
+    sourceDF.select('year, 'month, 'PM_Dongsi)
+    	.where('PM_Dongsi =!= &quot;NA&quot;)
+    	.groupBy('year, 'month)
+    	.count()
+    	.show()
+    
+    spark.stop()
+}
+</code></pre>
+<p>DataFrame &amp; Dataset 区别：</p>
 <ol>
 <li>
 <p>DataFrame是Dataset的一种特殊情况，DataFrame是Dataset[Row]的别名</p>
@@ -377,12 +384,13 @@
 <p>而Dataset，其中是什么类型，他就处理什么类型。</p>
 </li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">df</span><span class="k">:</span> <span class="kt">DataFrame</span> <span class="o">=</span> <span class="n">personList</span><span class="o">.</span><span class="n">toDF</span><span class="o">()</span>
-<span class="ln">2</span><span class="n">df</span><span class="o">.</span><span class="n">map</span><span class="o">(</span> <span class="o">(</span><span class="n">row</span><span class="k">:</span> <span class="kt">Row</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">Row</span><span class="o">(</span><span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">),</span> <span class="n">row</span><span class="o">,</span><span class="n">getAs</span><span class="o">[</span><span class="kt">Int</span><span class="o">](</span><span class="mi">1</span><span class="o">)</span> <span class="o">*</span> <span class="mi">2</span><span class="o">))(</span><span class="nc">RowEncoder</span><span class="o">.</span><span class="n">apply</span><span class="o">(</span><span class="n">df</span><span class="o">.</span><span class="n">schema</span><span class="o">))</span>
-<span class="ln">3</span>
-<span class="ln">4</span><span class="k">val</span> <span class="n">ds</span><span class="k">:</span> <span class="kt">Dataset</span><span class="o">[</span><span class="kt">person</span><span class="o">]</span> <span class="k">=</span> <span class="n">personList</span><span class="o">.</span><span class="n">toDS</span><span class="o">()</span>
-<span class="ln">5</span><span class="n">ds</span><span class="o">.</span><span class="n">map</span><span class="o">((</span><span class="n">person</span><span class="k">:</span> <span class="kt">Person</span> <span class="o">=&gt;</span> <span class="nc">Person</span><span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="n">name</span><span class="o">,</span> <span class="n">person</span><span class="o">.</span><span class="n">age</span> <span class="o">*</span> <span class="mi">2</span><span class="o">)))</span>
-</code></pre></div><ol start="5">
+<pre><code class="language-scala">val df: DataFrame = personList.toDF()
+df.map( (row: Row) =&gt; Row(row.get(0), row,getAs[Int](1) * 2))(RowEncoder.apply(df.schema))
+
+val ds: Dataset[person] = personList.toDS()
+ds.map((person: Person =&gt; Person(person.name, person.age * 2)))
+</code></pre>
+<ol start="5">
 <li>
 <p>DataFrame只能做到运行时类型检查，Dataset能做到编译和运行都有类型检查</p>
 <p>DataFrame弱类型是编译时不安全(df.groupBy(&ldquo;name, school&rdquo;))</p>
@@ -391,62 +399,65 @@
 </ol>
 <p>Row</p>
 <p>DataFrame就是Row集合加上Schema信息</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">case</span> <span class="k">class</span> <span class="nc">Person</span><span class="o">(</span><span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">age</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span>
-<span class="ln"> 2</span><span class="k">def</span> <span class="n">row</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln"> 3</span>    <span class="c1">//1.Row如何创建，是什么
-</span><span class="ln"> 4</span><span class="c1"></span>    <span class="c1">//row对象必须配合Schema对象才会有列名
-</span><span class="ln"> 5</span><span class="c1"></span>    <span class="k">val</span> <span class="n">person</span> <span class="k">=</span> <span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span> <span class="mi">15</span><span class="o">)</span>
-<span class="ln"> 6</span>    <span class="k">val</span> <span class="n">row</span> <span class="k">=</span> <span class="nc">Row</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span> <span class="mi">15</span><span class="o">)</span>
-<span class="ln"> 7</span>    
-<span class="ln"> 8</span>    <span class="c1">//2.如何从Row中获取数据
-</span><span class="ln"> 9</span><span class="c1"></span>    <span class="n">row</span><span class="o">.</span><span class="n">getString</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
-<span class="ln">10</span>    <span class="n">row</span><span class="o">.</span><span class="n">getInt</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
-<span class="ln">11</span>    
-<span class="ln">12</span>    <span class="c1">//3.Row也是样例类
-</span><span class="ln">13</span><span class="c1"></span>    <span class="n">row</span> <span class="k">match</span><span class="o">{</span>
-<span class="ln">14</span>        <span class="k">case</span> <span class="nc">Row</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">age</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">age</span><span class="o">)</span>
-<span class="ln">15</span>    <span class="o">}</span>
-<span class="ln">16</span><span class="o">}</span>
-</code></pre></div><p>Reader</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">reader1</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln"> 2</span>    <span class="c1">//1.create SparkSession
-</span><span class="ln"> 3</span><span class="c1"></span>    <span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="nc">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">()</span>
-<span class="ln"> 4</span>    	<span class="o">.</span><span class="n">master</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">)</span>
-<span class="ln"> 5</span>    	<span class="o">.</span><span class="n">appName</span><span class="o">(</span><span class="s">&#34;reader1&#34;</span><span class="o">)</span>
-<span class="ln"> 6</span>    	<span class="o">.</span><span class="n">getOrCreate</span><span class="o">()</span>
-<span class="ln"> 7</span>    
-<span class="ln"> 8</span>   <span class="c1">//2.firstWay
-</span><span class="ln"> 9</span><span class="c1"></span>    <span class="n">spark</span><span class="o">.</span><span class="n">read</span>
-<span class="ln">10</span>    	<span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="s">&#34;csv&#34;</span><span class="o">)</span>
-<span class="ln">11</span>    	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;header&#34;</span><span class="o">,</span> <span class="n">value</span> <span class="k">=</span> <span class="kc">true</span><span class="o">)</span>
-<span class="ln">12</span>    	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;inferSchema&#34;</span><span class="o">,</span> <span class="n">value</span> <span class="k">=</span> <span class="kc">true</span><span class="o">)</span>
-<span class="ln">13</span>    	<span class="o">.</span><span class="n">load</span><span class="o">(</span><span class="s">&#34;dataset/bjPM.csv&#34;</span><span class="o">)</span>
-<span class="ln">14</span>    	<span class="o">.</span><span class="n">show</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span>
-<span class="ln">15</span>    
-<span class="ln">16</span>    <span class="c1">//3.sencendWay
-</span><span class="ln">17</span><span class="c1"></span>    <span class="n">spark</span><span class="o">.</span><span class="n">read</span>
-<span class="ln">18</span>    	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;header&#34;</span><span class="o">,</span> <span class="n">value</span> <span class="k">=</span> <span class="kc">true</span><span class="o">)</span>
-<span class="ln">19</span>    	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;inferSchema&#34;</span><span class="o">,</span> <span class="n">value</span> <span class="k">=</span> <span class="kc">true</span><span class="o">)</span>
-<span class="ln">20</span>    	<span class="o">.</span><span class="n">csv</span><span class="o">(</span><span class="s">&#34;dataset/bjPM.csv&#34;</span><span class="o">)</span>
-<span class="ln">21</span>    	<span class="o">.</span><span class="n">show</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span>
-<span class="ln">22</span><span class="o">}</span>
-</code></pre></div><p>Writer</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">writer1</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln"> 2</span>    <span class="nc">System</span><span class="o">.</span><span class="n">setProperty</span><span class="o">(</span><span class="s">&#34;hodoop.home.dir&#34;</span><span class="o">,</span><span class="s">&#34;c:\\winutils&#34;</span><span class="o">)</span>
-<span class="ln"> 3</span>    <span class="c1">//1.create SparkSession
-</span><span class="ln"> 4</span><span class="c1"></span>    <span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="nc">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">()</span>
-<span class="ln"> 5</span>    	<span class="o">.</span><span class="n">master</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">)</span>
-<span class="ln"> 6</span>    	<span class="o">.</span><span class="n">appName</span><span class="o">(</span><span class="s">&#34;reader1&#34;</span><span class="o">)</span>
-<span class="ln"> 7</span>    	<span class="o">.</span><span class="n">getOrCreate</span><span class="o">()</span>
-<span class="ln"> 8</span>    <span class="c1">//2.read data
-</span><span class="ln"> 9</span><span class="c1"></span>    <span class="k">val</span> <span class="n">df</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;header&#34;</span><span class="o">,</span> <span class="kc">true</span><span class="o">).</span><span class="n">csv</span><span class="o">(</span><span class="s">&#34;dataset/bjPM.csv&#34;</span><span class="o">)</span>
-<span class="ln">10</span>    <span class="c1">//3.writer
-</span><span class="ln">11</span><span class="c1"></span>    <span class="n">df</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">json</span><span class="o">(</span><span class="s">&#34;dataset/bjPM.json&#34;</span><span class="o">)</span>
-<span class="ln">12</span>    
-<span class="ln">13</span>    <span class="n">df</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="s">&#34;json&#34;</span><span class="o">).</span><span class="n">save</span><span class="o">(</span><span class="s">&#34;dataset/bjPM2.json&#34;</span><span class="o">)</span>
-<span class="ln">14</span>    
-<span class="ln">15</span><span class="o">}</span>
-</code></pre></div><p>Parquet</p>
+<pre><code class="language-scala">case class Person(name: String, age: Int)
+def row(): Unit = {
+    //1.Row如何创建，是什么
+    //row对象必须配合Schema对象才会有列名
+    val person = Person(&quot;zs&quot;, 15)
+    val row = Row(&quot;zs&quot;, 15)
+    
+    //2.如何从Row中获取数据
+    row.getString(0)
+    row.getInt(1)
+    
+    //3.Row也是样例类
+    row match{
+        case Row(name, age) =&gt; println(name, age)
+    }
+}
+</code></pre>
+<p>Reader</p>
+<pre><code class="language-scala">def reader1(): Unit = {
+    //1.create SparkSession
+    val spark = SparkSession.builder()
+    	.master(&quot;local[6]&quot;)
+    	.appName(&quot;reader1&quot;)
+    	.getOrCreate()
+    
+   //2.firstWay
+    spark.read
+    	.format(&quot;csv&quot;)
+    	.option(&quot;header&quot;, value = true)
+    	.option(&quot;inferSchema&quot;, value = true)
+    	.load(&quot;dataset/bjPM.csv&quot;)
+    	.show(10)
+    
+    //3.sencendWay
+    spark.read
+    	.option(&quot;header&quot;, value = true)
+    	.option(&quot;inferSchema&quot;, value = true)
+    	.csv(&quot;dataset/bjPM.csv&quot;)
+    	.show(10)
+}
+</code></pre>
+<p>Writer</p>
+<pre><code class="language-scala">def writer1(): Unit = {
+    System.setProperty(&quot;hodoop.home.dir&quot;,&quot;c:\\winutils&quot;)
+    //1.create SparkSession
+    val spark = SparkSession.builder()
+    	.master(&quot;local[6]&quot;)
+    	.appName(&quot;reader1&quot;)
+    	.getOrCreate()
+    //2.read data
+    val df = spark.read.option(&quot;header&quot;, true).csv(&quot;dataset/bjPM.csv&quot;)
+    //3.writer
+    df.write.json(&quot;dataset/bjPM.json&quot;)
+    
+    df.write.format(&quot;json&quot;).save(&quot;dataset/bjPM2.json&quot;)
+    
+}
+</code></pre>
+<p>Parquet</p>
 <p>Parquet属于Hadoop生态圈的一种<strong>新型列式存储</strong>格式，既然属于Hadoop生态圈，因此也兼容大多圈内计算框架（Hadoop、Spark），另外Parquet是平台、语言无关的，这使得它的适用性很广，只要相关语言有对应支持的类库就可以用；</p>
 <p>Parquet的优劣对比：</p>
 <ul>
@@ -454,40 +465,42 @@
 <li>适用于OLAP场景，对比CSV等行式存储结构，列示存储支持<strong>映射下推</strong>和<strong>谓词下推</strong>，减少磁盘IO；</li>
 <li>同样的压缩方式下，列式存储因为每一列都是同构的，因此可以使用更高效的压缩方法；</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">parquet</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln"> 2</span>    <span class="c1">//read
-</span><span class="ln"> 3</span><span class="c1"></span>    <span class="k">val</span> <span class="n">df</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;header&#34;</span><span class="o">,</span> <span class="kc">true</span><span class="o">).</span><span class="n">csv</span><span class="o">(</span><span class="s">&#34;dataset/bjPM.csv&#34;</span><span class="o">)</span>
-<span class="ln"> 4</span>    <span class="c1">//把数据写为parquet格式
-</span><span class="ln"> 5</span><span class="c1"></span>    <span class="n">df</span><span class="o">.</span><span class="n">write</span>
-<span class="ln"> 6</span>    	<span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="s">&#34;parquet&#34;</span><span class="o">)</span>
-<span class="ln"> 7</span>    	<span class="o">.</span><span class="n">mode</span><span class="o">(</span><span class="nc">Savemode</span><span class="o">.</span><span class="nc">Overwrite</span><span class="o">)</span>
-<span class="ln"> 8</span>    	<span class="o">.</span><span class="n">save</span><span class="o">(</span><span class="s">&#34;dataset/bj_PM&#34;</span><span class="o">)</span>
-<span class="ln"> 9</span>    <span class="c1">//读取Parquet格式文件
-</span><span class="ln">10</span><span class="c1"></span>    <span class="n">spark</span><span class="o">.</span><span class="n">read</span>
-<span class="ln">11</span>    	<span class="o">.</span><span class="n">load</span><span class="o">(</span><span class="s">&#34;dataset/bj_PM&#34;</span><span class="o">)</span>
-<span class="ln">12</span>    	<span class="o">.</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">13</span><span class="o">}</span>
-</code></pre></div><p>Partition</p>
+<pre><code class="language-scala">def parquet(): Unit = {
+    //read
+    val df = spark.read.option(&quot;header&quot;, true).csv(&quot;dataset/bjPM.csv&quot;)
+    //把数据写为parquet格式
+    df.write
+    	.format(&quot;parquet&quot;)
+    	.mode(Savemode.Overwrite)
+    	.save(&quot;dataset/bj_PM&quot;)
+    //读取Parquet格式文件
+    spark.read
+    	.load(&quot;dataset/bj_PM&quot;)
+    	.show()
+}
+</code></pre>
+<p>Partition</p>
 <p>表分区的概念不仅在parquet上有，其他格式的文件也可以指定表分区</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">parquetPartions</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">={</span>
-<span class="ln"> 2</span>    <span class="k">val</span> <span class="n">df</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span>
-<span class="ln"> 3</span>    	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;header&#34;</span><span class="o">,</span><span class="n">value</span> <span class="k">=</span> <span class="kc">true</span><span class="o">)</span>
-<span class="ln"> 4</span>    	<span class="o">.</span><span class="n">csv</span><span class="o">(</span><span class="s">&#34;dataset/BJPM.csv&#34;</span><span class="o">)</span>
-<span class="ln"> 5</span>    
-<span class="ln"> 6</span>    <span class="c1">//分区表形式写文件
-</span><span class="ln"> 7</span><span class="c1"></span>    <span class="n">df</span><span class="o">.</span><span class="n">write</span>
-<span class="ln"> 8</span>    <span class="o">.</span><span class="n">partitionBy</span><span class="o">(</span><span class="s">&#34;year&#34;</span><span class="o">,</span> <span class="s">&#34;month&#34;</span><span class="o">)</span>
-<span class="ln"> 9</span>    <span class="o">.</span><span class="n">save</span><span class="o">(</span><span class="n">dataset</span><span class="o">/</span><span class="n">bjPM4</span><span class="o">)</span>
-<span class="ln">10</span>    
-<span class="ln">11</span>    <span class="c1">//读文件
-</span><span class="ln">12</span><span class="c1"></span>    <span class="c1">//写分区的时候，分区列不会包含在生成的文件中
-</span><span class="ln">13</span><span class="c1"></span>    <span class="c1">//直接通过文件来进行读取的话，分区信息会丢失
-</span><span class="ln">14</span><span class="c1"></span>    <span class="c1">//spark SQL自动发现分区
-</span><span class="ln">15</span><span class="c1"></span>    <span class="n">spark</span><span class="o">.</span><span class="n">read</span>
-<span class="ln">16</span>    	<span class="o">.</span><span class="n">parquet</span><span class="o">(</span><span class="s">&#34;dataset/bjPM4&#34;</span><span class="o">)</span>
-<span class="ln">17</span>    	<span class="o">.</span><span class="n">printSchema</span><span class="o">()</span>
-<span class="ln">18</span><span class="o">}</span>
-</code></pre></div><p>JSON</p>
+<pre><code class="language-scala">def parquetPartions(): Unit ={
+    val df = spark.read
+    	.option(&quot;header&quot;,value = true)
+    	.csv(&quot;dataset/BJPM.csv&quot;)
+    
+    //分区表形式写文件
+    df.write
+    .partitionBy(&quot;year&quot;, &quot;month&quot;)
+    .save(dataset/bjPM4)
+    
+    //读文件
+    //写分区的时候，分区列不会包含在生成的文件中
+    //直接通过文件来进行读取的话，分区信息会丢失
+    //spark SQL自动发现分区
+    spark.read
+    	.parquet(&quot;dataset/bjPM4&quot;)
+    	.printSchema()
+}
+</code></pre>
+<p>JSON</p>
 <ul>
 <li>toJSON: 把Dataset[Object]转为Dataset[JsonString]</li>
 <li>可以直接从RDD读取JSON的DataFrame，把RDD[JsonString]转为Dataset[Object]</li>
@@ -549,260 +562,279 @@
 <p>通过SparkSQL查询Hive的表</p>
 <blockquote>
 <p>查询hive找那个的表可以通过spark。sql()来进行，可以直接在其中访问hive的MetaStore，前提是一定要将hive的配置文件拷贝到spark的conf目录</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&#34;use spark_integrition&#34;</span><span class="o">)</span>
-<span class="ln">2</span><span class="k">val</span> <span class="n">resultDF</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&#34;select * from student limit 10&#34;</span><span class="o">)</span>
-<span class="ln">3</span><span class="n">resultDF</span><span class="o">.</span><span class="n">show</span>
-</code></pre></div></blockquote>
+<pre><code class="language-scala">spark.sql(&quot;use spark_integrition&quot;)
+val resultDF = spark.sql(&quot;select * from student limit 10&quot;)
+resultDF.show
+</code></pre>
+</blockquote>
 <p><strong>Spark访问Hive中的表</strong></p>
 <p>在Hive中创建表</p>
 <blockquote>
 <ol>
 <li>
 <p>将文件上传到集群hdfs上</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="n">hdfs</span> <span class="n">dfs</span> <span class="o">-</span><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">dataset</span>
-<span class="ln">2</span><span class="n">hdfs</span> <span class="n">dfs</span> <span class="o">-</span><span class="n">put</span> <span class="n">studenttabl10k</span> <span class="o">/</span><span class="n">dataset</span><span class="o">/</span>
-</code></pre></div></li>
+<pre><code class="language-scala">hdfs dfs -mkdir -p /dataset
+hdfs dfs -put studenttabl10k /dataset/
+</code></pre>
+</li>
 <li>
 <p>使用hive或者beeline执行sql</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="ln"> 1</span><span class="k">create</span><span class="w"> </span><span class="k">database</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">exists</span><span class="w"> </span><span class="n">spark_integrition</span><span class="p">;</span><span class="w">
-</span><span class="ln"> 2</span><span class="w"></span><span class="n">use</span><span class="w"> </span><span class="n">spark_integrition</span><span class="p">;</span><span class="w">
-</span><span class="ln"> 3</span><span class="w"></span><span class="k">create</span><span class="w"> </span><span class="k">external</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">student</span><span class="w">
-</span><span class="ln"> 4</span><span class="w"></span><span class="err">{</span><span class="w">
-</span><span class="ln"> 5</span><span class="w">	</span><span class="n">name</span><span class="w"> </span><span class="n">String</span><span class="p">,</span><span class="w">
-</span><span class="ln"> 6</span><span class="w">	</span><span class="n">age</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span><span class="w">
-</span><span class="ln"> 7</span><span class="w">	</span><span class="n">gpa</span><span class="w"> </span><span class="n">String</span><span class="w">
-</span><span class="ln"> 8</span><span class="w"></span><span class="err">}</span><span class="w">
-</span><span class="ln"> 9</span><span class="w"></span><span class="k">Row</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="n">delimited</span><span class="w">
-</span><span class="ln">10</span><span class="w">	</span><span class="n">fields</span><span class="w"> </span><span class="n">terminated</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="s1">&#39;\t&#39;</span><span class="w">
-</span><span class="ln">11</span><span class="w">	</span><span class="n">lines</span><span class="w"> </span><span class="n">terminated</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="s1">&#39;\n&#39;</span><span class="w">
-</span><span class="ln">12</span><span class="w"></span><span class="n">stored</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">textfile</span><span class="w">
-</span><span class="ln">13</span><span class="w"></span><span class="k">location</span><span class="w"> </span><span class="s1">&#39;/dataset/hive&#39;</span><span class="w">
-</span><span class="ln">14</span><span class="w">
-</span><span class="ln">15</span><span class="w"></span><span class="k">load</span><span class="w"> </span><span class="k">Data</span><span class="w"> </span><span class="n">INPATH</span><span class="w"> </span><span class="s1">&#39;/dataset/studenttab10k&#39;</span><span class="w"> </span><span class="n">OVERWRITE</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">student</span><span class="p">;</span><span class="w">
-</span></code></pre></div></li>
+<pre><code class="language-sql">create database if not exists spark_integrition;
+use spark_integrition;
+create external table student
+{
+	name String,
+	age INT,
+	gpa String
+}
+Row format delimited
+	fields terminated by '\t'
+	lines terminated by '\n'
+stored as textfile
+location '/dataset/hive'
+
+load Data INPATH '/dataset/studenttab10k' OVERWRITE INTO TABLE student;
+</code></pre>
+</li>
 </ol>
 </blockquote>
 <p>JDBC</p>
 <p>MySQL的访问方式有两种：使用本地运行，提交到集群中运行</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SCALA" data-lang="SCALA"><span class="ln"> 1</span><span class="c1">//读数据
-</span><span class="ln"> 2</span><span class="c1"></span><span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="nc">SparkSession</span>
-<span class="ln"> 3</span>	<span class="o">.</span><span class="n">builder</span><span class="o">()</span>
-<span class="ln"> 4</span>	<span class="o">.</span><span class="n">appName</span><span class="o">(</span><span class="s">&#34;jdbc example&#34;</span><span class="o">)</span>
-<span class="ln"> 5</span>	<span class="o">.</span><span class="n">master</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">)</span>
-<span class="ln"> 6</span>	<span class="o">.</span><span class="n">getOrCreate</span><span class="o">()</span>
-<span class="ln"> 7</span><span class="k">val</span> <span class="n">schema</span> <span class="k">=</span> <span class="nc">StructType</span><span class="o">(</span>
-<span class="ln"> 8</span>	<span class="nc">List</span><span class="o">(</span>
-<span class="ln"> 9</span>    	<span class="nc">StructField</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">,</span> <span class="nc">StringType</span><span class="o">),</span>
-<span class="ln">10</span>        <span class="nc">StructField</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">,</span> <span class="nc">IntegerType</span><span class="o">),</span>
-<span class="ln">11</span>        <span class="nc">StructField</span><span class="o">(</span><span class="s">&#34;gpa&#34;</span><span class="o">,</span> <span class="nc">FloatType</span><span class="o">),</span>
-<span class="ln">12</span>    <span class="o">)</span>
-<span class="ln">13</span><span class="o">)</span>
-<span class="ln">14</span><span class="k">val</span> <span class="n">studentDF</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span>
-<span class="ln">15</span>	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;delimiter&#34;</span><span class="o">,</span> <span class="s">&#34;\t&#34;</span><span class="o">)</span><span class="c1">//读取文件的分隔符是制表符
-</span><span class="ln">16</span><span class="c1"></span>	<span class="o">.</span><span class="n">schema</span><span class="o">(</span><span class="n">schema</span><span class="o">)</span>
-<span class="ln">17</span>	<span class="o">.</span><span class="n">csv</span><span class="o">(</span><span class="s">&#34;dataset/studenttab10k&#34;</span><span class="o">)</span>
-<span class="ln">18</span>
-<span class="ln">19</span><span class="c1">//处理数据
-</span><span class="ln">20</span><span class="c1"></span><span class="k">val</span> <span class="n">resultDF</span> <span class="k">=</span> <span class="n">studentDF</span><span class="o">.</span><span class="n">where</span><span class="o">(</span><span class="s">&#34;age&lt;30&#34;</span><span class="o">)</span>
-<span class="ln">21</span>
-<span class="ln">22</span><span class="c1">//写数据
-</span><span class="ln">23</span><span class="c1"></span><span class="n">resultDF</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="s">&#34;jdbc&#34;</span><span class="o">).</span><span class="n">mode</span><span class="o">(</span><span class="nc">SaveMode</span><span class="o">.</span><span class="nc">Overwrite</span><span class="o">)</span>
-<span class="ln">24</span>	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;url&#34;</span><span class="o">,</span> <span class="s">&#34;jdbc:mysql://node01:3306/spark_test&#34;</span><span class="o">)</span>
-<span class="ln">25</span>	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;dbtable&#34;</span><span class="o">,</span> <span class="s">&#34;student&#34;</span><span class="o">)</span>
-<span class="ln">26</span>	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;user&#34;</span><span class="o">,</span> <span class="s">&#34;spark&#34;</span><span class="o">)</span>
-<span class="ln">27</span>	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;password&#34;</span><span class="o">,</span> <span class="s">&#34;Spark123!&#34;</span><span class="o">)</span>
-<span class="ln">28</span>	<span class="o">.</span><span class="n">save</span><span class="o">()</span>
-</code></pre></div><h2 id="data-type-transformation">Data Type Transformation</h2>
+<pre><code class="language-SCALA">//读数据
+val spark = SparkSession
+	.builder()
+	.appName(&quot;jdbc example&quot;)
+	.master(&quot;local[6]&quot;)
+	.getOrCreate()
+val schema = StructType(
+	List(
+    	StructField(&quot;name&quot;, StringType),
+        StructField(&quot;age&quot;, IntegerType),
+        StructField(&quot;gpa&quot;, FloatType),
+    )
+)
+val studentDF = spark.read
+	.option(&quot;delimiter&quot;, &quot;\t&quot;)//读取文件的分隔符是制表符
+	.schema(schema)
+	.csv(&quot;dataset/studenttab10k&quot;)
+
+//处理数据
+val resultDF = studentDF.where(&quot;age&lt;30&quot;)
+
+//写数据
+resultDF.write.format(&quot;jdbc&quot;).mode(SaveMode.Overwrite)
+	.option(&quot;url&quot;, &quot;jdbc:mysql://node01:3306/spark_test&quot;)
+	.option(&quot;dbtable&quot;, &quot;student&quot;)
+	.option(&quot;user&quot;, &quot;spark&quot;)
+	.option(&quot;password&quot;, &quot;Spark123!&quot;)
+	.save()
+</code></pre>
+<h2 id="data-type-transformation">Data Type Transformation</h2>
 <p>flatMap,map,mapPartitions,transform,as:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">class</span> <span class="nc">TypedTransformation</span><span class="o">{</span>
-<span class="ln"> 2</span>    <span class="c1">//1.创建sparksession
-</span><span class="ln"> 3</span><span class="c1"></span>    <span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="nc">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">().</span><span class="n">master</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">).</span><span class="n">appName</span><span class="o">(</span><span class="s">&#34;typed&#34;</span><span class="o">).</span><span class="n">getOrCreate</span><span class="o">()</span>
-<span class="ln"> 4</span>    <span class="k">import</span> <span class="nn">spark.implicits._</span>
-<span class="ln"> 5</span>    
-<span class="ln"> 6</span>    <span class="nd">@Test</span>
-<span class="ln"> 7</span>    <span class="k">def</span> <span class="n">trans</span><span class="o">()</span><span class="k">:</span><span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln"> 8</span>        <span class="c1">//flatmap
-</span><span class="ln"> 9</span><span class="c1"></span>        <span class="k">val</span> <span class="n">ds</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">&#34;hello spark&#34;</span><span class="o">,</span> <span class="s">&#34;hello hadoop&#34;</span><span class="o">).</span><span class="n">toDS</span>
-<span class="ln">10</span>        <span class="n">ds</span><span class="o">.</span><span class="n">flatMap</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">)).</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">11</span>        <span class="c1">//map
-</span><span class="ln">12</span><span class="c1"></span>        <span class="k">val</span> <span class="n">ds2</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Persion</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">15</span><span class="o">),</span><span class="nc">Persion</span><span class="o">(</span><span class="s">&#34;lisi&#34;</span><span class="o">,</span><span class="mi">20</span><span class="o">)).</span><span class="n">toDS</span><span class="o">()</span>
-<span class="ln">13</span>        <span class="n">ds2</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">person</span> <span class="k">=&gt;</span> <span class="nc">Person</span><span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="n">name</span><span class="o">,</span> <span class="n">person</span><span class="o">.</span><span class="n">age</span><span class="o">*</span><span class="mi">2</span><span class="o">)).</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">14</span>        <span class="c1">//mappartitions
-</span><span class="ln">15</span><span class="c1"></span>        <span class="n">ds2</span><span class="o">.</span><span class="n">mapPartitions</span><span class="o">{</span>
-<span class="ln">16</span>            <span class="c1">//iter 不能大到每个Executor的内存放不下，不然就会OOM
-</span><span class="ln">17</span><span class="c1"></span>            <span class="c1">//对每个元素进行转换，后生成一个新的集合
-</span><span class="ln">18</span><span class="c1"></span>            <span class="n">iter</span> <span class="o">=&gt;{</span>
-<span class="ln">19</span>                <span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="n">iter</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">person</span> <span class="k">=&gt;</span> <span class="nc">Person</span><span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="n">name</span><span class="o">,</span> <span class="n">person</span><span class="o">.</span><span class="n">age</span> <span class="o">*</span> <span class="mi">2</span><span class="o">))</span>
-<span class="ln">20</span>                <span class="n">result</span>
-<span class="ln">21</span>            <span class="o">}</span>
-<span class="ln">22</span>        <span class="o">}</span>
-<span class="ln">23</span>    <span class="o">}</span>
-<span class="ln">24</span><span class="o">}</span>
-<span class="ln">25</span>
-<span class="ln">26</span><span class="k">def</span> <span class="n">trans1</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln">27</span>    <span class="k">val</span> <span class="n">ds</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">rage</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span> <span class="c1">//0-10
-</span><span class="ln">28</span><span class="c1"></span>    <span class="n">ds</span><span class="o">.</span><span class="n">transform</span><span class="o">(</span><span class="n">dataset</span> <span class="k">=&gt;</span> <span class="n">dataset</span><span class="o">.</span><span class="n">withColumn</span><span class="o">(</span><span class="s">&#34;doubled&#34;</span><span class="o">,</span> &#39;id <span class="o">*</span> <span class="mi">2</span><span class="err">&#39;</span><span class="o">))</span>
-<span class="ln">29</span>      <span class="o">.</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">30</span><span class="o">}</span>
-</code></pre></div><p>DF转成DS</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="n">rdd</span><span class="o">.</span><span class="n">toDF</span> <span class="o">-&gt;</span> <span class="nc">DataFrame</span> <span class="c1">//toDF把rdd转成DF
-</span><span class="ln"> 2</span><span class="c1"></span><span class="n">dataFrame</span> <span class="o">-&gt;</span> <span class="nc">Dataset</span> <span class="c1">//DataFrame就是Dataset[Row]
-</span><span class="ln"> 3</span><span class="c1"></span>
-<span class="ln"> 4</span><span class="k">case</span> <span class="k">class</span> <span class="nc">Student</span><span class="o">(</span><span class="n">name</span><span class="k">:</span><span class="kt">String</span><span class="o">,</span> <span class="n">age</span><span class="k">:</span><span class="kt">Int</span><span class="o">,</span> <span class="n">gpa</span><span class="k">:</span><span class="kt">Float</span><span class="o">)</span>
-<span class="ln"> 5</span>
-<span class="ln"> 6</span><span class="c1">//读取
-</span><span class="ln"> 7</span><span class="c1"></span><span class="k">val</span> <span class="n">schema</span> <span class="k">=</span> <span class="nc">StructType</span><span class="o">(</span>
-<span class="ln"> 8</span>	<span class="nc">Seq</span><span class="o">(</span>
-<span class="ln"> 9</span>    	<span class="nc">StructField</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">,</span><span class="nc">StringType</span><span class="o">),</span>
-<span class="ln">10</span>        <span class="nc">StructField</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">,</span><span class="nc">IntegerType</span><span class="o">),</span>
-<span class="ln">11</span>        <span class="nc">StructField</span><span class="o">(</span><span class="s">&#34;gpa&#34;</span><span class="o">,</span><span class="nc">FloatType</span><span class="o">)</span>
-<span class="ln">12</span>    <span class="o">)</span>
-<span class="ln">13</span><span class="o">)</span>
-<span class="ln">14</span>
-<span class="ln">15</span><span class="k">val</span> <span class="n">df</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span>
-<span class="ln">16</span>	<span class="o">.</span><span class="n">schema</span><span class="o">(</span><span class="n">schema</span><span class="o">)</span>
-<span class="ln">17</span>	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;delimiter&#34;</span><span class="o">,</span><span class="s">&#34;\t&#34;</span><span class="o">)</span>
-<span class="ln">18</span>	<span class="o">.</span><span class="n">csv</span><span class="o">(</span><span class="s">&#34;dataset/studenttab10k&#34;</span><span class="o">)</span>
-<span class="ln">19</span><span class="c1">//转换
-</span><span class="ln">20</span><span class="c1">//本质上dataset[Row].as[Student] =&gt; Dataset[Student]
-</span><span class="ln">21</span><span class="c1"></span><span class="k">val</span> <span class="n">ds</span><span class="k">:</span> <span class="kt">Dataset</span><span class="o">[</span><span class="kt">Student</span><span class="o">]</span> <span class="k">=</span> <span class="n">df</span><span class="o">.</span><span class="n">as</span><span class="o">[</span><span class="kt">Student</span><span class="o">]</span>
-<span class="ln">22</span>
-<span class="ln">23</span><span class="c1">//输出
-</span><span class="ln">24</span><span class="c1"></span><span class="n">ds</span><span class="o">.</span><span class="n">show</span><span class="o">()</span>
-</code></pre></div><p>Filter</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">def</span> <span class="n">filter</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln">2</span>    <span class="k">val</span> <span class="n">ds</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">15</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span><span class="mi">20</span><span class="o">)).</span><span class="n">toDS</span><span class="o">()</span>
-<span class="ln">3</span>    <span class="n">ds</span><span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="n">person</span> <span class="k">=&gt;</span> <span class="n">person</span><span class="o">.</span><span class="n">age</span> <span class="o">&gt;</span> <span class="mi">15</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">4</span><span class="o">}</span>
-</code></pre></div><p>Group</p>
+<pre><code class="language-scala">class TypedTransformation{
+    //1.创建sparksession
+    val spark = SparkSession.builder().master(&quot;local[6]&quot;).appName(&quot;typed&quot;).getOrCreate()
+    import spark.implicits._
+    
+    @Test
+    def trans():Unit = {
+        //flatmap
+        val ds = Seq(&quot;hello spark&quot;, &quot;hello hadoop&quot;).toDS
+        ds.flatMap(item =&gt; item.split(&quot; &quot;)).show()
+        //map
+        val ds2 = Seq(Persion(&quot;zs&quot;,15),Persion(&quot;lisi&quot;,20)).toDS()
+        ds2.map(person =&gt; Person(person.name, person.age*2)).show()
+        //mappartitions
+        ds2.mapPartitions{
+            //iter 不能大到每个Executor的内存放不下，不然就会OOM
+            //对每个元素进行转换，后生成一个新的集合
+            iter =&gt;{
+                val result = iter.map(person =&gt; Person(person.name, person.age * 2))
+                result
+            }
+        }
+    }
+}
+
+def trans1(): Unit = {
+    val ds = spark.rage(10) //0-10
+    ds.transform(dataset =&gt; dataset.withColumn(&quot;doubled&quot;, 'id * 2'))
+      .show()
+}
+</code></pre>
+<p>DF转成DS</p>
+<pre><code class="language-scala">rdd.toDF -&gt; DataFrame //toDF把rdd转成DF
+dataFrame -&gt; Dataset //DataFrame就是Dataset[Row]
+
+case class Student(name:String, age:Int, gpa:Float)
+
+//读取
+val schema = StructType(
+	Seq(
+    	StructField(&quot;name&quot;,StringType),
+        StructField(&quot;age&quot;,IntegerType),
+        StructField(&quot;gpa&quot;,FloatType)
+    )
+)
+
+val df = spark.read
+	.schema(schema)
+	.option(&quot;delimiter&quot;,&quot;\t&quot;)
+	.csv(&quot;dataset/studenttab10k&quot;)
+//转换
+//本质上dataset[Row].as[Student] =&gt; Dataset[Student]
+val ds: Dataset[Student] = df.as[Student]
+
+//输出
+ds.show()
+</code></pre>
+<p>Filter</p>
+<pre><code class="language-scala">def filter(): Unit = {
+    val ds = Seq(Person(&quot;zs&quot;,15),Person(&quot;ls&quot;,20)).toDS()
+    ds.filter(person =&gt; person.age &gt; 15).show()
+}
+</code></pre>
+<p>Group</p>
 <p>groupByKey:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">ds</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">15</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span><span class="mi">20</span><span class="o">)).</span><span class="n">toDS</span><span class="o">()</span>
-<span class="ln">2</span><span class="k">val</span> <span class="n">grouped</span><span class="k">:</span> <span class="kt">KeyValueGroupedDataset</span><span class="o">[</span><span class="kt">String</span>, <span class="kt">Person</span><span class="o">]</span> <span class="k">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">groupByKey</span><span class="o">(</span><span class="n">person</span> <span class="k">=&gt;</span> <span class="n">person</span><span class="o">.</span><span class="n">name</span><span class="o">)</span>
-<span class="ln">3</span><span class="k">val</span> <span class="n">result</span><span class="k">:</span> <span class="kt">Dataset</span><span class="o">[(</span><span class="kt">String</span>, <span class="kt">Long</span><span class="o">)]</span> <span class="k">=</span> <span class="n">grouped</span><span class="o">.</span><span class="n">count</span><span class="o">()</span>
-<span class="ln">4</span>
-<span class="ln">5</span><span class="n">result</span><span class="o">.</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">6</span>
-</code></pre></div><p>Split</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">ds</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">range</span><span class="o">(</span><span class="mi">15</span><span class="o">)</span>
-<span class="ln">2</span><span class="c1">//randomSplit, the number of part, weight
-</span><span class="ln">3</span><span class="c1"></span><span class="k">val</span> <span class="n">datasets</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">Dataset</span><span class="o">[</span><span class="kt">lang.Long</span><span class="o">]]</span> <span class="k">=</span><span class="n">ds</span><span class="o">.</span><span class="n">randomSplit</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">))</span>
-<span class="ln">4</span><span class="n">datasets</span><span class="o">.</span><span class="n">foeach</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">show</span><span class="o">())</span>
-<span class="ln">5</span>
-<span class="ln">6</span><span class="c1">//split
-</span><span class="ln">7</span><span class="c1"></span><span class="n">ds</span><span class="o">.</span><span class="n">sample</span><span class="o">(</span><span class="n">withReplacement</span> <span class="k">=</span> <span class="kc">false</span><span class="o">,</span> <span class="n">fraction</span> <span class="k">=</span> <span class="mf">0.4</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
-</code></pre></div><p>Sort</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">ds</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">15</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span><span class="mi">20</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">8</span><span class="o">)).</span><span class="n">toDS</span><span class="o">()</span>
-<span class="ln">2</span><span class="n">ds</span><span class="o">.</span><span class="n">orderBy</span><span class="o">(</span>&#39;name<span class="o">.</span><span class="n">desc</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">3</span><span class="n">ds</span><span class="o">.</span><span class="n">sort</span><span class="o">(</span>&#39;name<span class="o">.</span><span class="n">asc</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
-</code></pre></div><p>Distinct</p>
+<pre><code class="language-scala">val ds = Seq(Person(&quot;zs&quot;,15),Person(&quot;ls&quot;,20)).toDS()
+val grouped: KeyValueGroupedDataset[String, Person] = ds.groupByKey(person =&gt; person.name)
+val result: Dataset[(String, Long)] = grouped.count()
+
+result.show()
+
+</code></pre>
+<p>Split</p>
+<pre><code class="language-scala">val ds = spark.range(15)
+//randomSplit, the number of part, weight
+val datasets: Array[Dataset[lang.Long]] =ds.randomSplit(Array(5,2,3))
+datasets.foeach(_.show())
+
+//split
+ds.sample(withReplacement = false, fraction = 0.4).show()
+</code></pre>
+<p>Sort</p>
+<pre><code class="language-scala">val ds = Seq(Person(&quot;zs&quot;,15),Person(&quot;ls&quot;,20),Person(&quot;zs&quot;,8)).toDS()
+ds.orderBy('name.desc).show()
+ds.sort('name.asc).show()
+</code></pre>
+<p>Distinct</p>
 <p>distinct,dropDuplicates:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">def</span> <span class="n">dropDuplicates</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln">2</span>    <span class="k">val</span> <span class="n">ds</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">15</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span><span class="mi">20</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">8</span><span class="o">)).</span><span class="n">toDS</span><span class="o">()</span>
-<span class="ln">3</span>    <span class="c1">//重复列完全匹配
-</span><span class="ln">4</span><span class="c1"></span>    <span class="n">ds</span><span class="o">.</span><span class="n">distinct</span><span class="o">().</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">5</span>    <span class="c1">//指定列去重
-</span><span class="ln">6</span><span class="c1"></span>    <span class="n">ds</span><span class="o">.</span><span class="n">dropDuplicates</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">7</span><span class="o">}</span>
-</code></pre></div><p>Collection</p>
+<pre><code class="language-scala">def dropDuplicates(): Unit = {
+    val ds = Seq(Person(&quot;zs&quot;,15),Person(&quot;ls&quot;,20),Person(&quot;zs&quot;,8)).toDS()
+    //重复列完全匹配
+    ds.distinct().show()
+    //指定列去重
+    ds.dropDuplicates(&quot;age&quot;).show()
+}
+</code></pre>
+<p>Collection</p>
 <p>差集、交集、并集、limit</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">def</span> <span class="n">collection</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">={</span>
-<span class="ln">2</span>    <span class="k">val</span> <span class="n">ds1</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">range</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">10</span><span class="o">)</span>
-<span class="ln">3</span>    <span class="k">val</span> <span class="n">ds2</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">range</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span><span class="mi">15</span><span class="o">)</span>
-<span class="ln">4</span>    
-<span class="ln">5</span>    <span class="n">ds1</span><span class="o">.</span><span class="n">except</span><span class="o">(</span><span class="n">ds2</span><span class="o">)</span>
-<span class="ln">6</span>    <span class="n">ds1</span><span class="o">.</span><span class="n">intersect</span><span class="o">(</span><span class="n">ds2</span><span class="o">)</span>
-<span class="ln">7</span>    <span class="n">ds1</span><span class="o">.</span><span class="n">union</span><span class="o">(</span><span class="n">ds2</span><span class="o">)</span>
-<span class="ln">8</span>    <span class="n">ds1</span><span class="o">.</span><span class="n">limit</span><span class="o">(</span><span class="mi">3</span><span class="o">)</span>
-<span class="ln">9</span><span class="o">}</span>
-</code></pre></div><h2 id="data-typeless-transformation">Data Typeless Transformation</h2>
+<pre><code class="language-scala">def collection(): Unit ={
+    val ds1 = spark.range(1,10)
+    val ds2 = spark.range(5,15)
+    
+    ds1.except(ds2)
+    ds1.intersect(ds2)
+    ds1.union(ds2)
+    ds1.limit(3)
+}
+</code></pre>
+<h2 id="data-typeless-transformation">Data Typeless Transformation</h2>
 <p>select</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">val</span> <span class="n">ds</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">15</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span><span class="mi">20</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">8</span><span class="o">)).</span><span class="n">toDS</span><span class="o">()</span>
-<span class="ln"> 2</span><span class="n">ds</span><span class="o">.</span><span class="n">sort</span><span class="o">()</span>
-<span class="ln"> 3</span>  <span class="o">....</span>
-<span class="ln"> 4</span>  <span class="o">.</span><span class="n">secect</span><span class="o">(</span>&#39;name<span class="o">).</span><span class="n">show</span><span class="o">()</span>
-<span class="ln"> 5</span>
-<span class="ln"> 6</span><span class="n">ds</span><span class="o">.</span><span class="n">selectExpr</span><span class="o">(</span><span class="s">&#34;sum(age)&#34;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
-<span class="ln"> 7</span>
-<span class="ln"> 8</span><span class="k">import</span> <span class="nn">org.apache.spark.sql.funcitons._</span>
-<span class="ln"> 9</span>
-<span class="ln">10</span><span class="n">ds</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">exper</span><span class="o">(</span><span class="s">&#34;sum(age)&#34;</span><span class="o">)).</span><span class="n">show</span><span class="o">()</span>
-</code></pre></div><p>Column</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">val</span> <span class="n">ds</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">15</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span><span class="mi">20</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">8</span><span class="o">)).</span><span class="n">toDS</span><span class="o">()</span>
-<span class="ln"> 2</span>
-<span class="ln"> 3</span><span class="k">import</span> <span class="nn">org.apache.spark.sql.funcitons._</span>
-<span class="ln"> 4</span><span class="c1">//如果想使用函数的功能
-</span><span class="ln"> 5</span><span class="c1">//1.使用functions.xx
-</span><span class="ln"> 6</span><span class="c1">//2.使用表达式，可以使用expr(&#34;...&#34;)随时编写表达式
-</span><span class="ln"> 7</span><span class="c1"></span><span class="n">ds</span><span class="o">.</span><span class="n">withColumn</span><span class="o">(</span><span class="s">&#34;random&#34;</span><span class="o">,</span><span class="n">expr</span><span class="o">(</span><span class="s">&#34;rand()&#34;</span><span class="o">)).</span><span class="n">show</span><span class="o">()</span>
-<span class="ln"> 8</span><span class="n">ds</span><span class="o">.</span><span class="n">withColumn</span><span class="o">(</span><span class="s">&#34;name_new&#34;</span><span class="o">,</span>&#39;name <span class="o">+</span> <span class="o">...).</span><span class="n">show</span><span class="o">()</span>
-<span class="ln"> 9</span><span class="n">ds</span><span class="o">.</span><span class="n">withColumn</span><span class="o">(</span><span class="s">&#34;name_jok&#34;</span><span class="o">,</span>&#39;name <span class="o">===</span> <span class="s">&#34;&#34;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">10</span><span class="n">ds</span><span class="o">.</span><span class="n">withColumnRenamed</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">,</span><span class="s">&#34;new_name&#34;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
-</code></pre></div><p>Drop</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">ds</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">15</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span><span class="mi">20</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">8</span><span class="o">)).</span><span class="n">toDS</span><span class="o">()</span>
-<span class="ln">2</span><span class="n">ds</span><span class="o">.</span><span class="n">drop</span><span class="o">(</span>&#39;age<span class="o">).</span><span class="n">show</span><span class="o">()</span>
-</code></pre></div><p>GroupBy</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">ds</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">15</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span><span class="mi">20</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">8</span><span class="o">)).</span><span class="n">toDS</span><span class="o">()</span>
-<span class="ln">2</span><span class="c1">//为什么groupByKey是有类型的，最主要的原因是因为groupByKey所生成的对象中的算子是有类型的
-</span><span class="ln">3</span><span class="c1"></span><span class="n">ds</span><span class="o">.</span><span class="n">groupByKey</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="o">).</span><span class="n">mapValues</span><span class="o">()</span>
-<span class="ln">4</span><span class="c1">//为什么groupBy是无类型的，因为groupBy所生成的对象中的算子是无类型的，针对列进行处理
-</span><span class="ln">5</span><span class="c1"></span><span class="n">ds</span><span class="o">.</span><span class="n">groupBy</span><span class="o">(</span>&#39;name<span class="o">).</span><span class="n">agg</span><span class="o">(</span><span class="n">mean</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">)).</span><span class="n">show</span><span class="o">()</span>
-</code></pre></div><h2 id="column">Column</h2>
+<pre><code class="language-scala">val ds = Seq(Person(&quot;zs&quot;,15),Person(&quot;ls&quot;,20),Person(&quot;zs&quot;,8)).toDS()
+ds.sort()
+  ....
+  .secect('name).show()
+
+ds.selectExpr(&quot;sum(age)&quot;).show()
+
+import org.apache.spark.sql.funcitons._
+
+ds.select(exper(&quot;sum(age)&quot;)).show()
+</code></pre>
+<p>Column</p>
+<pre><code class="language-scala">val ds = Seq(Person(&quot;zs&quot;,15),Person(&quot;ls&quot;,20),Person(&quot;zs&quot;,8)).toDS()
+
+import org.apache.spark.sql.funcitons._
+//如果想使用函数的功能
+//1.使用functions.xx
+//2.使用表达式，可以使用expr(&quot;...&quot;)随时编写表达式
+ds.withColumn(&quot;random&quot;,expr(&quot;rand()&quot;)).show()
+ds.withColumn(&quot;name_new&quot;,'name + ...).show()
+ds.withColumn(&quot;name_jok&quot;,'name === &quot;&quot;).show()
+ds.withColumnRenamed(&quot;name&quot;,&quot;new_name&quot;).show()
+</code></pre>
+<p>Drop</p>
+<pre><code class="language-scala">val ds = Seq(Person(&quot;zs&quot;,15),Person(&quot;ls&quot;,20),Person(&quot;zs&quot;,8)).toDS()
+ds.drop('age).show()
+</code></pre>
+<p>GroupBy</p>
+<pre><code class="language-scala">val ds = Seq(Person(&quot;zs&quot;,15),Person(&quot;ls&quot;,20),Person(&quot;zs&quot;,8)).toDS()
+//为什么groupByKey是有类型的，最主要的原因是因为groupByKey所生成的对象中的算子是有类型的
+ds.groupByKey(item =&gt; item.name).mapValues()
+//为什么groupBy是无类型的，因为groupBy所生成的对象中的算子是无类型的，针对列进行处理
+ds.groupBy('name).agg(mean(&quot;age&quot;)).show()
+</code></pre>
+<h2 id="column">Column</h2>
 <p>Creation</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">class</span> <span class="nc">Column</span><span class="o">{</span>
-<span class="ln"> 2</span>    <span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="nc">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">()</span>
-<span class="ln"> 3</span>    	<span class="o">.</span><span class="n">master</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">)</span>
-<span class="ln"> 4</span>    	<span class="o">.</span><span class="n">appName</span><span class="o">(</span><span class="s">&#34;column&#34;</span><span class="o">)</span>
-<span class="ln"> 5</span>    	<span class="o">.</span><span class="n">getOrCreate</span><span class="o">()</span>
-<span class="ln"> 6</span>    <span class="k">def</span> <span class="n">creation</span><span class="o">()</span><span class="k">:</span><span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln"> 7</span>        <span class="k">val</span> <span class="n">ds</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">15</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span><span class="mi">20</span><span class="o">),</span><span class="nc">Person</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">8</span><span class="o">)).</span><span class="n">toDS</span><span class="o">()</span>
-<span class="ln"> 8</span>        <span class="k">val</span> <span class="n">df</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">((</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">15</span><span class="o">),(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span><span class="mi">20</span><span class="o">),(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="mi">8</span><span class="o">)).</span><span class="n">toDF</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">,</span><span class="s">&#34;age&#34;</span><span class="o">)</span>
-<span class="ln"> 9</span>        <span class="c1">//1. &#39; 必须导入spark的隐式转化才能使用str.intern()
-</span><span class="ln">10</span><span class="c1"></span>        <span class="k">val</span> <span class="n">column</span><span class="k">:</span> <span class="kt">Symbol</span> <span class="o">=</span> &#39;name
-<span class="ln">11</span>        
-<span class="ln">12</span>        <span class="c1">//2. $ 必须导入spark的隐式转化才能使用
-</span><span class="ln">13</span><span class="c1"></span>        <span class="k">val</span> <span class="n">column1</span><span class="k">:</span> <span class="kt">ColumnName</span> <span class="o">=</span> <span class="n">$</span><span class="s">&#34;name&#34;</span>
-<span class="ln">14</span>        
-<span class="ln">15</span>        <span class="c1">//3. col 必须导入functions
-</span><span class="ln">16</span><span class="c1"></span>        <span class="k">import</span> <span class="nn">org.apache.spark.sql.functions._</span>
-<span class="ln">17</span>        <span class="k">val</span> <span class="n">column2</span><span class="k">:</span><span class="kt">sql.Column</span> <span class="o">=</span> <span class="n">col</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">)</span>
-<span class="ln">18</span>        
-<span class="ln">19</span>        <span class="c1">//4. column 必须导入functions
-</span><span class="ln">20</span><span class="c1"></span>        <span class="k">val</span> <span class="n">column3</span><span class="k">:</span><span class="kt">sql.Column</span> <span class="o">=</span> <span class="n">column</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">)</span>
-<span class="ln">21</span>        
-<span class="ln">22</span>        <span class="c1">//Dataset可以，DataFrame可以使用column对象
-</span><span class="ln">23</span><span class="c1"></span>        <span class="n">ds</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">column</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">24</span>        <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">column</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">25</span>        
-<span class="ln">26</span>        <span class="c1">//column有四种创建方式
-</span><span class="ln">27</span><span class="c1"></span>        <span class="c1">//column对象可以用作于Dataset和DataFrame中
-</span><span class="ln">28</span><span class="c1"></span>        <span class="c1">//column可以和命令式的弱类型的API配合使用:select where
-</span><span class="ln">29</span><span class="c1"></span>        
-<span class="ln">30</span>        <span class="c1">//5. dataset.col
-</span><span class="ln">31</span><span class="c1"></span>        <span class="c1">//使用dataset来获取column对象，会和某个dataset进行绑定，在逻辑计划中，就会有不同的表现
-</span><span class="ln">32</span><span class="c1"></span>        <span class="k">val</span> <span class="n">column4</span> <span class="k">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">col</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">)</span>
-<span class="ln">33</span>        <span class="k">val</span> <span class="n">column5</span> <span class="k">=</span> <span class="n">ds1</span><span class="o">.</span><span class="n">col</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">)</span>
-<span class="ln">34</span>        <span class="n">ds</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">column5</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">35</span>        <span class="c1">//为什么要和dataset来绑定呢？
-</span><span class="ln">36</span><span class="c1"></span>        <span class="n">ds</span><span class="o">.</span><span class="n">join</span><span class="o">(</span><span class="n">ds1</span><span class="o">,</span> <span class="n">ds</span><span class="o">.</span><span class="n">col</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">)</span> <span class="o">===</span> <span class="n">ds1</span><span class="o">.</span><span class="n">col</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">))</span>
-<span class="ln">37</span>        
-<span class="ln">38</span>        <span class="c1">//6. dataset.apply
-</span><span class="ln">39</span><span class="c1"></span>        <span class="k">val</span> <span class="n">column6</span> <span class="k">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">apply</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">)</span>
-<span class="ln">40</span>        <span class="k">val</span> <span class="n">column7</span> <span class="k">=</span> <span class="n">ds</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">)</span>
-<span class="ln">41</span>    <span class="o">}</span>
-<span class="ln">42</span><span class="o">}</span>
-</code></pre></div><p>Type</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="n">ds</span><span class="o">.</span><span class="n">select</span><span class="o">(</span>&#39;name <span class="n">as</span> <span class="s">&#34;new_name&#34;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">2</span><span class="n">ds</span><span class="o">.</span><span class="n">select</span><span class="o">(</span>&#39;age<span class="o">.</span><span class="n">as</span><span class="o">[</span><span class="kt">Long</span><span class="o">]).</span><span class="n">show</span><span class="o">()</span>
-</code></pre></div><p>API</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="c1">//添加新列
-</span><span class="ln">2</span><span class="c1"></span><span class="n">df</span><span class="o">.</span><span class="n">withColun</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">,</span> &#39;age <span class="o">*</span> <span class="mi">2</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">3</span><span class="c1">//模糊查询
-</span><span class="ln">4</span><span class="c1"></span><span class="n">ds</span><span class="o">.</span><span class="n">where</span><span class="o">(</span>&#39;name <span class="n">like</span> <span class="s">&#34;zhang%&#34;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">5</span><span class="c1">//排序
-</span><span class="ln">6</span><span class="c1"></span><span class="n">ds</span><span class="o">.</span><span class="n">sort</span><span class="o">(</span>&#39;age <span class="n">asc</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">7</span><span class="c1">//枚举判断
-</span><span class="ln">8</span><span class="c1"></span><span class="n">ds</span><span class="o">.</span><span class="n">where</span><span class="o">(</span>&#39;name <span class="n">isin</span> <span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span><span class="s">&#34;wu&#34;</span><span class="o">,</span><span class="s">&#34;ls&#34;</span><span class="o">)).</span><span class="n">show</span><span class="o">()</span>
-</code></pre></div><h2 id="na">N/A</h2>
+<pre><code class="language-scala">class Column{
+    val spark = SparkSession.builder()
+    	.master(&quot;local[6]&quot;)
+    	.appName(&quot;column&quot;)
+    	.getOrCreate()
+    def creation():Unit = {
+        val ds = Seq(Person(&quot;zs&quot;,15),Person(&quot;ls&quot;,20),Person(&quot;zs&quot;,8)).toDS()
+        val df = Seq((&quot;zs&quot;,15),(&quot;ls&quot;,20),(&quot;zs&quot;,8)).toDF(&quot;name&quot;,&quot;age&quot;)
+        //1. ' 必须导入spark的隐式转化才能使用str.intern()
+        val column: Symbol = 'name
+        
+        //2. $ 必须导入spark的隐式转化才能使用
+        val column1: ColumnName = $&quot;name&quot;
+        
+        //3. col 必须导入functions
+        import org.apache.spark.sql.functions._
+        val column2:sql.Column = col(&quot;name&quot;)
+        
+        //4. column 必须导入functions
+        val column3:sql.Column = column(&quot;name&quot;)
+        
+        //Dataset可以，DataFrame可以使用column对象
+        ds.select(column).show()
+        df.select(column).show()
+        
+        //column有四种创建方式
+        //column对象可以用作于Dataset和DataFrame中
+        //column可以和命令式的弱类型的API配合使用:select where
+        
+        //5. dataset.col
+        //使用dataset来获取column对象，会和某个dataset进行绑定，在逻辑计划中，就会有不同的表现
+        val column4 = ds.col(&quot;name&quot;)
+        val column5 = ds1.col(&quot;name&quot;)
+        ds.select(column5).show()
+        //为什么要和dataset来绑定呢？
+        ds.join(ds1, ds.col(&quot;name&quot;) === ds1.col(&quot;name&quot;))
+        
+        //6. dataset.apply
+        val column6 = ds.apply(&quot;name&quot;)
+        val column7 = ds(&quot;name&quot;)
+    }
+}
+</code></pre>
+<p>Type</p>
+<pre><code class="language-scala">ds.select('name as &quot;new_name&quot;).show()
+ds.select('age.as[Long]).show()
+</code></pre>
+<p>API</p>
+<pre><code class="language-scala">//添加新列
+df.withColun(&quot;age&quot;, 'age * 2).show()
+//模糊查询
+ds.where('name like &quot;zhang%&quot;).show()
+//排序
+ds.sort('age asc).show()
+//枚举判断
+ds.where('name isin (&quot;zs&quot;,&quot;wu&quot;,&quot;ls&quot;)).show()
+</code></pre>
+<h2 id="na">N/A</h2>
 <p>缺失值的处理：</p>
 <ol>
 <li>丢弃缺失值的行</li>
@@ -812,135 +844,142 @@
 <ol>
 <li>
 <p>创建</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">naf</span><span class="k">:</span> <span class="kt">DataFrameNaFunctions</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">na</span>
-</code></pre></div></li>
+<pre><code class="language-scala">val naf: DataFrameNaFunctions = df.na
+</code></pre>
+</li>
 <li>
 <p>功能</p>
 <blockquote>
 <p>naf.drop&hellip;	naf.fill &hellip;</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="n">df</span><span class="o">.</span><span class="n">na</span><span class="o">.</span><span class="n">drop</span><span class="o">.</span><span class="n">show</span><span class="o">()</span>
-<span class="ln"> 2</span><span class="n">df</span><span class="o">.</span><span class="n">na</span><span class="o">.</span><span class="n">fill</span><span class="o">.</span><span class="n">show</span><span class="o">()</span>
-<span class="ln"> 3</span>
-<span class="ln"> 4</span><span class="k">class</span> <span class="nc">NullProcessor</span> <span class="o">{</span>
-<span class="ln"> 5</span>    <span class="nd">@Test</span>
-<span class="ln"> 6</span>    <span class="k">def</span> <span class="n">nullAndNaN</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln"> 7</span>        <span class="c1">//ss
-</span><span class="ln"> 8</span><span class="c1"></span>        <span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="nc">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">()</span>
-<span class="ln"> 9</span>         <span class="o">.</span><span class="n">master</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">)</span>
-<span class="ln">10</span>         <span class="o">.</span><span class="n">appName</span><span class="o">(</span><span class="s">&#34;null processor&#34;</span><span class="o">)</span>
-<span class="ln">11</span>         <span class="o">.</span><span class="n">getOrCreate</span><span class="o">()</span>
-<span class="ln">12</span>        <span class="c1">//导入
-</span><span class="ln">13</span><span class="c1"></span>
-<span class="ln">14</span>        <span class="c1">//读取
-</span><span class="ln">15</span><span class="c1"></span>        <span class="c1">//	1.通过spark-csv自动的推断类型来读取，推断数字的时候会将NaN推断为字符串
-</span><span class="ln">16</span><span class="c1"></span>        <span class="n">spark</span><span class="o">.</span><span class="n">read</span>
-<span class="ln">17</span>         <span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;header&#34;</span><span class="o">,</span> <span class="kc">true</span><span class="o">)</span>
-<span class="ln">18</span>         <span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;inferSchema&#34;</span><span class="o">,</span><span class="kc">true</span><span class="o">)</span>
-<span class="ln">19</span>         <span class="o">.</span><span class="n">csv</span><span class="o">(</span><span class="n">dataset</span><span class="o">/</span><span class="n">ds</span><span class="o">)</span>
-<span class="ln">20</span>        <span class="c1">//	2.直接读取字符串，在后续的操作中使用map算子转换类型
-</span><span class="ln">21</span><span class="c1"></span>        <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="o">().</span><span class="n">map</span><span class="o">(</span><span class="n">row</span> <span class="k">=&gt;</span> <span class="n">row</span><span class="o">...)</span>
-<span class="ln">22</span>        <span class="c1">//	3.指定Schema,不要自动推断
-</span><span class="ln">23</span><span class="c1"></span>        <span class="k">val</span> <span class="n">schema</span> <span class="k">=</span> <span class="n">structType</span><span class="o">(</span>
-<span class="ln">24</span>         <span class="n">list</span><span class="o">(</span>
-<span class="ln">25</span>                <span class="nc">StructField</span><span class="o">(</span><span class="s">&#34;id&#34;</span><span class="o">,</span><span class="nc">LongType</span><span class="o">),</span>
-<span class="ln">26</span>                <span class="nc">StructField</span><span class="o">(</span><span class="s">&#34;year&#34;</span><span class="o">,</span><span class="nc">IntegerType</span><span class="o">),</span>
-<span class="ln">27</span>                <span class="nc">StructField</span><span class="o">(</span><span class="s">&#34;day&#34;</span><span class="o">,</span><span class="nc">IntegerType</span><span class="o">),</span>
-<span class="ln">28</span>                <span class="nc">StructField</span><span class="o">(</span><span class="s">&#34;season&#34;</span><span class="o">,</span><span class="nc">IntegerType</span><span class="o">),</span>
-<span class="ln">29</span>                <span class="nc">StructField</span><span class="o">(</span><span class="s">&#34;pm&#34;</span><span class="o">,</span><span class="nc">DoubleType</span><span class="o">)</span>
-<span class="ln">30</span>            <span class="o">)</span>
-<span class="ln">31</span>        <span class="o">)</span>
-<span class="ln">32</span>        <span class="k">val</span> <span class="n">sourceDF</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span>
-<span class="ln">33</span>         <span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;header&#34;</span><span class="o">,</span> <span class="n">value</span> <span class="k">=</span> <span class="kc">true</span><span class="o">)</span>
-<span class="ln">34</span>         <span class="o">.</span><span class="n">schema</span><span class="o">(</span><span class="n">schema</span><span class="o">)</span>
-<span class="ln">35</span>         <span class="o">.</span><span class="n">csv</span><span class="o">(</span><span class="s">&#34;dataset/data.csv&#34;</span><span class="o">)</span>
-<span class="ln">36</span>         <span class="o">.</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">37</span>        <span class="c1">//丢弃
-</span><span class="ln">38</span><span class="c1"></span>        <span class="c1">//	规则：
-</span><span class="ln">39</span><span class="c1"></span>        <span class="c1">//		1.any：只要有一个NaN就丢弃
-</span><span class="ln">40</span><span class="c1"></span>        <span class="n">sourceDF</span><span class="o">.</span><span class="n">na</span><span class="o">.</span><span class="n">drop</span><span class="o">(</span><span class="s">&#34;any&#34;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">41</span>        <span class="n">sourceDF</span><span class="o">.</span><span class="n">na</span><span class="o">.</span><span class="n">drop</span><span class="o">().</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">42</span>        <span class="c1">//		2.all: 所有数据NaN才丢弃
-</span><span class="ln">43</span><span class="c1"></span>        <span class="n">sourceDF</span><span class="o">.</span><span class="n">na</span><span class="o">.</span><span class="n">drop</span><span class="o">(</span><span class="s">&#34;all&#34;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">44</span>        <span class="c1">//		3.某些列
-</span><span class="ln">45</span><span class="c1"></span>        <span class="n">sourceDF</span><span class="o">.</span><span class="n">na</span><span class="o">.</span><span class="n">drop</span><span class="o">(</span><span class="s">&#34;any&#34;</span><span class="o">,</span><span class="nc">List</span><span class="o">(</span><span class="s">&#34;year&#34;</span><span class="o">,</span><span class="s">&#34;month&#34;</span><span class="o">,</span><span class="s">&#34;day&#34;</span><span class="o">)).</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">46</span>        <span class="c1">//填充
-</span><span class="ln">47</span><span class="c1"></span>        <span class="c1">//	规则：
-</span><span class="ln">48</span><span class="c1"></span>        <span class="c1">//		1.针对所有列默认值填充
-</span><span class="ln">49</span><span class="c1"></span>        <span class="n">sourceDF</span><span class="o">.</span><span class="n">na</span><span class="o">.</span><span class="n">fill</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">50</span>        <span class="c1">//		2.针对特定列填充
-</span><span class="ln">51</span><span class="c1"></span>        <span class="n">sourceDF</span><span class="o">.</span><span class="n">na</span><span class="o">.</span><span class="n">fill</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="nc">List</span><span class="o">(</span><span class="s">&#34;year&#34;</span><span class="o">,</span> <span class="s">&#34;month&#34;</span><span class="o">)).</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">52</span>    <span class="o">}</span>
-<span class="ln">53</span><span class="o">}</span>
-</code></pre></div><p>SparkSQL处理异常字符串:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">strProcessor</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln"> 2</span>    <span class="c1">//1.丢弃
-</span><span class="ln"> 3</span><span class="c1"></span>    <span class="k">import</span> <span class="nn">spark.implicits._</span>
-<span class="ln"> 4</span>    <span class="n">sourceDF</span><span class="o">.</span><span class="n">where</span><span class="o">(</span>&#39;PM_dongsi <span class="o">=!=</span> <span class="s">&#34;NA&#34;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
-<span class="ln"> 5</span>    <span class="c1">//2.替换
-</span><span class="ln"> 6</span><span class="c1"></span>    <span class="k">import</span> <span class="nn">org.apache.spark.sql.functions._</span>
-<span class="ln"> 7</span>    <span class="n">sourceDF</span><span class="o">.</span><span class="n">select</span><span class="o">(</span>
-<span class="ln"> 8</span>     &#39;No <span class="n">as</span> <span class="s">&#34;id&#34;</span><span class="o">,</span> &#39;year<span class="o">,</span> &#39;month<span class="o">,</span> &#39;day<span class="o">,</span>
-<span class="ln"> 9</span>        <span class="n">when</span><span class="o">(</span>&#39;PM_Dongsi <span class="o">===</span> <span class="s">&#34;NA&#34;</span><span class="o">,</span> <span class="nc">Double</span><span class="o">.</span><span class="nc">NaN</span><span class="o">)</span>
-<span class="ln">10</span>        <span class="o">.</span><span class="n">otherwise</span><span class="o">(</span>&#39;PM_Dongsi <span class="n">cast</span> <span class="nc">DoubleType</span><span class="o">)</span>
-<span class="ln">11</span>        <span class="o">.</span><span class="n">as</span><span class="o">(</span><span class="s">&#34;pm&#34;</span><span class="o">)</span>
-<span class="ln">12</span>    <span class="o">).</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">13</span>
-<span class="ln">14</span>    <span class="n">sourceDF</span><span class="o">.</span><span class="n">na</span><span class="o">.</span><span class="n">replace</span><span class="o">(</span><span class="s">&#34;PM_Dongsi&#34;</span><span class="o">,</span> <span class="nc">Map</span><span class="o">(</span><span class="s">&#34;NA&#34;</span> <span class="o">-&gt;</span> <span class="s">&#34;NaN&#34;</span><span class="o">,</span> <span class="s">&#34;NULL&#34;</span> <span class="o">-&gt;</span> <span class="s">&#34;null&#34;</span><span class="o">)).</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">15</span><span class="o">}</span>
-<span class="ln">16</span>
-</code></pre></div></li>
+<pre><code class="language-scala">df.na.drop.show()
+df.na.fill.show()
+
+class NullProcessor {
+    @Test
+    def nullAndNaN(): Unit = {
+        //ss
+        val spark = SparkSession.builder()
+         .master(&quot;local[6]&quot;)
+         .appName(&quot;null processor&quot;)
+         .getOrCreate()
+        //导入
+
+        //读取
+        //	1.通过spark-csv自动的推断类型来读取，推断数字的时候会将NaN推断为字符串
+        spark.read
+         .option(&quot;header&quot;, true)
+         .option(&quot;inferSchema&quot;,true)
+         .csv(dataset/ds)
+        //	2.直接读取字符串，在后续的操作中使用map算子转换类型
+        spark.read.csv().map(row =&gt; row...)
+        //	3.指定Schema,不要自动推断
+        val schema = structType(
+         list(
+                StructField(&quot;id&quot;,LongType),
+                StructField(&quot;year&quot;,IntegerType),
+                StructField(&quot;day&quot;,IntegerType),
+                StructField(&quot;season&quot;,IntegerType),
+                StructField(&quot;pm&quot;,DoubleType)
+            )
+        )
+        val sourceDF = spark.read
+         .option(&quot;header&quot;, value = true)
+         .schema(schema)
+         .csv(&quot;dataset/data.csv&quot;)
+         .show()
+        //丢弃
+        //	规则：
+        //		1.any：只要有一个NaN就丢弃
+        sourceDF.na.drop(&quot;any&quot;).show()
+        sourceDF.na.drop().show()
+        //		2.all: 所有数据NaN才丢弃
+        sourceDF.na.drop(&quot;all&quot;).show()
+        //		3.某些列
+        sourceDF.na.drop(&quot;any&quot;,List(&quot;year&quot;,&quot;month&quot;,&quot;day&quot;)).show()
+        //填充
+        //	规则：
+        //		1.针对所有列默认值填充
+        sourceDF.na.fill(0).show()
+        //		2.针对特定列填充
+        sourceDF.na.fill(0,List(&quot;year&quot;, &quot;month&quot;)).show()
+    }
+}
+</code></pre>
+<p>SparkSQL处理异常字符串:</p>
+<pre><code class="language-scala">def strProcessor(): Unit = {
+    //1.丢弃
+    import spark.implicits._
+    sourceDF.where('PM_dongsi =!= &quot;NA&quot;).show()
+    //2.替换
+    import org.apache.spark.sql.functions._
+    sourceDF.select(
+     'No as &quot;id&quot;, 'year, 'month, 'day,
+        when('PM_Dongsi === &quot;NA&quot;, Double.NaN)
+        .otherwise('PM_Dongsi cast DoubleType)
+        .as(&quot;pm&quot;)
+    ).show()
+
+    sourceDF.na.replace(&quot;PM_Dongsi&quot;, Map(&quot;NA&quot; -&gt; &quot;NaN&quot;, &quot;NULL&quot; -&gt; &quot;null&quot;)).show()
+}
+
+</code></pre>
+</li>
 </ol>
 <h2 id="groupby">groupBy</h2>
 <p><strong>groupBy</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="c1">//分组
-</span><span class="ln"> 2</span><span class="c1"></span><span class="k">val</span> <span class="n">groupedDF</span> <span class="k">=</span> <span class="n">cleanDF</span><span class="o">.</span><span class="n">groupBy</span><span class="o">(</span><span class="n">$</span><span class="s">&#34;year&#34;</span><span class="o">,</span><span class="n">$</span><span class="s">&#34;month&#34;</span><span class="o">)</span>
-<span class="ln"> 3</span><span class="c1">//使用functions函数来完成聚合
-</span><span class="ln"> 4</span><span class="c1"></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions._</span>
-<span class="ln"> 5</span><span class="n">groupedDF</span><span class="o">.</span><span class="n">agg</span><span class="o">(</span><span class="n">avg</span><span class="o">(</span><span class="n">$</span><span class="s">&#34;pm&#34;</span><span class="o">)</span> <span class="n">as</span> <span class="s">&#34;pm_avg&#34;</span><span class="o">)</span>
-<span class="ln"> 6</span>	<span class="o">.</span><span class="n">orderBy</span><span class="o">(</span><span class="n">$</span><span class="s">&#34;pm_avg&#34;</span><span class="o">.</span><span class="n">desc</span><span class="o">)</span>
-<span class="ln"> 7</span>
-<span class="ln"> 8</span><span class="c1">//分组第二种方式
-</span><span class="ln"> 9</span><span class="c1"></span><span class="n">groupedDF</span><span class="o">.</span><span class="n">avg</span><span class="o">(</span><span class="s">&#34;pm&#34;</span><span class="o">)</span>
-<span class="ln">10</span>	<span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">$</span><span class="s">&#34;avg(pm)&#34;</span> <span class="n">as</span> <span class="s">&#34;pm_avg&#34;</span><span class="o">)</span>
-<span class="ln">11</span>	<span class="o">.</span><span class="n">orderBy</span><span class="o">(</span><span class="s">&#34;pm_avg&#34;</span><span class="o">)</span>
-</code></pre></div><p><strong>多维聚合</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="c1">//requirement 1:不同年，不同来源PM值的平均数
-</span><span class="ln"> 2</span><span class="c1"></span><span class="k">val</span> <span class="n">postAndYearDF</span> <span class="k">=</span> <span class="n">pmFinal</span><span class="o">.</span><span class="n">groupBy</span><span class="o">(</span>&#39;source<span class="o">,</span>&#39;year<span class="o">)</span>
-<span class="ln"> 3</span>	<span class="o">.</span><span class="n">agg</span><span class="o">(</span><span class="n">avg</span><span class="o">(</span><span class="nc">$pm</span><span class="o">)</span> <span class="n">as</span> <span class="s">&#34;pm&#34;</span><span class="o">)</span>
-<span class="ln"> 4</span>
-<span class="ln"> 5</span><span class="c1">//requirement 2:按照不同的来源统计PM值的平均数
-</span><span class="ln"> 6</span><span class="c1"></span><span class="k">val</span> <span class="n">postDF</span> <span class="k">=</span> <span class="n">pmFinal</span><span class="o">.</span><span class="n">groupBy</span><span class="o">(</span><span class="nc">$source</span><span class="o">)</span>
-<span class="ln"> 7</span>	<span class="o">.</span><span class="n">agg</span><span class="o">(</span><span class="n">avg</span><span class="o">(</span><span class="nc">$pm</span><span class="o">)</span> <span class="n">as</span> <span class="s">&#34;pm&#34;</span><span class="o">)</span>
-<span class="ln"> 8</span>	<span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="nc">$source</span><span class="o">,</span> <span class="n">lit</span><span class="o">(</span><span class="kc">null</span><span class="o">)</span> <span class="n">as</span> <span class="s">&#34;year&#34;</span><span class="o">,</span> <span class="nc">$pm</span><span class="o">)</span>
-<span class="ln"> 9</span>
-<span class="ln">10</span><span class="c1">//合并在同一个结果集中
-</span><span class="ln">11</span><span class="c1"></span><span class="n">postAndYearDF</span><span class="o">.</span><span class="n">union</span><span class="o">(</span><span class="n">postDF</span><span class="o">)</span>
-<span class="ln">12</span>	<span class="o">.</span><span class="n">sort</span><span class="o">(</span><span class="nc">$source</span><span class="o">,</span> <span class="nc">$year</span> <span class="n">asc_nulls_last</span><span class="o">,</span> <span class="nc">$pm</span><span class="o">)</span>
-</code></pre></div><p><strong>rollup</strong></p>
+<pre><code class="language-scala">//分组
+val groupedDF = cleanDF.groupBy($&quot;year&quot;,$&quot;month&quot;)
+//使用functions函数来完成聚合
+import org.apache.spark.sql.functions._
+groupedDF.agg(avg($&quot;pm&quot;) as &quot;pm_avg&quot;)
+	.orderBy($&quot;pm_avg&quot;.desc)
+
+//分组第二种方式
+groupedDF.avg(&quot;pm&quot;)
+	.select($&quot;avg(pm)&quot; as &quot;pm_avg&quot;)
+	.orderBy(&quot;pm_avg&quot;)
+</code></pre>
+<p><strong>多维聚合</strong></p>
+<pre><code class="language-scala">//requirement 1:不同年，不同来源PM值的平均数
+val postAndYearDF = pmFinal.groupBy('source,'year)
+	.agg(avg($pm) as &quot;pm&quot;)
+
+//requirement 2:按照不同的来源统计PM值的平均数
+val postDF = pmFinal.groupBy($source)
+	.agg(avg($pm) as &quot;pm&quot;)
+	.select($source, lit(null) as &quot;year&quot;, $pm)
+
+//合并在同一个结果集中
+postAndYearDF.union(postDF)
+	.sort($source, $year asc_nulls_last, $pm)
+</code></pre>
+<p><strong>rollup</strong></p>
 <p>滚动分组：rollup(A, B)，生成三列：AB分组，A null分组，null(全局)的分组</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="c1">//requirement 1: 每个城市，每年的销售额
-</span><span class="ln"> 2</span><span class="c1">//requirement 2: 每个城市，一共的销售额
-</span><span class="ln"> 3</span><span class="c1">//requirement 3: 总体销售额
-</span><span class="ln"> 4</span><span class="c1"></span><span class="k">val</span> <span class="n">sales</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span>
-<span class="ln"> 5</span>    <span class="o">(</span><span class="s">&#34;Bj&#34;</span><span class="o">,</span> <span class="mi">2016</span><span class="o">,</span> <span class="mi">100</span><span class="o">),</span>
-<span class="ln"> 6</span>    <span class="o">(</span><span class="s">&#34;Bj&#34;</span><span class="o">,</span> <span class="mi">2017</span><span class="o">,</span> <span class="mi">200</span><span class="o">),</span>
-<span class="ln"> 7</span>    <span class="o">(</span><span class="s">&#34;shanghai&#34;</span><span class="o">,</span> <span class="mi">2015</span><span class="o">,</span> <span class="mi">50</span><span class="o">),</span>
-<span class="ln"> 8</span>    <span class="o">(</span><span class="s">&#34;shanghai&#34;</span><span class="o">,</span> <span class="mi">2016</span><span class="o">,</span> <span class="mi">150</span><span class="o">),</span>
-<span class="ln"> 9</span>    <span class="o">(</span><span class="s">&#34;Guangzhou&#34;</span><span class="o">,</span> <span class="mi">2017</span><span class="o">,</span> <span class="mi">50</span><span class="o">),</span>
-<span class="ln">10</span><span class="o">).</span><span class="n">toDF</span><span class="o">(</span><span class="s">&#34;city&#34;</span><span class="o">,</span> <span class="s">&#34;year&#34;</span><span class="o">,</span> <span class="s">&#34;amount&#34;</span><span class="o">)</span>
-<span class="ln">11</span>
-<span class="ln">12</span><span class="n">sales</span><span class="o">.</span><span class="n">rollup</span><span class="o">(</span><span class="nc">$city</span><span class="o">,</span> <span class="nc">$year</span><span class="o">)</span>
-<span class="ln">13</span>	<span class="o">.</span><span class="n">agg</span><span class="o">(</span><span class="n">sum</span><span class="o">(</span><span class="nc">$amount</span><span class="o">)</span> <span class="n">as</span> <span class="s">&#34;amount&#34;</span><span class="o">)</span>
-<span class="ln">14</span>	<span class="o">.</span><span class="n">sort</span><span class="o">(</span><span class="nc">$city</span> <span class="n">asc</span> <span class="n">asc_nulls_last</span><span class="o">,</span> <span class="nc">$year</span><span class="o">.</span><span class="n">asc_nulls_last</span><span class="o">)</span>
-</code></pre></div><p><strong>cube</strong></p>
+<pre><code class="language-scala">//requirement 1: 每个城市，每年的销售额
+//requirement 2: 每个城市，一共的销售额
+//requirement 3: 总体销售额
+val sales = Seq(
+    (&quot;Bj&quot;, 2016, 100),
+    (&quot;Bj&quot;, 2017, 200),
+    (&quot;shanghai&quot;, 2015, 50),
+    (&quot;shanghai&quot;, 2016, 150),
+    (&quot;Guangzhou&quot;, 2017, 50),
+).toDF(&quot;city&quot;, &quot;year&quot;, &quot;amount&quot;)
+
+sales.rollup($city, $year)
+	.agg(sum($amount) as &quot;amount&quot;)
+	.sort($city asc asc_nulls_last, $year.asc_nulls_last)
+</code></pre>
+<p><strong>cube</strong></p>
 <p>rollup对参数顺序有要求，cube是对rollup的弥补</p>
 <p>rollup(A, B)，生成四列：AB分组，A null分组，null B分组，null(全局)的分组</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions._</span>
-<span class="ln">2</span><span class="n">pmFinal</span><span class="o">.</span><span class="n">cube</span><span class="o">(</span><span class="nc">$source</span><span class="o">,</span> <span class="nc">$year</span><span class="o">)</span>
-<span class="ln">3</span>	<span class="o">.</span><span class="n">agg</span><span class="o">(</span><span class="n">avg</span><span class="o">(</span><span class="nc">$pm</span><span class="o">)</span> <span class="n">as</span> <span class="s">&#34;pm&#34;</span><span class="o">)</span>
-<span class="ln">4</span>	<span class="o">.</span><span class="n">sort</span><span class="o">(</span><span class="nc">$source</span><span class="o">.</span><span class="n">asc_nulls_last</span><span class="o">,</span> <span class="nc">$year</span><span class="o">.</span><span class="n">asc_nulls_last</span><span class="o">)</span>
-</code></pre></div><p><strong>RelationalGroupedDataset</strong></p>
+<pre><code class="language-scala">import org.apache.spark.sql.functions._
+pmFinal.cube($source, $year)
+	.agg(avg($pm) as &quot;pm&quot;)
+	.sort($source.asc_nulls_last, $year.asc_nulls_last)
+</code></pre>
+<p><strong>RelationalGroupedDataset</strong></p>
 <p>groupBy, rollup, cube后的数据类型都是RelationalGroupedDataset</p>
 <p>RelationalGroupedDataset并不是DataFrame，所以其中并没有DataFrame的方法，只有如下一些聚合相关的方法，下列方法调用后会生成DataFrame对象，然后就可以再次使用DataFrame的算子进行操作</p>
 <table>
@@ -983,48 +1022,52 @@
 </table>
 <h2 id="table-join">Table Join</h2>
 <p><strong>Join</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">class</span> <span class="nc">JoinProcessor</span><span class="o">{</span>
-<span class="ln"> 2</span>    <span class="c1">//create Spark
-</span><span class="ln"> 3</span><span class="c1"></span>    <span class="c1">//import implicits._
-</span><span class="ln"> 4</span><span class="c1"></span>    <span class="nd">@Test</span>
-<span class="ln"> 5</span>    <span class="k">def</span> <span class="n">introJoin</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln"> 6</span>        <span class="k">val</span> <span class="n">person</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">((</span><span class="mi">0</span><span class="o">,</span> <span class="s">&#34;Lu&#34;</span><span class="o">,</span> <span class="mi">0</span><span class="o">),</span> <span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="s">&#34;Li&#34;</span><span class="o">,</span> <span class="mi">0</span><span class="o">),</span> <span class="o">(</span><span class="mi">2</span><span class="o">,</span><span class="s">&#34;Tim&#34;</span><span class="o">,</span> <span class="mi">0</span><span class="o">))</span>
-<span class="ln"> 7</span>        	<span class="o">.</span><span class="n">toDF</span><span class="o">(</span><span class="s">&#34;id&#34;</span><span class="o">,</span> <span class="s">&#34;name&#34;</span><span class="o">,</span> <span class="s">&#34;cityID&#34;</span><span class="o">)</span>
-<span class="ln"> 8</span>        <span class="k">val</span> <span class="n">cities</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">((</span><span class="mi">0</span><span class="o">,</span> <span class="s">&#34;BJ&#34;</span><span class="o">),</span> <span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="s">&#34;SH&#34;</span><span class="o">),</span> <span class="o">(</span><span class="mi">2</span><span class="o">,</span><span class="s">&#34;GZ&#34;</span><span class="o">))</span>
-<span class="ln"> 9</span>        	<span class="o">.</span><span class="n">toDF</span><span class="o">(</span><span class="s">&#34;id&#34;</span><span class="o">,</span> <span class="s">&#34;name&#34;</span><span class="o">)</span>
-<span class="ln">10</span>
-<span class="ln">11</span>        <span class="k">val</span> <span class="n">df</span> <span class="k">=</span> <span class="n">person</span><span class="o">.</span><span class="n">join</span><span class="o">(</span><span class="n">cities</span><span class="o">,</span> <span class="n">person</span><span class="o">.</span><span class="n">col</span><span class="o">(</span><span class="s">&#34;cityID&#34;</span><span class="o">)</span> <span class="o">===</span> <span class="n">cities</span><span class="o">.</span><span class="n">col</span><span class="o">(</span><span class="s">&#34;id&#34;</span><span class="o">))</span>
-<span class="ln">12</span>        	<span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="n">col</span><span class="o">(</span><span class="s">&#34;id&#34;</span><span class="o">),</span><span class="n">person</span><span class="o">.</span><span class="n">col</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">),</span><span class="n">cities</span><span class="o">.</span><span class="n">col</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">))</span>
-<span class="ln">13</span>        
-<span class="ln">14</span>        <span class="n">df</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="o">(</span><span class="s">&#34;user_city&#34;</span><span class="o">)</span>
-<span class="ln">15</span>    <span class="o">}</span>
-<span class="ln">16</span><span class="o">}</span>
-</code></pre></div><p><strong>cross</strong></p>
+<pre><code class="language-scala">class JoinProcessor{
+    //create Spark
+    //import implicits._
+    @Test
+    def introJoin(): Unit = {
+        val person = Seq((0, &quot;Lu&quot;, 0), (1, &quot;Li&quot;, 0), (2,&quot;Tim&quot;, 0))
+        	.toDF(&quot;id&quot;, &quot;name&quot;, &quot;cityID&quot;)
+        val cities = Seq((0, &quot;BJ&quot;), (1, &quot;SH&quot;), (2,&quot;GZ&quot;))
+        	.toDF(&quot;id&quot;, &quot;name&quot;)
+
+        val df = person.join(cities, person.col(&quot;cityID&quot;) === cities.col(&quot;id&quot;))
+        	.select(person.col(&quot;id&quot;),person.col(&quot;name&quot;),cities.col(&quot;name&quot;))
+        
+        df.createOrReplaceTempView(&quot;user_city&quot;)
+    }
+}
+</code></pre>
+<p><strong>cross</strong></p>
 <p>交叉连接，笛卡尔积</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">def</span> <span class="n">crossJoin</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln">2</span>    <span class="n">person</span><span class="o">.</span><span class="n">crossJoin</span><span class="o">(</span><span class="n">cities</span><span class="o">)</span>
-<span class="ln">3</span>    	<span class="o">.</span><span class="n">where</span><span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="n">col</span><span class="o">(</span><span class="s">&#34;cityId&#34;</span><span class="o">)</span> <span class="o">===</span> <span class="n">cities</span><span class="o">.</span><span class="n">col</span><span class="o">(</span><span class="s">&#34;id&#34;</span><span class="o">))</span>
-<span class="ln">4</span>
-<span class="ln">5</span>    <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&#34;select u.id, u.name, from person u cross join cities c&#34;</span> <span class="o">+</span> <span class="s">&#34;where u.cityId = c.id&#34;</span><span class="o">)</span> 
-<span class="ln">6</span><span class="o">}</span>
-</code></pre></div><p><strong>inner</strong></p>
+<pre><code class="language-scala">def crossJoin(): Unit = {
+    person.crossJoin(cities)
+    	.where(person.col(&quot;cityId&quot;) === cities.col(&quot;id&quot;))
+
+    spark.sql(&quot;select u.id, u.name, from person u cross join cities c&quot; + &quot;where u.cityId = c.id&quot;) 
+}
+</code></pre>
+<p><strong>inner</strong></p>
 <p>交集</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="ln">1</span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">person</span><span class="w"> </span><span class="k">inner</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">cities</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">cityId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cities</span><span class="p">.</span><span class="n">id</span><span class="w">
-</span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="n">person</span><span class="o">.</span><span class="n">join</span><span class="o">(</span><span class="n">right</span> <span class="k">=</span> <span class="n">cities</span><span class="o">,</span>
-<span class="ln">2</span>           <span class="n">joinExprs</span> <span class="k">=</span> <span class="n">person</span><span class="o">(</span><span class="s">&#34;cityId&#34;</span><span class="o">)</span> <span class="o">===</span> <span class="n">citeis</span><span class="o">(</span><span class="s">&#34;id&#34;</span><span class="o">),</span>
-<span class="ln">3</span>           <span class="n">joinType</span> <span class="k">=</span> <span class="s">&#34;inner&#34;</span><span class="o">)</span>
-</code></pre></div><p><strong>outer</strong></p>
+<pre><code class="language-sql">select * from person inner join cities on person.cityId = cities.id
+</code></pre>
+<pre><code class="language-scala">person.join(right = cities,
+           joinExprs = person(&quot;cityId&quot;) === citeis(&quot;id&quot;),
+           joinType = &quot;inner&quot;)
+</code></pre>
+<p><strong>outer</strong></p>
 <p>全外连接</p>
 <p>内连接的结果只有连接上的数据，而全外连接可以包含没有连接上的数据。</p>
 <p><strong>leftouter</strong></p>
 <p>左外连接</p>
 <p>全外连接含没有连接上的数据，左外连接只包含左边没有连接上的数据。</p>
 <p><strong>semi&amp;anti</strong></p>
-<p>Semi-join<br />
-通常出现在使用了exists或in的sql中，所谓semi-join即在两表关联时，当第二个表中存在一个或多个匹配记录时，返回第一个表的记录；<br />
+<p>Semi-join<br>
+通常出现在使用了exists或in的sql中，所谓semi-join即在两表关联时，当第二个表中存在一个或多个匹配记录时，返回第一个表的记录；<br>
 与普通join的区别在于semi-join时，第一个表里的记录最多只返回一次；</p>
-<p>Anti-join<br />
-而anti-join则与semi-join相反，即当在第二张表没有发现匹配记录时，才会返回第一张表里的记录；<br />
+<p>Anti-join<br>
+而anti-join则与semi-join相反，即当在第二张表没有发现匹配记录时，才会返回第一张表里的记录；<br>
 当使用not exists/not in的时候会用到，两者在处理null值的时候会有所区别</p>
 <ol>
 <li>使用not in且相应列有not null约束</li>
@@ -1033,16 +1076,16 @@
 <h2 id="udf">UDF</h2>
 <p>自定义列操作函数</p>
 <h2 id="over-rank">Over Rank</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="c1">//1定义窗口
-</span><span class="ln">2</span><span class="c1"></span><span class="k">val</span> <span class="n">window</span> <span class="k">=</span> <span class="nc">Window</span><span class="o">.</span><span class="n">partitionBy</span><span class="o">(</span><span class="nc">$category</span><span class="o">)</span>
-<span class="ln">3</span>	<span class="o">.</span><span class="n">orderBy</span><span class="o">(</span><span class="nc">$revenue</span><span class="o">.</span><span class="n">desc</span><span class="o">)</span>
-<span class="ln">4</span>
-<span class="ln">5</span><span class="c1">//2处理数据
-</span><span class="ln">6</span><span class="c1"></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions._</span>
-<span class="ln">7</span><span class="n">source</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="nc">$production</span><span class="o">,</span> <span class="nc">$category</span><span class="o">,</span> <span class="n">dense_rank</span><span class="o">()</span> <span class="n">over</span> <span class="n">window</span> <span class="n">as</span> <span class="s">&#34;rank&#34;</span><span class="o">)</span>
-<span class="ln">8</span>	<span class="o">.</span><span class="n">where</span><span class="o">(</span><span class="nc">$rank</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="o">)</span>
-<span class="ln">9</span>	<span class="o">.</span><span class="n">show</span><span class="o">()</span>
-</code></pre></div>
+<pre><code class="language-scala">//1定义窗口
+val window = Window.partitionBy($category)
+	.orderBy($revenue.desc)
+
+//2处理数据
+import org.apache.spark.sql.functions._
+source.select($production, $category, dense_rank() over window as &quot;rank&quot;)
+	.where($rank &lt;= 2)
+	.show()
+</code></pre>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">

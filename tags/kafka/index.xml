@@ -66,7 +66,7 @@
 &lt;p&gt;以秒杀为例：风险控制-&amp;gt;库存锁定-&amp;gt;生成订单-&amp;gt;短信通知-&amp;gt;更新统计数据&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/kafkaAsyn.webp&#34; alt=&#34;kafkaAsyn&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/kafkaAsyn.webp&#34; alt=&#34;kafkaAsyn&#34;&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;限流削峰/流量控制&lt;/p&gt;
@@ -82,7 +82,7 @@
 &lt;p&gt;同一个客户呼入电话只能被一位客服人员处理，第二个客服人员不能为该客户服务。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/kafkaP2p.webp&#34; alt=&#34;kafkaP2p&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/kafkaP2p.webp&#34; alt=&#34;kafkaP2p&#34;&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;发布/订阅模型&lt;/p&gt;
@@ -90,7 +90,7 @@
 &lt;p&gt;生活中的报纸订阅就是一种典型的发布 / 订阅模型。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/kafkaSub.webp&#34; alt=&#34;kafkaSub&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/kafkaSub.webp&#34; alt=&#34;kafkaSub&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;kafka&#34;&gt;Kafka&lt;/h2&gt;
 &lt;h3 id=&#34;1-intro&#34;&gt;1. Intro&lt;/h3&gt;
 &lt;p&gt;kafka是一个分布式流处理平台。&lt;/p&gt;
@@ -100,9 +100,9 @@
 &lt;li&gt;安全的将流式的数据存储在一个分布式，有副本备份，容错的集群&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;2--history&#34;&gt;2.  History&lt;/h3&gt;
-&lt;p&gt;Kafka从何而来?我们为什么要开发Kafka? Kafka到底是什么?&lt;br /&gt;
-Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然有很多数据库和系统可以用来存储数据，但在我们的架构里，&lt;strong&gt;刚好缺一个可以帮助处理持续数据流的组件&lt;/strong&gt;。在开发Kafka之前，我们实验了各种现成的解决方案，&lt;strong&gt;从消息系统到日志聚合系统，再到ETL工具，它们都无法满足我们的需求。&lt;/strong&gt;&lt;br /&gt;
-最后，我们决定从头开发一个系统。&lt;strong&gt;我们不想只是开发一个能够存储数据的系统&lt;/strong&gt;，比如传统的关系型数据库、键值存储引擎、搜索引擎或缓存系统，&lt;strong&gt;我们希望能够把数据看成是持续变化和不断增长的流&lt;/strong&gt;，并基于这样的想法构建出一个数据系统。事实上，是一个数据架构。&lt;br /&gt;
+&lt;p&gt;Kafka从何而来?我们为什么要开发Kafka? Kafka到底是什么?&lt;br&gt;
+Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然有很多数据库和系统可以用来存储数据，但在我们的架构里，&lt;strong&gt;刚好缺一个可以帮助处理持续数据流的组件&lt;/strong&gt;。在开发Kafka之前，我们实验了各种现成的解决方案，&lt;strong&gt;从消息系统到日志聚合系统，再到ETL工具，它们都无法满足我们的需求。&lt;/strong&gt;&lt;br&gt;
+最后，我们决定从头开发一个系统。&lt;strong&gt;我们不想只是开发一个能够存储数据的系统&lt;/strong&gt;，比如传统的关系型数据库、键值存储引擎、搜索引擎或缓存系统，&lt;strong&gt;我们希望能够把数据看成是持续变化和不断增长的流&lt;/strong&gt;，并基于这样的想法构建出一个数据系统。事实上，是一个数据架构。&lt;br&gt;
 这个想法实现后比我们最初预想的适用性更广。Kafka 一开始被用在社交网络的实时应用和数据流当中，而现在已经成为下一代数据架构的基础。大型零售商正在基于持续数据流改造他们的基础业务流程，汽车公司正在从互联网汽车那里收集和处理实时数据流，银行也在重新思考基于 Kafka 改造他们的基础。&lt;/p&gt;
 &lt;p&gt;它可以用于两大类别的应用:&lt;/p&gt;
 &lt;ol&gt;
@@ -165,29 +165,34 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;li&gt;消费者组：Consumer Group。多个消费者实例共同组成的一个组，同时消费多个分区以实现高吞吐。&lt;/li&gt;
 &lt;li&gt;重平衡：Rebalance。消费者组内某个消费者实例挂掉后，其他消费者实例自动重新分配订阅主题分区的过程。Rebalance 是 Kafka 消费者端实现高可用的重要手段。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/kafkaItem.png&#34; alt=&#34;kafkaItem&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/kafkaItem.png&#34; alt=&#34;kafkaItem&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;4-topic&#34;&gt;4. Topic&lt;/h3&gt;
 &lt;p&gt;日志&lt;/p&gt;
 &lt;p&gt;日志可能是一种最简单的不能再简单的存储抽象，只能追加、按照时间完全有序（totally-ordered）的记录序列。日志看起来的样子：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/kafkaLog.png&#34; alt=&#34;kafkaLog&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/kafkaLog.png&#34; alt=&#34;kafkaLog&#34;&gt;&lt;/p&gt;
 &lt;p&gt;在日志的末尾添加记录，读取日志记录则从左到右。每一条记录都指定了一个唯一的顺序的日志记录编号。&lt;/p&gt;
 &lt;p&gt;日志记录的次序（ordering）定义了『时间』概念，因为位于左边的日志记录表示比右边的要早。日志记录编号可以看作是这条日志记录的『时间戳』。把次序直接看成是时间概念，刚开始你会觉得有点怪异，但是这样的做法有个便利的性质：解耦了 时间 和 任一特定的物理时钟（physical clock）。引入分布式系统后，这会成为一个必不可少的性质。&lt;/p&gt;
 &lt;p&gt;日志 和 文件或数据表（table）并没有什么大的不同。文件是一系列字节，表是由一系列记录组成，而日志实际上只是一种按照时间顺序存储记录的数据表或文件。&lt;/p&gt;
 &lt;p&gt;对于每一个topic， Kafka集群都会维持一个分区日志，如下所示：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/kafkaPartitionLog.png&#34; alt=&#34;kafkaPartitionLog&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/kafkaPartitionLog.png&#34; alt=&#34;kafkaPartitionLog&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;实操&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;启动zk&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /usr/local/kara/kafka_2.13-2.6.0/bin
-&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;zookeeper-server-start.sh ../config/zookeeper.properties
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;启动kafka服务器&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;kafka-server-start.sh ../config/server.properties
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;创建topic，4个分区，一个副本&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; --partitions &lt;span class=&#34;m&#34;&gt;4&lt;/span&gt; --topic partition_test
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;发送一些消息&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;kafka-console-producer.sh --broker-list localhost:9092 --topic partition_test
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;启动一个consumer&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic partition_test --from-beginning
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;分区&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;cd /usr/local/kara/kafka_2.13-2.6.0/bin
+zookeeper-server-start.sh ../config/zookeeper.properties
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;启动kafka服务器&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;kafka-server-start.sh ../config/server.properties
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建topic，4个分区，一个副本&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 4 --topic partition_test
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;发送一些消息&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;kafka-console-producer.sh --broker-list localhost:9092 --topic partition_test
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;启动一个consumer&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic partition_test --from-beginning
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;分区&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;partition存储分布&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;一个topic下有多个不同partition，每个partition为一个目录，partiton命名规则为&lt;strong&gt;topic名称+有序序号&lt;/strong&gt;，第一个partiton序号从0开始，序号最大值为partitions数量减1&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;partition文件存储&lt;/strong&gt;&lt;/p&gt;
@@ -208,42 +213,42 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;关键字&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;解释说明&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;关键字&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;解释说明&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;8 byte offset&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;在parition(分区)内的每条消息都有一个有序的id号，这个id号被称为偏移(offset),它可以唯一确定每条消息在parition(分区)内的位置。即offset表示partiion的第多少message&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;8 byte offset&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;在parition(分区)内的每条消息都有一个有序的id号，这个id号被称为偏移(offset),它可以唯一确定每条消息在parition(分区)内的位置。即offset表示partiion的第多少message&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;4 byte message size&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;message大小&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;4 byte message size&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;message大小&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;4 byte CRC32&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;用crc32校验message&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;4 byte CRC32&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;用crc32校验message&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;1 byte “magic”&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;表示本次发布Kafka服务程序协议版本号&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;1 byte “magic”&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;表示本次发布Kafka服务程序协议版本号&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;1 byte “attributes”&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;表示为独立版本、或标识压缩类型、或编码类型。&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;1 byte “attributes”&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;表示为独立版本、或标识压缩类型、或编码类型。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;4 byte key length&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;表示key的长度,当key为-1时，K byte key字段不填&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;4 byte key length&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;表示key的长度,当key为-1时，K byte key字段不填&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;K byte key&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;可选&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;K byte key&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;可选&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;value bytes payload&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;表示实际消息数据。&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;value bytes payload&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;表示实际消息数据。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -300,18 +305,20 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;p&gt;传统IO &lt;strong&gt;(4次上下文切换4次拷贝)&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;假如将磁盘上的文件读取出来，然后通过网络协议发送给客户端。&lt;/p&gt;
 &lt;p&gt;一般需要两个系统调用，&lt;strong&gt;但是一共4次上下文切换，4次拷贝&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;read(file, tmp_buf, len);
-&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;write(socket, tmp_buf, len);
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;pre&gt;&lt;code&gt;read(file, tmp_buf, len);
+write(socket, tmp_buf, len);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;要想提高文件传输的性能，就需要减少「用户态与内核态的上下文切换」和「内存拷贝」的次数&lt;/strong&gt;。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;mmap(&lt;strong&gt;4次上下文切换3次拷贝&lt;/strong&gt;)&lt;/p&gt;
 &lt;p&gt;mmap()系统调用函数会直接把内核缓冲区里的数据「&lt;strong&gt;映射&lt;/strong&gt;」到用户空间，这样，操作系统内核与用户空间就不需要再进行任何的数据拷贝操作，它替换了read()系统调用函数。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;buf = mmap(file, len);
-&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;write(sockfd, buf, len);
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;pre&gt;&lt;code&gt;buf = mmap(file, len);
+write(sockfd, buf, len);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -321,9 +328,10 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;p&gt;其次，该系统调用，可以直接把内核缓冲区里的数据拷贝到 socket 缓冲区里，不再拷贝到用户态，这样就只有 2 次上下文切换，和 3 次数据拷贝。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;#include &amp;lt;sys/socket.h&amp;gt;
-&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;ssize_t sendfile(int out_fd, int in_fd, off_t *offset, size_t count);
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;pre&gt;&lt;code&gt;#include &amp;lt;sys/socket.h&amp;gt;
+ssize_t sendfile(int out_fd, int in_fd, off_t *offset, size_t count);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;它的前两个参数分别是目的端和源端的文件描述符，后面两个参数是源端的偏移量和复制数据的长度，返回值是实际复制数据的长度。&lt;/p&gt;
 &lt;/li&gt;

@@ -124,7 +124,7 @@
 </svg></span>
     <span class="post_date">
       Aug 3, 2020</span>
-    <span class="post_time"> · 7 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
+    <span class="post_time"> · 6 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
         </a><a href='https://Jerrysmd.github.io/tags/spark' title="spark" class="post_tag button button_translucent">spark
         </a>
     </span>
@@ -155,185 +155,192 @@
 <li>会话分析</li>
 </ol>
 <p><strong>数据读取</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">class</span> <span class="nc">TaxiAnalysisRunner</span><span class="o">{</span>
-<span class="ln"> 2</span>    <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln"> 3</span>        <span class="c1">//1创建SparkSession
-</span><span class="ln"> 4</span><span class="c1"></span>        <span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="nc">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">()</span>
-<span class="ln"> 5</span>        	<span class="o">.</span><span class="n">master</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">)</span>
-<span class="ln"> 6</span>        	<span class="o">.</span><span class="n">appName</span><span class="o">(</span><span class="s">&#34;taxi&#34;</span><span class="o">)</span>
-<span class="ln"> 7</span>        	<span class="o">.</span><span class="n">getOrCreate</span><span class="o">()</span>
-<span class="ln"> 8</span>        
-<span class="ln"> 9</span>        <span class="c1">//2导入隐式转换和函数
-</span><span class="ln">10</span><span class="c1"></span>        <span class="k">import</span> <span class="nn">spark.implicits._</span>
-<span class="ln">11</span>        <span class="k">import</span> <span class="nn">org.apache.spark.sql.functions._</span>
-<span class="ln">12</span>        
-<span class="ln">13</span>        <span class="c1">//3数据读取
-</span><span class="ln">14</span><span class="c1"></span>        <span class="k">val</span> <span class="n">taxiRaw</span><span class="k">:</span> <span class="kt">Dataset</span><span class="o">[</span><span class="kt">Row</span><span class="o">]</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span>
-<span class="ln">15</span>        	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;header&#34;</span><span class="o">,</span> <span class="n">value</span> <span class="k">=</span> <span class="kc">true</span><span class="o">)</span>
-<span class="ln">16</span>        	<span class="o">.</span><span class="n">csv</span><span class="o">(</span><span class="s">&#34;dataset/half_trip.csv&#34;</span><span class="o">)</span>
-<span class="ln">17</span>    <span class="o">}</span>
-<span class="ln">18</span><span class="o">}</span>
-</code></pre></div><p><strong>抽象数据类</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="c1">//dataframe是ROW类型的dataset
-</span><span class="ln"> 2</span><span class="c1">//读取的dataframe是row类型的，如果是dataset[trip]把类型抽象，对数据方便处理
-</span><span class="ln"> 3</span><span class="c1"></span><span class="k">case</span> <span class="k">class</span> <span class="nc">Trip</span><span class="o">(</span>
-<span class="ln"> 4</span>	<span class="n">license</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span>
-<span class="ln"> 5</span>    <span class="n">pickUpTime</span><span class="k">:</span> <span class="kt">Long</span><span class="o">,</span>
-<span class="ln"> 6</span>    <span class="n">dropOffTime</span><span class="k">:</span> <span class="kt">Long</span><span class="o">,</span>
-<span class="ln"> 7</span>    <span class="n">pickUpX</span><span class="k">:</span> <span class="kt">Double</span><span class="o">,</span>
-<span class="ln"> 8</span>    <span class="n">pickUpy</span><span class="k">:</span> <span class="kt">Double</span><span class="o">,</span>
-<span class="ln"> 9</span>    <span class="n">dropOffX</span><span class="k">:</span> <span class="kt">Double</span><span class="o">,</span>
-<span class="ln">10</span>    <span class="n">dropOffY</span><span class="k">:</span> <span class="kt">Double</span>
-<span class="ln">11</span><span class="o">)</span>
-</code></pre></div><p><strong>转换DF类型、清洗异常数据</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="c1">//dataframe[Row] =&gt; dataset[]
-</span><span class="ln"> 2</span><span class="c1"></span><span class="k">val</span> <span class="n">taxiParsed</span><span class="k">:</span><span class="kt">RDD</span><span class="o">[</span><span class="kt">Either</span><span class="o">[</span><span class="kt">Trip</span>,<span class="o">(</span><span class="kt">Row</span>,<span class="kt">Exception</span><span class="o">)]]</span> <span class="k">=</span> <span class="n">taxiRaw</span><span class="o">.</span><span class="n">rdd</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">safe</span><span class="o">(</span><span class="n">parse</span><span class="o">))</span>
-<span class="ln"> 3</span><span class="c1">//异常数据
-</span><span class="ln"> 4</span><span class="c1"></span><span class="k">val</span> <span class="n">exceptionResult</span> <span class="k">=</span> <span class="n">taxiParsed</span><span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="n">e</span> <span class="k">=&gt;</span> <span class="n">e</span><span class="o">.</span><span class="n">isRight</span><span class="o">)</span>
-<span class="ln"> 5</span>	<span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">e</span> <span class="k">=&gt;</span> <span class="n">e</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">get</span><span class="o">.</span><span class="n">_1</span><span class="o">)</span>
-<span class="ln"> 6</span><span class="k">val</span> <span class="n">taxi</span> <span class="nc">Good</span><span class="k">:</span> <span class="kt">Dataset</span><span class="o">[</span><span class="kt">Trip</span><span class="o">]</span> <span class="k">=</span> <span class="n">taxiParsed</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">either</span> <span class="k">=&gt;</span> <span class="n">either</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">get</span><span class="o">).</span><span class="n">toDS</span><span class="o">()</span>
-<span class="ln"> 7</span>
-<span class="ln"> 8</span>
-<span class="ln"> 9</span><span class="k">def</span> <span class="n">parse</span><span class="o">(</span><span class="n">row</span><span class="k">:</span> <span class="kt">Row</span><span class="o">)</span><span class="k">:</span> <span class="kt">Trip</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln">10</span>    <span class="k">val</span> <span class="n">richRow</span> <span class="k">=</span> <span class="k">new</span> <span class="n">richRow</span><span class="o">(</span><span class="n">row</span><span class="o">)</span>
-<span class="ln">11</span>    <span class="k">val</span> <span class="n">license</span> <span class="k">=</span> <span class="n">richRow</span><span class="o">.</span><span class="n">getAs</span><span class="o">[</span><span class="kt">String</span><span class="o">](</span><span class="s">&#34;hack_license&#34;</span><span class="o">).</span><span class="n">orNull</span>
-<span class="ln">12</span>    <span class="k">val</span> <span class="n">pickUpTime</span> <span class="k">=</span> <span class="n">parseTime</span><span class="o">(</span><span class="n">richRow</span><span class="o">,</span> <span class="s">&#34;...&#34;</span><span class="o">)</span>
-<span class="ln">13</span>    <span class="k">val</span> <span class="n">dropOffTime</span> <span class="k">=</span> <span class="n">parseTime</span><span class="o">(</span><span class="n">richRow</span><span class="o">,</span> <span class="s">&#34;...&#34;</span><span class="o">)</span>
-<span class="ln">14</span>    <span class="k">val</span> <span class="n">pickUpX</span> <span class="k">=</span> <span class="n">parseLocation</span><span class="o">(</span><span class="n">richRow</span><span class="o">,</span> <span class="s">&#34;...&#34;</span><span class="o">)</span>
-<span class="ln">15</span>    <span class="k">val</span> <span class="n">pickUpy</span> <span class="k">=</span> <span class="n">parseLocation</span><span class="o">(</span><span class="n">richRow</span><span class="o">,</span> <span class="s">&#34;...&#34;</span><span class="o">)</span>
-<span class="ln">16</span>    <span class="k">val</span> <span class="n">dropOffX</span> <span class="k">=</span> <span class="n">parseLocation</span><span class="o">(</span><span class="n">richRow</span><span class="o">,</span> <span class="s">&#34;...&#34;</span><span class="o">)</span>
-<span class="ln">17</span>    <span class="k">val</span> <span class="n">dropOffY</span> <span class="k">=</span> <span class="n">parseLocation</span><span class="o">(</span><span class="n">richRow</span><span class="o">,</span> <span class="s">&#34;...&#34;</span><span class="o">)</span>
-<span class="ln">18</span>    <span class="nc">Trip</span><span class="o">(</span><span class="n">license</span><span class="o">,</span> <span class="n">pickUpTime</span><span class="o">,</span> <span class="n">dropOffTime</span><span class="o">,</span> <span class="n">pickUpX</span><span class="o">,</span> <span class="n">pickUpy</span><span class="o">,</span> <span class="n">dropOffX</span><span class="o">,</span> <span class="n">dropOffY</span><span class="o">)</span>
-<span class="ln">19</span><span class="o">}</span>
-<span class="ln">20</span>
-<span class="ln">21</span><span class="k">class</span> <span class="nc">RichRow</span><span class="o">(</span><span class="n">row</span><span class="k">:</span> <span class="kt">Row</span><span class="o">){</span>
-<span class="ln">22</span>    <span class="k">def</span> <span class="n">getAs</span><span class="o">[</span><span class="kt">T</span><span class="o">](</span><span class="n">field</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="k">=</span> <span class="o">{</span>
-<span class="ln">23</span>        <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">.</span><span class="n">isNullAt</span><span class="o">(</span><span class="n">row</span><span class="o">.</span><span class="n">fieldIndex</span><span class="o">(</span><span class="n">field</span><span class="o">))){</span>
-<span class="ln">24</span>            <span class="nc">None</span>
-<span class="ln">25</span>        <span class="o">}</span><span class="k">else</span><span class="o">{</span>
-<span class="ln">26</span>            <span class="nc">Some</span><span class="o">(</span><span class="n">row</span><span class="o">.</span><span class="n">getAs</span><span class="o">[</span><span class="kt">T</span><span class="o">](</span><span class="n">field</span><span class="o">))</span>
-<span class="ln">27</span>        <span class="o">}</span>
-<span class="ln">28</span>    <span class="o">}</span>
-<span class="ln">29</span><span class="o">}</span>
-<span class="ln">30</span><span class="k">def</span> <span class="n">parseTime</span><span class="o">(</span><span class="n">row</span><span class="k">:</span> <span class="kt">RichRow</span><span class="o">,</span> <span class="n">field</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span><span class="k">:</span> <span class="kt">Long</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln">31</span>    <span class="c1">//规定格式
-</span><span class="ln">32</span><span class="c1"></span>    <span class="k">val</span> <span class="n">pattern</span> <span class="k">=</span> <span class="s">&#34;yyyy-MM-dd HH:mm:ss&#34;</span>
-<span class="ln">33</span>    <span class="k">val</span> <span class="n">formatter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SimpleDateFormat</span><span class="o">(</span><span class="n">pattern</span><span class="o">,</span> <span class="n">locale</span><span class="o">.</span><span class="nc">ENGLISH</span><span class="o">)</span>
-<span class="ln">34</span>    <span class="c1">//执行转换
-</span><span class="ln">35</span><span class="c1"></span>    <span class="k">val</span> <span class="n">time</span> <span class="k">=</span> <span class="n">row</span><span class="o">.</span><span class="n">getAs</span><span class="o">[</span><span class="kt">String</span><span class="o">](</span><span class="n">field</span><span class="o">)</span>
-<span class="ln">36</span>    <span class="k">val</span> <span class="n">timeOption</span> <span class="k">=</span> <span class="n">time</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">time</span> <span class="k">=&gt;</span> <span class="n">formatter</span><span class="o">.</span><span class="n">parse</span><span class="o">(</span><span class="n">time</span><span class="o">).</span><span class="n">getTime</span><span class="o">)</span>
-<span class="ln">37</span>    <span class="c1">//Option代表某个方法，结果可能为空，使得方法调用出必须处理为null的情况
-</span><span class="ln">38</span><span class="c1"></span>    <span class="c1">//Option对象本身提供了一些对于null的支持
-</span><span class="ln">39</span><span class="c1"></span>    <span class="n">timeOption</span><span class="o">.</span><span class="n">getOrElse</span><span class="o">(</span><span class="mi">0L</span><span class="o">)</span>
-<span class="ln">40</span><span class="o">}</span>
-<span class="ln">41</span>
-<span class="ln">42</span><span class="k">def</span> <span class="n">parseLocation</span><span class="o">(</span><span class="n">row</span><span class="k">:</span> <span class="kt">RickRow</span><span class="o">,</span> <span class="n">field</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span><span class="k">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln">43</span>    <span class="k">val</span> <span class="n">location</span> <span class="k">=</span> <span class="n">row</span><span class="o">.</span><span class="n">getAs</span><span class="o">[</span><span class="kt">String</span><span class="o">](</span><span class="n">fiecld</span><span class="o">)</span>
-<span class="ln">44</span>    <span class="k">val</span> <span class="n">locationOption</span> <span class="k">=</span> <span class="n">location</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">loc</span> <span class="k">=&gt;</span> <span class="n">loc</span><span class="o">.</span><span class="n">toDouble</span><span class="o">)</span>
-<span class="ln">45</span>    <span class="n">locationOption</span><span class="o">.</span><span class="n">getOrElse</span><span class="o">(</span><span class="mi">0</span><span class="n">D</span><span class="o">)</span>
-<span class="ln">46</span><span class="o">}</span>
-<span class="ln">47</span>
-<span class="ln">48</span><span class="c1">//parse异常处理
-</span><span class="ln">49</span><span class="c1">//出现异常-&gt;返回异常信息，和当前调用
-</span><span class="ln">50</span><span class="c1"></span><span class="k">def</span> <span class="n">safe</span><span class="o">[</span><span class="kt">P</span>, <span class="kt">R</span><span class="o">](</span><span class="n">f</span><span class="k">:</span> <span class="kt">P</span> <span class="o">=&gt;</span> <span class="n">R</span><span class="o">)</span><span class="k">:</span> <span class="kt">P</span> <span class="o">=&gt;</span> <span class="nc">Either</span><span class="o">[</span><span class="kt">R</span>,<span class="o">(</span><span class="kt">P</span>,<span class="kt">Exception</span><span class="o">)]={</span>
-<span class="ln">51</span>    <span class="k">new</span> <span class="nc">Function</span><span class="o">[</span><span class="kt">P</span>, <span class="kt">Either</span><span class="o">[</span><span class="kt">R</span>,<span class="o">(</span><span class="kt">P</span>,<span class="kt">Exception</span><span class="o">)]]</span> <span class="k">with</span> <span class="nc">Serializable</span> <span class="o">{</span>
-<span class="ln">52</span>        <span class="k">override</span> <span class="k">def</span> <span class="n">apply</span><span class="o">(</span><span class="n">param</span><span class="k">:</span> <span class="kt">P</span><span class="o">)</span><span class="k">:</span> <span class="kt">Either</span><span class="o">[</span><span class="kt">R</span>, <span class="o">(</span><span class="kt">P</span>, <span class="kt">Exception</span><span class="o">)]</span> <span class="k">=</span> <span class="o">{</span>
-<span class="ln">53</span>            <span class="k">try</span><span class="o">{</span>
-<span class="ln">54</span>                <span class="nc">Left</span><span class="o">(</span><span class="n">param</span><span class="o">)</span>
-<span class="ln">55</span>            <span class="o">}</span><span class="k">catch</span><span class="o">{</span>
-<span class="ln">56</span>                <span class="k">case</span> <span class="n">e</span><span class="k">:</span> <span class="kt">Exception</span> <span class="o">=&gt;</span> <span class="nc">Right</span><span class="o">((</span><span class="n">param</span><span class="o">,</span> <span class="n">e</span><span class="o">))</span>
-<span class="ln">57</span>            <span class="o">}</span>
-<span class="ln">58</span>        <span class="o">}</span>
-<span class="ln">59</span>    <span class="o">}</span>
-<span class="ln">60</span><span class="o">}</span>
-</code></pre></div><p><strong>统计分布</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="c1">//编写udf，将毫秒转为小时单位
-</span><span class="ln"> 2</span><span class="c1"></span><span class="k">val</span> <span class="n">hours</span> <span class="k">=</span> <span class="o">(</span><span class="n">pickUpTime</span><span class="k">:</span> <span class="kt">Long</span><span class="o">,</span> <span class="n">dropOffTime</span><span class="k">:</span> <span class="kt">Long</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="o">{</span>
-<span class="ln"> 3</span>    <span class="k">val</span> <span class="n">duration</span> <span class="k">=</span> <span class="n">dropOffTime</span> <span class="o">-</span> <span class="n">pickUpTime</span>
-<span class="ln"> 4</span>    <span class="k">val</span> <span class="n">hours</span> <span class="k">=</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="nc">HOURS</span><span class="o">.</span><span class="n">convert</span><span class="o">(</span><span class="n">duration</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="nc">MILLISECONDS</span><span class="o">)</span>
-<span class="ln"> 5</span>    <span class="n">hours</span>
-<span class="ln"> 6</span><span class="o">}</span>
-<span class="ln"> 7</span><span class="k">val</span> <span class="n">hoursUDF</span> <span class="k">=</span> <span class="n">udf</span><span class="o">(</span><span class="n">hours</span><span class="o">)</span>
-<span class="ln"> 8</span><span class="c1">//统计
-</span><span class="ln"> 9</span><span class="c1"></span><span class="n">taxiGood</span><span class="o">.</span><span class="n">groupBy</span><span class="o">(</span><span class="n">hoursUDF</span><span class="o">(</span><span class="n">$</span><span class="s">&#34;pickUpTime&#34;</span><span class="o">,</span><span class="n">$</span><span class="s">&#34;dropOffTime&#34;</span><span class="o">)</span> <span class="n">as</span> <span class="s">&#34;duration&#34;</span><span class="o">)</span>
-<span class="ln">10</span>	<span class="o">.</span><span class="n">count</span><span class="o">()</span>
-<span class="ln">11</span>	<span class="o">.</span><span class="n">sort</span><span class="o">(</span><span class="s">&#34;duration&#34;</span><span class="o">)</span>
-<span class="ln">12</span>	<span class="o">.</span><span class="n">show</span><span class="o">()</span>
-<span class="ln">13</span><span class="c1">//直方图
-</span><span class="ln">14</span><span class="c1"></span><span class="n">spark</span><span class="o">.</span><span class="n">udf</span><span class="o">.</span><span class="n">register</span><span class="o">(</span><span class="s">&#34;hours&#34;</span><span class="o">,</span> <span class="n">hours</span><span class="o">)</span>
-<span class="ln">15</span><span class="k">val</span> <span class="n">taxiClean</span> <span class="k">=</span> <span class="n">taxiGood</span><span class="o">.</span><span class="n">where</span><span class="o">(</span><span class="s">&#34;hours(pickUpTime, dropOffTime) BETWEEN 0 AND 3&#34;</span><span class="o">)</span>
-</code></pre></div><p><strong>JSON地理信息</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">case</span> <span class="k">class</span> <span class="nc">FeatureCollection</span><span class="o">(</span><span class="n">features</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Feature</span><span class="o">])</span>
-<span class="ln"> 2</span>
-<span class="ln"> 3</span><span class="k">case</span> <span class="k">class</span> <span class="nc">Feature</span><span class="o">(</span><span class="nc">Properties</span><span class="k">:</span> <span class="kt">Map</span><span class="o">[</span><span class="kt">String</span>, <span class="kt">String</span><span class="o">],</span> <span class="n">geometry</span><span class="k">:</span> <span class="kt">JObject</span><span class="o">)</span> <span class="o">{</span>
-<span class="ln"> 4</span>    <span class="k">def</span> <span class="n">getGeometry</span><span class="o">()</span><span class="k">:</span> <span class="kt">Geometry</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln"> 5</span>        <span class="k">import</span> <span class="nn">org.json4s._</span>
-<span class="ln"> 6</span>        <span class="k">import</span> <span class="nn">org.json4s.jackson.JsonMethods._</span>
-<span class="ln"> 7</span>        <span class="k">val</span> <span class="n">mapGeo</span> <span class="k">=</span> <span class="nc">GeometryEngine</span><span class="o">.</span><span class="n">geoJsonToGeometry</span><span class="o">(</span><span class="n">compact</span><span class="o">(</span><span class="n">render</span><span class="o">(</span><span class="n">geometry</span><span class="o">)),</span> <span class="mi">0</span><span class="o">,</span> <span class="nc">Geometry</span><span class="o">.</span><span class="nc">Type</span><span class="o">.</span><span class="nc">Unknown</span><span class="o">)</span>
-<span class="ln"> 8</span>        <span class="n">mapGeo</span><span class="o">.</span><span class="n">getGeometry</span>
-<span class="ln"> 9</span>    <span class="o">}</span>
-<span class="ln">10</span><span class="o">}</span>
-<span class="ln">11</span>
-<span class="ln">12</span><span class="k">object</span> <span class="nc">FeatureExtraction</span><span class="o">{</span>
-<span class="ln">13</span>    
-<span class="ln">14</span>    <span class="c1">//JSON解析
-</span><span class="ln">15</span><span class="c1"></span>    <span class="k">def</span> <span class="n">parseJson</span><span class="o">(</span><span class="n">json</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span><span class="k">:</span> <span class="kt">FeatureCollection</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln">16</span>        <span class="c1">//1导入一个formats隐式转换
-</span><span class="ln">17</span><span class="c1"></span>        <span class="k">implicit</span> <span class="k">val</span> <span class="n">formats</span> <span class="k">=</span> <span class="nc">Serialization</span><span class="o">.</span><span class="n">formats</span><span class="o">(</span><span class="nc">NoTypeHints</span><span class="o">)</span>
-<span class="ln">18</span>        <span class="c1">//2JSON -&gt; Obj
-</span><span class="ln">19</span><span class="c1"></span>        <span class="k">import</span> <span class="nn">org.json4s.jackson.Serialization.read</span>
-<span class="ln">20</span>        <span class="k">val</span> <span class="n">featureCollection</span> <span class="k">=</span> <span class="n">read</span><span class="o">[</span><span class="kt">FeatureCollection</span><span class="o">](</span><span class="n">json</span><span class="o">)</span>
-<span class="ln">21</span>        <span class="n">featureCollection</span>
-<span class="ln">22</span>    <span class="o">}</span>
-<span class="ln">23</span><span class="o">}</span>
-</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="c1">//链接行政区信息
-</span><span class="ln"> 2</span><span class="c1">//1读取数据
-</span><span class="ln"> 3</span><span class="c1"></span><span class="k">val</span> <span class="n">geoJson</span> <span class="k">=</span> <span class="nc">Source</span><span class="o">.</span><span class="n">fromFile</span><span class="o">(</span><span class="s">&#34;dataset/districts.geojson&#34;</span><span class="o">).</span><span class="n">mkString</span>
-<span class="ln"> 4</span><span class="k">val</span> <span class="n">featureColleciton</span> <span class="k">=</span> <span class="nc">FeatureExtraction</span><span class="o">.</span><span class="n">parseJson</span><span class="o">(</span><span class="n">geoJson</span><span class="o">)</span>
-<span class="ln"> 5</span><span class="c1">//2排序
-</span><span class="ln"> 6</span><span class="c1">//理论上大的区域数量多，把大的区域放在前面，减少搜索次数
-</span><span class="ln"> 7</span><span class="c1"></span><span class="k">val</span> <span class="n">sortedFeatures</span> <span class="k">=</span> <span class="n">featureCollection</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">sortBy</span><span class="o">(</span><span class="n">feature</span> <span class="k">=&gt;</span> <span class="o">{</span>
-<span class="ln"> 8</span>    <span class="o">(</span><span class="n">feature</span><span class="o">.</span><span class="n">properties</span><span class="o">(</span><span class="s">&#34;boroughCode&#34;</span><span class="o">),</span> <span class="o">-</span> <span class="n">feature</span><span class="o">.</span><span class="n">getGeometry</span><span class="o">().</span><span class="n">calculateArea2D</span><span class="o">())</span>
-<span class="ln"> 9</span><span class="o">})</span>
-<span class="ln">10</span><span class="c1">//3广播
-</span><span class="ln">11</span><span class="c1"></span><span class="k">val</span> <span class="n">featuresBC</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sparkContext</span><span class="o">.</span><span class="n">broadcast</span><span class="o">(</span><span class="n">sortedFeatures</span><span class="o">)</span>
-<span class="ln">12</span><span class="c1">//4UDF
-</span><span class="ln">13</span><span class="c1"></span><span class="k">val</span> <span class="n">boroughLookUp</span> <span class="k">=</span> <span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">Double</span><span class="o">,</span> <span class="n">y</span><span class="k">:</span> <span class="kt">Double</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="o">{</span>
-<span class="ln">14</span>    <span class="c1">//1搜索经纬度所在的区域
-</span><span class="ln">15</span><span class="c1"></span>    <span class="k">val</span> <span class="n">featureHit</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">Feature</span><span class="o">]</span> <span class="k">=</span> <span class="n">featuresBC</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">find</span><span class="o">(</span><span class="n">feature</span> <span class="k">=&gt;</span> <span class="o">{</span>
-<span class="ln">16</span>        <span class="nc">GeometryEngine</span><span class="o">.</span><span class="n">contains</span><span class="o">(</span><span class="n">feature</span><span class="o">.</span><span class="n">getGeometry</span><span class="o">(),</span> <span class="k">new</span> <span class="nc">Point</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">),</span> <span class="nc">SpatialReference</span><span class="o">.</span><span class="n">create</span><span class="o">(</span><span class="mi">4326</span><span class="o">))</span>
-<span class="ln">17</span>    <span class="o">})</span>
-<span class="ln">18</span>    <span class="c1">//2转为区域信息
-</span><span class="ln">19</span><span class="c1"></span>    <span class="k">val</span> <span class="n">borough</span> <span class="k">=</span> <span class="n">featureHit</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">feature</span> <span class="k">=&gt;</span> <span class="n">feature</span><span class="o">.</span><span class="n">properties</span><span class="o">(</span><span class="s">&#34;borought&#34;</span><span class="o">)).</span><span class="n">getOrElse</span><span class="o">(</span><span class="s">&#34;NA&#34;</span><span class="o">)</span>
-<span class="ln">20</span>    <span class="n">borough</span>
-<span class="ln">21</span><span class="o">}</span>
-<span class="ln">22</span><span class="c1">//5统计信息
-</span><span class="ln">23</span><span class="c1"></span><span class="k">val</span> <span class="n">broughUDF</span> <span class="k">=</span> <span class="n">udf</span><span class="o">(</span><span class="n">boroughLookUp</span><span class="o">)</span>
-<span class="ln">24</span><span class="n">taxiClean</span><span class="o">.</span><span class="n">groupBy</span><span class="o">(</span><span class="n">broughUDF</span><span class="o">(</span>&#39;dropOffX<span class="o">,</span>&#39;dropOff<span class="o">))</span>
-</code></pre></div><p><strong>会话统计</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="c1">//过滤没有经纬度的数据
-</span><span class="ln"> 2</span><span class="c1"></span><span class="k">val</span> <span class="n">sessions</span> <span class="k">=</span> <span class="n">taxiClean</span><span class="o">.</span><span class="n">where</span><span class="o">(</span><span class="s">&#34;dropOffX != 0 and dropOffY != 0 and pickUp...&#34;</span><span class="o">)</span>
-<span class="ln"> 3</span>	<span class="o">.</span><span class="n">repartition</span><span class="o">(</span>&#39;license<span class="o">)</span>
-<span class="ln"> 4</span>	<span class="o">.</span><span class="n">sortWithinPartitions</span><span class="o">(</span>&#39;license<span class="o">,</span> &#39;pickUpTime<span class="o">)</span>
-<span class="ln"> 5</span>
-<span class="ln"> 6</span><span class="c1">//求得时间差
-</span><span class="ln"> 7</span><span class="c1"></span><span class="k">def</span> <span class="n">boroughDuration</span><span class="o">(</span><span class="n">t1</span><span class="k">:</span> <span class="kt">Trip</span><span class="o">,</span> <span class="n">t2</span><span class="k">:</span> <span class="kt">Trip</span><span class="o">)</span><span class="k">:</span> <span class="o">(</span><span class="kt">String</span><span class="o">,</span> <span class="kt">Long</span><span class="o">)</span> <span class="k">=</span> <span class="o">{</span>
-<span class="ln"> 8</span>    <span class="k">val</span> <span class="n">borough</span> <span class="k">=</span> <span class="n">boroughLookUp</span><span class="o">(</span><span class="n">t1</span><span class="o">.</span><span class="n">dropOffX</span><span class="o">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">dropOffY</span><span class="o">)</span>
-<span class="ln"> 9</span>    <span class="k">val</span> <span class="n">duration</span> <span class="k">=</span> <span class="o">(</span><span class="n">t2</span><span class="o">.</span><span class="n">pickUpTime</span> <span class="o">-</span> <span class="n">t1</span><span class="o">.</span><span class="n">dropOffTime</span><span class="o">)/</span><span class="mi">1000</span>
-<span class="ln">10</span>    <span class="o">(</span><span class="n">borough</span><span class="o">,</span> <span class="n">duration</span><span class="o">)</span>
-<span class="ln">11</span><span class="o">}</span>
-<span class="ln">12</span>
-<span class="ln">13</span><span class="k">val</span> <span class="n">boroughtDuration</span> <span class="k">=</span> <span class="n">sessions</span><span class="o">.</span><span class="n">mapPartitions</span><span class="o">(</span><span class="n">trips</span> <span class="k">=&gt;</span> <span class="o">{</span>
-<span class="ln">14</span>    <span class="n">trips</span><span class="o">.</span><span class="n">sliding</span><span class="o">(</span><span class="mi">2</span><span class="o">)</span><span class="c1">//长度为2的窗口，移动
-</span><span class="ln">15</span><span class="c1"></span>    	<span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">2</span><span class="o">)</span>
-<span class="ln">16</span>    	<span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="n">p</span> <span class="k">=&gt;</span> <span class="n">p</span><span class="o">.</span><span class="n">head</span><span class="o">.</span><span class="n">license</span> <span class="o">==</span> <span class="n">p</span><span class="o">.</span><span class="n">last</span><span class="o">.</span><span class="n">license</span><span class="o">)</span>
-<span class="ln">17</span>    <span class="n">viter</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">p</span> <span class="k">=&gt;</span> <span class="n">boroughDuration</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="n">head</span><span class="o">,</span> <span class="n">p</span><span class="o">.</span><span class="n">last</span><span class="o">))</span>
-<span class="ln">18</span><span class="o">}).</span><span class="n">toDF</span><span class="o">(</span><span class="s">&#34;borough&#34;</span><span class="o">,</span> <span class="s">&#34;seconds&#34;</span><span class="o">)</span>
-<span class="ln">19</span>
-<span class="ln">20</span><span class="n">boroughtDuration</span><span class="o">.</span><span class="n">where</span><span class="o">(</span><span class="s">&#34;seconds &gt; 0&#34;</span><span class="o">)</span>
-<span class="ln">21</span>	<span class="o">.</span><span class="n">groupBy</span><span class="o">(</span><span class="s">&#34;borough&#34;</span><span class="o">)</span>
-<span class="ln">22</span>	<span class="o">.</span><span class="n">agg</span><span class="o">(</span><span class="n">avg</span><span class="o">(</span>&#39;seconds<span class="o">),</span> <span class="n">stddev</span><span class="o">(</span>&#39;seconds<span class="o">))</span>
-</code></pre></div><h2 id="spark-streaming">Spark Streaming</h2>
+<pre><code class="language-scala">class TaxiAnalysisRunner{
+    def main(args: Array[String]): Unit = {
+        //1创建SparkSession
+        val spark = SparkSession.builder()
+        	.master(&quot;local[6]&quot;)
+        	.appName(&quot;taxi&quot;)
+        	.getOrCreate()
+        
+        //2导入隐式转换和函数
+        import spark.implicits._
+        import org.apache.spark.sql.functions._
+        
+        //3数据读取
+        val taxiRaw: Dataset[Row] = spark.read
+        	.option(&quot;header&quot;, value = true)
+        	.csv(&quot;dataset/half_trip.csv&quot;)
+    }
+}
+</code></pre>
+<p><strong>抽象数据类</strong></p>
+<pre><code class="language-scala">//dataframe是ROW类型的dataset
+//读取的dataframe是row类型的，如果是dataset[trip]把类型抽象，对数据方便处理
+case class Trip(
+	license: String,
+    pickUpTime: Long,
+    dropOffTime: Long,
+    pickUpX: Double,
+    pickUpy: Double,
+    dropOffX: Double,
+    dropOffY: Double
+)
+</code></pre>
+<p><strong>转换DF类型、清洗异常数据</strong></p>
+<pre><code class="language-scala">//dataframe[Row] =&gt; dataset[]
+val taxiParsed:RDD[Either[Trip,(Row,Exception)]] = taxiRaw.rdd.map(safe(parse))
+//异常数据
+val exceptionResult = taxiParsed.filter(e =&gt; e.isRight)
+	.map(e =&gt; e.right.get._1)
+val taxi Good: Dataset[Trip] = taxiParsed.map(either =&gt; either.left.get).toDS()
+
+
+def parse(row: Row): Trip = {
+    val richRow = new richRow(row)
+    val license = richRow.getAs[String](&quot;hack_license&quot;).orNull
+    val pickUpTime = parseTime(richRow, &quot;...&quot;)
+    val dropOffTime = parseTime(richRow, &quot;...&quot;)
+    val pickUpX = parseLocation(richRow, &quot;...&quot;)
+    val pickUpy = parseLocation(richRow, &quot;...&quot;)
+    val dropOffX = parseLocation(richRow, &quot;...&quot;)
+    val dropOffY = parseLocation(richRow, &quot;...&quot;)
+    Trip(license, pickUpTime, dropOffTime, pickUpX, pickUpy, dropOffX, dropOffY)
+}
+
+class RichRow(row: Row){
+    def getAs[T](field: String): Option[T] = {
+        if(row.isNullAt(row.fieldIndex(field))){
+            None
+        }else{
+            Some(row.getAs[T](field))
+        }
+    }
+}
+def parseTime(row: RichRow, field: String): Long = {
+    //规定格式
+    val pattern = &quot;yyyy-MM-dd HH:mm:ss&quot;
+    val formatter = new SimpleDateFormat(pattern, locale.ENGLISH)
+    //执行转换
+    val time = row.getAs[String](field)
+    val timeOption = time.map(time =&gt; formatter.parse(time).getTime)
+    //Option代表某个方法，结果可能为空，使得方法调用出必须处理为null的情况
+    //Option对象本身提供了一些对于null的支持
+    timeOption.getOrElse(0L)
+}
+
+def parseLocation(row: RickRow, field: String): Double = {
+    val location = row.getAs[String](fiecld)
+    val locationOption = location.map(loc =&gt; loc.toDouble)
+    locationOption.getOrElse(0D)
+}
+
+//parse异常处理
+//出现异常-&gt;返回异常信息，和当前调用
+def safe[P, R](f: P =&gt; R): P =&gt; Either[R,(P,Exception)]={
+    new Function[P, Either[R,(P,Exception)]] with Serializable {
+        override def apply(param: P): Either[R, (P, Exception)] = {
+            try{
+                Left(param)
+            }catch{
+                case e: Exception =&gt; Right((param, e))
+            }
+        }
+    }
+}
+</code></pre>
+<p><strong>统计分布</strong></p>
+<pre><code class="language-scala">//编写udf，将毫秒转为小时单位
+val hours = (pickUpTime: Long, dropOffTime: Long) =&gt; {
+    val duration = dropOffTime - pickUpTime
+    val hours = TimeUnit.HOURS.convert(duration, TimeUnit.MILLISECONDS)
+    hours
+}
+val hoursUDF = udf(hours)
+//统计
+taxiGood.groupBy(hoursUDF($&quot;pickUpTime&quot;,$&quot;dropOffTime&quot;) as &quot;duration&quot;)
+	.count()
+	.sort(&quot;duration&quot;)
+	.show()
+//直方图
+spark.udf.register(&quot;hours&quot;, hours)
+val taxiClean = taxiGood.where(&quot;hours(pickUpTime, dropOffTime) BETWEEN 0 AND 3&quot;)
+</code></pre>
+<p><strong>JSON地理信息</strong></p>
+<pre><code class="language-scala">case class FeatureCollection(features: List[Feature])
+
+case class Feature(Properties: Map[String, String], geometry: JObject) {
+    def getGeometry(): Geometry = {
+        import org.json4s._
+        import org.json4s.jackson.JsonMethods._
+        val mapGeo = GeometryEngine.geoJsonToGeometry(compact(render(geometry)), 0, Geometry.Type.Unknown)
+        mapGeo.getGeometry
+    }
+}
+
+object FeatureExtraction{
+    
+    //JSON解析
+    def parseJson(json: String): FeatureCollection = {
+        //1导入一个formats隐式转换
+        implicit val formats = Serialization.formats(NoTypeHints)
+        //2JSON -&gt; Obj
+        import org.json4s.jackson.Serialization.read
+        val featureCollection = read[FeatureCollection](json)
+        featureCollection
+    }
+}
+</code></pre>
+<pre><code class="language-scala">//链接行政区信息
+//1读取数据
+val geoJson = Source.fromFile(&quot;dataset/districts.geojson&quot;).mkString
+val featureColleciton = FeatureExtraction.parseJson(geoJson)
+//2排序
+//理论上大的区域数量多，把大的区域放在前面，减少搜索次数
+val sortedFeatures = featureCollection.features.sortBy(feature =&gt; {
+    (feature.properties(&quot;boroughCode&quot;), - feature.getGeometry().calculateArea2D())
+})
+//3广播
+val featuresBC = spark.sparkContext.broadcast(sortedFeatures)
+//4UDF
+val boroughLookUp = (x: Double, y: Double) =&gt; {
+    //1搜索经纬度所在的区域
+    val featureHit: Option[Feature] = featuresBC.value.find(feature =&gt; {
+        GeometryEngine.contains(feature.getGeometry(), new Point(x, y), SpatialReference.create(4326))
+    })
+    //2转为区域信息
+    val borough = featureHit.map(feature =&gt; feature.properties(&quot;borought&quot;)).getOrElse(&quot;NA&quot;)
+    borough
+}
+//5统计信息
+val broughUDF = udf(boroughLookUp)
+taxiClean.groupBy(broughUDF('dropOffX,'dropOff))
+</code></pre>
+<p><strong>会话统计</strong></p>
+<pre><code class="language-scala">//过滤没有经纬度的数据
+val sessions = taxiClean.where(&quot;dropOffX != 0 and dropOffY != 0 and pickUp...&quot;)
+	.repartition('license)
+	.sortWithinPartitions('license, 'pickUpTime)
+
+//求得时间差
+def boroughDuration(t1: Trip, t2: Trip): (String, Long) = {
+    val borough = boroughLookUp(t1.dropOffX, t1.dropOffY)
+    val duration = (t2.pickUpTime - t1.dropOffTime)/1000
+    (borough, duration)
+}
+
+val boroughtDuration = sessions.mapPartitions(trips =&gt; {
+    trips.sliding(2)//长度为2的窗口，移动
+    	.filter(_.size == 2)
+    	.filter(p =&gt; p.head.license == p.last.license)
+    viter.map(p =&gt; boroughDuration(p.head, p.last))
+}).toDF(&quot;borough&quot;, &quot;seconds&quot;)
+
+boroughtDuration.where(&quot;seconds &gt; 0&quot;)
+	.groupBy(&quot;borough&quot;)
+	.agg(avg('seconds), stddev('seconds))
+</code></pre>
+<h2 id="spark-streaming">Spark Streaming</h2>
 <p>Spark Streaming 的特点</p>
 <blockquote>
 <ul>
@@ -354,35 +361,36 @@
 <p>功能：Telnet功能、获取banner信息、传输文本信息、传输文件/目录、加密传输文件，默认不加密、远程控制、加密所有流量、流媒体服务器、远程克隆硬盘</p>
 </blockquote>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">object</span> <span class="nc">StreamingWordCount</span> <span class="o">{</span>
-<span class="ln"> 2</span>    <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln"> 3</span>        <span class="k">val</span> <span class="n">sparkConf</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkConff</span><span class="o">().</span><span class="n">setAppName</span><span class="o">(</span><span class="s">&#34;stream word count&#34;</span><span class="o">).</span><span class="n">setMaster</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">)</span>
-<span class="ln"> 4</span>        <span class="k">val</span> <span class="n">ssc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">StreamingContext</span><span class="o">(</span><span class="n">sparkConf</span><span class="o">,</span> <span class="nc">Seconds</span><span class="o">(</span><span class="mi">1</span><span class="o">))</span><span class="c1">//批次时间，每1秒收集一次数据
-</span><span class="ln"> 5</span><span class="c1"></span>        <span class="c1">//在创建Streaming Context的时候也要用到conf，说明Spark Streaming是基于Spark Core的
-</span><span class="ln"> 6</span><span class="c1"></span>        <span class="c1">//在执行master的时候，不能指定一个线程：因为在Streaming运行的时候，需要开一个新的线程去一直监听数据的获取
-</span><span class="ln"> 7</span><span class="c1"></span>        <span class="c1">//socketTextStream方法会创建一个DStream，监听Socket输入，当做文本处理
-</span><span class="ln"> 8</span><span class="c1"></span>        <span class="c1">//DStream可以理解是一个流式的RDD
-</span><span class="ln"> 9</span><span class="c1"></span>        <span class="k">val</span> <span class="n">lines</span><span class="k">:</span> <span class="kt">ReceiverInputDStream</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="k">=</span> <span class="n">ssc</span><span class="o">.</span><span class="n">socketTextStream</span><span class="o">(</span>
-<span class="ln">10</span>           <span class="n">hostnmae</span> <span class="k">=</span> <span class="s">&#34;192.168.169.101&#34;</span><span class="o">,</span>
-<span class="ln">11</span>            <span class="n">port</span> <span class="k">=</span> <span class="mi">9999</span><span class="o">,</span>
-<span class="ln">12</span>            <span class="n">storageLevel</span> <span class="k">=</span> <span class="nc">StoreageLevel</span><span class="o">.</span><span class="nc">MEMORY_AND_DISK_SER</span>
-<span class="ln">13</span>        <span class="o">)</span>
-<span class="ln">14</span>        
-<span class="ln">15</span>        <span class="c1">//2数据处理
-</span><span class="ln">16</span><span class="c1"></span>        <span class="c1">//	1拆分单词
-</span><span class="ln">17</span><span class="c1"></span>        <span class="k">val</span> <span class="n">words</span> <span class="k">=</span> <span class="n">lines</span><span class="o">.</span><span class="n">flatMap</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
-<span class="ln">18</span>        <span class="c1">//	2转换单词
-</span><span class="ln">19</span><span class="c1"></span>        <span class="k">val</span> <span class="n">tuples</span> <span class="k">=</span> <span class="n">words</span><span class="o">.</span><span class="n">map</span><span class="o">((</span><span class="k">_</span><span class="o">,</span> <span class="mi">1</span><span class="o">))</span>
-<span class="ln">20</span>        <span class="c1">//	3词频reduce
-</span><span class="ln">21</span><span class="c1"></span>        <span class="k">val</span> <span class="n">counts</span> <span class="k">=</span> <span class="n">tuples</span><span class="o">.</span><span class="n">reduceByKey</span><span class="o">(</span><span class="k">_</span> <span class="o">+</span> <span class="k">_</span><span class="o">)</span>
-<span class="ln">22</span>        
-<span class="ln">23</span>        <span class="n">ssc</span><span class="o">.</span><span class="n">start</span><span class="o">()</span>
-<span class="ln">24</span>        
-<span class="ln">25</span>        <span class="c1">// main方法执行完毕后整个程序就会退出，所以需要阻塞主线程
-</span><span class="ln">26</span><span class="c1"></span>        <span class="n">ssc</span><span class="o">.</span><span class="n">awaitTermination</span><span class="o">()</span>
-<span class="ln">27</span>    <span class="o">}</span>
-<span class="ln">28</span><span class="o">}</span>
-</code></pre></div><p><strong>容错</strong></p>
+<pre><code class="language-scala">object StreamingWordCount {
+    def main(args: Array[String]): Unit = {
+        val sparkConf = new SparkConff().setAppName(&quot;stream word count&quot;).setMaster(&quot;local[6]&quot;)
+        val ssc = new StreamingContext(sparkConf, Seconds(1))//批次时间，每1秒收集一次数据
+        //在创建Streaming Context的时候也要用到conf，说明Spark Streaming是基于Spark Core的
+        //在执行master的时候，不能指定一个线程：因为在Streaming运行的时候，需要开一个新的线程去一直监听数据的获取
+        //socketTextStream方法会创建一个DStream，监听Socket输入，当做文本处理
+        //DStream可以理解是一个流式的RDD
+        val lines: ReceiverInputDStream[String] = ssc.socketTextStream(
+           hostnmae = &quot;192.168.169.101&quot;,
+            port = 9999,
+            storageLevel = StoreageLevel.MEMORY_AND_DISK_SER
+        )
+        
+        //2数据处理
+        //	1拆分单词
+        val words = lines.flatMap(_.split(&quot; &quot;))
+        //	2转换单词
+        val tuples = words.map((_, 1))
+        //	3词频reduce
+        val counts = tuples.reduceByKey(_ + _)
+        
+        ssc.start()
+        
+        // main方法执行完毕后整个程序就会退出，所以需要阻塞主线程
+        ssc.awaitTermination()
+    }
+}
+</code></pre>
+<p><strong>容错</strong></p>
 <blockquote>
 <p>热备</p>
 <ul>
@@ -439,16 +447,17 @@
 <p><strong>RDD的序列化</strong></p>
 <p>Kryo是Spark引入的一个外部的序列化工具，可以增快RDD的运行速度</p>
 <p>因为Kryo序列化后的对象更小，序列化和反序列化速度非常快</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">conf</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkConf</span><span class="o">()</span>
-<span class="ln">2</span>	<span class="o">.</span><span class="n">setMaster</span><span class="o">(</span><span class="s">&#34;local[2]&#34;</span><span class="o">)</span>
-<span class="ln">3</span>	<span class="o">.</span><span class="n">setAppName</span><span class="o">(</span><span class="s">&#34;KyroTest&#34;</span><span class="o">)</span>
-<span class="ln">4</span>
-<span class="ln">5</span><span class="n">conf</span><span class="o">.</span><span class="n">set</span><span class="o">(</span><span class="s">&#34;spark.serializer&#34;</span><span class="o">,</span> <span class="s">&#34;org.apache.spark.serializer.KryoSerializer&#34;</span><span class="o">)</span>
-<span class="ln">6</span><span class="n">conf</span><span class="o">.</span><span class="n">registerKryoClasses</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">classOf</span><span class="o">[</span><span class="kt">Person</span><span class="o">]))</span>
-<span class="ln">7</span>
-<span class="ln">8</span><span class="k">val</span> <span class="n">sc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkContext</span><span class="o">(</span><span class="n">conf</span><span class="o">)</span>
-<span class="ln">9</span><span class="n">rdd</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">arr</span> <span class="k">=&gt;</span> <span class="nc">Person</span><span class="o">(</span><span class="n">arr</span><span class="o">(</span><span class="mi">0</span><span class="o">),</span> <span class="n">arr</span><span class="o">(</span><span class="mi">1</span><span class="o">),</span> <span class="n">arr</span><span class="o">(</span><span class="mi">2</span><span class="o">)))</span>
-</code></pre></div><p><strong>StructuredStreaming区别</strong></p>
+<pre><code class="language-scala">val conf = new SparkConf()
+	.setMaster(&quot;local[2]&quot;)
+	.setAppName(&quot;KyroTest&quot;)
+
+conf.set(&quot;spark.serializer&quot;, &quot;org.apache.spark.serializer.KryoSerializer&quot;)
+conf.registerKryoClasses(Array(classOf[Person]))
+
+val sc = new SparkContext(conf)
+rdd.map(arr =&gt; Person(arr(0), arr(1), arr(2)))
+</code></pre>
+<p><strong>StructuredStreaming区别</strong></p>
 <ol>
 <li>StructuredStreaming相比于SparkStreaming的进步类似于RDD到Dataset的进步</li>
 <li>StructuredStreaming支持连续流模型，类似于Flink那样的实时流</li>
@@ -463,28 +472,30 @@
 <li>Socket Server 发送数据， Structured Streaming 程序接受数据</li>
 <li>Socket Server 使用 Netcat nc 来实现</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="c1">//1.创建sparkSession
-</span><span class="ln"> 2</span><span class="c1">//2.数据读取
-</span><span class="ln"> 3</span><span class="c1"></span><span class="k">val</span> <span class="n">source</span><span class="k">:</span> <span class="kt">DataFrame</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">readStream</span>
-<span class="ln"> 4</span>	<span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="s">&#34;socket&#34;</span><span class="o">)</span>
-<span class="ln"> 5</span>	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;host&#34;</span><span class="o">,</span> <span class="s">&#34;192.168.168.101&#34;</span><span class="o">)</span>
-<span class="ln"> 6</span>	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;port&#34;</span><span class="o">,</span> <span class="mi">9999</span><span class="o">)</span>
-<span class="ln"> 7</span>	<span class="o">.</span><span class="n">load</span><span class="o">()</span>
-<span class="ln"> 8</span><span class="k">val</span> <span class="n">sourceDS</span><span class="k">:</span> <span class="kt">Dataset</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="k">=</span> <span class="n">source</span><span class="o">.</span><span class="n">as</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span>
-<span class="ln"> 9</span><span class="c1">//3.数据处理
-</span><span class="ln">10</span><span class="c1"></span><span class="k">val</span> <span class="n">words</span> <span class="k">=</span> <span class="n">sourceDS</span><span class="o">.</span><span class="n">flatMap</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
-<span class="ln">11</span>	<span class="o">.</span><span class="n">map</span><span class="o">((</span><span class="k">_</span><span class="o">,</span> <span class="mi">1</span><span class="o">))</span>
-<span class="ln">12</span>	<span class="o">.</span><span class="n">groupByKey</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">_1</span><span class="o">)</span>
-<span class="ln">13</span>	<span class="o">.</span><span class="n">count</span><span class="o">()</span>
-<span class="ln">14</span><span class="c1">//4.结果生成
-</span><span class="ln">15</span><span class="c1"></span><span class="n">words</span><span class="o">.</span><span class="n">writeStream</span>
-<span class="ln">16</span>	<span class="o">.</span><span class="n">outputMode</span><span class="o">(</span><span class="nc">OutputMode</span><span class="o">.</span><span class="nc">Complete</span><span class="o">())</span>
-<span class="ln">17</span>	<span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="s">&#34;console&#34;</span><span class="o">)</span>
-<span class="ln">18</span>	<span class="o">.</span><span class="n">start</span><span class="o">()</span>
-<span class="ln">19</span>	<span class="o">.</span><span class="n">awaitTermination</span><span class="o">()</span>
-</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span><span class="c1"># 开启Netcat</span>
-<span class="ln">2</span>nc -lk <span class="m">9999</span>
-</code></pre></div><p>StreamExecution 分为三个重要的部分</p>
+<pre><code class="language-scala">//1.创建sparkSession
+//2.数据读取
+val source: DataFrame = spark.readStream
+	.format(&quot;socket&quot;)
+	.option(&quot;host&quot;, &quot;192.168.168.101&quot;)
+	.option(&quot;port&quot;, 9999)
+	.load()
+val sourceDS: Dataset[String] = source.as[String]
+//3.数据处理
+val words = sourceDS.flatMap(_.split(&quot; &quot;))
+	.map((_, 1))
+	.groupByKey(_._1)
+	.count()
+//4.结果生成
+words.writeStream
+	.outputMode(OutputMode.Complete())
+	.format(&quot;console&quot;)
+	.start()
+	.awaitTermination()
+</code></pre>
+<pre><code class="language-shell"># 开启Netcat
+nc -lk 9999
+</code></pre>
+<p>StreamExecution 分为三个重要的部分</p>
 <ul>
 <li>Source 从外部数据源读取数据，例如kafka</li>
 <li>LogicalPlan 逻辑计划，在流上查询计划，根据源头DF处理生成逻辑计划</li>
@@ -525,80 +536,86 @@
 <li>Structured Streaming 处理数据</li>
 </ol>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="ln"> 1</span><span class="c1"># Python程序生成数据到HDFS</span>
-<span class="ln"> 2</span><span class="kn">import</span> <span class="nn">os</span>
-<span class="ln"> 3</span><span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
-<span class="ln"> 4</span>    <span class="c1">#1.文件内容</span>
-<span class="ln"> 5</span>    <span class="n">content</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
-</span><span class="ln"> 6</span><span class="s2">    {&#34;name&#34;: &#34;Michael&#34;}
-</span><span class="ln"> 7</span><span class="s2">    {&#34;name&#34;: &#34;Andy&#34;, &#34;age&#34;: 30}
-</span><span class="ln"> 8</span><span class="s2">    {&#34;name&#34;: &#34;Justin&#34;, &#34;age&#34;: 19}
-</span><span class="ln"> 9</span><span class="s2">    &#34;&#34;&#34;</span>
-<span class="ln">10</span>    
-<span class="ln">11</span>    <span class="c1">#2.文件路径</span>
-<span class="ln">12</span>    <span class="n">file_name</span> <span class="o">=</span> <span class="s2">&#34;/export/dataset/text</span><span class="si">{0}</span><span class="s2">.json&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
-<span class="ln">13</span>    
-<span class="ln">14</span>    <span class="c1">#3.打开文件，写入内容</span>
-<span class="ln">15</span>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s2">&#34;w&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-<span class="ln">16</span>        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
-<span class="ln">17</span>	
-<span class="ln">18</span>    <span class="c1">#4.执行HDFS命令，创建HDFS目录，上传文件到HDFS中</span>
-<span class="ln">19</span>    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&#34;/export/servers/haddop/bin/hdfs dfs -mkdir -p /dataset/dataset/&#34;</span><span class="p">)</span>
-<span class="ln">20</span>    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&#34;/export/servers/haddop/bin/hdfs dfs -put </span><span class="si">{0}</span><span class="s2"> /dataset/dataset&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file_name</span><span class="p">))</span>
-</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="c1">//Structured Streaming 从HDFS中获取数据
-</span><span class="ln"> 2</span><span class="c1"></span><span class="k">object</span> <span class="nc">HDFSSource</span><span class="o">{</span>
-<span class="ln"> 3</span>    <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln"> 4</span>        <span class="nc">System</span><span class="o">.</span><span class="n">setProperty</span><span class="o">(</span><span class="s">&#34;hadoop.home.dir&#34;</span><span class="o">,</span> <span class="s">&#34;C:\\winutil&#34;</span><span class="o">)</span>
-<span class="ln"> 5</span>        
-<span class="ln"> 6</span>        <span class="c1">//1.创建SparkSession
-</span><span class="ln"> 7</span><span class="c1"></span>        <span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="nc">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">()</span>
-<span class="ln"> 8</span>        	<span class="o">.</span><span class="n">appName</span><span class="o">(</span><span class="s">&#34;hdfs_souce&#34;</span><span class="o">)</span>
-<span class="ln"> 9</span>        	<span class="o">.</span><span class="n">master</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">)</span>
-<span class="ln">10</span>        	<span class="o">.</span><span class="n">getOrCreate</span><span class="o">()</span>
-<span class="ln">11</span>        <span class="c1">//2.数据读取
-</span><span class="ln">12</span><span class="c1"></span>        <span class="k">val</span> <span class="n">schema</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">StructType</span><span class="o">()</span>
-<span class="ln">13</span>        	<span class="o">.</span><span class="n">add</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">,</span> <span class="s">&#34;string&#34;</span><span class="o">)</span>
-<span class="ln">14</span>        	<span class="o">.</span><span class="n">add</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">,</span> <span class="s">&#34;integer&#34;</span><span class="o">)</span>
-<span class="ln">15</span>        
-<span class="ln">16</span>        <span class="k">val</span> <span class="n">souce</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">readStream</span>
-<span class="ln">17</span>        	<span class="o">.</span><span class="n">scheme</span><span class="o">(</span><span class="n">schema</span><span class="o">)</span>
-<span class="ln">18</span>        	<span class="o">.</span><span class="n">json</span><span class="o">(</span><span class="s">&#34;hdfs://node01:8020/dataset/dataset&#34;</span><span class="o">)</span>
-<span class="ln">19</span>        
-<span class="ln">20</span>        <span class="c1">//3.输出结果
-</span><span class="ln">21</span><span class="c1"></span>        <span class="n">source</span><span class="o">.</span><span class="n">writeStream</span>
-<span class="ln">22</span>        	<span class="o">.</span><span class="n">outputMode</span><span class="o">(</span><span class="nc">OutputMode</span><span class="o">.</span><span class="nc">Append</span><span class="o">())</span>
-<span class="ln">23</span>        	<span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="s">&#34;console&#34;</span><span class="o">)</span>
-<span class="ln">24</span>        	<span class="o">.</span><span class="n">start</span><span class="o">()</span>
-<span class="ln">25</span>        	<span class="o">.</span><span class="n">awaitTermination</span><span class="o">()</span>
-<span class="ln">26</span>    <span class="o">}</span>
-<span class="ln">27</span><span class="o">}</span>
-</code></pre></div><h2 id="structured-streaming-kafka">Structured Streaming Kafka</h2>
+<pre><code class="language-python"># Python程序生成数据到HDFS
+import os
+for index in range(100):
+    #1.文件内容
+    content = &quot;&quot;&quot;
+    {&quot;name&quot;: &quot;Michael&quot;}
+    {&quot;name&quot;: &quot;Andy&quot;, &quot;age&quot;: 30}
+    {&quot;name&quot;: &quot;Justin&quot;, &quot;age&quot;: 19}
+    &quot;&quot;&quot;
+    
+    #2.文件路径
+    file_name = &quot;/export/dataset/text{0}.json&quot;.format(index)
+    
+    #3.打开文件，写入内容
+    with open(file_name, &quot;w&quot;) as file:
+        file.write(content)
+	
+    #4.执行HDFS命令，创建HDFS目录，上传文件到HDFS中
+    os.system(&quot;/export/servers/haddop/bin/hdfs dfs -mkdir -p /dataset/dataset/&quot;)
+    os.system(&quot;/export/servers/haddop/bin/hdfs dfs -put {0} /dataset/dataset&quot;.format(file_name))
+</code></pre>
+<pre><code class="language-scala">//Structured Streaming 从HDFS中获取数据
+object HDFSSource{
+    def main(args: Array[String]): Unit = {
+        System.setProperty(&quot;hadoop.home.dir&quot;, &quot;C:\\winutil&quot;)
+        
+        //1.创建SparkSession
+        val spark = SparkSession.builder()
+        	.appName(&quot;hdfs_souce&quot;)
+        	.master(&quot;local[6]&quot;)
+        	.getOrCreate()
+        //2.数据读取
+        val schema = new StructType()
+        	.add(&quot;name&quot;, &quot;string&quot;)
+        	.add(&quot;age&quot;, &quot;integer&quot;)
+        
+        val souce = spark.readStream
+        	.scheme(schema)
+        	.json(&quot;hdfs://node01:8020/dataset/dataset&quot;)
+        
+        //3.输出结果
+        source.writeStream
+        	.outputMode(OutputMode.Append())
+        	.format(&quot;console&quot;)
+        	.start()
+        	.awaitTermination()
+    }
+}
+</code></pre>
+<h2 id="structured-streaming-kafka">Structured Streaming Kafka</h2>
 <p><strong>Kafka是一个 Pub/Sub 系统</strong></p>
 <blockquote>
 <ul>
 <li>Publisher / Subscriber 发布订阅系统</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>发布者  --&gt;  kafka  --&gt;  订阅者
-</code></pre></div><ul>
+<pre><code>发布者  --&gt;  kafka  --&gt;  订阅者
+</code></pre>
+<ul>
 <li>发布订阅系统可以有多个Publisher对应一个Subscriber，例如多个系统都会产生日志，一个日志处理器可以简单的获取所有系统产生的日志</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>用户系统  --&gt;
-<span class="ln">2</span>订单系统  --&gt;  kafka  --&gt;  日志处理器
-<span class="ln">3</span>内容系统  --&gt;
-</code></pre></div><ul>
+<pre><code>用户系统  --&gt;
+订单系统  --&gt;  kafka  --&gt;  日志处理器
+内容系统  --&gt;
+</code></pre>
+<ul>
 <li>发布订阅系统也可以一个Publisher对应多个Subscriber， 这样就类似于广播了，例如通过这样的方式可以非常轻易的将一个订单的请求分发给所有感兴趣的系统，减少耦合性</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>                      --&gt;  日志处理器
-<span class="ln">2</span> 用户系统  --&gt;  kafka  --&gt;  日志处理器
-<span class="ln">3</span>                      --&gt;  日志处理器
-</code></pre></div><ul>
+<pre><code>                      --&gt;  日志处理器
+ 用户系统  --&gt;  kafka  --&gt;  日志处理器
+                      --&gt;  日志处理器
+</code></pre>
+<ul>
 <li>大数据系统中，消息系统往往可以作为整个数据平台的入口，左边对接业务系统各个模块，右边对接数据系统各个计算工具</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>  业务系统                     数据系统
-<span class="ln">2</span> [用户系统]  --&gt;         --&gt;  [HDFS]
-<span class="ln">3</span> [订单系统]  --&gt;  kafka  --&gt;  [Structured Streaming]
-<span class="ln">4</span> [服务系统]  --&gt;         --&gt;  [MapReduce]
-</code></pre></div></blockquote>
+<pre><code>  业务系统                     数据系统
+ [用户系统]  --&gt;         --&gt;  [HDFS]
+ [订单系统]  --&gt;  kafka  --&gt;  [Structured Streaming]
+ [服务系统]  --&gt;         --&gt;  [MapReduce]
+</code></pre>
+</blockquote>
 <p><strong>Kafka 的特点</strong></p>
 <blockquote>
 <p>Kafka 非常重要的应用场景就是对接业务系统和数据系统，作为一个数据管道，其需要流通的数据量惊人，所以 Kafka 一定有：</p>
@@ -612,26 +629,29 @@
 <ul>
 <li>
 <p>消息和事件经常是不同类型的，例如用户注册是一种消息，订单创建也是一种消息</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>创建订单事件  --&gt;
-<span class="ln">2</span>                  kafka  --&gt;  structured Streaming
-<span class="ln">3</span>用户注册事件  --&gt;
-</code></pre></div></li>
+<pre><code>创建订单事件  --&gt;
+                  kafka  --&gt;  structured Streaming
+用户注册事件  --&gt;
+</code></pre>
+</li>
 <li>
 <p>Kafka 中使用 Topic 来组织不同类型的消息</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>创建订单事件  --&gt;  Topic Order
-<span class="ln">2</span>                               --&gt;  structured Streaming
-<span class="ln">3</span>用户注册事件  --&gt;  Topic Order
-</code></pre></div></li>
+<pre><code>创建订单事件  --&gt;  Topic Order
+                               --&gt;  structured Streaming
+用户注册事件  --&gt;  Topic Order
+</code></pre>
+</li>
 <li>
 <p>Kafka 中的 Topic 要承受非常大的吞吐量，所以 Topic 应该是可以分片的，应该是分布式的</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>Anatomy of a Topic
-<span class="ln">2</span>
-<span class="ln">3</span>Partition 0 [0][1][2][3]
-<span class="ln">4</span>Partition 1 [0][1]
-<span class="ln">5</span>Partition 3 [0][1][2]
-<span class="ln">6</span>
-<span class="ln">7</span>Old  --&gt;  New
-</code></pre></div></li>
+<pre><code>Anatomy of a Topic
+
+Partition 0 [0][1][2][3]
+Partition 1 [0][1]
+Partition 3 [0][1][2]
+
+Old  --&gt;  New
+</code></pre>
+</li>
 </ul>
 </blockquote>
 <p><strong>Kafka 和 Structured Streaming 整合的结构</strong></p>
@@ -664,62 +684,65 @@
 <ol>
 <li>
 <p>使用命令创建 Topic</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>bin/kafka-topics.sh --create streaming-test --replication-factor <span class="m">1</span> --partitions <span class="m">3</span> --zookeeper node01:2181
-</code></pre></div></li>
+<pre><code class="language-shell">bin/kafka-topics.sh --create streaming-test --replication-factor 1 --partitions 3 --zookeeper node01:2181
+</code></pre>
+</li>
 <li>
 <p>开启 Producer</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>bin/kafka-console-producer.sh --broker-list node01:9092,node02:9092,node03:9092 -topic streaming-test
-</code></pre></div></li>
+<pre><code class="language-shell">bin/kafka-console-producer.sh --broker-list node01:9092,node02:9092,node03:9092 -topic streaming-test
+</code></pre>
+</li>
 <li>
 <p>把 Json 转为单行输入</p>
 </li>
 </ol>
 </blockquote>
 <p>Spark 读取 kafka 的 Topic</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">object</span> <span class="nc">KafkaSource</span><span class="o">{</span>
-<span class="ln"> 2</span>    <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
-<span class="ln"> 3</span>        <span class="c1">//1.创建 SparkSession
-</span><span class="ln"> 4</span><span class="c1"></span>        
-<span class="ln"> 5</span>        <span class="c1">//2.读取 Kafka 数据
-</span><span class="ln"> 6</span><span class="c1"></span>        <span class="k">val</span> <span class="n">source</span><span class="k">:</span> <span class="kt">Dadaset</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">readSteam</span>
-<span class="ln"> 7</span>        	<span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="s">&#34;kafka&#34;</span><span class="o">)</span>
-<span class="ln"> 8</span>        	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;kafka.bootstrap.servers&#34;</span><span class="o">,</span> <span class="s">&#34;node01:9092,node02:9092,node03:9092&#34;</span><span class="o">)</span>
-<span class="ln"> 9</span>        	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;subscribe&#34;</span><span class="o">,</span> <span class="s">&#34;streaming_test_1&#34;</span><span class="o">)</span>
-<span class="ln">10</span>        	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;startingOffsets&#34;</span><span class="o">,</span> <span class="s">&#34;earliest&#34;</span><span class="o">)</span>
-<span class="ln">11</span>        	<span class="o">.</span><span class="n">load</span><span class="o">()</span>
-<span class="ln">12</span>        	<span class="o">.</span><span class="n">selectExpr</span><span class="o">(</span><span class="s">&#34;CAST(value AS STRING) as value&#34;</span><span class="o">)</span>
-<span class="ln">13</span>        	<span class="o">.</span><span class="n">as</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span>
-<span class="ln">14</span>        
-<span class="ln">15</span>        <span class="c1">//3.处理数据，Dataset(String) -&gt; Dataset(id, name, category)
-</span><span class="ln">16</span><span class="c1"></span>        <span class="c1">//1::Toy Story (1995)::Animation|Children&#39;s|Comedy
-</span><span class="ln">17</span><span class="c1"></span>        <span class="n">source</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="o">{</span>
-<span class="ln">18</span>            <span class="k">val</span> <span class="n">arr</span> <span class="k">=</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34;::&#34;</span><span class="o">)</span>
-<span class="ln">19</span>            <span class="o">(</span><span class="n">arr</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="n">toInt</span><span class="o">,</span> <span class="n">arr</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="n">toString</span><span class="o">,</span> <span class="n">arr</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="n">toString</span><span class="o">)</span>
-<span class="ln">20</span>        <span class="o">}).</span><span class="n">as</span><span class="o">[(</span><span class="kt">Int</span>, <span class="kt">String</span>, <span class="kt">String</span><span class="o">)].</span><span class="n">toDF</span><span class="o">(</span><span class="s">&#34;id&#34;</span><span class="o">,</span> <span class="s">&#34;name&#34;</span><span class="o">,</span> <span class="s">&#34;category&#34;</span><span class="o">)</span>
-<span class="ln">21</span>        
-<span class="ln">22</span>        <span class="c1">//4.Sink to HDFS
-</span><span class="ln">23</span><span class="c1"></span>        <span class="n">result</span><span class="o">.</span><span class="n">writeStream</span>
-<span class="ln">24</span>        	<span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="s">&#34;parquet&#34;</span><span class="o">)</span>
-<span class="ln">25</span>        	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;path&#34;</span><span class="o">,</span> <span class="s">&#34;/dataset/streaming/movies/&#34;</span><span class="o">)</span>
-<span class="ln">26</span>        	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;checkpointLocation&#34;</span><span class="o">,</span> <span class="s">&#34;checkpoint&#34;</span><span class="o">)</span>
-<span class="ln">27</span>        	<span class="o">.</span><span class="n">start</span><span class="o">()</span>
-<span class="ln">28</span>        	<span class="o">.</span><span class="n">awaitTermination</span><span class="o">()</span>
-<span class="ln">29</span>        
-<span class="ln">30</span>        <span class="c1">//4.Sink to Kafka
-</span><span class="ln">31</span><span class="c1"></span>        <span class="n">result</span><span class="o">.</span><span class="n">writeStream</span>
-<span class="ln">32</span>        	<span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="s">&#34;kafka&#34;</span><span class="o">)</span>
-<span class="ln">33</span>        	<span class="o">.</span><span class="n">outputMode</span><span class="o">(</span><span class="nc">OutputMode</span><span class="o">.</span><span class="nc">Append</span><span class="o">())</span>
-<span class="ln">34</span>        	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;checkpointLocation&#34;</span><span class="o">,</span> <span class="s">&#34;checkpoint&#34;</span><span class="o">)</span>
-<span class="ln">35</span>        	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;kafka.bootstrap.servers&#34;</span><span class="o">,</span> <span class="s">&#34;node01:9092, node2:9092&#34;</span><span class="o">)</span>
-<span class="ln">36</span>        	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;topic&#34;</span><span class="o">,</span> <span class="s">&#34;streaming_test_3&#34;</span><span class="o">)</span>
-<span class="ln">37</span>        	<span class="o">.</span><span class="n">start</span><span class="o">()</span>
-<span class="ln">38</span>        	<span class="o">.</span><span class="n">awaitTermination</span><span class="o">()</span>
-<span class="ln">39</span>        
-<span class="ln">40</span>        <span class="c1">//4.Sink to Mysql
-</span><span class="ln">41</span><span class="c1"></span>        <span class="c1">//使用foreachWriter
-</span><span class="ln">42</span><span class="c1"></span>    <span class="o">}</span>
-<span class="ln">43</span><span class="o">}</span>
-</code></pre></div><p><strong>Sink Trigger</strong></p>
+<pre><code class="language-scala">object KafkaSource{
+    def main(args: Array[String]): Unit = {
+        //1.创建 SparkSession
+        
+        //2.读取 Kafka 数据
+        val source: Dadaset[String] = spark.readSteam
+        	.format(&quot;kafka&quot;)
+        	.option(&quot;kafka.bootstrap.servers&quot;, &quot;node01:9092,node02:9092,node03:9092&quot;)
+        	.option(&quot;subscribe&quot;, &quot;streaming_test_1&quot;)
+        	.option(&quot;startingOffsets&quot;, &quot;earliest&quot;)
+        	.load()
+        	.selectExpr(&quot;CAST(value AS STRING) as value&quot;)
+        	.as[String]
+        
+        //3.处理数据，Dataset(String) -&gt; Dataset(id, name, category)
+        //1::Toy Story (1995)::Animation|Children's|Comedy
+        source.map(item =&gt; {
+            val arr = item.split(&quot;::&quot;)
+            (arr(0).toInt, arr(1).toString, arr(2).toString)
+        }).as[(Int, String, String)].toDF(&quot;id&quot;, &quot;name&quot;, &quot;category&quot;)
+        
+        //4.Sink to HDFS
+        result.writeStream
+        	.format(&quot;parquet&quot;)
+        	.option(&quot;path&quot;, &quot;/dataset/streaming/movies/&quot;)
+        	.option(&quot;checkpointLocation&quot;, &quot;checkpoint&quot;)
+        	.start()
+        	.awaitTermination()
+        
+        //4.Sink to Kafka
+        result.writeStream
+        	.format(&quot;kafka&quot;)
+        	.outputMode(OutputMode.Append())
+        	.option(&quot;checkpointLocation&quot;, &quot;checkpoint&quot;)
+        	.option(&quot;kafka.bootstrap.servers&quot;, &quot;node01:9092, node2:9092&quot;)
+        	.option(&quot;topic&quot;, &quot;streaming_test_3&quot;)
+        	.start()
+        	.awaitTermination()
+        
+        //4.Sink to Mysql
+        //使用foreachWriter
+    }
+}
+</code></pre>
+<p><strong>Sink Trigger</strong></p>
 <ul>
 <li>
 <p>微批次</p>
