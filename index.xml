@@ -3648,10 +3648,23 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;blockquote&gt;
 &lt;ol&gt;
 &lt;li&gt;loading: class文件放到内存&lt;/li&gt;
-&lt;li&gt;linking&lt;/li&gt;
+&lt;li&gt;双亲委派，安全&lt;/li&gt;
+&lt;li&gt;lazyLoading 五中情况&lt;/li&gt;
+&lt;li&gt;classLoader：findInCache -&amp;gt; parent.loadClass -&amp;gt; findClass()&lt;/li&gt;
+&lt;li&gt;自定义类加载器
+&lt;ol&gt;
+&lt;li&gt;extends ClassLoader&lt;/li&gt;
+&lt;li&gt;overwrite findClass() -&amp;gt; defineClass(byte[] -&amp;gt; Class clazz)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;混合执行&lt;/li&gt;
+&lt;li&gt;linking
+&lt;ol&gt;
 &lt;li&gt;verification：0xCAFEBABE...&lt;/li&gt;
 &lt;li&gt;preparation：class的静态变量赋默认值&lt;/li&gt;
 &lt;li&gt;resolution：符号应用转化为地址引用&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
 &lt;li&gt;initializing：class的静态变量这时才赋为初始值&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
@@ -3732,6 +3745,14 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;li&gt;Xcomp: 纯编译模式，执行很快，启动很慢&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;懒加载&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;new/ get static / put static / invoke static 指令，访问 final 变量除外&lt;/li&gt;
+&lt;li&gt;java.lang.reflect 对类进行反射调用时&lt;/li&gt;
+&lt;li&gt;初始化子类的时候，父类首先初始化&lt;/li&gt;
+&lt;li&gt;jvm启动时，被执行的主类必须初始化&lt;/li&gt;
+&lt;li&gt;动态语言支持REF_putstatic/REF_getstatic/REF_invokestatic的方法句柄时，该类必须初始化&lt;/li&gt;
+&lt;/ul&gt;
         
       </description>
     </item>

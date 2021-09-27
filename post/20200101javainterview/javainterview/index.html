@@ -186,10 +186,23 @@
 <blockquote>
 <ol>
 <li>loading: class文件放到内存</li>
-<li>linking</li>
+<li>双亲委派，安全</li>
+<li>lazyLoading 五中情况</li>
+<li>classLoader：findInCache -&gt; parent.loadClass -&gt; findClass()</li>
+<li>自定义类加载器
+<ol>
+<li>extends ClassLoader</li>
+<li>overwrite findClass() -&gt; defineClass(byte[] -&gt; Class clazz)</li>
+</ol>
+</li>
+<li>混合执行</li>
+<li>linking
+<ol>
 <li>verification：0xCAFEBABE...</li>
 <li>preparation：class的静态变量赋默认值</li>
 <li>resolution：符号应用转化为地址引用</li>
+</ol>
+</li>
 <li>initializing：class的静态变量这时才赋为初始值</li>
 </ol>
 </blockquote>
@@ -270,6 +283,14 @@
 <li>Xcomp: 纯编译模式，执行很快，启动很慢</li>
 </ul>
 </blockquote>
+<p><strong>懒加载</strong></p>
+<ul>
+<li>new/ get static / put static / invoke static 指令，访问 final 变量除外</li>
+<li>java.lang.reflect 对类进行反射调用时</li>
+<li>初始化子类的时候，父类首先初始化</li>
+<li>jvm启动时，被执行的主类必须初始化</li>
+<li>动态语言支持REF_putstatic/REF_getstatic/REF_invokestatic的方法句柄时，该类必须初始化</li>
+</ul>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
