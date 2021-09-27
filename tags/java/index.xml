@@ -242,7 +242,7 @@
 &lt;li&gt;混合执行&lt;/li&gt;
 &lt;li&gt;linking
 &lt;ol&gt;
-&lt;li&gt;verification：0xCAFEBABE...&lt;/li&gt;
+&lt;li&gt;verification：检验class文件是否否和0xCAFEBABE...&lt;/li&gt;
 &lt;li&gt;preparation：class的静态变量赋默认值&lt;/li&gt;
 &lt;li&gt;resolution：符号应用转化为地址引用&lt;/li&gt;
 &lt;/ol&gt;
