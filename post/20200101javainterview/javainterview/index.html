@@ -145,7 +145,7 @@
 <ol>
 <li>javac 将 x.java(任何语言) 文件编码成 x.class 文件</li>
 <li>JVM 中的 ClassLoader 将 x.class 文件装载到内存里，通常也会把 java类库也装载到内存里</li>
-<li>JVM 调用 字节码解释器 或 JIT即时编译器(常用的代码使用即时编译，第二次编译的时候直接调用) 来进行解释或编译 *jvm是解释执行和编译执行混合的</li>
+<li>JVM 调用 字节码解释器 或 JIT即时编译器(常用的代码使用即时编译，第二次编译的时候直接调用) 来进行解释或编译 *jvm是解释执行也是编译执行的，也可以混合执行</li>
 <li>JVM 执行引擎开始执行</li>
 </ol>
 </blockquote>
@@ -241,6 +241,35 @@
 </ol>
 </li>
 </ul>
+<p><strong>类编译</strong></p>
+<ul>
+<li>
+<p>解释器</p>
+<p>-bytecode intepreter</p>
+</li>
+<li>
+<p>JIT</p>
+<p>-Just In Time compiler</p>
+</li>
+<li>
+<p>混合模式：</p>
+<p>-混合使用解释器 + 热点代码编译</p>
+<p>-起始阶段采用解释执行</p>
+<p>-热点代码检测</p>
+<ul>
+<li>多次被调用的方法（方法计数器：监测方法执行频率）</li>
+<li>多次被调用的方法（循环计数器：检测循环执行频率）</li>
+<li>进行编译</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>Xmixed: 默认为混合模式，开始解释执行，启动速度较快，对热点代码实行检测和编译</li>
+<li>Xint: 编译模式，启动很快执行稍慢</li>
+<li>Xcomp: 纯编译模式，执行很快，启动很慢</li>
+</ul>
+</blockquote>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
