@@ -7,8 +7,16 @@ img {
 h3.post_link {
     margin: 5px 0
 }
-/*
+
+.post_date{
+  margin-right: 0.3rem;
+  maigin-lefg: 0.25rem;
+}
+
+span.post_time{
+  margin-right: 0.1rem;
+}
+
 a.post_tag.button.button_translucent {
 	margin: 8px 10px 5px 2px
 }
-*/
