@@ -198,12 +198,12 @@
 <li>混合执行</li>
 <li>linking
 <ol>
-<li>verification：检验class文件是否否和0xCAFEBABE...</li>
-<li>preparation：class的静态变量赋默认值</li>
-<li>resolution：符号应用转化为地址引用</li>
+<li>verification：文件符合jvm规定：0xCAFEBABE...</li>
+<li>preparation：静态成员变量赋默认值，int = 0...</li>
+<li>resolution：类、方法、属性符号应用解析为直接引用，常量池中的各个符号引用解析为指针、偏移量等内存地址的直接引用</li>
 </ol>
 </li>
-<li>initializing：class的静态变量这时才赋为初始值</li>
+<li>initializing：静态变量这时才赋为初始值</li>
 </ol>
 </blockquote>
 <p><strong>类加载器</strong></p>
@@ -291,6 +291,7 @@
 <li>jvm启动时，被执行的主类必须初始化</li>
 <li>动态语言支持REF_putstatic/REF_getstatic/REF_invokestatic的方法句柄时，该类必须初始化</li>
 </ul>
+<p><strong>Initializing</strong></p>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">

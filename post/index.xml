@@ -3660,12 +3660,12 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;li&gt;混合执行&lt;/li&gt;
 &lt;li&gt;linking
 &lt;ol&gt;
-&lt;li&gt;verification：检验class文件是否否和0xCAFEBABE...&lt;/li&gt;
-&lt;li&gt;preparation：class的静态变量赋默认值&lt;/li&gt;
-&lt;li&gt;resolution：符号应用转化为地址引用&lt;/li&gt;
+&lt;li&gt;verification：文件符合jvm规定：0xCAFEBABE...&lt;/li&gt;
+&lt;li&gt;preparation：静态成员变量赋默认值，int = 0...&lt;/li&gt;
+&lt;li&gt;resolution：类、方法、属性符号应用解析为直接引用，常量池中的各个符号引用解析为指针、偏移量等内存地址的直接引用&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
-&lt;li&gt;initializing：class的静态变量这时才赋为初始值&lt;/li&gt;
+&lt;li&gt;initializing：静态变量这时才赋为初始值&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;类加载器&lt;/strong&gt;&lt;/p&gt;
@@ -3753,6 +3753,7 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;li&gt;jvm启动时，被执行的主类必须初始化&lt;/li&gt;
 &lt;li&gt;动态语言支持REF_putstatic/REF_getstatic/REF_invokestatic的方法句柄时，该类必须初始化&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Initializing&lt;/strong&gt;&lt;/p&gt;
         
       </description>
     </item>
