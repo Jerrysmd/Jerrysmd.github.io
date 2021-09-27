@@ -97,6 +97,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;安全&lt;/p&gt;
 &lt;p&gt;双亲委派机制能够保证类加载器加载某个类时，最终都是由一个加载器加载，确保最终加载结果相同&lt;/p&gt;
+&lt;p&gt;比如 java.long.object, 从 custom classLoader 从下向上开始，到Bootstrap 发现已经加载过了，就不再加载了&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;补充&lt;/p&gt;
 &lt;ul&gt;
