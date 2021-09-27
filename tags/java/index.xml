@@ -260,7 +260,7 @@
 &lt;p&gt;双亲委派是一个孩子向父亲方向，然后父亲向孩子方向的双亲委派过程&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;post/20200101javaInterview/classLoading.jpg&#34; alt=&#34;class load process&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200101javaInterview/classLoading.jpg&#34; alt=&#34;classLoadProcess&#34;&gt;&lt;/p&gt;
 &lt;p&gt;为什么要做双亲委派&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;安全&lt;/p&gt;
@@ -278,9 +278,11 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;什么时候需要调用loadclass函数？&lt;/p&gt;
-&lt;p&gt;spring 里有动态代理，spring 就调用 loadclass 把 class 加载到缓存里&lt;/p&gt;
-&lt;p&gt;tomcat，load自定义的class&lt;/p&gt;
-&lt;p&gt;热部署&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;spring 里有动态代理，spring 就调用 loadclass 把 class 加载到缓存里&lt;/li&gt;
+&lt;li&gt;tomcat，load自定义的class&lt;/li&gt;
+&lt;li&gt;热部署&lt;/li&gt;
+&lt;/ol&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
         
