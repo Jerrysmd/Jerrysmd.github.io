@@ -3712,7 +3712,7 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;ol&gt;
 &lt;li&gt;spring 里有动态代理，spring 就调用 loadclass 把 class 加载到缓存里&lt;/li&gt;
 &lt;li&gt;tomcat，load自定义的class&lt;/li&gt;
-&lt;li&gt;热部署&lt;/li&gt;
+&lt;li&gt;热部署，热启动&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
