@@ -175,7 +175,7 @@
     </item>
     
     <item>
-      <title>Java Interview</title>
+      <title>Java Basic</title>
       <link>https://Jerrysmd.github.io/post/20200101javainterview/javainterview/</link>
       <pubDate>Wed, 01 Jan 2020 11:18:47 +0800</pubDate>
       
@@ -278,7 +278,9 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;什么时候需要调用loadclass函数？&lt;/p&gt;
-&lt;p&gt;spring 里有动态代理，spring 就调用 loadclass 把 class 加载到缓存&lt;/p&gt;
+&lt;p&gt;spring 里有动态代理，spring 就调用 loadclass 把 class 加载到缓存里&lt;/p&gt;
+&lt;p&gt;tomcat，load自定义的class&lt;/p&gt;
+&lt;p&gt;热部署&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
         
