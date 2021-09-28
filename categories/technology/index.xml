@@ -3783,7 +3783,7 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;span class=&#34;ln&#34;&gt;23&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;24&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;25&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//initializing，count赋值为2，t再执行构造方法 count = 2++ = 3
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;​&lt;/p&gt;
         
       </description>
     </item>
