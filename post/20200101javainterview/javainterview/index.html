@@ -206,7 +206,7 @@
 <li>initializing：静态变量这时才赋为初始值
 <ol>
 <li>load 静态成员变量 -&gt; 默认值 -&gt; 初始值</li>
-<li>new Object -&gt; 申请内存 -&gt; 默认值 -&gt; 初始值</li>
+<li>new Object -&gt; 申请内存 -&gt; 默认值 -&gt; 初始值：单例模式中，volatile 确保指令执行顺序，先初始化后再把内存给 t ，否则有可能先指向内存再初始化</li>
 </ol>
 </li>
 </ol>

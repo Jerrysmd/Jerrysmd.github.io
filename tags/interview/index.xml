@@ -82,7 +82,7 @@
 &lt;li&gt;initializing：静态变量这时才赋为初始值
 &lt;ol&gt;
 &lt;li&gt;load 静态成员变量 -&amp;gt; 默认值 -&amp;gt; 初始值&lt;/li&gt;
-&lt;li&gt;new Object -&amp;gt; 申请内存 -&amp;gt; 默认值 -&amp;gt; 初始值&lt;/li&gt;
+&lt;li&gt;new Object -&amp;gt; 申请内存 -&amp;gt; 默认值 -&amp;gt; 初始值：单例模式中，volatile 确保指令执行顺序，先初始化后再把内存给 t ，否则有可能先指向内存再初始化&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
