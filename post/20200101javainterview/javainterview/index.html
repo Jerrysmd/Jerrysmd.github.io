@@ -203,7 +203,12 @@
 <li>resolution：类、方法、属性符号应用解析为直接引用，常量池中的各个符号引用解析为指针、偏移量等内存地址的直接引用</li>
 </ol>
 </li>
-<li>initializing：静态变量这时才赋为初始值</li>
+<li>initializing：静态变量这时才赋为初始值
+<ol>
+<li>load 静态成员变量 -&gt; 默认值 -&gt; 初始值</li>
+<li>new Object -&gt; 申请内存 -&gt; 默认值 -&gt; 初始值</li>
+</ol>
+</li>
 </ol>
 </blockquote>
 <p><strong>类加载器</strong></p>
@@ -321,7 +326,7 @@
 <span class="ln">23</span>    <span class="o">}</span>
 <span class="ln">24</span><span class="o">}</span>
 <span class="ln">25</span><span class="c1">//initializing，count赋值为2，t再执行构造方法 count = 2++ = 3
-</span></code></pre></div><p>​</p>
+</span></code></pre></div>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">

@@ -3665,7 +3665,12 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;li&gt;resolution：类、方法、属性符号应用解析为直接引用，常量池中的各个符号引用解析为指针、偏移量等内存地址的直接引用&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
-&lt;li&gt;initializing：静态变量这时才赋为初始值&lt;/li&gt;
+&lt;li&gt;initializing：静态变量这时才赋为初始值
+&lt;ol&gt;
+&lt;li&gt;load 静态成员变量 -&amp;gt; 默认值 -&amp;gt; 初始值&lt;/li&gt;
+&lt;li&gt;new Object -&amp;gt; 申请内存 -&amp;gt; 默认值 -&amp;gt; 初始值&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;类加载器&lt;/strong&gt;&lt;/p&gt;
@@ -3783,7 +3788,7 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;span class=&#34;ln&#34;&gt;23&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;24&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;25&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//initializing，count赋值为2，t再执行构造方法 count = 2++ = 3
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;​&lt;/p&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         
       </description>
     </item>
