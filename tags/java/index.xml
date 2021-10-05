@@ -381,14 +381,30 @@
 &lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;l5:硬盘
 &lt;span class=&#34;ln&#34;&gt;8&lt;/span&gt;l6:远程文件存储		 cpu共享
 &lt;span class=&#34;ln&#34;&gt;9&lt;/span&gt;--------------------------------
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;cache line 的概念 缓存对其 伪共享&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;缓存对其，在cpuL2时，属于硬件问题
-&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;[x  y        main memory]
-&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;[x  y           L3 cache]
-&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;[x  y    L2][x  y     L2]
-&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;[x  y    L1][x  y     L1]
-&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;[计算单元与寄存器][计寄存器]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;cache line 的概念 / 缓存行对其 / 伪共享&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;缓存对其，在cpu内部的L2高速缓存处理时多线程，属于硬件问题：
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;[x  y        main memory]
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;[x  y           L3 cache]
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;[x  y    L2][x  y     L2]
+&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;[x  y    L1][x  y     L1]
+&lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;[计算单元与寄存器][计寄存器]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;高速缓存数据一致性解决方法&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;老的CPU使用&lt;strong&gt;总线锁&lt;/strong&gt;：大大降低了性能&lt;/p&gt;
+&lt;p&gt;新的CPU：&lt;strong&gt;MESI&lt;/strong&gt; Cache 数据一致性协议等(intel 用 MESI) + 总线锁&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Modified&lt;/li&gt;
+&lt;li&gt;Exclusive&lt;/li&gt;
+&lt;li&gt;Shared&lt;/li&gt;
+&lt;li&gt;Invalid&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;有些无法被缓存的数据，或者跨越多个缓存行的数据，依然必须使用总线锁&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;缓存行对其 / 伪共享&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;位于同一缓存行的两个不同数据，被两个不同CPU锁定，&lt;/p&gt;
+&lt;/blockquote&gt;
         
       </description>
     </item>

@@ -337,14 +337,30 @@
 <span class="ln">7</span>l5:硬盘
 <span class="ln">8</span>l6:远程文件存储		 cpu共享
 <span class="ln">9</span>--------------------------------
-</code></pre></div><p>cache line 的概念 缓存对其 伪共享</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>缓存对其，在cpuL2时，属于硬件问题
-<span class="ln">2</span>[x  y        main memory]
-<span class="ln">3</span>[x  y           L3 cache]
-<span class="ln">4</span>[x  y    L2][x  y     L2]
-<span class="ln">5</span>[x  y    L1][x  y     L1]
-<span class="ln">6</span>[计算单元与寄存器][计寄存器]
-</code></pre></div>
+</code></pre></div><p>cache line 的概念 / 缓存行对其 / 伪共享</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>缓存对其，在cpu内部的L2高速缓存处理时多线程，属于硬件问题：
+<span class="ln">2</span>
+<span class="ln">3</span>[x  y        main memory]
+<span class="ln">4</span>[x  y           L3 cache]
+<span class="ln">5</span>[x  y    L2][x  y     L2]
+<span class="ln">6</span>[x  y    L1][x  y     L1]
+<span class="ln">7</span>[计算单元与寄存器][计寄存器]
+</code></pre></div><p>高速缓存数据一致性解决方法</p>
+<blockquote>
+<p>老的CPU使用<strong>总线锁</strong>：大大降低了性能</p>
+<p>新的CPU：<strong>MESI</strong> Cache 数据一致性协议等(intel 用 MESI) + 总线锁</p>
+<ul>
+<li>Modified</li>
+<li>Exclusive</li>
+<li>Shared</li>
+<li>Invalid</li>
+</ul>
+<p>有些无法被缓存的数据，或者跨越多个缓存行的数据，依然必须使用总线锁</p>
+</blockquote>
+<p>缓存行对其 / 伪共享</p>
+<blockquote>
+<p>位于同一缓存行的两个不同数据，被两个不同CPU锁定，</p>
+</blockquote>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
