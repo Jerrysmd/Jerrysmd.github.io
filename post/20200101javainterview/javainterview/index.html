@@ -330,13 +330,20 @@
 <p>存储器的层次结构</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>l0:寄存器
 <span class="ln">2</span>l1:高速缓存
-<span class="ln">3</span>l2:高速缓存				  cpu内部
+<span class="ln">3</span>l2:高速缓存			  cpu内部
 <span class="ln">4</span>--------------------------------
 <span class="ln">5</span>l3:高速缓存
 <span class="ln">6</span>l4:主存
 <span class="ln">7</span>l5:硬盘
-<span class="ln">8</span>l6:远程文件存储			 cpu共享
+<span class="ln">8</span>l6:远程文件存储		 cpu共享
 <span class="ln">9</span>--------------------------------
+</code></pre></div><p>cache line 的概念 缓存对其 伪共享</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>缓存对其，在cpuL2时，属于硬件问题
+<span class="ln">2</span>[x  y        main memory]
+<span class="ln">3</span>[x  y           L3 cache]
+<span class="ln">4</span>[x  y    L2][x  y     L2]
+<span class="ln">5</span>[x  y    L1][x  y     L1]
+<span class="ln">6</span>[计算单元与寄存器][计寄存器]
 </code></pre></div>
   </article>
 <aside class="sidebar">

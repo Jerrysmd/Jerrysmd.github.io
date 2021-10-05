@@ -3792,13 +3792,20 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;p&gt;存储器的层次结构&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;l0:寄存器
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;l1:高速缓存
-&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;l2:高速缓存				  cpu内部
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;l2:高速缓存			  cpu内部
 &lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;--------------------------------
 &lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;l3:高速缓存
 &lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;l4:主存
 &lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;l5:硬盘
-&lt;span class=&#34;ln&#34;&gt;8&lt;/span&gt;l6:远程文件存储			 cpu共享
+&lt;span class=&#34;ln&#34;&gt;8&lt;/span&gt;l6:远程文件存储		 cpu共享
 &lt;span class=&#34;ln&#34;&gt;9&lt;/span&gt;--------------------------------
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;cache line 的概念 缓存对其 伪共享&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;缓存对其，在cpuL2时，属于硬件问题
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;[x  y        main memory]
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;[x  y           L3 cache]
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;[x  y    L2][x  y     L2]
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;[x  y    L1][x  y     L1]
+&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;[计算单元与寄存器][计寄存器]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         
       </description>
