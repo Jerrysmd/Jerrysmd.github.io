@@ -3821,7 +3821,7 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;/blockquote&gt;
 &lt;p&gt;缓存行对其 / 伪共享&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;位于同一缓存行的两个不同数据，被两个不同CPU锁定，&lt;/p&gt;
+&lt;p&gt;位于同一缓存行的两个不同数据，被两个不同CPU锁定，产生互相影响的伪共享问题&lt;/p&gt;
 &lt;/blockquote&gt;
         
       </description>
