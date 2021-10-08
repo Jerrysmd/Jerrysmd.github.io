@@ -391,7 +391,7 @@
 &lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;[计算单元与寄存器][计寄存器]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;高速缓存数据一致性解决方法&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;老的CPU使用&lt;strong&gt;总线锁&lt;/strong&gt;：大大降低了性能&lt;/p&gt;
+&lt;p&gt;老的CPU：&lt;strong&gt;总线锁&lt;/strong&gt; 大大降低了性能&lt;/p&gt;
 &lt;p&gt;新的CPU：&lt;strong&gt;MESI&lt;/strong&gt; Cache 数据一致性协议等(intel 用 MESI) + 总线锁&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Modified&lt;/li&gt;
