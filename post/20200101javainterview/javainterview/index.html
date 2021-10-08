@@ -370,6 +370,8 @@
 <span class="ln">4</span>    <span class="kd">public</span> <span class="kt">long</span> <span class="n">p8</span><span class="o">,</span> <span class="n">p9</span><span class="o">,</span> <span class="n">p10</span><span class="o">,</span> <span class="n">p11</span><span class="o">,</span> <span class="n">p12</span><span class="o">,</span> <span class="n">p13</span><span class="o">,</span> <span class="n">p14</span><span class="o">;</span> <span class="c1">//cache line padding
 </span><span class="ln">5</span><span class="c1"></span><span class="o">}</span>
 </code></pre></div></blockquote>
+<p>乱序问题</p>
+<p>cpu为了提高指令执行效率，去同时执行另一条指令（前提两条指令没有依赖关系:int a = 0; a++;）这样的cpu的执行就是乱序的</p>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
