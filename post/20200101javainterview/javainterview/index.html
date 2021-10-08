@@ -362,14 +362,11 @@
 <p>位于同一缓存行的两个不同数据，被两个不同CPU锁定，产生互相影响的伪共享问题</p>
 <p>解决方法：</p>
 <ul>
-<li>缓存行对其：</li>
+<li>缓存行对其：扩大字节数，使其不在统一缓存行</li>
 </ul>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Padding</span> <span class="o">{</span>
 <span class="ln">2</span>    <span class="kd">public</span> <span class="kd">volatile</span> <span class="kt">long</span> <span class="n">p1</span><span class="o">,</span> <span class="n">p2</span><span class="o">,</span> <span class="n">p3</span><span class="o">,</span> <span class="n">p4</span><span class="o">,</span> <span class="n">p5</span><span class="o">,</span> <span class="n">p6</span><span class="o">,</span> <span class="n">p7</span><span class="o">;</span>
 <span class="ln">3</span><span class="o">}</span>
-<span class="ln">4</span><span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">T</span> <span class="kd">extends</span> <span class="n">Padding</span> <span class="o">{</span>
-<span class="ln">5</span>    <span class="n">p</span>
-<span class="ln">6</span><span class="o">}</span>
 </code></pre></div></blockquote>
   </article>
 <aside class="sidebar">

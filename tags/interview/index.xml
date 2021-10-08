@@ -238,14 +238,11 @@
 &lt;p&gt;位于同一缓存行的两个不同数据，被两个不同CPU锁定，产生互相影响的伪共享问题&lt;/p&gt;
 &lt;p&gt;解决方法：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;缓存行对其：&lt;/li&gt;
+&lt;li&gt;缓存行对其：扩大字节数，使其不在统一缓存行&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Padding&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;volatile&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;long&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p4&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p5&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p6&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p7&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;T&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Padding&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
         
       </description>
