@@ -415,7 +415,22 @@
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
 &lt;p&gt;乱序问题&lt;/p&gt;
-&lt;p&gt;cpu为了提高指令执行效率，去同时执行另一条指令（前提两条指令没有依赖关系:int a = 0; a++;）这样的cpu的执行就是乱序的&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;cpu为了提高指令执行效率，去同时执行另一条指令（前提两条指令没有依赖关系:int a = 0; a++;）这样的cpu的执行就是乱序的。&lt;/p&gt;
+&lt;p&gt;而且&lt;/p&gt;
+&lt;p&gt;必须使用Memory Barrier来做好指令排序&lt;/p&gt;
+&lt;p&gt;volatile的底层就是这么实现的(windows 是 lock 指令)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;如何保证特定情况下不乱序&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;volatile 有序：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用 CPU 内存屏障：&lt;/li&gt;
+&lt;li&gt;sfence指令前的写操作必须在sfence指令后的写操作前完成&lt;/li&gt;
+&lt;li&gt;Ifence指令前的读操作必须在Ifence指令后的读操作前完成&lt;/li&gt;
+&lt;li&gt;mfence指令前的读写操作必须在mfence指令后的读写操作前完成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
         
       </description>
     </item>
