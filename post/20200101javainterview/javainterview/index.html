@@ -124,7 +124,7 @@
 </svg></span>
     <span class="post_date">
       Jan 1, 2020</span>
-    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/interview' title="interview" class="post_tag button button_translucent">interview
+    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/interview' title="interview" class="post_tag button button_translucent">interview
         </a><a href='https://Jerrysmd.github.io/tags/java' title="java" class="post_tag button button_translucent">java
         </a>
     </span>
@@ -138,7 +138,7 @@
     <li><a href="#jvm">JVM</a></li>
   </ul>
 </nav>
-    <p>JVM</p>
+    <p>JVM, loads, verifies and executes Java bytecode. It is known as the interpreter or the core of Java programming language because it executes Java programming.</p>
 <h2 id="jvm">JVM</h2>
 <p><strong>Java从编码到执行</strong></p>
 <blockquote>
@@ -381,11 +381,12 @@
 <blockquote>
 <p>volatile 有序：</p>
 <ul>
-<li>使用 CPU 内存屏障：</li>
+<li>使用 CPU 内存屏障， 原理：</li>
 <li>sfence指令前的写操作必须在sfence指令后的写操作前完成</li>
 <li>Ifence指令前的读操作必须在Ifence指令后的读操作前完成</li>
 <li>mfence指令前的读写操作必须在mfence指令后的读写操作前完成</li>
 </ul>
+<p>实际使用的是 Intel lock 汇编指令</p>
 </blockquote>
   </article>
 <aside class="sidebar">

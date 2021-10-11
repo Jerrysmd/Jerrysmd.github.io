@@ -14,7 +14,7 @@
       <guid>https://Jerrysmd.github.io/post/20200101javainterview/javainterview/</guid>
       <description>
         
-          &lt;p&gt;JVM&lt;/p&gt;
+          &lt;p&gt;JVM, loads, verifies and executes Java bytecode. It is known as the interpreter or the core of Java programming language because it executes Java programming.&lt;/p&gt;
 &lt;h2 id=&#34;jvm&#34;&gt;JVM&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Java从编码到执行&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
@@ -257,11 +257,12 @@
 &lt;blockquote&gt;
 &lt;p&gt;volatile 有序：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;使用 CPU 内存屏障：&lt;/li&gt;
+&lt;li&gt;使用 CPU 内存屏障， 原理：&lt;/li&gt;
 &lt;li&gt;sfence指令前的写操作必须在sfence指令后的写操作前完成&lt;/li&gt;
 &lt;li&gt;Ifence指令前的读操作必须在Ifence指令后的读操作前完成&lt;/li&gt;
 &lt;li&gt;mfence指令前的读写操作必须在mfence指令后的读写操作前完成&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;实际使用的是 Intel lock 汇编指令&lt;/p&gt;
 &lt;/blockquote&gt;
         
       </description>
