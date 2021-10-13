@@ -3850,6 +3850,10 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;/ul&gt;
 &lt;p&gt;实际使用的是 Intel lock 汇编指令&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;GC&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;熟悉GC常用算法，熟悉常见垃圾收集器，具有实际JVM调优实战经验&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;multi-thread&#34;&gt;Multi Thread&lt;/h2&gt;
 &lt;p&gt;启动线程的三种方式:&lt;/p&gt;
 &lt;blockquote&gt;
