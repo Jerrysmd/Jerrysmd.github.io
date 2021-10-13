@@ -3859,6 +3859,10 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;li&gt;Executors.newCachedThread&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;线程的状态：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200101javaInterview/multi_thread1.jpg&#34; alt=&#34;classLoadProcess&#34;&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
         
       </description>
     </item>
