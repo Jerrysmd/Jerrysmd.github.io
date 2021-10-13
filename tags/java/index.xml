@@ -182,7 +182,7 @@
       <guid>https://Jerrysmd.github.io/post/20200101javainterview/javainterview/</guid>
       <description>
         
-          &lt;p&gt;JVM, loads, verifies and executes Java bytecode. It is known as the interpreter or the core of Java programming language because it executes Java programming.&lt;/p&gt;
+          &lt;p&gt;JVM, multi - thread&lt;/p&gt;
 &lt;h2 id=&#34;jvm&#34;&gt;JVM&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Java从编码到执行&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
@@ -432,6 +432,7 @@
 &lt;/ul&gt;
 &lt;p&gt;实际使用的是 Intel lock 汇编指令&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;Multi Thread&lt;/p&gt;
         
       </description>
     </item>
