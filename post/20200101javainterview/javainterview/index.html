@@ -136,6 +136,7 @@
     <nav id="TableOfContents">
   <ul>
     <li><a href="#jvm">JVM</a></li>
+    <li><a href="#multi-thread">Multi Thread</a></li>
   </ul>
 </nav>
     <p>JVM, multi - thread</p>
@@ -388,7 +389,15 @@
 </ul>
 <p>实际使用的是 Intel lock 汇编指令</p>
 </blockquote>
-<p>Multi Thread</p>
+<h2 id="multi-thread">Multi Thread</h2>
+<p>启动线程的三种方式:</p>
+<blockquote>
+<ol>
+<li>extends Thread</li>
+<li>implements Runnable</li>
+<li>Executors.newCachedThread</li>
+</ol>
+</blockquote>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">

@@ -432,7 +432,15 @@
 &lt;/ul&gt;
 &lt;p&gt;实际使用的是 Intel lock 汇编指令&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;Multi Thread&lt;/p&gt;
+&lt;h2 id=&#34;multi-thread&#34;&gt;Multi Thread&lt;/h2&gt;
+&lt;p&gt;启动线程的三种方式:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;extends Thread&lt;/li&gt;
+&lt;li&gt;implements Runnable&lt;/li&gt;
+&lt;li&gt;Executors.newCachedThread&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
         
       </description>
     </item>
