@@ -437,7 +437,7 @@
 &lt;p&gt;熟悉GC常用算法，熟悉常见垃圾收集器，具有实际JVM调优实战经验&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200101javaInterview/gc21.jpg&#34; alt=&#34;classLoadProcess&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200101javaInterview/gc1.jpg&#34; alt=&#34;gc1&#34;&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;multi-thread&#34;&gt;Multi Thread&lt;/h2&gt;
 &lt;p&gt;启动线程的三种方式:&lt;/p&gt;
