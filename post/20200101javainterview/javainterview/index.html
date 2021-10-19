@@ -428,14 +428,28 @@
 </li>
 </ol>
 </blockquote>
-<p>GC的演化</p>
+<p>GC 的演化</p>
 <blockquote>
 <p>随着内存大小的不断增长而演进</p>
 </blockquote>
 <p>堆内存逻辑分区</p>
 <blockquote>
-<p>刚刚诞生的对象优先放在新生代内存区</p>
-<p>随着GC器的扫描新生代，新生代内存若多次没被回收会变成老年代(gc正常不管这片区域)</p>
+<p>分代模型：</p>
+<p>刚刚诞生的对象优先放在新生代内存区，</p>
+<p>随着GC器的扫描新生代，新生代内存若多次没被回收(在Surviver两个区反复横跳多次)会变成老年代(gc正常不管这片区域)</p>
+</blockquote>
+<p>GC 算法</p>
+<blockquote>
+<ul>
+<li>Mark - Sweep (标记清除)
+<ul>
+<li>标记分为：存货对象，未使用内存区，可回收内存区</li>
+<li>缺点：碎片化严重，</li>
+</ul>
+</li>
+<li>Coping</li>
+<li>Mark - Compact (标记压缩)</li>
+</ul>
 </blockquote>
 <h2 id="multi-thread">Multi Thread</h2>
 <p>启动线程的三种方式:</p>
