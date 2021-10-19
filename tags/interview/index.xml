@@ -319,11 +319,21 @@
 &lt;li&gt;Mark - Sweep (标记清除)
 &lt;ul&gt;
 &lt;li&gt;标记分为：存货对象，未使用内存区，可回收内存区&lt;/li&gt;
-&lt;li&gt;缺点：碎片化严重，&lt;/li&gt;
+&lt;li&gt;缺点：碎片化严重，分大块内存时不便&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;Coping&lt;/li&gt;
-&lt;li&gt;Mark - Compact (标记压缩)&lt;/li&gt;
+&lt;li&gt;Copying
+&lt;ul&gt;
+&lt;li&gt;基于标记，整齐拷贝到新区域，原内存整体性回收&lt;/li&gt;
+&lt;li&gt;缺点：浪费内存&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Mark - Compact (标记压缩)
+&lt;ul&gt;
+&lt;li&gt;基于copying，回收时直接整理内存&lt;/li&gt;
+&lt;li&gt;缺点：效率最低&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;multi-thread&#34;&gt;Multi Thread&lt;/h2&gt;

@@ -444,11 +444,21 @@
 <li>Mark - Sweep (标记清除)
 <ul>
 <li>标记分为：存货对象，未使用内存区，可回收内存区</li>
-<li>缺点：碎片化严重，</li>
+<li>缺点：碎片化严重，分大块内存时不便</li>
 </ul>
 </li>
-<li>Coping</li>
-<li>Mark - Compact (标记压缩)</li>
+<li>Copying
+<ul>
+<li>基于标记，整齐拷贝到新区域，原内存整体性回收</li>
+<li>缺点：浪费内存</li>
+</ul>
+</li>
+<li>Mark - Compact (标记压缩)
+<ul>
+<li>基于copying，回收时直接整理内存</li>
+<li>缺点：效率最低</li>
+</ul>
+</li>
 </ul>
 </blockquote>
 <h2 id="multi-thread">Multi Thread</h2>
