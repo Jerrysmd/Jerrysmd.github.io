@@ -182,7 +182,7 @@
       <guid>https://Jerrysmd.github.io/post/20200101javainterview/javainterview/</guid>
       <description>
         
-          &lt;p&gt;JVM, multi - thread&lt;/p&gt;
+          &lt;p&gt;JVM, Garbage Collection, Multi - thread&lt;/p&gt;
 &lt;h2 id=&#34;jvm&#34;&gt;JVM&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Java从编码到执行&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
@@ -374,12 +374,12 @@
 &lt;p&gt;存储器的层次结构&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;l0:寄存器
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;l1:高速缓存
-&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;l2:高速缓存			  cpu内部
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;l2:高速缓存--------------cpu内部
 &lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;--------------------------------
 &lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;l3:高速缓存
 &lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;l4:主存
 &lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;l5:硬盘
-&lt;span class=&#34;ln&#34;&gt;8&lt;/span&gt;l6:远程文件存储		 cpu共享
+&lt;span class=&#34;ln&#34;&gt;8&lt;/span&gt;l6:远程文件存储-----------cpu共享
 &lt;span class=&#34;ln&#34;&gt;9&lt;/span&gt;--------------------------------
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;cache line 的概念 / 缓存行对其 / 伪共享&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;缓存对其，在cpu内部的L2高速缓存处理时多线程，属于硬件问题：
@@ -432,7 +432,7 @@
 &lt;/ul&gt;
 &lt;p&gt;实际使用的是 Intel lock 汇编指令&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;GC&lt;/p&gt;
+&lt;h2 id=&#34;gc&#34;&gt;GC&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;熟悉GC常用算法，熟悉常见垃圾收集器，具有实际JVM调优实战经验&lt;/p&gt;
 &lt;/blockquote&gt;
