@@ -445,6 +445,10 @@
 &lt;ul&gt;
 &lt;li&gt;每个线程一个栈，栈中照先进先出，存放方法&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;堆：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;动态内存块，比如 new 对象&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;multi-thread&#34;&gt;Multi Thread&lt;/h2&gt;
 &lt;p&gt;启动线程的三种方式:&lt;/p&gt;
