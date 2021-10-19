@@ -450,6 +450,23 @@
 &lt;li&gt;动态内存块，比如 new 对象&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;什么是垃圾&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;没有引用指向他了就是垃圾&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;回收垃圾的方法&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;引用计数法（reference count）
+&lt;ul&gt;
+&lt;li&gt;当引用指向为0，回收&lt;/li&gt;
+&lt;li&gt;缺点：当三个内存垃圾互相指向，无法回收&lt;/li&gt;
+&lt;li&gt;Python&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;multi-thread&#34;&gt;Multi Thread&lt;/h2&gt;
 &lt;p&gt;启动线程的三种方式:&lt;/p&gt;
 &lt;blockquote&gt;
