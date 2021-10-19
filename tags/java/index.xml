@@ -478,7 +478,7 @@
 &lt;p&gt;堆内存逻辑分区&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;刚刚诞生的对象优先放在新生代内存区&lt;/p&gt;
-&lt;p&gt;随着GC器的扫描新生代，新生代会变成老年代&lt;/p&gt;
+&lt;p&gt;随着GC器的扫描新生代，新生代内存若多次没被回收会变成老年代(gc正常不管这片区域)&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;multi-thread&#34;&gt;Multi Thread&lt;/h2&gt;
 &lt;p&gt;启动线程的三种方式:&lt;/p&gt;
