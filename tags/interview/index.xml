@@ -271,7 +271,13 @@
 &lt;blockquote&gt;
 &lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200101javaInterview/gc1.jpg&#34; alt=&#34;gc1&#34;&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;程序的&lt;/p&gt;
+&lt;p&gt;程序的栈和堆&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;栈：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;每个线程一个栈，栈中照先进先出，存放方法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;multi-thread&#34;&gt;Multi Thread&lt;/h2&gt;
 &lt;p&gt;启动线程的三种方式:&lt;/p&gt;
 &lt;blockquote&gt;
