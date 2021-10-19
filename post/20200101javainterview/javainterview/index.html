@@ -475,6 +475,7 @@
 </ul>
 <p>CMS（<strong>Concurrent</strong> Mark Sweep）GC :</p>
 <ul>
+<li>初始标记 (STW) -&gt; 并发标记 -&gt; 重新标记 (STW) (三色标记)-&gt; 并发清理</li>
 <li>优点： 基于标记-清除（Mark-Sweep）算法，尽量减少停顿时间。</li>
 <li>缺点： 存在碎片化问题，在长时间运行的情况下会发生full GC，导致恶劣停顿。会占用更多的CPU资源，和用户争抢线程。在JDK 9中被标记为废弃。</li>
 </ul>
