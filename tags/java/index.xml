@@ -464,7 +464,11 @@
 &lt;li&gt;Python&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;根可达算法（root s）&lt;/li&gt;
+&lt;li&gt;根可达算法（root searching）
+&lt;ul&gt;
+&lt;li&gt;GC roots: 线程栈变量，静态变量，常量池，JNI指针&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;multi-thread&#34;&gt;Multi Thread&lt;/h2&gt;
