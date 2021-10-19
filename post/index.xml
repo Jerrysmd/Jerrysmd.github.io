@@ -3889,6 +3889,15 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;GC的演化&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;随着内存大小的不断增长而演进&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;堆内存逻辑分区&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;刚刚诞生的对象优先放在新生代内存区&lt;/p&gt;
+&lt;p&gt;随着GC器的扫描新生代，新生代会变成老年代&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;multi-thread&#34;&gt;Multi Thread&lt;/h2&gt;
 &lt;p&gt;启动线程的三种方式:&lt;/p&gt;
 &lt;blockquote&gt;
