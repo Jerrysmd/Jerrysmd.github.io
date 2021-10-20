@@ -355,6 +355,7 @@
 &lt;li&gt;黑色：自己已经标记，子节点都标记完成。下次扫描不扫描&lt;/li&gt;
 &lt;li&gt;灰色：自己已经标记，子节点还没标记。下次扫描只扫描子节点&lt;/li&gt;
 &lt;li&gt;白色：没有遍历到的节点。&lt;/li&gt;
+&lt;li&gt;Incremental update&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;优点： 基于标记-清除（Mark-Sweep）算法，尽量减少停顿时间。&lt;/li&gt;
