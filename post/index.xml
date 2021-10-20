@@ -3945,7 +3945,7 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;优点： 基于标记-清除（Mark-Sweep）算法，尽量减少停顿时间。&lt;/li&gt;
-&lt;li&gt;缺点： 存在碎片化问题，在长时间运行的情况下会发生full GC，导致恶劣停顿。会占用更多的CPU资源，和用户争抢线程。在JDK 9中被标记为废弃。&lt;/li&gt;
+&lt;li&gt;缺点： Incremental update天然bug，会有漏标的问题，所以CMS的remark阶段，必须重头扫描一遍，STW是所有时间最长的。存在碎片化问题，在长时间运行的情况下会发生full GC，导致恶劣停顿。会占用更多的CPU资源，和用户争抢线程。在JDK 9中被标记为废弃。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Parrallel GC：&lt;/p&gt;
 &lt;ul&gt;
