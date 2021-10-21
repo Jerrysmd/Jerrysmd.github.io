@@ -540,6 +540,11 @@
 &lt;li&gt;G1 仍存在年代的概念，使用了Region棋盘算法，实际上是标记-整理（Mark-Compact）算法，可以避免内存碎片，尤其是堆非常大的时候，G1优势更明显。&lt;/li&gt;
 &lt;li&gt;G1 吞吐量和停顿表现都非常不错。&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;ZGC：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;colored Pointer + Load Barrier&lt;/li&gt;
+&lt;li&gt;不再分代&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;multi-thread&#34;&gt;Multi Thread&lt;/h2&gt;
 &lt;p&gt;启动线程的三种方式:&lt;/p&gt;
