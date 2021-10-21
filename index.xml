@@ -3947,7 +3947,7 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;li&gt;优点： 基于标记-清除（Mark-Sweep）算法，尽量减少停顿时间。&lt;/li&gt;
 &lt;li&gt;缺点： Incremental update天然bug，会有漏标的问题，所以CMS的remark阶段，必须重头扫描一遍，STW是所有时间最长的。存在碎片化问题，在长时间运行的情况下会发生full GC，导致恶劣停顿。会占用更多的CPU资源，和用户争抢线程。在JDK 9中被标记为废弃。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Parrallel GC：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Parrallel GC（parallel Scavenge + parallel old）&lt;/strong&gt;：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;在&lt;strong&gt;JDK8&lt;/strong&gt;等版本中，是server模式JVM的默认GC选择，也被称为吞吐量优先的GC，算法和Serial GC相似，特点是老生代和新生代GC并行进行，更加高效。&lt;/li&gt;
 &lt;/ul&gt;
@@ -3967,6 +3967,10 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;ul&gt;
 &lt;li&gt;和 ZGC 类似&lt;/li&gt;
 &lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;GC 调优&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;java -Xms200M -Xmx200m -XX:+PrintGC com.j&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;multi-thread&#34;&gt;Multi Thread&lt;/h2&gt;
 &lt;p&gt;启动线程的三种方式:&lt;/p&gt;
