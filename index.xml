@@ -3972,8 +3972,7 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;java -Xms200M -Xmx200m -XX:+PrintGC com.jvm
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;-Xms200M -Xmx200m : 防止内存抖动，消耗资源*-+&lt;/li&gt;
-&lt;li&gt;az1`&lt;/li&gt;
+&lt;li&gt;-Xms200M -Xmx200m : 防止内存抖动，消耗资源&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;multi-thread&#34;&gt;Multi Thread&lt;/h2&gt;
