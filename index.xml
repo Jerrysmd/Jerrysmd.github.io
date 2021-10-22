@@ -3981,6 +3981,7 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;top -Hp PID		&lt;span class=&#34;c1&#34;&gt;#查看进程里哪个线程占CPU&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;jstack 			&lt;span class=&#34;c1&#34;&gt;#找到进程，看是 VM GC 进程还是业务进程&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;				&lt;span class=&#34;c1&#34;&gt;#若是 GC 则一定是频繁的 full GC，使用 PrintGC 查看GC每次回收是否正常&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;jmap			&lt;span class=&#34;c1&#34;&gt;#堆内存对象占用内存的情况&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
 &lt;h2 id=&#34;multi-thread&#34;&gt;Multi Thread&lt;/h2&gt;
 &lt;p&gt;启动线程的三种方式:&lt;/p&gt;
