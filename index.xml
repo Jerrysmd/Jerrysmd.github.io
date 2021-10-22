@@ -3988,6 +3988,7 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;jmap 为了把里面的对象全输出出来，会 STW，让整个JVM卡死&lt;/p&gt;
+&lt;p&gt;jmap 命令在测试机上执行&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;multi-thread&#34;&gt;Multi Thread&lt;/h2&gt;
 &lt;p&gt;启动线程的三种方式:&lt;/p&gt;
