@@ -3975,9 +3975,11 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;li&gt;-Xms200M -Xmx200m : 防止内存抖动，消耗资源&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;cpu 占用率居高不下如何调试jv m&lt;/p&gt;
+&lt;p&gt;cpu 占用率居高不下如何调试jvm&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;top -Hp P
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;top 			&lt;span class=&#34;c1&#34;&gt;#查看哪个进程占CPU比较高&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;top -Hp PID		&lt;span class=&#34;c1&#34;&gt;#查看进程里哪个线程占CPU&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;jstack 			&lt;span class=&#34;c1&#34;&gt;#找到进程，看是 VM GC 进程 还是 &lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
 &lt;h2 id=&#34;multi-thread&#34;&gt;Multi Thread&lt;/h2&gt;
 &lt;p&gt;启动线程的三种方式:&lt;/p&gt;
