@@ -517,12 +517,18 @@
 </blockquote>
 <p>cpu 占用率居高不下如何调试 jvm</p>
 <blockquote>
+<p>项目中，产生内存泄露的问题， 频繁GC但是回收不到内存，通过定位发现泄露是因为一个类创建了海量的对象</p>
+</blockquote>
+<blockquote>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>top 			<span class="c1">#查看哪个进程占CPU比较高</span>
 <span class="ln">2</span>top -Hp PID		<span class="c1">#查看进程里哪个线程占CPU</span>
 <span class="ln">3</span>jstack 			<span class="c1">#找到进程，看是 VM GC 进程还是业务进程</span>
 <span class="ln">4</span>				<span class="c1">#若是 GC 则一定是频繁的 full GC，使用 PrintGC 查看GC每次回收是否正常</span>
-<span class="ln">5</span>jmap			<span class="c1">#查看堆中对象占用内存的情况；查看堆转储</span>
+<span class="ln">5</span>jmap			<span class="c1">#查看堆中对象占用内存的情况；查看堆转储文件</span>
 </code></pre></div></blockquote>
+<blockquote>
+<p>jmap 为了把里面的对象全输出出来，会 STW，让整个JVM卡死</p>
+</blockquote>
 <h2 id="multi-thread">Multi Thread</h2>
 <p>启动线程的三种方式:</p>
 <blockquote>
