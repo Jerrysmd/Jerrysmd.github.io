@@ -3982,9 +3982,11 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;top 			&lt;span class=&#34;c1&#34;&gt;#查看哪个进程占CPU比较高&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;top -Hp PID		&lt;span class=&#34;c1&#34;&gt;#查看进程里哪个线程占CPU&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;jstack 			&lt;span class=&#34;c1&#34;&gt;#找到进程，看是 VM GC 进程还是业务进程&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;jstack/PrintGC 	&lt;span class=&#34;c1&#34;&gt;#找到进程，看是 VM GC 进程还是业务进程&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;				&lt;span class=&#34;c1&#34;&gt;#若是 GC 则一定是频繁的 full GC，使用 PrintGC 查看GC每次回收是否正常&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;jmap			&lt;span class=&#34;c1&#34;&gt;#查看堆中对象占用内存的情况；查看堆转储文件&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;				&lt;span class=&#34;c1&#34;&gt;#java -printgc -heapDumpOnOutOfMemoryError, OOM会下载&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;jmap			&lt;span class=&#34;c1&#34;&gt;#查看堆中对象占用内存的情况；查看堆转储文件&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;MAT/jhat/jvisualbm	&lt;span class=&#34;c1&#34;&gt;#进行dump文件分析&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;jmap 为了把里面的对象全输出出来，会 STW，让整个JVM卡死&lt;/p&gt;

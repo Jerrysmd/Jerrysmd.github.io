@@ -522,9 +522,11 @@
 <blockquote>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>top 			<span class="c1">#查看哪个进程占CPU比较高</span>
 <span class="ln">2</span>top -Hp PID		<span class="c1">#查看进程里哪个线程占CPU</span>
-<span class="ln">3</span>jstack 			<span class="c1">#找到进程，看是 VM GC 进程还是业务进程</span>
+<span class="ln">3</span>jstack/PrintGC 	<span class="c1">#找到进程，看是 VM GC 进程还是业务进程</span>
 <span class="ln">4</span>				<span class="c1">#若是 GC 则一定是频繁的 full GC，使用 PrintGC 查看GC每次回收是否正常</span>
-<span class="ln">5</span>jmap			<span class="c1">#查看堆中对象占用内存的情况；查看堆转储文件</span>
+<span class="ln">5</span>				<span class="c1">#java -printgc -heapDumpOnOutOfMemoryError, OOM会下载</span>
+<span class="ln">6</span>jmap			<span class="c1">#查看堆中对象占用内存的情况；查看堆转储文件</span>
+<span class="ln">7</span>MAT/jhat/jvisualbm	<span class="c1">#进行dump文件分析</span>
 </code></pre></div></blockquote>
 <blockquote>
 <p>jmap 为了把里面的对象全输出出来，会 STW，让整个JVM卡死</p>
