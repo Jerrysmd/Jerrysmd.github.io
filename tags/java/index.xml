@@ -578,6 +578,12 @@
 &lt;li&gt;使用tcpcopy复制两份，一份到生产环境，一份到测试环境&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;arthas：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;java -jar arthas-boot.jar
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# 运行后会自动找机器中java的进程&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# 性能上有所降低，但不会stw&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
 &lt;h2 id=&#34;multi-thread&#34;&gt;Multi Thread&lt;/h2&gt;
 &lt;p&gt;启动线程的三种方式:&lt;/p&gt;
 &lt;blockquote&gt;

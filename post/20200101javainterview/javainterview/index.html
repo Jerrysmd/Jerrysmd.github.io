@@ -536,6 +536,12 @@
 <li>使用tcpcopy复制两份，一份到生产环境，一份到测试环境</li>
 </ol>
 </blockquote>
+<blockquote>
+<p>arthas：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>java -jar arthas-boot.jar
+<span class="ln">2</span><span class="c1"># 运行后会自动找机器中java的进程</span>
+<span class="ln">3</span><span class="c1"># 性能上有所降低，但不会stw</span>
+</code></pre></div></blockquote>
 <h2 id="multi-thread">Multi Thread</h2>
 <p>启动线程的三种方式:</p>
 <blockquote>
