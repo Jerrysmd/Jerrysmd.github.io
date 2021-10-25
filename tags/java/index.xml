@@ -574,7 +574,8 @@
 &lt;p&gt;jmap 为了把里面的对象全输出出来，会 STW，让整个JVM卡死&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;jmap 命令在压测环境上观察的&lt;/li&gt;
-&lt;li&gt;机器做了负载均衡，发现问题后把有问题的机器从负载环境摘出来&lt;/li&gt;
+&lt;li&gt;机器做了负载均衡，发现问题后把有问题的机器从负载环境摘出来，再把堆转储文件导出来&lt;/li&gt;
+&lt;li&gt;使用tcpcopy复制两份，一份到生产环境，一份到测试环境&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;multi-thread&#34;&gt;Multi Thread&lt;/h2&gt;
