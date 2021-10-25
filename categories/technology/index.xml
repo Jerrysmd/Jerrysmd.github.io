@@ -3998,9 +3998,18 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;arthas：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;java -jar arthas-boot.jar
-&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# 运行后会自动找机器中java的进程&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# 性能上有所降低，但不会stw&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;java -jar arthas-boot.jar
+&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# 运行后会自动找机器中java的进程&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# 性能上有所降低，但不会stw&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;dashboard
+&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# 展示线程占用、年代堆栈内存&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;heapdump
+&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# 替代jmap命令&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;thread -b
+&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# 查找线程中死锁，代替 jstack&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
 &lt;h2 id=&#34;multi-thread&#34;&gt;Multi Thread&lt;/h2&gt;
 &lt;p&gt;启动线程的三种方式:&lt;/p&gt;

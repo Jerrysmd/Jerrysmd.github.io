@@ -538,9 +538,18 @@
 </blockquote>
 <blockquote>
 <p>arthas：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>java -jar arthas-boot.jar
-<span class="ln">2</span><span class="c1"># 运行后会自动找机器中java的进程</span>
-<span class="ln">3</span><span class="c1"># 性能上有所降低，但不会stw</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln"> 1</span>java -jar arthas-boot.jar
+<span class="ln"> 2</span><span class="c1"># 运行后会自动找机器中java的进程</span>
+<span class="ln"> 3</span><span class="c1"># 性能上有所降低，但不会stw</span>
+<span class="ln"> 4</span>
+<span class="ln"> 5</span>dashboard
+<span class="ln"> 6</span><span class="c1"># 展示线程占用、年代堆栈内存</span>
+<span class="ln"> 7</span>
+<span class="ln"> 8</span>heapdump
+<span class="ln"> 9</span><span class="c1"># 替代jmap命令</span>
+<span class="ln">10</span>
+<span class="ln">11</span>thread -b
+<span class="ln">12</span><span class="c1"># 查找线程中死锁，代替 jstack</span>
 </code></pre></div></blockquote>
 <h2 id="multi-thread">Multi Thread</h2>
 <p>启动线程的三种方式:</p>
