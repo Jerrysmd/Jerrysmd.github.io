@@ -340,6 +340,12 @@
 <span class="ln">8</span>l6:远程文件存储-----------cpu共享
 <span class="ln">9</span>--------------------------------
 </code></pre></div><p>cache line 的概念 / 缓存行对其 / 伪共享</p>
+<p>缓存行：</p>
+<blockquote>
+<p>缓存行越大，局部性空间效率越高，但读取时间慢</p>
+<p>缓存行越小，局部性空间效率越低，但读取时间快</p>
+<p>目前多用：64字节</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>缓存对其，在cpu内部的L2高速缓存处理时多线程，属于硬件问题：
 <span class="ln">2</span>
 <span class="ln">3</span>[x  y        main memory]

@@ -3800,6 +3800,12 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;span class=&#34;ln&#34;&gt;8&lt;/span&gt;l6:远程文件存储-----------cpu共享
 &lt;span class=&#34;ln&#34;&gt;9&lt;/span&gt;--------------------------------
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;cache line 的概念 / 缓存行对其 / 伪共享&lt;/p&gt;
+&lt;p&gt;缓存行：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;缓存行越大，局部性空间效率越高，但读取时间慢&lt;/p&gt;
+&lt;p&gt;缓存行越小，局部性空间效率越低，但读取时间快&lt;/p&gt;
+&lt;p&gt;目前多用：64字节&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;缓存对其，在cpu内部的L2高速缓存处理时多线程，属于硬件问题：
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;[x  y        main memory]
