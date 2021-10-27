@@ -3788,75 +3788,7 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;span class=&#34;ln&#34;&gt;23&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;24&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;25&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//initializing，count赋值为2，t再执行构造方法 count = 2++ = 3
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;JVM内存模型&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;存储器的层次结构&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;l0:寄存器
-&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;l1:高速缓存
-&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;l2:高速缓存--------------cpu内部
-&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;--------------------------------
-&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;l3:高速缓存
-&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;l4:主存
-&lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;l5:硬盘
-&lt;span class=&#34;ln&#34;&gt;8&lt;/span&gt;l6:远程文件存储-----------cpu共享
-&lt;span class=&#34;ln&#34;&gt;9&lt;/span&gt;--------------------------------
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;cache line 的概念 / 缓存行对其 / 伪共享&lt;/p&gt;
-&lt;p&gt;缓存行：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;缓存行越大，局部性空间效率越高，但读取时间慢&lt;/p&gt;
-&lt;p&gt;缓存行越小，局部性空间效率越低，但读取时间快&lt;/p&gt;
-&lt;p&gt;目前多用：64字节&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;缓存对其，在cpu内部的L2高速缓存处理时多线程，属于硬件问题：
-&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;[x  y        main memory]
-&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;[x  y           L3 cache]
-&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;[x  y    L2][x  y     L2]
-&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;[x  y    L1][x  y     L1]
-&lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;[计算单元与寄存器][计寄存器]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;高速缓存数据一致性解决方法&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;老的CPU：&lt;strong&gt;总线锁&lt;/strong&gt; 大大降低了性能&lt;/p&gt;
-&lt;p&gt;新的CPU：&lt;strong&gt;MESI&lt;/strong&gt; Cache 数据一致性协议等(intel 用 MESI) + 总线锁&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Modified&lt;/li&gt;
-&lt;li&gt;Exclusive&lt;/li&gt;
-&lt;li&gt;Shared&lt;/li&gt;
-&lt;li&gt;Invalid&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;有些无法被缓存的数据，或者跨越多个缓存行的数据，依然必须使用总线锁&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;缓存行对其 / 伪共享&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;位于同一缓存行的两个不同数据，被两个不同CPU锁定，产生互相影响的伪共享问题&lt;/p&gt;
-&lt;p&gt;解决方法：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;缓存行对其：扩大字节数，使其不在统一缓存行&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Padding&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;long&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p4&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p5&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p6&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p7&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//cache line padding
-&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;volatile&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;long&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cursor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;INITIAL_CURSOR_VALUE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;long&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p9&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p10&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p11&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p12&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p13&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p14&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//cache line padding
-&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
-&lt;p&gt;乱序问题&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;cpu为了提高指令执行效率，去同时执行另一条指令（前提两条指令没有依赖关系:int a = 0; a++;）这样的cpu的执行就是乱序的。&lt;/p&gt;
-&lt;p&gt;而且&lt;/p&gt;
-&lt;p&gt;必须使用Memory Barrier来做好指令排序&lt;/p&gt;
-&lt;p&gt;volatile的底层就是这么实现的(windows 是 lock 指令)&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;如何保证特定情况下不乱序&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;volatile 有序：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;使用 CPU 内存屏障， 原理：&lt;/li&gt;
-&lt;li&gt;sfence指令前的写操作必须在sfence指令后的写操作前完成&lt;/li&gt;
-&lt;li&gt;Ifence指令前的读操作必须在Ifence指令后的读操作前完成&lt;/li&gt;
-&lt;li&gt;mfence指令前的读写操作必须在mfence指令后的读写操作前完成&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;实际使用的是 Intel lock 汇编指令&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;gc&#34;&gt;GC&lt;/h2&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;gc&#34;&gt;GC&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;熟悉GC常用算法，熟悉常见垃圾收集器，具有实际JVM调优实战经验&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -4040,6 +3972,82 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;p&gt;线程的状态：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200101javaInterview/multi_thread1.jpg&#34; alt=&#34;classLoadProcess&#34;&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;JVM内存模型&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;存储器的层次结构&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;l0:寄存器
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;l1:高速缓存
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;l2:高速缓存--------------cpu内部
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;--------------------------------
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;l3:高速缓存
+&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;l4:主存
+&lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;l5:硬盘
+&lt;span class=&#34;ln&#34;&gt;8&lt;/span&gt;l6:远程文件存储-----------cpu共享
+&lt;span class=&#34;ln&#34;&gt;9&lt;/span&gt;--------------------------------
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;cache line 的概念 / 缓存行对其 / 伪共享&lt;/p&gt;
+&lt;p&gt;缓存行：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;缓存行越大，局部性空间效率越高，但读取时间慢&lt;/p&gt;
+&lt;p&gt;缓存行越小，局部性空间效率越低，但读取时间快&lt;/p&gt;
+&lt;p&gt;目前用：64字节&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;缓存对其，在cpu内部的L2高速缓存处理时多线程，属于硬件问题：
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;[x  y        main memory]
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;[x  y           L3 cache]
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;[x  y    L2][x  y     L2]
+&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;[x  y    L1][x  y     L1]
+&lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;[计算单元与寄存器][计寄存器]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;高速缓存数据一致性解决方法&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;老的CPU：&lt;strong&gt;总线锁&lt;/strong&gt; 大大降低了性能&lt;/p&gt;
+&lt;p&gt;新的CPU：&lt;strong&gt;MESI&lt;/strong&gt; Cache 数据一致性协议等(intel 用 MESI) + 总线锁&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Modified&lt;/li&gt;
+&lt;li&gt;Exclusive&lt;/li&gt;
+&lt;li&gt;Shared&lt;/li&gt;
+&lt;li&gt;Invalid&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;有些无法被缓存的数据，或者跨越多个缓存行的数据，依然必须使用总线锁&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;缓存行对其 / 伪共享&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;位于同一缓存行的两个不同数据，被两个不同CPU锁定，产生互相影响的伪共享问题&lt;/p&gt;
+&lt;p&gt;解决方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;缓存行对其：扩大字节数，使其不在统一缓存行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Padding&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;long&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p4&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p5&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p6&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p7&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//cache line padding
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;volatile&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;long&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cursor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;INITIAL_CURSOR_VALUE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;long&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p9&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p10&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p11&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p12&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p13&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p14&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//cache line padding
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;乱序问题&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;cpu为了提高指令执行效率，去同时执行另一条指令（前提两条指令没有依赖关系:int a = 0; a++;）这样的cpu的执行就是乱序的。&lt;/p&gt;
+&lt;p&gt;而且&lt;/p&gt;
+&lt;p&gt;必须使用Memory Barrier来做好指令排序&lt;/p&gt;
+&lt;p&gt;volatile的底层就是这么实现的(windows 是 lock 指令)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;如何保证特定情况下不乱序&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;volatile 有序：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用 CPU 内存屏障， 原理：&lt;/li&gt;
+&lt;li&gt;sfence指令前的写操作必须在sfence指令后的写操作前完成&lt;/li&gt;
+&lt;li&gt;Ifence指令前的读操作必须在Ifence指令后的读操作前完成&lt;/li&gt;
+&lt;li&gt;mfence指令前的读写操作必须在mfence指令后的读写操作前完成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;实际使用的是 Intel lock 汇编指令&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;volatile&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;作用：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;保持线程的可见性&lt;/li&gt;
+&lt;li&gt;禁止指令重排序&lt;/li&gt;
+&lt;/ol&gt;
 &lt;/blockquote&gt;
         
       </description>

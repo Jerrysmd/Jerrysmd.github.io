@@ -328,75 +328,7 @@
 <span class="ln">23</span>    <span class="o">}</span>
 <span class="ln">24</span><span class="o">}</span>
 <span class="ln">25</span><span class="c1">//initializing，count赋值为2，t再执行构造方法 count = 2++ = 3
-</span></code></pre></div><p><strong>JVM内存模型</strong></p>
-<p>存储器的层次结构</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>l0:寄存器
-<span class="ln">2</span>l1:高速缓存
-<span class="ln">3</span>l2:高速缓存--------------cpu内部
-<span class="ln">4</span>--------------------------------
-<span class="ln">5</span>l3:高速缓存
-<span class="ln">6</span>l4:主存
-<span class="ln">7</span>l5:硬盘
-<span class="ln">8</span>l6:远程文件存储-----------cpu共享
-<span class="ln">9</span>--------------------------------
-</code></pre></div><p>cache line 的概念 / 缓存行对其 / 伪共享</p>
-<p>缓存行：</p>
-<blockquote>
-<p>缓存行越大，局部性空间效率越高，但读取时间慢</p>
-<p>缓存行越小，局部性空间效率越低，但读取时间快</p>
-<p>目前多用：64字节</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>缓存对其，在cpu内部的L2高速缓存处理时多线程，属于硬件问题：
-<span class="ln">2</span>
-<span class="ln">3</span>[x  y        main memory]
-<span class="ln">4</span>[x  y           L3 cache]
-<span class="ln">5</span>[x  y    L2][x  y     L2]
-<span class="ln">6</span>[x  y    L1][x  y     L1]
-<span class="ln">7</span>[计算单元与寄存器][计寄存器]
-</code></pre></div><p>高速缓存数据一致性解决方法</p>
-<blockquote>
-<p>老的CPU：<strong>总线锁</strong> 大大降低了性能</p>
-<p>新的CPU：<strong>MESI</strong> Cache 数据一致性协议等(intel 用 MESI) + 总线锁</p>
-<ul>
-<li>Modified</li>
-<li>Exclusive</li>
-<li>Shared</li>
-<li>Invalid</li>
-</ul>
-<p>有些无法被缓存的数据，或者跨越多个缓存行的数据，依然必须使用总线锁</p>
-</blockquote>
-<p>缓存行对其 / 伪共享</p>
-<blockquote>
-<p>位于同一缓存行的两个不同数据，被两个不同CPU锁定，产生互相影响的伪共享问题</p>
-<p>解决方法：</p>
-<ul>
-<li>缓存行对其：扩大字节数，使其不在统一缓存行</li>
-</ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Padding</span> <span class="o">{</span>
-<span class="ln">2</span>    <span class="kd">public</span> <span class="kt">long</span> <span class="n">p1</span><span class="o">,</span> <span class="n">p2</span><span class="o">,</span> <span class="n">p3</span><span class="o">,</span> <span class="n">p4</span><span class="o">,</span> <span class="n">p5</span><span class="o">,</span> <span class="n">p6</span><span class="o">,</span> <span class="n">p7</span><span class="o">;</span> <span class="c1">//cache line padding
-</span><span class="ln">3</span><span class="c1"></span>    <span class="kd">private</span> <span class="kd">volatile</span> <span class="kt">long</span> <span class="n">cursor</span> <span class="o">=</span> <span class="n">INITIAL_CURSOR_VALUE</span><span class="o">;</span>
-<span class="ln">4</span>    <span class="kd">public</span> <span class="kt">long</span> <span class="n">p8</span><span class="o">,</span> <span class="n">p9</span><span class="o">,</span> <span class="n">p10</span><span class="o">,</span> <span class="n">p11</span><span class="o">,</span> <span class="n">p12</span><span class="o">,</span> <span class="n">p13</span><span class="o">,</span> <span class="n">p14</span><span class="o">;</span> <span class="c1">//cache line padding
-</span><span class="ln">5</span><span class="c1"></span><span class="o">}</span>
-</code></pre></div></blockquote>
-<p>乱序问题</p>
-<blockquote>
-<p>cpu为了提高指令执行效率，去同时执行另一条指令（前提两条指令没有依赖关系:int a = 0; a++;）这样的cpu的执行就是乱序的。</p>
-<p>而且</p>
-<p>必须使用Memory Barrier来做好指令排序</p>
-<p>volatile的底层就是这么实现的(windows 是 lock 指令)</p>
-</blockquote>
-<p>如何保证特定情况下不乱序</p>
-<blockquote>
-<p>volatile 有序：</p>
-<ul>
-<li>使用 CPU 内存屏障， 原理：</li>
-<li>sfence指令前的写操作必须在sfence指令后的写操作前完成</li>
-<li>Ifence指令前的读操作必须在Ifence指令后的读操作前完成</li>
-<li>mfence指令前的读写操作必须在mfence指令后的读写操作前完成</li>
-</ul>
-<p>实际使用的是 Intel lock 汇编指令</p>
-</blockquote>
-<h2 id="gc">GC</h2>
+</span></code></pre></div><h2 id="gc">GC</h2>
 <blockquote>
 <p>熟悉GC常用算法，熟悉常见垃圾收集器，具有实际JVM调优实战经验</p>
 </blockquote>
@@ -580,6 +512,82 @@
 <p>线程的状态：</p>
 <blockquote>
 <p><img src="/post/20200101javaInterview/multi_thread1.jpg" alt="classLoadProcess"></p>
+</blockquote>
+<p><strong>JVM内存模型</strong></p>
+<p>存储器的层次结构</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>l0:寄存器
+<span class="ln">2</span>l1:高速缓存
+<span class="ln">3</span>l2:高速缓存--------------cpu内部
+<span class="ln">4</span>--------------------------------
+<span class="ln">5</span>l3:高速缓存
+<span class="ln">6</span>l4:主存
+<span class="ln">7</span>l5:硬盘
+<span class="ln">8</span>l6:远程文件存储-----------cpu共享
+<span class="ln">9</span>--------------------------------
+</code></pre></div><p>cache line 的概念 / 缓存行对其 / 伪共享</p>
+<p>缓存行：</p>
+<blockquote>
+<p>缓存行越大，局部性空间效率越高，但读取时间慢</p>
+<p>缓存行越小，局部性空间效率越低，但读取时间快</p>
+<p>目前用：64字节</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>缓存对其，在cpu内部的L2高速缓存处理时多线程，属于硬件问题：
+<span class="ln">2</span>
+<span class="ln">3</span>[x  y        main memory]
+<span class="ln">4</span>[x  y           L3 cache]
+<span class="ln">5</span>[x  y    L2][x  y     L2]
+<span class="ln">6</span>[x  y    L1][x  y     L1]
+<span class="ln">7</span>[计算单元与寄存器][计寄存器]
+</code></pre></div><p>高速缓存数据一致性解决方法</p>
+<blockquote>
+<p>老的CPU：<strong>总线锁</strong> 大大降低了性能</p>
+<p>新的CPU：<strong>MESI</strong> Cache 数据一致性协议等(intel 用 MESI) + 总线锁</p>
+<ul>
+<li>Modified</li>
+<li>Exclusive</li>
+<li>Shared</li>
+<li>Invalid</li>
+</ul>
+<p>有些无法被缓存的数据，或者跨越多个缓存行的数据，依然必须使用总线锁</p>
+</blockquote>
+<p>缓存行对其 / 伪共享</p>
+<blockquote>
+<p>位于同一缓存行的两个不同数据，被两个不同CPU锁定，产生互相影响的伪共享问题</p>
+<p>解决方法：</p>
+<ul>
+<li>缓存行对其：扩大字节数，使其不在统一缓存行</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Padding</span> <span class="o">{</span>
+<span class="ln">2</span>    <span class="kd">public</span> <span class="kt">long</span> <span class="n">p1</span><span class="o">,</span> <span class="n">p2</span><span class="o">,</span> <span class="n">p3</span><span class="o">,</span> <span class="n">p4</span><span class="o">,</span> <span class="n">p5</span><span class="o">,</span> <span class="n">p6</span><span class="o">,</span> <span class="n">p7</span><span class="o">;</span> <span class="c1">//cache line padding
+</span><span class="ln">3</span><span class="c1"></span>    <span class="kd">private</span> <span class="kd">volatile</span> <span class="kt">long</span> <span class="n">cursor</span> <span class="o">=</span> <span class="n">INITIAL_CURSOR_VALUE</span><span class="o">;</span>
+<span class="ln">4</span>    <span class="kd">public</span> <span class="kt">long</span> <span class="n">p8</span><span class="o">,</span> <span class="n">p9</span><span class="o">,</span> <span class="n">p10</span><span class="o">,</span> <span class="n">p11</span><span class="o">,</span> <span class="n">p12</span><span class="o">,</span> <span class="n">p13</span><span class="o">,</span> <span class="n">p14</span><span class="o">;</span> <span class="c1">//cache line padding
+</span><span class="ln">5</span><span class="c1"></span><span class="o">}</span>
+</code></pre></div></blockquote>
+<p>乱序问题</p>
+<blockquote>
+<p>cpu为了提高指令执行效率，去同时执行另一条指令（前提两条指令没有依赖关系:int a = 0; a++;）这样的cpu的执行就是乱序的。</p>
+<p>而且</p>
+<p>必须使用Memory Barrier来做好指令排序</p>
+<p>volatile的底层就是这么实现的(windows 是 lock 指令)</p>
+</blockquote>
+<p>如何保证特定情况下不乱序</p>
+<blockquote>
+<p>volatile 有序：</p>
+<ul>
+<li>使用 CPU 内存屏障， 原理：</li>
+<li>sfence指令前的写操作必须在sfence指令后的写操作前完成</li>
+<li>Ifence指令前的读操作必须在Ifence指令后的读操作前完成</li>
+<li>mfence指令前的读写操作必须在mfence指令后的读写操作前完成</li>
+</ul>
+<p>实际使用的是 Intel lock 汇编指令</p>
+</blockquote>
+<p>volatile</p>
+<blockquote>
+<p>作用：</p>
+<ol>
+<li>保持线程的可见性</li>
+<li>禁止指令重排序</li>
+</ol>
 </blockquote>
   </article>
 <aside class="sidebar">
