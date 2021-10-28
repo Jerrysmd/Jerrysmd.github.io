@@ -627,7 +627,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;作用：&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;保持线程的可见性&lt;/li&gt;
+&lt;li&gt;保持线程间的可见性&lt;/li&gt;
 &lt;li&gt;禁止指令重排序&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
