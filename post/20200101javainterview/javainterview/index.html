@@ -594,12 +594,12 @@
 <li>
 <p>解释对象的创建过程（半初始化）</p>
 <blockquote>
-<p>T t = new T() 编译成 class 汇编码5条指令:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>new	
-<span class="ln">2</span>dup
-<span class="ln">3</span>invokespecial
-<span class="ln">4</span>astore
-<span class="ln">5</span>return
+<p>T t = new T() jvm 编译成 class 汇编码5条指令:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="k">new</span>	<span class="err">#</span><span class="n">2</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>		<span class="c1">//申请内存空间, 成员变量是默认值
+</span><span class="ln">2</span><span class="c1"></span><span class="n">dup</span>
+<span class="ln">3</span><span class="n">invokespecial</span> <span class="err">#</span><span class="n">3</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">.&lt;</span><span class="n">init</span><span class="o">&gt;&gt;</span>	<span class="c1">//调用初始化方法，成员变量初始化
+</span><span class="ln">4</span><span class="c1"></span><span class="n">astore</span>			<span class="c1">//t 和 new 出的对象进行关联
+</span><span class="ln">5</span><span class="c1"></span><span class="k">return</span>
 </code></pre></div></blockquote>
 </li>
 <li>

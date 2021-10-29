@@ -468,12 +468,12 @@
 &lt;li&gt;
 &lt;p&gt;解释对象的创建过程（半初始化）&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;T t = new T() 编译成 class 汇编码5条指令:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;new	
-&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;dup
-&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;invokespecial
-&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;astore
-&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;return
+&lt;p&gt;T t = new T() jvm 编译成 class 汇编码5条指令:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;new&lt;/span&gt;	&lt;span class=&#34;err&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;		&lt;span class=&#34;c1&#34;&gt;//申请内存空间, 成员变量是默认值
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dup&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;invokespecial&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;3&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;init&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt;	&lt;span class=&#34;c1&#34;&gt;//调用初始化方法，成员变量初始化
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;astore&lt;/span&gt;			&lt;span class=&#34;c1&#34;&gt;//t 和 new 出的对象进行关联
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;li&gt;
