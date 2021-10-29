@@ -589,9 +589,41 @@
 <li>禁止指令重排序</li>
 </ol>
 </blockquote>
-<p>关于 Object o = new Object()<br>
-解释对象的创建过程（半初始化）<br>
-DCL与volatile问题（指令重排）</p>
+<p>关于 Object o = new Object()</p>
+<ol>
+<li>
+<p>解释对象的创建过程（半初始化）</p>
+<blockquote>
+<p>T t = new T() 编译成 class 汇编码5条指令:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>new	
+<span class="ln">2</span>dup
+<span class="ln">3</span>invokespecial
+<span class="ln">4</span>astore
+<span class="ln">5</span>return
+</code></pre></div></blockquote>
+</li>
+<li>
+<p>DCL与volatile问题（指令重排）</p>
+</li>
+<li>
+<p>对象在内存中的存储布局（对象与数组的存储不同）</p>
+</li>
+<li>
+<p>对象头具体包括什么（markword klasspointer）</p>
+</li>
+<li>
+<p>synchronized锁信息</p>
+</li>
+<li>
+<p>对象怎么定位（直接 间接）</p>
+</li>
+<li>
+<p>对象怎么分配（栈上 线程本地 Eden Old）</p>
+</li>
+<li>
+<p>Object o = new Object()在内存中占用多少字节</p>
+</li>
+</ol>
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">

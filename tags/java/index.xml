@@ -631,9 +631,41 @@
 &lt;li&gt;禁止指令重排序&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;关于 Object o = new Object()&lt;br&gt;
-解释对象的创建过程（半初始化）&lt;br&gt;
-DCL与volatile问题（指令重排）&lt;/p&gt;
+&lt;p&gt;关于 Object o = new Object()&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;解释对象的创建过程（半初始化）&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;T t = new T() 编译成 class 汇编码5条指令:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;new	
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;dup
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;invokespecial
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;astore
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;return
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;DCL与volatile问题（指令重排）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对象在内存中的存储布局（对象与数组的存储不同）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对象头具体包括什么（markword klasspointer）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;synchronized锁信息&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对象怎么定位（直接 间接）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对象怎么分配（栈上 线程本地 Eden Old）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Object o = new Object()在内存中占用多少字节&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
         
       </description>
     </item>
