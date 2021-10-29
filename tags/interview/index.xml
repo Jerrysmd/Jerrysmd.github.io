@@ -463,6 +463,9 @@
 &lt;li&gt;禁止指令重排序&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;关于 Object o = new Object()&lt;br&gt;
+解释对象的创建过程（半初始化）&lt;br&gt;
+DCL与volatile问题（指令重排）&lt;/p&gt;
         
       </description>
     </item>
