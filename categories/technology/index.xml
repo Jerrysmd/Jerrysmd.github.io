@@ -4034,7 +4034,7 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;blockquote&gt;
 &lt;p&gt;volatile 有序：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;使用 CPU 内存屏障， 原理：&lt;/li&gt;
+&lt;li&gt;使用 &lt;strong&gt;CPU内存屏障&lt;/strong&gt;， 原理：&lt;/li&gt;
 &lt;li&gt;sfence指令前的写操作必须在sfence指令后的写操作前完成&lt;/li&gt;
 &lt;li&gt;Ifence指令前的读操作必须在Ifence指令后的读操作前完成&lt;/li&gt;
 &lt;li&gt;mfence指令前的读写操作必须在mfence指令后的读写操作前完成&lt;/li&gt;
