@@ -605,24 +605,29 @@
 <li>
 <p>DCL与volatile问题（指令重排）</p>
 </li>
-<li>
-<p>对象在内存中的存储布局（对象与数组的存储不同）</p>
-</li>
-<li>
-<p>对象头具体包括什么（markword klasspointer）</p>
-</li>
-<li>
-<p>synchronized锁信息</p>
-</li>
-<li>
-<p>对象怎么定位（直接 间接）</p>
-</li>
-<li>
-<p>对象怎么分配（栈上 线程本地 Eden Old）</p>
-</li>
-<li>
-<p>Object o = new Object()在内存中占用多少字节</p>
-</li>
+</ol>
+<blockquote>
+<p>Double Check Lock</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln"> 1</span>if (INSTANCE == null){
+<span class="ln"> 2</span>	synchronized(this.class){
+<span class="ln"> 3</span>		if(INSTANCE == null){
+<span class="ln"> 4</span>			try{
+<span class="ln"> 5</span>				Thread.sleep(1);
+<span class="ln"> 6</span>			}catch(InterruptedException e) {
+<span class="ln"> 7</span>				e.printStackTrace();
+<span class="ln"> 8</span>			}
+<span class="ln"> 9</span>			
+<span class="ln">10</span>		}
+<span class="ln">11</span>	}
+<span class="ln">12</span>}
+</code></pre></div></blockquote>
+<ol>
+<li>对象在内存中的存储布局（对象与数组的存储不同）</li>
+<li>对象头具体包括什么（markword klasspointer）</li>
+<li>synchronized锁信息</li>
+<li>对象怎么定位（直接 间接）</li>
+<li>对象怎么分配（栈上 线程本地 Eden Old）</li>
+<li>Object o = new Object()在内存中占用多少字节</li>
 </ol>
   </article>
 <aside class="sidebar">
