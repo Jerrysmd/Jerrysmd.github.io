@@ -3600,7 +3600,7 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
       <guid>https://Jerrysmd.github.io/post/20200101javainterview/javainterview/</guid>
       <description>
         
-          &lt;p&gt;JVM, Garbage Collection, Multi - thread&lt;/p&gt;
+          &lt;p&gt;JVM, Garbage Collection, Multi - thread, Redis&lt;/p&gt;
 &lt;h2 id=&#34;jvm&#34;&gt;JVM&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Java从编码到执行&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
@@ -4034,7 +4034,7 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;blockquote&gt;
 &lt;p&gt;volatile 有序：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;使用 &lt;strong&gt;CPU内存屏障&lt;/strong&gt;， 原理：&lt;/li&gt;
+&lt;li&gt;使用 &lt;strong&gt;CPU 内存屏障&lt;/strong&gt;， 原理：&lt;/li&gt;
 &lt;li&gt;sfence指令前的写操作必须在sfence指令后的写操作前完成&lt;/li&gt;
 &lt;li&gt;Ifence指令前的读操作必须在Ifence指令后的读操作前完成&lt;/li&gt;
 &lt;li&gt;mfence指令前的读写操作必须在mfence指令后的读写操作前完成&lt;/li&gt;
@@ -4102,6 +4102,7 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;li&gt;对象怎么分配（栈上 线程本地 Eden Old）&lt;/li&gt;
 &lt;li&gt;Object o = new Object()在内存中占用多少字节&lt;/li&gt;
 &lt;/ol&gt;
+&lt;h2 id=&#34;redis&#34;&gt;Redis&lt;/h2&gt;
         
       </description>
     </item>
