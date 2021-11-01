@@ -586,7 +586,7 @@
 <p>作用：</p>
 <ol>
 <li>保持线程间的可见性</li>
-<li>禁止指令重排序</li>
+<li>禁止指令重排序（通过内存屏障）</li>
 </ol>
 </blockquote>
 <p>关于 Object o = new Object()</p>
@@ -631,7 +631,7 @@
 </code></pre></div><p>2.DCL单例必须要加volatile</p>
 <blockquote>
 <p>指令重排，对象初始化时先指向内存，再初始化赋值</p>
-<p>若此时线程2进入，则直接拿到未</p>
+<p>若此时线程2进入，则直接拿到未初始化赋值的对象</p>
 </blockquote>
 </blockquote>
 <ol start="3">
