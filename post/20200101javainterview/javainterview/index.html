@@ -608,18 +608,22 @@
 </ol>
 <blockquote>
 <p>Double Check Lock</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln"> 1</span>if (INSTANCE == null){
-<span class="ln"> 2</span>	synchronized(this.class){
-<span class="ln"> 3</span>		if(INSTANCE == null){
-<span class="ln"> 4</span>			try{
-<span class="ln"> 5</span>				Thread.sleep(1);
-<span class="ln"> 6</span>			}catch(InterruptedException e) {
-<span class="ln"> 7</span>				e.printStackTrace();
-<span class="ln"> 8</span>			}
-<span class="ln"> 9</span>			
-<span class="ln">10</span>		}
-<span class="ln">11</span>	}
-<span class="ln">12</span>}
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">volatile</span> <span class="n">T</span> <span class="n">INSTANCE</span><span class="o">;</span>
+<span class="ln"> 2</span>
+<span class="ln"> 3</span><span class="kd">public</span> <span class="kd">static</span> <span class="n">T</span> <span class="nf">getInstance</span><span class="o">(){</span>
+<span class="ln"> 4</span>    <span class="k">if</span> <span class="o">(</span><span class="n">INSTANCE</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
+<span class="ln"> 5</span>        <span class="kd">synchronized</span><span class="o">(</span><span class="n">T</span><span class="o">.</span><span class="na">class</span><span class="o">){</span>
+<span class="ln"> 6</span>            <span class="k">if</span><span class="o">(</span><span class="n">INSTANCE</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
+<span class="ln"> 7</span>                <span class="k">try</span><span class="o">{</span>
+<span class="ln"> 8</span>                    <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">1</span><span class="o">);</span>
+<span class="ln"> 9</span>                <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">10</span>                    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+<span class="ln">11</span>                <span class="o">}</span>
+<span class="ln">12</span>                <span class="n">INSTANCE</span> <span class="o">=</span> <span class="k">new</span> <span class="n">T</span><span class="o">();</span>
+<span class="ln">13</span>            <span class="o">}</span>
+<span class="ln">14</span>        <span class="o">}</span>
+<span class="ln">15</span>    <span class="o">}</span>
+<span class="ln">16</span><span class="o">}</span>
 </code></pre></div></blockquote>
 <ol>
 <li>对象在内存中的存储布局（对象与数组的存储不同）</li>
