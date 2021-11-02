@@ -520,9 +520,17 @@
 &lt;p&gt;项目中Redis的应用场景&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ol&gt;
+&lt;li&gt;五大value类型&lt;/li&gt;
 &lt;li&gt;基本上就是缓存&lt;/li&gt;
 &lt;li&gt;为的是服务&lt;strong&gt;无状态&lt;/strong&gt;，（延伸：看项目中有哪些数据结构，如分布式锁，抽出来放到Redis）&lt;/li&gt;
 &lt;li&gt;无锁化&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Redis是单线程还是多线程&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;无论哪个版本，工作线程就是一个&lt;/li&gt;
+&lt;li&gt;6.x 高版本出现了IO多线程&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
         
