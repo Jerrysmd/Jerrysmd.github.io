@@ -4103,6 +4103,14 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;li&gt;Object o = new Object()在内存中占用多少字节&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&#34;redis&#34;&gt;Redis&lt;/h2&gt;
+&lt;p&gt;项目中Redis的应用场景&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;基本上就是缓存&lt;/li&gt;
+&lt;li&gt;为的是服务&lt;strong&gt;无状态&lt;/strong&gt;，（延伸：看项目中有哪些数据结构，如分布式锁，抽出来放到Redis）&lt;/li&gt;
+&lt;li&gt;无锁化&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
         
       </description>
     </item>
