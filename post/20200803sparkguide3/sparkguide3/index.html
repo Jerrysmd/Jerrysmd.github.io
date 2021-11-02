@@ -363,7 +363,7 @@
 </span><span class="ln"> 7</span><span class="c1"></span>        <span class="c1">//socketTextStream方法会创建一个DStream，监听Socket输入，当做文本处理
 </span><span class="ln"> 8</span><span class="c1"></span>        <span class="c1">//DStream可以理解是一个流式的RDD
 </span><span class="ln"> 9</span><span class="c1"></span>        <span class="k">val</span> <span class="n">lines</span><span class="k">:</span> <span class="kt">ReceiverInputDStream</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="k">=</span> <span class="n">ssc</span><span class="o">.</span><span class="n">socketTextStream</span><span class="o">(</span>
-<span class="ln">10</span>           <span class="n">hostnmae</span> <span class="k">=</span> <span class="s">&#34;192.168.169.101&#34;</span><span class="o">,</span>
+<span class="ln">10</span>        	<span class="n">hostnmae</span> <span class="k">=</span> <span class="s">&#34;192.168.169.101&#34;</span><span class="o">,</span>
 <span class="ln">11</span>            <span class="n">port</span> <span class="k">=</span> <span class="mi">9999</span><span class="o">,</span>
 <span class="ln">12</span>            <span class="n">storageLevel</span> <span class="k">=</span> <span class="nc">StoreageLevel</span><span class="o">.</span><span class="nc">MEMORY_AND_DISK_SER</span>
 <span class="ln">13</span>        <span class="o">)</span>

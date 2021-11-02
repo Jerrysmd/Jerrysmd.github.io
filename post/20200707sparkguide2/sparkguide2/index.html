@@ -827,22 +827,22 @@
 <span class="ln"> 6</span>    <span class="k">def</span> <span class="n">nullAndNaN</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
 <span class="ln"> 7</span>        <span class="c1">//ss
 </span><span class="ln"> 8</span><span class="c1"></span>        <span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="nc">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">()</span>
-<span class="ln"> 9</span>         <span class="o">.</span><span class="n">master</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">)</span>
-<span class="ln">10</span>         <span class="o">.</span><span class="n">appName</span><span class="o">(</span><span class="s">&#34;null processor&#34;</span><span class="o">)</span>
-<span class="ln">11</span>         <span class="o">.</span><span class="n">getOrCreate</span><span class="o">()</span>
+<span class="ln"> 9</span>        	<span class="o">.</span><span class="n">master</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">)</span>
+<span class="ln">10</span>        	<span class="o">.</span><span class="n">appName</span><span class="o">(</span><span class="s">&#34;null processor&#34;</span><span class="o">)</span>
+<span class="ln">11</span>        	<span class="o">.</span><span class="n">getOrCreate</span><span class="o">()</span>
 <span class="ln">12</span>        <span class="c1">//导入
 </span><span class="ln">13</span><span class="c1"></span>
 <span class="ln">14</span>        <span class="c1">//读取
 </span><span class="ln">15</span><span class="c1"></span>        <span class="c1">//	1.通过spark-csv自动的推断类型来读取，推断数字的时候会将NaN推断为字符串
 </span><span class="ln">16</span><span class="c1"></span>        <span class="n">spark</span><span class="o">.</span><span class="n">read</span>
-<span class="ln">17</span>         <span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;header&#34;</span><span class="o">,</span> <span class="kc">true</span><span class="o">)</span>
-<span class="ln">18</span>         <span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;inferSchema&#34;</span><span class="o">,</span><span class="kc">true</span><span class="o">)</span>
-<span class="ln">19</span>         <span class="o">.</span><span class="n">csv</span><span class="o">(</span><span class="n">dataset</span><span class="o">/</span><span class="n">ds</span><span class="o">)</span>
+<span class="ln">17</span>        	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;header&#34;</span><span class="o">,</span> <span class="kc">true</span><span class="o">)</span>
+<span class="ln">18</span>        	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;inferSchema&#34;</span><span class="o">,</span><span class="kc">true</span><span class="o">)</span>
+<span class="ln">19</span>        	<span class="o">.</span><span class="n">csv</span><span class="o">(</span><span class="n">dataset</span><span class="o">/</span><span class="n">ds</span><span class="o">)</span>
 <span class="ln">20</span>        <span class="c1">//	2.直接读取字符串，在后续的操作中使用map算子转换类型
 </span><span class="ln">21</span><span class="c1"></span>        <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="o">().</span><span class="n">map</span><span class="o">(</span><span class="n">row</span> <span class="k">=&gt;</span> <span class="n">row</span><span class="o">...)</span>
 <span class="ln">22</span>        <span class="c1">//	3.指定Schema,不要自动推断
 </span><span class="ln">23</span><span class="c1"></span>        <span class="k">val</span> <span class="n">schema</span> <span class="k">=</span> <span class="n">structType</span><span class="o">(</span>
-<span class="ln">24</span>         <span class="n">list</span><span class="o">(</span>
+<span class="ln">24</span>        	<span class="n">list</span><span class="o">(</span>
 <span class="ln">25</span>                <span class="nc">StructField</span><span class="o">(</span><span class="s">&#34;id&#34;</span><span class="o">,</span><span class="nc">LongType</span><span class="o">),</span>
 <span class="ln">26</span>                <span class="nc">StructField</span><span class="o">(</span><span class="s">&#34;year&#34;</span><span class="o">,</span><span class="nc">IntegerType</span><span class="o">),</span>
 <span class="ln">27</span>                <span class="nc">StructField</span><span class="o">(</span><span class="s">&#34;day&#34;</span><span class="o">,</span><span class="nc">IntegerType</span><span class="o">),</span>
@@ -851,10 +851,10 @@
 <span class="ln">30</span>            <span class="o">)</span>
 <span class="ln">31</span>        <span class="o">)</span>
 <span class="ln">32</span>        <span class="k">val</span> <span class="n">sourceDF</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span>
-<span class="ln">33</span>         <span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;header&#34;</span><span class="o">,</span> <span class="n">value</span> <span class="k">=</span> <span class="kc">true</span><span class="o">)</span>
-<span class="ln">34</span>         <span class="o">.</span><span class="n">schema</span><span class="o">(</span><span class="n">schema</span><span class="o">)</span>
-<span class="ln">35</span>         <span class="o">.</span><span class="n">csv</span><span class="o">(</span><span class="s">&#34;dataset/data.csv&#34;</span><span class="o">)</span>
-<span class="ln">36</span>         <span class="o">.</span><span class="n">show</span><span class="o">()</span>
+<span class="ln">33</span>        	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;header&#34;</span><span class="o">,</span> <span class="n">value</span> <span class="k">=</span> <span class="kc">true</span><span class="o">)</span>
+<span class="ln">34</span>        	<span class="o">.</span><span class="n">schema</span><span class="o">(</span><span class="n">schema</span><span class="o">)</span>
+<span class="ln">35</span>        	<span class="o">.</span><span class="n">csv</span><span class="o">(</span><span class="s">&#34;dataset/data.csv&#34;</span><span class="o">)</span>
+<span class="ln">36</span>        	<span class="o">.</span><span class="n">show</span><span class="o">()</span>
 <span class="ln">37</span>        <span class="c1">//丢弃
 </span><span class="ln">38</span><span class="c1"></span>        <span class="c1">//	规则：
 </span><span class="ln">39</span><span class="c1"></span>        <span class="c1">//		1.any：只要有一个NaN就丢弃
@@ -880,7 +880,7 @@
 <span class="ln"> 5</span>    <span class="c1">//2.替换
 </span><span class="ln"> 6</span><span class="c1"></span>    <span class="k">import</span> <span class="nn">org.apache.spark.sql.functions._</span>
 <span class="ln"> 7</span>    <span class="n">sourceDF</span><span class="o">.</span><span class="n">select</span><span class="o">(</span>
-<span class="ln"> 8</span>     &#39;No <span class="n">as</span> <span class="s">&#34;id&#34;</span><span class="o">,</span> &#39;year<span class="o">,</span> &#39;month<span class="o">,</span> &#39;day<span class="o">,</span>
+<span class="ln"> 8</span>    	&#39;No <span class="n">as</span> <span class="s">&#34;id&#34;</span><span class="o">,</span> &#39;year<span class="o">,</span> &#39;month<span class="o">,</span> &#39;day<span class="o">,</span>
 <span class="ln"> 9</span>        <span class="n">when</span><span class="o">(</span>&#39;PM_Dongsi <span class="o">===</span> <span class="s">&#34;NA&#34;</span><span class="o">,</span> <span class="nc">Double</span><span class="o">.</span><span class="nc">NaN</span><span class="o">)</span>
 <span class="ln">10</span>        <span class="o">.</span><span class="n">otherwise</span><span class="o">(</span>&#39;PM_Dongsi <span class="n">cast</span> <span class="nc">DoubleType</span><span class="o">)</span>
 <span class="ln">11</span>        <span class="o">.</span><span class="n">as</span><span class="o">(</span><span class="s">&#34;pm&#34;</span><span class="o">)</span>

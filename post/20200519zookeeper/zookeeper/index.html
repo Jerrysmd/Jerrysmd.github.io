@@ -287,7 +287,7 @@
 <li>动态上下线：</li>
 </ol>
 <blockquote>
-<p>比如在<strong>zookeeper</strong>服务器端有一个<strong>znode</strong>叫 <strong>/Configuration</strong>，那么集群中每一个机器启动的时候都去这个节点下创建一个<strong>EPHEMERAL</strong>类型的节点，比如<strong>server1</strong> 创建 <strong>/Configuration/Server1</strong>，<strong>server2</strong>创建**/Configuration /Server1**，然后**Server1**和**Server2**都**watch** **/Configuration** 这个父节点，那么也就是这个父节点下数据或者子节点变化都会通知到该节点进行**watch**的客户端。</p>
+<p>比如在<strong>zookeeper</strong>服务器端有一个<strong>znode</strong>叫 <strong>/Configuration</strong>，那么集群中每一个机器启动的时候都去这个节点下创建一个<strong>EPHEMERAL</strong>类型的节点，比如<strong>server1</strong> 创建 <strong>/Configuration/Server1</strong>，<strong>server2</strong>创建**/Configuration /Server1**，然后<strong>Server1</strong>和<strong>Server2</strong>都<strong>watch</strong> <strong>/Configuration</strong> 这个父节点，那么也就是这个父节点下数据或者子节点变化都会通知到该节点进行<strong>watch</strong>的客户端。</p>
 </blockquote>
 <ol>
 <li>Leader选举：</li>

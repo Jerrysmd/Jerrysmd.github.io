@@ -122,7 +122,7 @@
 &lt;li&gt;动态上下线：&lt;/li&gt;
 &lt;/ol&gt;
 &lt;blockquote&gt;
-&lt;p&gt;比如在&lt;strong&gt;zookeeper&lt;/strong&gt;服务器端有一个&lt;strong&gt;znode&lt;/strong&gt;叫 &lt;strong&gt;/Configuration&lt;/strong&gt;，那么集群中每一个机器启动的时候都去这个节点下创建一个&lt;strong&gt;EPHEMERAL&lt;/strong&gt;类型的节点，比如&lt;strong&gt;server1&lt;/strong&gt; 创建 &lt;strong&gt;/Configuration/Server1&lt;/strong&gt;，&lt;strong&gt;server2&lt;/strong&gt;创建**/Configuration /Server1**，然后**Server1**和**Server2**都**watch** **/Configuration** 这个父节点，那么也就是这个父节点下数据或者子节点变化都会通知到该节点进行**watch**的客户端。&lt;/p&gt;
+&lt;p&gt;比如在&lt;strong&gt;zookeeper&lt;/strong&gt;服务器端有一个&lt;strong&gt;znode&lt;/strong&gt;叫 &lt;strong&gt;/Configuration&lt;/strong&gt;，那么集群中每一个机器启动的时候都去这个节点下创建一个&lt;strong&gt;EPHEMERAL&lt;/strong&gt;类型的节点，比如&lt;strong&gt;server1&lt;/strong&gt; 创建 &lt;strong&gt;/Configuration/Server1&lt;/strong&gt;，&lt;strong&gt;server2&lt;/strong&gt;创建**/Configuration /Server1**，然后&lt;strong&gt;Server1&lt;/strong&gt;和&lt;strong&gt;Server2&lt;/strong&gt;都&lt;strong&gt;watch&lt;/strong&gt; &lt;strong&gt;/Configuration&lt;/strong&gt; 这个父节点，那么也就是这个父节点下数据或者子节点变化都会通知到该节点进行&lt;strong&gt;watch&lt;/strong&gt;的客户端。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;ol&gt;
 &lt;li&gt;Leader选举：&lt;/li&gt;
