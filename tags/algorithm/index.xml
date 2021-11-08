@@ -144,6 +144,7 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;归并排序&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;概念：将n个元素分成个含n/2个元素的子序列，用合并排序法对两个子序列递归的排序，合并两个已排序的子序列已得到排序结果。&lt;/li&gt;
 &lt;li&gt;时间复杂度：使用Master公式： T(N) = NlogN&lt;/li&gt;
@@ -213,6 +214,16 @@
 &lt;span class=&#34;ln&#34;&gt;30&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;res&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;31&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;快速排序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;荷兰国旗问题&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;问题：给一个 arr 和 num，要求把小于等num的数放左，大于num放右，时间复杂度为O(N)，空间为O(1)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
         
       </description>
     </item>
