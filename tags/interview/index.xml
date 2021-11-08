@@ -711,7 +711,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;小和问题&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;[1, 3, 4, 2, 5] 的小和是 0 + 1 + 4 + 1 +10 = 16&lt;/p&gt;
-&lt;p&gt;归并排序思路，重写merge方法&lt;/p&gt;
+&lt;p&gt;归并排序思路，目的就是减少对比次数。增加一个外部空间，记录小的数&lt;/p&gt;
 &lt;/blockquote&gt;
         
       </description>
