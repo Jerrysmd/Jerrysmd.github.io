@@ -47,3 +47,9 @@ a.post_tag.button.button_translucent:hover, a.post_tag.button.button_translucent
     background: #46954a;
     border: 1px solid #46954a;
 }
+
+a.button.mt-1:hover, abutton.mt-1:focus {
+    background: #273549;
+    border: 1px solid #273549;
+    color: #4b9af1;
+}
