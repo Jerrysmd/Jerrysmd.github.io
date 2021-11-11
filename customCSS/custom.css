@@ -38,5 +38,5 @@ html {
 }
 
 .button {
-    transition: .5s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    transition: .3s cubic-bezier(0.46, 0.03, 0.52, 0.96);
 }
