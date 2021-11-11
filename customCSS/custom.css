@@ -1,7 +1,7 @@
 img {
     height: auto;
     margin: auto;
-    padding: 0
+    padding: 0;
 }
 
 h3.post_link {
@@ -22,13 +22,17 @@ a.post_tag.button.button_translucent {
 }
 
 html {
-    --bg: #22272e
+    --bg: #22272e;
 }
 
 .nav_header {
-    background-color: #2d333b
+    background-color: #2d333b;
 }
 
 .nav_body {
-    background-color: #22272e
+    background-color: #22272e;
+}
+
+.color_mode {
+    display: none;
 }
