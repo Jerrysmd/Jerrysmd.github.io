@@ -36,3 +36,17 @@ html {
 .color_mode {
     display: none;
 }
+
+.button {
+    background-color: var(--theme);
+    color: #fff;
+    display: inline-flex;
+    padding: 0.5rem 1.5rem;
+    text-transform: uppercase;
+    border: 1px solid var(--theme);
+    border-radius: 0.8rem;
+    font-size: 0.9rem;
+    align-items: center;
+    user-select: none;
+    transition: .5s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+}
