@@ -38,8 +38,12 @@ html {
 }
 
 .button {
-    /* background-color: #316dca;
-    border: 1px solid #316dca; */
     transition: .3s cubic-bezier(0.46, 0.03, 0.52, 0.96);
     transition-property: background-color, border, color;
+}
+
+
+a.post_tag.button.button_translucent:hover, a.post_tag.button.button_translucent:focus {
+    background: #46954a;
+    border: 1px solid #46954a;
 }
