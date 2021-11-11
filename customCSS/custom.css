@@ -53,3 +53,10 @@ a.button.mt-1:hover, abutton.mt-1:focus, a.excerpt_more.button:hover, a.excerpt_
     border: 1px solid #273549;
     color: #4b9af1;
 }
+
+.button_translucent {
+    background: #273549;
+    color: #4a9af1;
+    border: 1px solid transparent;
+    font-weight: 500;
+}
