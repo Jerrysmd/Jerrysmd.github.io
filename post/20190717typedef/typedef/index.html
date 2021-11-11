@@ -210,6 +210,7 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
 根据错误信息，能够看出p2为只读的常量了，所以p2++出错了。这个问题再一次提醒我们：typedef和#define不同，typedef不是简单的文本替换，上述代码中const pStr p2并不等于const char * p2，pStr是作为一个类型存在的，所以const pStr p2实际上限制了pStr类型的p2变量，对p2常量进行了只读限制。也就是说，const pStr p2和pStr const p2本质上没有区别（可类比const int p2和int const p2），都是对变量p2进行只读限制，只不过此处变量p2的数据类型是我们自己定义的（pStr），而不是系统固有类型（如int）而已。</p>
 <p>所以，const pStr p2的含义是：限定数据类型为char *的变量p2为只读，因此p2++错误。</p>
 <p><code>注意：</code>在本示例中，typedef定义的新类型与编译系统固有的类型没有差别。</p>
+
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
@@ -267,21 +268,6 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
       </li>
       <li>
         <a href="https://Jerrysmd.github.io/post/20200526apparchitecturedevelopment/apparchitecturedevelopment/" class="nav-link" title="应用架构演进历程: The Development of App Architecture">应用架构演进历程: The Development of App Architecture</a>
-      </li>
-      <li>
-        <a href="https://Jerrysmd.github.io/post/20200526finalkeywordinjava/finalkeywordinjava/" class="nav-link" title="Final 关键字: Final Key Word In Java">Final 关键字: Final Key Word In Java</a>
-      </li>
-      <li>
-        <a href="https://Jerrysmd.github.io/post/20200519zookeeper/zookeeper/" class="nav-link" title="Zookeeper核心知识点: Key points of ZooKeeper">Zookeeper核心知识点: Key points of ZooKeeper</a>
-      </li>
-      <li>
-        <a href="https://Jerrysmd.github.io/post/20200427kafka/kafka/" class="nav-link" title="KAFKA和消息队列: Kafka &amp; Message Queue">KAFKA和消息队列: Kafka &amp; Message Queue</a>
-      </li>
-      <li>
-        <a href="https://Jerrysmd.github.io/post/20200326hdfsnfs/hdfsnfs/" class="nav-link" title="HDFS &amp; NFS">HDFS &amp; NFS</a>
-      </li>
-      <li>
-        <a href="https://Jerrysmd.github.io/post/20200208scalaintroduction/scalaintroduction/" class="nav-link" title="Scala 简介: Scala Introduction">Scala 简介: Scala Introduction</a>
       </li>
     </ul>
     <div>
