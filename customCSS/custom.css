@@ -62,5 +62,5 @@ a.button.mt-1:hover, abutton.mt-1:focus, a.excerpt_more.button:hover, a.excerpt_
 }
 
 html:not([data-mode="lit"]){
-    --light: #adbac7;
+    --light: #d2d9e0;
 }
