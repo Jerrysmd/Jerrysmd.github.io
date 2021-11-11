@@ -8,15 +8,23 @@ h3.post_link {
     margin: 0.35rem 0;
 }
 
-.post_date{
-  margin-right: 0.3rem;
-  maigin-lefg: 0.25rem;
+.post_date {
+    margin-right: 0.3rem;
+    maigin-lefg: 0.25rem;
 }
 
-span.post_time{
-  margin-right: 0.1rem;
+span.post_time {
+    margin-right: 0.1rem;
 }
 
 a.post_tag.button.button_translucent {
-	margin: 0.54rem 0.7rem 0.35rem 0.14rem;
+    margin: 0.54rem 0.7rem 0.35rem 0.14rem;
+}
+
+html {
+    --bg: #22272e
+}
+
+.nav_header {
+    background-color: #2d333b
 }
