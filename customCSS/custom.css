@@ -23,6 +23,7 @@ a.post_tag.button.button_translucent {
 
 html {
     --bg: #22272e;
+    --light: #adbac7;
 }
 
 .nav_header {
@@ -51,7 +52,7 @@ a.post_tag.button.button_translucent:hover, a.post_tag.button.button_translucent
 a.button.mt-1:hover, abutton.mt-1:focus, a.excerpt_more.button:hover, a.excerpt_more.button:focus {
     background: #273549;
     border: 1px solid #273549;
-    color: #fff;
+    color: #4b9af1;
 }
 
 .button_translucent {
