@@ -21,12 +21,16 @@ a.post_tag.button.button_translucent {
     margin: 0.2rem 0.5rem;
 }
 
+p {
+    padding-bottom: 0.5rem;
+}
+
 p.pale{
     padding: 0;
 }
 
 .excerpt_footer {
-    padding: 0 1rem;
+    padding: 0 1rem 0.2rem 1rem;
 }
 
 .post_tag, .post_share{
