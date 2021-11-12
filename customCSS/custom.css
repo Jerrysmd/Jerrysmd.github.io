@@ -21,6 +21,11 @@ a.post_tag.button.button_translucent {
     margin: 0 0.5rem;
 }
 
+.post_meta span{
+    align-items: center;
+    display: inline-flex;
+}
+
 html {
     --bg: #22272e;
 }
