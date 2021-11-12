@@ -21,6 +21,10 @@ a.post_tag.button.button_translucent {
     margin: 0.2rem 0.5rem;
 }
 
+p.pale{
+    padding: 0;
+}
+
 .post_tag, .post_share{
     margin: 0.5rem;
 }
