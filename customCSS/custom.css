@@ -25,6 +25,10 @@ p.pale{
     padding: 0;
 }
 
+.excerpt_footer {
+    padding: 0 1rem 0 1rem;
+}
+
 .post_tag, .post_share{
     margin: 0.5rem;
 }
