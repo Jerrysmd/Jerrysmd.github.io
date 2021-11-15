@@ -754,6 +754,12 @@
 &lt;blockquote&gt;
 &lt;p&gt;问题1：给一个 arr 和 num，要求把小于等num的数放左，大于num放右，时间复杂度为O(N)，空间为O(1)&lt;/p&gt;
 &lt;p&gt;问题2：给一个 arr 和 num，要求把小于等num的数放左，等于放中间，大于num放右，时间复杂度为O(N)，空间为O(1)&lt;/p&gt;
+&lt;p&gt;思路：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;[i] &amp;lt; num, [i] 和 &amp;lt; 区的下一个交换，&amp;lt; 区位置右扩，i++&lt;/li&gt;
+&lt;li&gt;[i] = num, i++&lt;/li&gt;
+&lt;li&gt;[i] &amp;gt; num, [i] 和 &amp;gt; 区前一个交换, &amp;lt; 区左扩, i 不变&lt;/li&gt;
+&lt;/ol&gt;
 &lt;/blockquote&gt;
 &lt;/blockquote&gt;
         
