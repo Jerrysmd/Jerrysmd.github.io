@@ -219,6 +219,7 @@
 &lt;li&gt;快速排序&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
+&lt;p&gt;时间复杂度：O(n^2)&lt;/p&gt;
 &lt;p&gt;荷兰国旗问题&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;问题1：给一个 arr 和 num，要求把小于等num的数放左，大于num放右，时间复杂度为O(N)，空间为O(1)&lt;/p&gt;
