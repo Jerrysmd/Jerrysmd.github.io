@@ -316,7 +316,7 @@
 <span class="ln">11</span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">merge</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">,</span> <span class="kt">int</span> <span class="n">L</span><span class="o">,</span> <span class="kt">int</span> <span class="n">mid</span><span class="o">,</span> <span class="kt">int</span> <span class="n">R</span><span class="o">){</span>
 <span class="ln">12</span>    <span class="kt">int</span><span class="o">[]</span> <span class="n">extr</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">R</span> <span class="o">-</span> <span class="n">L</span> <span class="o">+</span> <span class="n">1</span><span class="o">];</span>
 <span class="ln">13</span>    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
-<span class="ln">14</span>    <span class="kt">int</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">L</span><span class="o">;</span>
+<span class="ln">14</span>    <span class="kt">int</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">L</span><span class="o">;</span><span class="n">1</span>
 <span class="ln">15</span>    <span class="kt">int</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">M</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span>
 <span class="ln">16</span>    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
 <span class="ln">17</span>    <span class="k">while</span><span class="o">(</span><span class="n">p1</span> <span class="o">&lt;=</span> <span class="n">M</span> <span class="o">&amp;&amp;</span> <span class="n">p2</span> <span class="o">&lt;=</span> <span class="n">R</span><span class="o">){</span>
@@ -345,12 +345,6 @@
 <blockquote>
 <p>问题1：给一个 arr 和 num，要求把小于等num的数放左，大于num放右，时间复杂度为O(N)，空间为O(1)</p>
 <p>问题2：给一个 arr 和 num，要求把小于等num的数放左，等于放中间，大于num放右，时间复杂度为O(N)，空间为O(1)</p>
-<p>思路：</p>
-<ol>
-<li>[i] &lt; num, [i] 和 &lt; 区的下一个交换，&lt; 区位置右扩，i++</li>
-<li>[i] = num, i++</li>
-<li>[i] &gt; num, [i] 和 &gt; 区前一个交换, &lt; 区左扩, i 不变</li>
-</ol>
 </blockquote>
 </blockquote>
 
