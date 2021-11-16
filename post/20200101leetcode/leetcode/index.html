@@ -357,8 +357,18 @@
 <span class="ln"> 9</span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">partition</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">,</span> <span class="kt">int</span> <span class="n">L</span><span class="o">,</span> <span class="kt">int</span> <span class="n">R</span><span class="o">){</span>
 <span class="ln">10</span>    <span class="kt">int</span> <span class="n">less</span> <span class="o">=</span> <span class="n">L</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span><span class="c1">// &lt;区域的右边界
 </span><span class="ln">11</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">more</span> <span class="o">=</span> <span class="n">R</span><span class="o">;</span> <span class="c1">//&gt;区的左边界
-</span><span class="ln">12</span><span class="c1"></span>    <span class="k">while</span><span class="o">(</span><span class="n">L</span> <span class="o">&lt;</span> <span class="n">more</span><span class="o">){}</span>
-<span class="ln">13</span><span class="o">}</span>
+</span><span class="ln">12</span><span class="c1"></span>    <span class="k">while</span><span class="o">(</span><span class="n">L</span> <span class="o">&lt;</span> <span class="n">more</span><span class="o">){</span> <span class="c1">// L表示当前数的位置
+</span><span class="ln">13</span><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">L</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">[</span><span class="n">R</span><span class="o">]){</span>
+<span class="ln">14</span>            <span class="n">swap</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="o">++</span><span class="n">less</span><span class="o">,</span> <span class="n">L</span><span class="o">++);</span>
+<span class="ln">15</span>        <span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">L</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">arr</span><span class="o">[</span><span class="n">R</span><span class="o">]){</span>
+<span class="ln">16</span>            <span class="n">swap</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="o">--</span><span class="n">more</span><span class="o">,</span> <span class="n">L</span><span class="o">);</span>
+<span class="ln">17</span>        <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+<span class="ln">18</span>            <span class="n">L</span><span class="o">++;</span>
+<span class="ln">19</span>        <span class="o">}</span>
+<span class="ln">20</span>        <span class="n">swap</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">more</span><span class="o">,</span> <span class="n">R</span><span class="o">);</span>
+<span class="ln">21</span>        <span class="k">return</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span> <span class="n">less</span> <span class="o">+</span> <span class="n">1</span><span class="o">,</span> <span class="n">more</span><span class="o">};</span>
+<span class="ln">22</span>    <span class="o">}</span>
+<span class="ln">23</span><span class="o">}</span>
 </code></pre></div></blockquote>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
