@@ -4332,9 +4332,7 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;span class=&#34;ln&#34;&gt;31&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
 &lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;快速排序&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;快速排序&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;时间复杂度：O(NlogN)，因为有&lt;strong&gt;随机概率&lt;/strong&gt;行为随意复杂度为期望值。&lt;/p&gt;
 &lt;p&gt;空间复杂度：O(logN)&lt;/p&gt;
@@ -4367,6 +4365,7 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;span class=&#34;ln&#34;&gt;22&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;23&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;堆排&lt;/strong&gt;&lt;/p&gt;
         
       </description>
     </item>
