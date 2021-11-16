@@ -124,7 +124,7 @@
 </svg></span>
     <span class="post_date">
       Jan 1, 2020</span>
-    <span class="post_time"> · 4 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/interview' title="interview" class="post_tag button button_translucent">interview
+    <span class="post_time"> · 5 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/interview' title="interview" class="post_tag button button_translucent">interview
         </a><a href='https://Jerrysmd.github.io/tags/leetcode' title="leetcode" class="post_tag button button_translucent">leetcode
         </a><a href='https://Jerrysmd.github.io/tags/algorithm' title="algorithm" class="post_tag button button_translucent">algorithm
         </a>
@@ -341,7 +341,15 @@
 </ul>
 <blockquote>
 <p>时间复杂度：O(NlogN)</p>
-<p>荷兰国旗问题</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">quickSort</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">,</span> <span class="kt">int</span> <span class="n">L</span><span class="o">,</span> <span class="kt">int</span> <span class="n">R</span><span class="o">){</span>
+<span class="ln">2</span>    <span class="k">if</span><span class="o">(</span><span class="n">L</span> <span class="o">&lt;</span> <span class="n">R</span><span class="o">){</span>
+<span class="ln">3</span>        <span class="n">swap</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">L</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)(</span><span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">()</span> <span class="o">*</span> <span class="o">(</span><span class="n">R</span> <span class="o">-</span> <span class="n">L</span> <span class="o">+</span> <span class="n">1</span><span class="o">)),</span> <span class="n">R</span><span class="o">);</span><span class="c1">//随机选一个数和最后位置交换
+</span><span class="ln">4</span><span class="c1"></span>        <span class="kt">int</span><span class="o">[]</span> <span class="n">p</span> <span class="o">=</span> <span class="n">partition</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">L</span><span class="o">,</span> <span class="n">R</span><span class="o">);</span>
+<span class="ln">5</span>        <span class="n">quickSort</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">L</span><span class="o">,</span> <span class="n">p</span><span class="o">[</span><span class="n">0</span><span class="o">]</span> <span class="o">-</span> <span class="n">1</span><span class="o">);</span>
+<span class="ln">6</span>        <span class="n">quickSort</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">p</span><span class="o">[</span><span class="n">1</span><span class="o">]</span> <span class="o">+</span> <span class="n">1</span><span class="o">,)</span>
+<span class="ln">7</span>    <span class="o">}</span>
+<span class="ln">8</span><span class="o">}</span>
+</code></pre></div><p>荷兰国旗问题</p>
 <blockquote>
 <p>问题1：给一个 arr 和 num，要求把小于等num的数放左，大于num放右，时间复杂度为O(N)，空间为O(1)</p>
 <p>问题2：给一个 arr 和 num，要求把小于等num的数放左，等于放中间，大于num放右，时间复杂度为O(N)，空间为O(1)</p>
