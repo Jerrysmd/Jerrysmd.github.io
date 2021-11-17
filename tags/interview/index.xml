@@ -780,6 +780,11 @@
 &lt;span class=&#34;ln&#34;&gt;23&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;堆排&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;大根堆&lt;/strong&gt;：在完全二叉树（最后一层的结点都连续集中在最左边，其余层满节点）的前提下，每一棵子树的最大值是头结点的数。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;小根堆&lt;/strong&gt;：在完全二叉树（最后一层的结点都连续集中在最左边，其余层满节点）的前提下，每一棵子树的最小值是头结点的数。&lt;/p&gt;
+&lt;p&gt;pibl&lt;/p&gt;
+&lt;/blockquote&gt;
         
       </description>
     </item>
