@@ -371,6 +371,7 @@
 </code></pre></div></blockquote>
 <p><strong>堆排</strong></p>
 <blockquote>
+<p>时间复杂度：O(NlogN)</p>
 <p><strong>大根堆</strong>：在完全二叉树（最后一层的结点都连续集中在最左边，其余层满节点）的前提下，每一棵子树的最大值是头结点的数。</p>
 <p><strong>小根堆</strong>：在完全二叉树（最后一层的结点都连续集中在最左边，其余层满节点）的前提下，每一棵子树的最小值是头结点的数。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="c1">//处在index位置上的数，往上继续移动
@@ -380,7 +381,7 @@
 <span class="ln">5</span>        <span class="n">index</span> <span class="o">=</span> <span class="o">(</span><span class="n">index</span> <span class="o">-</span> <span class="n">1</span><span class="o">)</span> <span class="o">/</span> <span class="n">2</span><span class="o">;</span>
 <span class="ln">6</span>    <span class="o">}</span>
 <span class="ln">7</span><span class="o">}</span>
-</code></pre></div><p>返回最大值（arr[0]上的数），并删除最大的数：</p>
+</code></pre></div><p>返回最大值（arr[0]上的数），并删除最大值：</p>
 <blockquote>
 <ol>
 <li>返回根节点。</li>
@@ -401,11 +402,26 @@
 <span class="ln">11</span>        <span class="o">}</span>
 <span class="ln">12</span>        <span class="n">swap</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">largest</span><span class="o">,</span> <span class="n">index</span><span class="o">);</span>
 <span class="ln">13</span>        <span class="n">index</span> <span class="o">=</span> <span class="n">largest</span><span class="o">;</span>
-<span class="ln">14</span>        <span class="n">left</span> <span class="o">=</span> <span class="n">index</span> <span class="o">*</span> <span class="n">2</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span><span class="n">lit</span>
+<span class="ln">14</span>        <span class="n">left</span> <span class="o">=</span> <span class="n">index</span> <span class="o">*</span> <span class="n">2</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span>
 <span class="ln">15</span>    <span class="o">}</span>
 <span class="ln">16</span><span class="o">}</span>
 </code></pre></div></blockquote>
-</blockquote>
+<p>HeapSoart</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">heapSort</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">){</span>
+<span class="ln"> 2</span>    <span class="k">if</span><span class="o">(</span><span class="n">arr</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span> <span class="o">&lt;</span> <span class="n">2</span><span class="o">){</span>
+<span class="ln"> 3</span>        <span class="k">return</span><span class="o">;</span>
+<span class="ln"> 4</span>    <span class="o">}</span>
+<span class="ln"> 5</span>    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+<span class="ln"> 6</span>        <span class="n">heapInsert</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">i</span><span class="o">);</span><span class="c1">//数组整体范围变成大根堆
+</span><span class="ln"> 7</span><span class="c1"></span>    <span class="o">}</span>
+<span class="ln"> 8</span>    <span class="kt">int</span> <span class="n">heapSize</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+<span class="ln"> 9</span>    <span class="n">swap</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="o">--</span><span class="n">heapSize</span><span class="o">);</span><span class="c1">//大根堆的root(最大值)放到arr最后
+</span><span class="ln">10</span><span class="c1"></span>    <span class="k">while</span><span class="o">(</span><span class="n">heapSize</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">){</span>
+<span class="ln">11</span>        <span class="n">heapify</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">heapSize</span><span class="o">);</span>
+<span class="ln">12</span>        <span class="n">swap</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="o">--</span><span class="n">heapSize</span><span class="o">);</span>
+<span class="ln">13</span>    <span class="o">}</span>
+<span class="ln">14</span><span class="o">}</span>
+</code></pre></div></blockquote>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
