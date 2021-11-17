@@ -373,7 +373,22 @@
 <blockquote>
 <p><strong>大根堆</strong>：在完全二叉树（最后一层的结点都连续集中在最左边，其余层满节点）的前提下，每一棵子树的最大值是头结点的数。</p>
 <p><strong>小根堆</strong>：在完全二叉树（最后一层的结点都连续集中在最左边，其余层满节点）的前提下，每一棵子树的最小值是头结点的数。</p>
-<p>pibl</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="c1">//处在index位置上的数，往上继续移动
+</span><span class="ln">2</span><span class="c1"></span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">heapInsert</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">,</span> <span class="kt">int</span> <span class="n">index</span><span class="o">){</span>
+<span class="ln">3</span>    <span class="k">while</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">index</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">arr</span><span class="o">[(</span><span class="n">index</span> <span class="o">-</span> <span class="n">1</span><span class="o">)</span> <span class="o">/</span> <span class="n">2</span><span class="o">])</span> <span class="o">{</span>
+<span class="ln">4</span>        <span class="n">swap</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">index</span><span class="o">,</span> <span class="o">(</span><span class="n">index</span> <span class="o">-</span> <span class="n">1</span><span class="o">)</span> <span class="o">/</span> <span class="n">2</span><span class="o">);</span>
+<span class="ln">5</span>        <span class="n">index</span> <span class="o">=</span> <span class="o">(</span><span class="n">index</span> <span class="o">-</span> <span class="n">1</span><span class="o">)</span> <span class="o">/</span> <span class="n">2</span><span class="o">;</span>
+<span class="ln">6</span>    <span class="o">}</span>
+<span class="ln">7</span><span class="o">}</span>
+</code></pre></div><p>返回最大值（arr[0]上的数），并删除最大的数：</p>
+<blockquote>
+<ol>
+<li>返回根节点。</li>
+<li>把 arr[heapSize] 的数放到根节点。</li>
+<li>heapSize&ndash;，最后一个节点即与堆断连。</li>
+<li>while 循环，与子节点比较，小则替换，直到满足大根堆。</li>
+</ol>
+</blockquote>
 </blockquote>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
