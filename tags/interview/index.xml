@@ -748,7 +748,7 @@
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;快速排序&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;时间复杂度：O(NlogN)，因为有&lt;strong&gt;随机概率&lt;/strong&gt;行为，所以复杂度为期望值。&lt;/p&gt;
+&lt;p&gt;时间复杂度：O(NlogN)，因为有&lt;strong&gt;随机概率&lt;/strong&gt;行为，所以时间复杂度为期望值。&lt;/p&gt;
 &lt;p&gt;空间复杂度：O(logN)&lt;/p&gt;
 &lt;p&gt;荷兰国旗问题&lt;/p&gt;
 &lt;blockquote&gt;
