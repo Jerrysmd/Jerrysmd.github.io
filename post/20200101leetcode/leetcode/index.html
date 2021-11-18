@@ -374,6 +374,7 @@
 <p>时间复杂度：O(NlogN)</p>
 <p><strong>大根堆</strong>：在完全二叉树（最后一层的结点都连续集中在最左边，其余层满节点）的前提下，每一棵子树的最大值是头结点的数。</p>
 <p><strong>小根堆</strong>：在完全二叉树（最后一层的结点都连续集中在最左边，其余层满节点）的前提下，每一棵子树的最小值是头结点的数。</p>
+<p>优先级队列结构，就是堆结构</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="c1">//处在index位置上的数，往上继续移动
 </span><span class="ln">2</span><span class="c1"></span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">heapInsert</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">,</span> <span class="kt">int</span> <span class="n">index</span><span class="o">){</span>
 <span class="ln">3</span>    <span class="k">while</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">index</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">arr</span><span class="o">[(</span><span class="n">index</span> <span class="o">-</span> <span class="n">1</span><span class="o">)</span> <span class="o">/</span> <span class="n">2</span><span class="o">])</span> <span class="o">{</span>
@@ -421,7 +422,8 @@
 <span class="ln">12</span>        <span class="n">swap</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="o">--</span><span class="n">heapSize</span><span class="o">);</span>
 <span class="ln">13</span>    <span class="o">}</span>
 <span class="ln">14</span><span class="o">}</span>
-</code></pre></div></blockquote>
+</code></pre></div><p>一个数组如果把它排好序的话，每个元素</p>
+</blockquote>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
