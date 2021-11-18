@@ -377,10 +377,10 @@
 <p>优先级队列结构，就是堆结构</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="c1">//处在index位置上的数，往上继续移动
 </span><span class="ln">2</span><span class="c1"></span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">heapInsert</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">,</span> <span class="kt">int</span> <span class="n">index</span><span class="o">){</span>
-<span class="ln">3</span>    <span class="k">while</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">index</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">arr</span><span class="o">[(</span><span class="n">index</span> <span class="o">-</span> <span class="n">1</span><span class="o">)</span> <span class="o">/</span> <span class="n">2</span><span class="o">])</span> <span class="o">{</span>
-<span class="ln">4</span>        <span class="n">swap</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">index</span><span class="o">,</span> <span class="o">(</span><span class="n">index</span> <span class="o">-</span> <span class="n">1</span><span class="o">)</span> <span class="o">/</span> <span class="n">2</span><span class="o">);</span>
-<span class="ln">5</span>        <span class="n">index</span> <span class="o">=</span> <span class="o">(</span><span class="n">index</span> <span class="o">-</span> <span class="n">1</span><span class="o">)</span> <span class="o">/</span> <span class="n">2</span><span class="o">;</span>
-<span class="ln">6</span>    <span class="o">}</span>
+<span class="ln">3</span> <span class="k">while</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">index</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">arr</span><span class="o">[(</span><span class="n">index</span> <span class="o">-</span> <span class="n">1</span><span class="o">)</span> <span class="o">/</span> <span class="n">2</span><span class="o">])</span> <span class="o">{</span>
+<span class="ln">4</span>     <span class="n">swap</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">index</span><span class="o">,</span> <span class="o">(</span><span class="n">index</span> <span class="o">-</span> <span class="n">1</span><span class="o">)</span> <span class="o">/</span> <span class="n">2</span><span class="o">);</span>
+<span class="ln">5</span>     <span class="n">index</span> <span class="o">=</span> <span class="o">(</span><span class="n">index</span> <span class="o">-</span> <span class="n">1</span><span class="o">)</span> <span class="o">/</span> <span class="n">2</span><span class="o">;</span>
+<span class="ln">6</span> <span class="o">}</span>
 <span class="ln">7</span><span class="o">}</span>
 </code></pre></div><p>返回最大值（arr[0]上的数），并删除最大值：</p>
 <blockquote>
@@ -428,8 +428,11 @@
 <p>方法：</p>
 <p>最小堆排方法，先取出前k个数字组成最小堆，根位置为0位置上的数；添加一个数，堆化，根位置为第二个位置上的数。以此类推</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">PriorityQueue</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">heap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PriorityQueue</span><span class="o">&lt;&gt;();</span><span class="c1">//优先级队列结构，就是堆结构
-</span></code></pre></div><p>扩容：双倍扩容</p>
-</li>
+</span></code></pre></div><p>扩容方式：双倍扩容</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">sortedArrDistanceLessK</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">,</span> <span class="kt">int</span> <span class="n">k</span><span class="o">){</span>
+<span class="ln">2</span>
+<span class="ln">3</span><span class="o">}</span>
+</code></pre></div></li>
 </ul>
 </blockquote>
 
