@@ -422,7 +422,16 @@
 <span class="ln">12</span>        <span class="n">swap</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="o">--</span><span class="n">heapSize</span><span class="o">);</span>
 <span class="ln">13</span>    <span class="o">}</span>
 <span class="ln">14</span><span class="o">}</span>
-</code></pre></div><p>一个数组如果把它排好序的话，每个元素</p>
+</code></pre></div><p>一个数组如果把它排好序的话，每个元素移动的距离不超过k，k相对于数组长度比较小，选择一个合适的排序算法排序</p>
+<ul>
+<li>
+<p>方法：</p>
+<p>最小堆排方法，先取出前k个数字组成最小堆，根位置为0位置上的数；添加一个数，堆化，根位置为第二个位置上的数。以此类推</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">PriorityQueue</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">heap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PriorityQueue</span><span class="o">&lt;&gt;();</span><span class="c1">//优先级队列结构，就是堆结构
+</span><span class="ln">2</span><span class="c1"></span>
+</code></pre></div><p>扩容：</p>
+</li>
+</ul>
 </blockquote>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
