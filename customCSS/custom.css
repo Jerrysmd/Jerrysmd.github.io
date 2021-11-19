@@ -65,13 +65,13 @@ html {
 
 
 a.post_tag.button.button_translucent:hover, a.post_tag.button.button_translucent:focus {
-    background: #46954a;
-    border: 1px solid #46954a;
+    background: #009688;
+    border: 1px solid #009688;
 }
 
 a.button.mt-1:hover, abutton.mt-1:focus, a.excerpt_more.button:hover, a.excerpt_more.button:focus {
-    background: #2196f3;
-    border: 1px solid #2196f3;
+    background: #009688;
+    border: 1px solid #009688;
 }
 
 .button_translucent {
