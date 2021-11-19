@@ -59,7 +59,7 @@ html {
 }
 
 .button {
-    background-color: #2196f3;
+    background-color: #0075d1;
     transition: .3s cubic-bezier(0.46, 0.03, 0.52, 0.96);
     transition-property: background-color, border, color;
 }
@@ -71,7 +71,7 @@ a.post_tag.button.button_translucent:hover, a.post_tag.button.button_translucent
 }
 
 a.button.mt-1:hover, abutton.mt-1:focus, a.excerpt_more.button:hover, a.excerpt_more.button:focus {
-    background: #0075d1;
+    background: #2196f3;
     /* border: 1px solid #009688; */
 }
 
