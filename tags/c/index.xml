@@ -781,7 +781,7 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
     </item>
     
     <item>
-      <title>文件读取的高级方法：Advanced method of reading files</title>
+      <title>C文件读取的高级方法：Advanced method of reading files</title>
       <link>https://Jerrysmd.github.io/post/20181220read_binary_file/read_binary_file/</link>
       <pubDate>Thu, 20 Dec 2018 18:39:37 -0700</pubDate>
       

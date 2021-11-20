@@ -52,7 +52,8 @@
 &lt;span class=&#34;ln&#34;&gt;23&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;24&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;eor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;^&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;插入排序&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;排序&#34;&gt;排序&lt;/h2&gt;
+&lt;h3 id=&#34;插入排序&#34;&gt;插入排序&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;概念： 将后部分的数据(从第二开始)按照一定的顺序一个一个的插入到前部分有序的表中&lt;/li&gt;
 &lt;li&gt;时间复杂度：O(N^2)&lt;/li&gt;
@@ -79,7 +80,7 @@
 &lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;	&lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;^&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;];&lt;/span&gt; 
 &lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;	&lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;^&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;];&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;二分查找&lt;/strong&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;二分查找&#34;&gt;二分查找&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;时间复杂度：O(logN)  (logN默认指log以2为底)&lt;/li&gt;
 &lt;/ul&gt;
@@ -143,7 +144,7 @@
 &lt;/ol&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;归并排序&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;归并排序&#34;&gt;归并排序&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;概念：将n个元素分成个含n/2个元素的子序列，用合并排序法对两个子序列递归的排序，合并两个已排序的子序列已得到排序结果。&lt;/li&gt;
@@ -215,7 +216,7 @@
 &lt;span class=&#34;ln&#34;&gt;31&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;快速排序&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;快速排序&#34;&gt;快速排序&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;时间复杂度：O(NlogN)，因为有&lt;strong&gt;随机概率&lt;/strong&gt;行为，所以时间复杂度为期望值。&lt;/p&gt;
 &lt;p&gt;空间复杂度：O(logN)&lt;/p&gt;
@@ -248,7 +249,7 @@
 &lt;span class=&#34;ln&#34;&gt;22&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;23&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;堆排&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;堆排序&#34;&gt;堆排序&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;时间复杂度：O(NlogN)&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;大根堆&lt;/strong&gt;：在完全二叉树（最后一层的结点都连续集中在最左边，其余层满节点）的前提下，每一棵子树的最大值是头结点的数。&lt;/p&gt;
@@ -326,8 +327,10 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;桶排&lt;/p&gt;
+&lt;h3 id=&#34;桶排&#34;&gt;桶排&lt;/h3&gt;
 &lt;blockquote&gt;
+&lt;p&gt;计数排序：&lt;/p&gt;
+&lt;p&gt;基数排序：&lt;/p&gt;
 &lt;/blockquote&gt;
         
       </description>

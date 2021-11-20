@@ -134,7 +134,20 @@
     
     
     <h2>Overview</h2>
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#排序">排序</a>
+      <ul>
+        <li><a href="#插入排序">插入排序</a></li>
+        <li><a href="#二分查找">二分查找</a></li>
+        <li><a href="#归并排序">归并排序</a></li>
+        <li><a href="#快速排序">快速排序</a></li>
+        <li><a href="#堆排序">堆排序</a></li>
+        <li><a href="#桶排">桶排</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     <p>Algorithms are used in every part of computer science. They form the field&rsquo;s backbone. In computer science, an algorithm gives the computer a specific set of instructions, which allows the computer to do everything, be it running a calculator or running a rocket.</p>
 <p><strong>异或运算</strong></p>
 <blockquote>
@@ -173,7 +186,8 @@
 <span class="ln">23</span><span class="o">}</span>
 <span class="ln">24</span><span class="kt">int</span> <span class="n">result2</span> <span class="o">=</span> <span class="n">eor</span> <span class="o">^</span> <span class="n">result1</span><span class="o">;</span>
 </code></pre></div></blockquote>
-<p><strong>插入排序</strong></p>
+<h2 id="排序">排序</h2>
+<h3 id="插入排序">插入排序</h3>
 <ul>
 <li>概念： 将后部分的数据(从第二开始)按照一定的顺序一个一个的插入到前部分有序的表中</li>
 <li>时间复杂度：O(N^2)</li>
@@ -200,7 +214,7 @@
 <span class="ln">13</span>	<span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">^</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">];</span> 
 <span class="ln">14</span>	<span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">^</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
 <span class="ln">15</span><span class="o">}</span>
-</code></pre></div><p><strong>二分查找</strong></p>
+</code></pre></div><h3 id="二分查找">二分查找</h3>
 <ul>
 <li>时间复杂度：O(logN)  (logN默认指log以2为底)</li>
 </ul>
@@ -264,7 +278,7 @@
 </ol>
 </li>
 </ul>
-<p><strong>归并排序</strong></p>
+<h3 id="归并排序">归并排序</h3>
 <blockquote>
 <ul>
 <li>概念：将n个元素分成个含n/2个元素的子序列，用合并排序法对两个子序列递归的排序，合并两个已排序的子序列已得到排序结果。</li>
@@ -336,7 +350,7 @@
 <span class="ln">31</span><span class="o">}</span>
 </code></pre></div></blockquote>
 </blockquote>
-<p><strong>快速排序</strong></p>
+<h3 id="快速排序">快速排序</h3>
 <blockquote>
 <p>时间复杂度：O(NlogN)，因为有<strong>随机概率</strong>行为，所以时间复杂度为期望值。</p>
 <p>空间复杂度：O(logN)</p>
@@ -369,7 +383,7 @@
 <span class="ln">22</span>    <span class="o">}</span>
 <span class="ln">23</span><span class="o">}</span>
 </code></pre></div></blockquote>
-<p><strong>堆排</strong></p>
+<h3 id="堆排序">堆排序</h3>
 <blockquote>
 <p>时间复杂度：O(NlogN)</p>
 <p><strong>大根堆</strong>：在完全二叉树（最后一层的结点都连续集中在最左边，其余层满节点）的前提下，每一棵子树的最大值是头结点的数。</p>
@@ -447,8 +461,10 @@
 </code></pre></div></li>
 </ul>
 </blockquote>
-<p>桶排</p>
+<h3 id="桶排">桶排</h3>
 <blockquote>
+<p>计数排序：</p>
+<p>基数排序：</p>
 </blockquote>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
@@ -492,7 +508,7 @@
         <a href="https://Jerrysmd.github.io/post/20190409cperformanceoptimization/cperformanceoptimization/" class="nav-link" title="C项目性能优化: C Project performance optimization">C项目性能优化: C Project performance optimization</a>
       </li>
       <li>
-        <a href="https://Jerrysmd.github.io/post/20181220read_binary_file/read_binary_file/" class="nav-link" title="文件读取的高级方法：Advanced method of reading files">文件读取的高级方法：Advanced method of reading files</a>
+        <a href="https://Jerrysmd.github.io/post/20181220read_binary_file/read_binary_file/" class="nav-link" title="C文件读取的高级方法：Advanced method of reading files">C文件读取的高级方法：Advanced method of reading files</a>
       </li>
     </ul>
     <h2 class="mt-4">Recent Posts</h2>
