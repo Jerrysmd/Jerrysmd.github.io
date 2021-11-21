@@ -72,7 +72,6 @@ a.post_tag.button.button_translucent:hover, a.post_tag.button.button_translucent
 
 a.button.mt-1:hover, abutton.mt-1:focus, a.excerpt_more.button:hover, a.excerpt_more.button:focus {
     background: #2196f3;
-    /* border: 1px solid #009688; */
 }
 
 .button_translucent {
@@ -83,7 +82,7 @@ a.button.mt-1:hover, abutton.mt-1:focus, a.excerpt_more.button:hover, a.excerpt_
 }
 
 html:not([data-mode="lit"]){
-    --light: #adbac7;
+    --light: #d2d9e1;
 }
 
 .nav{
