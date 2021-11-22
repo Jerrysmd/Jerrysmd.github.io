@@ -485,8 +485,11 @@
 </span><span class="ln">18</span><span class="c1"></span>            <span class="n">j</span> <span class="o">=</span> <span class="n">getDigit</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="n">d</span><span class="o">);</span>
 <span class="ln">19</span>            <span class="n">bucket</span><span class="o">[</span><span class="n">count</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">-</span> <span class="n">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
 <span class="ln">20</span>        <span class="o">}</span>
-<span class="ln">21</span>    <span class="o">}</span>
-<span class="ln">22</span><span class="o">}</span>
+<span class="ln">21</span>        <span class="k">for</span><span class="o">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">L</span><span class="o">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">R</span><span class="o">;</span> <span class="n">i</span><span class="o">++,</span> <span class="n">j</span><span class="o">++){</span>
+<span class="ln">22</span>            <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">bucket</span><span class="o">[</span><span class="n">j</span><span class="o">];</span><span class="c1">//将桶中数据倒回数组
+</span><span class="ln">23</span><span class="c1"></span>        <span class="o">}</span>
+<span class="ln">24</span>    <span class="o">}</span>
+<span class="ln">25</span><span class="o">}</span>
 </code></pre></div></blockquote>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
