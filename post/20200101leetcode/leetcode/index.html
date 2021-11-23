@@ -143,7 +143,8 @@
         <li><a href="#归并排序">归并排序</a></li>
         <li><a href="#快速排序">快速排序</a></li>
         <li><a href="#堆排序">堆排序</a></li>
-        <li><a href="#桶排">桶排</a></li>
+        <li><a href="#桶排序">桶排序</a></li>
+        <li><a href="#小结">小结</a></li>
       </ul>
     </li>
   </ul>
@@ -461,7 +462,7 @@
 </code></pre></div></li>
 </ul>
 </blockquote>
-<h3 id="桶排">桶排</h3>
+<h3 id="桶排序">桶排序</h3>
 <blockquote>
 <p>计数排序：</p>
 <p>基数排序：</p>
@@ -491,6 +492,56 @@
 <span class="ln">24</span>    <span class="o">}</span>
 <span class="ln">25</span><span class="o">}</span>
 </code></pre></div></blockquote>
+<h3 id="小结">小结</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>时间复杂度</th>
+<th>空间复杂度</th>
+<th>稳定性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>选择</td>
+<td>O(N<sup>2</sup>)</td>
+<td>O(1)</td>
+<td>x</td>
+</tr>
+<tr>
+<td>冒泡</td>
+<td>O(N<sup>2</sup>)</td>
+<td>O(1)</td>
+<td>√</td>
+</tr>
+<tr>
+<td>插入</td>
+<td>O(N<sup>2</sup>)</td>
+<td>O(1)</td>
+<td>√</td>
+</tr>
+<tr>
+<td>归并</td>
+<td>O(NlogN)</td>
+<td>O(N)</td>
+<td>√</td>
+</tr>
+<tr>
+<td>快排</td>
+<td>O(NlogN)</td>
+<td>O(logN)</td>
+<td>x</td>
+</tr>
+<tr>
+<td>堆排</td>
+<td>O(NlogN)</td>
+<td>O(1)</td>
+<td>x</td>
+</tr>
+</tbody>
+</table>
+<p>一般优先选择 <strong>快速排序</strong>，快排的复杂度在常数项是最低</p>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
