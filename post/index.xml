@@ -4523,7 +4523,11 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;一般优先选择 &lt;strong&gt;快速排序&lt;/strong&gt;，快排的复杂度在常数项是最低&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一般优先选择 &lt;strong&gt;快速排序&lt;/strong&gt;，快排的复杂度在常数项是最低的。&lt;/li&gt;
+&lt;li&gt;对空间有要求选择 &lt;strong&gt;堆排序&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;对稳定性有要求选择 &lt;strong&gt;归并排序&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
         
       </description>
     </item>
