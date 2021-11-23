@@ -4528,6 +4528,14 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;li&gt;对空间有要求选择 &lt;strong&gt;堆排序&lt;/strong&gt;。&lt;/li&gt;
 &lt;li&gt;对稳定性有要求选择 &lt;strong&gt;归并排序&lt;/strong&gt;。&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 id=&#34;哈希表&#34;&gt;哈希表&lt;/h2&gt;
+&lt;p&gt;介绍&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;哈希表使用层面上可以理解为一种集合结构&lt;/li&gt;
+&lt;li&gt;有无&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
         
       </description>
     </item>
