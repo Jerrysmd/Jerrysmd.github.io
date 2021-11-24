@@ -606,9 +606,12 @@
 <span class="ln">11</span>    <span class="n">n2</span> <span class="o">=</span> <span class="n">n1</span><span class="o">.</span><span class="na">next</span><span class="o">;</span> <span class="c1">//n2 -&gt; right part first node
 </span><span class="ln">12</span><span class="c1"></span>    <span class="n">Node</span> <span class="n">n3</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
 <span class="ln">13</span>    <span class="k">while</span><span class="o">(</span><span class="n">n2</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span> <span class="c1">//right part convert
-</span><span class="ln">14</span><span class="c1"></span>        <span class="n">n</span>
-<span class="ln">15</span>    <span class="o">}</span>
-<span class="ln">16</span><span class="o">}</span>
+</span><span class="ln">14</span><span class="c1"></span>        <span class="n">n3</span> <span class="o">=</span> <span class="n">n2</span><span class="o">.</span><span class="na">next</span><span class="o">;</span> <span class="c1">// save next node
+</span><span class="ln">15</span><span class="c1"></span>        <span class="n">n2</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">n1</span><span class="o">;</span> <span class="c1">// right direct to left direct
+</span><span class="ln">16</span><span class="c1"></span>        <span class="n">n1</span> <span class="o">=</span> <span class="n">n2</span><span class="o">;</span>
+<span class="ln">17</span>        <span class="n">n2</span> <span class="o">=</span> <span class="n">n3</span><span class="o">;</span>
+<span class="ln">18</span>    <span class="o">}</span>
+<span class="ln">19</span><span class="o">}</span>
 </code></pre></div></blockquote>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
