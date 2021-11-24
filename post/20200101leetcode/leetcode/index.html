@@ -567,6 +567,32 @@
 </ol>
 </blockquote>
 <h2 id="链表">链表</h2>
+<ul>
+<li>
+<p>笔试 面试区分，面试时需考虑空间复杂度。</p>
+</li>
+<li>
+<p>题目一：判断一个链表是否回文</p>
+</li>
+</ul>
+<blockquote>
+<p>方法一：进栈出栈</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">isPalindrome1</span><span class="o">(</span><span class="n">Node</span> <span class="n">head</span><span class="o">){</span>
+<span class="ln"> 2</span>    <span class="n">Stack</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;();</span>
+<span class="ln"> 3</span>    <span class="n">Node</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+<span class="ln"> 4</span>    <span class="k">while</span><span class="o">(</span><span class="n">cur</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+<span class="ln"> 5</span>        <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">cur</span><span class="o">);</span>
+<span class="ln"> 6</span>        <span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+<span class="ln"> 7</span>    <span class="o">}</span>
+<span class="ln"> 8</span>    <span class="k">while</span><span class="o">(</span><span class="n">head</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+<span class="ln"> 9</span>        <span class="k">if</span><span class="o">(</span><span class="n">head</span><span class="o">.</span><span class="na">value</span> <span class="o">!=</span> <span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">().</span><span class="na">value</span><span class="o">){</span>
+<span class="ln">10</span>            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="ln">11</span>        <span class="o">}</span>
+<span class="ln">12</span>        <span class="n">head</span> <span class="o">=</span> <span class="n">head</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+<span class="ln">13</span>    <span class="o">}</span>
+<span class="ln">14</span>    <span class="k">return</span> <span class="n">t</span>
+<span class="ln">15</span><span class="o">}</span>
+</code></pre></div></blockquote>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
