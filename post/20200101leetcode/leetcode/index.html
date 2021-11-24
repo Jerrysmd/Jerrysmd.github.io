@@ -611,7 +611,27 @@
 </span><span class="ln">16</span><span class="c1"></span>        <span class="n">n1</span> <span class="o">=</span> <span class="n">n2</span><span class="o">;</span>
 <span class="ln">17</span>        <span class="n">n2</span> <span class="o">=</span> <span class="n">n3</span><span class="o">;</span>
 <span class="ln">18</span>    <span class="o">}</span>
-<span class="ln">19</span><span class="o">}</span>
+<span class="ln">19</span>    <span class="n">n3</span> <span class="o">=</span> <span class="n">n1</span><span class="o">;</span> <span class="c1">// last node
+</span><span class="ln">20</span><span class="c1"></span>    <span class="n">n2</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span> <span class="c1">// fist node
+</span><span class="ln">21</span><span class="c1"></span>    <span class="kt">boolean</span> <span class="n">res</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+<span class="ln">22</span>    <span class="k">while</span> <span class="o">(</span><span class="n">n1</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">n2</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+<span class="ln">23</span>        <span class="k">if</span><span class="o">(</span><span class="n">n1</span><span class="o">.</span><span class="na">value</span> <span class="o">!=</span> <span class="n">n2</span><span class="o">.</span><span class="na">value</span><span class="o">){</span>
+<span class="ln">24</span>            <span class="n">res</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+<span class="ln">25</span>            <span class="k">break</span><span class="o">;</span>
+<span class="ln">26</span>        <span class="o">}</span>
+<span class="ln">27</span>        <span class="n">n1</span> <span class="o">=</span> <span class="n">n1</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+<span class="ln">28</span>        <span class="n">n2</span> <span class="o">=</span> <span class="n">n2</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+<span class="ln">29</span>    <span class="o">}</span>
+<span class="ln">30</span>    <span class="n">n1</span> <span class="o">=</span> <span class="n">n3</span><span class="o">.</span><span class="na">next</span><span class="o">;</span> <span class="c1">// recover list
+</span><span class="ln">31</span><span class="c1"></span>    <span class="n">n3</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="ln">32</span>    <span class="k">while</span><span class="o">(</span><span class="n">n1</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+<span class="ln">33</span>        <span class="n">n2</span> <span class="o">=</span> <span class="n">n1</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+<span class="ln">34</span>        <span class="n">n1</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">n3</span><span class="o">;</span>
+<span class="ln">35</span>        <span class="n">n3</span> <span class="o">=</span> <span class="n">n1</span><span class="o">;</span>
+<span class="ln">36</span>        <span class="n">n1</span> <span class="o">=</span> <span class="n">n2</span><span class="o">;</span>
+<span class="ln">37</span>    <span class="o">}</span>
+<span class="ln">38</span>    
+<span class="ln">39</span><span class="o">}</span>
 </code></pre></div></blockquote>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
