@@ -147,7 +147,7 @@
         <li><a href="#小结">小结</a></li>
       </ul>
     </li>
-    <li><a href="#哈希表">哈希表</a></li>
+    <li><a href="#哈希表有序表">哈希表、有序表</a></li>
   </ul>
 </nav>
     <p>Algorithms are used in every part of computer science. They form the field&rsquo;s backbone. In computer science, an algorithm gives the computer a specific set of instructions, which allows the computer to do everything, be it running a calculator or running a rocket.</p>
@@ -547,13 +547,22 @@
 <li>对空间有要求选择 <strong>堆排序</strong>。</li>
 <li>对稳定性有要求选择 <strong>归并排序</strong>。</li>
 </ul>
-<h2 id="哈希表">哈希表</h2>
-<p>介绍</p>
+<h2 id="哈希表有序表">哈希表、有序表</h2>
+<p>哈希表介绍</p>
 <blockquote>
 <ol>
 <li>哈希表使用层面上可以理解为一种集合结构。</li>
-<li>有无伴随数据，是HashMap和HashSet唯一的去呗，底层的数据结构一样。</li>
+<li>有无伴随数据，是HashMap和HashSet唯一的区别，底层的数据结构一样。</li>
 <li>使用哈希表 put，remove，put，get 的操作，可以认为时间复杂度为O(1)，但常数时间比较大。</li>
+</ol>
+</blockquote>
+<p>有序表介绍</p>
+<blockquote>
+<ol>
+<li>有序表在使用层面上可以理解为一种集合结构。</li>
+<li>有无伴随数据，是TreeSet和TreeMap唯一的区别，底层的数据结构一样。</li>
+<li>有序表和哈希表的区别是，有序表把key按照顺序组织起来，而哈希表完全不组织。</li>
+<li>红黑树、AVL树、size-balance-tree和跳表都属于有序表结构，只是底层具体实现不同。</li>
 </ol>
 </blockquote>
 

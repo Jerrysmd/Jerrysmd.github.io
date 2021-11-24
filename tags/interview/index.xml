@@ -942,13 +942,22 @@
 &lt;li&gt;对空间有要求选择 &lt;strong&gt;堆排序&lt;/strong&gt;。&lt;/li&gt;
 &lt;li&gt;对稳定性有要求选择 &lt;strong&gt;归并排序&lt;/strong&gt;。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;哈希表&#34;&gt;哈希表&lt;/h2&gt;
-&lt;p&gt;介绍&lt;/p&gt;
+&lt;h2 id=&#34;哈希表有序表&#34;&gt;哈希表、有序表&lt;/h2&gt;
+&lt;p&gt;哈希表介绍&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ol&gt;
 &lt;li&gt;哈希表使用层面上可以理解为一种集合结构。&lt;/li&gt;
-&lt;li&gt;有无伴随数据，是HashMap和HashSet唯一的去呗，底层的数据结构一样。&lt;/li&gt;
+&lt;li&gt;有无伴随数据，是HashMap和HashSet唯一的区别，底层的数据结构一样。&lt;/li&gt;
 &lt;li&gt;使用哈希表 put，remove，put，get 的操作，可以认为时间复杂度为O(1)，但常数时间比较大。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;有序表介绍&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;有序表在使用层面上可以理解为一种集合结构。&lt;/li&gt;
+&lt;li&gt;有无伴随数据，是TreeSet和TreeMap唯一的区别，底层的数据结构一样。&lt;/li&gt;
+&lt;li&gt;有序表和哈希表的区别是，有序表把key按照顺序组织起来，而哈希表完全不组织。&lt;/li&gt;
+&lt;li&gt;红黑树、AVL树、size-balance-tree和跳表都属于有序表结构，只是底层具体实现不同。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
         
