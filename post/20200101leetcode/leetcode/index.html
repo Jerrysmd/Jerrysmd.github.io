@@ -124,7 +124,7 @@
 </svg></span>
     <span class="post_date">
       Jan 1, 2020</span>
-    <span class="post_time"> · 7 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/interview' title="interview" class="post_tag button button_translucent">interview
+    <span class="post_time"> · 8 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/interview' title="interview" class="post_tag button button_translucent">interview
         </a><a href='https://Jerrysmd.github.io/tags/leetcode' title="leetcode" class="post_tag button button_translucent">leetcode
         </a><a href='https://Jerrysmd.github.io/tags/algorithm' title="algorithm" class="post_tag button button_translucent">algorithm
         </a>
@@ -601,9 +601,14 @@
 <span class="ln"> 6</span>    <span class="n">Node</span> <span class="n">n2</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
 <span class="ln"> 7</span>    <span class="k">while</span><span class="o">(</span><span class="n">n2</span><span class="o">.</span><span class="na">next</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">n2</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">next</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
 <span class="ln"> 8</span>        <span class="n">n1</span> <span class="o">=</span> <span class="n">n1</span><span class="o">.</span><span class="na">next</span><span class="o">;</span> <span class="c1">//n1 -&gt; mid
-</span><span class="ln"> 9</span><span class="c1"></span>        <span class="n">n2</span> <span class="o">=</span> <span class="n">n1</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">next</span><span class="o">;</span> <span class="c1">//n2 -
+</span><span class="ln"> 9</span><span class="c1"></span>        <span class="n">n2</span> <span class="o">=</span> <span class="n">n1</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">next</span><span class="o">;</span> <span class="c1">//n2 -&gt; end
 </span><span class="ln">10</span><span class="c1"></span>    <span class="o">}</span>
-<span class="ln">11</span><span class="o">}</span>
+<span class="ln">11</span>    <span class="n">n2</span> <span class="o">=</span> <span class="n">n1</span><span class="o">.</span><span class="na">next</span><span class="o">;</span> <span class="c1">//n2 -&gt; right part first node
+</span><span class="ln">12</span><span class="c1"></span>    <span class="n">Node</span> <span class="n">n3</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="ln">13</span>    <span class="k">while</span><span class="o">(</span><span class="n">n2</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span> <span class="c1">//right part convert
+</span><span class="ln">14</span><span class="c1"></span>        <span class="n">n</span>
+<span class="ln">15</span>    <span class="o">}</span>
+<span class="ln">16</span><span class="o">}</span>
 </code></pre></div></blockquote>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
