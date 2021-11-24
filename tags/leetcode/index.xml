@@ -417,6 +417,7 @@
 &lt;ol&gt;
 &lt;li&gt;哈希表使用层面上可以理解为一种集合结构。&lt;/li&gt;
 &lt;li&gt;有无伴随数据，是HashMap和HashSet唯一的去呗，底层的数据结构一样。&lt;/li&gt;
+&lt;li&gt;使用哈希表 put，remove，put，get 的操作，可以认为时间复杂度为O(1)，但常数时间比较大。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
         
