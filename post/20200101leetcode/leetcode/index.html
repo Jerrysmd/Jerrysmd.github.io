@@ -673,8 +673,8 @@
 </blockquote>
 <p><strong>题目四：两个单链表相交的一系列问题</strong></p>
 <p><strong>判断有无环</strong>：</p>
-<p>方法一：hashset，get一个，看之前是否加入过，否则put进set。</p>
-<p>方法</p>
+<p>方法一：Hashset。get一个，看之前是否加入过，否则put进set。</p>
+<p>方法二：快慢指针。不会走到空节点，快慢指针一定会相遇，而且快指针在环中不会超过两圈。相遇后快指针回到开头，然后两个指针都走一步，一定会在入环节点相遇</p>
 </blockquote>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
