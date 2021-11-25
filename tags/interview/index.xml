@@ -1066,6 +1066,9 @@
 &lt;/ol&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;题目四：两个单链表相交的一系列问题&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;判断有无环&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;方法一：hashset，get一个，看之前是否加入过，否则put进set。&lt;/p&gt;
+&lt;p&gt;方法&lt;/p&gt;
 &lt;/blockquote&gt;
         
       </description>
