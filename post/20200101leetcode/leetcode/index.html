@@ -124,7 +124,7 @@
 </svg></span>
     <span class="post_date">
       Jan 1, 2020</span>
-    <span class="post_time"> · 8 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/interview' title="interview" class="post_tag button button_translucent">interview
+    <span class="post_time"> · 9 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/interview' title="interview" class="post_tag button button_translucent">interview
         </a><a href='https://Jerrysmd.github.io/tags/leetcode' title="leetcode" class="post_tag button button_translucent">leetcode
         </a><a href='https://Jerrysmd.github.io/tags/algorithm' title="algorithm" class="post_tag button button_translucent">algorithm
         </a>
@@ -641,10 +641,37 @@
 <span class="ln">7</span>    <span class="o">}</span>
 <span class="ln">8</span><span class="o">}</span>
 </code></pre></div><p>方法一：hashmap</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">public</span> <span class="kd">static</span> <span class="n">Node</span> <span class="nf">copyListWithRand1</span><span class="o">(</span><span class="n">Node</span> <span class="n">head</span><span class="o">){</span>
-<span class="ln">2</span>    <span class="n">H</span>
-<span class="ln">3</span><span class="o">}</span>
-</code></pre></div></blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">public</span> <span class="kd">static</span> <span class="n">Node</span> <span class="nf">copyListWithRand1</span><span class="o">(</span><span class="n">Node</span> <span class="n">head</span><span class="o">){</span>
+<span class="ln"> 2</span>    <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">,</span> <span class="n">Node</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">,</span> <span class="n">Node</span><span class="o">&gt;();</span>
+<span class="ln"> 3</span>    <span class="n">Node</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+<span class="ln"> 4</span>    <span class="k">while</span><span class="o">(</span><span class="n">cur</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+<span class="ln"> 5</span>        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">cur</span><span class="o">,</span> <span class="k">new</span> <span class="n">Node</span><span class="o">(</span><span class="n">cur</span><span class="o">.</span><span class="na">value</span><span class="o">));</span>
+<span class="ln"> 6</span>        <span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+<span class="ln"> 7</span>    <span class="o">}</span>
+<span class="ln"> 8</span>    <span class="n">cur</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+<span class="ln"> 9</span>    <span class="k">while</span><span class="o">(</span><span class="n">cur</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+<span class="ln">10</span>        <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">cur</span><span class="o">).</span><span class="na">next</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">cur</span><span class="o">.</span><span class="na">next</span><span class="o">);</span>
+<span class="ln">11</span>        <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">cur</span><span class="o">).</span><span class="na">rand</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">cur</span><span class="o">.</span><span class="na">rand</span><span class="o">);</span>
+<span class="ln">12</span>        <span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+<span class="ln">13</span>    <span class="o">}</span>
+<span class="ln">14</span>    <span class="k">return</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">head</span><span class="o">);</span>
+<span class="ln">15</span><span class="o">}</span>
+</code></pre></div><p>方法二：利用位置关系省去哈希表。</p>
+<blockquote>
+<ol>
+<li>
+<p>当前节点的下一个就放克隆节点。</p>
+</li>
+<li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">curCopy</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+<span class="ln">2</span><span class="n">curCopy</span><span class="o">.</span><span class="na">rand</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="na">rand</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">?</span> <span class="n">cur</span><span class="o">.</span><span class="na">rand</span><span class="o">.</span><span class="na">next</span><span class="o">:</span><span class="kc">null</span><span class="o">;</span>
+</code></pre></div></li>
+<li>
+<p>跳过旧链表。</p>
+</li>
+</ol>
+</blockquote>
+</blockquote>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
