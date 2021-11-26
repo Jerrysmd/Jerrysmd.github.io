@@ -672,12 +672,12 @@
 </ol>
 </blockquote>
 <p><strong>题目四：两个单链表相交的一系列问题</strong></p>
+<p><strong>先判断有无环</strong>：</p>
 <blockquote>
-<p><strong>判断有无环</strong>：</p>
 <p>方法一：Hashset。get一个，看之前是否加入过，否则put进set。</p>
 <p>方法二：快慢指针。不会走到空节点，快慢指针一定会相遇，而且快指针在环中不会超过两圈。相遇后快指针回到开头，然后两个指针都走一步，一定会在入环节点相遇。</p>
 </blockquote>
-<p>情况一：两链表都无环</p>
+<p><strong>情况一：两链表都无环</strong></p>
 <blockquote>
 <ol>
 <li>判断链表长度</li>
@@ -685,6 +685,7 @@
 <li>长链表先走差值步，然后两链表一起走，一定会一起走到第一个相交点。</li>
 </ol>
 </blockquote>
+<p><strong>情况二：一个链表有环一个无环</strong></p>
 </blockquote>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
