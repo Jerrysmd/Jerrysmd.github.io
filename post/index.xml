@@ -4665,7 +4665,9 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;li&gt;长链表先走差值步，然后两链表一起走，一定会一起走到第一个相交点。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;情况二：一个链表有环一个无环&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;情况二：两链表都无环&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
 &lt;/blockquote&gt;
         
       </description>
