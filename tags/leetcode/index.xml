@@ -550,6 +550,8 @@
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;情况二：两链表都无环&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
+&lt;p&gt;情况二之一：入环节点是同一个节点。&lt;/p&gt;
+&lt;p&gt;情况二之二：入环节点不同。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/blockquote&gt;
         
