@@ -708,13 +708,20 @@
 <span class="ln">16</span>        <span class="n">cur1</span> <span class="o">=</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="n">0</span> <span class="o">?</span> <span class="n">head1</span> <span class="o">:</span> <span class="n">head2</span><span class="o">;</span>
 <span class="ln">17</span>        <span class="n">cur2</span> <span class="o">=</span> <span class="n">cur1</span> <span class="o">==</span> <span class="n">head1</span> <span class="o">?</span> <span class="n">head2</span> <span class="o">:</span> <span class="n">head1</span><span class="o">;</span>
 <span class="ln">18</span>        <span class="n">n</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">abs</span><span class="o">(</span><span class="n">n</span><span class="o">);</span>
-<span class="ln">19</span>        <span class="k">while</span><span class="o">(</span><span class="n">n</span> <span class="o">!=</span> <span class="n">0</span><span class="o">){</span><span class="c1">// 使两个链表
+<span class="ln">19</span>        <span class="k">while</span><span class="o">(</span><span class="n">n</span> <span class="o">!=</span> <span class="n">0</span><span class="o">){</span><span class="c1">// 使两个链表到入环点长度一样
 </span><span class="ln">20</span><span class="c1"></span>            <span class="n">n</span><span class="o">--;</span>
 <span class="ln">21</span>            <span class="n">cur1</span> <span class="o">=</span> <span class="n">cur1</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
 <span class="ln">22</span>        <span class="o">}</span>
-<span class="ln">23</span>    <span class="o">}</span>
-<span class="ln">24</span>    
-<span class="ln">25</span><span class="o">}</span>
+<span class="ln">23</span>        <span class="k">while</span><span class="o">(</span><span class="n">cur1</span> <span class="o">!=</span> <span class="n">cur2</span><span class="o">){</span>
+<span class="ln">24</span>            <span class="n">cur1</span> <span class="o">=</span> <span class="n">cur1</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+<span class="ln">25</span>            <span class="n">cur2</span> <span class="o">=</span> <span class="n">cur2</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+<span class="ln">26</span>        <span class="o">}</span>
+<span class="ln">27</span>        <span class="k">return</span> <span class="n">cur1</span><span class="o">;</span>
+<span class="ln">28</span>    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span> <span class="c1">// 情况二之三：入环节点不同。
+</span><span class="ln">29</span><span class="c1"></span>        
+<span class="ln">30</span>    <span class="o">}</span>
+<span class="ln">31</span>    
+<span class="ln">32</span><span class="o">}</span>
 </code></pre></div></blockquote>
 </blockquote>
 
