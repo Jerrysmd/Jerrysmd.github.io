@@ -690,14 +690,31 @@
 <p>情况二之一：链表无交集</p>
 <p>情况二之二：入环节点是同一个节点。</p>
 <p>情况二之三：入环节点不同。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">public</span> <span class="kd">static</span> <span class="n">Node</span> <span class="nf">bothLoop</span><span class="o">(</span><span class="n">Node</span> <span class="n">head1</span><span class="o">,</span> <span class="n">Node</span> <span class="n">head2</span><span class="o">,</span> <span class="n">Node</span> <span class="n">loop1</span><span class="o">,</span> <span class="n">Node</span> <span class="n">loop2</span><span class="o">){</span><span class="c1">//两链表头节点，入环节点
-</span><span class="ln">2</span><span class="c1"></span>    <span class="n">Node</span> <span class="n">cur1</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-<span class="ln">3</span>    <span class="n">Node</span> <span class="n">cur2</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-<span class="ln">4</span>    <span class="k">if</span> <span class="o">(</span><span class="n">loop1</span> <span class="o">==</span> <span class="n">loop2</span><span class="o">){</span>
-<span class="ln">5</span>        
-<span class="ln">6</span>    <span class="o">}</span>
-<span class="ln">7</span>    
-<span class="ln">8</span><span class="o">}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">public</span> <span class="kd">static</span> <span class="n">Node</span> <span class="nf">bothLoop</span><span class="o">(</span><span class="n">Node</span> <span class="n">head1</span><span class="o">,</span> <span class="n">Node</span> <span class="n">head2</span><span class="o">,</span> <span class="n">Node</span> <span class="n">loop1</span><span class="o">,</span> <span class="n">Node</span> <span class="n">loop2</span><span class="o">){</span><span class="c1">//两链表头节点，入环节点
+</span><span class="ln"> 2</span><span class="c1"></span>    <span class="n">Node</span> <span class="n">cur1</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="ln"> 3</span>    <span class="n">Node</span> <span class="n">cur2</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="ln"> 4</span>    <span class="k">if</span> <span class="o">(</span><span class="n">loop1</span> <span class="o">==</span> <span class="n">loop2</span><span class="o">){</span> <span class="c1">//情况二之二：入环节点是同一个节点。
+</span><span class="ln"> 5</span><span class="c1"></span>        <span class="n">cur1</span> <span class="o">=</span> <span class="n">head1</span><span class="o">;</span>
+<span class="ln"> 6</span>        <span class="n">cur2</span> <span class="o">=</span> <span class="n">head2</span><span class="o">;</span>
+<span class="ln"> 7</span>        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+<span class="ln"> 8</span>        <span class="k">while</span><span class="o">(</span><span class="n">cur1</span> <span class="o">!=</span> <span class="n">loop1</span><span class="o">){</span> <span class="c1">//判断到达入环节点的长度
+</span><span class="ln"> 9</span><span class="c1"></span>            <span class="n">n</span><span class="o">++;</span>
+<span class="ln">10</span>            <span class="n">cur1</span> <span class="o">=</span> <span class="n">cur1</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+<span class="ln">11</span>        <span class="o">}</span>
+<span class="ln">12</span>        <span class="k">while</span><span class="o">(</span><span class="n">cur2</span> <span class="o">!=</span> <span class="n">loop2</span><span class="o">){</span> <span class="c1">//判断是1链表头结点到入环节点长度和2链表到入环节点长度的差值
+</span><span class="ln">13</span><span class="c1"></span>            <span class="n">n</span><span class="o">--;</span>
+<span class="ln">14</span>            <span class="n">cur2</span> <span class="o">=</span> <span class="n">cur2</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+<span class="ln">15</span>        <span class="o">}</span>
+<span class="ln">16</span>        <span class="n">cur1</span> <span class="o">=</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="n">0</span> <span class="o">?</span> <span class="n">head1</span> <span class="o">:</span> <span class="n">head2</span><span class="o">;</span>
+<span class="ln">17</span>        <span class="n">cur2</span> <span class="o">=</span> <span class="n">cur1</span> <span class="o">==</span> <span class="n">head1</span> <span class="o">?</span> <span class="n">head2</span> <span class="o">:</span> <span class="n">head1</span><span class="o">;</span>
+<span class="ln">18</span>        <span class="n">n</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">abs</span><span class="o">(</span><span class="n">n</span><span class="o">);</span>
+<span class="ln">19</span>        <span class="k">while</span><span class="o">(</span><span class="n">n</span> <span class="o">!=</span> <span class="n">0</span><span class="o">){</span><span class="c1">// 使两个链表
+</span><span class="ln">20</span><span class="c1"></span>            <span class="n">n</span><span class="o">--;</span>
+<span class="ln">21</span>            <span class="n">cur1</span> <span class="o">=</span> <span class="n">cur1</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+<span class="ln">22</span>        <span class="o">}</span>
+<span class="ln">23</span>    <span class="o">}</span>
+<span class="ln">24</span>    
+<span class="ln">25</span><span class="o">}</span>
 </code></pre></div></blockquote>
 </blockquote>
 
