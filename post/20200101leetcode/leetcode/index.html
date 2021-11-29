@@ -717,11 +717,17 @@
 <span class="ln">25</span>            <span class="n">cur2</span> <span class="o">=</span> <span class="n">cur2</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
 <span class="ln">26</span>        <span class="o">}</span>
 <span class="ln">27</span>        <span class="k">return</span> <span class="n">cur1</span><span class="o">;</span>
-<span class="ln">28</span>    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span> <span class="c1">// 情况二之三：入环节点不同。
-</span><span class="ln">29</span><span class="c1"></span>        
-<span class="ln">30</span>    <span class="o">}</span>
-<span class="ln">31</span>    
-<span class="ln">32</span><span class="o">}</span>
+<span class="ln">28</span>    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span> <span class="c1">// 情况二之三：入环节点不同 或 情况二之一：链表无交集
+</span><span class="ln">29</span><span class="c1"></span>        <span class="n">cur1</span> <span class="o">=</span> <span class="n">loop1</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+<span class="ln">30</span>        <span class="k">while</span><span class="o">(</span><span class="n">cur1</span> <span class="o">!=</span> <span class="n">loop1</span><span class="o">){</span> <span class="c1">// 限定只转一圈，碰不到loop2就是无交集
+</span><span class="ln">31</span><span class="c1"></span>            <span class="k">if</span><span class="o">(</span><span class="n">cur1</span> <span class="o">==</span> <span class="n">loop2</span><span class="o">){</span>
+<span class="ln">32</span>                <span class="k">return</span> <span class="n">loop1</span><span class="o">;</span>
+<span class="ln">33</span>            <span class="o">}</span>
+<span class="ln">34</span>            <span class="n">cur1</span> <span class="o">=</span> <span class="n">cur1</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+<span class="ln">35</span>        <span class="o">}</span>
+<span class="ln">36</span>        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+<span class="ln">37</span>    <span class="o">}</span>
+<span class="ln">38</span><span class="o">}</span>
 </code></pre></div></blockquote>
 </blockquote>
 
