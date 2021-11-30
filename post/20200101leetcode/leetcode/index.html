@@ -138,13 +138,7 @@
   <ul>
     <li><a href="#排序">排序</a>
       <ul>
-        <li><a href="#插入排序">插入排序</a></li>
-        <li><a href="#二分查找">二分查找</a></li>
-        <li><a href="#归并排序">归并排序</a></li>
-        <li><a href="#快速排序">快速排序</a></li>
-        <li><a href="#堆排序">堆排序</a></li>
-        <li><a href="#桶排序">桶排序</a></li>
-        <li><a href="#小结">小结</a></li>
+        <li></li>
       </ul>
     </li>
     <li><a href="#哈希表有序表">哈希表、有序表</a></li>
@@ -191,7 +185,7 @@
 <span class="ln">24</span><span class="kt">int</span> <span class="n">result2</span> <span class="o">=</span> <span class="n">eor</span> <span class="o">^</span> <span class="n">result1</span><span class="o">;</span>
 </code></pre></div></blockquote>
 <h2 id="排序">排序</h2>
-<h3 id="插入排序">插入排序</h3>
+<h4 id="插入排序">插入排序</h4>
 <ul>
 <li>概念： 将后部分的数据(从第二开始)按照一定的顺序一个一个的插入到前部分有序的表中</li>
 <li>时间复杂度：O(N^2)</li>
@@ -218,7 +212,7 @@
 <span class="ln">13</span>	<span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">^</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">];</span> 
 <span class="ln">14</span>	<span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">^</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
 <span class="ln">15</span><span class="o">}</span>
-</code></pre></div><h3 id="二分查找">二分查找</h3>
+</code></pre></div><h4 id="二分查找">二分查找</h4>
 <ul>
 <li>时间复杂度：O(logN)  (logN默认指log以2为底)</li>
 </ul>
@@ -282,7 +276,7 @@
 </ol>
 </li>
 </ul>
-<h3 id="归并排序">归并排序</h3>
+<h4 id="归并排序">归并排序</h4>
 <blockquote>
 <ul>
 <li>概念：将n个元素分成个含n/2个元素的子序列，用合并排序法对两个子序列递归的排序，合并两个已排序的子序列已得到排序结果。</li>
@@ -354,7 +348,7 @@
 <span class="ln">31</span><span class="o">}</span>
 </code></pre></div></blockquote>
 </blockquote>
-<h3 id="快速排序">快速排序</h3>
+<h4 id="快速排序">快速排序</h4>
 <blockquote>
 <p>时间复杂度：O(NlogN)，因为有<strong>随机概率</strong>行为，所以时间复杂度为期望值。</p>
 <p>空间复杂度：O(logN)</p>
@@ -387,7 +381,7 @@
 <span class="ln">22</span>    <span class="o">}</span>
 <span class="ln">23</span><span class="o">}</span>
 </code></pre></div></blockquote>
-<h3 id="堆排序">堆排序</h3>
+<h4 id="堆排序">堆排序</h4>
 <blockquote>
 <p>时间复杂度：O(NlogN)</p>
 <p><strong>大根堆</strong>：在完全二叉树（最后一层的结点都连续集中在最左边，其余层满节点）的前提下，每一棵子树的最大值是头结点的数。</p>
@@ -465,7 +459,7 @@
 </code></pre></div></li>
 </ul>
 </blockquote>
-<h3 id="桶排序">桶排序</h3>
+<h4 id="桶排序">桶排序</h4>
 <blockquote>
 <p>计数排序：</p>
 <p>基数排序：</p>
@@ -495,7 +489,7 @@
 <span class="ln">24</span>    <span class="o">}</span>
 <span class="ln">25</span><span class="o">}</span>
 </code></pre></div></blockquote>
-<h3 id="小结">小结</h3>
+<h4 id="小结">小结</h4>
 <table>
 <thead>
 <tr>
