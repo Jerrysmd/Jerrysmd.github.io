@@ -21,7 +21,29 @@
 &lt;h2 id=&#34;hive的特点hive和rdbms有什么异同&#34;&gt;Hive的特点，Hive和RDBMS有什么异同？&lt;/h2&gt;
 &lt;p&gt;hive是基于Hadoop的一个数据仓库工具，可以将结构化的数据文件映射为一张数据库表，并提供完整的sql查询功能，可以将sql语句转换为MapReduce任务进行运行。其优点是学习成本低，可以通过类SQL语句快速实现简单的MapReduce统计，不必开发专门的MapReduce应用，十分适合数据仓库的统计分析，但是Hive不支持实时查询。&lt;/p&gt;
 &lt;p&gt;Hive与关系型数据库的区别：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200615hiveKeyPoint/hqlDifferents.png&#34; alt=&#34;hqlDifferents&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/20200615hiveKeyPoint/hqlDifferents.png&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/20200615hiveKeyPoint/hqlDifferents.png&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/20200615hiveKeyPoint/hqlDifferents.png&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;h2 id=&#34;hive中sortbyorderbyclusterbydistrbuteby各代表什么意思&#34;&gt;hive中SortBy，OrderBy，ClusterBy，DistrbuteBy各代表什么意思？&lt;/h2&gt;
 &lt;p&gt;Orderby：会对输入做全局排序，因此只有一个reducer（多个reducer无法保证全局有序）。只有一个reducer，会导致当输入规模较大时，需要较长的计算时间。&lt;/p&gt;
 &lt;p&gt;Sortby：不是全局排序，其在数据进入reducer前完成排序。&lt;/p&gt;

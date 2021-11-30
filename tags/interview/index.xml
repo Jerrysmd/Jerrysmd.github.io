@@ -110,7 +110,29 @@
 &lt;li&gt;双亲委派是一个孩子向父亲方向，然后父亲向孩子方向的双亲委派过程&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200101javaInterview/classLoading.jpg&#34; alt=&#34;classLoadProcess&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/20200101javaInterview/classLoading.jpg&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/20200101javaInterview/classLoading.jpg&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/20200101javaInterview/classLoading.jpg&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;p&gt;为什么要做双亲委派&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;安全&lt;/p&gt;
@@ -207,7 +229,29 @@
 &lt;p&gt;熟悉GC常用算法，熟悉常见垃圾收集器，具有实际JVM调优实战经验&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200101javaInterview/gc1.jpg&#34; alt=&#34;gc1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/20200101javaInterview/gc1.jpg&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/20200101javaInterview/gc1.jpg&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/20200101javaInterview/gc1.jpg&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;程序的栈和堆&lt;/p&gt;
 &lt;blockquote&gt;
@@ -385,7 +429,29 @@
 &lt;/blockquote&gt;
 &lt;p&gt;线程的状态：&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200101javaInterview/multi_thread1.jpg&#34; alt=&#34;classLoadProcess&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/20200101javaInterview/multi_thread1.jpg&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/20200101javaInterview/multi_thread1.jpg&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/20200101javaInterview/multi_thread1.jpg&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;JVM内存模型&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;存储器的层次结构&lt;/p&gt;

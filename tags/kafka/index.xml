@@ -66,7 +66,29 @@
 &lt;p&gt;以秒杀为例：风险控制-&amp;gt;库存锁定-&amp;gt;生成订单-&amp;gt;短信通知-&amp;gt;更新统计数据&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/kafkaAsyn.webp&#34; alt=&#34;kafkaAsyn&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/picture/kafkaAsyn.webp&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/picture/kafkaAsyn.webp&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/picture/kafkaAsyn.webp&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;限流削峰/流量控制&lt;/p&gt;
@@ -82,7 +104,29 @@
 &lt;p&gt;同一个客户呼入电话只能被一位客服人员处理，第二个客服人员不能为该客户服务。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/kafkaP2p.webp&#34; alt=&#34;kafkaP2p&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/picture/kafkaP2p.webp&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/picture/kafkaP2p.webp&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/picture/kafkaP2p.webp&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;发布/订阅模型&lt;/p&gt;
@@ -90,7 +134,29 @@
 &lt;p&gt;生活中的报纸订阅就是一种典型的发布 / 订阅模型。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/kafkaSub.webp&#34; alt=&#34;kafkaSub&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/picture/kafkaSub.webp&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/picture/kafkaSub.webp&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/picture/kafkaSub.webp&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;h2 id=&#34;kafka&#34;&gt;Kafka&lt;/h2&gt;
 &lt;h3 id=&#34;1-intro&#34;&gt;1. Intro&lt;/h3&gt;
 &lt;p&gt;kafka是一个分布式流处理平台。&lt;/p&gt;
@@ -165,16 +231,82 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;li&gt;消费者组：Consumer Group。多个消费者实例共同组成的一个组，同时消费多个分区以实现高吞吐。&lt;/li&gt;
 &lt;li&gt;重平衡：Rebalance。消费者组内某个消费者实例挂掉后，其他消费者实例自动重新分配订阅主题分区的过程。Rebalance 是 Kafka 消费者端实现高可用的重要手段。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/kafkaItem.png&#34; alt=&#34;kafkaItem&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/picture/kafkaItem.png&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/picture/kafkaItem.png&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/picture/kafkaItem.png&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;h3 id=&#34;4-topic&#34;&gt;4. Topic&lt;/h3&gt;
 &lt;p&gt;日志&lt;/p&gt;
 &lt;p&gt;日志可能是一种最简单的不能再简单的存储抽象，只能追加、按照时间完全有序（totally-ordered）的记录序列。日志看起来的样子：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/kafkaLog.png&#34; alt=&#34;kafkaLog&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/picture/kafkaLog.png&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/picture/kafkaLog.png&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/picture/kafkaLog.png&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;p&gt;在日志的末尾添加记录，读取日志记录则从左到右。每一条记录都指定了一个唯一的顺序的日志记录编号。&lt;/p&gt;
 &lt;p&gt;日志记录的次序（ordering）定义了『时间』概念，因为位于左边的日志记录表示比右边的要早。日志记录编号可以看作是这条日志记录的『时间戳』。把次序直接看成是时间概念，刚开始你会觉得有点怪异，但是这样的做法有个便利的性质：解耦了 时间 和 任一特定的物理时钟（physical clock）。引入分布式系统后，这会成为一个必不可少的性质。&lt;/p&gt;
 &lt;p&gt;日志 和 文件或数据表（table）并没有什么大的不同。文件是一系列字节，表是由一系列记录组成，而日志实际上只是一种按照时间顺序存储记录的数据表或文件。&lt;/p&gt;
 &lt;p&gt;对于每一个topic， Kafka集群都会维持一个分区日志，如下所示：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/kafkaPartitionLog.png&#34; alt=&#34;kafkaPartitionLog&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/picture/kafkaPartitionLog.png&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/picture/kafkaPartitionLog.png&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/picture/kafkaPartitionLog.png&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;实操&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;启动zk&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /usr/local/kara/kafka_2.13-2.6.0/bin

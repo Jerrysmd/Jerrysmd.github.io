@@ -1529,7 +1529,29 @@
 &lt;h2 id=&#34;hive的特点hive和rdbms有什么异同&#34;&gt;Hive的特点，Hive和RDBMS有什么异同？&lt;/h2&gt;
 &lt;p&gt;hive是基于Hadoop的一个数据仓库工具，可以将结构化的数据文件映射为一张数据库表，并提供完整的sql查询功能，可以将sql语句转换为MapReduce任务进行运行。其优点是学习成本低，可以通过类SQL语句快速实现简单的MapReduce统计，不必开发专门的MapReduce应用，十分适合数据仓库的统计分析，但是Hive不支持实时查询。&lt;/p&gt;
 &lt;p&gt;Hive与关系型数据库的区别：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200615hiveKeyPoint/hqlDifferents.png&#34; alt=&#34;hqlDifferents&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/20200615hiveKeyPoint/hqlDifferents.png&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/20200615hiveKeyPoint/hqlDifferents.png&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/20200615hiveKeyPoint/hqlDifferents.png&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;h2 id=&#34;hive中sortbyorderbyclusterbydistrbuteby各代表什么意思&#34;&gt;hive中SortBy，OrderBy，ClusterBy，DistrbuteBy各代表什么意思？&lt;/h2&gt;
 &lt;p&gt;Orderby：会对输入做全局排序，因此只有一个reducer（多个reducer无法保证全局有序）。只有一个reducer，会导致当输入规模较大时，需要较长的计算时间。&lt;/p&gt;
 &lt;p&gt;Sortby：不是全局排序，其在数据进入reducer前完成排序。&lt;/p&gt;
@@ -1641,7 +1663,29 @@
 &lt;li&gt;Spark提供了批处理（RDDs），结构化查询（DataFrame），流计算（SparkStreaming），机器学习（MLib），图计算（GraphX）等组件&lt;/li&gt;
 &lt;li&gt;这些组件均是依托于通用的计算引擎RDDs而构建出，所以spark-core的RDDs是整个Spark的基础&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/sparkStructure.png&#34; alt=&#34;sparkStructure&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/picture/sparkStructure.png&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/picture/sparkStructure.png&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/picture/sparkStructure.png&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;p&gt;2 Spark &amp;amp; Hadoop&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -1681,7 +1725,29 @@
 &lt;/table&gt;
 &lt;h2 id=&#34;spark-cluster&#34;&gt;Spark Cluster&lt;/h2&gt;
 &lt;p&gt;1 Cluster  relation&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/clusterManager.png&#34; alt=&#34;clusterManager&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/picture/clusterManager.png&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/picture/clusterManager.png&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/picture/clusterManager.png&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Driver：该进程调用Spark程序的main方法，并且启动SparkContext&lt;/li&gt;
 &lt;li&gt;Cluster Manager：该进程负责和外部集群工具打交道，申请或释放集群资源&lt;/li&gt;
@@ -1718,7 +1784,29 @@
 &lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;val&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rdd3&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rdd2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;map&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;item&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;item&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;))&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;val&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rdd4&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rdd3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;reduceByKey&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;curr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;agg&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;curr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;agg&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rdd4&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;collect&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/sparkDemoRunProcess.png&#34; alt=&#34;sparkDemoRunProcess&#34;&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/picture/sparkDemoRunProcess.png&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/picture/sparkDemoRunProcess.png&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/picture/sparkDemoRunProcess.png&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;p&gt;2 Local IDEA Run&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-scala&#34; data-lang=&#34;scala&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;Arrary&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;])&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;Unit&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;// 创建SparkContext
@@ -1799,7 +1887,29 @@
 &lt;blockquote&gt;
 &lt;p&gt;RDD需要容错，可以惰性求值，可以移动计算，所以很难支持修改，显著降低问题的复杂度。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/sparkRdd.png&#34; alt=&#34;sparkRdd&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/picture/sparkRdd.png&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/picture/sparkRdd.png&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/picture/sparkRdd.png&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;p&gt;4 sparkContext&lt;/p&gt;
 &lt;p&gt;SparkContext是spark功能的主要入口。其代表与spark集群的连接，能够用来在集群上创建RDD、累加器、广播变量。每个JVM里只能存在一个处于激活状态的SparkContext，在创建新的SparkContext之前必须调用stop()来关闭之前的SparkContext。&lt;/p&gt;
 &lt;p&gt;每一个Spark应用都是一个SparkContext实例，可以理解为一个SparkContext就是一个spark application的生命周期，一旦SparkContext创建之后，就可以用这个SparkContext来创建RDD、累加器、广播变量，并且可以通过SparkContext访问Spark的服务，运行任务。spark context设置内部服务，并建立与spark执行环境的连接。&lt;/p&gt;
@@ -1896,7 +2006,29 @@
 &lt;li&gt;如何放在集群中运行?&lt;/li&gt;
 &lt;/ol&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/sparkPutFile2Cluster.png&#34; alt=&#34;sparkPutFile2Cluster&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/picture/sparkPutFile2Cluster.png&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/picture/sparkPutFile2Cluster.png&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/picture/sparkPutFile2Cluster.png&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;p&gt;并行计算就是同时使用多个计算资源解决一个问题，有四个要点&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;解决的问题可以分解为多个可以并发计算的部分&lt;/li&gt;
@@ -1909,7 +2041,29 @@
 &lt;li&gt;如果放在集群中，如何对整个计算任务进行分解？&lt;/li&gt;
 &lt;/ol&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/sparkFile2Cluster2.png&#34; alt=&#34;sparkFile2Cluster2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/picture/sparkFile2Cluster2.png&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/picture/sparkFile2Cluster2.png&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/picture/sparkFile2Cluster2.png&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;概述&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;对于HDFS中的文件，是分为不同的Block&lt;/li&gt;
@@ -2289,11 +2443,55 @@
 &lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;+-&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;MapPartitionsRDD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;map&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;test&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;scala&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;10&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;[]&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;    &lt;span class=&#34;kt&#34;&gt;|&lt;/span&gt;  &lt;span class=&#34;kt&#34;&gt;MapPartitionsRDD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;flatMap&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;test&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;scala&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;9&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;[]&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;    &lt;span class=&#34;kt&#34;&gt;|&lt;/span&gt;  &lt;span class=&#34;kt&#34;&gt;ParallelCollectionRDD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;parallelize&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;test&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;scala&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;6&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;[]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200527sparkGuide1/RDDlogic.png&#34; alt=&#34;RDDlogic&#34;&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/20200527sparkGuide1/RDDlogic.png&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/20200527sparkGuide1/RDDlogic.png&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/20200527sparkGuide1/RDDlogic.png&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;物理执行图&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;当触发Action执行的时候，这一组互相依赖的RDD要被处理，所以要转化为可运行的物理执行图，调度到集群中执行。&lt;/p&gt;
 &lt;p&gt;因为大部分RDD是不真正存放数据的，只是数据从中流转，所以不能直接在集群中运行RDD，要有一种pipeline的思想，需要将这组RDD转为Stage和Task，从而运行Task，优化整体执行速度。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200527sparkGuide1/RDDphysic.png&#34; alt=&#34;RDDphysic&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/20200527sparkGuide1/RDDphysic.png&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/20200527sparkGuide1/RDDphysic.png&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/20200527sparkGuide1/RDDphysic.png&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;p&gt;小结：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;① -&amp;gt; ① -&amp;gt; ① 在第一个stage中，每一个这样的执行流程是一个Task，也就是在同一个Stage中的所有RDD的对应分区，在同一个Task中执行&lt;/li&gt;
@@ -2358,7 +2556,29 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200527sparkGuide1/sparkFlow.png&#34; alt=&#34;sparkFlow&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/20200527sparkGuide1/sparkFlow.png&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/20200527sparkGuide1/sparkFlow.png&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/20200527sparkGuide1/sparkFlow.png&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
         
       </description>
     </item>
@@ -2374,7 +2594,29 @@
           &lt;p&gt;The features of large applications: high availability, high concurrency and big data. High availability: system need to provide service without interruption. High concurrency: still stable under the big access. Big data: store and manage big data well.&lt;/p&gt;
 &lt;h2 id=&#34;最简单的架构&#34;&gt;最简单的架构&lt;/h2&gt;
 &lt;p&gt;开始数据量少，所以只需一台服务器&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200526appArchitectureDevelopment/smapleArchitecture.png&#34; alt=&#34;smapleArchitecture&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/20200526appArchitectureDevelopment/smapleArchitecture.png&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/20200526appArchitectureDevelopment/smapleArchitecture.png&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/20200526appArchitectureDevelopment/smapleArchitecture.png&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;p&gt;应用程序、文件、数据库往往都部署在一台服务器上，应用程序部署在Tomcat服务器上，数据库可以使用MySQL&lt;/p&gt;
 &lt;h2 id=&#34;应用于数据服务分隔&#34;&gt;应用于数据服务分隔&lt;/h2&gt;
 &lt;p&gt;随着业务越来越复杂，访问量越来越大，导致性能越来越差，存储空间严重不足，这时我们考虑把服务器增加到三台。分离出应用服务器、数据库服务器、文件服务器。&lt;/p&gt;
@@ -2383,10 +2625,54 @@
 &lt;li&gt;数据库服务器需要存储大量的数据以及快速的检索，所以需磁盘的检索速度较快以及存储空间大&lt;/li&gt;
 &lt;li&gt;文件服务器需要存储上传的文件，需要更大的磁盘；现在通常情况下会选择第三方的存储服务&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200526appArchitectureDevelopment/appSeparateData.png&#34; alt=&#34;appSeparateData&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/20200526appArchitectureDevelopment/appSeparateData.png&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/20200526appArchitectureDevelopment/appSeparateData.png&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/20200526appArchitectureDevelopment/appSeparateData.png&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;h2 id=&#34;应用服务器集群&#34;&gt;应用服务器集群&lt;/h2&gt;
 &lt;p&gt;在高并发、大流量的情况下，一台服务器是肯定处理不过来的，这个时候增加服务器，部署集群提供服务，来分担每台服务器的压力。部署集群的另一个好处是可伸缩性。比如双十一增加服务器分摊流量，双十一过后再减少服务器。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200526appArchitectureDevelopment/Cluster.png&#34; alt=&#34;Cluster&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/20200526appArchitectureDevelopment/Cluster.png&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/20200526appArchitectureDevelopment/Cluster.png&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/20200526appArchitectureDevelopment/Cluster.png&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;p&gt;如果应用服务器是Tomcat，那么可以部署一个Tomcat的集群，外部在部署一个负载均衡器，可以采用随机、轮询或者一致性哈希算法达将用户的请求分发到不同应用服务集群；通常选择的免费的负载均衡是nginx。在这种架构下，应用服务器的负载将不会是整个应用的瓶颈点；&lt;/p&gt;
 &lt;p&gt;虽然应用程序的处理速度在这种架构下提升了许多，但是又会暴露一个问题，数据库的压力大大增大，导致访问响应延迟，影响整个应用的性能。这种架构还有个问题，通常应用是有状态的，需要记录用户的登录信息，如果每次用户的请求都是随机路由到后端的应用服务器，那么用户的会话将会丢失；解决这个问题两个方案：&lt;/p&gt;
 &lt;ul&gt;
@@ -2395,12 +2681,56 @@
 &lt;/ul&gt;
 &lt;h2 id=&#34;缓存&#34;&gt;缓存&lt;/h2&gt;
 &lt;p&gt;根据二八原则，80%的的业务都是集中访问20%的数据，这20%的数据通常称为热点数据，但是这20%的数据占用的内存也不会小，如果每个应用服务器都存放一份，有些浪费存储空间，所以这时候需要考虑加入分布式缓存服务器（常用的是Redis）；当引入了分布式缓存服务器，再来看上面那个方案的问题，就可以解决了，把用户的会话存放到缓存服务器，不仅可以防止用户数据丢失，效率也不低；架构图如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200526appArchitectureDevelopment/cache.png&#34; alt=&#34;cache&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/20200526appArchitectureDevelopment/cache.png&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/20200526appArchitectureDevelopment/cache.png&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/20200526appArchitectureDevelopment/cache.png&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;p&gt;由于分布式缓存服务器毕竟存放在远程，需要经过网络，所以取数据还是要花一点时间；本地缓存访问速度更快，但是内存空间有限，并且还会出现和应用程序争抢资源；所以这种架构搭配了分布式缓存和本地缓存，本地缓存存放少量常用热点数据，当本地缓存中没有命中时在去集中式缓存取&lt;/p&gt;
 &lt;p&gt;在引进缓存之后，数据库的访问压力可以的一定的缓解&lt;/p&gt;
 &lt;h2 id=&#34;数据库读写分离&#34;&gt;数据库读写分离&lt;/h2&gt;
 &lt;p&gt;虽然在加入了缓存之后，部分数据可以直接走缓存，不需要访问数据库，但是任然会有一些请求，会访问数据库，比如：缓存失效，缓存未命中；当流量大的时候，数据库的访问量也不小。这时候我们需要考虑搭建数据库集群，读写分离&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200526appArchitectureDevelopment/rwSeparate.png&#34; alt=&#34;rwSeparate&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/20200526appArchitectureDevelopment/rwSeparate.png&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/20200526appArchitectureDevelopment/rwSeparate.png&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/20200526appArchitectureDevelopment/rwSeparate.png&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;p&gt;当应用服务器有写操作时，访问主库，当应用程序有读操作时，访问从库；大多数的应用都是读的操作远远大于写的操作，所以可以配置数据库一主多从来分担数据库的压力；为了让应用程序对应主库和从库无感知，通常需要引入一些读写分离的框架做一个统一的数据访问模块。&lt;/p&gt;
 &lt;p&gt;这种架构通常需要警惕的一个问题是主从延迟，当在高并发的场景下，主库刚写成功，数据库还未成功同步完从库，这时候另一个请求进入读取数据发现不存在；解放方案是在应用程序中高并发的场景下设置强制走主库查询&lt;/p&gt;
 &lt;h2 id=&#34;反向代理和cdn&#34;&gt;反向代理和CDN&lt;/h2&gt;
@@ -2410,7 +2740,29 @@
 &lt;li&gt;减轻后端服务器的压力&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;架构图如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200526appArchitectureDevelopment/cdn.png&#34; alt=&#34;cdn&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/20200526appArchitectureDevelopment/cdn.png&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/20200526appArchitectureDevelopment/cdn.png&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/20200526appArchitectureDevelopment/cdn.png&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;p&gt;CDN: 部署在网络提供商的机房，当用户来访问的时候，从距离用户最近的服务器返回数据，尽快呈现给用户；通常情况下在CDN中缓存的是静态资源（html,js,css），达到动静分离；但是有时候遇到了某些数据访问量特别大的时候，后端会生成静态资源放入到CDN，比如：商城的首页，每个用户进入都需要访问的页面，如果每次请求都进入到后端，那么服务器的压力肯定不小，这种情况下会把首页生成静态的文件缓存到cdn和反向代理服务器&lt;/p&gt;
 &lt;p&gt;反向代理：部署在应用的中心机房，通常也是缓存的静态资源，当用户通过CDN未请求到需要的数据时，先进入反向代理服务器，如果有缓存用户访问的数据，那么直接返回给用户；这里也有特殊情况，对于有些场景下的热点数据，在这里根据用户的请求去分布式缓存服务器中获取，能拿到就直接返回。&lt;/p&gt;
 &lt;p&gt;这种架构已经把缓存做到了4级&lt;/p&gt;
@@ -2423,13 +2775,57 @@
 &lt;p&gt;通常情况下经过了这4级缓存，能够进入到数据库的请求也不多了，很好的释放了数据库的压力&lt;/p&gt;
 &lt;h2 id=&#34;搜索引擎和nosql&#34;&gt;搜索引擎和NoSQL&lt;/h2&gt;
 &lt;p&gt;随着业务的不断扩大，对于数据的存储和查询的需求也越来越复杂，通常情况我们需要引入非关系型数据库，比如搜索引擎和NoSQL数据库&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200526appArchitectureDevelopment/NoSQL.png&#34; alt=&#34;NoSQL&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/20200526appArchitectureDevelopment/NoSQL.png&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/20200526appArchitectureDevelopment/NoSQL.png&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/20200526appArchitectureDevelopment/NoSQL.png&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;p&gt;有时候我们的查询场景很复杂，需要查询很多数据表，经过一系列的计算才能完成，这时候可以考虑通过数据同步工具（比如canal）拉去数据到大数据平台，使用批处理框架离线计算，把输出的结果存放到搜索引擎或者NoSQL数据库中，应用程序直接查询计算的结果返回给用户。也有可能我们需要汇总多个表的数据做一张宽表，方便应用程序查询&lt;/p&gt;
 &lt;p&gt;由于引入的数据存储方式增多，为了减轻应用程序的管理多个数据源的麻烦，需要封装统一数据访问模块，如果使用的时Java，可以考虑spring-data&lt;/p&gt;
 &lt;h2 id=&#34;业务纵向拆分&#34;&gt;业务纵向拆分&lt;/h2&gt;
 &lt;p&gt;互联网公司通常的宗旨是小步迭代试错快跑，当业务发展到足够大，对于单体应用想要达到这个宗旨是有难度的，随着业务的发展，应用程序越来越大，研发、维护、发布的成本也越来越大，这时候就需要考虑根据业务把单体应用拆分为多个服务，服务之间可以通过RPC远程调用和消息队列来一起完成用户的请求。&lt;/p&gt;
 &lt;p&gt;由于业务的拆分，通常情况下也会相应的对数据库进行拆分，达到一个服务对应一个数据库的理想状态&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200526appArchitectureDevelopment/vertical.png&#34; alt=&#34;vertical&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/20200526appArchitectureDevelopment/vertical.png&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/20200526appArchitectureDevelopment/vertical.png&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/20200526appArchitectureDevelopment/vertical.png&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;p&gt;引入MQ的好处：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;提高系统的可用性：当消费服务器发送故障时，消息还在消息队列中，数据不会丢失&lt;/li&gt;
@@ -2456,7 +2852,29 @@
 &lt;p&gt;&lt;strong&gt;ZooKeeper&lt;/strong&gt; 是一个开源的&lt;strong&gt;分布式协调框架&lt;/strong&gt;，它的定位是为分布式应用提供一致性服务，是整个大数据体系的&lt;strong&gt;管理员&lt;/strong&gt;。&lt;strong&gt;ZooKeeper&lt;/strong&gt; 会封装好复杂易出错的关键服务，将高效、稳定、易用的服务提供给用户使用。&lt;/p&gt;
 &lt;p&gt;如果上面的官方言语你不太理解，你可以认为 &lt;strong&gt;ZooKeeper&lt;/strong&gt; = &lt;strong&gt;文件系统&lt;/strong&gt; + &lt;strong&gt;监听通知机制&lt;/strong&gt;。&lt;/p&gt;
 &lt;h3 id=&#34;11-file-system&#34;&gt;1.1 File System&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200519zookeeper/1.png&#34; alt=&#34;filesys&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/20200519zookeeper/1.png&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/20200519zookeeper/1.png&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/20200519zookeeper/1.png&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Zookeeper&lt;/strong&gt;维护一个类似文件系统的树状数据结构，这种特性使得 &lt;strong&gt;Zookeeper&lt;/strong&gt; 不能用于存放大量的数据，每个节点的存放数据上限为&lt;strong&gt;1M&lt;/strong&gt;。每个子目录项如 NameService 都被称作为 &lt;strong&gt;znode&lt;/strong&gt;(目录节点)。和文件系统一样，我们能够自由的增加、删除&lt;strong&gt;znode&lt;/strong&gt;，在一个&lt;strong&gt;znode&lt;/strong&gt;下增加、删除子&lt;strong&gt;znode&lt;/strong&gt;，唯一的不同在于&lt;strong&gt;znode&lt;/strong&gt;是可以存储数据的。默认有四种类型的&lt;strong&gt;znode&lt;/strong&gt;：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;持久化目录节点 PERSISTENT&lt;/strong&gt;：客户端与zookeeper断开连接后，该节点依旧存在。&lt;/li&gt;
@@ -2478,7 +2896,29 @@
 &lt;li&gt;客户端回调 Watcher 客户端。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200519zookeeper/2.webp&#34; alt=&#34;watcher&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/20200519zookeeper/2.webp&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/20200519zookeeper/2.webp&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/20200519zookeeper/2.webp&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;监听流程&lt;/strong&gt;：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ol&gt;
@@ -2491,7 +2931,29 @@
 &lt;/ol&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;13-feature&#34;&gt;1.3 Feature&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200519zookeeper/3.png&#34; alt=&#34;feature&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/20200519zookeeper/3.png&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/20200519zookeeper/3.png&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/20200519zookeeper/3.png&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;集群&lt;/strong&gt;：Zookeeper是一个领导者（Leader），多个跟随者（Follower）组成的集群。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;高可用性&lt;/strong&gt;：集群中只要有半数以上节点存活，Zookeeper集群就能正常服务。&lt;/li&gt;
@@ -2531,7 +2993,29 @@
 &lt;blockquote&gt;
 &lt;p&gt;主要是避免了羊群效应，临时节点已经预先存在，所有想要获得锁的线程在它下面创建临时顺序编号目录节点，编号最小的获得锁，用完删除，后面的依次排队获取。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200519zookeeper/4.png&#34; alt=&#34;distributedLock&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/20200519zookeeper/4.png&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/20200519zookeeper/4.png&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/20200519zookeeper/4.png&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;h3 id=&#34;3-负载均衡&#34;&gt;3. 负载均衡&lt;/h3&gt;
 &lt;p&gt;多个相同的jar包在不同的服务器上开启相同的服务，可以通过nginx在服务端进行负载均衡的配置。也可以通过ZooKeeper在客户端进行负载均衡配置。&lt;/p&gt;
 &lt;ol&gt;
@@ -2630,7 +3114,29 @@
 &lt;/blockquote&gt;
 &lt;h5 id=&#34;322-运行时leader选举&#34;&gt;3.2.2 运行时Leader选举&lt;/h5&gt;
 &lt;p&gt;运行时候如果Master节点崩溃了会走恢复模式，新Leader选出前会暂停对外服务，大致可以分为四个阶段  &lt;code&gt;选举&lt;/code&gt;、&lt;code&gt;发现&lt;/code&gt;、&lt;code&gt;同步&lt;/code&gt;、&lt;code&gt;广播&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/20200519zookeeper/5.png&#34; alt=&#34;chooseLeader&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/20200519zookeeper/5.png&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/20200519zookeeper/5.png&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/20200519zookeeper/5.png&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;每个Server会发出一个投票，第一次都是投自己，其中投票信息 = (myid，ZXID)&lt;/li&gt;
 &lt;li&gt;收集来自各个服务器的投票&lt;/li&gt;
@@ -2876,7 +3382,29 @@
 &lt;p&gt;以秒杀为例：风险控制-&amp;gt;库存锁定-&amp;gt;生成订单-&amp;gt;短信通知-&amp;gt;更新统计数据&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/kafkaAsyn.webp&#34; alt=&#34;kafkaAsyn&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/picture/kafkaAsyn.webp&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/picture/kafkaAsyn.webp&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/picture/kafkaAsyn.webp&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;限流削峰/流量控制&lt;/p&gt;
@@ -2892,7 +3420,29 @@
 &lt;p&gt;同一个客户呼入电话只能被一位客服人员处理，第二个客服人员不能为该客户服务。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/kafkaP2p.webp&#34; alt=&#34;kafkaP2p&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/picture/kafkaP2p.webp&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/picture/kafkaP2p.webp&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/picture/kafkaP2p.webp&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;发布/订阅模型&lt;/p&gt;
@@ -2900,7 +3450,29 @@
 &lt;p&gt;生活中的报纸订阅就是一种典型的发布 / 订阅模型。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/kafkaSub.webp&#34; alt=&#34;kafkaSub&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/picture/kafkaSub.webp&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/picture/kafkaSub.webp&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/picture/kafkaSub.webp&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;h2 id=&#34;kafka&#34;&gt;Kafka&lt;/h2&gt;
 &lt;h3 id=&#34;1-intro&#34;&gt;1. Intro&lt;/h3&gt;
 &lt;p&gt;kafka是一个分布式流处理平台。&lt;/p&gt;
@@ -2975,16 +3547,82 @@ Kafka 最初是 LinkedIn 的一个内部基础设施系统。我们发现虽然�
 &lt;li&gt;消费者组：Consumer Group。多个消费者实例共同组成的一个组，同时消费多个分区以实现高吞吐。&lt;/li&gt;
 &lt;li&gt;重平衡：Rebalance。消费者组内某个消费者实例挂掉后，其他消费者实例自动重新分配订阅主题分区的过程。Rebalance 是 Kafka 消费者端实现高可用的重要手段。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/kafkaItem.png&#34; alt=&#34;kafkaItem&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/picture/kafkaItem.png&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/picture/kafkaItem.png&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/picture/kafkaItem.png&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;h3 id=&#34;4-topic&#34;&gt;4. Topic&lt;/h3&gt;
 &lt;p&gt;日志&lt;/p&gt;
 &lt;p&gt;日志可能是一种最简单的不能再简单的存储抽象，只能追加、按照时间完全有序（totally-ordered）的记录序列。日志看起来的样子：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/kafkaLog.png&#34; alt=&#34;kafkaLog&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/picture/kafkaLog.png&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/picture/kafkaLog.png&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/picture/kafkaLog.png&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;p&gt;在日志的末尾添加记录，读取日志记录则从左到右。每一条记录都指定了一个唯一的顺序的日志记录编号。&lt;/p&gt;
 &lt;p&gt;日志记录的次序（ordering）定义了『时间』概念，因为位于左边的日志记录表示比右边的要早。日志记录编号可以看作是这条日志记录的『时间戳』。把次序直接看成是时间概念，刚开始你会觉得有点怪异，但是这样的做法有个便利的性质：解耦了 时间 和 任一特定的物理时钟（physical clock）。引入分布式系统后，这会成为一个必不可少的性质。&lt;/p&gt;
 &lt;p&gt;日志 和 文件或数据表（table）并没有什么大的不同。文件是一系列字节，表是由一系列记录组成，而日志实际上只是一种按照时间顺序存储记录的数据表或文件。&lt;/p&gt;
 &lt;p&gt;对于每一个topic， Kafka集群都会维持一个分区日志，如下所示：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/kafkaPartitionLog.png&#34; alt=&#34;kafkaPartitionLog&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/picture/kafkaPartitionLog.png&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/picture/kafkaPartitionLog.png&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/picture/kafkaPartitionLog.png&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;实操&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;启动zk&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /usr/local/kara/kafka_2.13-2.6.0/bin

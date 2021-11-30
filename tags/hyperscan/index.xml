@@ -31,10 +31,54 @@
 &lt;p&gt;Hyperscan以自动机理论为基础，其工作流程主要分成两个部分：编译期(compiletime)和运行期(run-time)。&lt;/p&gt;
 &lt;h3 id=&#34;31编译期&#34;&gt;3.1编译期&lt;/h3&gt;
 &lt;p&gt;Hyperscan 自带C++编写的正则表达式编译器。如图1所示，它将正则表达式作为输入，针对不同的平台，用户定义的模式及特殊语法，经过复杂的图分析及优化过程，生成对应的数据库。另外，生成的数据库可以被序列化后保存在内存中，以供运行期提取使用。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/Hyperscan-fig-1.jpg&#34; alt=&#34;Hyperscan-fig-1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/picture/Hyperscan-fig-1.jpg&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/picture/Hyperscan-fig-1.jpg&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/picture/Hyperscan-fig-1.jpg&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;h3 id=&#34;32运行期&#34;&gt;3.2运行期&lt;/h3&gt;
 &lt;p&gt;Hyperscan的运行期是通过C语言来开发的。图2展示了Hyperscan在运行期的主要流程。用户需要预先分配一段内存来存储临时匹配状态信息，之后利用编译生成的数据库调用Hyperscan内部的匹配引擎(NFA, DFA等)来对输入进行模式匹配。Hyperscan在引擎中使用Intel处理器所具有的SIMD指令进行加速。同时，用户可以通过回调函数来自定义匹配发生后采取的行为。由于生成的数据库是只读的，用户可以在多个CPU核或多线程场景下共享数据库来提升匹配扩展性。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://Jerrysmd.github.io/post/picture/Hyperscan-fig-2.jpg&#34; alt=&#34;Hyperscan-fig-2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+&lt;div class=&#34;notices warning image-warning&#34;&gt;
+  &lt;div class=&#34;label&#34;&gt;Image not found&lt;/div&gt;
+    &lt;style&gt;
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    &lt;/style&gt;
+    &lt;p&gt;Web path: &lt;a href=&#39;https://Jerrysmd.github.io/post/picture/Hyperscan-fig-2.jpg&#39; title=&#39;Open this web path in a new tab&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;https://Jerrysmd.github.io/post/picture/Hyperscan-fig-2.jpg&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Disk path: /static//post/picture/Hyperscan-fig-2.jpg&lt;/p&gt;
+    &lt;p&gt;Using &lt;a href=&#39;https://gohugo.io/content-management/page-bundles/&#39; title=&#39;Information about Hugo Page Bundles&#39; target=&#39;_blank&#39; class=&#39;warning-link&#39;&gt;Page Bundles&lt;/a&gt;: false&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/p&gt;
 &lt;h2 id=&#34;4-hyperscan伪代码&#34;&gt;4. Hyperscan伪代码&lt;/h2&gt;
 &lt;h3 id=&#34;41-编译&#34;&gt;4.1 编译&lt;/h3&gt;
 &lt;p&gt;函数buildDatabase用来编译规则文件中的多个正则表达式，参数mode指定了是BLOCK,STREAM,或者向量模式。&lt;/p&gt;
