@@ -798,7 +798,7 @@
 <span class="ln">13</span>        <span class="n">l</span> <span class="o">=</span> <span class="n">head</span><span class="o">.</span><span class="na">left</span><span class="o">;</span>
 <span class="ln">14</span>        <span class="n">r</span> <span class="o">=</span> <span class="n">head</span><span class="o">.</span><span class="na">right</span><span class="o">;</span>
 <span class="ln">15</span>        <span class="k">if</span><span class="o">(</span>
-<span class="ln">16</span>        <span class="c1">//不双全，又不是叶节点
+<span class="ln">16</span>        <span class="c1">//节点不双全，又发现有孩子
 </span><span class="ln">17</span><span class="c1"></span>            <span class="o">(</span><span class="n">leaf</span> <span class="o">&amp;&amp;</span> <span class="o">!(</span><span class="n">l</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">r</span> <span class="o">==</span> <span class="kc">null</span><span class="o">))</span>
 <span class="ln">18</span>            <span class="o">||</span>
 <span class="ln">19</span>            <span class="o">(</span><span class="n">l</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">r</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
@@ -814,7 +814,7 @@
 <span class="ln">29</span>        <span class="k">if</span> <span class="o">(</span><span class="n">l</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">r</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
 <span class="ln">30</span>            <span class="n">leaf</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
 <span class="ln">31</span>        <span class="o">}</span>
-<span class="ln">32</span>        <span class="k">return</span> <span class="n">t</span>
+<span class="ln">32</span>        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
 <span class="ln">33</span>    <span class="o">}</span>
 <span class="ln">34</span><span class="o">}</span>
 </code></pre></div></blockquote>
