@@ -1245,7 +1245,8 @@
 &lt;blockquote&gt;
 &lt;p&gt;同时满足&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;任一节点有右无左-》&lt;/li&gt;
+&lt;li&gt;任一节点有右无左 &amp;ndash;&amp;gt; false&lt;/li&gt;
+&lt;li&gt;遇到一个左右子树不全的节点，后续皆是叶节点。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
 &lt;/blockquote&gt;
