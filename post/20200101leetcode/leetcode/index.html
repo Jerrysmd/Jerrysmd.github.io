@@ -124,7 +124,7 @@
 </svg></span>
     <span class="post_date">
       Jan 1, 2020</span>
-    <span class="post_time"> · 10 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/interview' title="interview" class="post_tag button button_translucent">interview
+    <span class="post_time"> · 11 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/interview' title="interview" class="post_tag button button_translucent">interview
         </a><a href='https://Jerrysmd.github.io/tags/leetcode' title="leetcode" class="post_tag button button_translucent">leetcode
         </a><a href='https://Jerrysmd.github.io/tags/algorithm' title="algorithm" class="post_tag button button_translucent">algorithm
         </a>
@@ -799,7 +799,7 @@
 <span class="ln">14</span>        <span class="n">r</span> <span class="o">=</span> <span class="n">head</span><span class="o">.</span><span class="na">right</span><span class="o">;</span>
 <span class="ln">15</span>        <span class="k">if</span><span class="o">(</span>
 <span class="ln">16</span>        <span class="c1">//节点不双全，又发现有孩子
-</span><span class="ln">17</span><span class="c1"></span>            <span class="o">(</span><span class="n">leaf</span> <span class="o">&amp;&amp;</span> <span class="o">!(</span><span class="n">l</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">r</span> <span class="o">==</span> <span class="kc">null</span><span class="o">))</span>
+</span><span class="ln">17</span><span class="c1"></span>            <span class="o">(</span><span class="n">leaf</span> <span class="o">&amp;&amp;</span> <span class="o">(</span><span class="n">l</span> <span class="err">！</span><span class="o">=</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">r</span> <span class="err">！</span><span class="o">=</span> <span class="kc">null</span><span class="o">))</span>
 <span class="ln">18</span>            <span class="o">||</span>
 <span class="ln">19</span>            <span class="o">(</span><span class="n">l</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">r</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
 <span class="ln">20</span>        <span class="o">){</span>
@@ -817,7 +817,16 @@
 <span class="ln">32</span>        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
 <span class="ln">33</span>    <span class="o">}</span>
 <span class="ln">34</span><span class="o">}</span>
-</code></pre></div></blockquote>
+</code></pre></div><p>判断满二叉树：</p>
+<p>判断平衡二叉树：左树高度和右树高度的差都不超过1</p>
+<blockquote>
+<p>同时满足：</p>
+<ol>
+<li>左子树是平衡二叉树</li>
+<li>右子树是平衡二叉树</li>
+</ol>
+</blockquote>
+</blockquote>
 </blockquote>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
