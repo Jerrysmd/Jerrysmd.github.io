@@ -831,8 +831,12 @@
 <span class="ln"> 7</span>    <span class="o">}</span>
 <span class="ln"> 8</span><span class="o">}</span>
 <span class="ln"> 9</span><span class="kd">public</span> <span class="kd">static</span> <span class="n">Info</span> <span class="nf">f</span><span class="o">(</span><span class="n">Node</span> <span class="n">x</span><span class="o">){</span>
-<span class="ln">10</span>    <span class="n">i</span>
-<span class="ln">11</span><span class="o">}</span>
+<span class="ln">10</span>    <span class="k">if</span><span class="o">(</span><span class="n">x</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
+<span class="ln">11</span>        <span class="k">return</span> <span class="k">new</span> <span class="n">Info</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">0</span><span class="o">);</span>
+<span class="ln">12</span>    <span class="o">}</span>
+<span class="ln">13</span>    <span class="n">Info</span> <span class="n">leftData</span> <span class="o">=</span> <span class="n">f</span><span class="o">(</span><span class="n">x</span><span class="o">.</span><span class="na">left</span><span class="o">);</span>
+<span class="ln">14</span>    <span class="n">I</span>
+<span class="ln">15</span><span class="o">}</span>
 </code></pre></div></blockquote>
 <p>判断平衡二叉树：左树高度和右树高度的差都不超过1</p>
 <blockquote>
