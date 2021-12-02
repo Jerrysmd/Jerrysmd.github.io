@@ -33,7 +33,7 @@
 <meta property="og:url" content="https://Jerrysmd.github.io/post/20180507mxml/mxml/" />
 <meta property="og:title" content="MXML的使用: The description of mxml" />
 <meta property="og:description" content="Article description." />
-<meta property="og:image" content="https://Jerrysmd.github.io/images/distribution.png" />
+<meta property="og:image" content="https://Jerrysmd.github.io/post/20180507mxml/mxml/images/distribution.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://Jerrysmd.github.io/icons_custom/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://Jerrysmd.github.io/icons_custom/favicon-32x32.png">
@@ -129,10 +129,13 @@
     </span>
   </div>
 
+
+
+
     
-    
-    <h2>Overview</h2>
-    <nav id="TableOfContents">
+    <div class="post_toc">
+      <h2>Overview</h2>
+      <nav id="TableOfContents">
   <ul>
     <li><a href="#1xml">1.XML</a></li>
     <li><a href="#2mxml写入操作">2.mxml写入操作</a></li>
@@ -140,7 +143,9 @@
     <li><a href="#4mxml-for循环解析长文件">4.mxml for循环解析长文件</a></li>
   </ul>
 </nav>
-    <p>MXML (Minimal XML) is a small, fast and versatile library that reads a whole XML file and puts it in a DOM tree.</p>
+    </div>
+    
+    <div class="post_body"><p>MXML (Minimal XML) is a small, fast and versatile library that reads a whole XML file and puts it in a DOM tree.</p>
 <h2 id="1xml">1.XML</h2>
 <p>XML特点和作用 :</p>
 <ul>
@@ -157,7 +162,7 @@
 <span class="ln">5</span>    <span class="nt">&lt;/book&gt;</span>
 <span class="ln">6</span><span class="nt">&lt;/books&gt;</span>
 </code></pre></div><h2 id="2mxml写入操作">2.mxml写入操作</h2>
-<p><mark>mxml既可以创建写入xml文件，也可以解析xml文件数据</mark><br>
+<p><mark>mxml既可以创建写入xml文件，也可以解析xml文件数据</mark>
 写入示例:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln"> 1</span><span class="cp">#include</span><span class="cpf">&#34;mxml.h&#34;</span><span class="cp">
 </span><span class="ln"> 2</span><span class="cp"></span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
@@ -180,7 +185,7 @@
 <span class="ln">19</span>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="ln">20</span><span class="p">}</span>
 </code></pre></div><h2 id="3mxml解析操作">3.mxml解析操作</h2>
-<p>解析步骤：<br>
+<p>解析步骤：
 步骤：</p>
 <ol>
 <li>打开一个xml文件</li>
@@ -188,8 +193,8 @@
 <li>查找待提取的节点标签：mxml_node_t *mxmlFindElement(mxml_node_t *node, mxml_node_t *top,const char *name, const char *attr,const char *value, int descend);</li>
 <li>获取标签属性：const char *mxmlElementGetAttr(mxml_node_t *node, const char *name);</li>
 <li>获取标签的文本内容： const char *mxmlGetText(mxml_node_t *node, int *whitespace);</li>
-<li>释放节点，关闭文件<br>
-示例：<br>
+<li>释放节点，关闭文件
+示例：
 解析的文本：</li>
 </ol>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="ln">1</span><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
@@ -315,10 +320,14 @@
 <span class="ln">44</span><span class="n">mxmlDelete</span><span class="p">(</span><span class="n">tree</span><span class="p">);</span>
 <span class="ln">45</span><span class="n">fclose</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
 </code></pre></div>
+    </div>
+
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <div id="gitalk-container"></div>
+
+
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
@@ -327,6 +336,7 @@
         Technologist, perpetual student, continual incremental improvement.
       </div>
       <a href='https://Jerrysmd.github.io/about/' class="button mt-1" role="button" title='Read More'>Read More</a>
+    
     <h2 class="mt-4">Featured Posts</h2>
     <ul>
       <li>

@@ -33,7 +33,7 @@
 <meta property="og:url" content="https://Jerrysmd.github.io/post/20200707sparkguide2/sparkguide2/" />
 <meta property="og:title" content="Spark 简介: Spark Guide, Part Ⅱ" />
 <meta property="og:description" content="Article description." />
-<meta property="og:image" content="https://Jerrysmd.github.io/images/data1.png" />
+<meta property="og:image" content="https://Jerrysmd.github.io/post/20200707sparkguide2/sparkguide2/images/data1.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://Jerrysmd.github.io/icons_custom/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://Jerrysmd.github.io/icons_custom/favicon-32x32.png">
@@ -130,10 +130,13 @@
     </span>
   </div>
 
+
+
+
     
-    
-    <h2>Overview</h2>
-    <nav id="TableOfContents">
+    <div class="post_toc">
+      <h2>Overview</h2>
+      <nav id="TableOfContents">
   <ul>
     <li><a href="#advanced-operation">Advanced Operation</a></li>
     <li><a href="#sparksql">SparkSQL</a></li>
@@ -147,7 +150,9 @@
     <li><a href="#over-rank">Over Rank</a></li>
   </ul>
 </nav>
-    <p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
+    </div>
+    
+    <div class="post_body"><p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
 <h2 id="advanced-operation">Advanced Operation</h2>
 <p>closure</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="k">def</span> <span class="n">test</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
@@ -385,7 +390,7 @@
 </code></pre></div><ol start="5">
 <li>
 <p>DataFrame只能做到运行时类型检查，Dataset能做到编译和运行都有类型检查</p>
-<p>DataFrame弱类型是编译时不安全(df.groupBy(&ldquo;name, school&rdquo;))</p>
+<p>DataFrame弱类型是编译时不安全(df.groupBy(&quot;name, school&quot;))</p>
 <p>Dataset所代表的操作，是类型安全的，编译时安全的(ds.filter(person =&gt; person.name))</p>
 </li>
 </ol>
@@ -538,7 +543,7 @@
 </li>
 <li>
 <p>启动Hive MetaStore</p>
-<p>nohup /export/servers/hive/bin/hive &ndash;service metastore 2&gt;&amp;1 &raquo; /var/log.log &amp;</p>
+<p>nohup /export/servers/hive/bin/hive --service metastore 2&gt;&amp;1 &gt;&gt; /var/log.log &amp;</p>
 </li>
 </ol>
 </blockquote>
@@ -817,7 +822,7 @@
 <li>
 <p>功能</p>
 <blockquote>
-<p>naf.drop&hellip;	naf.fill &hellip;</p>
+<p>naf.drop...	naf.fill ...</p>
 </blockquote>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln"> 1</span><span class="n">df</span><span class="o">.</span><span class="n">na</span><span class="o">.</span><span class="n">drop</span><span class="o">.</span><span class="n">show</span><span class="o">()</span>
 <span class="ln"> 2</span><span class="n">df</span><span class="o">.</span><span class="n">na</span><span class="o">.</span><span class="n">fill</span><span class="o">.</span><span class="n">show</span><span class="o">()</span>
@@ -1020,11 +1025,11 @@
 <p>左外连接</p>
 <p>全外连接含没有连接上的数据，左外连接只包含左边没有连接上的数据。</p>
 <p><strong>semi&amp;anti</strong></p>
-<p>Semi-join<br>
-通常出现在使用了exists或in的sql中，所谓semi-join即在两表关联时，当第二个表中存在一个或多个匹配记录时，返回第一个表的记录；<br>
+<p>Semi-join
+通常出现在使用了exists或in的sql中，所谓semi-join即在两表关联时，当第二个表中存在一个或多个匹配记录时，返回第一个表的记录；
 与普通join的区别在于semi-join时，第一个表里的记录最多只返回一次；</p>
-<p>Anti-join<br>
-而anti-join则与semi-join相反，即当在第二张表没有发现匹配记录时，才会返回第一张表里的记录；<br>
+<p>Anti-join
+而anti-join则与semi-join相反，即当在第二张表没有发现匹配记录时，才会返回第一张表里的记录；
 当使用not exists/not in的时候会用到，两者在处理null值的时候会有所区别</p>
 <ol>
 <li>使用not in且相应列有not null约束</li>
@@ -1043,10 +1048,14 @@
 <span class="ln">8</span>	<span class="o">.</span><span class="n">where</span><span class="o">(</span><span class="nc">$rank</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="o">)</span>
 <span class="ln">9</span>	<span class="o">.</span><span class="n">show</span><span class="o">()</span>
 </code></pre></div>
+    </div>
+
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <div id="gitalk-container"></div>
+
+
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
@@ -1055,6 +1064,7 @@
         Technologist, perpetual student, continual incremental improvement.
       </div>
       <a href='https://Jerrysmd.github.io/about/' class="button mt-1" role="button" title='Read More'>Read More</a>
+    
     <h2 class="mt-4">Featured Posts</h2>
     <ul>
       <li>

@@ -33,7 +33,7 @@
 <meta property="og:url" content="https://Jerrysmd.github.io/post/20180812hyperscan/hyperscan/" />
 <meta property="og:title" content="Hyperscan: high-performance multiple regex matching library" />
 <meta property="og:description" content="Article description." />
-<meta property="og:image" content="https://Jerrysmd.github.io/images/search.png" />
+<meta property="og:image" content="https://Jerrysmd.github.io/post/20180812hyperscan/hyperscan/images/search.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://Jerrysmd.github.io/icons_custom/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://Jerrysmd.github.io/icons_custom/favicon-32x32.png">
@@ -131,10 +131,13 @@
     </span>
   </div>
 
+
+
+
     
-    
-    <h2>Overview</h2>
-    <nav id="TableOfContents">
+    <div class="post_toc">
+      <h2>Overview</h2>
+      <nav id="TableOfContents">
   <ul>
     <li><a href="#1-概述">1. 概述</a></li>
     <li><a href="#2-keywords--keyfunc">2. KeyWords &amp; KeyFunc</a></li>
@@ -154,7 +157,9 @@
     </li>
   </ul>
 </nav>
-    <p>Hyperscan是一款来自于Intel的高性能的正则表达式匹配库。它是基于X86平台以PCRE为原型而开发的。在支持PCRE的大部分语法的前提下，Hyperscan增加了特定的语法和工作模式来保证其在真实网络场景下的实用性。</p>
+    </div>
+    
+    <div class="post_body"><p>Hyperscan是一款来自于Intel的高性能的正则表达式匹配库。它是基于X86平台以PCRE为原型而开发的。在支持PCRE的大部分语法的前提下，Hyperscan增加了特定的语法和工作模式来保证其在真实网络场景下的实用性。</p>
 <h2 id="1-概述">1. 概述</h2>
 <p>Hyperscan demo中使用libpcap从pcap文件中读取数据包，并根据一个规则文件中指定的多个正则表达式对报文进行匹配，并输出匹配结果和一些统计信息。Hyperscan增加了特定的语法和工作模式来保证其在真实网络场景下的实用性。与此同时，大量高效算法及IntelSIMD*指令的使用实现了Hyperscan的高性能匹配。</p>
 <h2 id="2-keywords--keyfunc">2. KeyWords &amp; KeyFunc</h2>
@@ -314,10 +319,14 @@
 <p>返回值为非0表示停止匹配，否则继续；在匹配的过程中，每次命中时都将同步调用匹配回调函数，直到匹配结束。</p>
 <h3 id="44-清理资源">4.4 清理资源</h3>
 <p>包括关闭流（hs_close_stream）、释放database等。</p>
+    </div>
+
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <div id="gitalk-container"></div>
+
+
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
@@ -326,6 +335,7 @@
         Technologist, perpetual student, continual incremental improvement.
       </div>
       <a href='https://Jerrysmd.github.io/about/' class="button mt-1" role="button" title='Read More'>Read More</a>
+    
     <h2 class="mt-4">Featured Posts</h2>
     <ul>
       <li>

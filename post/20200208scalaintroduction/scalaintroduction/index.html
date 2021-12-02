@@ -33,7 +33,7 @@
 <meta property="og:url" content="https://Jerrysmd.github.io/post/20200208scalaintroduction/scalaintroduction/" />
 <meta property="og:title" content="Scala 简介: Scala Introduction" />
 <meta property="og:description" content="Article description." />
-<meta property="og:image" content="https://Jerrysmd.github.io/images/code3.png" />
+<meta property="og:image" content="https://Jerrysmd.github.io/post/20200208scalaintroduction/scalaintroduction/images/code3.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://Jerrysmd.github.io/icons_custom/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://Jerrysmd.github.io/icons_custom/favicon-32x32.png">
@@ -130,10 +130,13 @@
     </span>
   </div>
 
+
+
+
     
-    
-    <h2>Overview</h2>
-    <nav id="TableOfContents">
+    <div class="post_toc">
+      <h2>Overview</h2>
+      <nav id="TableOfContents">
   <ul>
     <li><a href="#1-repl--scaladoc">1. REPL &amp; Scaladoc</a></li>
     <li><a href="#2-data-type">2. Data Type</a>
@@ -158,9 +161,11 @@
     <li><a href="#16-xml">16. XML</a></li>
   </ul>
 </nav>
-    <p>Scala combines object-oriented and functional programming in one concise, high-level language. Scala&rsquo;s static types help avoid bugs in complex applications, and its JVM and JavaScript runtimes let you build high-performance systems with easy access to huge ecosystems of libraries.</p>
+    </div>
+    
+    <div class="post_body"><p>Scala combines object-oriented and functional programming in one concise, high-level language. Scala's static types help avoid bugs in complex applications, and its JVM and JavaScript runtimes let you build high-performance systems with easy access to huge ecosystems of libraries.</p>
 <h2 id="1-repl--scaladoc">1. REPL &amp; Scaladoc</h2>
-<p>Scala解释器读到一个表达式，对它进行求值，将它打印出来，接着再继续读下一个表达式。这个过程被称做Read-Eval-Print-Loop，即：REPL。<br>
+<p>Scala解释器读到一个表达式，对它进行求值，将它打印出来，接着再继续读下一个表达式。这个过程被称做Read-Eval-Print-Loop，即：REPL。
 从技术上讲，scala程序并不是一个解释器。实际发生的是，你输入的内容被快速地编译成字节码，然后这段字节码交由Java虚拟机执行。正因为如此，大多数scala程序员更倾向于将它称做“REPL”</p>
 <p>scala api文档，包含了scala所有的api以及使用说明，class、object、trait、function、method、implicit等</p>
 <p>为什么要查阅Scaladoc：如果只是写一些普通的Scala程序基本够用了；但是如果（在现在，或者未来，实际的工作环境中）要编写复杂的scala程序，那么还是需要参考Scaladoc的。（纯粹用scala开发spark应用程序，应该不会特别复杂；用scala构建类似于spark的公司内的分布式的大型系统）</p>
@@ -274,7 +279,7 @@
 <li>提供初始值时不要使用new</li>
 <li>用()来访问元素</li>
 <li>用for(elem &lt;- arr)来遍历元素</li>
-<li>用for(elem &lt;- arr if &hellip;) yield &hellip; 来将原数据转型为新数组</li>
+<li>用for(elem &lt;- arr if ...) yield ... 来将原数据转型为新数组</li>
 <li>Scala数组和Java数组可以相互操作，用ArrayBuffer，使用scala.collection.JavaConversions中的转换函数</li>
 </ol>
 <h2 id="5-map-and-tuple">5. Map and Tuple</h2>
@@ -323,13 +328,13 @@
 </ol>
 <h2 id="10-fileregex">10. File&amp;Regex</h2>
 <ol>
-<li>Source.fromFile(&hellip;).getLines.toArray将交出文件的所有行</li>
-<li>Source.fromFile(&hellip;).mkString将以字符串形式交出文件内容</li>
+<li>Source.fromFile(...).getLines.toArray将交出文件的所有行</li>
+<li>Source.fromFile(...).mkString将以字符串形式交出文件内容</li>
 <li>将字符串转化为数字，可以用toInt或toDouble方法</li>
 <li>使用Java的PrintWriter来写入文本文件</li>
-<li>&ldquo;正则&rdquo;.r是一个Regex对象</li>
-<li>如果你的正则表达式包含反斜杠的话，用&quot;&quot;&quot;&hellip;&quot;&quot;&quot;</li>
-<li>如果正则模式包含分组，你可以用如下语法来提取它们的内容for(regex(变量1,&hellip;,变量n) &lt;- 字符串)</li>
+<li>&quot;正则&quot;.r是一个Regex对象</li>
+<li>如果你的正则表达式包含反斜杠的话，用&quot;&quot;&quot;...&quot;&quot;&quot;</li>
+<li>如果正则模式包含分组，你可以用如下语法来提取它们的内容for(regex(变量1,...,变量n) &lt;- 字符串)</li>
 </ol>
 <h2 id="11-feature">11. Feature</h2>
 <ol>
@@ -355,7 +360,7 @@
 <li>Scala列表要么是空的，要么拥有一头一尾，其中尾部本身又是一个列表</li>
 <li>集是无先后次序的集合</li>
 <li>用LinkedHashSet保留插入顺序，或者用SortedSet按顺序进行迭代</li>
-<li>+将元素添加到无先后次序的集合中；+:和:+向前或向后追加到序列；++将两个集合串接在一起；-和&ndash;移除元素</li>
+<li>+将元素添加到无先后次序的集合中；+:和:+向前或向后追加到序列；++将两个集合串接在一起；-和--移除元素</li>
 <li>映射、折叠和拉链操作是很有用的技巧，用来将函数或操作应用到集合中的元素</li>
 </ol>
 <h2 id="14-pattern-match">14. Pattern match</h2>
@@ -374,7 +379,7 @@
 <ol>
 <li>可以为类、方法、字段、局部变量、参数、表达式、类型参数以及各种类型定义添加注解</li>
 <li>对于表达式和类型，注解跟在被注解的条目之后</li>
-<li>注解的形式有 @Annotation、@Annotation(value)或@Annotation(name = value1, &hellip;)</li>
+<li>注解的形式有 @Annotation、@Annotation(value)或@Annotation(name = value1, ...)</li>
 <li>@volatile、@transient、@strictfp和@native分别生成等效的Java修饰符</li>
 <li>用@throws来生成与Java兼容的throws规格说明</li>
 <li>@tailrec注解让你校验某个递归函数使用了尾递归优化</li>
@@ -389,10 +394,14 @@
 <li>Node的attributes属性交出的是包含节点属性的MetaData对象</li>
 <li>\和\操作符执行类XPath匹配</li>
 </ol>
+    </div>
+
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <div id="gitalk-container"></div>
+
+
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
@@ -401,6 +410,7 @@
         Technologist, perpetual student, continual incremental improvement.
       </div>
       <a href='https://Jerrysmd.github.io/about/' class="button mt-1" role="button" title='Read More'>Read More</a>
+    
     <h2 class="mt-4">Featured Posts</h2>
     <ul>
       <li>

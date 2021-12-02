@@ -14,88 +14,10 @@
       <guid>https://Jerrysmd.github.io/post/20190304gdb_debug/gdb_debug/</guid>
       <description>
         
-          &lt;p&gt;GDB是一个由GNU开源组织发布的、UNIX/LINUX操作系统下的、基于命令行的、功能强大的程序调试工具。 对于一名Linux下工作的c/c++程序员，gdb是必不可少的工具；&lt;/p&gt;
-&lt;h2 id=&#34;gdb的使用&#34;&gt;gdb的使用&lt;/h2&gt;
-&lt;h3 id=&#34;启动gdb&#34;&gt;启动gdb&lt;/h3&gt;
-&lt;p&gt;编译一个测试程序，-g表示可以调试&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;gcc -g demo.c -o demo
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;启动gdb&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;gdb &lt;span class=&#34;nb&#34;&gt;test&lt;/span&gt; 
-&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;或者
-&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;gdb -q &lt;span class=&#34;nb&#34;&gt;test&lt;/span&gt; //表示不打印gdb版本信息，界面较为干净；
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看源码&#34;&gt;查看源码&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;list ：简记为 l ，其作用就是列出程序的源代码，默认每次显示10行。&lt;/li&gt;
-&lt;li&gt;list 行号：将显示当前文件以“行号”为中心的前后10行代码，如：list 12&lt;/li&gt;
-&lt;li&gt;list 函数名：将显示“函数名”所在函数的源代码，如：list main&lt;/li&gt;
-&lt;li&gt;list ：不带参数，将接着上一次 list 命令的，输出下边的内容。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;运行程序&#34;&gt;运行程序&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;run：简记为 r ，其作用是运行程序，当遇到断点后，程序会在断点处停止运行，等待用户输入下一步的命令。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;设置参数&#34;&gt;设置参数&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;set args 参数1 参数2&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;设置断点&#34;&gt;设置断点&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;break n （简写b n）:在第n行处设置断点.可以带上代码路径和代码名称： b demo.cpp:578&lt;/li&gt;
-&lt;li&gt;b fn1 if a＞b：条件断点设置&lt;/li&gt;
-&lt;li&gt;break func（break缩写为b）：在函数func()的入口处设置断点，如：break cb_button&lt;/li&gt;
-&lt;li&gt;delete 断点号n：删除第n个断点&lt;/li&gt;
-&lt;li&gt;disable 断点号n：暂停第n个断点&lt;/li&gt;
-&lt;li&gt;enable 断点号n：开启第n个断点&lt;/li&gt;
-&lt;li&gt;clear 行号n：清除第n行的断点&lt;/li&gt;
-&lt;li&gt;info b （info breakpoints）：显示当前程序的断点设置情况&lt;/li&gt;
-&lt;li&gt;delete breakpoints：清除所有断点&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;单步执行&#34;&gt;单步执行&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;continue （简写c ）：继续执行，到下一个断点处（或运行结束）&lt;/li&gt;
-&lt;li&gt;next：（简写 n），单步跟踪程序，当遇到函数调用时，也不进入此函数体；此命令同 step 的主要区别是，step 遇到用户自定义的函数，将步进到函数中去运行，而 next 则直接调用函数，不会进入到函数体内。&lt;/li&gt;
-&lt;li&gt;step （简写s）：单步调试如果有函数调用，则进入函数；与命令n不同，n是不进入调用的函数的&lt;/li&gt;
-&lt;li&gt;until：当你厌倦了在一个循环体内单步跟踪时，这个命令可以运行程序直到退出循环体。&lt;/li&gt;
-&lt;li&gt;until+行号： 运行至某行，不仅仅用来跳出循环&lt;/li&gt;
-&lt;li&gt;finish： 运行程序，直到当前函数完成返回，并打印函数返回时的堆栈地址和返回值及参数值等信息。&lt;/li&gt;
-&lt;li&gt;call 函数(参数)：调用程序中可见的函数，并传递“参数”，如：call gdb_test(55)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;查看变量&#34;&gt;查看变量&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;print 表达式：简记为 p ，其中“表达式”可以是任何当前正在被测试程序的有效表达式，比如当前正在调试C语言的程序，那么“表达式”可以是任何C语言的有效表达式，包括数字，变量甚至是函数调用。&lt;/li&gt;
-&lt;li&gt;print a：将显示整数 a 的值&lt;/li&gt;
-&lt;li&gt;print ++a：将把 a 中的值加1,并显示出来&lt;/li&gt;
-&lt;li&gt;print name：将显示字符串 name 的值&lt;/li&gt;
-&lt;li&gt;print gdb_test(22)：将以整数22作为参数调用 gdb_test() 函数&lt;/li&gt;
-&lt;li&gt;print gdb_test(a)：将以变量 a 作为参数调用 gdb_test() 函数&lt;/li&gt;
-&lt;li&gt;display 表达式：在单步运行时将非常有用，使用display命令设置一个表达式后，它将在每次单步进行指令后，紧接着输出被设置的表达式及值。如： display a&lt;/li&gt;
-&lt;li&gt;watch 表达式：设置一个监视点，一旦被监视的“表达式”的值改变，gdb将强行终止正在被调试的程序。如： watch a&lt;/li&gt;
-&lt;li&gt;whatis ：查询变量或函数&lt;/li&gt;
-&lt;li&gt;info function： 查询函数&lt;/li&gt;
-&lt;li&gt;扩展info locals： 显示当前堆栈页的所有变量&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;查看运行信息&#34;&gt;查看运行信息&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;where/bt ：当前运行的堆栈列表&lt;/li&gt;
-&lt;li&gt;bt backtrace 显示当前调用堆栈&lt;/li&gt;
-&lt;li&gt;up/down 改变堆栈显示的深度&lt;/li&gt;
-&lt;li&gt;set args 参数:指定运行时的参数&lt;/li&gt;
-&lt;li&gt;show args：查看设置好的参数&lt;/li&gt;
-&lt;li&gt;info program： 来查看程序的是否在运行，进程号，被暂停的原因。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;分割窗口&#34;&gt;分割窗口&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;layout：用于分割窗口，可以一边查看代码，一边测试&lt;/li&gt;
-&lt;li&gt;layout src：显示源代码窗口&lt;/li&gt;
-&lt;li&gt;layout asm：显示反汇编窗口&lt;/li&gt;
-&lt;li&gt;layout regs：显示源代码/反汇编和CPU寄存器窗口&lt;/li&gt;
-&lt;li&gt;layout split：显示源代码和反汇编窗口&lt;/li&gt;
-&lt;li&gt;Ctrl + L：刷新窗口&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;退出gdb&#34;&gt;退出gdb&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;quit：简记为 q ，退出gdb&lt;/li&gt;
-&lt;/ul&gt;
+          
+            &lt;p&gt;GDB是一个由GNU开源组织发布的、UNIX/LINUX操作系统下的、基于命令行的、功能强大的程序调试工具。 对于一名Linux下工作的c/c++程序员，gdb是必不可少的工具；&lt;/p&gt;
+          
+          
         
       </description>
     </item>
@@ -108,32 +30,10 @@
       <guid>https://Jerrysmd.github.io/post/20190203hugepages/hugepages/</guid>
       <description>
         
-          &lt;p&gt;通过增大操作系统页的大小来减小页表，从而避免快表缺失。大页内存优化程序主要是针对其中的malloc机制的，意思就是分配大页，增加tlb的命中率。&lt;/p&gt;
-&lt;h2 id=&#34;原理&#34;&gt;原理&lt;/h2&gt;
-&lt;p&gt;大页内存的原理涉及到操作系统的虚拟地址到物理地址的转换过程。操作系统为了能同时运行多个进程，会为每个进程提供一个虚拟的进程空间，在32位操作系统上，进程空间大小为4G，64位系统为2^64（实际可能小于这个值）。事实上，每个进程的进程空间都是虚拟的，这和物理地址还不一样。两个进行访问相同的虚拟地址，但是转换到物理地址之后是不同的。这个转换就通过页表来实现，涉及的知识是操作系统的分页存储管理。&lt;/p&gt;
-&lt;p&gt;分页存储管理将进程的虚拟地址空间，分成若干个页，并为各页加以编号。相应地，物理内存空间也分成若干个块，同样加以编号。页和块的大小相同。&lt;/p&gt;
-&lt;p&gt;在操作系统中设置有一个页表寄存器，其中存放了页表在内存的始址和页表的长度。进程未执行时，页表的始址和页表长度放在本进程的PCB中；当调度程序调度该进程时，才将这两个数据装入页表寄存器。&lt;/p&gt;
-&lt;p&gt;当进程要访问某个虚拟地址中的数据时，分页地址变换机构会自动地将有效地址（相对地址）分为页号和页内地址两部分，再以页号为索引去检索页表，查找操作由硬件执行。若给定的页号没有超出页表长度，则将页表始址与页号和页表项长度的乘积相加，得到该表项在页表中的位置，于是可以从中得到该页的物理块地址，将之装入物理地址寄存器中。与此同时，再将有效地址寄存器中的页内地址送入物理地址寄存器的块内地址字段中。这样便完成了从虚拟地址到物理地址的变换。&lt;/p&gt;
-&lt;p&gt;由于页表是存放在内存中的，这使CPU在每存取一个数据时，都要两次访问内存。第一次时访问内存中的页表，从中找到指定页的物理块号，再将块号与页内偏移拼接，以形成物理地址。第二次访问内存时，才是从第一次所得地址中获得所需数据。因此，采用这种方式将使计算机的处理速度降低近1/2。&lt;/p&gt;
-&lt;p&gt;为了提高地址变换速度，可在地址变换机构中，增设一个具有并行查找能力的特殊高速缓存，也即快表（TLB），用以存放当前访问的那些页表项。具有快表的地址变换机构如图四所示。由于成本的关系，快表不可能做得很大，通常只存放16~512个页表项。&lt;/p&gt;
-&lt;h2 id=&#34;大页内存的配置和使用&#34;&gt;大页内存的配置和使用&lt;/h2&gt;
-&lt;h3 id=&#34;1-安装libhugetlbfs库&#34;&gt;1. 安装libhugetlbfs库&lt;/h3&gt;
-&lt;p&gt;libhugetlbfs库实现了大页内存的访问。安装可以通过apt-get或者yum命令完成，如果系统没有该命令，还可以git clone, 然后make生成libhugetlbfs.so文件. 直接使用makefile进行编译：make BUILDTYPE=NATIVEONLY一定要加最后的参数 BUILDTYPE=NATIVEONLY否则会遇见各种错误&lt;/p&gt;
-&lt;h3 id=&#34;2-配置grub启动文件&#34;&gt;2. 配置grub启动文件&lt;/h3&gt;
-&lt;p&gt;具体就是在kernel选项的最后添加几个启动参数：transparent_hugepage=never default_hugepagesz=1G hugepagesz=1Ghugepages=123&lt;br&gt;
-这四个参数中，最重要的是后两个，hugepagesz用来设置每页的大小，我们将其设置为1G，其他可选的配置有4K，2M（其中2M是默认）。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;vim /boot/grub/grub.cfg
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;修改完grub.conf后，重启系统。然后运行命令查看大页设置是否生效&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;cat /proc/meminfo&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;grep Huge
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3-mount&#34;&gt;3. mount&lt;/h3&gt;
-&lt;p&gt;执行mount，将大页内存映像到一个空目录。可以执行下述命令：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;mount -t hugetlbfs hugetlbfs /mnt/huge
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;4-运行应用程序&#34;&gt;4. 运行应用程序&lt;/h3&gt;
-&lt;p&gt;为了能启用大页，不能按照常规的方法启动应用程序，需要按照下面的格式启动：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;HUGETLB_MORECORE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;yes &lt;span class=&#34;nv&#34;&gt;LD_PRELOAD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;libhugetlbfs.so ./your_program
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这种方法会加载libhugetlbfs库，用来替换标准库。具体的操作就是替换标准的malloc为大页的malloc。此时，程序申请内存就是大页内存了。&lt;/p&gt;
-&lt;h2 id=&#34;大页内存的使用场景&#34;&gt;大页内存的使用场景&lt;/h2&gt;
-&lt;p&gt;任何优化手段都有它适用的范围，大页内存也不例外。只有耗费的内存巨大、访存随机而且访存是瓶颈的程序大页内存才会带来很明显的性能提升。&lt;/p&gt;
+          
+            &lt;p&gt;通过增大操作系统页的大小来减小页表，从而避免快表缺失。大页内存优化程序主要是针对其中的malloc机制的，意思就是分配大页，增加tlb的命中率。&lt;/p&gt;
+          
+          
         
       </description>
     </item>

@@ -33,7 +33,7 @@
 <meta property="og:url" content="https://Jerrysmd.github.io/post/20180610cgetline/cgetline/" />
 <meta property="og:title" content="文件读取多读取一行空行问题: The problem about file reading one more line" />
 <meta property="og:description" content="Article description." />
-<meta property="og:image" content="https://Jerrysmd.github.io/images/code1.png" />
+<meta property="og:image" content="https://Jerrysmd.github.io/post/20180610cgetline/cgetline/images/code1.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://Jerrysmd.github.io/icons_custom/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://Jerrysmd.github.io/icons_custom/favicon-32x32.png">
@@ -130,10 +130,13 @@
     </span>
   </div>
 
+
+
+
     
-    
-    <h2>Overview</h2>
-    <nav id="TableOfContents">
+    <div class="post_toc">
+      <h2>Overview</h2>
+      <nav id="TableOfContents">
   <ul>
     <li><a href="#1-问题原因">1. 问题原因</a>
       <ul>
@@ -149,7 +152,9 @@
     </li>
   </ul>
 </nav>
-    <p>getline()/get()/read()会出现多读一行的现象。造成该原因可能文件本身问题和getline()函数的问题。可以在while处判断时先判断getline()/get()/read()，如果拿到数据再处理。</p>
+    </div>
+    
+    <div class="post_body"><p>getline()/get()/read()会出现多读一行的现象。造成该原因可能文件本身问题和getline()函数的问题。可以在while处判断时先判断getline()/get()/read()，如果拿到数据再处理。</p>
 <p><strong>Insert Lead paragraph here.</strong></p>
 <h2 id="1-问题原因">1. 问题原因</h2>
 <h3 id="1-问题1-文件末尾存在回车">1. 问题1: 文件末尾存在回车</h3>
@@ -179,10 +184,14 @@
 <span class="ln">4</span>　　<span class="p">}</span>
 </code></pre></div><p>即infile.getline(s,1024,'\n')正确读到数据后再处理。</p>
 <p>同理，对get()/read()等都类似处理。</p>
+    </div>
+
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <div id="gitalk-container"></div>
+
+
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
@@ -191,6 +200,7 @@
         Technologist, perpetual student, continual incremental improvement.
       </div>
       <a href='https://Jerrysmd.github.io/about/' class="button mt-1" role="button" title='Read More'>Read More</a>
+    
     <h2 class="mt-4">Featured Posts</h2>
     <ul>
       <li>

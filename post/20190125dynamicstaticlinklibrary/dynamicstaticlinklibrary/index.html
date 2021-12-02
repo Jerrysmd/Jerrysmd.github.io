@@ -33,7 +33,7 @@
 <meta property="og:url" content="https://Jerrysmd.github.io/post/20190125dynamicstaticlinklibrary/dynamicstaticlinklibrary/" />
 <meta property="og:title" content="动态链接和静态链接: Dynamic link library and static link library" />
 <meta property="og:description" content="Article description." />
-<meta property="og:image" content="https://Jerrysmd.github.io/images/code3.png" />
+<meta property="og:image" content="https://Jerrysmd.github.io/post/20190125dynamicstaticlinklibrary/dynamicstaticlinklibrary/images/code3.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://Jerrysmd.github.io/icons_custom/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://Jerrysmd.github.io/icons_custom/favicon-32x32.png">
@@ -130,10 +130,13 @@
     </span>
   </div>
 
+
+
+
     
-    
-    <h2>Overview</h2>
-    <nav id="TableOfContents">
+    <div class="post_toc">
+      <h2>Overview</h2>
+      <nav id="TableOfContents">
   <ul>
     <li><a href="#lib和dll区别">lib和dll区别</a></li>
     <li><a href="#静态链接">静态链接</a>
@@ -152,7 +155,9 @@
     </li>
   </ul>
 </nav>
-    <p>开发中，我们只需要知道lib是编译时需要的，dll是运行时需要的。如果要完成源代码的编译，有lib就够了。如果要使动态连接的程序运行起来，有dll就够了。本文会更加清晰的了解二者的区别、生成、使用。</p>
+    </div>
+    
+    <div class="post_body"><p>开发中，我们只需要知道lib是编译时需要的，dll是运行时需要的。如果要完成源代码的编译，有lib就够了。如果要使动态连接的程序运行起来，有dll就够了。本文会更加清晰的了解二者的区别、生成、使用。</p>
 <h2 id="lib和dll区别">lib和dll区别</h2>
 <p>首先介绍静态库（静态链接库）、动态库（动态链接库）的概念，首先两者都是代码共享的方式。</p>
 <ol>
@@ -189,10 +194,14 @@
 <h3 id="3-动态链接的优缺点">3. 动态链接的优缺点</h3>
 <p>动态链接的优点显而易见，就是即使需要每个程序都依赖同一个库，但是该库不会像静态链接那样在内存中存在多分，副本，而是这多个程序在执行时共享同一份副本；另一个优点是，更新也比较方便，更新时只需要替换原来的目标文件，而无需将所有的程序再重新链接一遍。当程序下一次运行时，新版本的目标文件会被自动加载到内存并且链接起来，程序就完成了升级的目标。但是动态链接也是有缺点的，因为把链接推迟到了程序运行时，所以每次执行程序都需要进行链接，所以性能会有一定损失。</p>
 <p>​    据估算，动态链接和静态链接相比，性能损失大约在5%以下。经过实践证明，这点性能损失用来换区程序在空间上的节省和程序构建和升级时的灵活性是值得的。</p>
+    </div>
+
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <div id="gitalk-container"></div>
+
+
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
@@ -201,6 +210,7 @@
         Technologist, perpetual student, continual incremental improvement.
       </div>
       <a href='https://Jerrysmd.github.io/about/' class="button mt-1" role="button" title='Read More'>Read More</a>
+    
     <h2 class="mt-4">Featured Posts</h2>
     <ul>
       <li>

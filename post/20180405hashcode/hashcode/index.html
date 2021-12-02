@@ -33,7 +33,7 @@
 <meta property="og:url" content="https://Jerrysmd.github.io/post/20180405hashcode/hashcode/" />
 <meta property="og:title" content="C语言实现HashMap: C language realize HashMap" />
 <meta property="og:description" content="Article description." />
-<meta property="og:image" content="https://Jerrysmd.github.io/images/code3.png" />
+<meta property="og:image" content="https://Jerrysmd.github.io/post/20180405hashcode/hashcode/images/code3.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://Jerrysmd.github.io/icons_custom/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://Jerrysmd.github.io/icons_custom/favicon-32x32.png">
@@ -130,10 +130,13 @@
     </span>
   </div>
 
+
+
+
     
-    
-    <h2>Overview</h2>
-    <nav id="TableOfContents">
+    <div class="post_toc">
+      <h2>Overview</h2>
+      <nav id="TableOfContents">
   <ul>
     <li><a href="#1-什么是hashmap">1. 什么是HashMap？</a></li>
     <li><a href="#2-定义键值对结构">2. 定义键值对结构</a></li>
@@ -145,7 +148,9 @@
     <li><a href="#8-使用测试">8. 使用测试</a></li>
   </ul>
 </nav>
-    <p>哈希表是一种十分重要的数据结构，在很多应用场景下都有用到，本文会对哈希表原理进行简单的剖析，并使用C语言实现一个完整的HashMap。</p>
+    </div>
+    
+    <div class="post_body"><p>哈希表是一种十分重要的数据结构，在很多应用场景下都有用到，本文会对哈希表原理进行简单的剖析，并使用C语言实现一个完整的HashMap。</p>
 <h2 id="1-什么是hashmap">1. 什么是HashMap？</h2>
 <p>存储方式主要有两种<code>线性存储</code>和<code>链式存储</code>，常见的线性存储例如数组，常见的链式存储如链表、二叉树等。哈希表的存储主干为线性存储，这也是它在理想状态(无冲突)下时间复杂度为<code>O(1)</code>的关键所在。普通线性存储的存储内容与索引地址之间没有任何的联系，只能通过索引地址推算出存储内容，不能从存储内容推算出索引地址，是一个<mark>单向不可逆</mark>的过程，而HashMap存储的是一个<mark>&lt;key, value&gt;</mark>的键值对，通过key和索引地址建立了一层关系，这层关系称之为哈希函数(或散列函数)，这样既可以通过key推算出索引地址，也可以通过推算出的索引地址直接定位到键值对，这是一个<mark>双向可逆</mark>的过程。需要注意的一点是HashMap并不直接暴露出键值对的索引地址，但是可以通过哈希函数推算出<code>HashCode</code>，其实HashCode就是真实的索引地址。</p>
 <h2 id="2-定义键值对结构">2. 定义键值对结构</h2>
@@ -573,10 +578,14 @@
 <span class="ln">10</span>{ key: asdasg, value: asdfasdfds, hashcode: 7 }
 <span class="ln">11</span>{ key: qweqeqwe, value: asdfasdfds, hashcode: 9 }
 </code></pre></div>
+    </div>
+
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <div id="gitalk-container"></div>
+
+
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
@@ -585,6 +594,7 @@
         Technologist, perpetual student, continual incremental improvement.
       </div>
       <a href='https://Jerrysmd.github.io/about/' class="button mt-1" role="button" title='Read More'>Read More</a>
+    
     <h2 class="mt-4">Featured Posts</h2>
     <ul>
       <li>

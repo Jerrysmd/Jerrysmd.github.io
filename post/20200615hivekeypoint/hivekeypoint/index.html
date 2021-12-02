@@ -33,7 +33,7 @@
 <meta property="og:url" content="https://Jerrysmd.github.io/post/20200615hivekeypoint/hivekeypoint/" />
 <meta property="og:title" content="Hive 重点: Hive Key Points" />
 <meta property="og:description" content="Article description." />
-<meta property="og:image" content="https://Jerrysmd.github.io/images/data2.png" />
+<meta property="og:image" content="https://Jerrysmd.github.io/post/20200615hivekeypoint/hivekeypoint/images/data2.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://Jerrysmd.github.io/icons_custom/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://Jerrysmd.github.io/icons_custom/favicon-32x32.png">
@@ -130,10 +130,13 @@
     </span>
   </div>
 
+
+
+
     
-    
-    <h2>Overview</h2>
-    <nav id="TableOfContents">
+    <div class="post_toc">
+      <h2>Overview</h2>
+      <nav id="TableOfContents">
   <ul>
     <li><a href="#hive的两张表关联使用mapreduce怎么实现">Hive的两张表关联，使用MapReduce怎么实现？</a></li>
     <li><a href="#hive的特点hive和rdbms有什么异同">Hive的特点，Hive和RDBMS有什么异同？</a></li>
@@ -158,7 +161,9 @@
     <li><a href="#并行执行">并行执行</a></li>
   </ul>
 </nav>
-    <p>Hive is a Hadoop-based data warehouse tool that maps structured data files into a database table and provides complete SQL query functionality that converts SQL statements into MapReduce tasks for execution. It is very suitable for statistical analysis of data warehouse.</p>
+    </div>
+    
+    <div class="post_body"><p>Hive is a Hadoop-based data warehouse tool that maps structured data files into a database table and provides complete SQL query functionality that converts SQL statements into MapReduce tasks for execution. It is very suitable for statistical analysis of data warehouse.</p>
 <h2 id="hive的两张表关联使用mapreduce怎么实现">Hive的两张表关联，使用MapReduce怎么实现？</h2>
 <p>如果其中有一张表为小表，直接使用map端join的方式（map端加载小表）进行聚合。</p>
 <p>如果两张都是大表，那么采用联合key，联合key的第一个组成部分是joinon中的公共字段，第二部分是一个flag，0代表表A，1代表表B，由此让Reduce区分客户信息和订单信息；在Mapper中同时处理两张表的信息，将joinon公共字段相同的数据划分到同一个分区中，进而传递到一个Reduce中，然后在Reduce中实现聚合。</p>
@@ -194,7 +199,7 @@
 <p>Distributeby：按照指定的字段对数据进行划分输出到不同的reduce中。</p>
 <p>Clusterby：除了具有distributeby的功能外还兼具sortby的功能。</p>
 <h2 id="hive中splitcoalesce及collect_list函数的用法举例">Hive中split、coalesce及collect_list函数的用法（举例）？</h2>
-<p>split将字符串转化为数组，即：split(&lsquo;a,b,c,d&rsquo;,',')==&gt;[&ldquo;a&rdquo;,&ldquo;b&rdquo;,&ldquo;c&rdquo;,&ldquo;d&rdquo;]。</p>
+<p>split将字符串转化为数组，即：split('a,b,c,d',',')==&gt;[&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;]。</p>
 <p>coalesce(Tv1,Tv2,…)返回参数中的第一个非空值；如果所有值都为NULL，那么返回NULL。</p>
 <p>collect_list列出该字段所有的值，不去重=&gt;selectcollect_list(id)fromtable。</p>
 <h2 id="hive有哪些方式保存元数据各有哪些特点">Hive有哪些方式保存元数据，各有哪些特点？</h2>
@@ -240,24 +245,24 @@
 <p><strong>相比TEXTFILE和SEQUENCEFILE，RCFILE由于列式存储方式，数据加载时性能消耗较大，但是具有较好的压缩比和查询响应</strong>。</p>
 <p><strong>数据仓库的特点是一次写入、多次读取，因此，整体来看，RCFILE相比其余两种格式具有较明显的优势</strong>。</p>
 <h2 id="hive表关联查询如何解决数据倾斜的问题">Hive表关联查询，如何解决数据倾斜的问题？</h2>
-<p>1）倾斜原因：map输出数据按keyHash的分配到reduce中，由于key分布不均匀、业务数据本身的特、建表时考虑不周、等原因造成的reduce上的数据量差异过大。<br>
- （1）key分布不均匀;<br>
- （2）业务数据本身的特性;<br>
- （3）建表时考虑不周;<br>
- （4）某些SQL语句本身就有数据倾斜;<br>
- 如何避免：对于key为空产生的数据倾斜，可以对其赋予一个随机值。<br>
- 2）解决方案<br>
- （1）参数调节：<br>
-  hive.map.aggr=true<br>
-  hive.groupby.skewindata=true<br>
- 有数据倾斜的时候进行负载均衡，当选项设定位true,生成的查询计划会有两个MRJob。第一个MRJob中，Map的输出结果集合会随机分布到Reduce中，每个Reduce做部分聚合操作，并输出结果，这样处理的结果是相同的GroupByKey有可能被分发到不同的Reduce中，从而达到负载均衡的目的；第二个MRJob再根据预处理的数据结果按照GroupByKey分布到Reduce中（这个过程可以保证相同的GroupByKey被分布到同一个Reduce中），最后完成最终的聚合操作。<br>
- （2）SQL语句调节：<br>
- ①选用joinkey分布最均匀的表作为驱动表。做好列裁剪和filter操作，以达到两表做join的时候，数据量相对变小的效果。<br>
- ②大小表Join：<br>
-  使用mapjoin让小的维度表（1000条以下的记录条数）先进内存。在map端完成reduce。<br>
- ③大表Join大表：<br>
-  把空值的key变成一个字符串加上随机数，把倾斜的数据分到不同的reduce上，由于null值关联不上，处理后并不影响最终结果。<br>
- ④countdistinct大量相同特殊值:<br>
+<p>1）倾斜原因：map输出数据按keyHash的分配到reduce中，由于key分布不均匀、业务数据本身的特、建表时考虑不周、等原因造成的reduce上的数据量差异过大。
+ （1）key分布不均匀;
+ （2）业务数据本身的特性;
+ （3）建表时考虑不周;
+ （4）某些SQL语句本身就有数据倾斜;
+ 如何避免：对于key为空产生的数据倾斜，可以对其赋予一个随机值。
+ 2）解决方案
+ （1）参数调节：
+  hive.map.aggr=true
+  hive.groupby.skewindata=true
+ 有数据倾斜的时候进行负载均衡，当选项设定位true,生成的查询计划会有两个MRJob。第一个MRJob中，Map的输出结果集合会随机分布到Reduce中，每个Reduce做部分聚合操作，并输出结果，这样处理的结果是相同的GroupByKey有可能被分发到不同的Reduce中，从而达到负载均衡的目的；第二个MRJob再根据预处理的数据结果按照GroupByKey分布到Reduce中（这个过程可以保证相同的GroupByKey被分布到同一个Reduce中），最后完成最终的聚合操作。
+ （2）SQL语句调节：
+ ①选用joinkey分布最均匀的表作为驱动表。做好列裁剪和filter操作，以达到两表做join的时候，数据量相对变小的效果。
+ ②大小表Join：
+  使用mapjoin让小的维度表（1000条以下的记录条数）先进内存。在map端完成reduce。
+ ③大表Join大表：
+  把空值的key变成一个字符串加上随机数，把倾斜的数据分到不同的reduce上，由于null值关联不上，处理后并不影响最终结果。
+ ④countdistinct大量相同特殊值:
   countdistinct时，将值为空的情况单独处理，如果是计算countdistinct，可以不用处理，直接过滤，在最后结果中加1。如果还有其他计算，需要进行groupby，可以先将值为空的记录单独处理，再和其他计算结果进行union。</p>
 <h2 id="fetch抓取">Fetch抓取</h2>
 <p>Fetch抓取是指，Hive中对某些情况的查询可以不必使用MapReduce计算。例如：SELECT*FROMemployees;在这种情况下，Hive可以简单地读取employee对应的存储目录下的文件，然后输出查询结果到控制台。</p>
@@ -280,10 +285,14 @@
 <h2 id="并行执行">并行执行</h2>
 <p>Hive会将一个查询转化成一个或者多个阶段。这样的阶段可以是MapReduce阶段、抽样阶段、合并阶段、limit阶段。或者Hive执行过程中可能需要的其他阶段。默认情况下，Hive一次只会执行一个阶段。不过，某个特定的job可能包含众多的阶段，而这些阶段可能并非完全互相依赖的，也就是说有些阶段是可以并行执行的，这样可能使得整个job的执行时间缩短。不过，如果有更多的阶段可以并行执行，那么job可能就越快完成。</p>
 <p>通过设置参数hive.exec.parallel值为true，就可以开启并发执行。不过，在共享集群中，需要注意下，如果job中并行阶段增多，那么集群利用率就会增加。</p>
+    </div>
+
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <div id="gitalk-container"></div>
+
+
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
@@ -292,6 +301,7 @@
         Technologist, perpetual student, continual incremental improvement.
       </div>
       <a href='https://Jerrysmd.github.io/about/' class="button mt-1" role="button" title='Read More'>Read More</a>
+    
     <h2 class="mt-4">Featured Posts</h2>
     <ul>
       <li>

@@ -33,7 +33,7 @@
 <meta property="og:url" content="https://Jerrysmd.github.io/post/20200122javastatic/javastatic/" />
 <meta property="og:title" content="Static Keyword in Java" />
 <meta property="og:description" content="Article description." />
-<meta property="og:image" content="https://Jerrysmd.github.io/images/code2.png" />
+<meta property="og:image" content="https://Jerrysmd.github.io/post/20200122javastatic/javastatic/images/code2.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://Jerrysmd.github.io/icons_custom/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://Jerrysmd.github.io/icons_custom/favicon-32x32.png">
@@ -129,10 +129,13 @@
     </span>
   </div>
 
+
+
+
     
-    
-    <h2>Overview</h2>
-    <nav id="TableOfContents">
+    <div class="post_toc">
+      <h2>Overview</h2>
+      <nav id="TableOfContents">
   <ul>
     <li><a href="#1-static-variable">1. Static Variable</a></li>
     <li><a href="#2-static-method">2. Static Method</a></li>
@@ -140,7 +143,9 @@
     <li><a href="#4-static-inner-class">4. Static Inner Class</a></li>
   </ul>
 </nav>
-    <p>The static keyword can be used for variables, methods, code blocks, and inner classes to indicate that a particular member belongs only to a class itself, and not to an object of that class.</p>
+    </div>
+    
+    <div class="post_body"><p>The static keyword can be used for variables, methods, code blocks, and inner classes to indicate that a particular member belongs only to a class itself, and not to an object of that class.</p>
 <h2 id="1-static-variable">1. Static Variable</h2>
 <p>静态变量也叫类变量，它属于一个类，而不是这个类的对象。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Writer</span> <span class="o">{</span>
@@ -260,10 +265,14 @@
 <li>静态内部类可以访问外部类的所有成员变量，包括私有变量。</li>
 <li>外部类不能声明为 static。</li>
 </ol>
+    </div>
+
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <div id="gitalk-container"></div>
+
+
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
@@ -272,6 +281,7 @@
         Technologist, perpetual student, continual incremental improvement.
       </div>
       <a href='https://Jerrysmd.github.io/about/' class="button mt-1" role="button" title='Read More'>Read More</a>
+    
     <h2 class="mt-4">Featured Posts</h2>
     <ul>
       <li>

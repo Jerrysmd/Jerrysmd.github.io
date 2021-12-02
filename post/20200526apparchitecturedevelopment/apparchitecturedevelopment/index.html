@@ -33,7 +33,7 @@
 <meta property="og:url" content="https://Jerrysmd.github.io/post/20200526apparchitecturedevelopment/apparchitecturedevelopment/" />
 <meta property="og:title" content="应用架构演进历程: The Development of App Architecture" />
 <meta property="og:description" content="Article description." />
-<meta property="og:image" content="https://Jerrysmd.github.io/images/distribution.png" />
+<meta property="og:image" content="https://Jerrysmd.github.io/post/20200526apparchitecturedevelopment/apparchitecturedevelopment/images/distribution.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://Jerrysmd.github.io/icons_custom/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://Jerrysmd.github.io/icons_custom/favicon-32x32.png">
@@ -129,10 +129,13 @@
     </span>
   </div>
 
+
+
+
     
-    
-    <h2>Overview</h2>
-    <nav id="TableOfContents">
+    <div class="post_toc">
+      <h2>Overview</h2>
+      <nav id="TableOfContents">
   <ul>
     <li><a href="#最简单的架构">最简单的架构</a></li>
     <li><a href="#应用于数据服务分隔">应用于数据服务分隔</a></li>
@@ -145,7 +148,9 @@
     <li><a href="#总结">总结</a></li>
   </ul>
 </nav>
-    <p>The features of large applications: high availability, high concurrency and big data. High availability: system need to provide service without interruption. High concurrency: still stable under the big access. Big data: store and manage big data well.</p>
+    </div>
+    
+    <div class="post_body"><p>The features of large applications: high availability, high concurrency and big data. High availability: system need to provide service without interruption. High concurrency: still stable under the big access. Big data: store and manage big data well.</p>
 <h2 id="最简单的架构">最简单的架构</h2>
 <p>开始数据量少，所以只需一台服务器</p>
 <p>
@@ -389,10 +394,14 @@
 <h2 id="总结">总结</h2>
 <p>还有一个情况未谈及到，就是数据库的水平拆分，这也是数据库拆分的最后手段，只有当单表数据特别大，不能满足业务的需要才使用。使用最多的还是进行数据库的业务纵向拆分，把数据库中不同业务的数据放到不同的物理服务器上。</p>
 <p>应用当前到底选择什么架构，一定要根据实际业务的需求进行灵活的选择，驱动技术架构发展的主要动力还是在于业务的发展，不要为了技术而技术。</p>
+    </div>
+
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <div id="gitalk-container"></div>
+
+
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
@@ -401,6 +410,7 @@
         Technologist, perpetual student, continual incremental improvement.
       </div>
       <a href='https://Jerrysmd.github.io/about/' class="button mt-1" role="button" title='Read More'>Read More</a>
+    
     <h2 class="mt-4">Featured Posts</h2>
     <ul>
       <li>

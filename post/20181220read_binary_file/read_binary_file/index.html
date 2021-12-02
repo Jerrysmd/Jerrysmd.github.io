@@ -33,7 +33,7 @@
 <meta property="og:url" content="https://Jerrysmd.github.io/post/20181220read_binary_file/read_binary_file/" />
 <meta property="og:title" content="C文件读取的高级方法：Advanced method of reading files" />
 <meta property="og:description" content="read binary file to char *bytes in c." />
-<meta property="og:image" content="https://Jerrysmd.github.io/images/file.png" />
+<meta property="og:image" content="https://Jerrysmd.github.io/post/20181220read_binary_file/read_binary_file/images/file.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://Jerrysmd.github.io/icons_custom/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://Jerrysmd.github.io/icons_custom/favicon-32x32.png">
@@ -130,12 +130,15 @@
     </span>
   </div>
 
+
+
+
     
-    
-    <h2>Overview</h2>
-    <nav id="TableOfContents">
+    <div class="post_toc">
+      <h2>Overview</h2>
+      <nav id="TableOfContents">
   <ul>
-    <li><a href="#1creat-file-pointer-and-set-mode-as-rb">1.creat FILE pointer and set mode as &lsquo;rb&rsquo;</a></li>
+    <li><a href="#1creat-file-pointer-and-set-mode-as-rb">1.creat FILE pointer and set mode as 'rb'</a></li>
     <li><a href="#2check-the-file-pointer-is-not-null">2.check the FILE pointer is not null</a></li>
     <li><a href="#3use-fseekftell-to-get-data-length">3.use fseek/ftell to get data length</a></li>
     <li><a href="#4check-the-datalen">4.check the datalen</a></li>
@@ -146,13 +149,15 @@
     <li><a href="#9完整代码">9.完整代码</a></li>
   </ul>
 </nav>
-    <p>读取二进制文件（任何文件都可以，本文以二进制为例），把二进制文件内容全部读取到char*字符串中。配合fseek()和fread()函数实现文件读取的高级方法。</p>
+    </div>
+    
+    <div class="post_body"><p>读取二进制文件（任何文件都可以，本文以二进制为例），把二进制文件内容全部读取到char*字符串中。配合fseek()和fread()函数实现文件读取的高级方法。</p>
 <h1 id="需求">需求</h1>
 <ul>
 <li>使用fwrite(dbdata, dblength, 1,fp)把字节流写入二进制文件。在新程序读取二进制文件遇到问题：二进制内容不能向文本一样行读取，也不知道二进制文件长度，在fread()函数中无从下手。</li>
 </ul>
 <hr>
-<h2 id="1creat-file-pointer-and-set-mode-as-rb">1.creat FILE pointer and set mode as &lsquo;rb&rsquo;</h2>
+<h2 id="1creat-file-pointer-and-set-mode-as-rb">1.creat FILE pointer and set mode as 'rb'</h2>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="n">FILE</span> <span class="o">*</span><span class="n">f</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">inputFN</span><span class="p">,</span> <span class="s">&#34;rb&#34;</span><span class="p">);</span>
 </code></pre></div><h2 id="2check-the-file-pointer-is-not-null">2.check the FILE pointer is not null</h2>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">f</span><span class="p">)</span> <span class="p">{</span>
@@ -282,10 +287,14 @@
 <span class="ln">57</span>
 <span class="ln">58</span>    <span class="o">*</span><span class="n">length</span> <span class="o">=</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="p">)</span><span class="n">dataLen</span><span class="p">;</span>
 </code></pre></div>
+    </div>
+
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <div id="gitalk-container"></div>
+
+
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
@@ -294,6 +303,7 @@
         Technologist, perpetual student, continual incremental improvement.
       </div>
       <a href='https://Jerrysmd.github.io/about/' class="button mt-1" role="button" title='Read More'>Read More</a>
+    
     <h2 class="mt-4">Featured Posts</h2>
     <ul>
       <li>

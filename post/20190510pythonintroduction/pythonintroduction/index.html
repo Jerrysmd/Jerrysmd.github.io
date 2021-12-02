@@ -33,7 +33,7 @@
 <meta property="og:url" content="https://Jerrysmd.github.io/post/20190510pythonintroduction/pythonintroduction/" />
 <meta property="og:title" content="Python Introduction" />
 <meta property="og:description" content="Article description." />
-<meta property="og:image" content="https://Jerrysmd.github.io/images/code2.png" />
+<meta property="og:image" content="https://Jerrysmd.github.io/post/20190510pythonintroduction/pythonintroduction/images/code2.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://Jerrysmd.github.io/icons_custom/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://Jerrysmd.github.io/icons_custom/favicon-32x32.png">
@@ -129,10 +129,13 @@
     </span>
   </div>
 
+
+
+
     
-    
-    <h2>Overview</h2>
-    <nav id="TableOfContents">
+    <div class="post_toc">
+      <h2>Overview</h2>
+      <nav id="TableOfContents">
   <ul>
     <li><a href="#1-数据类型转换">1. 数据类型转换</a></li>
     <li><a href="#2-身份运算">2. 身份运算</a></li>
@@ -142,7 +145,9 @@
     <li><a href="#6-迭代器">6. 迭代器</a></li>
   </ul>
 </nav>
-    <p>Python is dynamically-typed and garbage-collected. It supports multiple programming paradigms, including structured (particularly, procedural), object-oriented and functional programming. Python is often described as a &ldquo;batteries included&rdquo; language due to its comprehensive standard library.</p>
+    </div>
+    
+    <div class="post_body"><p>Python is dynamically-typed and garbage-collected. It supports multiple programming paradigms, including structured (particularly, procedural), object-oriented and functional programming. Python is often described as a &quot;batteries included&quot; language due to its comprehensive standard library.</p>
 <h2 id="1-数据类型转换">1. 数据类型转换</h2>
 <table>
 <thead>
@@ -298,9 +303,9 @@
 <th>def</th>
 <th>func(</th>
 <th>name,</th>
-<th>sex = &ldquo;male&rdquo;,</th>
+<th>sex = &quot;male&quot;,</th>
 <th>*args,</th>
-<th>like = &ldquo;乒乓&rdquo;,</th>
+<th>like = &quot;乒乓&quot;,</th>
 <th>**kwargs);</th>
 </tr>
 </thead>
@@ -317,11 +322,11 @@
 <tr>
 <td></td>
 <td>func(</td>
-<td>&ldquo;刘佳锐&rdquo;,</td>
-<td>&ldquo;男&rdquo;,</td>
-<td>&ldquo;乐色&rdquo;, &ldquo;垃圾&rdquo;,</td>
-<td>like = &ldquo;羽毛球&rdquo;,</td>
-<td>skin = &ldquo;yellow&rdquo;, hobby = &ldquo;hello&rdquo;)</td>
+<td>&quot;刘佳锐&quot;,</td>
+<td>&quot;男&quot;,</td>
+<td>&quot;乐色&quot;, &quot;垃圾&quot;,</td>
+<td>like = &quot;羽毛球&quot;,</td>
+<td>skin = &quot;yellow&quot;, hobby = &quot;hello&quot;)</td>
 </tr>
 </tbody>
 </table>
@@ -345,10 +350,14 @@
 <span class="ln">2</span><span class="n">result</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">list1</span><span class="p">)</span>
 <span class="ln">3</span><span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
 </code></pre></div>
+    </div>
+
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <div id="gitalk-container"></div>
+
+
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
@@ -357,6 +366,7 @@
         Technologist, perpetual student, continual incremental improvement.
       </div>
       <a href='https://Jerrysmd.github.io/about/' class="button mt-1" role="button" title='Read More'>Read More</a>
+    
     <h2 class="mt-4">Featured Posts</h2>
     <ul>
       <li>

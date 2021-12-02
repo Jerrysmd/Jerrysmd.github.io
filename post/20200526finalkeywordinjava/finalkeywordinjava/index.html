@@ -33,7 +33,7 @@
 <meta property="og:url" content="https://Jerrysmd.github.io/post/20200526finalkeywordinjava/finalkeywordinjava/" />
 <meta property="og:title" content="Final 关键字: Final Key Word In Java" />
 <meta property="og:description" content="Article description." />
-<meta property="og:image" content="https://Jerrysmd.github.io/images/code1.png" />
+<meta property="og:image" content="https://Jerrysmd.github.io/post/20200526finalkeywordinjava/finalkeywordinjava/images/code1.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://Jerrysmd.github.io/icons_custom/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://Jerrysmd.github.io/icons_custom/favicon-32x32.png">
@@ -129,10 +129,13 @@
     </span>
   </div>
 
+
+
+
     
-    
-    <h2>Overview</h2>
-    <nav id="TableOfContents">
+    <div class="post_toc">
+      <h2>Overview</h2>
+      <nav id="TableOfContents">
   <ul>
     <li><a href="#final-关键字修饰变量">final 关键字修饰变量</a></li>
     <li><a href="#final关键字修饰方法">final关键字修饰方法</a></li>
@@ -140,7 +143,9 @@
     <li><a href="#static关键字的不同">static关键字的不同</a></li>
   </ul>
 </nav>
-    <p>Final key word no doubt be mentioned most time in Java language. There are some points about final key word. First of all, final key word can modify three objects: first is modify variables, second is modify way, third is modify class.</p>
+    </div>
+    
+    <div class="post_body"><p>Final key word no doubt be mentioned most time in Java language. There are some points about final key word. First of all, final key word can modify three objects: first is modify variables, second is modify way, third is modify class.</p>
 <h2 id="final-关键字修饰变量">final 关键字修饰变量</h2>
 <p>在使用final修饰变量时，又可以分为两种情况：一种是基本数据类型的变量，另一种是引用类型的变量。final关键字在修饰基本数据类型时必须对变量赋予初始值，因此final也常常和static关键字一起用来声明常量值。final正好限制了必须赋值，static声明了静态变量。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">final</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;Hollow world&#34;</span><span class="o">;</span>
@@ -164,10 +169,14 @@
 <p>final static 成对出现的频率也是比较高的，使用static修饰的变量只会在类加载的时候被初始化，不会因为对象的再次创建而改变。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">static</span> <span class="kt">double</span> <span class="n">num</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">();</span>
 </code></pre></div>
+    </div>
+
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <div id="gitalk-container"></div>
+
+
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
@@ -176,6 +185,7 @@
         Technologist, perpetual student, continual incremental improvement.
       </div>
       <a href='https://Jerrysmd.github.io/about/' class="button mt-1" role="button" title='Read More'>Read More</a>
+    
     <h2 class="mt-4">Featured Posts</h2>
     <ul>
       <li>

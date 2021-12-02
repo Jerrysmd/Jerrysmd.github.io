@@ -33,7 +33,7 @@
 <meta property="og:url" content="https://Jerrysmd.github.io/post/20191126gitcontribution/gitcontribution/" />
 <meta property="og:title" content="Git Contribution" />
 <meta property="og:description" content="Article description." />
-<meta property="og:image" content="https://Jerrysmd.github.io/images/github.png" />
+<meta property="og:image" content="https://Jerrysmd.github.io/post/20191126gitcontribution/gitcontribution/images/github.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://Jerrysmd.github.io/icons_custom/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://Jerrysmd.github.io/icons_custom/favicon-32x32.png">
@@ -129,24 +129,29 @@
     </span>
   </div>
 
+
+
+
     
-    
-    <h2>Overview</h2>
-    <nav id="TableOfContents">
+    <div class="post_toc">
+      <h2>Overview</h2>
+      <nav id="TableOfContents">
   <ul>
     <li><a href="#update-local-git-config">Update local git config</a></li>
     <li><a href="#update-commit-history">Update commit history</a></li>
     <li><a href="#update-git-push">Update Git push</a></li>
   </ul>
 </nav>
-    <p>Contribution graph shows activity from public repositories. You can choose to show activity from both public and private repositories, with specific details of your activity in private repositories anonymized.</p>
+    </div>
+    
+    <div class="post_body"><p>Contribution graph shows activity from public repositories. You can choose to show activity from both public and private repositories, with specific details of your activity in private repositories anonymized.</p>
 <h2 id="update-local-git-config">Update local git config</h2>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>git config --global user.name “github’s Name”
 <span class="ln">2</span> 
 <span class="ln">3</span>git config --global user.email <span class="s2">&#34;github@*.com&#34;</span>
 </code></pre></div><h2 id="update-commit-history">Update commit history</h2>
 <p>If you do not want to waste your commit history.</p>
-<p>we can use &lsquo;git log&rsquo; to see the git record</p>
+<p>we can use 'git log' to see the git record</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>git log
 </code></pre></div><p>we need to edit all of the history of commit and push.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln"> 1</span>git filter-branch -f --env-filter <span class="s1">&#39;
@@ -193,10 +198,14 @@
 <span class="ln">2</span><span class="c1">#然后push</span>
 <span class="ln">3</span>git push -u origin <span class="o">[</span>name<span class="o">]</span>
 </code></pre></div>
+    </div>
+
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <div id="gitalk-container"></div>
+
+
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
@@ -205,6 +214,7 @@
         Technologist, perpetual student, continual incremental improvement.
       </div>
       <a href='https://Jerrysmd.github.io/about/' class="button mt-1" role="button" title='Read More'>Read More</a>
+    
     <h2 class="mt-4">Featured Posts</h2>
     <ul>
       <li>

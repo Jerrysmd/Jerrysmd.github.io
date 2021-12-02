@@ -33,7 +33,7 @@
 <meta property="og:url" content="https://Jerrysmd.github.io/post/20200101javainterview/javainterview/" />
 <meta property="og:title" content="Java Basic" />
 <meta property="og:description" content="Article description." />
-<meta property="og:image" content="https://Jerrysmd.github.io/images/code3.png" />
+<meta property="og:image" content="https://Jerrysmd.github.io/post/20200101javainterview/javainterview/images/code3.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://Jerrysmd.github.io/icons_custom/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://Jerrysmd.github.io/icons_custom/favicon-32x32.png">
@@ -129,10 +129,13 @@
     </span>
   </div>
 
+
+
+
     
-    
-    <h2>Overview</h2>
-    <nav id="TableOfContents">
+    <div class="post_toc">
+      <h2>Overview</h2>
+      <nav id="TableOfContents">
   <ul>
     <li><a href="#jvm">JVM</a></li>
     <li><a href="#gc">GC</a></li>
@@ -140,7 +143,9 @@
     <li><a href="#redis">Redis</a></li>
   </ul>
 </nav>
-    <p>JVM, Garbage Collection, Multi - thread, Redis</p>
+    </div>
+    
+    <div class="post_body"><p>JVM, Garbage Collection, Multi - thread, Redis</p>
 <h2 id="jvm">JVM</h2>
 <p><strong>Java从编码到执行</strong></p>
 <blockquote>
@@ -200,8 +205,8 @@
 <li>混合执行</li>
 <li>linking
 <ol>
-<li>verification：文件符合jvm规定：0xCAFEBABE&hellip;</li>
-<li>preparation：静态成员变量赋默认值，int = 0&hellip;</li>
+<li>verification：文件符合jvm规定：0xCAFEBABE...</li>
+<li>preparation：静态成员变量赋默认值，int = 0...</li>
 <li>resolution：类、方法、属性符号应用解析为直接引用，常量池中的各个符号引用解析为指针、偏移量等内存地址的直接引用</li>
 </ol>
 </li>
@@ -725,10 +730,14 @@
 <li>6.x 高版本出现了IO多线程</li>
 </ol>
 </blockquote>
+    </div>
+
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <div id="gitalk-container"></div>
+
+
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
@@ -737,6 +746,7 @@
         Technologist, perpetual student, continual incremental improvement.
       </div>
       <a href='https://Jerrysmd.github.io/about/' class="button mt-1" role="button" title='Read More'>Read More</a>
+    
     <h2 class="mt-4">Featured Posts</h2>
     <ul>
       <li>

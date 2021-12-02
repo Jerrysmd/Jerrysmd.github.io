@@ -33,7 +33,7 @@
 <meta property="og:url" content="https://Jerrysmd.github.io/post/20200519zookeeper/zookeeper/" />
 <meta property="og:title" content="Zookeeper核心知识点: Key points of ZooKeeper" />
 <meta property="og:description" content="Article description." />
-<meta property="og:image" content="https://Jerrysmd.github.io/images/cloud.png" />
+<meta property="og:image" content="https://Jerrysmd.github.io/post/20200519zookeeper/zookeeper/images/cloud.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://Jerrysmd.github.io/icons_custom/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://Jerrysmd.github.io/icons_custom/favicon-32x32.png">
@@ -130,10 +130,13 @@
     </span>
   </div>
 
+
+
+
     
-    
-    <h2>Overview</h2>
-    <nav id="TableOfContents">
+    <div class="post_toc">
+      <h2>Overview</h2>
+      <nav id="TableOfContents">
   <ul>
     <li><a href="#1-introduce">1. Introduce</a>
       <ul>
@@ -179,7 +182,9 @@
     </li>
   </ul>
 </nav>
-    <p>ZooKeeper is an open source distributed coordination framework. It is positioned to provide consistent services for distributed applications and is the administrator of the entire big data system. ZooKeeper will encapsulate key services that are complex and error-prone, and provide users with efficient, stable, and easy-to-use services.</p>
+    </div>
+    
+    <div class="post_body"><p>ZooKeeper is an open source distributed coordination framework. It is positioned to provide consistent services for distributed applications and is the administrator of the entire big data system. ZooKeeper will encapsulate key services that are complex and error-prone, and provide users with efficient, stable, and easy-to-use services.</p>
 <h2 id="1-introduce">1. Introduce</h2>
 <p><strong>ZooKeeper</strong> 是一个开源的<strong>分布式协调框架</strong>，它的定位是为分布式应用提供一致性服务，是整个大数据体系的<strong>管理员</strong>。<strong>ZooKeeper</strong> 会封装好复杂易出错的关键服务，将高效、稳定、易用的服务提供给用户使用。</p>
 <p>如果上面的官方言语你不太理解，你可以认为 <strong>ZooKeeper</strong> = <strong>文件系统</strong> + <strong>监听通知机制</strong>。</p>
@@ -650,10 +655,14 @@
 <li>dataDir目录、dataLogDir两个目录会随着时间推移变得庞大，容易造成硬盘满了。建议自己编写或使用自带的脚本保留最新的n个文件。</li>
 <li>默认最大连接数 默认为60，配置maxClientCnxns参数，配置单个客户端机器创建的最大连接数。</li>
 </ol>
+    </div>
+
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <div id="gitalk-container"></div>
+
+
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
@@ -662,6 +671,7 @@
         Technologist, perpetual student, continual incremental improvement.
       </div>
       <a href='https://Jerrysmd.github.io/about/' class="button mt-1" role="button" title='Read More'>Read More</a>
+    
     <h2 class="mt-4">Featured Posts</h2>
     <ul>
       <li>
