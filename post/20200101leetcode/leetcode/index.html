@@ -916,7 +916,25 @@
 <span class="ln">35</span>        <span class="n">edges</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;&gt;();</span>
 <span class="ln">36</span>    <span class="o">}</span>
 <span class="ln">37</span><span class="o">}</span>
-</code></pre></div></blockquote>
+</code></pre></div><p>图的宽度优先遍历：</p>
+<blockquote>
+<ol>
+<li>利用队列实现</li>
+<li>从源节点开始依次按照宽度进队列，然后弹出</li>
+<li>每弹出一个点，把该节点所有没有进过队列的邻接点放入队列</li>
+<li>直到队列变空</li>
+</ol>
+</blockquote>
+<p>图的广度优先遍历：</p>
+<blockquote>
+<ol>
+<li>利用栈实现</li>
+<li>从源节点开始依次按照宽度进队列，然后弹出</li>
+<li>每弹出一个点，把该节点所有没有进过队列的邻接点放入队列</li>
+<li>直到队列变空</li>
+</ol>
+</blockquote>
+</blockquote>
     </div>
 
 
