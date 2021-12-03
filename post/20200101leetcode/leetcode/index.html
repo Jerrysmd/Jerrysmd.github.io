@@ -880,12 +880,12 @@
 <blockquote>
 <p>图的描述方式:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Node</span><span class="o">{</span>
-<span class="ln"> 2</span>    <span class="kd">public</span> <span class="kt">int</span> <span class="n">value</span><span class="o">;</span>
-<span class="ln"> 3</span>    <span class="kd">public</span> <span class="kt">int</span> <span class="n">in</span><span class="o">;</span> <span class="c1">//入度的个数
+<span class="ln"> 2</span>    <span class="kd">public</span> <span class="kt">int</span> <span class="n">value</span><span class="o">;</span> <span class="c1">//点的编号
+</span><span class="ln"> 3</span><span class="c1"></span>    <span class="kd">public</span> <span class="kt">int</span> <span class="n">in</span><span class="o">;</span> <span class="c1">//入度的个数
 </span><span class="ln"> 4</span><span class="c1"></span>    <span class="kd">public</span> <span class="kt">int</span> <span class="n">out</span><span class="o">;</span> <span class="c1">//出度的个数
-</span><span class="ln"> 5</span><span class="c1"></span>    <span class="kd">public</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span> <span class="n">nexts</span><span class="o">;</span> <span class="c1">//邻居
-</span><span class="ln"> 6</span><span class="c1"></span>    <span class="kd">public</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Edge</span><span class="o">&gt;</span> <span class="n">edges</span><span class="o">;</span>
-<span class="ln"> 7</span>    
+</span><span class="ln"> 5</span><span class="c1"></span>    <span class="kd">public</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span> <span class="n">nexts</span><span class="o">;</span> <span class="c1">//邻居点
+</span><span class="ln"> 6</span><span class="c1"></span>    <span class="kd">public</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Edge</span><span class="o">&gt;</span> <span class="n">edges</span><span class="o">;</span> <span class="c1">//邻居边
+</span><span class="ln"> 7</span><span class="c1"></span>    
 <span class="ln"> 8</span>    <span class="kd">public</span> <span class="nf">Node</span><span class="o">(</span><span class="kt">int</span> <span class="o">=</span> <span class="n">value</span><span class="o">){</span>
 <span class="ln"> 9</span>        <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
 <span class="ln">10</span>        <span class="n">in</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
@@ -895,15 +895,27 @@
 <span class="ln">14</span>    <span class="o">}</span>
 <span class="ln">15</span><span class="o">}</span>
 <span class="ln">16</span>
-<span class="ln">17</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Graph</span><span class="o">{</span>
-<span class="ln">18</span>    <span class="kd">public</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Node</span><span class="o">&gt;</span> <span class="n">nodes</span><span class="o">;</span> <span class="c1">//点集
-</span><span class="ln">19</span><span class="c1"></span>    <span class="kd">public</span> <span class="n">HashSet</span><span class="o">&lt;</span><span class="n">Edge</span><span class="o">&gt;</span> <span class="n">edges</span><span class="o">;</span> <span class="c1">//边集
-</span><span class="ln">20</span><span class="c1"></span>    
-<span class="ln">21</span>    <span class="kd">public</span> <span class="nf">Graph</span><span class="o">(){</span>
-<span class="ln">22</span>        <span class="n">nodes</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
-<span class="ln">23</span>        <span class="n">edges</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;&gt;();</span>
-<span class="ln">24</span>    <span class="o">}</span>
-<span class="ln">25</span><span class="o">}</span>
+<span class="ln">17</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Edge</span><span class="o">{</span>
+<span class="ln">18</span>    <span class="kd">public</span> <span class="kt">int</span> <span class="n">weight</span><span class="o">;</span>
+<span class="ln">19</span>    <span class="kd">public</span> <span class="n">Node</span> <span class="n">from</span><span class="o">;</span>
+<span class="ln">20</span>    <span class="kd">public</span> <span class="n">Node</span> <span class="n">to</span><span class="o">;</span>
+<span class="ln">21</span>    
+<span class="ln">22</span>    <span class="kd">public</span> <span class="nf">Edge</span><span class="o">(</span><span class="kt">int</span> <span class="n">weight</span><span class="o">,</span> <span class="n">Node</span> <span class="n">from</span><span class="o">,</span> <span class="n">Node</span> <span class="n">to</span><span class="o">){</span>
+<span class="ln">23</span>        <span class="k">this</span><span class="o">.</span><span class="na">weight</span> <span class="o">=</span> <span class="n">weight</span><span class="o">;</span>
+<span class="ln">24</span>        <span class="k">this</span><span class="o">.</span><span class="na">from</span> <span class="o">=</span> <span class="n">from</span><span class="o">;</span>
+<span class="ln">25</span>        <span class="k">this</span><span class="o">.</span><span class="na">to</span> <span class="o">=</span> <span class="n">to</span><span class="o">;</span>
+<span class="ln">26</span>    <span class="o">}</span>
+<span class="ln">27</span><span class="o">}</span>
+<span class="ln">28</span>
+<span class="ln">29</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Graph</span><span class="o">{</span>
+<span class="ln">30</span>    <span class="kd">public</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Node</span><span class="o">&gt;</span> <span class="n">nodes</span><span class="o">;</span> <span class="c1">//点集
+</span><span class="ln">31</span><span class="c1"></span>    <span class="kd">public</span> <span class="n">HashSet</span><span class="o">&lt;</span><span class="n">Edge</span><span class="o">&gt;</span> <span class="n">edges</span><span class="o">;</span> <span class="c1">//边集
+</span><span class="ln">32</span><span class="c1"></span>    
+<span class="ln">33</span>    <span class="kd">public</span> <span class="nf">Graph</span><span class="o">(){</span>
+<span class="ln">34</span>        <span class="n">nodes</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
+<span class="ln">35</span>        <span class="n">edges</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;&gt;();</span>
+<span class="ln">36</span>    <span class="o">}</span>
+<span class="ln">37</span><span class="o">}</span>
 </code></pre></div></blockquote>
     </div>
 
