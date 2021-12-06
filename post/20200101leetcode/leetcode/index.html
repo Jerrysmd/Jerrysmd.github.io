@@ -929,7 +929,7 @@
 <span class="ln"> 3</span>        <span class="k">return</span><span class="o">;</span>
 <span class="ln"> 4</span>    <span class="o">}</span>
 <span class="ln"> 5</span>    <span class="n">Queue</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;&gt;();</span>
-<span class="ln"> 6</span>    <span class="n">HashSet</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span> <span class="n">set</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;&gt;();</span> <span class="c1">//放入已处理的节点，防止重复节点处理。
+<span class="ln"> 6</span>    <span class="n">HashSet</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span> <span class="n">set</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;&gt;();</span> <span class="c1">//放入已处理的节点，检查点是否重复。
 </span><span class="ln"> 7</span><span class="c1"></span>    <span class="n">queue</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">node</span><span class="o">);</span>
 <span class="ln"> 8</span>    <span class="n">set</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">node</span><span class="o">);</span>
 <span class="ln"> 9</span>    <span class="k">while</span><span class="o">(!</span><span class="n">queue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()){</span>
@@ -938,7 +938,7 @@
 <span class="ln">12</span>        <span class="k">for</span><span class="o">(</span><span class="n">Node</span> <span class="n">next</span> <span class="o">:</span> <span class="n">cur</span><span class="o">.</span><span class="na">nexts</span><span class="o">){</span>
 <span class="ln">13</span>            <span class="k">if</span><span class="o">(!</span><span class="n">set</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">nexts</span><span class="o">)){</span>
 <span class="ln">14</span>                <span class="n">set</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">next</span><span class="o">);</span>
-<span class="ln">15</span>                <span class="n">se</span>
+<span class="ln">15</span>                <span class="n">queue</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">next</span><span class="o">);</span>
 <span class="ln">16</span>            <span class="o">}</span>
 <span class="ln">17</span>        <span class="o">}</span>
 <span class="ln">18</span>    <span class="o">}</span>
