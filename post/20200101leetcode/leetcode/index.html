@@ -990,8 +990,14 @@
 <span class="ln"> 9</span>    <span class="o">}</span>
 <span class="ln">10</span>    <span class="c1">// 拓扑排序结果，依次加入result
 </span><span class="ln">11</span><span class="c1"></span>    <span class="n">List</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
-<span class="ln">12</span>    <span class="k">while</span><span class="o">(!</span><span class="n">zeroInQueue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()){}</span>
-<span class="ln">13</span><span class="o">}</span>
+<span class="ln">12</span>    <span class="k">while</span><span class="o">(!</span><span class="n">zeroInQueue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()){</span>
+<span class="ln">13</span>        <span class="n">Node</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">zeroInQueue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+<span class="ln">14</span>        <span class="n">result</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">cur</span><span class="o">);</span>
+<span class="ln">15</span>        <span class="k">for</span><span class="o">(</span><span class="n">Node</span> <span class="n">next</span> <span class="o">:</span> <span class="n">cur</span><span class="o">.</span><span class="na">nexts</span><span class="o">){</span>
+<span class="ln">16</span>            <span class="n">inMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">next</span><span class="o">,</span> <span class="n">inMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">next</span><span class="o">)</span> <span class="o">-</span> <span class="n">1</span><span class="o">);</span>
+<span class="ln">17</span>        <span class="o">}</span>
+<span class="ln">18</span>    <span class="o">}</span>
+<span class="ln">19</span><span class="o">}</span>
 </code></pre></div></blockquote>
 </blockquote>
     </div>
