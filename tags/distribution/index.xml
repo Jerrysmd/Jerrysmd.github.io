@@ -15,7 +15,7 @@
       <description>
         
           
-            &lt;p&gt;Spark can run on YARN, but Spark on YARN has two modes: yarn-cluster and yarn-client.&lt;/p&gt;
+            &lt;p&gt;YARN is a generic resource-management framework for distributed workloads; in other words, a cluster-level operating system. Although part of the Hadoop ecosystem, YARN can support a lot of varied compute-frameworks (such as Tez, and Spark) in addition to MapReduce.&lt;/p&gt;
           
           
         

@@ -139,7 +139,7 @@
       <nav id="TableOfContents"></nav>
     </div>
     
-    <div class="post_body"><p>Spark can run on YARN, but Spark on YARN has two modes: yarn-cluster and yarn-client.</p>
+    <div class="post_body"><p>YARN is a generic resource-management framework for distributed workloads; in other words, a cluster-level operating system. Although part of the Hadoop ecosystem, YARN can support a lot of varied compute-frameworks (such as Tez, and Spark) in addition to MapReduce.</p>
 <p>Spark支持可插拔的集群管理模式(Standalone、Mesos以及YARN )，集群管理负责启动executor进程，编写Spark application 的人根本不需要知道Spark用的是什么集群管理。Spark支持的三种集群模式，这三种集群模式都由两个组件组成:master和slave。Master服务(YARN ResourceManager,Mesos master和Spark standalone master)决定哪些application可以运行，什么时候运行以及哪里去运行。而slave服务( YARN NodeManager, Mesos slave和Spark standalone slave)实际上运行executor进程。</p>
 <p>　　当在YARN上运行Spark作业，每个Spark executor作为一个YARN容器(container)运行。Spark可以使得多个Tasks在同一个容器(container)里面运行。这是个很大的优点。</p>
 <blockquote>
@@ -168,7 +168,7 @@
         border-bottom: none !important; }
     </style>
     <p>Web path: <a href='https://Jerrysmd.github.io/post/20200811yarn-cluster&amp;yarn-client/spark-yarn-f31.png' title='Open this web path in a new tab' target='_blank' class='warning-link'>https://Jerrysmd.github.io/post/20200811yarn-cluster&yarn-client/spark-yarn-f31.png</a></p>
-    <p>Disk path: /static//post/20200811yarn-cluster&amp;yarn-client/spark-yarn-f31.png</p>
+    <p>Disk path: /static/post/20200811yarn-cluster&amp;yarn-client/spark-yarn-f31.png</p>
     <p>Using <a href='https://gohugo.io/content-management/page-bundles/' title='Information about Hugo Page Bundles' target='_blank' class='warning-link'>Page Bundles</a>: false</p>
 </div>
 
@@ -191,7 +191,7 @@
         border-bottom: none !important; }
     </style>
     <p>Web path: <a href='https://Jerrysmd.github.io/post/20200811yarn-cluster&amp;yarn-client/spark-yarn-f22.png' title='Open this web path in a new tab' target='_blank' class='warning-link'>https://Jerrysmd.github.io/post/20200811yarn-cluster&yarn-client/spark-yarn-f22.png</a></p>
-    <p>Disk path: /static//post/20200811yarn-cluster&amp;yarn-client/spark-yarn-f22.png</p>
+    <p>Disk path: /static/post/20200811yarn-cluster&amp;yarn-client/spark-yarn-f22.png</p>
     <p>Using <a href='https://gohugo.io/content-management/page-bundles/' title='Information about Hugo Page Bundles' target='_blank' class='warning-link'>Page Bundles</a>: false</p>
 </div>
 
