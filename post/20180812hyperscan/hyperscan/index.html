@@ -184,20 +184,57 @@
 
 
 
-<div class="notices warning image-warning">
-  <div class="label">Image not found</div>
-    <style>
-      a.warning-link {
-        color: inherit !important;
-        font-weight: inherit !important;
-        text-decoration: underline !important;
-        border-bottom: none !important; }
-    </style>
-    <p>Web path: <a href='https://Jerrysmd.github.io/post/picture/Hyperscan-fig-1.jpg' title='Open this web path in a new tab' target='_blank' class='warning-link'>https://Jerrysmd.github.io/post/picture/Hyperscan-fig-1.jpg</a></p>
-    <p>Disk path: /static//post/picture/Hyperscan-fig-1.jpg</p>
-    <p>Using <a href='https://gohugo.io/content-management/page-bundles/' title='Information about Hugo Page Bundles' target='_blank' class='warning-link'>Page Bundles</a>: false</p>
-</div>
 
+
+  <figure>
+    <picture>
+
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      
+
+      <img class="image_figure image_internal" src="https://Jerrysmd.github.io/post/picture/Hyperscan-fig-1.jpg" alt="Hyperscan-fig-1" loading="lazy" decoding="async" width="632" height="380"  />
+      
+
+    </picture>
+  </figure>
 </p>
 <h3 id="32运行期">3.2运行期</h3>
 <p>Hyperscan的运行期是通过C语言来开发的。图2展示了Hyperscan在运行期的主要流程。用户需要预先分配一段内存来存储临时匹配状态信息，之后利用编译生成的数据库调用Hyperscan内部的匹配引擎(NFA, DFA等)来对输入进行模式匹配。Hyperscan在引擎中使用Intel处理器所具有的SIMD指令进行加速。同时，用户可以通过回调函数来自定义匹配发生后采取的行为。由于生成的数据库是只读的，用户可以在多个CPU核或多线程场景下共享数据库来提升匹配扩展性。</p>
@@ -209,20 +246,57 @@
 
 
 
-<div class="notices warning image-warning">
-  <div class="label">Image not found</div>
-    <style>
-      a.warning-link {
-        color: inherit !important;
-        font-weight: inherit !important;
-        text-decoration: underline !important;
-        border-bottom: none !important; }
-    </style>
-    <p>Web path: <a href='https://Jerrysmd.github.io/post/picture/Hyperscan-fig-2.jpg' title='Open this web path in a new tab' target='_blank' class='warning-link'>https://Jerrysmd.github.io/post/picture/Hyperscan-fig-2.jpg</a></p>
-    <p>Disk path: /static//post/picture/Hyperscan-fig-2.jpg</p>
-    <p>Using <a href='https://gohugo.io/content-management/page-bundles/' title='Information about Hugo Page Bundles' target='_blank' class='warning-link'>Page Bundles</a>: false</p>
-</div>
 
+
+  <figure>
+    <picture>
+
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      
+
+      <img class="image_figure image_internal" src="https://Jerrysmd.github.io/post/picture/Hyperscan-fig-2.jpg" alt="Hyperscan-fig-2" loading="lazy" decoding="async" width="640" height="268"  />
+      
+
+    </picture>
+  </figure>
 </p>
 <h2 id="4-hyperscan伪代码">4. Hyperscan伪代码</h2>
 <h3 id="41-编译">4.1 编译</h3>
