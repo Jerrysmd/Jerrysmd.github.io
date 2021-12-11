@@ -33,7 +33,7 @@
 <meta property="og:url" content="https://Jerrysmd.github.io/post/20200911es-wildcard-search/es-wildcard-search/" />
 <meta property="og:title" content="Elasticsearch Wildcard Search" />
 <meta property="og:description" content="Article description." />
-<meta property="og:image" content="https://Jerrysmd.github.io/post/20200911es-wildcard-search/es-wildcard-search/images/.png" />
+<meta property="og:image" content="https://Jerrysmd.github.io/post/20200911es-wildcard-search/es-wildcard-search/images/search.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://Jerrysmd.github.io/icons_custom/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://Jerrysmd.github.io/icons_custom/favicon-32x32.png">
@@ -124,8 +124,8 @@
 </svg></span>
     <span class="post_date">
       Sep 11, 2020</span>
-    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/tag_name1' title="Tag_name1" class="post_tag button button_translucent">Tag_name1
-        </a><a href='https://Jerrysmd.github.io/tags/tag_name2' title="Tag_name2" class="post_tag button button_translucent">Tag_name2
+    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
+        </a><a href='https://Jerrysmd.github.io/tags/spark' title="spark" class="post_tag button button_translucent">spark
         </a>
     </span>
   </div>
@@ -149,39 +149,39 @@
     <div class="post_body"><p>Elasticsearch is the distributed, RESTful search and analytics engine at the heart of the <a href="https://www.elastic.co/products">Elastic Stack</a>. You can use Elasticsearch to store, search, and manage data for Logs，Metrics，A search backend，Application monitoring，Endpoint security.</p>
 <h2 id="match分词模糊查询">match：分词模糊查询</h2>
 <p>比如“Everything will be OK, All is well”，会被分词一个一个单词（不是单个字母）</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="ln"> 1</span><span class="err">{
-</span><span class="ln"> 2</span><span class="err">	&#34;from&#34;: 0,
-</span><span class="ln"> 3</span><span class="err">	&#34;size&#34;: 20,
-</span><span class="ln"> 4</span><span class="err">	&#34;query&#34;: {
-</span><span class="ln"> 5</span><span class="err">		&#34;bool&#34;: {
-</span><span class="ln"> 6</span><span class="err">			&#34;should&#34;: [{
-</span><span class="ln"> 7</span><span class="err">					&#34;term&#34;: {
-</span><span class="ln"> 8</span><span class="err">						&#34;form_name&#34;: &#34;will&#34;
-</span><span class="ln"> 9</span><span class="err">					}
-</span><span class="ln">10</span><span class="err">				}
-</span><span class="ln">11</span><span class="err">			]
-</span><span class="ln">12</span><span class="err">		}
-</span><span class="ln">13</span><span class="err">	}
-</span><span class="ln">14</span><span class="err">}
-</span></code></pre></div><h2 id="match_phrase-短语模糊查询">match_phrase ：短语模糊查询</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="ln"> 1</span><span class="p">{</span>
+<span class="ln"> 2</span>	<span class="nt">&#34;from&#34;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<span class="ln"> 3</span>	<span class="nt">&#34;size&#34;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+<span class="ln"> 4</span>	<span class="nt">&#34;query&#34;</span><span class="p">:</span> <span class="p">{</span>
+<span class="ln"> 5</span>		<span class="nt">&#34;bool&#34;</span><span class="p">:</span> <span class="p">{</span>
+<span class="ln"> 6</span>			<span class="nt">&#34;should&#34;</span><span class="p">:</span> <span class="p">[{</span>
+<span class="ln"> 7</span>					<span class="nt">&#34;term&#34;</span><span class="p">:</span> <span class="p">{</span>
+<span class="ln"> 8</span>						<span class="nt">&#34;form_name&#34;</span><span class="p">:</span> <span class="s2">&#34;will&#34;</span>
+<span class="ln"> 9</span>					<span class="p">}</span>
+<span class="ln">10</span>				<span class="p">}</span>
+<span class="ln">11</span>			<span class="p">]</span>
+<span class="ln">12</span>		<span class="p">}</span>
+<span class="ln">13</span>	<span class="p">}</span>
+<span class="ln">14</span><span class="p">}</span>
+</code></pre></div><h2 id="match_phrase-短语模糊查询">match_phrase ：短语模糊查询</h2>
 <p>match_phrase是短语搜索，即它会将给定的短语（phrase）当成一个完整的查询条件。</p>
 <p>比如查询 “Everything will”，会当成一个完整的短语进行查询， 会查出含有该查询条件的内容。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="ln"> 1</span><span class="err">GET /basic_index*/_search
-</span><span class="ln"> 2</span><span class="err">{
-</span><span class="ln"> 3</span><span class="err">	&#34;from&#34;: 0,
-</span><span class="ln"> 4</span><span class="err">	&#34;size&#34;: 20,
-</span><span class="ln"> 5</span><span class="err">	&#34;query&#34;: {
-</span><span class="ln"> 6</span><span class="err">		&#34;bool&#34;: {
-</span><span class="ln"> 7</span><span class="err">			&#34;should&#34;: [{
-</span><span class="ln"> 8</span><span class="err">					&#34;match&#34;: {
-</span><span class="ln"> 9</span><span class="err">						&#34;form_name&#34;: &#34;Everything will&#34;
-</span><span class="ln">10</span><span class="err">					}
-</span><span class="ln">11</span><span class="err">				}
-</span><span class="ln">12</span><span class="err">			]
-</span><span class="ln">13</span><span class="err">		}
-</span><span class="ln">14</span><span class="err">	}
-</span><span class="ln">15</span><span class="err">}
-</span></code></pre></div><p>如果是查询单个字母，match就不管用了。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="ln"> 1</span><span class="err">GET</span> <span class="err">/basic_index*/_search</span>
+<span class="ln"> 2</span><span class="p">{</span>
+<span class="ln"> 3</span>	<span class="nt">&#34;from&#34;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<span class="ln"> 4</span>	<span class="nt">&#34;size&#34;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+<span class="ln"> 5</span>	<span class="nt">&#34;query&#34;</span><span class="p">:</span> <span class="p">{</span>
+<span class="ln"> 6</span>		<span class="nt">&#34;bool&#34;</span><span class="p">:</span> <span class="p">{</span>
+<span class="ln"> 7</span>			<span class="nt">&#34;should&#34;</span><span class="p">:</span> <span class="p">[{</span>
+<span class="ln"> 8</span>					<span class="nt">&#34;match&#34;</span><span class="p">:</span> <span class="p">{</span>
+<span class="ln"> 9</span>						<span class="nt">&#34;form_name&#34;</span><span class="p">:</span> <span class="s2">&#34;Everything will&#34;</span>
+<span class="ln">10</span>					<span class="p">}</span>
+<span class="ln">11</span>				<span class="p">}</span>
+<span class="ln">12</span>			<span class="p">]</span>
+<span class="ln">13</span>		<span class="p">}</span>
+<span class="ln">14</span>	<span class="p">}</span>
+<span class="ln">15</span><span class="p">}</span>
+</code></pre></div><p>如果是查询单个字母，match就不管用了。</p>
 <h2 id="wildcard通配符模糊查询">wildcard：通配符模糊查询</h2>
 <table>
 <thead>
@@ -197,34 +197,34 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="ln"> 1</span><span class="err">GET /basic_index*/_search
-</span><span class="ln"> 2</span><span class="err">{
-</span><span class="ln"> 3</span><span class="err">	&#34;size&#34;: 20,
-</span><span class="ln"> 4</span><span class="err">	&#34;from&#34;: 0,
-</span><span class="ln"> 5</span><span class="err">	&#34;query&#34;: {
-</span><span class="ln"> 6</span><span class="err">		&#34;bool&#34;: {
-</span><span class="ln"> 7</span><span class="err">			&#34;should&#34;: [{
-</span><span class="ln"> 8</span><span class="err">				&#34;wildcard&#34;: {
-</span><span class="ln"> 9</span><span class="err">					&#34;form_name&#34;: &#34;*very*
-</span><span class="ln">10</span><span class="err">				}
-</span><span class="ln">11</span><span class="err">			}]
-</span><span class="ln">12</span><span class="err">		}
-</span><span class="ln">13</span><span class="err">	}
-</span><span class="ln">14</span><span class="err">}
-</span></code></pre></div><p>记录是存在的，但是没有查出来？ 因为分词的影响，添加keyword 进行处理</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="ln">1</span><span class="err">{
-</span><span class="ln">2</span><span class="err">	&#34;wildcard&#34;: {
-</span><span class="ln">3</span><span class="err">		&#34;form_name.keyword&#34;: &#34;*very*&#34;
-</span><span class="ln">4</span><span class="err">	}
-</span><span class="ln">5</span><span class="err">}
-</span></code></pre></div><p>Wildcard 性能会比较慢。如果非必要，尽量避免在开头加通配符 ? 或者 *，这样会明显降低查询性能</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="ln"> 1</span><span class="err">GET</span> <span class="err">/basic_index*/_search</span>
+<span class="ln"> 2</span><span class="p">{</span>
+<span class="ln"> 3</span>	<span class="nt">&#34;size&#34;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+<span class="ln"> 4</span>	<span class="nt">&#34;from&#34;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<span class="ln"> 5</span>	<span class="nt">&#34;query&#34;</span><span class="p">:</span> <span class="p">{</span>
+<span class="ln"> 6</span>		<span class="nt">&#34;bool&#34;</span><span class="p">:</span> <span class="p">{</span>
+<span class="ln"> 7</span>			<span class="nt">&#34;should&#34;</span><span class="p">:</span> <span class="p">[{</span>
+<span class="ln"> 8</span>				<span class="nt">&#34;wildcard&#34;</span><span class="p">:</span> <span class="p">{</span>
+<span class="ln"> 9</span>					<span class="nt">&#34;form_name&#34;</span><span class="p">:</span> <span class="err">&#34;*very*</span>
+<span class="ln">10</span>				<span class="p">}</span>
+<span class="ln">11</span>			<span class="p">}]</span>
+<span class="ln">12</span>		<span class="p">}</span>
+<span class="ln">13</span>	<span class="p">}</span>
+<span class="ln">14</span><span class="p">}</span>
+</code></pre></div><p>记录是存在的，但是没有查出来？ 因为分词的影响，添加keyword 进行处理</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="ln">1</span><span class="p">{</span>
+<span class="ln">2</span>	<span class="nt">&#34;wildcard&#34;</span><span class="p">:</span> <span class="p">{</span>
+<span class="ln">3</span>		<span class="nt">&#34;form_name.keyword&#34;</span><span class="p">:</span> <span class="s2">&#34;*very*&#34;</span>
+<span class="ln">4</span>	<span class="p">}</span>
+<span class="ln">5</span><span class="p">}</span>
+</code></pre></div><p>Wildcard 性能会比较慢。如果非必要，尽量避免在开头加通配符 ? 或者 *，这样会明显降低查询性能</p>
 <p>如果查询的内容非空，怎么处理？ 直接用**</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="ln">1</span><span class="err">{
-</span><span class="ln">2</span><span class="err">	&#34;wildcard&#34;: {
-</span><span class="ln">3</span><span class="err">		&#34;form_name&#34;: &#34;*&#34;
-</span><span class="ln">4</span><span class="err">	}
-</span><span class="ln">5</span><span class="err">}
-</span></code></pre></div><h2 id="总结">总结：</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="ln">1</span><span class="p">{</span>
+<span class="ln">2</span>	<span class="nt">&#34;wildcard&#34;</span><span class="p">:</span> <span class="p">{</span>
+<span class="ln">3</span>		<span class="nt">&#34;form_name&#34;</span><span class="p">:</span> <span class="s2">&#34;*&#34;</span>
+<span class="ln">4</span>	<span class="p">}</span>
+<span class="ln">5</span><span class="p">}</span>
+</code></pre></div><h2 id="总结">总结：</h2>
 <p>Es 模糊查询， 分词的用match； 短语的用match_phrase；查询任意的，用wildcard通配符，注意查询的内容是否分词，分词的添加keyword，查询非空的情况，用&quot;**&quot;。</p>
     </div>
 
@@ -315,12 +315,12 @@
         
         <a href='https://Jerrysmd.github.io/tags/distribution/' class="post_tag button button_translucent" title="distribution">
           DISTRIBUTION
-          <span class="button_tally">10</span>
+          <span class="button_tally">11</span>
         </a>
         
         <a href='https://Jerrysmd.github.io/tags/spark/' class="post_tag button button_translucent" title="spark">
           SPARK
-          <span class="button_tally">4</span>
+          <span class="button_tally">5</span>
         </a>
         
         <a href='https://Jerrysmd.github.io/tags/c&#43;&#43;/' class="post_tag button button_translucent" title="c&#43;&#43;">
@@ -396,7 +396,7 @@
             </a>
             
             
-            <a href='https://Jerrysmd.github.io/tags/distribution/' class=" post_tag button button_translucent" data-position=10 title="distribution">DISTRIBUTION<span class="button_tally">10</span>
+            <a href='https://Jerrysmd.github.io/tags/distribution/' class=" post_tag button button_translucent" data-position=11 title="distribution">DISTRIBUTION<span class="button_tally">11</span>
             </a>
             
             
@@ -456,19 +456,11 @@
             </a>
             
             
-            <a href='https://Jerrysmd.github.io/tags/spark/' class=" post_tag button button_translucent" data-position=4 title="spark">SPARK<span class="button_tally">4</span>
+            <a href='https://Jerrysmd.github.io/tags/spark/' class=" post_tag button button_translucent" data-position=5 title="spark">SPARK<span class="button_tally">5</span>
             </a>
             
             
             <a href='https://Jerrysmd.github.io/tags/sql/' class=" post_tag button button_translucent" data-position=2 title="sql">SQL<span class="button_tally">2</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/tag_name1/' class=" post_tag button button_translucent" data-position=1 title="tag_name1">TAG_NAME1<span class="button_tally">1</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/tag_name2/' class=" post_tag button button_translucent" data-position=1 title="tag_name2">TAG_NAME2<span class="button_tally">1</span>
             </a>
             
             
