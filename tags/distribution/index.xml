@@ -5,7 +5,23 @@
     <link>https://Jerrysmd.github.io/tags/distribution/</link>
     <description>Recent content in distribution on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 03 Aug 2020 16:10:33 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/distribution/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 11 Aug 2020 10:42:19 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/distribution/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Spark On Yarn: yarn-cluster, yarn-client</title>
+      <link>https://Jerrysmd.github.io/post/20200811yarn-clusteryarn-client/yarn-clusteryarn-client/</link>
+      <pubDate>Tue, 11 Aug 2020 10:42:19 +0800</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/20200811yarn-clusteryarn-client/yarn-clusteryarn-client/</guid>
+      <description>
+        
+          
+            &lt;p&gt;Spark can run on YARN, but Spark on YARN has two modes: yarn-cluster and yarn-client.&lt;/p&gt;
+          
+          
+        
+      </description>
+    </item>
+    
     <item>
       <title>Spark 简介: Spark Guide, Part Ⅲ</title>
       <link>https://Jerrysmd.github.io/post/20200803sparkguide3/sparkguide3/</link>
