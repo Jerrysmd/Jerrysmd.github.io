@@ -1048,7 +1048,11 @@
 </blockquote>
 <p>代码：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kt">int</span> <span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">10</span><span class="o">];</span>  <span class="c1">//每个 int 4个字节32位，10个int数组可以表示 32bit * 10 -&gt; 320bit
-</span></code></pre></div>
+</span><span class="ln">2</span><span class="c1">//例：想拿到第178位的状态
+</span><span class="ln">3</span><span class="c1"></span><span class="kt">int</span> <span class="n">numIndex</span> <span class="o">=</span> <span class="n">178</span> <span class="o">/</span> <span class="n">32</span><span class="o">;</span>
+<span class="ln">4</span><span class="kt">int</span> <span class="n">bitIndex</span> <span class="o">=</span> <span class="n">178</span> <span class="o">%</span> <span class="n">32</span><span class="o">;</span>
+<span class="ln">5</span><span class="kt">int</span> <span class="n">s</span> <span class="o">=</span> <span class="o">((</span><span class="n">arr</span><span class="o">[</span><span class="n">numIndex</span><span class="o">]</span> <span class="o">&gt;&gt;</span> <span class="o">(</span><span class="n">bitIndex</span><span class="o">))</span> <span class="o">&amp;</span> <span class="n">1</span><span class="o">);</span>
+</code></pre></div>
     </div>
 
 
