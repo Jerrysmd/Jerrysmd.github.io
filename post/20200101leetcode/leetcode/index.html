@@ -1043,7 +1043,7 @@
 <blockquote>
 <ul>
 <li>只有添加和搜索功能，没有删除功能</li>
-<li>使用很少的内存，允许失误</li>
+<li>使用很少的内存，<strong>允许有一定的失误</strong></li>
 </ul>
 </blockquote>
 <p>位图代码：</p>
@@ -1066,9 +1066,9 @@
 <span class="ln"> 6</span><span class="n">查询</span><span class="err">：</span>
 <span class="ln"> 7</span><span class="c1">// URL 通过k个 hash 函数算出k个 hash 值 %m，在位图上验证，都为 1 则满足
 </span><span class="ln"> 8</span><span class="c1"></span>    
-<span class="ln"> 9</span><span class="n">k和m值如何确定</span><span class="err">：</span>
-<span class="ln">10</span>
-</code></pre></div>
+<span class="ln"> 9</span><span class="n">m和k值如何确定</span><span class="err">：</span>
+<span class="ln">10</span><span class="c1">// m 越大越好，k 过大过小都不好。有计算
+</span></code></pre></div>
     </div>
 
 
