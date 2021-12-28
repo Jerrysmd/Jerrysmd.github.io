@@ -1070,7 +1070,16 @@
 <span class="ln"> 9</span><span class="n">m和k值如何确定</span><span class="err">：</span>
 <span class="ln">10</span><span class="c1">// m 越大越好，k 过大过小都不好。有计算公式
 </span></code></pre></div><h2 id="一致性哈希">一致性哈希</h2>
-<p>解决问题：数据服务器如何组织，解决分布式数据库负载均衡，高低频查询。</p>
+<p>解决问题：</p>
+<blockquote>
+<p>数据服务器如何组织，解决分布式数据库负载均衡，高低频查询。</p>
+<p>海量数据分布式存储：数据通过key值算出哈希值 % 机器数量 决定数据存放服务器节点。</p>
+</blockquote>
+<p>增加减少服务器：</p>
+<blockquote>
+<p>当服务器硬盘大小不够，需要增加服务器</p>
+<p>这时需要数据全量迁移，而且重新将hash值 % 新的服务器数量</p>
+</blockquote>
     </div>
 
 
