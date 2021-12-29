@@ -124,7 +124,7 @@
 </svg></span>
     <span class="post_date">
       Jan 1, 2020</span>
-    <span class="post_time"> · 13 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/interview' title="interview" class="post_tag button button_translucent">interview
+    <span class="post_time"> · 14 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/interview' title="interview" class="post_tag button button_translucent">interview
         </a><a href='https://Jerrysmd.github.io/tags/leetcode' title="leetcode" class="post_tag button button_translucent">leetcode
         </a><a href='https://Jerrysmd.github.io/tags/algorithm' title="algorithm" class="post_tag button button_translucent">algorithm
         </a>
@@ -1079,7 +1079,8 @@
 <p>通过<strong>一致性哈希</strong>保证不 % ，并减少迁移代价：</p>
 <blockquote>
 <p>如有 3 台机器分布式存储数据。通过 MD5 作哈希值。</p>
-<p>将1 ~ 2<sup>64</sup>-1 想象成一个环，将[0 , ]</p>
+<p>将1 ~ 2<sup>64</sup>-1 想象成一个环，将 [0 , 2<sup>64</sup> / 3] 分给节点1，[2<sup>64</sup> / 3 , 2<sup>64</sup> / 3 * 2] 分给节点2，[2<sup>64</sup> / 3 * 2 , 2<sup>64</sup>] 分给节点3。</p>
+<p>当增加节点时，比如节点放在节点2和节点3正中间。只用从节点2上移动 2<sup>64</sup> / 3 / 2 个数据到新节点上。</p>
 </blockquote>
     </div>
 
