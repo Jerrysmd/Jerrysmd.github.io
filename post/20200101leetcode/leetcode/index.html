@@ -1090,12 +1090,13 @@
 <p>【题目】: 岛问题</p>
 <blockquote>
 <p>【题目】矩阵中只有0和1两种值，每个位置都可以和自己的上下左右四个位置相连，相邻的一片1叫做一个岛，求一个矩阵中有多少个岛？</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>001010
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="ln">1</span>001010
 <span class="ln">2</span>111010
 <span class="ln">3</span>100100
 <span class="ln">4</span>000000
-<span class="ln">5</span>这个矩阵中有三个岛
-</code></pre></div><p>【解题】</p>
+<span class="ln">5</span><span class="k">&gt; </span><span class="ge">这个矩阵中有三个岛
+</span></code></pre></div><p>【解题】顺序遍历节点，遇到1则进入感染函数，将与该1一起的岛改成2，岛数++。</p>
+<p>​			   感染函数：</p>
 <p>【进阶】如何设计一个并行算法解决这个问题</p>
 </blockquote>
     </div>
