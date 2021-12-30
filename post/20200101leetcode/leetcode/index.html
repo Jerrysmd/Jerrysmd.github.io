@@ -124,7 +124,7 @@
 </svg></span>
     <span class="post_date">
       Jan 1, 2020</span>
-    <span class="post_time"> · 13 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/interview' title="interview" class="post_tag button button_translucent">interview
+    <span class="post_time"> · 14 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/interview' title="interview" class="post_tag button button_translucent">interview
         </a><a href='https://Jerrysmd.github.io/tags/leetcode' title="leetcode" class="post_tag button button_translucent">leetcode
         </a><a href='https://Jerrysmd.github.io/tags/algorithm' title="algorithm" class="post_tag button button_translucent">algorithm
         </a>
@@ -1096,8 +1096,18 @@
 <span class="ln">4</span>000000
 <span class="ln">5</span><span class="k">&gt; </span><span class="ge">这个矩阵中有三个岛
 </span></code></pre></div><p>【解题】顺序遍历节点，遇到1则进入感染函数，将与该1一起的岛改成2，岛数++。</p>
-<p>​			   感染函数：</p>
-<p>【进阶】如何设计一个并行算法解决这个问题</p>
+<p>感染函数：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">infect</span> <span class="o">(</span><span class="kt">int</span><span class="o">[][]</span><span class="n">m</span><span class="o">,</span> <span class="kt">int</span> <span class="n">i</span><span class="o">,</span> <span class="kt">int</span> <span class="n">j</span><span class="o">,</span> <span class="kt">int</span> <span class="n">N</span><span class="o">,</span> <span class="kt">int</span> <span class="n">M</span><span class="o">){</span> <span class="c1">//(i,j)位置 N,M矩形长宽
+</span><span class="ln"> 2</span><span class="c1"></span>    <span class="k">if</span><span class="o">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">0</span> <span class="o">||</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">N</span> <span class="o">||</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">0</span> <span class="o">||</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="n">M</span> <span class="o">||</span> <span class="n">m</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">!=</span> <span class="n">1</span><span class="o">){</span> <span class="c1">//i,j没越界，并且当前位置是1
+</span><span class="ln"> 3</span><span class="c1"></span>        <span class="k">return</span><span class="o">;</span>
+<span class="ln"> 4</span>    <span class="o">}</span>
+<span class="ln"> 5</span>    <span class="n">m</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">2</span><span class="o">;</span>
+<span class="ln"> 6</span>    <span class="n">infect</span><span class="o">(</span><span class="n">m</span><span class="o">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">1</span><span class="o">,</span> <span class="n">j</span><span class="o">,</span> <span class="n">N</span><span class="o">,</span> <span class="n">M</span><span class="o">);</span>
+<span class="ln"> 7</span>    <span class="n">infect</span><span class="o">(</span><span class="n">m</span><span class="o">,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">1</span><span class="o">,</span> <span class="n">j</span><span class="o">,</span> <span class="n">N</span><span class="o">,</span> <span class="n">M</span><span class="o">);</span>
+<span class="ln"> 8</span>    <span class="n">infect</span><span class="o">(</span><span class="n">m</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="n">j</span> <span class="o">+</span> <span class="n">1</span><span class="o">,</span> <span class="n">N</span><span class="o">,</span> <span class="n">M</span><span class="o">);</span>
+<span class="ln"> 9</span>    <span class="n">infect</span><span class="o">(</span><span class="n">m</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="n">j</span> <span class="o">-</span> <span class="n">1</span><span class="o">,</span> <span class="n">N</span><span class="o">,</span> <span class="n">M</span><span class="o">);</span>
+<span class="ln">10</span><span class="o">}</span>
+</code></pre></div><p>【进阶】如何设计一个并行算法解决这个问题</p>
 </blockquote>
     </div>
 
