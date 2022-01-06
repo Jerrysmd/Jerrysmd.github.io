@@ -1109,11 +1109,11 @@
 <span class="ln">10</span><span class="o">}</span>
 </code></pre></div><p>时间复杂度：O(N * M)</p>
 <p>【进阶】如何设计一个并行算法解决这个问题</p>
-<p>并查集：</p>
+<p><strong>并查集</strong>：</p>
 <blockquote>
 <p>解决两个集合<strong>查重</strong>与<strong>合并</strong>。使用 <strong>链表</strong> 和 <strong>hashSet</strong> 效率都不高。链表 合并的复杂度是 O(1)，查重是 O(n<sup>2</sup>)。使用 hashSet 查重 复杂度是 O(n)，合并 复杂度是 O(n)。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="c1">//找到头结点函数：判断集合是否是一个集合只用判断头结点是否相同。
-</span><span class="ln"> 2</span><span class="c1">//找头结点时同时优化：将该节点到头节点路径上的节点拍平，直接插到头结点上。当调用 findHead 函数次数越多，时间复杂度越接近O(1)
+</span><span class="ln"> 2</span><span class="c1">//找头结点时同时优化：将该节点到头节点路径上的节点拍平，直接插到头结点上。当调用 findHead 函数次数越多，时间复杂度越接近 O(1)
 </span><span class="ln"> 3</span><span class="c1"></span><span class="kd">private</span> <span class="n">Element</span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span> <span class="nf">findHead</span><span class="o">(</span><span class="n">Element</span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span> <span class="n">element</span><span class="o">){</span>
 <span class="ln"> 4</span>    <span class="n">Stack</span><span class="o">&lt;</span><span class="n">Element</span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;&gt;</span> <span class="n">path</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="o">&lt;&gt;();</span>
 <span class="ln"> 5</span>    <span class="k">while</span> <span class="o">(</span><span class="n">element</span> <span class="o">!=</span> <span class="n">fatherMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">element</span><span class="o">)){</span>
@@ -1143,6 +1143,8 @@
 <span class="ln">29</span><span class="o">}</span>
 <span class="ln">30</span>
 </code></pre></div></blockquote>
+<p>并行解决方案：</p>
+<p>如有两个线程，将岛图切分成 2 块，分别进行顺序遍历感染。这样统计出分散的岛视为不同的集合，将这些集合进行并查集合并操作，算出合并后的岛数。</p>
 </blockquote>
     </div>
 
