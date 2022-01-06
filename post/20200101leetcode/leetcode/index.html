@@ -1112,7 +1112,7 @@
 <p>并查集：</p>
 <blockquote>
 <p>解决两个集合<strong>查重</strong>与<strong>合并</strong>。使用 <strong>链表</strong> 和 <strong>hashSet</strong> 效率都不高。链表 合并的复杂度是 O(1)，查重是 O(n<sup>2</sup>)。使用 hashSet 查重 复杂度是 O(n)，合并 复杂度是 O(n)。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="c1">//找到头结点函数，判断集合是否是一个集合只用判断头结点是否相同。
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="c1">//找到头结点函数：判断集合是否是一个集合只用判断头结点是否相同。找头结点时同时优化：将路径上的节点拍平，直接插到头结点上。
 </span><span class="ln"> 2</span><span class="c1"></span><span class="kd">private</span> <span class="n">Element</span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span> <span class="nf">findHead</span><span class="o">(</span><span class="n">Element</span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span> <span class="n">element</span><span class="o">){</span>
 <span class="ln"> 3</span>    <span class="n">Stack</span><span class="o">&lt;</span><span class="n">Element</span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;&gt;</span> <span class="n">path</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="o">&lt;&gt;();</span>
 <span class="ln"> 4</span>    <span class="k">while</span> <span class="o">(</span><span class="n">element</span> <span class="o">!=</span> <span class="n">fatherMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">element</span><span class="o">)){</span>
@@ -1125,7 +1125,7 @@
 <span class="ln">11</span>    <span class="k">return</span> <span class="n">element</span><span class="o">;</span>
 <span class="ln">12</span><span class="o">}</span>
 <span class="ln">13</span>
-<span class="ln">14</span><span class="c1">//判断是否为同一
+<span class="ln">14</span><span class="c1">//判断是否为同一集合函数
 </span><span class="ln">15</span><span class="c1"></span><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isSameSet</span><span class="o">(</span><span class="n">V</span> <span class="n">a</span><span class="o">,</span> <span class="n">V</span> <span class="n">b</span><span class="o">){</span>
 <span class="ln">16</span>    <span class="k">if</span> <span class="o">(</span><span class="n">elementMap</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">a</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="n">elementMap</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">b</span><span class="o">)){</span>
 <span class="ln">17</span>        <span class="k">return</span> <span class="n">findHead</span><span class="o">(</span><span class="n">elementMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">a</span><span class="o">))</span> <span class="o">==</span> <span class="n">findHead</span><span class="o">(</span><span class="n">elementMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">b</span><span class="o">));</span>
@@ -1134,8 +1134,13 @@
 <span class="ln">20</span><span class="o">}</span>
 <span class="ln">21</span>
 <span class="ln">22</span>
-<span class="ln">23</span>
-<span class="ln">24</span>
+<span class="ln">23</span><span class="c1">//合并集合函数, 小集合插到大集合尾部
+</span><span class="ln">24</span><span class="c1"></span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">union</span><span class="o">(</span><span class="n">V</span> <span class="n">a</span><span class="o">,</span> <span class="n">V</span> <span class="n">b</span><span class="o">){</span>
+<span class="ln">25</span>    <span class="k">if</span> <span class="o">(</span><span class="n">elementMap</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">a</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="n">elementMap</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">b</span><span class="o">)){</span>
+<span class="ln">26</span>        <span class="o">...</span>
+<span class="ln">27</span>    <span class="o">}</span>
+<span class="ln">28</span><span class="o">}</span>
+<span class="ln">29</span>
 </code></pre></div></blockquote>
 </blockquote>
     </div>
