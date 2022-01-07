@@ -3,13 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://Jerrysmd.github.io/</loc>
-    <lastmod>2020-10-16T10:30:42+08:00</lastmod>
+    <lastmod>2020-11-07T14:55:59+08:00</lastmod>
   </url><url>
     <loc>https://Jerrysmd.github.io/categories/</loc>
-    <lastmod>2020-10-16T10:30:42+08:00</lastmod>
+    <lastmod>2020-11-07T14:55:59+08:00</lastmod>
+  </url><url>
+    <loc>https://Jerrysmd.github.io/post/20201107_clickhouse_intro/clickhouse_intro/</loc>
+    <lastmod>2020-11-07T14:55:59+08:00</lastmod>
+  </url><url>
+    <loc>https://Jerrysmd.github.io/tags/database/</loc>
+    <lastmod>2020-11-07T14:55:59+08:00</lastmod>
   </url><url>
     <loc>https://Jerrysmd.github.io/tags/distribution/</loc>
-    <lastmod>2020-10-16T10:30:42+08:00</lastmod>
+    <lastmod>2020-11-07T14:55:59+08:00</lastmod>
+  </url><url>
+    <loc>https://Jerrysmd.github.io/post/</loc>
+    <lastmod>2020-11-07T14:55:59+08:00</lastmod>
+  </url><url>
+    <loc>https://Jerrysmd.github.io/tags/sql/</loc>
+    <lastmod>2020-11-07T14:55:59+08:00</lastmod>
+  </url><url>
+    <loc>https://Jerrysmd.github.io/tags/</loc>
+    <lastmod>2020-11-07T14:55:59+08:00</lastmod>
+  </url><url>
+    <loc>https://Jerrysmd.github.io/categories/technology/</loc>
+    <lastmod>2020-11-07T14:55:59+08:00</lastmod>
   </url><url>
     <loc>https://Jerrysmd.github.io/tags/hbase/</loc>
     <lastmod>2020-10-16T10:30:42+08:00</lastmod>
@@ -18,15 +36,6 @@
     <lastmod>2020-10-16T10:30:42+08:00</lastmod>
   </url><url>
     <loc>https://Jerrysmd.github.io/tags/hdfs/</loc>
-    <lastmod>2020-10-16T10:30:42+08:00</lastmod>
-  </url><url>
-    <loc>https://Jerrysmd.github.io/post/</loc>
-    <lastmod>2020-10-16T10:30:42+08:00</lastmod>
-  </url><url>
-    <loc>https://Jerrysmd.github.io/tags/</loc>
-    <lastmod>2020-10-16T10:30:42+08:00</lastmod>
-  </url><url>
-    <loc>https://Jerrysmd.github.io/categories/technology/</loc>
     <lastmod>2020-10-16T10:30:42+08:00</lastmod>
   </url><url>
     <loc>https://Jerrysmd.github.io/about/</loc>
@@ -163,9 +172,6 @@
   </url><url>
     <loc>https://Jerrysmd.github.io/tags/file/</loc>
     <lastmod>2018-12-20T18:39:37-07:00</lastmod>
-  </url><url>
-    <loc>https://Jerrysmd.github.io/tags/sql/</loc>
-    <lastmod>2018-11-18T21:58:51-08:00</lastmod>
   </url><url>
     <loc>https://Jerrysmd.github.io/post/20181118sqlcipher/sqlcipher/</loc>
     <lastmod>2018-11-18T21:58:51-08:00</lastmod>
