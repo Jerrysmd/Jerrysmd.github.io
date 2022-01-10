@@ -10,15 +10,15 @@ h3.post_link {
 
 .post_date {
     margin-right: 0.3rem;
-    maigin-lefg: 0.25rem;
+    margin-left: 0.25rem;
 }
 
 span.post_time {
     margin-right: 0.2rem;
 }
 
-a.post_tag.button.button_translucent {
-    margin: 0.2rem 0.5rem;
+.post_meta .button {
+    margin: 0 0 0 0.5rem;
 }
 
 p {
