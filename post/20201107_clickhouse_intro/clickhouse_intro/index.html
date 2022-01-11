@@ -140,6 +140,7 @@
       <nav id="TableOfContents">
   <ul>
     <li><a href="#intro">Intro</a></li>
+    <li><a href="#data-type">Data Type</a></li>
   </ul>
 </nav>
     </div>
@@ -147,6 +148,43 @@
     <div class="post_body"><p>A high performance columnar OLAP database management system for real-time analytics using SQL. ClickHouse can be customized with a new set of efficient columnar storage engines, and has realized rich functions such as data ordered storage, primary key indexing, sparse indexing, data sharding, data partitioning, TTL, and primary and backup replication.</p>
 <h2 id="intro">Intro</h2>
 <p>Yandex，2016年，列式存储数据库，在线分析处理查询（OLAP），SQL查询实时生成分析数据报告。</p>
+<h2 id="data-type">Data Type</h2>
+<table>
+<thead>
+<tr>
+<th>MySQL</th>
+<th>Hive</th>
+<th>ClickHouse(区分大小写)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>byte</td>
+<td>tinyint</td>
+<td>Int8</td>
+</tr>
+<tr>
+<td>short</td>
+<td>smallint</td>
+<td>Int16</td>
+</tr>
+<tr>
+<td>int</td>
+<td>bigint</td>
+<td>Int64</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>timestamp</td>
+<td>DataTime</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
     </div>
 
 
