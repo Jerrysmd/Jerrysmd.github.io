@@ -141,6 +141,7 @@
   <ul>
     <li><a href="#intro">Intro</a></li>
     <li><a href="#data-type">Data Type</a></li>
+    <li><a href="#engine">Engine</a></li>
   </ul>
 </nav>
     </div>
@@ -205,8 +206,11 @@
 <li>
 <p>元组</p>
 <p>Tuple(T1, T2, ...)，每个元素都有单独的类型</p>
-</li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>SELECT array(1, &#39;a&#39;) AS arr, toTypeName(arr)
+</code></pre></div></li>
 </ul>
+<h2 id="engine">Engine</h2>
+<p>MySQL 默认的引擎：InnoDB 是事务型数据库的首选引擎，支持事务安全表（ACID）。</p>
     </div>
 
 
