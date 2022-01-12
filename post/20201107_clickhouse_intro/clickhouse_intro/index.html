@@ -199,8 +199,9 @@
 <li>
 <p>数组</p>
 <p>Array(T)，不推荐使用多维数组，对多维数组的支持有限。例如，不能在 MergeTree 表中存储多维数组。</p>
-<p>可以使用</p>
-</li>
+<p>可以使用 <code>array(T)</code> 或 <code>[]</code> 创建数组</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="ln">1</span><span class="k">SELECT</span><span class="w"> </span><span class="nb">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">toTypeName</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
+</span></code></pre></div></li>
 </ul>
     </div>
 
