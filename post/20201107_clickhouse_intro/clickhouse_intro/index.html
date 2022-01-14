@@ -268,6 +268,11 @@
 <p>在 MergeTree 的基础上，添加了 “处理重复数据” 的功能，该引擎和 MergeTree 的不同之处在于它会删除具有相同主键的重复项。</p>
 <h3 id="6-summingmergetree">6. SummingMergeTree</h3>
 <p>在 MergeTree 的基础上，添加了 “合并重复数据” 的功能，会把具有相同主键的行合并为一行，该行包含了被合并的行中具有数值数据类型的列的汇总值。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="ln">1</span><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">smt_table</span><span class="w"> </span><span class="p">(</span><span class="nb">date</span><span class="w"> </span><span class="nb">Date</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="w"> </span><span class="n">Uint16</span><span class="p">,</span><span class="w"> </span><span class="n">not_sum</span><span class="w"> </span><span class="n">UInt16</span><span class="p">)</span><span class="w">
+</span><span class="ln">2</span><span class="w"></span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SummingMergeTree</span><span class="p">(</span><span class="k">sum</span><span class="p">)</span><span class="w">
+</span><span class="ln">3</span><span class="w"></span><span class="n">partition</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="nb">date</span><span class="w">
+</span><span class="ln">4</span><span class="w"></span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="p">(</span><span class="nb">date</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w">
+</span></code></pre></div>
     </div>
 
 
