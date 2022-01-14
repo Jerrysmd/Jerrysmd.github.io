@@ -234,7 +234,7 @@
 </ol>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="ln">1</span><span class="k">create</span><span class="w"> </span><span class="n">tabele</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="n">UInt16</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">String</span><span class="p">)</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TinyLog</span><span class="w">
 </span></code></pre></div><h3 id="2-memory">2. Memory</h3>
-<p>内存引擎，重启数据就会消失，读写不互相阻塞，不支持索引。简单查询性能表现超过 10 G/s。测试场景或数据量又不太大的场景（上线大约 1 亿行）。</p>
+<p>内存引擎，重启数据就会消失，读写不互相阻塞，不支持索引。简单查询性能表现超过 10 G/s。测试场景或数据量又不太大的场景（上限大约 1 亿行）。</p>
     </div>
 
 
