@@ -241,6 +241,7 @@
 <p>（不要和 MergeTree 引擎混淆）本身不存储数据，但可用于同时从任意多个其他的表中读取数据，读是自动并行的，不支持写入。读数据时，那些被真正读取到数据的表的索引会被使用。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="ln">1</span><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="n">UInt16</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="n">String</span><span class="p">)</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Merge</span><span class="p">(</span><span class="n">currentDatabase</span><span class="p">(),</span><span class="w"> </span><span class="s1">&#39;^t&#39;</span><span class="p">);</span><span class="w">
 </span></code></pre></div><h3 id="4-mergetree-重点">4. MergeTree (重点)</h3>
+<p>clickhouse 中最强大的表引擎，当巨量数据要插入到表中，需要高效地一批批写入数据片段，并希望这些数据片段在后台按照一定规则合并。</p>
     </div>
 
 
