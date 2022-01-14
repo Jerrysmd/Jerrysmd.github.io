@@ -141,9 +141,10 @@
   <ul>
     <li><a href="#intro">Intro</a></li>
     <li><a href="#data-type">Data Type</a></li>
-    <li><a href="#engine">Engine</a>
+    <li><a href="#table-engine">Table Engine</a>
       <ul>
-        <li><a href="#tinylog">TinyLog</a></li>
+        <li><a href="#1-tinylog">1. TinyLog</a></li>
+        <li><a href="#2-memory">2. Memory</a></li>
       </ul>
     </li>
   </ul>
@@ -213,7 +214,7 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>SELECT array(1, &#39;a&#39;) AS arr, toTypeName(arr)
 </code></pre></div></li>
 </ul>
-<h2 id="engine">Engine</h2>
+<h2 id="table-engine">Table Engine</h2>
 <p>MySQL 默认的引擎：InnoDB 是事务型数据库的首选引擎，支持事务安全表（ACID）。</p>
 <p>使用二十种表引擎决定了：</p>
 <ol>
@@ -224,7 +225,7 @@
 <li>是否多线程请求</li>
 <li>数据复制参数</li>
 </ol>
-<h3 id="tinylog">TinyLog</h3>
+<h3 id="1-tinylog">1. TinyLog</h3>
 <p>最简单的表引擎，用于将数据存储在磁盘上。每列都存储在单独的压缩文件中，写入时，数据将附加到文件末尾。</p>
 <ol>
 <li>磁盘</li>
@@ -232,7 +233,8 @@
 <li>不支持并发写，不支持一边读一边写</li>
 </ol>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="ln">1</span><span class="k">create</span><span class="w"> </span><span class="n">tabele</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="n">UInt16</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">String</span><span class="p">)</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TinyLog</span><span class="w">
-</span></code></pre></div>
+</span></code></pre></div><h3 id="2-memory">2. Memory</h3>
+<p>内存引擎，重启数据就会消失，读写不互相阻塞，不支持索引。简单查询性能表现超过 10 G/s。测试场景或数据量又不太大的场景（上线大约 1 亿行）。</p>
     </div>
 
 
