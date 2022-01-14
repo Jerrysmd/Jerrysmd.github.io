@@ -246,8 +246,22 @@
 <li>数据按照主键排序</li>
 <li>可以使用分区（如果指定了主键）</li>
 <li>支持数据副本</li>
-<li>支持数据</li>
+<li>支持数据采样</li>
 </ol>
+<blockquote>
+<p>参数：</p>
+<p>ENGINE = MergeTree()</p>
+<p>PARTITION BY: 分区键。要按月分区，可以使用表达式toYYYYMM(data_column)</p>
+<p>ORDER BY: 表的排序键，可以是一组列的元组或任意的表达式</p>
+<p>PRIMARY KEY: 主键，需要与排序键字段不同，默认情况下主键跟排序键相同</p>
+<p>SAMPLE BY: 用于抽样的表达式，如果要用抽样表达式，主键中必须包含这个表达式</p>
+<p>SETTINGS: 影响 MergeTree 性能的额外参数：</p>
+<ol>
+<li>index_granularity: 索引粒度，即索引中相邻【标记】间的数据行树，默认 8192</li>
+<li>use_minimalistic_part_header_in_zookeeper: 数据片段头在 Zookeeper  中的存储方式</li>
+<li>min_merge_bytes_to_use_direct_io: 使用直接 I/O （不经过缓存 I/O）来操作磁盘的合并操作时要求的最小数据量。当数据量特别大时，没必要经过缓存 I/O</li>
+</ol>
+</blockquote>
     </div>
 
 
