@@ -145,6 +145,8 @@
       <ul>
         <li><a href="#1-tinylog">1. TinyLog</a></li>
         <li><a href="#2-memory">2. Memory</a></li>
+        <li><a href="#3-merge">3. Merge</a></li>
+        <li><a href="#4-mergetree-重点">4. MergeTree (重点)</a></li>
       </ul>
     </li>
   </ul>
@@ -235,6 +237,10 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="ln">1</span><span class="k">create</span><span class="w"> </span><span class="n">tabele</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="n">UInt16</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">String</span><span class="p">)</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TinyLog</span><span class="w">
 </span></code></pre></div><h3 id="2-memory">2. Memory</h3>
 <p>内存引擎，重启数据就会消失，读写不互相阻塞，不支持索引。简单查询性能表现超过 10 G/s。测试场景或数据量又不太大的场景（上限大约 1 亿行）。</p>
+<h3 id="3-merge">3. Merge</h3>
+<p>（不要和 MergeTree 引擎混淆）本身不存储数据，但可用于同时从任意多个其他的表中读取数据，读是自动并行的，不支持写入。读数据时，那些被真正读取到数据的表的索引会被使用。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="ln">1</span><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="n">UInt16</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="n">String</span><span class="p">)</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Merge</span><span class="p">(</span><span class="n">currentDatabase</span><span class="p">(),</span><span class="w"> </span><span class="s1">&#39;^t&#39;</span><span class="p">);</span><span class="w">
+</span></code></pre></div><h3 id="4-mergetree-重点">4. MergeTree (重点)</h3>
     </div>
 
 
