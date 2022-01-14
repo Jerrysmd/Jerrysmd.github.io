@@ -267,7 +267,7 @@
 <h3 id="5-replacingmergetree">5. ReplacingMergeTree</h3>
 <p>在 MergeTree 的基础上，添加了 “处理重复数据” 的功能，该引擎和 MergeTree 的不同之处在于它会删除具有相同主键的重复项。</p>
 <h3 id="6-summingmergetree">6. SummingMergeTree</h3>
-<p>在 MergeTree 的基础上，添加了 “合并重复数据” 的功能，</p>
+<p>在 MergeTree 的基础上，添加了 “合并重复数据” 的功能，会把具有相同主键的行合并为一行，该行包含了被合并的行中具有数值数据类型的列的汇总值。</p>
     </div>
 
 
