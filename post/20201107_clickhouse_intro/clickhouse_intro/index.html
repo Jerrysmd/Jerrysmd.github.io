@@ -147,6 +147,7 @@
         <li><a href="#2-memory">2. Memory</a></li>
         <li><a href="#3-merge">3. Merge</a></li>
         <li><a href="#4-mergetree-重点">4. MergeTree (重点)</a></li>
+        <li><a href="#5-replacingmergetree">5. ReplacingMergeTree</a></li>
       </ul>
     </li>
   </ul>
@@ -259,9 +260,11 @@
 <ol>
 <li>index_granularity: 索引粒度，即索引中相邻【标记】间的数据行树，默认 8192</li>
 <li>use_minimalistic_part_header_in_zookeeper: 数据片段头在 Zookeeper  中的存储方式</li>
-<li>min_merge_bytes_to_use_direct_io: 使用直接 I/O （不经过缓存 I/O）来操作磁盘的合并操作时要求的最小数据量。当数据量特别大时，没必要经过缓存 I/O，默认数据小于 10G 会开启缓存 I</li>
+<li>min_merge_bytes_to_use_direct_io: 使用直接 I/O （不经过缓存 I/O）来操作磁盘的合并操作时要求的最小数据量。当数据量特别大时，没必要经过缓存 I/O，默认数据小于 10G 会开启缓存 I/O</li>
 </ol>
 </blockquote>
+<h3 id="5-replacingmergetree">5. ReplacingMergeTree</h3>
+<p>在 MergeTree 的基础上，添加了 “处理重复数据” 的功能，该引擎和 MergeTree 的不同之处在于它会删除具有</p>
     </div>
 
 
