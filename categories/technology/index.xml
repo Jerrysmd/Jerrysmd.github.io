@@ -5,7 +5,23 @@
     <link>https://Jerrysmd.github.io/categories/technology/</link>
     <description>Recent content in Technology on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 07 Nov 2020 14:55:59 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/categories/technology/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 15 Dec 2020 10:47:59 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/categories/technology/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Parquet Format</title>
+      <link>https://Jerrysmd.github.io/post/20201215_parquet_format/parquet_format/</link>
+      <pubDate>Tue, 15 Dec 2020 10:47:59 +0800</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/20201215_parquet_format/parquet_format/</guid>
+      <description>
+        
+          
+            &lt;p&gt;Apache Parquet is designed for efficient as well as performant flat columnar storage format of data compared to row based files like CSV or TSV files. Parquet uses the record shredding and assembly algorithm which is superior to simple flattening of nested namespaces. Parquet is optimized to work with complex data in bulk and features different ways for efficient data compression and encoding types. This approach is best especially for those queries that need to read certain columns from a large table. Parquet can only read the needed columns therefore greatly minimizing the IO.&lt;/p&gt;
+          
+          
+        
+      </description>
+    </item>
+    
     <item>
       <title>Clickhouse Introduction</title>
       <link>https://Jerrysmd.github.io/post/20201107_clickhouse_intro/clickhouse_intro/</link>

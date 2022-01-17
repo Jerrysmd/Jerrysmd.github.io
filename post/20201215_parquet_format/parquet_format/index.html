@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en" data-figures="true" class="page" data-mode="dim">
   <head>
-<title>HDFS &amp; NFS | JerrysBlog</title>
+<title>Parquet Format | JerrysBlog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,17 +29,17 @@
 <meta name="description" content="Article description.">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@0x4c2">
-<meta name="twitter:title" content="HDFS &amp; NFS" />
-<meta property="og:url" content="https://Jerrysmd.github.io/post/20200326hdfsnfs/hdfsnfs/" />
-<meta property="og:title" content="HDFS &amp; NFS" />
+<meta name="twitter:title" content="Parquet Format" />
+<meta property="og:url" content="https://Jerrysmd.github.io/post/20201215_parquet_format/parquet_format/" />
+<meta property="og:title" content="Parquet Format" />
 <meta property="og:description" content="Article description." />
-<meta property="og:image" content="https://Jerrysmd.github.io/post/20200326hdfsnfs/hdfsnfs/images/data1.png" />
+<meta property="og:image" content="https://Jerrysmd.github.io/post/20201215_parquet_format/parquet_format/images/data2.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://Jerrysmd.github.io/icons_custom/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://Jerrysmd.github.io/icons_custom/favicon-32x32.png">
 <link rel="manifest" href="https://Jerrysmd.github.io/icons_custom/site.webmanifest">
 
-<link rel="canonical" href="https://Jerrysmd.github.io/post/20200326hdfsnfs/hdfsnfs/">
+<link rel="canonical" href="https://Jerrysmd.github.io/post/20201215_parquet_format/parquet_format/">
 
     
 
@@ -117,16 +117,17 @@
   
 <div class="grid-inverse wrap content">
   <article class="post_content">
-    <h1 class="post_title">HDFS &amp; NFS</h1>
+    <h1 class="post_title">Parquet Format</h1>
   <div class="post_meta">
     <span><svg class="icon">
   <use xlink:href="#calendar"></use>
 </svg></span>
     <span class="post_date">
-      Mar 26, 2020</span>
-    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/hdfs' title="HDFS" class="post_tag button button_translucent">HDFS
-        </a><a href='https://Jerrysmd.github.io/tags/nfs' title="NFS" class="post_tag button button_translucent">NFS
+      Dec 15, 2020</span>
+    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/spark' title="spark" class="post_tag button button_translucent">spark
         </a><a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
+        </a><a href='https://Jerrysmd.github.io/tags/hdfs' title="hdfs" class="post_tag button button_translucent">hdfs
+        </a><a href='https://Jerrysmd.github.io/tags/database' title="database" class="post_tag button button_translucent">database
         </a>
     </span>
   </div>
@@ -137,28 +138,78 @@
     
     <div class="post_toc">
       <h2>Overview</h2>
-      <nav id="TableOfContents">
-  <ul>
-    <li><a href="#nfs">NFS</a></li>
-    <li><a href="#hdfs">HDFS</a></li>
-    <li><a href="#similarities">Similarities</a></li>
-    <li><a href="#differences">Differences</a></li>
-  </ul>
-</nav>
+      <nav id="TableOfContents"></nav>
     </div>
     
-    <div class="post_body"><p>The major difference between the two is Replication/Fault Tolerance. HDFS was designed to survive failures. NFS does not have any fault tolerance built in. Other than fault tolerance, HDFS does support multiple replicas of files. This eliminates (or eases) the common bottleneck of many clients accessing a single file. Since files have multiple replicas, on different physical disks, reading performance scales better than NFS.</p>
-<h2 id="nfs">NFS</h2>
-<p><strong>NFS (Network</strong> <strong>File system</strong>): A protocol developed that allows clients to access files over the network. NFS clients allow files to be accessed as if the files reside on the local machine, even though they reside on the disk of a networked machine.</p>
-<p>In <strong>NFS</strong>, the data is stored only on one main system. All the other systems in that network can access the data stored in that as if it was stored in their local system. But the problem with this is that, if the main system goes down, then the data is lost and also, the storage depends on the space available on that system.</p>
-<h2 id="hdfs">HDFS</h2>
-<p><strong>HDFS (Hadoop Distributed File System):</strong> A file system that is distributed amongst many networked computers or nodes. HDFS is fault tolerant because it stores multiple replicas of files on the file system, the default replication level is 3.</p>
-<p>In <strong>HDFS,</strong> data is distributed among different systems called datanodes. Here, the storage capacity is comparatively high. <strong>HDFS</strong> is mainly used to store Big Data and enable fast data transaction.</p>
-<h2 id="similarities">Similarities</h2>
-<p>两者的文件系统数据均能够在相关系统内的多台机器上进行数据读取和写入，都是分布式文件系统</p>
-<h2 id="differences">Differences</h2>
-<p>NFS是通过RPC通信协议进行数据共享的文件系统，所以NFS必须在运行的同时确保RPC能够正常工作。在不同的文件进行读取和写入时，实际上是对服务端的共享文件地址进行操作，一旦服务端出现问题，那么其他所有的机器无法进行文件读取和写入，并且数据无法找回。所以NFS系统的文件其实并没有备份，并且其服务端没有做高可用处理。</p>
-<p>HDFS是通过数据备份进行的大数据存储文件系统。HDFS有系统备份，并且其namenode有secondnamenode进行备份处理，更加安全可靠。数据在经过多副本存储后，能够抵御各种灾难，只要有一个副本不丢失，数据就不会丢失。所以数据的安全性很高。</p>
+    <div class="post_body"><p>Apache Parquet is designed for efficient as well as performant flat columnar storage format of data compared to row based files like CSV or TSV files. Parquet uses the record shredding and assembly algorithm which is superior to simple flattening of nested namespaces. Parquet is optimized to work with complex data in bulk and features different ways for efficient data compression and encoding types. This approach is best especially for those queries that need to read certain columns from a large table. Parquet can only read the needed columns therefore greatly minimizing the IO.</p>
+<p>HDFS 默认存的是文本格式，所以 hive, presto，都是在文本格式上做计算，hadoop本身是全表扫，只是分布式而以，所以我们之前用的就是分布式的全表扫而以，没有发挥出数据仓库该有的功能,列式存储，天然擅长分析，千万级别的表，count，sum，group by ，秒出结果。</p>
+<p>1、场景描述：</p>
+<p>对客户日志做了数据仓库，但实际业务使用中有一些个共同点，</p>
+<p>A  需要关联维度表</p>
+<p>B  最终仅取某个产品一段时间内的数据</p>
+<p>C 只关注其中极少的字段</p>
+<p>基于以上业务，我们决定每天定时统一关联维度表，对关联后的数据进行另外存储。各个业务直接使用关联后的数据进行离线计算。</p>
+<p>2、选择parquet的外部因素</p>
+<p>在各种列存储中，我们最终选择 parquet 的原因有许多。除了 parquet 自身的优点，还有以下因素：</p>
+<p>A、公司当时已经上线spark 集群，而spark天然支持parquet，并为其推荐的存储格式(默认存储为parquet)。</p>
+<p>B、hive 支持parquet格式存储，如果以后使用hiveql 进行查询，也完全兼容。</p>
+<p>3、选择parquet的内在原因</p>
+<p>下面通过对比parquet和csv，说说parquet自身都有哪些优势</p>
+<p>csv在hdfs上存储的大小与实际文件大小一样。若考虑副本，则为实际文件大小*副本数目。（若没有压缩）</p>
+<p>3.1 parquet采用不同压缩方式的压缩比</p>
+<p>说明：原始日志大小为214G左右，120多的字段</p>
+<p>采用csv（非压缩模式）几乎没有压缩。</p>
+<p>采用 parquet 非压缩模式、gzip、snappy格式压缩后分别为17.4G、8.0G、11G，达到的压缩比分别是：12、27、19。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>csv</th>
+<th>parquet 非压缩模式</th>
+<th>gzip</th>
+<th>snappy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>存储大小</td>
+<td>214G</td>
+<td>17.4G</td>
+<td>8.0G</td>
+<td>11G</td>
+</tr>
+<tr>
+<td>压缩比例</td>
+<td></td>
+<td>12</td>
+<td>27</td>
+<td>19</td>
+</tr>
+</tbody>
+</table>
+<p>若我们在hdfs上存储3份，压缩比仍达到4、9、6倍</p>
+<p>3.2 分区过滤与列修剪</p>
+<p>3.2.1分区过滤</p>
+<p>parquet结合spark，可以完美的实现支持分区过滤。如，需要某个产品某段时间的数据，则hdfs只取这个文件夹。</p>
+<p>spark sql、rdd 等的filter、where关键字均能达到分区过滤的效果。</p>
+<p>使用spark的partitionBy 可以实现分区，若传入多个参数，则创建多级分区。第一个字段作为一级分区，第二个字段作为2级分区。。。。。</p>
+<p>3.2.2 列修剪</p>
+<p>列修剪：其实说简单点就是我们要取回的那些列的数据。</p>
+<p>当取得列越少，速度越快。当取所有列的数据时，比如我们的120列数据，这时效率将极低。同时，也就失去了使用parquet的意义。</p>
+<p>3.2.3 分区过滤与列修剪测试如下：</p>
+<p>说明：</p>
+<p>A、task数、input值、耗时均为spark web ui上的真实数据。</p>
+<p>B、之所以没有验证csv进行对比，是因为当200多G，每条记录为120字段时，csv读取一个字段算个count就直接lost excuter了。</p>
+<p>C、注意：为避免自动优化，我们直接打印了每条记录每个字段的值。（以上耗时估计有多部分是耗在这里了）</p>
+<p>D、通过上图对比可以发现：</p>
+<p>当我们取出所有记录时，三种压缩方式耗时差别不大。耗时大概7分钟。
+当我们仅取出某一天时，parquet的分区过滤优势便显示出来。仅为6分之一左右。貌似当时全量为七八天左右吧。
+当我们仅取某一天的一个字段时，时间将再次缩短。这时，硬盘将只扫描该列所在rowgroup的柱面。大大节省IO。如有兴趣，可以参考 深入分析Parquet列式存储格式</p>
+<p>E、测试时请开启filterpushdown功能</p>
+<p>4、结论</p>
+<p>parquet的gzip的压缩比率最高，若不考虑备份可以达到27倍。可能这也是spar parquet默认采用gzip压缩的原因吧。
+分区过滤和列修剪可以帮助我们大幅节省磁盘IO。以减轻对服务器的压力。
+如果你的数据字段非常多，但实际应用中，每个业务仅读取其中少量字段，parquet将是一个非常好的选择。</p>
     </div>
 
 
@@ -212,9 +263,6 @@
     <h2 class="mt-4">Recent Posts</h2>
     <ul class="flex-column">
       <li>
-        <a href="https://Jerrysmd.github.io/post/20201215_parquet_format/parquet_format/" class="nav-link" title="Parquet Format">Parquet Format</a>
-      </li>
-      <li>
         <a href="https://Jerrysmd.github.io/post/20201107_clickhouse_intro/clickhouse_intro/" class="nav-link" title="Clickhouse Introduction">Clickhouse Introduction</a>
       </li>
       <li>
@@ -225,6 +273,9 @@
       </li>
       <li>
         <a href="https://Jerrysmd.github.io/post/20200811yarn-clusteryarn-client/yarn-clusteryarn-client/" class="nav-link" title="Spark On Yarn: yarn-cluster, yarn-client">Spark On Yarn: yarn-cluster, yarn-client</a>
+      </li>
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20200803sparkguide3/sparkguide3/" class="nav-link" title="Spark 简介: Spark Guide, Part Ⅲ">Spark 简介: Spark Guide, Part Ⅲ</a>
       </li>
     </ul>
     <div>
