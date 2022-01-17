@@ -153,6 +153,7 @@
       </ul>
     </li>
     <li><a href="#imexport-hdfs">Im/Export HDFS</a></li>
+    <li><a href="#optimize">Optimize</a></li>
   </ul>
 </nav>
     </div>
@@ -280,6 +281,7 @@
 <blockquote>
 <p>Clickhouse 从 18.16.0 版本开始支持从 HDFS 读取文件，在 19.1.6 版本支持读和写，在 19.4 版本开始支持 Parquet 格式。</p>
 </blockquote>
+<p>案例一：client 通过 clickhouse 查询引擎访问 HDFS 上的文件</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln"> 1</span><span class="c1"># 上传 csv 到 hdfs 根目录</span>
 <span class="ln"> 2</span>hadoop fs -put module.csv /
 <span class="ln"> 3</span><span class="c1"># 进入 clickhouse 命令</span>
@@ -295,8 +297,11 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span><span class="c1"># 删除 HDFS 上的 CSV，验证是否在 clickhouse 上占用空间</span>
 <span class="ln">2</span>hadoop fs -rm -r /module.csv
 <span class="ln">3</span><span class="c1"># sql</span>
-<span class="ln">4</span>SELECT * from h
-</code></pre></div>
+<span class="ln">4</span>SELECT * from hdfs_module_csv<span class="p">;</span> <span class="c1"># error</span>
+</code></pre></div><p>案例二：HDFS 插入数据到本地存储引擎，client 通过 clickhouse 查询引擎查询 clickhouse 本地数据</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="ln">1</span><span class="o">#</span><span class="w"> </span><span class="err">通过</span><span class="w"> </span><span class="k">sql</span><span class="w"> </span><span class="err">插入到本地</span><span class="w">
+</span><span class="ln">2</span><span class="w"></span><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">student_local</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">hdfs_module_csv</span><span class="w">
+</span></code></pre></div><h2 id="optimize">Optimize</h2>
     </div>
 
 
