@@ -138,23 +138,30 @@
     
     <div class="post_toc">
       <h2>Overview</h2>
-      <nav id="TableOfContents"></nav>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1场景描述">1、场景描述：</a></li>
+    <li><a href="#2选择parquet的外部因素">2、选择parquet的外部因素</a></li>
+    <li><a href="#3选择-parquet-的内在原因">3、选择 parquet 的内在原因</a></li>
+    <li><a href="#4结论">4、结论</a></li>
+  </ul>
+</nav>
     </div>
     
     <div class="post_body"><p>Apache Parquet is designed for efficient as well as performant flat columnar storage format of data compared to row based files like CSV or TSV files. Parquet uses the record shredding and assembly algorithm which is superior to simple flattening of nested namespaces. Parquet is optimized to work with complex data in bulk and features different ways for efficient data compression and encoding types. This approach is best especially for those queries that need to read certain columns from a large table. Parquet can only read the needed columns therefore greatly minimizing the IO.</p>
 <p>HDFS 默认存的是文本格式，所以 hive, presto，都是在文本格式上做计算，hadoop本身是全表扫，只是分布式而以，所以我们之前用的就是分布式的全表扫而以，没有发挥出数据仓库该有的功能,列式存储，天然擅长分析，千万级别的表，count，sum，group by ，秒出结果。</p>
-<p>1、场景描述：</p>
+<h2 id="1场景描述">1、场景描述：</h2>
 <p>对客户日志做了数据仓库，但实际业务使用中有一些个共同点，</p>
 <p>A  需要关联维度表</p>
 <p>B  最终仅取某个产品一段时间内的数据</p>
 <p>C 只关注其中极少的字段</p>
 <p>基于以上业务，我们决定每天定时统一关联维度表，对关联后的数据进行另外存储。各个业务直接使用关联后的数据进行离线计算。</p>
-<p>2、选择parquet的外部因素</p>
+<h2 id="2选择parquet的外部因素">2、选择parquet的外部因素</h2>
 <p>在各种列存储中，我们最终选择 parquet 的原因有许多。除了 parquet 自身的优点，还有以下因素：</p>
 <p>A、公司当时已经上线spark 集群，而spark天然支持parquet，并为其推荐的存储格式(默认存储为parquet)。</p>
-<p>B、hive 支持parquet格式存储，如果以后使用hiveql 进行查询，也完全兼容。</p>
-<p>3、选择parquet的内在原因</p>
-<p>下面通过对比parquet和csv，说说parquet自身都有哪些优势</p>
+<p>B、hive 支持 parquet 格式存储，如果以后使用hivesql 进行查询，也完全兼容。</p>
+<h2 id="3选择-parquet-的内在原因">3、选择 parquet 的内在原因</h2>
+<p>下面通过对比 parquet 和 csv，说说parquet自身都有哪些优势</p>
 <p>csv在hdfs上存储的大小与实际文件大小一样。若考虑副本，则为实际文件大小*副本数目。（若没有压缩）</p>
 <p>3.1 parquet采用不同压缩方式的压缩比</p>
 <p>说明：原始日志大小为214G左右，120多的字段</p>
@@ -165,9 +172,9 @@
 <tr>
 <th></th>
 <th>csv</th>
-<th>parquet 非压缩模式</th>
-<th>gzip</th>
-<th>snappy</th>
+<th>parquet 非压缩</th>
+<th>parquet gzip</th>
+<th>parquet snappy</th>
 </tr>
 </thead>
 <tbody>
@@ -187,7 +194,7 @@
 </tr>
 </tbody>
 </table>
-<p>若我们在hdfs上存储3份，压缩比仍达到4、9、6倍</p>
+<p>若我们在 hdfs 上存储3份，压缩比仍达到4、9、6倍</p>
 <p>3.2 分区过滤与列修剪</p>
 <p>3.2.1分区过滤</p>
 <p>parquet结合spark，可以完美的实现支持分区过滤。如，需要某个产品某段时间的数据，则hdfs只取这个文件夹。</p>
@@ -206,7 +213,7 @@
 当我们仅取出某一天时，parquet的分区过滤优势便显示出来。仅为6分之一左右。貌似当时全量为七八天左右吧。
 当我们仅取某一天的一个字段时，时间将再次缩短。这时，硬盘将只扫描该列所在rowgroup的柱面。大大节省IO。如有兴趣，可以参考 深入分析Parquet列式存储格式</p>
 <p>E、测试时请开启filterpushdown功能</p>
-<p>4、结论</p>
+<h2 id="4结论">4、结论</h2>
 <p>parquet的gzip的压缩比率最高，若不考虑备份可以达到27倍。可能这也是spar parquet默认采用gzip压缩的原因吧。
 分区过滤和列修剪可以帮助我们大幅节省磁盘IO。以减轻对服务器的压力。
 如果你的数据字段非常多，但实际应用中，每个业务仅读取其中少量字段，parquet将是一个非常好的选择。</p>
