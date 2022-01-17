@@ -280,7 +280,22 @@
 <blockquote>
 <p>Clickhouse 从 18.16.0 版本开始支持从 HDFS 读取文件，在 19.1.6 版本支持读和写，在 19.4 版本开始支持 Parquet 格式。</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>hadoop fs -put module.csv /
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln"> 1</span><span class="c1"># 上传 csv 到 hdfs 根目录</span>
+<span class="ln"> 2</span>hadoop fs -put module.csv /
+<span class="ln"> 3</span><span class="c1"># 进入 clickhouse 命令</span>
+<span class="ln"> 4</span>clickhouse-client -h hadoop2 -m
+<span class="ln"> 5</span><span class="c1"># 建表</span>
+<span class="ln"> 6</span>create table hdfs_module_csv
+<span class="ln"> 7</span><span class="o">(</span>
+<span class="ln"> 8</span>	id Int8,
+<span class="ln"> 9</span>	name String
+<span class="ln">10</span><span class="o">)</span>
+<span class="ln">11</span><span class="nv">Engine</span> <span class="o">=</span> HDFS<span class="o">(</span><span class="s1">&#39;hdfs://hadoop2:9000/module.csv&#39;</span>,<span class="s1">&#39;CSV&#39;</span><span class="o">)</span><span class="p">;</span>
+</code></pre></div><p>验证：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span><span class="c1"># 删除 HDFS 上的 CSV，验证是否在 clickhouse 上占用空间</span>
+<span class="ln">2</span>hadoop fs -rm -r /module.csv
+<span class="ln">3</span><span class="c1"># sql</span>
+<span class="ln">4</span>SELECT * from h
 </code></pre></div>
     </div>
 
