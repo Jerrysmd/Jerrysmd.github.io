@@ -302,6 +302,20 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="ln">1</span><span class="o">#</span><span class="w"> </span><span class="err">通过</span><span class="w"> </span><span class="k">sql</span><span class="w"> </span><span class="err">插入到本地</span><span class="w">
 </span><span class="ln">2</span><span class="w"></span><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">student_local</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">hdfs_module_csv</span><span class="w">
 </span></code></pre></div><h2 id="optimize">Optimize</h2>
+<ol>
+<li>
+<p>max_memory_usage</p>
+<p>此参数在 /etc/clickhouse-server/user.xml 中，表示单词 Query 占用内存最大值，超过 Query 失败，尽量调大。</p>
+</li>
+<li>
+<p>删除多个节点上的同一张表</p>
+<p>使用 on cluster 关键字。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="ln">1</span><span class="k">drop</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="k">cluster</span><span class="w"> </span><span class="k">table_name</span><span class="w">
+</span></code></pre></div></li>
+<li>
+<p>自动数据备份</p>
+</li>
+</ol>
     </div>
 
 
