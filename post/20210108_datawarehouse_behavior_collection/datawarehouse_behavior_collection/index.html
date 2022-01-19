@@ -221,6 +221,80 @@
 <li>集群监控：Zabbix</li>
 <li>元数据管理：Atlas</li>
 <li>权限管理：Ranger</li>
+</ul>
+<h3 id="系统流程图">系统流程图</h3>
+<p>
+
+
+
+
+
+
+
+
+
+  <figure>
+    <picture>
+
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      
+
+      <img class="image_figure image_internal" src="https://Jerrysmd.github.io/post/20210108_dataWarehouse_behavior_collection/system_design.png" alt="system_design" loading="lazy" decoding="async" width="1276" height="656"  />
+      
+
+    </picture>
+  </figure>
+</p>
+<ul>
+<li>
+<p><strong>业务数据 / 前端 js 埋点行为数据</strong>：持久化或不持久化写入数据库。</p>
+</li>
+<li>
+<p><strong>Nginx</strong>：负载均衡，使每个节点数据量保持合理。</p>
+</li>
+<li>
+<p><strong>Flume</strong>：采集日志。可以直接采集到 Hadoop，但 hadoop 可能处理很慢，如双11。可以先写到 Kafka 里。</p>
+<p>Flume 组成，Put 事务，Take 事务</p>
+<p>Flume 三个器：拦截器，选择器，监控器</p>
+</li>
 <li></li>
 </ul>
     </div>
