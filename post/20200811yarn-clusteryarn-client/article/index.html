@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en" data-figures="true" class="page" data-mode="dim">
   <head>
-<title>SQL Introduction | JerrysBlog</title>
+<title>Spark On Yarn: yarn-cluster, yarn-client | JerrysBlog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,17 +29,17 @@
 <meta name="description" content="Article description.">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@0x4c2">
-<meta name="twitter:title" content="SQL Introduction" />
-<meta property="og:url" content="https://Jerrysmd.github.io/post/20181017sqlintroduction/sqlintroduction/" />
-<meta property="og:title" content="SQL Introduction" />
+<meta name="twitter:title" content="Spark On Yarn: yarn-cluster, yarn-client" />
+<meta property="og:url" content="https://Jerrysmd.github.io/post/20200811yarn-clusteryarn-client/article/" />
+<meta property="og:title" content="Spark On Yarn: yarn-cluster, yarn-client" />
 <meta property="og:description" content="Article description." />
-<meta property="og:image" content="https://Jerrysmd.github.io/post/20181017sqlintroduction/sqlintroduction/images/data2.png" />
+<meta property="og:image" content="https://Jerrysmd.github.io/post/20200811yarn-clusteryarn-client/article/images/distribution.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://Jerrysmd.github.io/icons_custom/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://Jerrysmd.github.io/icons_custom/favicon-32x32.png">
 <link rel="manifest" href="https://Jerrysmd.github.io/icons_custom/site.webmanifest">
 
-<link rel="canonical" href="https://Jerrysmd.github.io/post/20181017sqlintroduction/sqlintroduction/">
+<link rel="canonical" href="https://Jerrysmd.github.io/post/20200811yarn-clusteryarn-client/article/">
 
     
 
@@ -117,14 +117,15 @@
   
 <div class="grid-inverse wrap content">
   <article class="post_content">
-    <h1 class="post_title">SQL Introduction</h1>
+    <h1 class="post_title">Spark On Yarn: yarn-cluster, yarn-client</h1>
   <div class="post_meta">
     <span><svg class="icon">
   <use xlink:href="#calendar"></use>
 </svg></span>
     <span class="post_date">
-      Oct 17, 2018</span>
-    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/sql' title="sql" class="post_tag button button_translucent">sql
+      Aug 11, 2020</span>
+    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
+        </a><a href='https://Jerrysmd.github.io/tags/spark' title="spark" class="post_tag button button_translucent">spark
         </a>
     </span>
   </div>
@@ -133,105 +134,142 @@
 
 
     
-    <div class="post_body"><p>In computer programming, create, read, update, and delete (CRUD) are the four basic functions of persistent storage. Alternate words are sometimes used when defining the four basic functions of CRUD, such as retrieve instead of read, modify instead of update, or destroy instead of delete. CRUD is also sometimes used to describe user interface conventions that facilitate viewing, searching, and changing information, often using computer-based forms and reports.</p>
-<h3 id="1-查询语句">1. 查询语句</h3>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>select ...</th>
-<th>from ...</th>
-<th>where ...</th>
-<th>group by ...</th>
-<th>having ...</th>
-<th>order by ...</th>
-<th>limit ...</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>次序</td>
-<td>4</td>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-</tr>
-</tbody>
-</table>
-<h3 id="2-group-by">2. Group by</h3>
-<p>GROUP BY 语句用于结合聚合函数，根据一个或多个列对结果集进行分组。</p>
-<p>实例：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="ln"> 1</span><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">access_log</span><span class="p">;</span><span class="w">
-</span><span class="ln"> 2</span><span class="w"></span><span class="o">+</span><span class="c1">-----+---------+-------+------------+
-</span><span class="ln"> 3</span><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">aid</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">site_id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">count</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nb">date</span><span class="w">       </span><span class="o">|</span><span class="w">
-</span><span class="ln"> 4</span><span class="w"></span><span class="o">+</span><span class="c1">-----+---------+-------+------------+
-</span><span class="ln"> 5</span><span class="c1"></span><span class="o">|</span><span class="w">   </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w">       </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w">    </span><span class="mi">45</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">10</span><span class="w"> </span><span class="o">|</span><span class="w">
-</span><span class="ln"> 6</span><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">2</span><span class="w"> </span><span class="o">|</span><span class="w">       </span><span class="mi">3</span><span class="w"> </span><span class="o">|</span><span class="w">   </span><span class="mi">100</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">13</span><span class="w"> </span><span class="o">|</span><span class="w">
-</span><span class="ln"> 7</span><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">3</span><span class="w"> </span><span class="o">|</span><span class="w">       </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w">   </span><span class="mi">230</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">14</span><span class="w"> </span><span class="o">|</span><span class="w">
-</span><span class="ln"> 8</span><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">4</span><span class="w"> </span><span class="o">|</span><span class="w">       </span><span class="mi">2</span><span class="w"> </span><span class="o">|</span><span class="w">    </span><span class="mi">10</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">14</span><span class="w"> </span><span class="o">|</span><span class="w">
-</span><span class="ln"> 9</span><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">5</span><span class="w"> </span><span class="o">|</span><span class="w">       </span><span class="mi">5</span><span class="w"> </span><span class="o">|</span><span class="w">   </span><span class="mi">205</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">14</span><span class="w"> </span><span class="o">|</span><span class="w">
-</span><span class="ln">10</span><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">6</span><span class="w"> </span><span class="o">|</span><span class="w">       </span><span class="mi">4</span><span class="w"> </span><span class="o">|</span><span class="w">    </span><span class="mi">13</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">15</span><span class="w"> </span><span class="o">|</span><span class="w">
-</span><span class="ln">11</span><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">7</span><span class="w"> </span><span class="o">|</span><span class="w">       </span><span class="mi">3</span><span class="w"> </span><span class="o">|</span><span class="w">   </span><span class="mi">220</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">15</span><span class="w"> </span><span class="o">|</span><span class="w">
-</span><span class="ln">12</span><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">8</span><span class="w"> </span><span class="o">|</span><span class="w">       </span><span class="mi">5</span><span class="w"> </span><span class="o">|</span><span class="w">   </span><span class="mi">545</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">16</span><span class="w"> </span><span class="o">|</span><span class="w">
-</span><span class="ln">13</span><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">9</span><span class="w"> </span><span class="o">|</span><span class="w">       </span><span class="mi">3</span><span class="w"> </span><span class="o">|</span><span class="w">   </span><span class="mi">201</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">17</span><span class="w"> </span><span class="o">|</span><span class="w">
-</span><span class="ln">14</span><span class="w"></span><span class="o">+</span><span class="c1">-----+---------+-------+------------+
-</span><span class="ln">15</span><span class="c1"></span><span class="mi">9</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
-</span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="ln"> 1</span><span class="k">SELECT</span><span class="w"> </span><span class="n">site_id</span><span class="p">,</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">access_log</span><span class="p">.</span><span class="k">count</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">nums</span><span class="w">
-</span><span class="ln"> 2</span><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">access_log</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">site_id</span><span class="p">;</span><span class="w">
-</span><span class="ln"> 3</span><span class="w"></span><span class="o">+</span><span class="c1">---------+------+
-</span><span class="ln"> 4</span><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">site_id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">nums</span><span class="w"> </span><span class="o">|</span><span class="w">
-</span><span class="ln"> 5</span><span class="w"></span><span class="o">+</span><span class="c1">---------+------+
-</span><span class="ln"> 6</span><span class="c1"></span><span class="o">|</span><span class="w">   </span><span class="mi">1</span><span class="w">     </span><span class="o">|</span><span class="w">  </span><span class="mi">275</span><span class="w"> </span><span class="o">|</span><span class="w">
-</span><span class="ln"> 7</span><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">2</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mi">10</span><span class="w"> </span><span class="o">|</span><span class="w">
-</span><span class="ln"> 8</span><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">3</span><span class="w">     </span><span class="o">|</span><span class="w">  </span><span class="mi">521</span><span class="w"> </span><span class="o">|</span><span class="w">
-</span><span class="ln"> 9</span><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">4</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mi">13</span><span class="w"> </span><span class="o">|</span><span class="w">
-</span><span class="ln">10</span><span class="w"></span><span class="o">|</span><span class="w">   </span><span class="mi">5</span><span class="w">     </span><span class="o">|</span><span class="w">  </span><span class="mi">750</span><span class="w"> </span><span class="o">|</span><span class="w">
-</span><span class="ln">11</span><span class="w"></span><span class="o">+</span><span class="c1">---------+------+
-</span><span class="ln">12</span><span class="c1"></span><span class="w">
-</span></code></pre></div><h3 id="3-聚集函数">3. 聚集函数</h3>
-<table>
-<thead>
-<tr>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th>6</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>count</td>
-<td>sum</td>
-<td>max</td>
-<td>min</td>
-<td>avg</td>
-<td>group_concat</td>
-</tr>
-</tbody>
-</table>
-<h3 id="4-having">4. Having</h3>
-<p>HAVING 子句可以让我们筛选分组后的各组数据。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="ln">1</span><span class="err">查询每个班中人数大于</span><span class="mi">2</span><span class="err">的班级号：</span><span class="w">
-</span><span class="ln">2</span><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">classid</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">stu</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">classid</span><span class="w"> </span><span class="k">having</span><span class="w"> </span><span class="n">n</span><span class="o">&gt;</span><span class="mi">2</span><span class="p">;</span><span class="w">
-</span><span class="ln">3</span><span class="w"></span><span class="k">or</span><span class="w">
-</span><span class="ln">4</span><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="n">classid</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">stu</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">classid</span><span class="w"> </span><span class="k">having</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">2</span><span class="p">;</span><span class="w">
-</span></code></pre></div><h3 id="5-order-by">5. Order by</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="ln">1</span><span class="p">...</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">classid</span><span class="p">;</span><span class="w">
-</span><span class="ln">2</span><span class="w"></span><span class="mi">1</span><span class="p">.</span><span class="err">先按</span><span class="n">n排序</span><span class="w">
-</span><span class="ln">3</span><span class="w"></span><span class="mi">2</span><span class="p">.</span><span class="err">在不改</span><span class="n">n排序的情况下排classid</span><span class="w">
-</span></code></pre></div><h3 id="6-limit">6. Limit</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="ln">1</span><span class="p">...</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w">
-</span><span class="ln">2</span><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="err">检索记录行</span><span class="w"> </span><span class="mi">2</span><span class="o">-</span><span class="mi">10</span><span class="w">
-</span></code></pre></div><h3 id="7-join">7. Join</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="ln">1</span><span class="n">stu</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">classid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">class</span><span class="p">.</span><span class="n">id</span><span class="w">
-</span><span class="ln">2</span><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="err">会把左表的每一行分别与右表每一行拼接</span><span class="w">
-</span><span class="ln">3</span><span class="w"></span><span class="o">#</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="err">做筛选</span><span class="w">
-</span></code></pre></div>
+    <div class="post_toc">
+      <h2>Overview</h2>
+      <nav id="TableOfContents"></nav>
+    </div>
+    
+    <div class="post_body"><p>YARN is a generic resource-management framework for distributed workloads; in other words, a cluster-level operating system. Although part of the Hadoop ecosystem, YARN can support a lot of varied compute-frameworks (such as Tez, and Spark) in addition to MapReduce.</p>
+<p>Spark支持可插拔的集群管理模式(Standalone、Mesos以及YARN )，集群管理负责启动executor进程，编写Spark application 的人根本不需要知道Spark用的是什么集群管理。Spark支持的三种集群模式，这三种集群模式都由两个组件组成:master和slave。Master服务(YARN ResourceManager,Mesos master和Spark standalone master)决定哪些application可以运行，什么时候运行以及哪里去运行。而slave服务( YARN NodeManager, Mesos slave和Spark standalone slave)实际上运行executor进程。</p>
+<p>　　当在YARN上运行Spark作业，每个Spark executor作为一个YARN容器(container)运行。Spark可以使得多个Tasks在同一个容器(container)里面运行。这是个很大的优点。</p>
+<blockquote>
+<p>注意这里和Hadoop的MapReduce作业不一样，MapReduce作业为每个Task开启不同的JVM来运行。虽然说MapReduce可以通过参数来配置。详见<code>mapreduce.job.jvm.numtasks</code></p>
+</blockquote>
+<p><strong>从广义上讲</strong>，yarn-cluster适用于生产环境；而yarn-client适用于交互和调试，也就是希望快速地看到application的输出。</p>
+<blockquote>
+<p>Application Master。在YARN中，每个Application实例都有一个Application Master进程，它是Application启动的第一个容器。它负责和ResourceManager打交道，并请求资源。获取资源之后告诉NodeManager为其启动container。</p>
+</blockquote>
+<p><strong>从深层次的含义讲</strong>，yarn-cluster和yarn-client模式的区别其实就是Application Master进程的区别，yarn-cluster模式下，driver运行在AM(Application Master)中，它负责向YARN申请资源，并监督作业的运行状况。当用户提交了作业之后，就可以关掉Client，作业会继续在YARN上运行。然而yarn-cluster模式不适合运行交互类型的作业。而yarn-client模式下，Application Master仅仅向YARN请求executor，client会和请求的container通信来调度他们工作，也就是说Client不能离开。（上图是yarn-cluster模式，下图是yarn-client模式）：</p>
+<p>
+
+
+
+
+
+
+
+
+
+  <figure>
+    <picture>
+
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      
+
+      <img class="image_figure image_internal" src="https://Jerrysmd.github.io/post/20200811yarn-cluster&amp;yarn-client/spark-yarn-f31.png" alt="spark-yarn-f31" loading="lazy" decoding="async" width="620" height="493"  />
+      
+
+    </picture>
+  </figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+  <figure>
+    <picture>
+
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      
+
+      <img class="image_figure image_internal" src="https://Jerrysmd.github.io/post/20200811yarn-cluster&amp;yarn-client/spark-yarn-f22.png" alt="spark-yarn-f22" loading="lazy" decoding="async" width="620" height="493"  />
+      
+
+    </picture>
+  </figure>
+</p>
     </div>
 
 
@@ -261,9 +299,6 @@
         <a href="https://Jerrysmd.github.io/post/20201016hbase-rowkey-design/hbase-rowkey-design/" class="nav-link" title="Hbase Rowkey Design">Hbase Rowkey Design</a>
       </li>
       <li>
-        <a href="https://Jerrysmd.github.io/post/20200811yarn-clusteryarn-client/article/" class="nav-link" title="Spark On Yarn: yarn-cluster, yarn-client">Spark On Yarn: yarn-cluster, yarn-client</a>
-      </li>
-      <li>
         <a href="https://Jerrysmd.github.io/post/20200803sparkguide3/sparkguide3/" class="nav-link" title="Spark 简介: Spark Guide, Part Ⅲ">Spark 简介: Spark Guide, Part Ⅲ</a>
       </li>
       <li>
@@ -280,6 +315,9 @@
       </li>
       <li>
         <a href="https://Jerrysmd.github.io/post/20200519zookeeper/zookeeper/" class="nav-link" title="Zookeeper核心知识点: Key points of ZooKeeper">Zookeeper核心知识点: Key points of ZooKeeper</a>
+      </li>
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20200427kafka/kafka/" class="nav-link" title="KAFKA和消息队列: Kafka &amp; Message Queue">KAFKA和消息队列: Kafka &amp; Message Queue</a>
       </li>
     </ul>
     <h2 class="mt-4">Recent Posts</h2>
