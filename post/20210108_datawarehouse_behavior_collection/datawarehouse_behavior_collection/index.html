@@ -312,6 +312,13 @@
 <p>**Hive：**1.Hive内部表、外部表区别 2.4个by 3.系统函数 4.UDF、UDTF函数 5.窗口函数 6.Hive优化 7.数据倾斜 8.Hive引擎 9.元数据备份</p>
 </li>
 </ul>
+<h3 id="集群配置">集群配置</h3>
+<p>配置原则:</p>
+<ol>
+<li>消耗内存的组件要分开：HDFS 的 NameNode、Yarn 的 ResourceManager 分开配置</li>
+<li>kafka、zk、flume 传输数据比较紧密的放在一起</li>
+<li>客户端放在一到两台服务器上，方便外部访问</li>
+</ol>
     </div>
 
 
