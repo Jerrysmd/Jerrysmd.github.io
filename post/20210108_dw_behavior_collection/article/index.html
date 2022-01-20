@@ -1,8 +1,8 @@
 
 <!DOCTYPE html>
-<html lang="en" data-figures="" data-mode="dim">
+<html lang="en" data-figures="true" class="page" data-mode="dim">
   <head>
-<title>python | JerrysBlog</title>
+<title>Data Warehouse: Behavior Collection | JerrysBlog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,21 +26,20 @@
 <meta property="og:locale" content="en" />
 
 <meta property="og:type" content="article">
-<meta name="description" content="">
+<meta name="description" content="Article description.">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@0x4c2">
-<meta name="twitter:title" content="python" />
-<meta property="og:url" content="https://Jerrysmd.github.io/tags/python/" />
-<meta property="og:title" content="python" />
-<meta property="og:description" content="" />
-<meta property="og:image" content="https://Jerrysmd.github.io/images/thumbnail.png" />
+<meta name="twitter:title" content="Data Warehouse: Behavior Collection" />
+<meta property="og:url" content="https://Jerrysmd.github.io/post/20210108_dw_behavior_collection/article/" />
+<meta property="og:title" content="Data Warehouse: Behavior Collection" />
+<meta property="og:description" content="Article description." />
+<meta property="og:image" content="https://Jerrysmd.github.io/post/20210108_dw_behavior_collection/article/images/distribution2.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://Jerrysmd.github.io/icons_custom/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://Jerrysmd.github.io/icons_custom/favicon-32x32.png">
 <link rel="manifest" href="https://Jerrysmd.github.io/icons_custom/site.webmanifest">
 
-<link rel="canonical" href="https://Jerrysmd.github.io/tags/python/">
-<link rel="alternate" type="application/rss+xml" href="https://Jerrysmd.github.io/tags/python/index.xml" title="JerrysBlog" />
+<link rel="canonical" href="https://Jerrysmd.github.io/post/20210108_dw_behavior_collection/article/">
 
     
 
@@ -58,8 +57,7 @@
   
   
     
-  
-  <body data-code="7" data-lines="true" id="documentTop">
+  <body data-code="40" data-lines="true" id="documentTop">
 
 <header class="nav_header" >
   <nav class="nav"><a href='https://Jerrysmd.github.io/' class="nav_brand nav_item" title="JerrysBlog">
@@ -116,39 +114,53 @@
 </header>
 
     <main>
-
+  
 <div class="grid-inverse wrap content">
-  <ul class="posts" id="posts">
-      <li class="post_item">
-  <div class="excerpt">
-    <div class="excerpt_header">
-      <h3 class="post_link">
-        <a href="https://Jerrysmd.github.io/post/20190510pythonintroduction/pythonintroduction/" title="Python Introduction">Python Introduction</a>
-      </h3>
-      
+  <article class="post_content">
+    <h1 class="post_title">Data Warehouse: Behavior Collection</h1>
   <div class="post_meta">
     <span><svg class="icon">
   <use xlink:href="#calendar"></use>
 </svg></span>
     <span class="post_date">
-      May 10, 2019</span>
-    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/python' title="python" class="post_tag button button_translucent">python
+      Jan 8, 2021</span>
+    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/datawarehouse' title="datawarehouse" class="post_tag button button_translucent">datawarehouse
+        </a><a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
         </a>
     </span>
   </div>
 
-    </div>
-    <div class="excerpt_footer partition">
 
-      
-      
-      
-      
-      
-<div class="excerpt_thumbnail">
-  <picture>
+
 
     
+    <div class="post_body"><p>Data warehouse is a system that pulls together data derived from operational systems and external data sources within an organization for reporting and analysis. A data warehouse is a central repository of information that provides users with current and historical decision support information.</p>
+<h2 id="数据仓库">数据仓库</h2>
+<h3 id="概念">概念</h3>
+<ul>
+<li>
+<p>业务数据：</p>
+<p>处理事务过程中产生的数据。登录、下单、支付。</p>
+</li>
+<li>
+<p>用户行为数据：</p>
+<p>与客户端产品交互过程产生的数据。浏览、点击、停留。</p>
+</li>
+</ul>
+<p>
+
+
+
+
+
+
+
+
+
+  <figure>
+    <picture>
+
+      
         
         
         
@@ -189,25 +201,133 @@
         
       
 
-      <img class="image_thumbnail image_internal" src="https://Jerrysmd.github.io/images/code2.png" alt="Python Introduction" loading="lazy" decoding="async" width="213" height="213" /></picture>
-</div>
+      <img class="image_figure image_internal" src="https://Jerrysmd.github.io/post/20210108_dW_behavior_collection/dataWarehouse_introduction.png" alt="dataWarehouse_introduction" loading="lazy" decoding="async" width="1253" height="575"  />
+      
+
+    </picture>
+  </figure>
+</p>
+<blockquote>
+<p>数仓是对数据进行 <strong>备份、清洗、聚合、统计</strong> 等操作。</p>
+<p>ODS原始数据层；DWD明细数据层；DWS服务数据层；DWT数据主题层；ADS数据应用层</p>
+</blockquote>
+<h3 id="技术组件">技术组件</h3>
+<ul>
+<li>数据采集传输：<strong>Flume，Kafka，Sqoop</strong>，Logstash，DataX</li>
+<li>数据存储：<strong>MySQL，HDFS，HBASE</strong>，Redis，MongoDB</li>
+<li>数据计算：<strong>Hive，Tez，Spark</strong>，Flink，Storm</li>
+<li>数据查询：<strong>Presto，Kylin</strong>，Impala，Druid</li>
+<li>数据可视化：Echarts、<strong>Superset</strong>、QuickBI、DataV</li>
+<li>任务调度：Azkaban、Oozie</li>
+<li>集群监控：Zabbix</li>
+<li>元数据管理：Atlas</li>
+<li>权限管理：Ranger</li>
+</ul>
+<h3 id="系统流程图">系统流程图</h3>
+<p>
+
+
+
+
+
+
+
+
+
+  <figure>
+    <picture>
 
       
-        <div>
-          <p class="pale">
-            
-              <p>Python is dynamically-typed and garbage-collected. It supports multiple programming paradigms, including structured (particularly, procedural), object-oriented and functional programming. Python is often described as a &quot;batteries included&quot; language due to its comprehensive standard library.</p>
-            
-          </p>
-          <a href="https://Jerrysmd.github.io/post/20190510pythonintroduction/pythonintroduction/" title="Read More" class="excerpt_more button">Read More</a>
-        </div>
-      </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      
+
+      <img class="image_figure image_internal" src="https://Jerrysmd.github.io/post/20210108_dW_behavior_collection/system_design.png" alt="system_design" loading="lazy" decoding="async" width="1276" height="656"  />
+      
+
+    </picture>
+  </figure>
+</p>
+<ul>
+<li>
+<p><code>业务数据 / 前端 js 埋点行为数据：</code>持久化或不持久化写入数据库。</p>
+</li>
+<li>
+<p><code>Nginx：</code>负载均衡，使每个节点数据量保持合理。</p>
+</li>
+<li>
+<p><code>Flume：</code>采集日志。可以直接采集到 Hadoop，但 hadoop 可能处理很慢，如双11。可以先写到 Kafka 里。</p>
+<p>Flume 组成，Put 事务，Take 事务</p>
+<p>Flume 三个器：拦截器，选择器，监控器</p>
+<p>Flume 优化：内存，台数</p>
+</li>
+<li>
+<p><code>Kafka：</code>23 件事</p>
+<p>1.kafka基本信息 2.挂了 3.丢失 4.重复 5.积压 6.优化 7.高效读写的原因</p>
+</li>
+<li>
+<p><code>Zookeeper：</code>分布式协调</p>
+<p>1.部署多少台 2.选举机制，Paxos算法</p>
+</li>
+<li>
+<p><code>Flume：</code> 消费传到 Hadoop</p>
+</li>
+<li>
+<p><code>Hive：</code> 1.Hive内部表、外部表区别 2.4个by 3.系统函数 4.UDF、UDTF函数 5.窗口函数 6.Hive优化 7.数据倾斜 8.Hive引擎 9.元数据备份</p>
+</li>
+</ul>
+<h3 id="集群配置">集群配置</h3>
+<p>配置原则:</p>
+<ol>
+<li>消耗内存的组件要分开：HDFS 的 NameNode、Yarn 的 ResourceManager 分开配置</li>
+<li>kafka、zk、flume 传输数据比较紧密的放在一起</li>
+<li>客户端放在一到两台服务器上，方便外部访问</li>
+</ol>
     </div>
-  </li>
 
-    <li>
-    </li>
-  </ul>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+
+
+  </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
         <h2>刘佳锐</h2>
@@ -218,9 +338,6 @@
     
     <h2 class="mt-4">Featured Posts</h2>
     <ul>
-      <li>
-        <a href="https://Jerrysmd.github.io/post/20210108_dw_behavior_collection/article/" class="nav-link" title="Data Warehouse: Behavior Collection">Data Warehouse: Behavior Collection</a>
-      </li>
       <li>
         <a href="https://Jerrysmd.github.io/post/20201107_clickhouse_intro/clickhouse_intro/" class="nav-link" title="Clickhouse Introduction">Clickhouse Introduction</a>
       </li>
@@ -248,12 +365,12 @@
       <li>
         <a href="https://Jerrysmd.github.io/post/20200519zookeeper/zookeeper/" class="nav-link" title="Zookeeper核心知识点: Key points of ZooKeeper">Zookeeper核心知识点: Key points of ZooKeeper</a>
       </li>
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20200427kafka/kafka/" class="nav-link" title="KAFKA和消息队列: Kafka &amp; Message Queue">KAFKA和消息队列: Kafka &amp; Message Queue</a>
+      </li>
     </ul>
     <h2 class="mt-4">Recent Posts</h2>
     <ul class="flex-column">
-      <li>
-        <a href="https://Jerrysmd.github.io/post/20210108_dw_behavior_collection/article/" class="nav-link" title="Data Warehouse: Behavior Collection">Data Warehouse: Behavior Collection</a>
-      </li>
       <li>
         <a href="https://Jerrysmd.github.io/post/20201215_parquet_format/parquet_format/" class="nav-link" title="Parquet Format">Parquet Format</a>
       </li>
@@ -265,6 +382,9 @@
       </li>
       <li>
         <a href="https://Jerrysmd.github.io/post/20200911es-wildcard-search/es-wildcard-search/" class="nav-link" title="Elasticsearch Wildcard Search">Elasticsearch Wildcard Search</a>
+      </li>
+      <li>
+        <a href="https://Jerrysmd.github.io/post/20200811yarn-clusteryarn-client/article/" class="nav-link" title="Spark On Yarn: yarn-cluster, yarn-client">Spark On Yarn: yarn-cluster, yarn-client</a>
       </li>
     </ul>
     <div>
@@ -464,9 +584,8 @@
   </section>
 </aside>
 
+  
 </div>
-
-
     </main><svg width="0" height="0" class="hidden">
   <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="facebook">
     <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h151V331h-60v-90h60v-61c0-49.629 40.371-90 90-90h91v90h-91v61h91l-15 90h-76v181h121c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zm0 0"></path>
