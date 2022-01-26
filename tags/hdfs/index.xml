@@ -23,6 +23,22 @@
     </item>
     
     <item>
+      <title>HBASE Optimize</title>
+      <link>https://Jerrysmd.github.io/post/20201026_hbase_optimize/article/</link>
+      <pubDate>Mon, 26 Oct 2020 09:14:35 +0800</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/20201026_hbase_optimize/article/</guid>
+      <description>
+        
+          
+            &lt;p&gt;HBase is a high reliability, high performance, column-oriented, and scalable distributed database. However, the READ/write performance deteriorates when a large amount of concurrent data or existing data is generated. You can use the following methods to improve the HBase search speed.&lt;/p&gt;
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
       <title>Hbase Rowkey Design</title>
       <link>https://Jerrysmd.github.io/post/20201016hbase-rowkey-design/hbase-rowkey-design/</link>
       <pubDate>Fri, 16 Oct 2020 10:30:42 +0800</pubDate>
