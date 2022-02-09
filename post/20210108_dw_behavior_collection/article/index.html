@@ -309,6 +309,15 @@
 <li>kafka、zk、flume 传输数据比较紧密的放在一起</li>
 <li>客户端放在一到两台服务器上，方便外部访问</li>
 </ol>
+<h2 id="数据采集模块">数据采集模块</h2>
+<h3 id="hadoop">Hadoop</h3>
+<blockquote>
+<p>优化：</p>
+<ol>
+<li>数据均衡：节点与节点间，磁盘与磁盘间，都可以使用命令使数据均衡，threshold 设置差值。</li>
+<li>LZO 压缩</li>
+</ol>
+</blockquote>
     </div>
 
 
