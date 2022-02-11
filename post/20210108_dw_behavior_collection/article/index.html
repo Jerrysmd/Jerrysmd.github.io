@@ -319,9 +319,9 @@
 </li>
 <li>
 <p>LZO 压缩：hadoop 额外支持 gzip、Snappy、Lzo、Lzop(分片) 压缩方式。LZO创建索引后可以实现分片。</p>
-<p>需要压缩的三个地方：</p>
 </li>
 </ol>
+<p>需要压缩的三个地方：</p>
 <table>
 <thead>
 <tr>
@@ -356,6 +356,14 @@
 </tr>
 </tbody>
 </table>
+<ol start="3">
+<li>HDFS参数调优：</li>
+<li>对于大集群或者大量客户端的集群来说，通常需要调大 dfs.namenode.handler.count 的个数，默认值为10个。建议调整为 20 * loge<sup>cluster size</sup></li>
+<li>Yarn参数调优 yarn-site.xml：</li>
+<li>情景描述：总共7台机器，每天几亿条数据，数据源 -&gt; Flume -&gt; Kafka -&gt; HDFS -&gt; Hive</li>
+<li>问题：数据统计主要用 HiveSQL，没有数据倾斜，小文件已经做了合并处理，开启了 JVM 重用，而且IO 没有阻塞，<strong>内存用了不到 50%</strong>，但还是跑的非常慢，而且数据量洪峰时，整个集群都会宕掉，基于这种情况的优化方案是什么。</li>
+<li>解决办法：典型的内存</li>
+</ol>
 </blockquote>
     </div>
 
