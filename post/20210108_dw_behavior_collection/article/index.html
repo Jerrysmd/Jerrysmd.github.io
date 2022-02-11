@@ -362,8 +362,11 @@
 <li>Yarn参数调优 yarn-site.xml：</li>
 <li>情景描述：总共7台机器，每天几亿条数据，数据源 -&gt; Flume -&gt; Kafka -&gt; HDFS -&gt; Hive</li>
 <li>问题：数据统计主要用 HiveSQL，没有数据倾斜，小文件已经做了合并处理，开启了 JVM 重用，而且IO 没有阻塞，<strong>内存用了不到 50%</strong>，但还是跑的非常慢，而且数据量洪峰时，整个集群都会宕掉，基于这种情况的优化方案是什么。</li>
-<li>解决办法：典型的内存利用率不够，一般是 Yarn 的2个配置造成的，<strong>单个任务可以申请的最大内存大小</strong>，和 <strong>Hadoop 单个节点可用内存大小</strong>。调节这两个参数能提高系统内存的利用率。 NodeManager 默认内存大小 8g，单个任务默认内存大小 8g，maptask默认内存大小 1g，reducetask默认内存大小 1g。</li>
+<li>解决办法：典型的内存利用率不够，一般是 Yarn 的2个配置造成的，<strong>单个任务可以申请的最大内存大小</strong>，和 <strong>Hadoop 单个节点可用内存大小</strong>。调节这两个参数能提高系统内存的利用率。 （NodeManager 默认内存大小 8g，单个任务默认内存大小 8g，maptask默认内存大小 1g，reducetask默认内存大小 1g。）NodeManager内存改为节点 80% 左右的内存大小。单个任务内存大小根据每 128M 数据分配1g内存。maptask 和 reducetask 内存若不支持压缩也需要调大。</li>
 </ol>
+</blockquote>
+<h3 id="zookeeper">Zookeeper</h3>
+<blockquote>
 </blockquote>
     </div>
 
