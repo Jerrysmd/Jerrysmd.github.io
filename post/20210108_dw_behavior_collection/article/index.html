@@ -362,7 +362,7 @@
 <li>Yarn参数调优 yarn-site.xml：</li>
 <li>情景描述：总共7台机器，每天几亿条数据，数据源 -&gt; Flume -&gt; Kafka -&gt; HDFS -&gt; Hive</li>
 <li>问题：数据统计主要用 HiveSQL，没有数据倾斜，小文件已经做了合并处理，开启了 JVM 重用，而且IO 没有阻塞，<strong>内存用了不到 50%</strong>，但还是跑的非常慢，而且数据量洪峰时，整个集群都会宕掉，基于这种情况的优化方案是什么。</li>
-<li>解决办法：典型的内存</li>
+<li>解决办法：典型的内存利用率不够，一般是 Yarn 的2个配置造成的</li>
 </ol>
 </blockquote>
     </div>
