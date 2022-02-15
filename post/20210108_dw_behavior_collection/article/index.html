@@ -376,14 +376,18 @@
 <p>kafka producer 生产者压力测试：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>bin/kafka-producer-perf-test.sh --topic <span class="nb">test</span> --record-size <span class="m">100</span> --num-records <span class="m">100000</span> --throughput -1 --producer-props bootstrap.servers<span class="o">=</span>hadoop102:9092,hadoop103:9092
 </code></pre></div><p>参数说明：</p>
-<p>record-size 是一条信息有多大，单位是字节。</p>
-<p>num-records 是总共发送多少条信息。</p>
-<p>throughput 是每秒多少条信息，设成-1表示不限流，可测出生产者最大吞吐量。</p>
+<p>--record-size：是一条信息有多大，单位是字节。</p>
+<p>--num-records：是总共发送多少条信息。</p>
+<p>--throughput：是每秒多少条信息，设成-1表示不限流，可测出生产者最大吞吐量。</p>
 </blockquote>
 <blockquote>
 <p>kafka consumer 消费者压力测试：</p>
 <p>如果 IO、CPU、内存、网络 这四个指标都不能改变，考虑增加分区数来提升性能。</p>
-<p>参数说明</p>
+<p>参数说明：</p>
+<p>--broker-list：指定 kafka 集群地址</p>
+<p>--topic：指定 topic 的名称</p>
+<p>--fetch-size：指定每次 fetch 的数据大小</p>
+<p>--messages：总共要消费的消息个数</p>
 </blockquote>
     </div>
 
