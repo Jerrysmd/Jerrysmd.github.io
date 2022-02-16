@@ -391,6 +391,16 @@
 </blockquote>
 <blockquote>
 <p>kafka 分区数计算：</p>
+<ol>
+<li>创建一个只有一个分区的topic</li>
+<li>测试这个 topic 的 producer 吞吐量和 consumer 吞吐量。</li>
+<li>假设他们的值是 Tp 和 Tc，单位是 MB/s。</li>
+<li>然后假设总的目标吞吐量是 Tt，那么分区数 = Tt/min( Tp，Tc)</li>
+<li>分区数一般设置为：3 - 10个</li>
+</ol>
+</blockquote>
+<h3 id="flume">Flume</h3>
+<blockquote>
 </blockquote>
     </div>
 
