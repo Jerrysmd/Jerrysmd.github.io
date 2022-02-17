@@ -403,13 +403,26 @@
 <blockquote>
 <p>Flume 组件选型</p>
 <ol>
-<li>Source：
+<li>
+<p>Source：</p>
 <ol>
 <li>Taildir Source：支持断点续传、多目录。但可能有数据重复（重复数据在下一级解决：在 hive 的 dwd 层、spark streaming 使用 group by、开窗取窗口第一条数据）</li>
 </ol>
 </li>
-<li>Channel：
-1.</li>
+<li>
+<p>Channel：</p>
+<ol>
+<li>
+<p>kafka channel：数据存放在 kafka 里面。kafka 数据存在磁盘里。</p>
+<p><strong>基于磁盘，可靠性高</strong></p>
+<p>kafka channel &gt; memory channel + kafka sink</p>
+<p>如果下一级是 kafka，优先选择 kafka channel</p>
+<p>如果下一级不是 kafka，对可靠性要求比较高，金融领域，优先选择 file channel</p>
+<p>如果下一级不是 kafka，对可靠性要求不高，选择 memory channel，追求效率</p>
+<p>kafka channel 1.6版本产生，但有 bug 产生的数据是 header + 内容，1.7 版本解决</p>
+</li>
+</ol>
+</li>
 </ol>
 </blockquote>
     </div>
