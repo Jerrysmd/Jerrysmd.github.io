@@ -428,7 +428,7 @@
 <blockquote>
 <p>Flume 拦截器</p>
 <p>Flume 消费 Kafka 里面的数据时，可能已经是第二天，数据有可能发往第二天的 HDFS 路径。</p>
-<p>解决思路：拦截 json 日志，通过 fastjson 解析 json，获取实际时间 ts。将获取</p>
+<p>解决思路：拦截 json 日志，通过 fastjson 解析 json，获取实际时间 ts。将获取的 ts 时间写入拦截器 header 头，header 的 key 必须是 <strong>timestamp，因为 Flume 框架会根据这个 key 的值识别为时间，写入到 HDFS。</strong></p>
 <ol>
 <li>创建 Maven 工程 flume-interceptor</li>
 <li>创建包名：com.whatever.flume.interceptor</li>
