@@ -498,6 +498,17 @@
   </figure>
 </p>
 </blockquote>
+<blockquote>
+<p>Flume优化：</p>
+<ol>
+<li>内存参数设置优化：
+<ol>
+<li>JVM heap 一般设置为 4G 或更高</li>
+<li>-Xmx（启动内存） 与 -Xms（运行内存） 最好设置一致，减少内存抖动带来的性能影响，如果不一致容易倒置 fullgc</li>
+</ol>
+</li>
+</ol>
+</blockquote>
     </div>
 
 
