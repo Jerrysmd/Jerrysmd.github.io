@@ -12,7 +12,14 @@
       <pubDate>Sun, 12 Aug 2018 05:42:44 -0700</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20180812hyperscan/hyperscan/</guid>
-      <description>&lt;p&gt;Hyperscan是一款来自于Intel的高性能的正则表达式匹配库。它是基于X86平台以PCRE为原型而开发的。在支持PCRE的大部分语法的前提下，Hyperscan增加了特定的语法和工作模式来保证其在真实网络场景下的实用性。&lt;/p&gt;</description>
+      <description>
+        
+          
+            &lt;p&gt;Hyperscan是一款来自于Intel的高性能的正则表达式匹配库。它是基于X86平台以PCRE为原型而开发的。在支持PCRE的大部分语法的前提下，Hyperscan增加了特定的语法和工作模式来保证其在真实网络场景下的实用性。&lt;/p&gt;
+          
+          
+        
+      </description>
     </item>
     
   </channel>
