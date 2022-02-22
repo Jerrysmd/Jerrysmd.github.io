@@ -12,14 +12,7 @@
       <pubDate>Tue, 19 May 2020 16:07:17 +0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20200519zookeeper/zookeeper/</guid>
-      <description>
-        
-          
-            &lt;p&gt;ZooKeeper is an open source distributed coordination framework. It is positioned to provide consistent services for distributed applications and is the administrator of the entire big data system. ZooKeeper will encapsulate key services that are complex and error-prone, and provide users with efficient, stable, and easy-to-use services.&lt;/p&gt;
-          
-          
-        
-      </description>
+      <description>&lt;p&gt;ZooKeeper is an open source distributed coordination framework. It is positioned to provide consistent services for distributed applications and is the administrator of the entire big data system. ZooKeeper will encapsulate key services that are complex and error-prone, and provide users with efficient, stable, and easy-to-use services.&lt;/p&gt;</description>
     </item>
     
   </channel>
