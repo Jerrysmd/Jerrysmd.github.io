@@ -113,3 +113,7 @@ a.excerpt_more.button {
 h2 {
     font-weight: bold;
 }
+
+.post_item {
+    margin-bottom: 2.5rem;
+}
