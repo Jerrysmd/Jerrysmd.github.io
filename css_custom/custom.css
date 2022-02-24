@@ -23,6 +23,8 @@ span.post_time {
 
 p {
     color: #9b9c9d;
+    margin: 0px;
+    padding: 0px
 }
 
 p.pale{
@@ -96,4 +98,8 @@ a {
 
 a.excerpt_more.button {
     display: none;
+}
+
+.pale {
+    margin: 0px 0px 0px 6px;
 }
