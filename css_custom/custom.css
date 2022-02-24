@@ -22,6 +22,7 @@ span.post_time {
 }
 
 p {
+    color: #9b9c9d;
     padding-bottom: 0.5rem;
 }
 
@@ -38,20 +39,21 @@ p.pale{
 }
 
 .post_meta span{
+    color: #9b9c9d;
     align-items: center;
     display: inline-flex;
 }
 
 html {
-    --bg: #22272e;
+    --bg: #1d1e20;
 }
 
 .nav_header {
-    background-color: #2d333b;
+    background-color: #1d1e20;
 }
 
 .nav_body {
-    background-color: #2d333b;
+    background-color: #1d1e20;
 }
 
 .color_mode {
@@ -82,9 +84,13 @@ a.button.mt-1:hover, abutton.mt-1:focus, a.excerpt_more.button:hover, a.excerpt_
 }
 
 html:not([data-mode="lit"]){
-    --light: #d2d9e1;
+    --light: #dadadb;
 }
 
 .nav{
     color: var(--header-text);
+}
+
+a {
+    font-weight: bold;
 }
