@@ -23,7 +23,6 @@ span.post_time {
 
 p {
     color: #9b9c9d;
-    padding-bottom: 0.5rem;
 }
 
 p.pale{
@@ -93,4 +92,8 @@ html:not([data-mode="lit"]){
 
 a {
     font-weight: bold;
+}
+
+a.excerpt_more.button {
+    display: none;
 }
