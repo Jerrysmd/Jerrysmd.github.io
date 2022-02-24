@@ -95,6 +95,7 @@ html:not([data-mode="lit"]){
 a {
     font-weight: bold;
     transition: .3s cubic-bezier(0.65, 0.05, 0.36, 1);
+    transition-property: text-shadow, color;
 }
 
 a:hover {
