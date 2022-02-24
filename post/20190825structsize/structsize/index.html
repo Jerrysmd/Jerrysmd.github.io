@@ -114,7 +114,7 @@
 </svg></span>
     <span class="post_date">
       Aug 25, 2019</span>
-    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/c' title="c" class="post_tag button button_translucent">c
+    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/c' title="c" class="post_tag button button_translucent">c
         </a>
     </span>
   </div>
@@ -150,57 +150,20 @@
 
 
 
+<div class="notices warning image-warning">
+  <div class="label">Image not found</div>
+    <style>
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    </style>
+    <p>Web path: <a href='/post/20190825structsize/structsize//post/picture/struct_sizeof_ex1.png' title='Open this web path in a new tab' target='_blank' class='warning-link'>/post/20190825structsize/structsize//post/picture/struct_sizeof_ex1.png</a></p>
+    <p>Disk path: /content/post/20190825structSize//post/picture/struct_sizeof_ex1.png</p>
+    <p>Using <a href='https://gohugo.io/content-management/page-bundles/' title='Information about Hugo Page Bundles' target='_blank' class='warning-link'>Page Bundles</a>: true</p>
+</div>
 
-
-  <figure>
-    <picture>
-
-      
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-      
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-      
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-      
-
-      <img class="image_figure image_internal" src="https://Jerrysmd.github.io/post/picture/struct_sizeof_ex1.png" alt="Output1" loading="lazy" decoding="async" width="300" height="154"  />
-      
-
-    </picture>
-  </figure>
 </p>
 <p>The red portion represents the padding added for data alignment and the green portion represents the struct members. In this case, x (int) is followed by z (double), which is larger in size as compared to x. Hence padding is added after x. Also, padding is needed at the end for data alignment.</p>
 <ul>
@@ -227,57 +190,20 @@
 
 
 
+<div class="notices warning image-warning">
+  <div class="label">Image not found</div>
+    <style>
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    </style>
+    <p>Web path: <a href='/post/20190825structsize/structsize//post/picture/struct_sizeof_ex2.png' title='Open this web path in a new tab' target='_blank' class='warning-link'>/post/20190825structsize/structsize//post/picture/struct_sizeof_ex2.png</a></p>
+    <p>Disk path: /content/post/20190825structSize//post/picture/struct_sizeof_ex2.png</p>
+    <p>Using <a href='https://gohugo.io/content-management/page-bundles/' title='Information about Hugo Page Bundles' target='_blank' class='warning-link'>Page Bundles</a>: true</p>
+</div>
 
-
-  <figure>
-    <picture>
-
-      
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-      
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-      
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-      
-
-      <img class="image_figure image_internal" src="https://Jerrysmd.github.io/post/picture/struct_sizeof_ex2.png" alt="output2" loading="lazy" decoding="async" width="300" height="124"  />
-      
-
-    </picture>
-  </figure>
 </p>
 <p>In this case, the members of the structure are sorted in decreasing order of their sizes. Hence padding is required only at the end.</p>
 <ul>
@@ -304,57 +230,20 @@
 
 
 
+<div class="notices warning image-warning">
+  <div class="label">Image not found</div>
+    <style>
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    </style>
+    <p>Web path: <a href='/post/20190825structsize/structsize//post/picture/struct_sizeof_ex3.png' title='Open this web path in a new tab' target='_blank' class='warning-link'>/post/20190825structsize/structsize//post/picture/struct_sizeof_ex3.png</a></p>
+    <p>Disk path: /content/post/20190825structSize//post/picture/struct_sizeof_ex3.png</p>
+    <p>Using <a href='https://gohugo.io/content-management/page-bundles/' title='Information about Hugo Page Bundles' target='_blank' class='warning-link'>Page Bundles</a>: true</p>
+</div>
 
-
-  <figure>
-    <picture>
-
-      
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-      
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-      
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-      
-
-      <img class="image_figure image_internal" src="https://Jerrysmd.github.io/post/picture/struct_sizeof_ex3.png" alt="output3" loading="lazy" decoding="async" width="300" height="128"  />
-      
-
-    </picture>
-  </figure>
 </p>
 <p>In this case, y (short int) is followed by x (int) and hence padding is required after y. No padding is needed at the end in this case for data alignment.</p>
 <p>C language doesn’t allow the compilers to reorder the struct members to reduce the amount of padding. In order to minimize the amount of padding, the struct members must be sorted in a descending order (similar to the case 2).</p>
@@ -369,7 +258,7 @@
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
-        <h2>刘佳锐</h2>
+        <h2>JIARUI LIU</h2>
       <div class="author_bio">
         Technologist, perpetual student, continual incremental improvement.
       </div>
@@ -512,114 +401,57 @@
           <span class="button_tally">1</span>
         </a>
         
+        <a href='https://Jerrysmd.github.io/tags/git/' class="post_tag button button_translucent" title="git">
+          GIT
+          <span class="button_tally">1</span>
+        </a>
         
-        <br>
-        <div class="post_tags_toggle button">All Tags</div>
-        <div class="post_tags">
-          <div class="tags_list">
-            
-            <a href='https://Jerrysmd.github.io/tags/algorithm/' class=" post_tag button button_translucent" data-position=1 title="algorithm">ALGORITHM<span class="button_tally">1</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/c/' class=" post_tag button button_translucent" data-position=15 title="c">C<span class="button_tally">15</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/c&#43;&#43;/' class=" post_tag button button_translucent" data-position=3 title="c&#43;&#43;">C&#43;&#43;<span class="button_tally">3</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/database/' class=" post_tag button button_translucent" data-position=2 title="database">DATABASE<span class="button_tally">2</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/datawarehouse/' class=" post_tag button button_translucent" data-position=1 title="datawarehouse">DATAWAREHOUSE<span class="button_tally">1</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/distribution/' class=" post_tag button button_translucent" data-position=16 title="distribution">DISTRIBUTION<span class="button_tally">16</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/file/' class=" post_tag button button_translucent" data-position=2 title="file">FILE<span class="button_tally">2</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/git/' class=" post_tag button button_translucent" data-position=1 title="git">GIT<span class="button_tally">1</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/hash/' class=" post_tag button button_translucent" data-position=1 title="hash">HASH<span class="button_tally">1</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/hbase/' class=" post_tag button button_translucent" data-position=2 title="hbase">HBASE<span class="button_tally">2</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/hdfs/' class=" post_tag button button_translucent" data-position=4 title="hdfs">HDFS<span class="button_tally">4</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/hive/' class=" post_tag button button_translucent" data-position=1 title="hive">HIVE<span class="button_tally">1</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/hyperscan/' class=" post_tag button button_translucent" data-position=1 title="hyperscan">HYPERSCAN<span class="button_tally">1</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/interview/' class=" post_tag button button_translucent" data-position=2 title="interview">INTERVIEW<span class="button_tally">2</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/java/' class=" post_tag button button_translucent" data-position=3 title="java">JAVA<span class="button_tally">3</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/kafka/' class=" post_tag button button_translucent" data-position=1 title="kafka">KAFKA<span class="button_tally">1</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/leetcode/' class=" post_tag button button_translucent" data-position=1 title="leetcode">LEETCODE<span class="button_tally">1</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/linux/' class=" post_tag button button_translucent" data-position=2 title="linux">LINUX<span class="button_tally">2</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/nfs/' class=" post_tag button button_translucent" data-position=1 title="nfs">NFS<span class="button_tally">1</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/python/' class=" post_tag button button_translucent" data-position=1 title="python">PYTHON<span class="button_tally">1</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/scala/' class=" post_tag button button_translucent" data-position=1 title="scala">SCALA<span class="button_tally">1</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/spark/' class=" post_tag button button_translucent" data-position=6 title="spark">SPARK<span class="button_tally">6</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/sql/' class=" post_tag button button_translucent" data-position=3 title="sql">SQL<span class="button_tally">3</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/zookeeper/' class=" post_tag button button_translucent" data-position=1 title="zookeeper">ZOOKEEPER<span class="button_tally">1</span>
-            </a>
-            
-            <div class="tags_sort"><span title="sort alphabetically">[A~Z]</span><span title="sort by count">[0~9]</span>
-            </div>
-            <span class="tags_hide"><svg class="icon">
-            <use xlink:href="#closeme"></use>
-          </svg></span>
-          </div>
-        </div>
+        <a href='https://Jerrysmd.github.io/tags/hash/' class="post_tag button button_translucent" title="hash">
+          HASH
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/hive/' class="post_tag button button_translucent" title="hive">
+          HIVE
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/hyperscan/' class="post_tag button button_translucent" title="hyperscan">
+          HYPERSCAN
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/kafka/' class="post_tag button button_translucent" title="kafka">
+          KAFKA
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/leetcode/' class="post_tag button button_translucent" title="leetcode">
+          LEETCODE
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/nfs/' class="post_tag button button_translucent" title="nfs">
+          NFS
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/python/' class="post_tag button button_translucent" title="python">
+          PYTHON
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/scala/' class="post_tag button button_translucent" title="scala">
+          SCALA
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/zookeeper/' class="post_tag button button_translucent" title="zookeeper">
+          ZOOKEEPER
+          <span class="button_tally">1</span>
+        </a>
+        
+        
       </nav>
     </div>
   </section>
