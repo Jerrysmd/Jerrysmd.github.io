@@ -585,7 +585,8 @@
 <p>举例，用户提交了一个 DataX 作业，并且配置了总的并发数为 20，目的是对一个有 100 张分表的 MySQL 进行同步。调度决策思路是：</p>
 <ol>
 <li>dataX job 根据分库分表切分策略，将同步工作分成 100 个 Task。</li>
-<li>根据配置的总的并发度20，以及每个 Task Group 的并发度 5，dataX共需要4个task</li>
+<li>根据配置的总的并发度 20，以及每个 TaskGroup 的并发度 5，dataX共需要 4 个 TaskGroup。</li>
+<li>4 个 TaskGroup 分 100 个 Task，每个 TaskGroup 负责 25个 Task。</li>
 </ol>
 </blockquote>
     </div>
