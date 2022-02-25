@@ -589,6 +589,16 @@
 <li>4 个 TaskGroup 分 100 个 Task，每个 TaskGroup 负责 25个 Task。</li>
 </ol>
 </blockquote>
+<blockquote>
+<p>同步 HDFS 数据到 MySQL 案例：</p>
+<p>选用 HDFSReader 和 MySQLWriter，分别设置 json 配置文件。</p>
+</blockquote>
+<blockquote>
+<p>DataX优化：</p>
+<p>提升 DataX job 内 channel 并发数，内存的占用显著增加，每个 channel 会有一个 Buffer，作为临时数据交换的缓冲区，而在 reader 和 writer 中，也会有 buffer，为了防止 OOM，需要调大 JVM 的堆内存。</p>
+<p>调整 JVM xms xmx 参数的两种方式：一种是直接更改 datax.py 脚本；另一种是在启动的时候，加上参数：</p>
+<p><code>python datax/bin/datax.py --jvm=&quot;-Xms8G -Xmx8G&quot; /path/to/your/job.json</code></p>
+</blockquote>
     </div>
 
 
