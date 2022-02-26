@@ -49,7 +49,7 @@ html {
     --bg: #1d1e20;
 }
 
-.nav_header .nav_body{
+.nav_header, .nav_body{
     background-color: #1d1e20;
 }
 
