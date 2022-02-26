@@ -50,11 +50,11 @@ html {
 }
 
 .nav_header {
-    background-color: #1d1e20;
+    background-color: var(--choice-bg);
 }
 
 .nav_body {
-    background-color: #1d1e20;
+    background-color: var(--choice-bg);
 }
 
 
