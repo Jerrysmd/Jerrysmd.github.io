@@ -67,10 +67,11 @@ a.post_tag.button.button_translucent:hover, a.post_tag.button.button_translucent
 
 a.button.mt-1:hover, abutton.mt-1:focus, a.excerpt_more.button:hover, a.excerpt_more.button:focus {
     background: #2196f3;
+    border: 1px solid #2196f3;
 }
 
 .button_translucent {
-    background: #273549;
+    background: #0077b826;
     color: #4a9af1;
     border: 1px solid transparent;
     font-weight: 500;
