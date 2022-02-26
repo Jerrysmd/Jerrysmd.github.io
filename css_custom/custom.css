@@ -49,14 +49,9 @@ html {
     --bg: #1d1e20;
 }
 
-/* .nav_header {
-    background-color: var(--choice-bg);
+.nav_header .nav_body{
+    background-color: #1d1e20;
 }
-
-.nav_body {
-    background-color: var(--choice-bg);
-} */
-
 
 .button {
     background-color: #0075d1;
@@ -85,9 +80,9 @@ html:not([data-mode="lit"]){
     --light: #dadadb;
 }
 
-.nav{
+/* .nav{
     color: var(--header-text);
-}
+} */
 
 a {
     font-weight: bold;
