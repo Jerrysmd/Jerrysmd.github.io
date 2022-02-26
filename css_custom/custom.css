@@ -49,13 +49,13 @@ html {
     --bg: #1d1e20;
 }
 
-.nav_header {
+/* .nav_header {
     background-color: var(--choice-bg);
 }
 
 .nav_body {
     background-color: var(--choice-bg);
-}
+} */
 
 
 .button {
