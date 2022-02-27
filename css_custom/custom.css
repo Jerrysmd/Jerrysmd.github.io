@@ -21,10 +21,10 @@ span.post_time {
     margin: 0 0 0 0.5rem;
 }
 
-p {
+.pale p {
     color: #9b9c9d;
     margin: 0px;
-    padding: 0px
+    padding: 0px;
 }
 
 p.pale{
@@ -80,10 +80,6 @@ a.button.mt-1:hover, abutton.mt-1:focus, a.excerpt_more.button:hover, a.excerpt_
 html:not([data-mode="lit"]){
     --light: #dadadb;
 }
-
-/* .nav{
-    color: var(--header-text);
-} */
 
 a {
     font-weight: bold;

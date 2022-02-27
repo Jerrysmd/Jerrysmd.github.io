@@ -610,6 +610,21 @@
 <p>原理：</p>
 <p>读取 MySQL 的二进制日志（Binlog），从中获取变更数据。</p>
 </blockquote>
+<h2 id="数据采集模块总结">数据采集模块总结</h2>
+<h3 id="linux">Linux</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="ln"> 1</span><span class="c1"># 命令</span>
+<span class="ln"> 2</span>top
+<span class="ln"> 3</span>ps -ef
+<span class="ln"> 4</span>df -h	<span class="c1">#磁盘空间</span>
+<span class="ln"> 5</span>netstat	<span class="c1">#查看端口号</span>
+<span class="ln"> 6</span>
+<span class="ln"> 7</span><span class="c1"># 4个工具</span>
+<span class="ln"> 8</span>awk sed sort cut
+<span class="ln"> 9</span>
+<span class="ln">10</span><span class="c1"># 写过什么脚本</span>
+<span class="ln">11</span>1. 同步分发
+<span class="ln">12</span>2. 启动停止
+</code></pre></div><h3 id="hadoop-1">Hadoop</h3>
     </div>
 
 
