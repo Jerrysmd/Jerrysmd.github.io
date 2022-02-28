@@ -627,10 +627,22 @@
 </code></pre></div><h3 id="hadoop-1">Hadoop</h3>
 <blockquote>
 <p>常用端口号：</p>
-<ol start="2">
-<li></li>
-</ol>
-<p>8020</p>
+<ul>
+<li>2.x：50070/8020：HDFS   8088：任务情况   19888：Job history</li>
+<li>3.x：9870/8020：HDFS   8088：任务情况   19888：Job history</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>配置文件：</p>
+<ul>
+<li>/etc/profile</li>
+<li>2.x：core-site.xml    hdfs-site.xml    yarn-site.xml    mapred-site.xml    slaves</li>
+<li>3.x：core-site.xml    hdfs-site.xml    yarn-site.xml    mapred-site.xml    workers</li>
+</ul>
+</blockquote>
+<h3 id="hdfs">HDFS</h3>
+<blockquote>
+<p>HDFS 的读写流程，笔试：</p>
 </blockquote>
     </div>
 
