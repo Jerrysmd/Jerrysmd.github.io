@@ -45,12 +45,12 @@
 
     
     
-    <link rel="preload" href="https://Jerrysmd.github.io/css/styles.2b3290fc6e94839826981c23ed76e1831472bd3f8af68332da00b97d9430b56bfb7e9394d5c09aca633c093c621709cdd745eec940be733933ac5d876223de52.css" integrity = "sha512-KzKQ/G6Ug5gmmBwj7XbhgxRyvT&#43;K9oMy2gC5fZQwtWv7fpOU1cCaymM8CTxiFwnN10XuyUC&#43;czkzrF2HYiPeUg==" as="style" crossorigin="anonymous">
-    <link rel="preload" href="https://Jerrysmd.github.io/js/bundle.min.e64f8cf616bae500fe58d08450d2114ea2d6df7c6ecd381eac0ff9091960733b79a0fdd5206e402dc53c3f44636be5bf246c2c22d32de3334561f748f32b1b0f.js" as="script" integrity=
-    "sha512-5k&#43;M9ha65QD&#43;WNCEUNIRTqLW33xuzTgerA/5CRlgczt5oP3VIG5ALcU8P0Rja&#43;W/JGwsItMt4zNFYfdI8ysbDw==" crossorigin="anonymous">
+    <link rel="preload" href="https://Jerrysmd.github.io/css/styles.f143f2039d975cd60c5524f52c5fbb6dd2236d44d0d53d71b5cb6f6127d4fe8082960bbb71fe0345b5bab4119124e0b09c0b7d7f4238a9288afc02815d258f76.css" integrity = "sha512-8UPyA52XXNYMVST1LF&#43;7bdIjbUTQ1T1xtctvYSfU/oCClgu7cf4DRbW6tBGRJOCwnAt9f0I4qSiK/AKBXSWPdg==" as="style" crossorigin="anonymous">
+    <link rel="preload" href="https://Jerrysmd.github.io/js/bundle.min.dd2abc9f5eda341d9ec203d91946a305b443270c2c0d6f9c2ede56045676ca1d6e13a2af52564e17eb74058de16af7f181d68f7add7e5d5552b3559dcb40ed35.js" as="script" integrity=
+    "sha512-3Sq8n17aNB2ewgPZGUajBbRDJwwsDW&#43;cLt5WBFZ2yh1uE6KvUlZOF&#43;t0BY3havfxgdaPet1&#43;XVVSs1Wdy0DtNQ==" crossorigin="anonymous">
 
     
-    <link rel="stylesheet" type="text/css" href="https://Jerrysmd.github.io/css/styles.2b3290fc6e94839826981c23ed76e1831472bd3f8af68332da00b97d9430b56bfb7e9394d5c09aca633c093c621709cdd745eec940be733933ac5d876223de52.css" integrity="sha512-KzKQ/G6Ug5gmmBwj7XbhgxRyvT&#43;K9oMy2gC5fZQwtWv7fpOU1cCaymM8CTxiFwnN10XuyUC&#43;czkzrF2HYiPeUg==" crossorigin="anonymous"><link rel="stylesheet" href="/css_custom/custom.css">
+    <link rel="stylesheet" type="text/css" href="https://Jerrysmd.github.io/css/styles.f143f2039d975cd60c5524f52c5fbb6dd2236d44d0d53d71b5cb6f6127d4fe8082960bbb71fe0345b5bab4119124e0b09c0b7d7f4238a9288afc02815d258f76.css" integrity="sha512-8UPyA52XXNYMVST1LF&#43;7bdIjbUTQ1T1xtctvYSfU/oCClgu7cf4DRbW6tBGRJOCwnAt9f0I4qSiK/AKBXSWPdg==" crossorigin="anonymous"><link rel="stylesheet" href="/css_custom/custom.css">
     
   </head>
   
@@ -163,10 +163,10 @@
 <p>当大量请求访问HBase集群的一个或少数几个节点，造成少数RegionServer的读写请求过多、负载过大，而其他RegionServer负载却很小，这样就造成<strong>热点现象</strong>。大量访问会使热点Region所在的主机负载过大，引起性能下降，甚至导致Region不可用。所以我们在向HBase中插入数据的时候，应尽量均衡地把记录分散到不同的Region里去，平衡每个Region的压力。</p>
 <p>下面根据一个例子分别介绍下根据RowKey进行查询的时候支持的情况。</p>
 <p>如果我们RowKey设计为<code>uid</code>+<code>phone</code>+<code>name</code>，那么这种设计可以很好的支持一下的场景:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>uid=873969725 AND phone=18900000000 AND name=zhangsanuid= 873969725 AND phone=18900000000uid= 873969725 AND phone=189?uid= 873969725
-</code></pre></div><p>难以支持的场景：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>phone=18900000000 AND name = zhangsanphone=18900000000 name=zhangsan
-</code></pre></div><p>从上面的例子中可以看出，在进行查询的时候，根据RowKey从前向后匹配，所以我们在设计RowKey的时候选择好字段之后，还应该结合我们的实际的高频的查询场景来组合选择的字段，越高频的查询字段排列越靠左。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">uid=873969725 AND phone=18900000000 AND name=zhangsanuid= 873969725 AND phone=18900000000uid= 873969725 AND phone=189?uid= 873969725
+</span></span></code></pre></div><p>难以支持的场景：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">phone=18900000000 AND name = zhangsanphone=18900000000 name=zhangsan
+</span></span></code></pre></div><p>从上面的例子中可以看出，在进行查询的时候，根据RowKey从前向后匹配，所以我们在设计RowKey的时候选择好字段之后，还应该结合我们的实际的高频的查询场景来组合选择的字段，越高频的查询字段排列越靠左。</p>
 <h3 id="rowkey在region中的作用">RowKey在Region中的作用</h3>
 <p>在 HBase 中，Region 相当于一个数据的分片，每个 Region 都有<code>StartRowKey</code>和<code>StopRowKey</code>，这是表示 Region 存储的 RowKey 的范围，HBase 表的数据时按照 RowKey 来分散到不同的 Region，要想将数据记录均衡的分散到不同的Region中去，因此需要 RowKey 满足这种散列的特点。此外，在数据读写过程中也是与RowKey 密切相关，RowKey在读写过程中的作用：</p>
 <ol>
@@ -529,7 +529,7 @@
   </div>
 </footer>
 
-    <script type="text/javascript" src="https://Jerrysmd.github.io/js/bundle.min.e64f8cf616bae500fe58d08450d2114ea2d6df7c6ecd381eac0ff9091960733b79a0fdd5206e402dc53c3f44636be5bf246c2c22d32de3334561f748f32b1b0f.js" integrity="sha512-5k&#43;M9ha65QD&#43;WNCEUNIRTqLW33xuzTgerA/5CRlgczt5oP3VIG5ALcU8P0Rja&#43;W/JGwsItMt4zNFYfdI8ysbDw==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://Jerrysmd.github.io/js/bundle.min.dd2abc9f5eda341d9ec203d91946a305b443270c2c0d6f9c2ede56045676ca1d6e13a2af52564e17eb74058de16af7f181d68f7add7e5d5552b3559dcb40ed35.js" integrity="sha512-3Sq8n17aNB2ewgPZGUajBbRDJwwsDW&#43;cLt5WBFZ2yh1uE6KvUlZOF&#43;t0BY3havfxgdaPet1&#43;XVVSs1Wdy0DtNQ==" crossorigin="anonymous"></script>
     
   </body>
 </html>

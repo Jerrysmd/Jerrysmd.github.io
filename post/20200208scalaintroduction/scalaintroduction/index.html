@@ -45,12 +45,12 @@
 
     
     
-    <link rel="preload" href="https://Jerrysmd.github.io/css/styles.2b3290fc6e94839826981c23ed76e1831472bd3f8af68332da00b97d9430b56bfb7e9394d5c09aca633c093c621709cdd745eec940be733933ac5d876223de52.css" integrity = "sha512-KzKQ/G6Ug5gmmBwj7XbhgxRyvT&#43;K9oMy2gC5fZQwtWv7fpOU1cCaymM8CTxiFwnN10XuyUC&#43;czkzrF2HYiPeUg==" as="style" crossorigin="anonymous">
-    <link rel="preload" href="https://Jerrysmd.github.io/js/bundle.min.e64f8cf616bae500fe58d08450d2114ea2d6df7c6ecd381eac0ff9091960733b79a0fdd5206e402dc53c3f44636be5bf246c2c22d32de3334561f748f32b1b0f.js" as="script" integrity=
-    "sha512-5k&#43;M9ha65QD&#43;WNCEUNIRTqLW33xuzTgerA/5CRlgczt5oP3VIG5ALcU8P0Rja&#43;W/JGwsItMt4zNFYfdI8ysbDw==" crossorigin="anonymous">
+    <link rel="preload" href="https://Jerrysmd.github.io/css/styles.f143f2039d975cd60c5524f52c5fbb6dd2236d44d0d53d71b5cb6f6127d4fe8082960bbb71fe0345b5bab4119124e0b09c0b7d7f4238a9288afc02815d258f76.css" integrity = "sha512-8UPyA52XXNYMVST1LF&#43;7bdIjbUTQ1T1xtctvYSfU/oCClgu7cf4DRbW6tBGRJOCwnAt9f0I4qSiK/AKBXSWPdg==" as="style" crossorigin="anonymous">
+    <link rel="preload" href="https://Jerrysmd.github.io/js/bundle.min.dd2abc9f5eda341d9ec203d91946a305b443270c2c0d6f9c2ede56045676ca1d6e13a2af52564e17eb74058de16af7f181d68f7add7e5d5552b3559dcb40ed35.js" as="script" integrity=
+    "sha512-3Sq8n17aNB2ewgPZGUajBbRDJwwsDW&#43;cLt5WBFZ2yh1uE6KvUlZOF&#43;t0BY3havfxgdaPet1&#43;XVVSs1Wdy0DtNQ==" crossorigin="anonymous">
 
     
-    <link rel="stylesheet" type="text/css" href="https://Jerrysmd.github.io/css/styles.2b3290fc6e94839826981c23ed76e1831472bd3f8af68332da00b97d9430b56bfb7e9394d5c09aca633c093c621709cdd745eec940be733933ac5d876223de52.css" integrity="sha512-KzKQ/G6Ug5gmmBwj7XbhgxRyvT&#43;K9oMy2gC5fZQwtWv7fpOU1cCaymM8CTxiFwnN10XuyUC&#43;czkzrF2HYiPeUg==" crossorigin="anonymous"><link rel="stylesheet" href="/css_custom/custom.css">
+    <link rel="stylesheet" type="text/css" href="https://Jerrysmd.github.io/css/styles.f143f2039d975cd60c5524f52c5fbb6dd2236d44d0d53d71b5cb6f6127d4fe8082960bbb71fe0345b5bab4119124e0b09c0b7d7f4238a9288afc02815d258f76.css" integrity="sha512-8UPyA52XXNYMVST1LF&#43;7bdIjbUTQ1T1xtctvYSfU/oCClgu7cf4DRbW6tBGRJOCwnAt9f0I4qSiK/AKBXSWPdg==" crossorigin="anonymous"><link rel="stylesheet" href="/css_custom/custom.css">
     
   </head>
   
@@ -245,16 +245,16 @@
 <li>lazy修饰符可以修饰变量，但是这个变量必须是val修饰的</li>
 </ol>
 <p>ps. lazy相当于延迟加载（懒加载），当前变量使用lazy修饰的时候，只要变量不被调用，就不会进行初始化，什么时候调用，什么时候进行初始化</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">lazy</span> <span class="k">val</span> <span class="n">words</span> <span class="k">=</span> <span class="n">scala</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="nc">Source</span><span class="o">.</span><span class="n">fromFile</span><span class="o">(</span><span class="s">&#34;/usr/share/dict/words&#34;</span><span class="o">).</span><span class="n">mkString</span>
-<span class="ln">2</span><span class="c1">//当val被声明为lazy时，它的初始化将被推迟，直到我们首次对他取值
-</span></code></pre></div><p>懒值对于开销大的初始化语句十分有用。它还可以用来应对其他初始化问题，比如循环依赖。更重要的是，它是开发懒数据结构的基础。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="ln">1</span><span class="k">val</span> <span class="n">words</span> <span class="k">=</span> <span class="o">...</span>
-<span class="ln">2</span><span class="c1">//在words被定义时即被取值
-</span><span class="ln">3</span><span class="c1"></span><span class="k">lazy</span> <span class="k">val</span> <span class="n">words</span> <span class="k">=</span> <span class="o">...</span>
-<span class="ln">4</span><span class="c1">//在words被首次使用时取值
-</span><span class="ln">5</span><span class="c1"></span><span class="k">def</span> <span class="n">words</span> <span class="k">=</span> <span class="o">...</span>
-<span class="ln">6</span><span class="c1">//在每一次words被使用时取值
-</span></code></pre></div><h2 id="3-control-and-function">3. Control and Function</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="line"><span class="ln">1</span><span class="cl"><span class="k">lazy</span> <span class="k">val</span> <span class="n">words</span> <span class="k">=</span> <span class="n">scala</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="nc">Source</span><span class="o">.</span><span class="n">fromFile</span><span class="o">(</span><span class="s">&#34;/usr/share/dict/words&#34;</span><span class="o">).</span><span class="n">mkString</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1">//当val被声明为lazy时，它的初始化将被推迟，直到我们首次对他取值
+</span></span></span></code></pre></div><p>懒值对于开销大的初始化语句十分有用。它还可以用来应对其他初始化问题，比如循环依赖。更重要的是，它是开发懒数据结构的基础。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="line"><span class="ln">1</span><span class="cl"><span class="k">val</span> <span class="n">words</span> <span class="k">=</span> <span class="o">...</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1">//在words被定义时即被取值
+</span></span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="c1"></span><span class="k">lazy</span> <span class="k">val</span> <span class="n">words</span> <span class="k">=</span> <span class="o">...</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="c1">//在words被首次使用时取值
+</span></span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="c1"></span><span class="k">def</span> <span class="n">words</span> <span class="k">=</span> <span class="o">...</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="c1">//在每一次words被使用时取值
+</span></span></span></code></pre></div><h2 id="3-control-and-function">3. Control and Function</h2>
 <ol>
 <li>if表达式也有值</li>
 <li>块也有值：是它最后一个表达式的值</li>
@@ -680,7 +680,7 @@
   </div>
 </footer>
 
-    <script type="text/javascript" src="https://Jerrysmd.github.io/js/bundle.min.e64f8cf616bae500fe58d08450d2114ea2d6df7c6ecd381eac0ff9091960733b79a0fdd5206e402dc53c3f44636be5bf246c2c22d32de3334561f748f32b1b0f.js" integrity="sha512-5k&#43;M9ha65QD&#43;WNCEUNIRTqLW33xuzTgerA/5CRlgczt5oP3VIG5ALcU8P0Rja&#43;W/JGwsItMt4zNFYfdI8ysbDw==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://Jerrysmd.github.io/js/bundle.min.dd2abc9f5eda341d9ec203d91946a305b443270c2c0d6f9c2ede56045676ca1d6e13a2af52564e17eb74058de16af7f181d68f7add7e5d5552b3559dcb40ed35.js" integrity="sha512-3Sq8n17aNB2ewgPZGUajBbRDJwwsDW&#43;cLt5WBFZ2yh1uE6KvUlZOF&#43;t0BY3havfxgdaPet1&#43;XVVSs1Wdy0DtNQ==" crossorigin="anonymous"></script>
     
   </body>
 </html>

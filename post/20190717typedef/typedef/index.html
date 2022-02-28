@@ -45,12 +45,12 @@
 
     
     
-    <link rel="preload" href="https://Jerrysmd.github.io/css/styles.2b3290fc6e94839826981c23ed76e1831472bd3f8af68332da00b97d9430b56bfb7e9394d5c09aca633c093c621709cdd745eec940be733933ac5d876223de52.css" integrity = "sha512-KzKQ/G6Ug5gmmBwj7XbhgxRyvT&#43;K9oMy2gC5fZQwtWv7fpOU1cCaymM8CTxiFwnN10XuyUC&#43;czkzrF2HYiPeUg==" as="style" crossorigin="anonymous">
-    <link rel="preload" href="https://Jerrysmd.github.io/js/bundle.min.e64f8cf616bae500fe58d08450d2114ea2d6df7c6ecd381eac0ff9091960733b79a0fdd5206e402dc53c3f44636be5bf246c2c22d32de3334561f748f32b1b0f.js" as="script" integrity=
-    "sha512-5k&#43;M9ha65QD&#43;WNCEUNIRTqLW33xuzTgerA/5CRlgczt5oP3VIG5ALcU8P0Rja&#43;W/JGwsItMt4zNFYfdI8ysbDw==" crossorigin="anonymous">
+    <link rel="preload" href="https://Jerrysmd.github.io/css/styles.f143f2039d975cd60c5524f52c5fbb6dd2236d44d0d53d71b5cb6f6127d4fe8082960bbb71fe0345b5bab4119124e0b09c0b7d7f4238a9288afc02815d258f76.css" integrity = "sha512-8UPyA52XXNYMVST1LF&#43;7bdIjbUTQ1T1xtctvYSfU/oCClgu7cf4DRbW6tBGRJOCwnAt9f0I4qSiK/AKBXSWPdg==" as="style" crossorigin="anonymous">
+    <link rel="preload" href="https://Jerrysmd.github.io/js/bundle.min.dd2abc9f5eda341d9ec203d91946a305b443270c2c0d6f9c2ede56045676ca1d6e13a2af52564e17eb74058de16af7f181d68f7add7e5d5552b3559dcb40ed35.js" as="script" integrity=
+    "sha512-3Sq8n17aNB2ewgPZGUajBbRDJwwsDW&#43;cLt5WBFZ2yh1uE6KvUlZOF&#43;t0BY3havfxgdaPet1&#43;XVVSs1Wdy0DtNQ==" crossorigin="anonymous">
 
     
-    <link rel="stylesheet" type="text/css" href="https://Jerrysmd.github.io/css/styles.2b3290fc6e94839826981c23ed76e1831472bd3f8af68332da00b97d9430b56bfb7e9394d5c09aca633c093c621709cdd745eec940be733933ac5d876223de52.css" integrity="sha512-KzKQ/G6Ug5gmmBwj7XbhgxRyvT&#43;K9oMy2gC5fZQwtWv7fpOU1cCaymM8CTxiFwnN10XuyUC&#43;czkzrF2HYiPeUg==" crossorigin="anonymous"><link rel="stylesheet" href="/css_custom/custom.css">
+    <link rel="stylesheet" type="text/css" href="https://Jerrysmd.github.io/css/styles.f143f2039d975cd60c5524f52c5fbb6dd2236d44d0d53d71b5cb6f6127d4fe8082960bbb71fe0345b5bab4119124e0b09c0b7d7f4238a9288afc02815d258f76.css" integrity="sha512-8UPyA52XXNYMVST1LF&#43;7bdIjbUTQ1T1xtctvYSfU/oCClgu7cf4DRbW6tBGRJOCwnAt9f0I4qSiK/AKBXSWPdg==" crossorigin="anonymous"><link rel="stylesheet" href="/css_custom/custom.css">
     
   </head>
   
@@ -159,24 +159,24 @@ typedef void (*PFUNA)(int a); ———— 使用新的类型名PFUNA替换变�
 <h3 id="22-typedef的作用">2.2 typedef的作用</h3>
 <p>typedef的作用有以下几点：</p>
 <h4 id="1typedef的一个重要用途是定义机器无关的类型例如定义一个叫real的浮点类型该浮点类型在目标机器上可以获得最高的精度">1）typedef的一个重要用途是定义机器无关的类型。例如，定义一个叫REAL的浮点类型，该浮点类型在目标机器上可以获得最高的精度：</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="k">typedef</span> <span class="kt">long</span> <span class="kt">double</span> <span class="n">REAL</span><span class="p">;</span>
-</code></pre></div><p>如果在不支持 long double 的机器上运行相关代码，只需要对对应的typedef语句进行修改，例如：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="k">typedef</span> <span class="kt">double</span> <span class="n">REAL</span><span class="p">;</span>
-</code></pre></div><p>或者：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="k">typedef</span> <span class="kt">float</span> <span class="n">REAL</span><span class="p">;</span>
-</code></pre></div><h4 id="2使用typedef为现有类型创建别名给变量定义一个易于记忆且意义明确的新名字">2）使用typedef为现有类型创建别名，给变量定义一个易于记忆且意义明确的新名字。</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="ln">1</span><span class="cl"><span class="k">typedef</span> <span class="kt">long</span> <span class="kt">double</span> <span class="n">REAL</span><span class="p">;</span>
+</span></span></code></pre></div><p>如果在不支持 long double 的机器上运行相关代码，只需要对对应的typedef语句进行修改，例如：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="ln">1</span><span class="cl"><span class="k">typedef</span> <span class="kt">double</span> <span class="n">REAL</span><span class="p">;</span>
+</span></span></code></pre></div><p>或者：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="ln">1</span><span class="cl"><span class="k">typedef</span> <span class="kt">float</span> <span class="n">REAL</span><span class="p">;</span>
+</span></span></code></pre></div><h4 id="2使用typedef为现有类型创建别名给变量定义一个易于记忆且意义明确的新名字">2）使用typedef为现有类型创建别名，给变量定义一个易于记忆且意义明确的新名字。</h4>
 <p>例如:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">UINT</span>
-</code></pre></div><h4 id="3使用typedef简化一些比较复杂的类型声明">3）使用typedef简化一些比较复杂的类型声明。</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="ln">1</span><span class="cl"><span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">UINT</span>
+</span></span></code></pre></div><h4 id="3使用typedef简化一些比较复杂的类型声明">3）使用typedef简化一些比较复杂的类型声明。</h4>
 <p>例如：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="k">typedef</span> <span class="nf">void</span> <span class="p">(</span><span class="o">*</span><span class="n">PFunCallBack</span><span class="p">)(</span><span class="kt">char</span><span class="o">*</span> <span class="n">pMsg</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">nMsgLen</span><span class="p">);</span>
-</code></pre></div><p>上述声明引入了PFunCallBack类型作为函数指针的同义字，该函数有两个类型分别为char*和unsigned int参数，以及一个类型为int的返回值。通常，当某个函数的参数是一个回调函数时，可能会用到typedef简化声明。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="ln">1</span><span class="cl"><span class="k">typedef</span> <span class="nf">void</span> <span class="p">(</span><span class="o">*</span><span class="n">PFunCallBack</span><span class="p">)(</span><span class="kt">char</span><span class="o">*</span> <span class="n">pMsg</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">nMsgLen</span><span class="p">);</span>
+</span></span></code></pre></div><p>上述声明引入了PFunCallBack类型作为函数指针的同义字，该函数有两个类型分别为char*和unsigned int参数，以及一个类型为int的返回值。通常，当某个函数的参数是一个回调函数时，可能会用到typedef简化声明。</p>
 <p>例如，承接上面的示例，我们再列举下列示例：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="n">RedisSubCommand</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">strKey</span><span class="p">,</span> <span class="n">PFunCallBack</span> <span class="n">pFunCallback</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">bOnlyOne</span><span class="p">);</span>
-</code></pre></div><p><code>注意：</code>类型名PFunCallBack与变量名pFunCallback的大小写区别。
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">RedisSubCommand</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">strKey</span><span class="p">,</span> <span class="n">PFunCallBack</span> <span class="n">pFunCallback</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">bOnlyOne</span><span class="p">);</span>
+</span></span></code></pre></div><p><code>注意：</code>类型名PFunCallBack与变量名pFunCallback的大小写区别。
 RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返回某个函数（pFunCallback）的地址。在这个示例中，如果不用typedef，RedisSubCommand函数声明如下：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="n">RedisSubCommand</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">strKey</span><span class="p">,</span> <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">pFunCallback</span><span class="p">)(</span><span class="kt">char</span><span class="o">*</span> <span class="n">pMsg</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">nMsgLen</span><span class="p">),</span> <span class="kt">bool</span> <span class="n">bOnlyOne</span><span class="p">);</span> 
-</code></pre></div><p>从上面两条函数声明可以看出，不使用typedef的情况下，RedisSubCommand函数的声明复杂得多，不利于代码的理解，并且增加的出错风险。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">RedisSubCommand</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">strKey</span><span class="p">,</span> <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">pFunCallback</span><span class="p">)(</span><span class="kt">char</span><span class="o">*</span> <span class="n">pMsg</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">nMsgLen</span><span class="p">),</span> <span class="kt">bool</span> <span class="n">bOnlyOne</span><span class="p">);</span> 
+</span></span></code></pre></div><p>从上面两条函数声明可以看出，不使用typedef的情况下，RedisSubCommand函数的声明复杂得多，不利于代码的理解，并且增加的出错风险。</p>
 <p>所以，在某些复杂的类型声明中，使用typedef进行声明的简化是很有必要的。</p>
 <h2 id="3-typedef与define">3. typedef与#define</h2>
 <p>两者的区别如下：</p>
@@ -188,23 +188,23 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
 <p>下面列举几个示例。</p>
 <p>3.1 示例1</p>
 <p>代码如下：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="k">typedef</span>　<span class="kt">char</span><span class="o">*</span>　<span class="n">pStr1</span><span class="p">;</span>
-<span class="ln">2</span><span class="cp">#define　pStr2　char*　
-</span><span class="ln">3</span><span class="cp"></span><span class="n">pStr1</span>　<span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">;</span>
-<span class="ln">4</span><span class="n">pStr2</span>　<span class="n">s3</span><span class="p">,</span> <span class="n">s4</span><span class="p">;</span>
-</code></pre></div><p>在上述的变量定义中，s1、s2、s3都被定义为char<em>类型；但是s4则定义成了char类型，而不是我们所预期的指针变量char</em>，这是因为#define只做简单的字符串替换，替换后的相关代码等同于为：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="kt">char</span><span class="o">*</span>　<span class="n">s3</span><span class="p">,</span> <span class="n">s4</span><span class="p">;</span>
-</code></pre></div><p>而使用typedef为char*定义了新类型pStr1后，相关代码等同于为：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="kt">char</span> <span class="o">*</span><span class="n">s3</span><span class="p">,</span> <span class="o">*</span><span class="n">s4</span><span class="p">;</span>
-</code></pre></div><p>3.1 示例2
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="ln">1</span><span class="cl"><span class="k">typedef</span>　<span class="kt">char</span><span class="o">*</span>　<span class="n">pStr1</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="cp">#define　pStr2　char*　
+</span></span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="cp"></span><span class="n">pStr1</span>　<span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="n">pStr2</span>　<span class="n">s3</span><span class="p">,</span> <span class="n">s4</span><span class="p">;</span>
+</span></span></code></pre></div><p>在上述的变量定义中，s1、s2、s3都被定义为char<em>类型；但是s4则定义成了char类型，而不是我们所预期的指针变量char</em>，这是因为#define只做简单的字符串替换，替换后的相关代码等同于为：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="ln">1</span><span class="cl"><span class="kt">char</span><span class="o">*</span>　<span class="n">s3</span><span class="p">,</span> <span class="n">s4</span><span class="p">;</span>
+</span></span></code></pre></div><p>而使用typedef为char*定义了新类型pStr1后，相关代码等同于为：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="ln">1</span><span class="cl"><span class="kt">char</span> <span class="o">*</span><span class="n">s3</span><span class="p">,</span> <span class="o">*</span><span class="n">s4</span><span class="p">;</span>
+</span></span></code></pre></div><p>3.1 示例2
 代码如下：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="ln">1</span><span class="k">typedef</span> <span class="kt">char</span> <span class="o">*</span><span class="n">pStr</span><span class="p">;</span>
-<span class="ln">2</span><span class="kt">char</span> <span class="n">string</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">=</span><span class="s">&#34;test&#34;</span><span class="p">;</span>
-<span class="ln">3</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">p1</span><span class="o">=</span><span class="n">string</span><span class="p">;</span>
-<span class="ln">4</span><span class="k">const</span> <span class="n">pStr</span> <span class="n">p2</span><span class="o">=</span><span class="n">string</span><span class="p">;</span>
-<span class="ln">5</span><span class="n">p1</span><span class="o">++</span><span class="p">;</span>
-<span class="ln">6</span><span class="n">p2</span><span class="o">++</span><span class="p">;</span>
-</code></pre></div><p><code>error:increment of read-only variable 'p2'</code>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="ln">1</span><span class="cl"><span class="k">typedef</span> <span class="kt">char</span> <span class="o">*</span><span class="n">pStr</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="kt">char</span> <span class="n">string</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">=</span><span class="s">&#34;test&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">p1</span><span class="o">=</span><span class="n">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="k">const</span> <span class="n">pStr</span> <span class="n">p2</span><span class="o">=</span><span class="n">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="n">p1</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="n">p2</span><span class="o">++</span><span class="p">;</span>
+</span></span></code></pre></div><p><code>error:increment of read-only variable 'p2'</code>
 根据错误信息，能够看出p2为只读的常量了，所以p2++出错了。这个问题再一次提醒我们：typedef和#define不同，typedef不是简单的文本替换，上述代码中const pStr p2并不等于const char * p2，pStr是作为一个类型存在的，所以const pStr p2实际上限制了pStr类型的p2变量，对p2常量进行了只读限制。也就是说，const pStr p2和pStr const p2本质上没有区别（可类比const int p2和int const p2），都是对变量p2进行只读限制，只不过此处变量p2的数据类型是我们自己定义的（pStr），而不是系统固有类型（如int）而已。</p>
 <p>所以，const pStr p2的含义是：限定数据类型为char *的变量p2为只读，因此p2++错误。</p>
 <p><code>注意：</code>在本示例中，typedef定义的新类型与编译系统固有的类型没有差别。</p>
@@ -501,7 +501,7 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
   </div>
 </footer>
 
-    <script type="text/javascript" src="https://Jerrysmd.github.io/js/bundle.min.e64f8cf616bae500fe58d08450d2114ea2d6df7c6ecd381eac0ff9091960733b79a0fdd5206e402dc53c3f44636be5bf246c2c22d32de3334561f748f32b1b0f.js" integrity="sha512-5k&#43;M9ha65QD&#43;WNCEUNIRTqLW33xuzTgerA/5CRlgczt5oP3VIG5ALcU8P0Rja&#43;W/JGwsItMt4zNFYfdI8ysbDw==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://Jerrysmd.github.io/js/bundle.min.dd2abc9f5eda341d9ec203d91946a305b443270c2c0d6f9c2ede56045676ca1d6e13a2af52564e17eb74058de16af7f181d68f7add7e5d5552b3559dcb40ed35.js" integrity="sha512-3Sq8n17aNB2ewgPZGUajBbRDJwwsDW&#43;cLt5WBFZ2yh1uE6KvUlZOF&#43;t0BY3havfxgdaPet1&#43;XVVSs1Wdy0DtNQ==" crossorigin="anonymous"></script>
     
   </body>
 </html>

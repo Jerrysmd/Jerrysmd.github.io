@@ -45,12 +45,12 @@
 
     
     
-    <link rel="preload" href="https://Jerrysmd.github.io/css/styles.2b3290fc6e94839826981c23ed76e1831472bd3f8af68332da00b97d9430b56bfb7e9394d5c09aca633c093c621709cdd745eec940be733933ac5d876223de52.css" integrity = "sha512-KzKQ/G6Ug5gmmBwj7XbhgxRyvT&#43;K9oMy2gC5fZQwtWv7fpOU1cCaymM8CTxiFwnN10XuyUC&#43;czkzrF2HYiPeUg==" as="style" crossorigin="anonymous">
-    <link rel="preload" href="https://Jerrysmd.github.io/js/bundle.min.e64f8cf616bae500fe58d08450d2114ea2d6df7c6ecd381eac0ff9091960733b79a0fdd5206e402dc53c3f44636be5bf246c2c22d32de3334561f748f32b1b0f.js" as="script" integrity=
-    "sha512-5k&#43;M9ha65QD&#43;WNCEUNIRTqLW33xuzTgerA/5CRlgczt5oP3VIG5ALcU8P0Rja&#43;W/JGwsItMt4zNFYfdI8ysbDw==" crossorigin="anonymous">
+    <link rel="preload" href="https://Jerrysmd.github.io/css/styles.f143f2039d975cd60c5524f52c5fbb6dd2236d44d0d53d71b5cb6f6127d4fe8082960bbb71fe0345b5bab4119124e0b09c0b7d7f4238a9288afc02815d258f76.css" integrity = "sha512-8UPyA52XXNYMVST1LF&#43;7bdIjbUTQ1T1xtctvYSfU/oCClgu7cf4DRbW6tBGRJOCwnAt9f0I4qSiK/AKBXSWPdg==" as="style" crossorigin="anonymous">
+    <link rel="preload" href="https://Jerrysmd.github.io/js/bundle.min.dd2abc9f5eda341d9ec203d91946a305b443270c2c0d6f9c2ede56045676ca1d6e13a2af52564e17eb74058de16af7f181d68f7add7e5d5552b3559dcb40ed35.js" as="script" integrity=
+    "sha512-3Sq8n17aNB2ewgPZGUajBbRDJwwsDW&#43;cLt5WBFZ2yh1uE6KvUlZOF&#43;t0BY3havfxgdaPet1&#43;XVVSs1Wdy0DtNQ==" crossorigin="anonymous">
 
     
-    <link rel="stylesheet" type="text/css" href="https://Jerrysmd.github.io/css/styles.2b3290fc6e94839826981c23ed76e1831472bd3f8af68332da00b97d9430b56bfb7e9394d5c09aca633c093c621709cdd745eec940be733933ac5d876223de52.css" integrity="sha512-KzKQ/G6Ug5gmmBwj7XbhgxRyvT&#43;K9oMy2gC5fZQwtWv7fpOU1cCaymM8CTxiFwnN10XuyUC&#43;czkzrF2HYiPeUg==" crossorigin="anonymous"><link rel="stylesheet" href="/css_custom/custom.css">
+    <link rel="stylesheet" type="text/css" href="https://Jerrysmd.github.io/css/styles.f143f2039d975cd60c5524f52c5fbb6dd2236d44d0d53d71b5cb6f6127d4fe8082960bbb71fe0345b5bab4119124e0b09c0b7d7f4238a9288afc02815d258f76.css" integrity="sha512-8UPyA52XXNYMVST1LF&#43;7bdIjbUTQ1T1xtctvYSfU/oCClgu7cf4DRbW6tBGRJOCwnAt9f0I4qSiK/AKBXSWPdg==" crossorigin="anonymous"><link rel="stylesheet" href="/css_custom/custom.css">
     
   </head>
   
@@ -141,27 +141,27 @@
     <div class="post_body"><p>Final key word no doubt be mentioned most time in Java language. There are some points about final key word. First of all, final key word can modify three objects: first is modify variables, second is modify way, third is modify class.</p>
 <h2 id="final-关键字修饰变量">final 关键字修饰变量</h2>
 <p>在使用final修饰变量时，又可以分为两种情况：一种是基本数据类型的变量，另一种是引用类型的变量。final关键字在修饰基本数据类型时必须对变量赋予初始值，因此final也常常和static关键字一起用来声明常量值。final正好限制了必须赋值，static声明了静态变量。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">final</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;Hollow world&#34;</span><span class="o">;</span>
-</code></pre></div><p>修饰引用变量时，该引用变量如果已经被赋值则不可以再被赋值，否则也会出现不能编译的情况</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="c1">//定义一个main对象并实例化
-</span><span class="ln">2</span><span class="c1"></span><span class="kd">final</span> <span class="n">Main</span> <span class="n">main</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Main</span><span class="o">();</span>
-<span class="ln">3</span><span class="c1">//被final关键字修饰后，再次对Main对象进行赋值就会报错
-</span><span class="ln">4</span><span class="c1"></span><span class="n">main</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Main</span><span class="o">();</span>
-</code></pre></div><h2 id="final关键字修饰方法">final关键字修饰方法</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="kd">final</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;Hollow world&#34;</span><span class="o">;</span>
+</span></span></code></pre></div><p>修饰引用变量时，该引用变量如果已经被赋值则不可以再被赋值，否则也会出现不能编译的情况</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="c1">//定义一个main对象并实例化
+</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1"></span><span class="kd">final</span> <span class="n">Main</span> <span class="n">main</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Main</span><span class="o">();</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="c1">//被final关键字修饰后，再次对Main对象进行赋值就会报错
+</span></span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="c1"></span><span class="n">main</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Main</span><span class="o">();</span>
+</span></span></code></pre></div><h2 id="final关键字修饰方法">final关键字修饰方法</h2>
 <p>通过final修饰的方法是不能被子类的方法重写的。一般情况下，一个方法确定好不再修改可以使用final，因为final修饰的方法是在程序编译的时候就被动态绑定了不用等到程序运行的时候被动态绑定，这样就大大提高了执行效率。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">public</span> <span class="kd">final</span> <span class="kt">void</span> <span class="nf">method</span><span class="o">(){</span>
-<span class="ln">2</span>	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;It is final method&#34;</span><span class="o">);</span>
-<span class="ln">3</span><span class="o">}</span>
-</code></pre></div><h2 id="final关键字修饰类">final关键字修饰类</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="kd">public</span> <span class="kd">final</span> <span class="kt">void</span> <span class="nf">method</span><span class="o">(){</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;It is final method&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><h2 id="final关键字修饰类">final关键字修饰类</h2>
 <p>被final修饰的类叫final类，final类是不能被继承的，这也就以为这final类的功能是比较完整的。因此，jdk中有很多类使用final修饰的，它们不需要被继承，其中，最常见的就是String类。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">String</span> <span class="kd">implements</span> <span class="n">java</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">Serializable</span><span class="o">,</span> <span class="n">Comparable</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span>
-</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">Integer</span> <span class="kd">extends</span> <span class="n">Number</span> <span class="kd">implements</span> <span class="o">...</span>
-</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">Long</span> <span class="kd">extends</span> <span class="n">Number</span> <span class="kd">implements</span> <span class="o">...</span>
-</code></pre></div><p>包括其他的装饰类都是被final关键字修饰的，它自身提供的方法和功能也是非常完备的。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">String</span> <span class="kd">implements</span> <span class="n">java</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">Serializable</span><span class="o">,</span> <span class="n">Comparable</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">Integer</span> <span class="kd">extends</span> <span class="n">Number</span> <span class="kd">implements</span> <span class="o">...</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">Long</span> <span class="kd">extends</span> <span class="n">Number</span> <span class="kd">implements</span> <span class="o">...</span>
+</span></span></code></pre></div><p>包括其他的装饰类都是被final关键字修饰的，它自身提供的方法和功能也是非常完备的。</p>
 <h2 id="static关键字的不同">static关键字的不同</h2>
 <p>final static 成对出现的频率也是比较高的，使用static修饰的变量只会在类加载的时候被初始化，不会因为对象的再次创建而改变。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="kd">static</span> <span class="kt">double</span> <span class="n">num</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">();</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="kd">static</span> <span class="kt">double</span> <span class="n">num</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">();</span>
+</span></span></code></pre></div>
     </div>
 
 
@@ -455,7 +455,7 @@
   </div>
 </footer>
 
-    <script type="text/javascript" src="https://Jerrysmd.github.io/js/bundle.min.e64f8cf616bae500fe58d08450d2114ea2d6df7c6ecd381eac0ff9091960733b79a0fdd5206e402dc53c3f44636be5bf246c2c22d32de3334561f748f32b1b0f.js" integrity="sha512-5k&#43;M9ha65QD&#43;WNCEUNIRTqLW33xuzTgerA/5CRlgczt5oP3VIG5ALcU8P0Rja&#43;W/JGwsItMt4zNFYfdI8ysbDw==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://Jerrysmd.github.io/js/bundle.min.dd2abc9f5eda341d9ec203d91946a305b443270c2c0d6f9c2ede56045676ca1d6e13a2af52564e17eb74058de16af7f181d68f7add7e5d5552b3559dcb40ed35.js" integrity="sha512-3Sq8n17aNB2ewgPZGUajBbRDJwwsDW&#43;cLt5WBFZ2yh1uE6KvUlZOF&#43;t0BY3havfxgdaPet1&#43;XVVSs1Wdy0DtNQ==" crossorigin="anonymous"></script>
     
   </body>
 </html>
