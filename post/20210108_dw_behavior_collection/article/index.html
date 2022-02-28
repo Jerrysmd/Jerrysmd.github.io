@@ -691,7 +691,8 @@
 <p>shuffle 及其优化：</p>
 <p>shuffle 定义：map 方法之后，reduce方法之前混洗的过程。</p>
 <ol>
-<li>数据 map action</li>
+<li>经过 map action后，先调用 getpartition 方法，标记数据是哪一个分区。</li>
+<li>进入环形缓冲区（缓冲区大小100M ），到达 80% 进行溢写（排序手段：对<strong>key</strong>的索引按照<strong>字典序</strong>进行<strong>快排</strong>）</li>
 </ol>
 </blockquote>
     </div>
