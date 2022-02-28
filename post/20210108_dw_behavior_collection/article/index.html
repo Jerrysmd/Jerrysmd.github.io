@@ -671,6 +671,28 @@
 <li>存储时间：小文件会占用 namenode 一整个区块，一个文件块150字节。128g内存的 namenode 能存储 9亿个文件块。</li>
 <li>计算时间：1个文件块开启1个maptask，一个maptask就是1g内存。</li>
 </ol>
+<p>如何解决：</p>
+<ol>
+<li>合并：CombineTextinputformat =&gt; 减少 maptask</li>
+<li>har归档</li>
+<li>JVM重用</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>HDFS 有几个副本：</p>
+<p>3</p>
+</blockquote>
+<blockquote>
+<p>HDFS 块大小：</p>
+<p>2.x 3.x：128M</p>
+</blockquote>
+<h3 id="mapreduce">mapreduce</h3>
+<blockquote>
+<p>shuffle 及其优化：</p>
+<p>shuffle 定义：map 方法之后，reduce方法之前混洗的过程。</p>
+<ol>
+<li>数据 map action</li>
+</ol>
 </blockquote>
     </div>
 
