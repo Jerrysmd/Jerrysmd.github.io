@@ -690,15 +690,20 @@
 <blockquote>
 <p>shuffle 及其优化：</p>
 <p>shuffle 定义：map 方法之后，reduce方法之前混洗的过程。</p>
-<p>map 阶段：</p>
+<p>map 阶段之后：</p>
 <ol>
 <li>先调用 getpartition 方法，标记数据是哪一个分区。</li>
 <li>进入环形缓冲区（缓冲区大小100M ），到达 80% 进行溢写（排序手段：对 <strong>key</strong> 的索引按照 <strong>字典序</strong> 进行 <strong>快排</strong>）</li>
 <li>对溢写文件进行归并，写到指定磁盘，持久化到磁盘。</li>
 </ol>
-<p>reduce 阶段：</p>
+<p>reduce 阶段之前：</p>
 <ol>
 <li>拉取磁盘上指定的数据，放到内存中（内存不够在磁盘中）</li>
+<li>reduce 操作</li>
+</ol>
+<p>优化：</p>
+<ol>
+<li>getpartition 方法时：自定义分区：解决数据倾斜问题。</li>
 </ol>
 </blockquote>
     </div>
