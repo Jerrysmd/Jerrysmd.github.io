@@ -117,7 +117,7 @@
 </svg></span>
     <span class="post_date">
       Jan 8, 2021</span>
-    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/datawarehouse' title="datawarehouse" class="post_tag button button_translucent">datawarehouse
+    <span class="post_time"> · 4 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/datawarehouse' title="datawarehouse" class="post_tag button button_translucent">datawarehouse
         </a><a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
         </a>
     </span>
@@ -690,9 +690,15 @@
 <blockquote>
 <p>shuffle 及其优化：</p>
 <p>shuffle 定义：map 方法之后，reduce方法之前混洗的过程。</p>
+<p>map 阶段：</p>
 <ol>
-<li>经过 map action后，先调用 getpartition 方法，标记数据是哪一个分区。</li>
+<li>先调用 getpartition 方法，标记数据是哪一个分区。</li>
 <li>进入环形缓冲区（缓冲区大小100M ），到达 80% 进行溢写（排序手段：对 <strong>key</strong> 的索引按照 <strong>字典序</strong> 进行 <strong>快排</strong>）</li>
+<li>对溢写文件进行归并，写到指定磁盘，持久化到磁盘。</li>
+</ol>
+<p>reduce 阶段：</p>
+<ol>
+<li>拉取磁盘上指定的数据，放到内存中（内存不够在磁盘中）</li>
 </ol>
 </blockquote>
     </div>
