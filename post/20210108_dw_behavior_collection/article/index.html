@@ -686,7 +686,7 @@
 <p>HDFS 块大小：</p>
 <p>2.x 3.x：128M</p>
 </blockquote>
-<h3 id="mapreduce">mapreduce</h3>
+<h3 id="mapreduce">Mapreduce</h3>
 <blockquote>
 <p>shuffle 及其优化：</p>
 <p>shuffle 定义：map 方法之后，reduce方法之前混洗的过程。</p>
@@ -703,10 +703,71 @@
 </ol>
 <p>优化：</p>
 <ol>
-<li>getpartition 方法时：自定义分区：解决数据倾斜问题。</li>
-<li>调整缓冲区大小和溢写阈值，缓冲区大小由100M调整到200M，溢写阈值由80%调整到90%。产生大量的溢写文件，使用combiner聚类文件（前提是不影响最终业务逻辑）。这样减少了写文件的个数，合并会快一些。</li>
-<li>溢写文件归并到磁盘：减少磁盘IO压缩</li>
+<li>
+<p>getpartition 方法时：自定义分区：解决数据倾斜问题。</p>
+</li>
+<li>
+<p>调整缓冲区大小和溢写阈值，缓冲区大小由100M调整到200M，溢写阈值由80%调整到90%。产生大量的溢写文件，使用combiner聚类文件（前提是不影响最终业务逻辑）。这样减少了写文件的个数，合并会快一些。</p>
+</li>
+<li>
+<p>溢写文件归并到磁盘：减少磁盘IO压缩，使用快的压缩算法：snappy/lzo</p>
+</li>
+<li></li>
+<li>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Map</th>
+<th></th>
+<th>Reduce</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>输入端</td>
+<td></td>
+<td>快</td>
+<td></td>
+<td>输出端</td>
+</tr>
+<tr>
+<td>先考虑数据量<br>1.小 =&gt; 快</td>
+<td></td>
+<td>snappy</td>
+<td></td>
+<td>看需求<br>1.永久保存：压缩越小越好</td>
+</tr>
+<tr>
+<td>2.数据量大 =&gt; 切片<br>bzip2<br>lzo =&gt; 需要创建索引</td>
+<td></td>
+<td>lzo</td>
+<td></td>
+<td>2.下一个mapreduce输入端<br>数据量小 =&gt; 快<br>数据量大 =&gt; 切片 压缩</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>reduce 拉取磁盘指定的数据，默认拉取5个，可以改成10 - 20个</p>
+</li>
+<li>
+<p>yarn 和 hadoop内存大小调整：<strong>单个任务可以申请的最大内存大小</strong>，和 <strong>Hadoop 单个节点可用内存大小</strong>。调节这两个参数能提高系统内存的利用率。 （NodeManager 默认内存大小 8g，单个任务默认内存大小 8g，maptask默认内存大小 1g，reducetask默认内存大小 1g。）NodeManager内存改为节点 80% 左右的内存大小。单个任务内存大小根据每 128M 数据分配1g内存。maptask 和 reducetask 内存若不支持压缩也需要调大。</p>
+</li>
 </ol>
+</blockquote>
+<blockquote>
+<p>进行了几次排序：</p>
+<p>map后进行一次快排，一次归并。</p>
+<p>reduce时进行一次归并，一次分组。</p>
+</blockquote>
+<h3 id="yarn">Yarn</h3>
+<blockquote>
+<p>yarn 的工作机制</p>
+</blockquote>
+<blockquote>
+<p>yarn 调度器</p>
 </blockquote>
     </div>
 
