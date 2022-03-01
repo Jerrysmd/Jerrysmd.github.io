@@ -765,9 +765,29 @@
 <h3 id="yarn">Yarn</h3>
 <blockquote>
 <p>yarn 的工作机制：</p>
+<ol>
+<li>
+<p>用户使用客户端向 RM 提交一个任务，同时指定提交到哪个队列和需要多少资源。用户可以通过每个计算引擎的对应参数设置，如果没有特别指定，则使用默认设置。</p>
+</li>
+<li>
+<p>RM 在收到任务提交的请求后，先根据资源和队列是否满足要求选择一个 NM，通知它启动一个特殊的 container，称为 ApplicationMaster（AM），后续流程由它发起。</p>
+</li>
+<li>
+<p>AM 向 RM 注册后根据自己任务的需要，向 RM 申请 container，包括数量、所需资源量、所在位置等因素。</p>
+</li>
+<li>
+<p>如果队列有足够资源，RM 会将 container 分配给有足够剩余资源的 NM，由 AM 通知 NM 启动 container。</p>
+</li>
+<li>
+<p>container 启动后执行具体的任务，处理分给自己的数据。NM 除了负责启动 container，还负责监控它的资源使用状况以及是否失败退出等工作，如果 container 实际使用的内存超过申请时指定的内存，会将其杀死，保证其他 container 能正常运行。</p>
+</li>
+<li>
+<p>各个 container 向 AM 汇报自己的进度，都完成后，AM 向 RM 注销任务并退出，RM 通知 NM 杀死对应的 container，任务结束。</p>
+</li>
+</ol>
 </blockquote>
 <blockquote>
-<p>yarn 调度器：</p>
+<p>hadoop 调度器：</p>
 </blockquote>
     </div>
 

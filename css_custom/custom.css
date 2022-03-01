@@ -106,3 +106,7 @@ h2 {
 .post_item {
     margin-bottom: 2.5rem;
 }
+
+use {
+    background-image: url(../images/sun.svg);
+}
