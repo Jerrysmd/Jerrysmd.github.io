@@ -799,7 +799,35 @@
 <li>公平调度器：支持多队列(并发度比容量调度高)，可以借用其他队列资源。队列中所有任务公平享有队列资源。</li>
 </ol>
 </li>
+<li>容器调度器配置多队列：
+<ol>
+<li>按照分析引擎创建队列：mr、spark、flink、hive</li>
+<li>按照业务：登录、注册、购物车、下单、支付</li>
 </ol>
+</li>
+</ol>
+</blockquote>
+<h3 id="zookeeper-1">Zookeeper</h3>
+<blockquote>
+<p>选举机制：</p>
+<ol>
+<li>半数机制：3台服务器，2台投谁谁就是老大</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>常用命令：</p>
+<p><code>delete create</code></p>
+</blockquote>
+<blockquote>
+<p>安装台数：</p>
+<p>根据集群机器数量，3-11台。zk台数多了，增加可靠性，但降低选举效率。</p>
+</blockquote>
+<h3 id="flume-1">Flume</h3>
+<blockquote>
+<p>组成：（source、channel、sink、put事务、take事务）</p>
+</blockquote>
+<blockquote>
+<p>三个器：（拦截器、选择器、监控器）</p>
 </blockquote>
     </div>
 
