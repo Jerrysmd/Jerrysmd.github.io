@@ -81,13 +81,13 @@ html:not([data-mode="lit"]){
     --light: #dadadb;
 }
 
-a {
+h3.post_link a {
     font-weight: bold;
     transition: .3s cubic-bezier(0.65, 0.05, 0.36, 1);
     transition-property: text-shadow;
 }
 
-a:hover {
+h3.post_link a:hover {
     text-shadow: 4px 4px 4px #adadad;
 }
 
