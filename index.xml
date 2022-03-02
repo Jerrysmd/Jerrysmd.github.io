@@ -5,7 +5,21 @@
     <link>https://Jerrysmd.github.io/</link>
     <description>Recent content on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 08 Jan 2021 09:43:01 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 18 Dec 2021 10:01:20 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2021</title>
+      <link>https://Jerrysmd.github.io/post/20211218_2021_summary_video/article/</link>
+      <pubDate>Sat, 18 Dec 2021 10:01:20 +0800</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/20211218_2021_summary_video/article/</guid>
+      <description>
+        
+          
+          
+        
+      </description>
+    </item>
+    
     <item>
       <title>Data Warehouse: Behavior Collection</title>
       <link>https://Jerrysmd.github.io/post/20210108_dw_behavior_collection/article/</link>
@@ -638,20 +652,6 @@
         
           
             &lt;p&gt;哈希表是一种十分重要的数据结构，在很多应用场景下都有用到，本文会对哈希表原理进行简单的剖析，并使用C语言实现一个完整的HashMap。&lt;/p&gt;
-          
-          
-        
-      </description>
-    </item>
-    
-    <item>
-      <title>2021</title>
-      <link>https://Jerrysmd.github.io/post/20211218_2021_summary_video/article/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://Jerrysmd.github.io/post/20211218_2021_summary_video/article/</guid>
-      <description>
-        
           
           
         
