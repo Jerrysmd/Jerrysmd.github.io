@@ -842,8 +842,13 @@
 <li>不支持递归遍历文件夹：自定义递归</li>
 </ol>
 </li>
-<li>channel：（file channel 磁盘|可靠性高|性能低、memory channel、kafka channel）
-1.</li>
+<li>channel：
+<ol>
+<li>file channel 磁盘|可靠性高|性能低</li>
+<li>memory channel 内存|可靠性低|性能高</li>
+<li>kafka channel 存kafka里，kafka存在磁盘|可靠性高|性能优于 memory channel + kafka sink</li>
+</ol>
+</li>
 </ol>
 </blockquote>
 <blockquote>
