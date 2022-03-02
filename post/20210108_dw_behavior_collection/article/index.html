@@ -849,15 +849,29 @@
 <li>kafka channel 存kafka里，kafka存在磁盘|可靠性高|性能优于 memory channel + kafka sink</li>
 </ol>
 </li>
-<li>sink：</li>
-<li></li>
+<li>sink：（HDFS sink）
+<ol>
+<li>用来解决小文件问题</li>
+<li>设置大小128M、时间（1-2小时）、event个数禁止0</li>
+</ol>
+</li>
 </ol>
 </blockquote>
 <blockquote>
 <p>三个器：（拦截器、选择器、监控器）</p>
+<ol>
+<li>拦截器：时间戳拦截器 或者 自定义拦截器</li>
+<li>选择器：默认是replicating，把数据发往下一级所有通道</li>
+<li>监控器：g, 监控 put、take 事务尝试提交的次数远远大于最终提交成功的次数，说明 flume 异常。自身：增加内存，其他：增加 flume 台数</li>
+</ol>
 </blockquote>
 <blockquote>
 <p>优化：</p>
+<ol>
+<li>file channel 能配置多目录就配置多目录（不同磁盘）</li>
+<li>使用 HDFS sink 用来解决小文件问题</li>
+<li>通过监控器找寻原因，增加内存和台数</li>
+</ol>
 </blockquote>
 <blockquote>
 <p>挂了恢复：</p>
