@@ -875,7 +875,12 @@
 </blockquote>
 <blockquote>
 <p>挂了恢复：</p>
+<ol>
+<li>channel 挂了：memory channel 100个event 数据丢失。（file channel 100万个event，没有丢失风险）</li>
+<li>taildir source 挂了：不会丢数，可能重复数据</li>
+</ol>
 </blockquote>
+<h3 id="kafka-1">Kafka</h3>
     </div>
 
 
