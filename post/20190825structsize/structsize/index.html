@@ -151,59 +151,61 @@
 
 
 
+<figure>
+  <picture>
 
-
-
-
-  <figure>
-    <picture>
-
+    
       
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-      
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-      
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
       
 
-      <img class="image_figure image_internal" src="https://Jerrysmd.github.io/post/picture/struct_sizeof_ex1.png" alt="Output1" loading="lazy" decoding="async" width="300" height="154"  />
       
 
-    </picture>
-  </figure>
+        
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        
+
+        <img class="image_figure image_internal" src="https://Jerrysmd.github.io/post/picture/struct_sizeof_ex1.png" alt="Output1" loading="lazy" decoding="async" width="300" height="154"  />
+    
+
+  </picture>
+</figure>
 </p>
 <p>The red portion represents the padding added for data alignment and the green portion represents the struct members. In this case, x (int) is followed by z (double), which is larger in size as compared to x. Hence padding is added after x. Also, padding is needed at the end for data alignment.</p>
 <ul>
@@ -228,59 +230,61 @@
 
 
 
+<figure>
+  <picture>
 
-
-
-
-  <figure>
-    <picture>
-
+    
       
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-      
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-      
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
       
 
-      <img class="image_figure image_internal" src="https://Jerrysmd.github.io/post/picture/struct_sizeof_ex2.png" alt="output2" loading="lazy" decoding="async" width="300" height="124"  />
       
 
-    </picture>
-  </figure>
+        
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        
+
+        <img class="image_figure image_internal" src="https://Jerrysmd.github.io/post/picture/struct_sizeof_ex2.png" alt="output2" loading="lazy" decoding="async" width="300" height="124"  />
+    
+
+  </picture>
+</figure>
 </p>
 <p>In this case, the members of the structure are sorted in decreasing order of their sizes. Hence padding is required only at the end.</p>
 <ul>
@@ -305,59 +309,61 @@
 
 
 
+<figure>
+  <picture>
 
-
-
-
-  <figure>
-    <picture>
-
+    
       
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-      
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-      
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
       
 
-      <img class="image_figure image_internal" src="https://Jerrysmd.github.io/post/picture/struct_sizeof_ex3.png" alt="output3" loading="lazy" decoding="async" width="300" height="128"  />
       
 
-    </picture>
-  </figure>
+        
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        
+
+        <img class="image_figure image_internal" src="https://Jerrysmd.github.io/post/picture/struct_sizeof_ex3.png" alt="output3" loading="lazy" decoding="async" width="300" height="128"  />
+    
+
+  </picture>
+</figure>
 </p>
 <p>In this case, y (short int) is followed by x (int) and hence padding is required after y. No padding is needed at the end in this case for data alignment.</p>
 <p>C language doesn’t allow the compilers to reorder the struct members to reduce the amount of padding. In order to minimize the amount of padding, the struct members must be sorted in a descending order (similar to the case 2).</p>
