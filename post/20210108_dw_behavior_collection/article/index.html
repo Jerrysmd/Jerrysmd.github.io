@@ -117,7 +117,7 @@
 </svg></span>
     <span class="post_date">
       Jan 8, 2021</span>
-    <span class="post_time"> · 4 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/datawarehouse' title="datawarehouse" class="post_tag button button_translucent">datawarehouse
+    <span class="post_time"> · 5 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/datawarehouse' title="datawarehouse" class="post_tag button button_translucent">datawarehouse
         </a><a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
         </a>
     </span>
@@ -881,6 +881,28 @@
 </ol>
 </blockquote>
 <h3 id="kafka-1">Kafka</h3>
+<blockquote>
+<p>基本信息：</p>
+<ol>
+<li>组成：
+<ol>
+<li>producer</li>
+<li>broker</li>
+<li>consumer</li>
+<li>zk：存放 broker（id, topic），consumer（相应的 offset），没有生产者信息</li>
+</ol>
+</li>
+<li>安装台数：<code>2 * (生产者峰值生产速率(压测) * 副本 / 100) + 1</code>,
+<ol>
+<li>先使用3台机器压测</li>
+</ol>
+</li>
+<li>副本数：通常2个副本，默认1个副本。多：可靠性高，传输性能差</li>
+<li>数据量：100万日活 一人100条 一条1k。 1M/s</li>
+<li>数据保存多久：3天</li>
+<li>磁盘预留</li>
+</ol>
+</blockquote>
     </div>
 
 
