@@ -905,9 +905,17 @@
 <li>分区：提高并发度：先设置1个，通过压测生产者峰值生产速率tp、消费者峰值消费速率tc
 <ol>
 <li>期望吞吐量t 100m/s</li>
-<li>分区数 = t / min (tp, t)</li>
+<li>分区数 = t / min (tp, tc)</li>
 </ol>
 </li>
+<li>分区分配策略：
+<ol>
+<li>range 默认</li>
+<li>roundrobin 采用 roundrobin 所有数据采用 hash 方式大散，再采用轮询的方式执行</li>
+</ol>
+</li>
+<li>isr：主要解决leader挂了谁当老大，在 isr 队列的都有机会当老大。</li>
+<li>多少个 topic：满足下一级消费者即可。</li>
 </ol>
 </blockquote>
     </div>
