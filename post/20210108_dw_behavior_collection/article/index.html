@@ -926,6 +926,13 @@
 </ol>
 </blockquote>
 <blockquote>
+<p>丢：ack 配置参数</p>
+<ul>
+<li>0：发送数据，不需要应答。可靠性最差，传输性能最好。</li>
+<li>1：发送数据，leader 应答。可靠性一般，传输性能一般。</li>
+<li>-1：发送数据，leader 和 follower 共同应答。可靠性最高，传输性能最差。</li>
+<li>企业中：0几乎不用，不太重要1，重要-1</li>
+</ul>
 </blockquote>
     </div>
 
