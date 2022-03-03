@@ -1054,6 +1054,16 @@
 <p>distribute by：分桶，取余分组，没有排序</p>
 <p>cluster by： distribute by + sort by</p>
 </blockquote>
+<blockquote>
+<p>自定义函数：</p>
+<ol>
+<li>自定义udf函数步骤： 1进1出，一行，定义类 继承udf，重写 evaluate 方法</li>
+<li>自定义udtf函数步骤：多进多出，继承 udtf，重写三个方法（初始化（定义名称、校验返回值类型）、close、process）。打包+上传hdfs+在hive客户端创建</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>窗口函数：rank、over、topn</p>
+</blockquote>
     </div>
 
 
