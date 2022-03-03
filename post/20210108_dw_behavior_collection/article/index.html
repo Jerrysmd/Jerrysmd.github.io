@@ -934,6 +934,33 @@
 <li>企业中：0几乎不用，不太重要1，重要-1</li>
 </ul>
 </blockquote>
+<blockquote>
+<p>重复：</p>
+<ol>
+<li>采用 事务、幂等性、ack = -1
+<ol>
+<li>幂等性：单分区单会话内数据不重复</li>
+<li>事务：每条数据比较，可以比较多个分区</li>
+<li>事务：</li>
+</ol>
+</li>
+<li>在下一级处理：</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>积压：kafka 保存数据的时间是有限的，没有及时消费完</p>
+<ol>
+<li>增加分区，同时增加消费者对应的CPU核数</li>
+<li>增加消费者 batchsize</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>优化：</p>
+<ol>
+<li>日志保存3天</li>
+<li>增加</li>
+</ol>
+</blockquote>
     </div>
 
 
