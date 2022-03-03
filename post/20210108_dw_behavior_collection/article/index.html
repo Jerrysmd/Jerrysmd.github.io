@@ -1049,7 +1049,10 @@
 </blockquote>
 <blockquote>
 <p>4个by：</p>
-<p>order by：全局排序 （数据倾斜，资源分配不足）不使用</p>
+<p>order by：全局排序 （只有一个reduce task，数据倾斜，资源分配不足）不使用</p>
+<p>sort by：局部排序，只保证每个 reducer task 输出有序</p>
+<p>distribute by：分桶，取余分组，没有排序</p>
+<p>cluster by： distribute by + sort by</p>
 </blockquote>
     </div>
 
