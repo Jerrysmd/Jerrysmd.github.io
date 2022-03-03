@@ -8,14 +8,14 @@
     <lastBuildDate>Thu, 04 Feb 2021 07:10:16 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/machinelearning/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tensorflow Identify Simple Captcha</title>
-      <link>https://Jerrysmd.github.io/post/20220304_tensorflow_captcha/article/</link>
+      <link>https://Jerrysmd.github.io/post/20210204_tensorflow_captcha/article/</link>
       <pubDate>Thu, 04 Feb 2021 07:10:16 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20220304_tensorflow_captcha/article/</guid>
+      <guid>https://Jerrysmd.github.io/post/20210204_tensorflow_captcha/article/</guid>
       <description>
         
           
-            &lt;p&gt;&lt;strong&gt;Insert Lead paragraph here.&lt;/strong&gt;&lt;/p&gt;
+            &lt;p&gt;CAPTCHA stands for &#39;Completely Automated Public Turing test to tell Computers and Humans Apart&#39;. It’s already possible to solve it with the rise of deep learning and computer vision.&lt;/p&gt;
           
           
         
