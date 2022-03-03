@@ -1064,6 +1064,15 @@
 <blockquote>
 <p>窗口函数：rank、over、topn</p>
 </blockquote>
+<blockquote>
+<p>优化：</p>
+<ol>
+<li>行列过滤：join -&gt; where =&gt; where -&gt; join</li>
+<li>分区</li>
+<li>小文件：combineHiveInputformat 或者 JVM重用 或者 merge</li>
+<li>压缩</li>
+</ol>
+</blockquote>
     </div>
 
 
