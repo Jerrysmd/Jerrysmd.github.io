@@ -974,6 +974,83 @@
 <li>数据过期：删除 或者 压缩，通常删除，副本备份30天数据</li>
 </ol>
 </blockquote>
+<h3 id="hive">Hive</h3>
+<blockquote>
+<p>组成：
+
+
+
+
+
+<figure>
+  <picture>
+
+    
+      
+      
+
+      
+
+        
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        
+
+        <img class="image_figure image_internal" src="https://Jerrysmd.github.io/post/20210108_dW_behavior_collection/hive_structure.jpg" alt="hive_structure" loading="lazy" decoding="async" width="584" height="472"  />
+    
+
+  </picture>
+</figure>
+</p>
+</blockquote>
+<blockquote>
+<p>内部表和外部表区别：</p>
+<ol>
+<li>内部表删除数据：元数据、原始数据 删掉</li>
+<li>外表删数据：元数据删掉，原始数据保留</li>
+<li>只有自己临时使用表，创建内部表。绝大部分场景都是外部表</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>4个by：</p>
+<p>order by：全局排序 （数据倾斜，资源分配不足）不使用</p>
+</blockquote>
     </div>
 
 
