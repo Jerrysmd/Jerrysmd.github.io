@@ -1076,7 +1076,13 @@
 <h2 id="数据仓库-1">数据仓库</h2>
 <h3 id="数据分层">数据分层</h3>
 <blockquote>
-<p>ODS (Operation Data Store) 原始数据层：存放原始数据，起到备份的作用</p>
+<ul>
+<li>ODS（Operation Data Store）原始数据层：存放原始数据，起到备份的作用</li>
+<li>DWD（Data Warehouse Detail）明细数据层：清洗，去空，去脏数据，维度退化</li>
+<li>DWS（DW service）按天进行轻度汇总</li>
+<li>DWT（DW Topic）按主题进行汇总</li>
+<li>ADS（Application Data Store）为各种统计报表提供数据</li>
+</ul>
 </blockquote>
     </div>
 
