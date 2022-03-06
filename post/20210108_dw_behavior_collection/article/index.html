@@ -1086,6 +1086,19 @@
 </blockquote>
 <h3 id="数仓建模">数仓建模</h3>
 <blockquote>
+<p>ODS层：</p>
+<ul>
+<li>创建支持LZO压缩的表：减少存储空间，100g -&gt; 10g - 5g(取决于文件格式，比如JSON的嵌套方式，CSV的列数量)</li>
+<li>创建分区表：防止全表扫描（导数据：全量、增量、新增和变化）</li>
+<li>保持数据原貌不做任何修改，起到备份数据的作用</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>DWD层：🔶</p>
+<ul>
+<li>选择业务过程 -&gt; 声明粒度 -&gt; 确认维度 -&gt; 确认事实</li>
+<li></li>
+</ul>
 </blockquote>
 <h3 id="数据处理">数据处理</h3>
 <blockquote>
