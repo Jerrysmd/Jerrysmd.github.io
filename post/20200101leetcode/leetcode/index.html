@@ -713,7 +713,7 @@
 </span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="c1"></span>        <span class="n">heap</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">index</span><span class="o">]);</span>
 </span></span><span class="line"><span class="ln"> 6</span><span class="cl">    <span class="o">}</span>
 </span></span><span class="line"><span class="ln"> 7</span><span class="cl">    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    <span class="k">for</span><span class="o">(</span><span class="err">；</span><span class="n">index</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++,</span> <span class="n">index</span><span class="o">++){</span><span class="c1">//弹一个，放入一个
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    <span class="k">for</span><span class="o">(;</span><span class="n">index</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++,</span> <span class="n">index</span><span class="o">++){</span><span class="c1">//弹一个，放入一个
 </span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="c1"></span>        <span class="n">heap</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">index</span><span class="o">]);</span>
 </span></span><span class="line"><span class="ln">10</span><span class="cl">        <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">heap</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
 </span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="o">}</span>
@@ -728,30 +728,62 @@
 <blockquote>
 <p>计数排序：</p>
 <p>基数排序：</p>
+<p>
+
+
+
+
+
+<figure>
+  <picture>
+
+    
+      
+      
+
+      <div class="notices warning image-warning">
+  <div class="label">Image not found</div>
+    <style>
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    </style>
+    <p>Web path: <a href='https://Jerrysmd.github.io/post/20200101leetCode/radix_sort.gif' title='Open this web path in a new tab' target='_blank' class='warning-link'>https://Jerrysmd.github.io/post/20200101leetCode/radix_sort.gif</a></p>
+    <p>Disk path: /content//post/20200101leetCode/radix_sort.gif</p>
+    <p>Using <a href='https://gohugo.io/content-management/page-bundles/' title='Information about Hugo Page Bundles' target='_blank' class='warning-link'>Page Bundles</a>: false</p>
+</div>
+
+    
+
+  </picture>
+</figure>
+</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">radixSort</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">,</span> <span class="kt">int</span> <span class="n">L</span><span class="o">,</span> <span class="kt">int</span> <span class="n">R</span><span class="o">,</span> <span class="kt">int</span> <span class="n">digit</span><span class="o">){</span><span class="c1">//digit: 最大数的位数
-</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="c1"></span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">radix</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl"> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl"> <span class="kt">int</span><span class="o">[]</span> <span class="n">bucket</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">R</span> <span class="o">-</span> <span class="n">L</span> <span class="o">+</span> <span class="n">1</span><span class="o">];</span><span class="c1">//有多少个数准备多少个辅助空间
-</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="c1"></span> <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span> <span class="n">d</span> <span class="o">&lt;=</span> <span class="n">digit</span><span class="o">;</span> <span class="n">d</span><span class="o">++){</span><span class="c1">//最大位数有多少位就进出桶多少次
-</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="c1"></span>     <span class="kt">int</span><span class="o">[]</span> <span class="n">count</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">radix</span><span class="o">];</span> <span class="c1">//count[0..9]
-</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="c1"></span>     <span class="c1">//count[0] 当前(d)位是0的数字有多少个
-</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="c1"></span>     <span class="c1">//count[1] 当前(d)位小于等于1的数字有多少个
-</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="c1"></span>     <span class="c1">//count[2] 当前(d)位小于等于2的数字有多少个
-</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="c1"></span>     <span class="c1">//count[i] 当前(d)位小于等于i的数字有多少个
-</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="c1"></span>     <span class="k">for</span><span class="o">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">L</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">R</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl">         <span class="n">count</span><span class="o">[</span><span class="n">getDigit</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="n">d</span><span class="o">)]++;</span><span class="c1">//先统计每个数字(num)出现了几次(times)，先记录在count[num] = times
-</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="c1"></span>     <span class="o">}</span>
-</span></span><span class="line"><span class="ln">14</span><span class="cl">     <span class="k">for</span><span class="o">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">radix</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
-</span></span><span class="line"><span class="ln">15</span><span class="cl">         <span class="n">count</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">count</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">+</span> <span class="n">count</span><span class="o">[</span><span class="n">i</span> <span class="o">-</span> <span class="n">1</span><span class="o">];</span><span class="c1">//再统计小于等于出现的次数
-</span></span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="c1"></span>     <span class="o">}</span>
-</span></span><span class="line"><span class="ln">17</span><span class="cl">     <span class="k">for</span><span class="o">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">R</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">L</span><span class="o">;</span> <span class="n">i</span><span class="o">--){</span><span class="c1">//从右向左
-</span></span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="c1"></span>         <span class="n">j</span> <span class="o">=</span> <span class="n">getDigit</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="n">d</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">19</span><span class="cl">         <span class="n">bucket</span><span class="o">[</span><span class="n">count</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">-</span> <span class="n">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
-</span></span><span class="line"><span class="ln">20</span><span class="cl">     <span class="o">}</span>
-</span></span><span class="line"><span class="ln">21</span><span class="cl">     <span class="k">for</span><span class="o">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">L</span><span class="o">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">R</span><span class="o">;</span> <span class="n">i</span><span class="o">++,</span> <span class="n">j</span><span class="o">++){</span>
-</span></span><span class="line"><span class="ln">22</span><span class="cl">         <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">bucket</span><span class="o">[</span><span class="n">j</span><span class="o">];</span><span class="c1">//将桶中数据倒回数组
-</span></span></span><span class="line"><span class="ln">23</span><span class="cl"><span class="c1"></span>     <span class="o">}</span>
-</span></span><span class="line"><span class="ln">24</span><span class="cl"> <span class="o">}</span>
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="c1"></span><span class="kd">final</span> <span class="kt">int</span> <span class="n">radix</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="kt">int</span><span class="o">[]</span> <span class="n">bucket</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">R</span> <span class="o">-</span> <span class="n">L</span> <span class="o">+</span> <span class="n">1</span><span class="o">];</span><span class="c1">//有多少个数准备多少个辅助空间
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="c1"></span><span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span> <span class="n">d</span> <span class="o">&lt;=</span> <span class="n">digit</span><span class="o">;</span> <span class="n">d</span><span class="o">++){</span><span class="c1">//最大位数有多少位就进出桶多少次
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="c1"></span>  <span class="kt">int</span><span class="o">[]</span> <span class="n">count</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">radix</span><span class="o">];</span> <span class="c1">//count[0..9]
+</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="c1"></span>  <span class="c1">//count[0] 当前(d)位是0的数字有多少个
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="c1"></span>  <span class="c1">//count[1] 当前(d)位小于等于1的数字有多少个
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="c1"></span>  <span class="c1">//count[2] 当前(d)位小于等于2的数字有多少个
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="c1"></span>  <span class="c1">//count[i] 当前(d)位小于等于i的数字有多少个
+</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="c1"></span>  <span class="k">for</span><span class="o">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">L</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">R</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">      <span class="n">count</span><span class="o">[</span><span class="n">getDigit</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="n">d</span><span class="o">)]++;</span><span class="c1">//先统计每个数字(num)出现了几次(times)，先记录在count[num] = times
+</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="c1"></span>  <span class="o">}</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">  <span class="k">for</span><span class="o">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">radix</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">      <span class="n">count</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">count</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">+</span> <span class="n">count</span><span class="o">[</span><span class="n">i</span> <span class="o">-</span> <span class="n">1</span><span class="o">];</span><span class="c1">//再统计小于等于出现的次数
+</span></span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="c1"></span>  <span class="o">}</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl">  <span class="k">for</span><span class="o">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">R</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">L</span><span class="o">;</span> <span class="n">i</span><span class="o">--){</span><span class="c1">//从右向左
+</span></span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="c1"></span>      <span class="n">j</span> <span class="o">=</span> <span class="n">getDigit</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="n">d</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">19</span><span class="cl">      <span class="n">bucket</span><span class="o">[</span><span class="n">count</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">-</span> <span class="n">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+</span></span><span class="line"><span class="ln">20</span><span class="cl">  <span class="o">}</span>
+</span></span><span class="line"><span class="ln">21</span><span class="cl">  <span class="k">for</span><span class="o">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">L</span><span class="o">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">R</span><span class="o">;</span> <span class="n">i</span><span class="o">++,</span> <span class="n">j</span><span class="o">++){</span>
+</span></span><span class="line"><span class="ln">22</span><span class="cl">      <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">bucket</span><span class="o">[</span><span class="n">j</span><span class="o">];</span><span class="c1">//将桶中数据倒回数组
+</span></span></span><span class="line"><span class="ln">23</span><span class="cl"><span class="c1"></span>  <span class="o">}</span>
+</span></span><span class="line"><span class="ln">24</span><span class="cl"><span class="o">}</span>
 </span></span><span class="line"><span class="ln">25</span><span class="cl"><span class="o">}</span>
 </span></span></code></pre></div></blockquote>
 <p>小结</p>
