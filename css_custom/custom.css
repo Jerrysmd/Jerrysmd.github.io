@@ -109,4 +109,5 @@ h2 {
 
 use {
     background-image: url(../images/sun.svg);
+    border-image: url(../images/night-moon.jpg);
 }
