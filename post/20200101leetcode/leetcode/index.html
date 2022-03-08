@@ -308,9 +308,9 @@
 </blockquote>
 <p><strong>求中间数</strong></p>
 <ul>
-<li>mid = (L + R) / 2                 // L + R 可能会越界，这时mid算出负数</li>
-<li>mid = L + (R - L) / 2</li>
-<li>mid = L + (R - L) &gt;&gt; 1        //右移一位比除2快</li>
+<li>mid = (L + R) / 2 				// L + R 可能会越界65535，这时mid算出负数</li>
+<li>mid = L + (R - L) / 2			//不会越界</li>
+<li>mid = L + (R - L) &gt;&gt; 1		//右移一位比除2快</li>
 </ul>
 <p><strong>对数器</strong></p>
 <ul>
