@@ -1225,6 +1225,23 @@
 </span></span></code></pre></div><blockquote>
 <p>解题：</p>
 <p>使用双指针，一个指针从头遍历，一个指针从尾遍历，当两个指针都遇到元音时，交换这两个元音字符。</p>
+<ul>
+<li>
+<p>为了快速判断字符是不是元音字符，将元音字符添加到集合 HashSet 中，从而以 O(1) 的时间复杂度进行该操作</p>
+</li>
+<li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="kd">private</span> <span class="kd">final</span> <span class="kd">static</span> <span class="n">HashSet</span><span class="o">&lt;</span><span class="n">Character</span><span class="o">&gt;</span> <span class="n">vowels</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;&gt;(</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">        <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="sc">&#39;a&#39;</span><span class="o">,</span> <span class="sc">&#39;e&#39;</span><span class="o">,</span> <span class="sc">&#39;i&#39;</span><span class="o">,</span> <span class="sc">&#39;o&#39;</span><span class="o">,</span> <span class="sc">&#39;u&#39;</span><span class="o">,</span> <span class="sc">&#39;A&#39;</span><span class="o">,</span> <span class="sc">&#39;E&#39;</span><span class="o">,</span> <span class="sc">&#39;I&#39;</span><span class="o">,</span> <span class="sc">&#39;O&#39;</span><span class="o">,</span> <span class="sc">&#39;U&#39;</span><span class="o">));</span>
+</span></span></code></pre></div></li>
+</ul>
+<p>时间复杂度 O(N)，空间复杂度 O(1)</p>
+</blockquote>
+<p>题目四：回文字符串 Valid Palindrome II (Easy)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">Input: &#34;abca&#34;
+</span></span><span class="line"><span class="ln">2</span><span class="cl">Output: True
+</span></span><span class="line"><span class="ln">3</span><span class="cl">Explanation: You could delete the character &#39;c&#39;.
+</span></span></code></pre></div><p>题目描述：可以删除一个字符，判断是否能构成回文字符串。</p>
+<blockquote>
 </blockquote>
 <h2 id="二叉树">二叉树</h2>
 <blockquote>
