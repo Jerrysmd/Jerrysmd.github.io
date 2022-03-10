@@ -132,12 +132,23 @@
       <h2>Overview</h2>
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#排序">排序</a></li>
+    <li><a href="#排序">排序</a>
+      <ul>
+        <li><a href="#插入排序">插入排序</a></li>
+        <li><a href="#二分查找">二分查找</a></li>
+        <li><a href="#归并排序">归并排序</a></li>
+        <li><a href="#快速排序">快速排序</a></li>
+        <li><a href="#堆排序">堆排序</a></li>
+        <li><a href="#桶排序">桶排序</a></li>
+      </ul>
+    </li>
     <li><a href="#leetcode-题解---排序">Leetcode 题解 - 排序</a>
       <ul>
         <li><a href="#快速选择">快速选择</a></li>
         <li><a href="#堆">堆</a></li>
         <li><a href="#题目一kth-element--kth-largest-element-in-an-array-medium">题目一：Kth Element  Kth Largest Element in an Array (Medium)</a></li>
+        <li><a href="#桶排序-1">桶排序</a></li>
+        <li><a href="#题目二出现频率最多的-k-个元素--top-k-frequent-elements-medium">题目二：出现频率最多的 k 个元素  Top K Frequent Elements (Medium)</a></li>
       </ul>
     </li>
     <li><a href="#哈希表有序表">哈希表、有序表</a></li>
@@ -330,7 +341,7 @@
   </picture>
 </figure>
 </p>
-<p>插入排序</p>
+<h3 id="插入排序">插入排序</h3>
 <ul>
 <li>
 <p>
@@ -427,7 +438,7 @@
 </span></span><span class="line"><span class="ln">13</span><span class="cl">	<span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">^</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">];</span> 
 </span></span><span class="line"><span class="ln">14</span><span class="cl">	<span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">^</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
 </span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><p>二分查找</p>
+</span></span></code></pre></div><h3 id="二分查找">二分查找</h3>
 <ul>
 <li>时间复杂度：O(logN)  (logN默认指log以2为底)</li>
 </ul>
@@ -491,7 +502,7 @@
 </ol>
 </li>
 </ul>
-<p>归并排序</p>
+<h3 id="归并排序">归并排序</h3>
 <blockquote>
 <ul>
 <li>
@@ -625,7 +636,7 @@
 </span></span><span class="line"><span class="ln">31</span><span class="cl"><span class="o">}</span>
 </span></span></code></pre></div></blockquote>
 </blockquote>
-<p>快速排序</p>
+<h3 id="快速排序">快速排序</h3>
 <blockquote>
 <p>
 
@@ -728,7 +739,7 @@
 </span></span><span class="line"><span class="ln">30</span><span class="cl">    <span class="o">}</span>
 </span></span><span class="line"><span class="ln">31</span><span class="cl"><span class="o">}</span>
 </span></span></code></pre></div></blockquote>
-<p>堆排序</p>
+<h3 id="堆排序">堆排序</h3>
 <blockquote>
 <p>
 
@@ -868,7 +879,7 @@
 </span></span></code></pre></div></li>
 </ul>
 </blockquote>
-<p>桶排序</p>
+<h3 id="桶排序">桶排序</h3>
 <blockquote>
 <p>计数排序：</p>
 <p>基数排序：</p>
@@ -1086,6 +1097,14 @@
 </span></span><span class="line"><span class="ln">35</span><span class="cl"><span class="o">}</span>
 </span></span></code></pre></div></blockquote>
 </blockquote>
+<h3 id="桶排序-1">桶排序</h3>
+<h3 id="题目二出现频率最多的-k-个元素--top-k-frequent-elements-medium">题目二：出现频率最多的 k 个元素  Top K Frequent Elements (Medium)</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">Given [1,1,1,2,2,3] and k = 2, return [1,2].
+</span></span></code></pre></div><blockquote>
+<p>解题：</p>
+<p>设置若干个桶，每个桶存储出现频率相同的数。桶的下标表示数出现的频率，即第 i 个桶中存储的数出现的频率为 i。</p>
+<p>把数都放到桶之后，从后向前遍历桶，最先得到的 k 个数就是出现频率最多的的 k 个数。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"></code></pre></div></blockquote>
 <h2 id="哈希表有序表">哈希表、有序表</h2>
 <p>哈希表介绍</p>
 <blockquote>
