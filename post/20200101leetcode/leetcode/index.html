@@ -137,6 +137,7 @@
       <ul>
         <li><a href="#快速选择">快速选择</a></li>
         <li><a href="#堆">堆</a></li>
+        <li><a href="#题目一kth-element--kth-largest-element-in-an-array-medium">题目一：Kth Element  Kth Largest Element in an Array (Medium)</a></li>
       </ul>
     </li>
     <li><a href="#哈希表有序表">哈希表、有序表</a></li>
@@ -1019,7 +1020,22 @@
 <p>可以使用快速排序的 partition() 进行实现。需要先打乱数组，否则最坏情况下时间复杂度为 O(N2)。</p>
 <h3 id="堆">堆</h3>
 <p>用于求解 <strong>TopK Elements</strong> 问题，也就是 K 个最小元素的问题。使用最小堆来实现 Top 问题，最小堆使用大顶堆来实现，大顶堆的堆顶元素为当前的最大元素。</p>
-<p>实现过程：不断地往大顶堆中插入新元素，当堆中元素的数量大于 k 时，移除堆顶元素，也就是当前堆中最大的元素，剩下的元素都为当前添加过的元素中最小的K个元素。插入和移除堆顶元素的时间复杂度都为 log<sub>2<sub>N</p>
+<p>实现过程：不断地往大顶堆中插入新元素，当堆中元素的数量大于 k 时，移除堆顶元素，也就是当前堆中最大的元素，剩下的元素都为当前添加过的元素中最小的K个元素。插入和移除堆顶元素的时间复杂度都为 log<sub>2</sub>N</p>
+<p>快速选择也可以求解 TopK Elements 问题，因为找到了 Kth Element 之后，所有小于等于 Kth Element 的元素都是 TopK Elements。</p>
+<p>快速选择和堆排序都可以求解 Kth Element 和 TopK Elements 问题。</p>
+<h3 id="题目一kth-element--kth-largest-element-in-an-array-medium">题目一：Kth Element  Kth Largest Element in an Array (Medium)</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">Input: [3,2,1,5,6,4] and k = 2
+</span></span><span class="line"><span class="ln">2</span><span class="cl">Output: 5
+</span></span></code></pre></div><p>题目描述：找到倒数第 k 个的元素。</p>
+<blockquote>
+<p>解题：</p>
+<p>方法一：<strong>排序</strong>：时间复杂度 O(NlogN)，空间复杂度 O(1)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="kd">public</span> <span class="kt">int</span> <span class="nf">findKthLargest</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="n">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">nums</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">    <span class="k">return</span> <span class="n">nums</span><span class="o">[</span><span class="n">nums</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="n">k</span><span class="o">];</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>方法二：<strong>堆</strong>：时间复杂度 O(NlogK)，空间复杂度 O(K)。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"></code></pre></div></blockquote>
 <h2 id="哈希表有序表">哈希表、有序表</h2>
 <p>哈希表介绍</p>
 <blockquote>
