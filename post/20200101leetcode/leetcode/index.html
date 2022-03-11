@@ -135,7 +135,6 @@
     <li><a href="#排序">排序</a>
       <ul>
         <li><a href="#插入排序">插入排序</a></li>
-        <li><a href="#二分查找">二分查找</a></li>
         <li><a href="#归并排序">归并排序</a></li>
         <li><a href="#快速排序">快速排序</a></li>
         <li><a href="#堆排序">堆排序</a></li>
@@ -151,6 +150,12 @@
         <li><a href="#题目二出现频率最多的-k-个元素--top-k-frequent-elements-medium">题目二：出现频率最多的 k 个元素  Top K Frequent Elements (Medium)</a></li>
         <li><a href="#题目三按照字符出现次数对字符串排序-sort-characters-by-frequency-medium">题目三：按照字符出现次数对字符串排序 Sort Characters By Frequency (Medium)</a></li>
         <li><a href="#荷兰国旗问题快排-partition">荷兰国旗问题：快排 partition</a></li>
+      </ul>
+    </li>
+    <li><a href="#二分查找">二分查找</a>
+      <ul>
+        <li><a href="#题目一">题目一：</a></li>
+        <li><a href="#求中间数">求中间数</a></li>
       </ul>
     </li>
     <li><a href="#哈希表有序表">哈希表、有序表</a></li>
@@ -169,7 +174,7 @@
     <li><a href="#二叉树">二叉树</a></li>
     <li><a href="#图">图</a></li>
     <li><a href="#前缀树">前缀树</a></li>
-    <li><a href="#leetcode-题解---贪心思想">Leetcode 题解 - 贪心思想</a></li>
+    <li><a href="#leetcode-题解---贪心思想--笔试面试都很少出现">Leetcode 题解 - 贪心思想  笔试面试都很少出现</a></li>
     <li><a href="#暴力递归">暴力递归</a></li>
     <li><a href="#哈希函数">哈希函数</a></li>
     <li><a href="#布隆过滤器">布隆过滤器</a></li>
@@ -440,46 +445,6 @@
 </span></span><span class="line"><span class="ln">13</span><span class="cl">	<span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">^</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">];</span> 
 </span></span><span class="line"><span class="ln">14</span><span class="cl">	<span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">^</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
 </span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><h3 id="二分查找">二分查找</h3>
-<ul>
-<li>时间复杂度：O(logN)  (logN默认指log以2为底)</li>
-</ul>
-<blockquote>
-<p>例题：</p>
-<ol>
-<li>
-<p>在一个有序数组中，找某个数是否存在</p>
-</li>
-<li>
-<p>在一个有序数组中，找 &gt;= 某个数最左侧的位置：二分查找直到左侧没有数</p>
-</li>
-<li>
-<p>无序，相邻数一定不相等，找一个局部最小(i-1 &lt; i &lt; i+1)的数，复杂度能否好于O(N)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">先判断首尾项是否满足要求，若首尾项不满足要求，一定是\进/出，中间一定有低谷拐点。
-</span></span><span class="line"><span class="ln">2</span><span class="cl">然后判断中间点是否满足要求，若不满足，分为两种情况：
-</span></span><span class="line"><span class="ln">3</span><span class="cl">1. 斜坡，则一方可与起点或终点组成\进/出。
-</span></span><span class="line"><span class="ln">4</span><span class="cl">2. 顶峰，则两方向都满足\进/出条件，两个方向都可继续进行二分法
-</span></span><span class="line"><span class="ln">5</span><span class="cl">直到判断出某个二分法中点满足要求。
-</span></span></code></pre></div></li>
-</ol>
-</blockquote>
-<p><strong>求中间数</strong></p>
-<ul>
-<li>mid = (L + R) / 2 				// L + R 可能会越界65535，这时mid算出负数</li>
-<li>mid = L + (R - L) / 2			//不会越界</li>
-<li>mid = L + (R - L) &gt;&gt; 1		//右移一位比除2快</li>
-</ul>
-<p><strong>对数器</strong></p>
-<ul>
-<li>结果对比校验器: 自己控制输入数据，使用两种方法或和官方api对比结果</li>
-</ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="o">(</span><span class="kt">int</span><span class="o">)(</span><span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">()</span> <span class="o">*</span> <span class="n">N</span><span class="o">)</span> <span class="c1">//会在[0, N-1]范围内，等概率返回一个整数
-</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[(</span><span class="kt">int</span><span class="o">)((</span><span class="n">maxSize</span> <span class="o">+</span> <span class="n">1</span><span class="o">)</span> <span class="o">*</span> <span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">())];</span><span class="c1">//随机长度
-</span></span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="c1"></span><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl">    <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)((</span><span class="n">maxValue</span> <span class="o">+</span> <span class="n">1</span><span class="o">)</span> <span class="o">*</span> <span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">())</span> <span class="o">-</span> <span class="o">(</span><span class="kt">int</span><span class="o">)(</span><span class="n">maxValue</span> <span class="o">*</span> <span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">());</span>
-</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="o">}</span>
-</span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="k">return</span> <span class="n">arr</span><span class="o">;</span>
 </span></span></code></pre></div><p><strong>递归</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">getMax</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">){</span>
 </span></span><span class="line"><span class="ln"> 2</span><span class="cl">    <span class="k">return</span> <span class="n">process</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="n">1</span><span class="o">);</span>
@@ -1200,6 +1165,36 @@
 </span></span><span class="line"><span class="ln">17</span><span class="cl">    <span class="n">nums</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">t</span><span class="o">;</span>
 </span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="o">}</span>
 </span></span></code></pre></div></blockquote>
+<h2 id="二分查找">二分查找</h2>
+<ul>
+<li>时间复杂度：O(logN)  (logN默认指log以2为底)</li>
+</ul>
+<h3 id="题目一">题目一：</h3>
+<blockquote>
+<p>例题：</p>
+<ol>
+<li>
+<p>在一个有序数组中，找某个数是否存在</p>
+</li>
+<li>
+<p>在一个有序数组中，找 &gt;= 某个数最左侧的位置：二分查找直到左侧没有数</p>
+</li>
+<li>
+<p>无序，相邻数一定不相等，找一个局部最小(i-1 &lt; i &lt; i+1)的数，复杂度能否好于O(N)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">先判断首尾项是否满足要求，若首尾项不满足要求，一定是\进/出，中间一定有低谷拐点。
+</span></span><span class="line"><span class="ln">2</span><span class="cl">然后判断中间点是否满足要求，若不满足，分为两种情况：
+</span></span><span class="line"><span class="ln">3</span><span class="cl">1. 斜坡，则一方可与起点或终点组成\进/出。
+</span></span><span class="line"><span class="ln">4</span><span class="cl">2. 顶峰，则两方向都满足\进/出条件，两个方向都可继续进行二分法
+</span></span><span class="line"><span class="ln">5</span><span class="cl">直到判断出某个二分法中点满足要求。
+</span></span></code></pre></div></li>
+</ol>
+</blockquote>
+<h3 id="求中间数">求中间数</h3>
+<ul>
+<li>mid = (L + R) / 2 				// L + R 可能会越界65535，这时mid算出负数</li>
+<li>mid = L + (R - L) / 2			//不会越界</li>
+<li>mid = L + (R - L) &gt;&gt; 1		//右移一位比除2快</li>
+</ul>
 <h2 id="哈希表有序表">哈希表、有序表</h2>
 <p>哈希表介绍</p>
 <blockquote>
@@ -1835,11 +1830,31 @@
 <blockquote>
 <p><strong>Trie 概念</strong>：单词集合生成由字母组成的树</p>
 </blockquote>
-<h2 id="leetcode-题解---贪心思想">Leetcode 题解 - 贪心思想</h2>
+<h2 id="leetcode-题解---贪心思想--笔试面试都很少出现">Leetcode 题解 - 贪心思想  笔试面试都很少出现</h2>
 <blockquote>
 <p><strong>概念</strong>：保证每次操作都是局部最优的，并且最后得到的结果是全局最优的。</p>
-<p>笔试面试都很少出现。</p>
+<p>因为变化太多，笔试面试都很少出现。</p>
 </blockquote>
+<p>题目一：分配饼干  Assign Cookies (Easy)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">Input: grid[1,3], size[1,2,4]
+</span></span><span class="line"><span class="ln">2</span><span class="cl">Output: 2
+</span></span></code></pre></div><p>题目描述：每个孩子都有一个满足度 grid，每个饼干都有一个大小 size，只有饼干的大小大于等于一个孩子的满足度，该孩子才会获得满足。求解最多可以获得满足的孩子数量。</p>
+<blockquote>
+<p>解题：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kd">public</span> <span class="kt">int</span> <span class="nf">findContentChildren</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">grid</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">size</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">    <span class="k">if</span> <span class="o">(</span><span class="n">grid</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">size</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="n">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="n">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">grid</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="n">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">size</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="kt">int</span> <span class="n">gi</span> <span class="o">=</span> <span class="n">0</span><span class="o">,</span> <span class="n">si</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">    <span class="k">while</span> <span class="o">(</span><span class="n">gi</span> <span class="o">&lt;</span> <span class="n">grid</span><span class="o">.</span><span class="na">length</span> <span class="o">&amp;&amp;</span> <span class="n">si</span> <span class="o">&lt;</span> <span class="n">size</span><span class="o">.</span><span class="na">length</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">grid</span><span class="o">[</span><span class="n">gi</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="n">size</span><span class="o">[</span><span class="n">si</span><span class="o">])</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">            <span class="n">gi</span><span class="o">++;</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">        <span class="n">si</span><span class="o">++;</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="k">return</span> <span class="n">gi</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div></blockquote>
 <h2 id="暴力递归">暴力递归</h2>
 <blockquote>
 </blockquote>
