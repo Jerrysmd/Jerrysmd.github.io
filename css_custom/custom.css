@@ -45,10 +45,6 @@ p.pale{
     display: inline-flex;
 }
 
-html {
-    --bg: #1d1e20;
-}
-
 .nav_header, .nav_body{
     background-color: #1d1e20;
 }
@@ -78,7 +74,12 @@ a.button.mt-1:hover, abutton.mt-1:focus, a.excerpt_more.button:hover, a.excerpt_
 }
 
 html:not([data-mode="lit"]){
-    --light: #dadadb;
+     --bg: #dadadb; 
+}
+
+html:not([data-mode="dim"]) {
+    /* --light: #1d1e20; */
+    --bg: #1d1e20;
 }
 
 h3.post_link a, a.nav_item {
