@@ -117,7 +117,7 @@
 </svg></span>
     <span class="post_date">
       Jan 1, 2020</span>
-    <span class="post_time"> · 19 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/interview' title="interview" class="post_tag button button_translucent">interview
+    <span class="post_time"> · 20 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/interview' title="interview" class="post_tag button button_translucent">interview
         </a><a href='https://Jerrysmd.github.io/tags/leetcode' title="leetcode" class="post_tag button button_translucent">leetcode
         </a><a href='https://Jerrysmd.github.io/tags/algorithm' title="algorithm" class="post_tag button button_translucent">algorithm
         </a>
@@ -156,6 +156,7 @@
       <ul>
         <li><a href="#求中间数">求中间数</a></li>
         <li><a href="#binarysearch">binarySearch</a></li>
+        <li><a href="#题目一求开方-sqrtx-easy">题目一：求开方 Sqrt(x) (Easy)</a></li>
         <li><a href="#题目找一个局部最小i-1--i--i1的数复杂度小于-on">题目：找一个局部最小（i-1 &lt; i &lt; i+1）的数，复杂度小于 O(N)</a></li>
       </ul>
     </li>
@@ -1188,7 +1189,36 @@
 </span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="o">}</span>
 </span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="k">return</span> <span class="n">l</span><span class="o">;</span>
 </span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><h3 id="题目找一个局部最小i-1--i--i1的数复杂度小于-on">题目：找一个局部最小（i-1 &lt; i &lt; i+1）的数，复杂度小于 O(N)</h3>
+</span></span></code></pre></div><h3 id="题目一求开方-sqrtx-easy">题目一：求开方 Sqrt(x) (Easy)</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">Input: 4
+</span></span><span class="line"><span class="ln">2</span><span class="cl">Output: 2
+</span></span><span class="line"><span class="ln">3</span><span class="cl">
+</span></span><span class="line"><span class="ln">4</span><span class="cl">Input: 8
+</span></span><span class="line"><span class="ln">5</span><span class="cl">Output: 2
+</span></span><span class="line"><span class="ln">6</span><span class="cl">Explanation: The square root of 8 is 2.82842..., and since we want to return an integer, the decimal part will be truncated.
+</span></span></code></pre></div><blockquote>
+<p>解题：</p>
+<p>一个数 x 的开方 sqrt 一定在 0 ~ x 之间，并且满足 sqrt == x / sqrt。可以利用二分查找在 0 ~ x 之间查找 sqrt。</p>
+<p>对于 x = 8，它的开方是 2.82842...，最后应该返回 2 而不是 3。在循环条件为 l &lt;= h 并且循环退出时，h 总是比 l 小 1，也就是说 h = 2，l = 3，因此最后的返回值应该为 h 而不是 l。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kd">public</span> <span class="kt">int</span> <span class="nf">mySqrt</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">){</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">    <span class="k">if</span><span class="o">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">1</span><span class="o">){</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">        <span class="k">return</span> <span class="n">x</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="n">1</span><span class="o">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">x</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">    <span class="k">while</span><span class="o">(</span><span class="n">l</span> <span class="o">&lt;=</span> <span class="n">h</span><span class="o">){</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">        <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">l</span> <span class="o">+</span> <span class="o">(</span><span class="n">h</span> <span class="o">-</span> <span class="n">l</span><span class="o">)</span> <span class="o">&gt;&gt;</span> <span class="n">2</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">        <span class="kt">int</span> <span class="n">sqrt</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">mid</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">sqrt</span> <span class="o">==</span> <span class="n">mid</span><span class="o">){</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">            <span class="k">return</span> <span class="n">mid</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">mid</span> <span class="o">&gt;</span> <span class="n">sqrt</span><span class="o">){</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">            <span class="n">h</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">            <span class="n">l</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div></blockquote>
+<h3 id="题目找一个局部最小i-1--i--i1的数复杂度小于-on">题目：找一个局部最小（i-1 &lt; i &lt; i+1）的数，复杂度小于 O(N)</h3>
 <blockquote>
 <p>例题：</p>
 <ol>
