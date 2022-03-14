@@ -157,6 +157,8 @@
         <li><a href="#求中间数">求中间数</a></li>
         <li><a href="#binarysearch">binarySearch</a></li>
         <li><a href="#题目一求开方-sqrtx-easy">题目一：求开方 Sqrt(x) (Easy)</a></li>
+        <li><a href="#题目二大于给定元素的最小元素-find-smallest-letter-greater-than-target-easy">题目二：大于给定元素的最小元素 Find Smallest Letter Greater Than Target (Easy)</a></li>
+        <li><a href="#题目三有序数组的-single-element-in-a-sorted-array-medium">题目三：有序数组的 Single Element in a Sorted Array (Medium)</a></li>
         <li><a href="#题目找一个局部最小i-1--i--i1的数复杂度小于-on">题目：找一个局部最小（i-1 &lt; i &lt; i+1）的数，复杂度小于 O(N)</a></li>
       </ul>
     </li>
@@ -1213,11 +1215,42 @@
 </span></span><span class="line"><span class="ln">11</span><span class="cl">        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">mid</span> <span class="o">&gt;</span> <span class="n">sqrt</span><span class="o">){</span>
 </span></span><span class="line"><span class="ln">12</span><span class="cl">            <span class="n">h</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
 </span></span><span class="line"><span class="ln">13</span><span class="cl">        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">14</span><span class="cl">            <span class="n">l</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">            <span class="n">l</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span>
 </span></span><span class="line"><span class="ln">15</span><span class="cl">        <span class="o">}</span>
 </span></span><span class="line"><span class="ln">16</span><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl">    <span class="k">return</span> <span class="n">h</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="o">}</span>
 </span></span></code></pre></div></blockquote>
+<h3 id="题目二大于给定元素的最小元素-find-smallest-letter-greater-than-target-easy">题目二：大于给定元素的最小元素 Find Smallest Letter Greater Than Target (Easy)</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">Input:
+</span></span><span class="line"><span class="ln">2</span><span class="cl">letters = [&#34;c&#34;, &#34;f&#34;, &#34;j&#34;]
+</span></span><span class="line"><span class="ln">3</span><span class="cl">target = &#34;d&#34;
+</span></span><span class="line"><span class="ln">4</span><span class="cl">Output: &#34;f&#34;
+</span></span><span class="line"><span class="ln">5</span><span class="cl">
+</span></span><span class="line"><span class="ln">6</span><span class="cl">Input:
+</span></span><span class="line"><span class="ln">7</span><span class="cl">letters = [&#34;c&#34;, &#34;f&#34;, &#34;j&#34;]
+</span></span><span class="line"><span class="ln">8</span><span class="cl">target = &#34;k&#34;
+</span></span><span class="line"><span class="ln">9</span><span class="cl">Output: &#34;c&#34;
+</span></span></code></pre></div><blockquote>
+<p>解题：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kd">public</span> <span class="kt">char</span> <span class="nf">nextGreatestLetter</span><span class="o">(</span><span class="kt">char</span><span class="o">[]</span> <span class="n">letters</span><span class="o">,</span> <span class="kt">char</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">letters</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="n">0</span><span class="o">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="k">while</span> <span class="o">(</span><span class="n">l</span> <span class="o">&lt;=</span> <span class="n">h</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">        <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="n">l</span> <span class="o">+</span> <span class="o">(</span><span class="n">h</span> <span class="o">-</span> <span class="n">l</span><span class="o">)</span> <span class="o">/</span> <span class="n">2</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">letters</span><span class="o">[</span><span class="n">m</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">            <span class="n">l</span> <span class="o">=</span> <span class="n">m</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">            <span class="n">h</span> <span class="o">=</span> <span class="n">m</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="k">return</span> <span class="n">l</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">?</span> <span class="n">letters</span><span class="o">[</span><span class="n">l</span><span class="o">]</span> <span class="o">:</span> <span class="n">letters</span><span class="o">[</span><span class="n">0</span><span class="o">];</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div></blockquote>
+<h3 id="题目三有序数组的-single-element-in-a-sorted-array-medium">题目三：有序数组的 Single Element in a Sorted Array (Medium)</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">Input: [1, 1, 2, 3, 3, 4, 4, 8, 8]
+</span></span><span class="line"><span class="ln">2</span><span class="cl">Output: 2
+</span></span></code></pre></div><p>题目描述：一个有序数组只有一个数不出现两次，找出这个数。要求以 O(logN) 时间复杂度求解，因此不能遍历数组并进行异或操作来求解，这么做的时间复杂度为O(N)</p>
 <h3 id="题目找一个局部最小i-1--i--i1的数复杂度小于-on">题目：找一个局部最小（i-1 &lt; i &lt; i+1）的数，复杂度小于 O(N)</h3>
 <blockquote>
 <p>例题：</p>
