@@ -1913,15 +1913,18 @@
 <p>dp[i] = dp[i - 1] + dp[i - 2]</p>
 </blockquote>
 <p>考虑到 dp[i] 只与 dp[i - 1] 和 dp[i - 2] 有关，因此可以只用两个变量来存储 dp[i - 1] 和 dp[i - 2]，使得原来的 O(N) 空间复杂度优化为 O(1) 复杂度。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="kd">public</span> <span class="kt">int</span> <span class="nf">climbStairs</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">){</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="k">if</span><span class="o">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="n">2</span><span class="o">){</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">        <span class="k">return</span> <span class="n">n</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl">    <span class="kt">int</span> <span class="n">pre2</span> <span class="o">=</span> <span class="n">1</span><span class="o">,</span> <span class="n">pre1</span> <span class="o">=</span> <span class="n">2</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">6</span><span class="cl">    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">2</span><span class="o">;</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span><span class="n">i</span><span class="o">++){</span>
-</span></span><span class="line"><span class="ln">7</span><span class="cl">        
-</span></span><span class="line"><span class="ln">8</span><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="ln">9</span><span class="cl"><span class="o">}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kd">public</span> <span class="kt">int</span> <span class="nf">climbStairs</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">){</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">    <span class="k">if</span><span class="o">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="n">2</span><span class="o">){</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">        <span class="k">return</span> <span class="n">n</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="kt">int</span> <span class="n">pre2</span> <span class="o">=</span> <span class="n">1</span><span class="o">,</span> <span class="n">pre1</span> <span class="o">=</span> <span class="n">2</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">2</span><span class="o">;</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span><span class="n">i</span><span class="o">++){</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">        <span class="kt">int</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">pre1</span> <span class="o">+</span> <span class="n">pre2</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">        <span class="n">pre2</span> <span class="o">=</span> <span class="n">pre1</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">        <span class="n">pre1</span> <span class="o">=</span> <span class="n">cur</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="n">r</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="o">}</span>
 </span></span></code></pre></div></blockquote>
 <h2 id="图">图</h2>
 <blockquote>
