@@ -175,7 +175,12 @@
         <li><a href="#题目七最长子序列-longest-word-in-dictionary-through-deleting-medium">题目七：最长子序列 Longest Word in Dictionary through Deleting (Medium)</a></li>
       </ul>
     </li>
-    <li><a href="#二叉树">二叉树</a></li>
+    <li><a href="#二叉树">二叉树</a>
+      <ul>
+        <li><a href="#递归">递归</a></li>
+        <li><a href="#前缀树">前缀树</a></li>
+      </ul>
+    </li>
     <li><a href="#leetcode-题解---分治">Leetcode 题解 - 分治</a>
       <ul>
         <li><a href="#题目一给表达式加括号-different-ways-to-add-parentheses-medium">题目一：给表达式加括号 Different Ways to Add Parentheses (Medium)</a></li>
@@ -188,7 +193,6 @@
       </ul>
     </li>
     <li><a href="#图">图</a></li>
-    <li><a href="#前缀树">前缀树</a></li>
     <li><a href="#暴力递归">暴力递归</a></li>
     <li><a href="#哈希函数">哈希函数</a></li>
     <li><a href="#布隆过滤器">布隆过滤器</a></li>
@@ -1670,36 +1674,36 @@
 </span></span></code></pre></div><p>深度优先遍历：中序遍历</p>
 <p>宽度优先遍历并求最大宽度：队列 LinkedList</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">weight</span><span class="o">(</span><span class="n">Node</span> <span class="n">head</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl"> <span class="k">if</span> <span class="o">(</span><span class="n">head</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl">     <span class="k">return</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl"> <span class="o">}</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl"> <span class="n">Queue</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;&gt;();</span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl"> <span class="n">queue</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">head</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl"> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">levelMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span><span class="c1">//记录行数
-</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="c1"></span> <span class="n">levelMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">head</span><span class="o">,</span> <span class="n">1</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl"> <span class="kt">int</span> <span class="n">curLevel</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">10</span><span class="cl"> <span class="kt">int</span> <span class="n">curLevelNodes</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl"> <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">MIN_VALUE</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl"> <span class="k">while</span> <span class="o">(!</span><span class="n">queue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">13</span><span class="cl">     <span class="n">Node</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
-</span></span><span class="line"><span class="ln">14</span><span class="cl">     <span class="kt">int</span> <span class="n">curNodeLevel</span> <span class="o">=</span> <span class="n">levelMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">cur</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">15</span><span class="cl">     <span class="k">if</span> <span class="o">(</span><span class="n">curNodeLevel</span> <span class="o">==</span> <span class="n">curLevel</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">16</span><span class="cl">         <span class="n">curLevelNodes</span><span class="o">++;</span>
-</span></span><span class="line"><span class="ln">17</span><span class="cl">     <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">18</span><span class="cl">         <span class="n">max</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">max</span><span class="o">,</span> <span class="n">curLevelNodes</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">19</span><span class="cl">         <span class="n">curLevel</span><span class="o">++;</span>
-</span></span><span class="line"><span class="ln">20</span><span class="cl">         <span class="n">curLevelNodes</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">21</span><span class="cl">     <span class="o">}</span>
-</span></span><span class="line"><span class="ln">22</span><span class="cl">     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cur</span><span class="o">.</span><span class="na">value</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">23</span><span class="cl">     <span class="k">if</span> <span class="o">(</span><span class="n">cur</span><span class="o">.</span><span class="na">left</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">24</span><span class="cl">         <span class="n">levelMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">cur</span><span class="o">.</span><span class="na">left</span><span class="o">,</span> <span class="n">curNodeLevel</span> <span class="o">+</span> <span class="n">1</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">25</span><span class="cl">         <span class="n">queue</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">cur</span><span class="o">.</span><span class="na">left</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">26</span><span class="cl">     <span class="o">}</span>
-</span></span><span class="line"><span class="ln">27</span><span class="cl">     <span class="k">if</span> <span class="o">(</span><span class="n">cur</span><span class="o">.</span><span class="na">right</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">28</span><span class="cl">         <span class="n">levelMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">cur</span><span class="o">.</span><span class="na">right</span><span class="o">,</span> <span class="n">curNodeLevel</span> <span class="o">+</span> <span class="n">1</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">29</span><span class="cl">         <span class="n">queue</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">cur</span><span class="o">.</span><span class="na">right</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">30</span><span class="cl">     <span class="o">}</span>
-</span></span><span class="line"><span class="ln">31</span><span class="cl"> <span class="o">}</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="k">if</span> <span class="o">(</span><span class="n">head</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">  <span class="k">return</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="n">Queue</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="n">queue</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">head</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">levelMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span><span class="c1">//记录行数
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="c1"></span><span class="n">levelMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">head</span><span class="o">,</span> <span class="n">1</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="kt">int</span> <span class="n">curLevel</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="kt">int</span> <span class="n">curLevelNodes</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">MIN_VALUE</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="k">while</span> <span class="o">(!</span><span class="n">queue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">  <span class="n">Node</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">  <span class="kt">int</span> <span class="n">curNodeLevel</span> <span class="o">=</span> <span class="n">levelMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">cur</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">  <span class="k">if</span> <span class="o">(</span><span class="n">curNodeLevel</span> <span class="o">==</span> <span class="n">curLevel</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">      <span class="n">curLevelNodes</span><span class="o">++;</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl">  <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln">18</span><span class="cl">      <span class="n">max</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">max</span><span class="o">,</span> <span class="n">curLevelNodes</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">19</span><span class="cl">      <span class="n">curLevel</span><span class="o">++;</span>
+</span></span><span class="line"><span class="ln">20</span><span class="cl">      <span class="n">curLevelNodes</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">21</span><span class="cl">  <span class="o">}</span>
+</span></span><span class="line"><span class="ln">22</span><span class="cl">  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cur</span><span class="o">.</span><span class="na">value</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">23</span><span class="cl">  <span class="k">if</span> <span class="o">(</span><span class="n">cur</span><span class="o">.</span><span class="na">left</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln">24</span><span class="cl">      <span class="n">levelMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">cur</span><span class="o">.</span><span class="na">left</span><span class="o">,</span> <span class="n">curNodeLevel</span> <span class="o">+</span> <span class="n">1</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">25</span><span class="cl">      <span class="n">queue</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">cur</span><span class="o">.</span><span class="na">left</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">26</span><span class="cl">  <span class="o">}</span>
+</span></span><span class="line"><span class="ln">27</span><span class="cl">  <span class="k">if</span> <span class="o">(</span><span class="n">cur</span><span class="o">.</span><span class="na">right</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln">28</span><span class="cl">      <span class="n">levelMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">cur</span><span class="o">.</span><span class="na">right</span><span class="o">,</span> <span class="n">curNodeLevel</span> <span class="o">+</span> <span class="n">1</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">29</span><span class="cl">      <span class="n">queue</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">cur</span><span class="o">.</span><span class="na">right</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">30</span><span class="cl">  <span class="o">}</span>
+</span></span><span class="line"><span class="ln">31</span><span class="cl"><span class="o">}</span>
 </span></span><span class="line"><span class="ln">32</span><span class="cl"><span class="o">}</span>
 </span></span></code></pre></div><p>判断是否是搜索二叉树：左孩子小于父节点，右孩子大于父节点。</p>
 <blockquote>
@@ -1800,6 +1804,12 @@
 </span></span><span class="line"><span class="ln">17</span><span class="cl">    <span class="k">return</span> <span class="k">new</span> <span class="n">ReturnType</span><span class="o">(</span><span class="n">isBalanced</span><span class="o">,</span> <span class="n">height</span><span class="o">);</span>
 </span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="o">}</span>
 </span></span></code></pre></div></blockquote>
+</blockquote>
+<h3 id="递归">递归</h3>
+<h4 id="1-树的高度">1. 树的高度</h4>
+<h3 id="前缀树">前缀树</h3>
+<blockquote>
+<p><strong>Trie 概念</strong>：单词集合生成由字母组成的树</p>
 </blockquote>
 <h2 id="leetcode-题解---分治">Leetcode 题解 - 分治</h2>
 <h3 id="题目一给表达式加括号-different-ways-to-add-parentheses-medium">题目一：给表达式加括号 Different Ways to Add Parentheses (Medium)</h3>
@@ -1902,8 +1912,6 @@
 <blockquote>
 <p><strong>递归和动态规划的区别</strong></p>
 <p>都是将原问题拆成多个子问题然后求解，他们之间最本质的区别是，动态规划保存了子问题的解，避免重复计算。</p>
-</blockquote>
-<blockquote>
 </blockquote>
 <h3 id="斐波那契数列">斐波那契数列</h3>
 <h4 id="题目一爬楼梯-climbing-stairs-easy">题目一：爬楼梯 Climbing Stairs (Easy)</h4>
@@ -2064,10 +2072,6 @@
 <p>kruskal算法：适用范围要求无向图</p>
 <p>prim算法：适用范围要求无向图</p>
 <p>Dijkstra算法：适用范围没有权值为负数的边</p>
-</blockquote>
-<h2 id="前缀树">前缀树</h2>
-<blockquote>
-<p><strong>Trie 概念</strong>：单词集合生成由字母组成的树</p>
 </blockquote>
 <h2 id="暴力递归">暴力递归</h2>
 <blockquote>
