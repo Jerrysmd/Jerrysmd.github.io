@@ -1809,8 +1809,34 @@
 <h4 id="1-树的高度-maximum-depth-of-binary-tree-easy">1. 树的高度 Maximum Depth of Binary Tree (Easy)</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="kd">public</span> <span class="kt">int</span> <span class="nf">maxDepth</span><span class="o">(</span><span class="n">TreeNode</span> <span class="n">root</span><span class="o">){</span>
 </span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="k">if</span><span class="o">(</span><span class="n">root</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="n">0</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">    <span class="k">return</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">maxDepth</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">left</span><span class="o">),</span> <span class="n">maxDepth</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">right</span><span class="o">))</span> 
+</span></span><span class="line"><span class="ln">3</span><span class="cl">    <span class="k">return</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">maxDepth</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">left</span><span class="o">),</span> <span class="n">maxDepth</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">right</span><span class="o">))</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span>
 </span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><h4 id="2-平衡树-balanced-binary-tree-easy">2. 平衡树 Balanced Binary Tree (Easy)</h4>
+<p>平衡树左右子树高度差都小于等于 1</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kd">private</span> <span class="kt">boolean</span> <span class="n">result</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isBalanced</span><span class="o">(</span><span class="n">TreeNode</span> <span class="n">root</span><span class="o">){</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="n">maxDepth</span><span class="o">(</span><span class="n">root</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="kd">public</span> <span class="kt">int</span> <span class="nf">maxDepth</span><span class="o">(</span><span class="n">TreeNode</span> <span class="n">root</span><span class="o">){</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">    <span class="k">if</span><span class="o">(</span><span class="n">root</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="n">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="n">maxDepth</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">left</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="kt">int</span> <span class="n">r</span> <span class="o">=</span> <span class="n">maxDepth</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">right</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="k">if</span><span class="o">(</span><span class="n">Math</span><span class="o">.</span><span class="na">abs</span><span class="o">(</span><span class="n">l</span> <span class="o">-</span> <span class="n">r</span><span class="o">)</span> <span class="o">&gt;</span> <span class="n">1</span><span class="o">)</span> <span class="n">result</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">    <span class="k">return</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">l</span><span class="o">,</span> <span class="n">r</span><span class="o">)</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><h4 id="3-两节点的最长路径-diameter-of-binary-tree-easy">3. 两节点的最长路径 Diameter of Binary Tree (Easy)</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">Input:
+</span></span><span class="line"><span class="ln">2</span><span class="cl">
+</span></span><span class="line"><span class="ln">3</span><span class="cl">         1
+</span></span><span class="line"><span class="ln">4</span><span class="cl">        / \
+</span></span><span class="line"><span class="ln">5</span><span class="cl">       2  3
+</span></span><span class="line"><span class="ln">6</span><span class="cl">      / \
+</span></span><span class="line"><span class="ln">7</span><span class="cl">     4   5
+</span></span><span class="line"><span class="ln">8</span><span class="cl">
+</span></span><span class="line"><span class="ln">9</span><span class="cl">Return 3, which is the length of the path [4,2,1,3] or [5,2,1,3].
 </span></span></code></pre></div><h3 id="前缀树">前缀树</h3>
 <blockquote>
 <p><strong>Trie 概念</strong>：单词集合生成由字母组成的树</p>
