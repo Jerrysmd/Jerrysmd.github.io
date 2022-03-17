@@ -117,7 +117,7 @@
 </svg></span>
     <span class="post_date">
       Jan 1, 2020</span>
-    <span class="post_time"> · 23 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/interview' title="interview" class="post_tag button button_translucent">interview
+    <span class="post_time"> · 24 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/interview' title="interview" class="post_tag button button_translucent">interview
         </a><a href='https://Jerrysmd.github.io/tags/leetcode' title="leetcode" class="post_tag button button_translucent">leetcode
         </a><a href='https://Jerrysmd.github.io/tags/algorithm' title="algorithm" class="post_tag button button_translucent">algorithm
         </a>
@@ -1852,7 +1852,15 @@
 </span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="k">return</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">l</span><span class="o">,</span> <span class="n">r</span><span class="o">)</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span>
 </span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="o">}</span>
 </span></span></code></pre></div><h3 id="bfs层次遍历">BFS层次遍历</h3>
-<h3 id="前缀树">前缀树</h3>
+<p>使用 BFS 时，不需要使用两个队列来分别存储当前层的节点和下一层的节点，因为在开始遍历一层的节点时，当前队列的节点数就是当前层的节点数，只要控制遍历这么多节点数，就能保证这次遍历的都是当前层的节点。</p>
+<h4 id="1-一棵树每层节点的平均数-average-of-levels-in-binary-tree-easy">1. 一棵树每层节点的平均数 Average of Levels in Binary Tree (Easy)</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Double</span><span class="o">&gt;</span> <span class="nf">averageOfLevels</span> <span class="o">(</span><span class="n">TreeNode</span> <span class="n">root</span><span class="o">){</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="n">List</span><span class="o">&lt;</span><span class="n">Double</span><span class="o">&gt;</span> <span class="n">ret</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">    <span class="k">if</span> <span class="o">(</span><span class="n">root</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">    <span class="n">Queue</span><span class="o">&lt;</span><span class="n">TreeNode</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">    
+</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><h3 id="前缀树">前缀树</h3>
 <blockquote>
 <p><strong>Trie 概念</strong>：单词集合生成由字母组成的树</p>
 </blockquote>
