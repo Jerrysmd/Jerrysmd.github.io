@@ -1870,9 +1870,36 @@
 </span></span><span class="line"><span class="ln">14</span><span class="cl">        <span class="o">}</span>
 </span></span><span class="line"><span class="ln">15</span><span class="cl">        <span class="n">ret</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">sum</span> <span class="o">/</span> <span class="n">cnt</span><span class="o">);</span>
 </span></span><span class="line"><span class="ln">16</span><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="ln">17</span><span class="cl">    
+</span></span><span class="line"><span class="ln">17</span><span class="cl">    <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
 </span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><h3 id="前缀树">前缀树</h3>
+</span></span></code></pre></div><h4 id="2-得到左下角的节点-find-bottom-left-tree-value-easy">2. 得到左下角的节点 Find Bottom Left Tree Value (Easy)</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln"> 1</span><span class="cl">Input:
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">        1
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">       / \
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">      2   3
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">     /   / \
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    4   5   6
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">       /
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">      7
+</span></span><span class="line"><span class="ln">10</span><span class="cl">
+</span></span><span class="line"><span class="ln">11</span><span class="cl">Output:
+</span></span><span class="line"><span class="ln">12</span><span class="cl">7
+</span></span></code></pre></div><blockquote>
+<p>解题：</p>
+<p>宽度优先遍历 BFS，每一行从左至右改成从右至左，然后最后一个数</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kd">public</span> <span class="kt">int</span> <span class="nf">findBottomLeftValue</span><span class="o">(</span><span class="n">TreeNode</span> <span class="n">root</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">    <span class="n">Queue</span><span class="o">&lt;</span><span class="n">TreeNode</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="n">queue</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">root</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="k">while</span><span class="o">(!</span><span class="n">queue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()){</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">        <span class="n">root</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">right</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="n">queue</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">right</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">left</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="n">queue</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">left</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">    <span class="k">return</span> <span class="n">root</span><span class="o">.</span><span class="na">val</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div></blockquote>
+<h3 id="前缀树">前缀树</h3>
 <blockquote>
 <p><strong>Trie 概念</strong>：单词集合生成由字母组成的树</p>
 </blockquote>
