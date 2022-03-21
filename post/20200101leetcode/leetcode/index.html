@@ -117,7 +117,7 @@
 </svg></span>
     <span class="post_date">
       Jan 1, 2020</span>
-    <span class="post_time"> · 24 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/interview' title="interview" class="post_tag button button_translucent">interview
+    <span class="post_time"> · 25 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/interview' title="interview" class="post_tag button button_translucent">interview
         </a><a href='https://Jerrysmd.github.io/tags/leetcode' title="leetcode" class="post_tag button button_translucent">leetcode
         </a><a href='https://Jerrysmd.github.io/tags/algorithm' title="algorithm" class="post_tag button button_translucent">algorithm
         </a>
@@ -180,6 +180,7 @@
         <li><a href="#递归">递归</a></li>
         <li><a href="#bfs层次遍历">BFS层次遍历</a></li>
         <li><a href="#前中后序遍历">前中后序遍历</a></li>
+        <li><a href="#bst">BST</a></li>
         <li><a href="#前缀树">前缀树</a></li>
       </ul>
     </li>
@@ -1917,16 +1918,53 @@
 </span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
 </span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="o">}</span>
 </span></span></code></pre></div><p>中序遍历</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="nf">inorderTraversal</span><span class="o">(</span><span class="n">TreeNode</span> <span class="n">root</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">ret</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">    <span class="k">if</span> <span class="o">(</span><span class="n">root</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">    <span class="n">Stack</span><span class="o">&lt;</span><span class="n">TreeNode</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="o">&lt;&gt;();</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl">    <span class="n">TreeNode</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">root</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">6</span><span class="cl">    <span class="k">while</span><span class="o">(</span><span class="n">cur</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">||</span> <span class="o">!</span><span class="n">stack</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()){</span>
-</span></span><span class="line"><span class="ln">7</span><span class="cl">        
-</span></span><span class="line"><span class="ln">8</span><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="ln">9</span><span class="cl"><span class="o">}</span>    
-</span></span></code></pre></div><h3 id="前缀树">前缀树</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="nf">inorderTraversal</span><span class="o">(</span><span class="n">TreeNode</span> <span class="n">root</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">    <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">ret</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="k">if</span> <span class="o">(</span><span class="n">root</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="n">Stack</span><span class="o">&lt;</span><span class="n">TreeNode</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="n">TreeNode</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">root</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">    <span class="k">while</span><span class="o">(</span><span class="n">cur</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">||</span> <span class="o">!</span><span class="n">stack</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()){</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">        <span class="k">while</span><span class="o">(</span><span class="n">cur</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">            <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">cur</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">            <span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="na">left</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">        <span class="n">TreeNode</span> <span class="n">node</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">        <span class="n">ret</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">node</span><span class="o">.</span><span class="na">val</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">        <span class="n">cur</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="na">right</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">    <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="o">}</span>    
+</span></span></code></pre></div><h3 id="bst">BST</h3>
+<blockquote>
+<p>二叉查找树（BST）：根节点大于等于左子树所有节点，小于等于右子树所有节点。</p>
+<p><strong>二叉查找树中序遍历有序。</strong></p>
+</blockquote>
+<h4 id="1-修剪二叉查找树-trim-a-binary-search-tree">1. 修剪二叉查找树 Trim a Binary Search Tree</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln"> 1</span><span class="cl">Input:
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    3
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">   / \
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">  0   4
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">   \
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    2
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">   /
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">  1
+</span></span><span class="line"><span class="ln">10</span><span class="cl">
+</span></span><span class="line"><span class="ln">11</span><span class="cl">  L = 1
+</span></span><span class="line"><span class="ln">12</span><span class="cl">  R = 3
+</span></span><span class="line"><span class="ln">13</span><span class="cl">
+</span></span><span class="line"><span class="ln">14</span><span class="cl">Output:
+</span></span><span class="line"><span class="ln">15</span><span class="cl">
+</span></span><span class="line"><span class="ln">16</span><span class="cl">      3
+</span></span><span class="line"><span class="ln">17</span><span class="cl">     /
+</span></span><span class="line"><span class="ln">18</span><span class="cl">   2
+</span></span><span class="line"><span class="ln">19</span><span class="cl">  /
+</span></span><span class="line"><span class="ln">20</span><span class="cl"> 1
+</span></span></code></pre></div><p>题目描述：只保留值在 L ~ R 之间的节点</p>
+<blockquote>
+<p>解题：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"></code></pre></div></blockquote>
+<h3 id="前缀树">前缀树</h3>
 <blockquote>
 <p><strong>Trie 概念</strong>：单词集合生成由字母组成的树</p>
 </blockquote>
