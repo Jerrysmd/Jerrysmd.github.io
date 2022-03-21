@@ -1966,9 +1966,43 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="kd">public</span> <span class="n">TreeNode</span> <span class="nf">trimBST</span><span class="o">(</span><span class="n">TreeNode</span> <span class="n">root</span><span class="o">,</span> <span class="kt">int</span> <span class="n">L</span><span class="o">,</span> <span class="kt">int</span> <span class="n">R</span><span class="o">){</span>
 </span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="k">if</span><span class="o">(</span><span class="n">root</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
 </span></span><span class="line"><span class="ln">3</span><span class="cl">    <span class="k">if</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">val</span> <span class="o">&gt;</span> <span class="n">R</span><span class="o">)</span> <span class="k">return</span> <span class="n">trimBST</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">left</span><span class="o">,</span> <span class="n">L</span><span class="o">,</span> <span class="n">R</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">    
-</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">    <span class="k">if</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">val</span> <span class="o">&lt;</span> <span class="n">L</span><span class="o">)</span> <span class="k">return</span> <span class="n">trimBST</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">right</span><span class="o">,</span> <span class="n">L</span><span class="o">,</span> <span class="n">R</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">    <span class="n">root</span><span class="o">.</span><span class="na">left</span> <span class="o">=</span> <span class="n">trimBST</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">left</span><span class="o">,</span> <span class="n">L</span><span class="o">,</span> <span class="n">R</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl">    <span class="n">root</span><span class="o">.</span><span class="na">right</span> <span class="o">=</span> <span class="n">trimBST</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">right</span><span class="o">,</span> <span class="n">L</span><span class="o">,</span> <span class="n">R</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">7</span><span class="cl">    <span class="k">return</span> <span class="n">root</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">8</span><span class="cl"><span class="o">}</span>
 </span></span></code></pre></div></blockquote>
+<h4 id="2寻找二叉查找树第k个元素-kth-smallest-element-in-a-bst-medium">2.寻找二叉查找树第K个元素 Kth Smallest Element in a BST (Medium)</h4>
+<p>中序遍历解法：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kd">private</span> <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="kd">private</span> <span class="kt">int</span> <span class="n">val</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="kd">public</span> <span class="kt">int</span> <span class="nf">kthSmallest</span><span class="o">(</span><span class="n">TreeNode</span> <span class="n">root</span><span class="o">,</span> <span class="kt">int</span> <span class="n">k</span><span class="o">){</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="k">if</span><span class="o">(</span><span class="n">node</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">    <span class="n">inOrder</span><span class="o">(</span><span class="n">node</span><span class="o">.</span><span class="na">left</span><span class="o">,</span> <span class="n">k</span><span class="o">);</span> <span class="c1">//中序遍历查找树有序，左子树走到底为最小数
+</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="c1"></span>    <span class="n">cnt</span><span class="o">++;</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    <span class="k">if</span><span class="o">(</span><span class="n">cnt</span> <span class="o">==</span> <span class="n">k</span><span class="o">){</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">        <span class="n">val</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="na">val</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">        <span class="k">return</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="n">inOrder</span><span class="o">(</span><span class="n">node</span><span class="o">.</span><span class="na">right</span><span class="o">,</span> <span class="n">k</span><span class="o">);</span> <span class="c1">//中序遍历向右子树
+</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="c1"></span><span class="o">}</span>
+</span></span></code></pre></div><h4 id="3-把二叉查找树每个节点的值都加上比它大的节点的值-convert-bst-to-greater-tree-easy">3. 把二叉查找树每个节点的值都加上比它大的节点的值 Convert BST to Greater Tree (Easy)</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln"> 1</span><span class="cl">Input: The root of a Binary Search Tree like this:
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">              5
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">            /   \
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">           2     13
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">Output: The root of a Greater Tree like this:
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">             18
+</span></span><span class="line"><span class="ln">10</span><span class="cl">            /   \
+</span></span><span class="line"><span class="ln">11</span><span class="cl">          20     13
+</span></span></code></pre></div><blockquote>
+<p>解题：</p>
+<p>先遍历右子树。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"></code></pre></div></blockquote>
 <h3 id="前缀树">前缀树</h3>
 <blockquote>
 <p><strong>Trie 概念</strong>：单词集合生成由字母组成的树</p>
