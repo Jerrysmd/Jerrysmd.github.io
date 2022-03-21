@@ -1963,7 +1963,12 @@
 </span></span></code></pre></div><p>题目描述：只保留值在 L ~ R 之间的节点</p>
 <blockquote>
 <p>解题：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"></code></pre></div></blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="kd">public</span> <span class="n">TreeNode</span> <span class="nf">trimBST</span><span class="o">(</span><span class="n">TreeNode</span> <span class="n">root</span><span class="o">,</span> <span class="kt">int</span> <span class="n">L</span><span class="o">,</span> <span class="kt">int</span> <span class="n">R</span><span class="o">){</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="k">if</span><span class="o">(</span><span class="n">root</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">    <span class="k">if</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">val</span> <span class="o">&gt;</span> <span class="n">R</span><span class="o">)</span> <span class="k">return</span> <span class="n">trimBST</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">left</span><span class="o">,</span> <span class="n">L</span><span class="o">,</span> <span class="n">R</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">    
+</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div></blockquote>
 <h3 id="前缀树">前缀树</h3>
 <blockquote>
 <p><strong>Trie 概念</strong>：单词集合生成由字母组成的树</p>
