@@ -1902,7 +1902,19 @@
 </span></span></code></pre></div></blockquote>
 <h3 id="前中后序遍历">前中后序遍历</h3>
 <h4 id="非递归实现前中后序遍历">非递归实现前中后序遍历</h4>
-<h3 id="前缀树">前缀树</h3>
+<p>前序遍历</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="nf">preOrderTraversal</span><span class="o">(</span><span class="n">TreeNode</span> <span class="n">root</span><span class="o">){</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">    <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">ret</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="n">Stack</span><span class="o">&lt;</span><span class="n">TreeNode</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">root</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="k">while</span><span class="o">(!</span><span class="n">stack</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()){</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">        <span class="n">TreeNode</span> <span class="n">node</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">node</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">continue</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">        <span class="n">ret</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">node</span><span class="o">.</span><span class="na">val</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">        <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">node</span><span class="o">.</span><span class="na">right</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><h3 id="前缀树">前缀树</h3>
 <blockquote>
 <p><strong>Trie 概念</strong>：单词集合生成由字母组成的树</p>
 </blockquote>
