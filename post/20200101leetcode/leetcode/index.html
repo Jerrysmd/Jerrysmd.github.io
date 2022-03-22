@@ -2139,13 +2139,85 @@
 </span></span><span class="line"><span class="ln">22</span><span class="cl">        <span class="n">maxCnt</span> <span class="o">=</span> <span class="n">curCnt</span><span class="o">;</span>
 </span></span><span class="line"><span class="ln">23</span><span class="cl">        <span class="n">nums</span><span class="o">.</span><span class="na">clear</span><span class="o">;</span>
 </span></span><span class="line"><span class="ln">24</span><span class="cl">        <span class="n">nums</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">node</span><span class="o">.</span><span class="na">val</span><span class="o">);</span>
-</span></span><span class="line"><span class="ln">25</span><span class="cl">    <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">c</span><span class="o">)</span>
-</span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="ln">25</span><span class="cl">    <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">curCnt</span> <span class="o">==</span> <span class="n">maxCnt</span><span class="o">){</span>
+</span></span><span class="line"><span class="ln">26</span><span class="cl">        <span class="n">nums</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">node</span><span class="o">.</span><span class="na">val</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">27</span><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="ln">28</span><span class="cl">    <span class="n">preNode</span> <span class="o">=</span> <span class="n">node</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">29</span><span class="cl">    <span class="n">inOrder</span><span class="o">(</span><span class="n">node</span><span class="o">.</span><span class="na">right</span><span class="o">,</span> <span class="n">nums</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">30</span><span class="cl"><span class="o">}</span>
 </span></span></code></pre></div><h3 id="trie-前缀树">Trie 前缀树</h3>
 <blockquote>
-<p><strong>Trie 概念</strong>：单词集合生成由字母组成的树</p>
+<p><strong>Trie 概念</strong>：单词集合生成由字母组成的树。又称前缀树或字典树，用于判断字符串是否存在或者是否具有某种字符串前缀。</p>
+<p>
+
+
+
+
+
+<figure>
+  <picture>
+
+    
+      
+      
+
+      
+
+        
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        
+
+        <img class="image_figure image_internal" src="https://Jerrysmd.github.io/post/20200101leetCode/trie.jpg" alt="trie" loading="lazy" decoding="async" width="300" height="285"  />
+    
+
+  </picture>
+</figure>
+</p>
 </blockquote>
-<h2 id="leetcode-题解---分治">Leetcode 题解 - 分治</h2>
+<h4 id="1实现一个-trie-implement-trie-prefix-tree-medium">1.实现一个 Trie Implement Trie (Prefix Tree) (Medium)</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="kd">class</span> <span class="nc">Trie</span><span class="o">{</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="kd">private</span> <span class="kd">class</span> <span class="nc">Node</span><span class="o">{</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">        <span class="n">Node</span><span class="o">[]</span> <span class="n">childs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="o">[</span><span class="n">2</span><span class="o">]</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><h2 id="leetcode-题解---分治">Leetcode 题解 - 分治</h2>
 <h3 id="题目一给表达式加括号-different-ways-to-add-parentheses-medium">题目一：给表达式加括号 Different Ways to Add Parentheses (Medium)</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">Input: &#34;2-1-1&#34;.
 </span></span><span class="line"><span class="ln">2</span><span class="cl">
