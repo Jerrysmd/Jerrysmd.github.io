@@ -117,7 +117,7 @@
 </svg></span>
     <span class="post_date">
       Jan 1, 2020</span>
-    <span class="post_time"> · 28 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/interview' title="interview" class="post_tag button button_translucent">interview
+    <span class="post_time"> · 29 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/interview' title="interview" class="post_tag button button_translucent">interview
         </a><a href='https://Jerrysmd.github.io/tags/leetcode' title="leetcode" class="post_tag button button_translucent">leetcode
         </a><a href='https://Jerrysmd.github.io/tags/algorithm' title="algorithm" class="post_tag button button_translucent">algorithm
         </a>
@@ -2302,6 +2302,71 @@
 <p>在将一个元素x插入队列时，为了维护原来的后进先出顺序，需要让x插入队列首部。而队列默认插入顺序是队列尾部，因此在将x插入队列尾部之后，需要让除了x之外的所有元素出队列，再入队列。</p>
 </blockquote>
 <h4 id="3-最小值栈-min-stack-easy">3. 最小值栈 Min Stack (Easy)</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kd">class</span> <span class="nc">MinStack</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="kd">private</span> <span class="n">Stack</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">dataStack</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="kd">private</span> <span class="n">Stack</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">minStack</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="kd">private</span> <span class="kt">int</span> <span class="n">min</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    <span class="kd">public</span> <span class="nf">MinStack</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">        <span class="n">dataStack</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">        <span class="n">minStack</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">        <span class="n">min</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">
+</span></span><span class="line"><span class="ln">13</span><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">push</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">        <span class="n">dataStack</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">x</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">        <span class="n">min</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">min</span><span class="o">,</span> <span class="n">x</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">        <span class="n">minStack</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">min</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="ln">18</span><span class="cl">
+</span></span><span class="line"><span class="ln">19</span><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">pop</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln">20</span><span class="cl">        <span class="n">dataStack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+</span></span><span class="line"><span class="ln">21</span><span class="cl">        <span class="n">minStack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+</span></span><span class="line"><span class="ln">22</span><span class="cl">        <span class="n">min</span> <span class="o">=</span> <span class="n">minStack</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">?</span> <span class="n">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span> <span class="o">:</span> <span class="n">minStack</span><span class="o">.</span><span class="na">peek</span><span class="o">();</span>
+</span></span><span class="line"><span class="ln">23</span><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="ln">24</span><span class="cl">
+</span></span><span class="line"><span class="ln">25</span><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">top</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln">26</span><span class="cl">        <span class="k">return</span> <span class="n">dataStack</span><span class="o">.</span><span class="na">peek</span><span class="o">();</span>
+</span></span><span class="line"><span class="ln">27</span><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="ln">28</span><span class="cl">
+</span></span><span class="line"><span class="ln">29</span><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getMin</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln">30</span><span class="cl">        <span class="k">return</span> <span class="n">minStack</span><span class="o">.</span><span class="na">peek</span><span class="o">();</span>
+</span></span><span class="line"><span class="ln">31</span><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="ln">32</span><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>对于实现最小值队列问题，可以先将队列使用栈来实现，然后就将问题转换为最小值栈。</p>
+<h4 id="4-用栈实现括号匹配-valid-parentheses-easy">4. 用栈实现括号匹配 Valid Parentheses (Easy)</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">&#34;()[]{}&#34;
+</span></span><span class="line"><span class="ln">2</span><span class="cl">
+</span></span><span class="line"><span class="ln">3</span><span class="cl">Output : true
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isValid</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">){</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">    <span class="n">Stack</span><span class="o">&lt;</span><span class="n">Character</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="k">for</span><span class="o">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">:</span> <span class="n">s</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">()){</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">c</span> <span class="o">==</span> <span class="sc">&#39;(&#39;</span> <span class="o">||</span> <span class="n">c</span> <span class="o">==</span> <span class="sc">&#39;{&#39;</span> <span class="o">||</span> <span class="n">c</span> <span class="o">==</span> <span class="sc">&#39;[&#39;</span><span class="o">){</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">            <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">            <span class="k">if</span><span class="o">(</span><span class="n">stack</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()){</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">                <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">            <span class="kt">char</span> <span class="n">cStack</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">            <span class="kt">boolean</span> <span class="n">b1</span> <span class="o">=</span> <span class="n">c</span> <span class="o">==</span> <span class="sc">&#39;)&#39;</span> <span class="o">&amp;&amp;</span> <span class="n">cStack</span> <span class="o">!=</span> <span class="sc">&#39;(&#39;</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">            <span class="kt">boolean</span> <span class="n">b2</span> <span class="o">=</span> <span class="n">c</span> <span class="o">==</span> <span class="sc">&#39;]&#39;</span> <span class="o">&amp;&amp;</span> <span class="n">cStack</span> <span class="o">!=</span> <span class="sc">&#39;[&#39;</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">            <span class="kt">boolean</span> <span class="n">b3</span> <span class="o">=</span> <span class="n">c</span> <span class="o">==</span> <span class="sc">&#39;}&#39;</span> <span class="o">&amp;&amp;</span> <span class="n">cStack</span> <span class="o">!=</span> <span class="sc">&#39;{&#39;</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">            <span class="k">if</span><span class="o">(</span><span class="n">b1</span> <span class="o">||</span> <span class="n">b2</span> <span class="o">||</span> <span class="n">b3</span><span class="o">){</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">                <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="ln">18</span><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="ln">19</span><span class="cl">    <span class="k">return</span> <span class="n">stack</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">();</span>
+</span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><h4 id="5-数组中元素与下一个比它大的元素之间的距离-daily-temperatures-medium">5. 数组中元素与下一个比它大的元素之间的距离 Daily Temperatures (Medium)</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">Input: [73, 74, 75, 71, 69, 72, 76, 73]
+</span></span><span class="line"><span class="ln">2</span><span class="cl">Output: [1, 1, 4, 2, 1, 1, 0, 0]
+</span></span></code></pre></div><blockquote>
+<p>解题：</p>
+<p>在遍历数组时用栈把数组中的数存起来，如果当前遍历的数比栈顶元素来的大，说明栈顶元素的下一个比它大的数就是当前元素。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">dailyTemperatures</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">temperatures</span><span class="o">)</span>
+</span></span></code></pre></div></blockquote>
 <h2 id="leetcode-题解---分治">Leetcode 题解 - 分治</h2>
 <h3 id="题目一给表达式加括号-different-ways-to-add-parentheses-medium">题目一：给表达式加括号 Different Ways to Add Parentheses (Medium)</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">Input: &#34;2-1-1&#34;.
