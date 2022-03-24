@@ -2387,8 +2387,23 @@
 </span></span><span class="line"><span class="ln">5</span><span class="cl">The second 1&#39;s next greater number needs to search circularly, which is also 2.
 </span></span></code></pre></div><blockquote>
 <p>解题：</p>
-<p>与 Daily Temperatures (Medium) 不同的是，数组是循环数组，</p>
-</blockquote>
+<p>与 Daily Temperatures (Medium) 不同的是，数组是循环数组，并且最后要求的不是距离而是下一个元素。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">nextGreaterElements</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">){</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="kt">int</span><span class="o">[]</span> <span class="n">next</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="n">Stack</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">pre</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">*</span> <span class="n">2</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">        <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="n">nums</span><span class="o">[</span><span class="n">i</span> <span class="o">%</span> <span class="n">n</span><span class="o">];</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">        <span class="k">while</span><span class="o">(!</span><span class="n">pre</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">nums</span><span class="o">[</span><span class="n">pre</span><span class="o">.</span><span class="na">peek</span><span class="o">()]</span> <span class="o">&lt;</span> <span class="n">num</span><span class="o">){</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">            <span class="n">next</span><span class="o">[</span><span class="n">pre</span><span class="o">.</span><span class="na">pop</span><span class="o">()]</span> <span class="o">=</span> <span class="n">num</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">){</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">            <span class="n">pre</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">    <span class="k">return</span> <span class="n">next</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div></blockquote>
 <h2 id="leetcode-题解---分治">Leetcode 题解 - 分治</h2>
 <h3 id="题目一给表达式加括号-different-ways-to-add-parentheses-medium">题目一：给表达式加括号 Different Ways to Add Parentheses (Medium)</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">Input: &#34;2-1-1&#34;.
