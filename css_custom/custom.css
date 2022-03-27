@@ -79,7 +79,6 @@ html:not([data-mode="lit"]){
 }
 
 html:not([data-mode="dim"]) {
-    /* --light: #1d1e20; */
     --bg: #1d1e20;
 }
 
@@ -112,4 +111,8 @@ h2 {
 use {
     background-image: url(../images/sun.svg);
     border-image: url(../images/night-moon.jpg);
+}
+
+a.nav-link:visited {
+    color: var(--text);
 }
