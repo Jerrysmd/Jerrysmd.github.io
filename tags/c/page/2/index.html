@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en" data-figures="" data-mode="dim">
+<html lang="en" data-figures="" data-mode="lit">
   <head>
 <title>c | JerrysBlog</title>
 <meta charset="utf-8">
@@ -46,12 +46,12 @@
 
     
     
-    <link rel="preload" href="https://Jerrysmd.github.io/css/styles.2b3290fc6e94839826981c23ed76e1831472bd3f8af68332da00b97d9430b56bfb7e9394d5c09aca633c093c621709cdd745eec940be733933ac5d876223de52.css" integrity = "sha512-KzKQ/G6Ug5gmmBwj7XbhgxRyvT&#43;K9oMy2gC5fZQwtWv7fpOU1cCaymM8CTxiFwnN10XuyUC&#43;czkzrF2HYiPeUg==" as="style" crossorigin="anonymous">
-    <link rel="preload" href="https://Jerrysmd.github.io/js/bundle.min.6d21e9659f73959cafc3aec778949f3800c138be231877dd531b4eb8e1f0d6fb49d860255bd672acfa6e4d291f962c90312ab7aed35a77900d4e4b18fa6b922a.js" as="script" integrity=
-    "sha512-bSHpZZ9zlZyvw67HeJSfOADBOL4jGHfdUxtOuOHw1vtJ2GAlW9ZyrPpuTSkfliyQMSq3rtNad5ANTksY&#43;muSKg==" crossorigin="anonymous">
+    <link rel="preload" href="https://Jerrysmd.github.io/css/styles.54eab6953ed04c3ee282968d1e1b85fed84d551aee762f927a0860811bc873413381a397ea6b9db08a0966e77b1ecf467680006010b3e82c4ba7efa8fec6656b.css" integrity = "sha512-VOq2lT7QTD7igpaNHhuF/thNVRrudi&#43;SeghggRvIc0EzgaOX6mudsIoJZud7Hs9GdoAAYBCz6CxLp&#43;&#43;o/sZlaw==" as="style" crossorigin="anonymous">
+    <link rel="preload" href="https://Jerrysmd.github.io/en/js/bundle.04e85a129bf4b8c382b408046a890e945f3b46ca009b33eb3b1dc830a377205cac307382ec797d7e8e939ae6355cf7f9a59acf2e95730482f1cc319bbc52fb46.js" as="script" integrity=
+    "sha512-BOhaEpv0uMOCtAgEaokOlF87RsoAmzPrOx3IMKN3IFysMHOC7Hl9fo6TmuY1XPf5pZrPLpVzBILxzDGbvFL7Rg==" crossorigin="anonymous">
 
     
-    <link rel="stylesheet" type="text/css" href="https://Jerrysmd.github.io/css/styles.2b3290fc6e94839826981c23ed76e1831472bd3f8af68332da00b97d9430b56bfb7e9394d5c09aca633c093c621709cdd745eec940be733933ac5d876223de52.css" integrity="sha512-KzKQ/G6Ug5gmmBwj7XbhgxRyvT&#43;K9oMy2gC5fZQwtWv7fpOU1cCaymM8CTxiFwnN10XuyUC&#43;czkzrF2HYiPeUg==" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://Jerrysmd.github.io/css/styles.54eab6953ed04c3ee282968d1e1b85fed84d551aee762f927a0860811bc873413381a397ea6b9db08a0966e77b1ecf467680006010b3e82c4ba7efa8fec6656b.css" integrity="sha512-VOq2lT7QTD7igpaNHhuF/thNVRrudi&#43;SeghggRvIc0EzgaOX6mudsIoJZud7Hs9GdoAAYBCz6CxLp&#43;&#43;o/sZlaw==" crossorigin="anonymous"><link rel="stylesheet" href="/css_custom/custom.css">
     
   </head>
   
@@ -66,10 +66,14 @@
   <img src="https://Jerrysmd.github.io/logos/logo.png" class="logo" alt="JerrysBlog">
   <div class="nav_close">
     <div><svg class="icon">
+  <title>open-menu</title>
   <use xlink:href="#open-menu"></use>
-</svg><svg class="icon">
+</svg>
+<svg class="icon">
+  <title>closeme</title>
   <use xlink:href="#closeme"></use>
-</svg></div>
+</svg>
+</div>
   </div>
 </a>
 
@@ -86,24 +90,19 @@
     <a href="https://Jerrysmd.github.io/categories/technology/" class="nav_item" title="Technology">Technology </a>
   </div>
   <div class="nav_parent">
+    <a href="https://Jerrysmd.github.io/categories/life/" class="nav_item" title="Life">Life </a>
+  </div>
+  <div class="nav_parent">
     <a href="https://Jerrysmd.github.io/about/" class="nav_item" title="About">About </a>
   </div>
       
 <div class='follow'>
   <a href="https://github.com/Jerrysmd##">
     <svg class="icon">
+  <title>github</title>
   <use xlink:href="#github"></use>
 </svg>
-  </a>
-  <a href="https://twitter.com/ZJ1IFlOSupZnr7W##">
-    <svg class="icon">
-  <use xlink:href="#twitter"></use>
-</svg>
-  </a>
-  <a href="https://www.instagram.com/0x4c2/#">
-    <svg class="icon">
-  <use xlink:href="#instagram"></use>
-</svg>
+
   </a>
 <div class="color_mode">
   <input type="checkbox" class="color_choice" id="mode">
@@ -118,318 +117,247 @@
     <main>
 
 <div class="grid-inverse wrap content">
-  <ul class="posts" id="posts">
-      <li class="post_item">
+  <div>
+    <ul class="posts" id="posts">
+        <li class="post_item">
   <div class="excerpt">
     <div class="excerpt_header">
       <h3 class="post_link">
-        <a href="https://Jerrysmd.github.io/post/20201015makefile_cmakelist/" title="Makefile Guide">Makefile Guide</a>
+        <a href="https://Jerrysmd.github.io/post/20190125dynamicstaticlinklibrary/dynamicstaticlinklibrary/" title="动态链接和静态链接: Dynamic link library and static link library">动态链接和静态链接: Dynamic link library and static link library</a>
       </h3>
       
   <div class="post_meta">
     <span><svg class="icon">
+  <title>calendar</title>
   <use xlink:href="#calendar"></use>
-</svg></span>
+</svg>
+</span>
     <span class="post_date">
-      Oct 15, 2020</span>
+      Jan 25, 2019</span>
+    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/c' title="c" class="post_tag button button_translucent">c
+        </a><a href='https://Jerrysmd.github.io/tags/c&#43;&#43;' title="c&#43;&#43;" class="post_tag button button_translucent">c&#43;&#43;
+        </a>
+    </span>
+  </div>
+
+    </div>
+      <div class="excerpt_footer">
+        <div class="pale">
+          
+            <p>开发中，我们只需要知道lib是编译时需要的，dll是运行时需要的。如果要完成源代码的编译，有lib就够了。如果要使动态连接的程序运行起来，有dll就够了。本文会更加清晰的了解二者的区别、生成、使用。</p>
+          
+          <br>
+          <a href="https://Jerrysmd.github.io/post/20190125dynamicstaticlinklibrary/dynamicstaticlinklibrary/" title="Read More" class="excerpt_more button">Read More</a>
+        </div>
+      </div>
+    </div>
+  </li>
+
+        <li class="post_item">
+  <div class="excerpt">
+    <div class="excerpt_header">
+      <h3 class="post_link">
+        <a href="https://Jerrysmd.github.io/post/20181220read_binary_file/read_binary_file/" title="C文件读取的高级方法：Advanced method of reading files">C文件读取的高级方法：Advanced method of reading files</a>
+      </h3>
+      
+  <div class="post_meta">
+    <span><svg class="icon">
+  <title>calendar</title>
+  <use xlink:href="#calendar"></use>
+</svg>
+</span>
+    <span class="post_date">
+      Dec 20, 2018</span>
+    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/c' title="C" class="post_tag button button_translucent">C
+        </a><a href='https://Jerrysmd.github.io/tags/file' title="File" class="post_tag button button_translucent">File
+        </a>
+    </span>
+  </div>
+
+    </div>
+      <div class="excerpt_footer">
+        <div class="pale">
+          
+            <p>读取二进制文件（任何文件都可以，本文以二进制为例），把二进制文件内容全部读取到char*字符串中。配合fseek()和fread()函数实现文件读取的高级方法。</p>
+          
+          <br>
+          <a href="https://Jerrysmd.github.io/post/20181220read_binary_file/read_binary_file/" title="Read More" class="excerpt_more button">Read More</a>
+        </div>
+      </div>
+    </div>
+  </li>
+
+        <li class="post_item">
+  <div class="excerpt">
+    <div class="excerpt_header">
+      <h3 class="post_link">
+        <a href="https://Jerrysmd.github.io/post/20181118sqlcipher/sqlcipher/" title="SQLcipher Guide">SQLcipher Guide</a>
+      </h3>
+      
+  <div class="post_meta">
+    <span><svg class="icon">
+  <title>calendar</title>
+  <use xlink:href="#calendar"></use>
+</svg>
+</span>
+    <span class="post_date">
+      Nov 18, 2018</span>
+    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/sql' title="SQL" class="post_tag button button_translucent">SQL
+        </a><a href='https://Jerrysmd.github.io/tags/c' title="C" class="post_tag button button_translucent">C
+        </a>
+    </span>
+  </div>
+
+    </div>
+      <div class="excerpt_footer">
+        <div class="pale">
+          
+            <p>SQLCipher is based on SQLite, and thus, the majority of the accessible API is identical to the C/C++ interface for SQLite 3. However, SQLCipher does add a number of security specific extensions in the form of PRAGMAs, SQL Functions and C Functions.</p>
+          
+          <br>
+          <a href="https://Jerrysmd.github.io/post/20181118sqlcipher/sqlcipher/" title="Read More" class="excerpt_more button">Read More</a>
+        </div>
+      </div>
+    </div>
+  </li>
+
+        <li class="post_item">
+  <div class="excerpt">
+    <div class="excerpt_header">
+      <h3 class="post_link">
+        <a href="https://Jerrysmd.github.io/post/20180915makefile_cmakelist/makefile_cmakelist/" title="Makefile Guide">Makefile Guide</a>
+      </h3>
+      
+  <div class="post_meta">
+    <span><svg class="icon">
+  <title>calendar</title>
+  <use xlink:href="#calendar"></use>
+</svg>
+</span>
+    <span class="post_date">
+      Sep 15, 2018</span>
     <span class="post_time"> · 4 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/c' title="c" class="post_tag button button_translucent">c
         </a><a href='https://Jerrysmd.github.io/tags/c&#43;&#43;' title="c&#43;&#43;" class="post_tag button button_translucent">c&#43;&#43;
         </a>
     </span>
-    <span class="page_only">&nbsp;·
-  <div class="post_share">
-    Share on:
-    <a href="https://twitter.com/intent/tweet?text=Makefile%20Guide&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201015makefile_cmakelist%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <use xlink:href="#twitter"></use>
-</svg>
-    </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201015makefile_cmakelist%2f&t=Makefile%20Guide" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <use xlink:href="#facebook"></use>
-</svg>
-    </a>
-    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="Share on LinkedIn" rel="nofollow">
-      <svg class="icon">
-  <use xlink:href="#linkedin"></use>
-</svg>
-    </a>
-    <a href="https://Jerrysmd.github.io/post/20201015makefile_cmakelist/" title="Copy Link" class="link link_yank">
-      <svg class="icon">
-  <use xlink:href="#copy"></use>
-</svg>
-    </a>
-  </div>
-  </span>
   </div>
 
     </div>
-    <div class="excerpt_footer partition">
-      <div class="excerpt_thumbnail">
-        <img src='https://Jerrysmd.github.io/images/code2.png' alt="Makefile Guide">
-      </div>
-      
-        <div>
-          <p class="pale">
-            
-              <p>Makefile定义了一系列的规则来指定，哪些文件需要先编译，哪些文件需要后编译，哪些文件需要重新编译，甚至于进行更复杂的功能操作，因为makefile就像一个Shell脚本一样，其中也可以执行操作系统的命令。makefile带来的好处就是——“自动化编译”，整个工程完全自动编译，极大的提高了软件开发的效率。</p>
-            
-          </p>
-          <a href="https://Jerrysmd.github.io/post/20201015makefile_cmakelist/" title="Read More" class="excerpt_more button">Read More</a>
+      <div class="excerpt_footer">
+        <div class="pale">
+          
+            <p>Makefile定义了一系列的规则来指定，哪些文件需要先编译，哪些文件需要后编译，哪些文件需要重新编译，甚至于进行更复杂的功能操作，因为makefile就像一个Shell脚本一样，其中也可以执行操作系统的命令。makefile带来的好处就是——“自动化编译”，整个工程完全自动编译，极大的提高了软件开发的效率。</p>
+          
+          <br>
+          <a href="https://Jerrysmd.github.io/post/20180915makefile_cmakelist/makefile_cmakelist/" title="Read More" class="excerpt_more button">Read More</a>
         </div>
       </div>
     </div>
   </li>
 
-      <li class="post_item">
+        <li class="post_item">
   <div class="excerpt">
     <div class="excerpt_header">
       <h3 class="post_link">
-        <a href="https://Jerrysmd.github.io/post/20201012hyperscan/" title="Hyperscan: high-performance multiple regex matching library">Hyperscan: high-performance multiple regex matching library</a>
+        <a href="https://Jerrysmd.github.io/post/20180812hyperscan/hyperscan/" title="Hyperscan: high-performance multiple regex matching library">Hyperscan: high-performance multiple regex matching library</a>
       </h3>
       
   <div class="post_meta">
     <span><svg class="icon">
+  <title>calendar</title>
   <use xlink:href="#calendar"></use>
-</svg></span>
+</svg>
+</span>
     <span class="post_date">
-      Oct 12, 2020</span>
-    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/c' title="C" class="post_tag button button_translucent">C
+      Aug 12, 2018</span>
+    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/c' title="C" class="post_tag button button_translucent">C
         </a><a href='https://Jerrysmd.github.io/tags/c&#43;&#43;' title="C&#43;&#43;" class="post_tag button button_translucent">C&#43;&#43;
         </a><a href='https://Jerrysmd.github.io/tags/hyperscan' title="Hyperscan" class="post_tag button button_translucent">Hyperscan
         </a>
     </span>
-    <span class="page_only">&nbsp;·
-  <div class="post_share">
-    Share on:
-    <a href="https://twitter.com/intent/tweet?text=Hyperscan%3a%20high-performance%20multiple%20regex%20matching%20library&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201012hyperscan%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <use xlink:href="#twitter"></use>
-</svg>
-    </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201012hyperscan%2f&t=Hyperscan%3a%20high-performance%20multiple%20regex%20matching%20library" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <use xlink:href="#facebook"></use>
-</svg>
-    </a>
-    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="Share on LinkedIn" rel="nofollow">
-      <svg class="icon">
-  <use xlink:href="#linkedin"></use>
-</svg>
-    </a>
-    <a href="https://Jerrysmd.github.io/post/20201012hyperscan/" title="Copy Link" class="link link_yank">
-      <svg class="icon">
-  <use xlink:href="#copy"></use>
-</svg>
-    </a>
-  </div>
-  </span>
   </div>
 
     </div>
-    <div class="excerpt_footer partition">
-      <div class="excerpt_thumbnail">
-        <img src='https://Jerrysmd.github.io/images/search.png' alt="Hyperscan: high-performance multiple regex matching library">
-      </div>
-      
-        <div>
-          <p class="pale">
-            
-              <p>Hyperscan是一款来自于Intel的高性能的正则表达式匹配库。它是基于X86平台以PCRE为原型而开发的。在支持PCRE的大部分语法的前提下，Hyperscan增加了特定的语法和工作模式来保证其在真实网络场景下的实用性。</p>
-            
-          </p>
-          <a href="https://Jerrysmd.github.io/post/20201012hyperscan/" title="Read More" class="excerpt_more button">Read More</a>
+      <div class="excerpt_footer">
+        <div class="pale">
+          
+            <p>Hyperscan是一款来自于Intel的高性能的正则表达式匹配库。它是基于X86平台以PCRE为原型而开发的。在支持PCRE的大部分语法的前提下，Hyperscan增加了特定的语法和工作模式来保证其在真实网络场景下的实用性。</p>
+          
+          <br>
+          <a href="https://Jerrysmd.github.io/post/20180812hyperscan/hyperscan/" title="Read More" class="excerpt_more button">Read More</a>
         </div>
       </div>
     </div>
   </li>
 
-      <li class="post_item">
+        <li class="post_item">
   <div class="excerpt">
     <div class="excerpt_header">
       <h3 class="post_link">
-        <a href="https://Jerrysmd.github.io/post/20201010cgetline/" title="文件读取多读取一行空行问题: The problem about file reading one more line">文件读取多读取一行空行问题: The problem about file reading one more line</a>
+        <a href="https://Jerrysmd.github.io/post/20180610cgetline/cgetline/" title="文件读取多读取一行空行问题: The problem about file reading one more line">文件读取多读取一行空行问题: The problem about file reading one more line</a>
       </h3>
       
   <div class="post_meta">
     <span><svg class="icon">
+  <title>calendar</title>
   <use xlink:href="#calendar"></use>
-</svg></span>
+</svg>
+</span>
     <span class="post_date">
-      Oct 10, 2020</span>
+      Jun 10, 2018</span>
     <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/c' title="c" class="post_tag button button_translucent">c
         </a><a href='https://Jerrysmd.github.io/tags/file' title="file" class="post_tag button button_translucent">file
         </a>
     </span>
-    <span class="page_only">&nbsp;·
-  <div class="post_share">
-    Share on:
-    <a href="https://twitter.com/intent/tweet?text=%e6%96%87%e4%bb%b6%e8%af%bb%e5%8f%96%e5%a4%9a%e8%af%bb%e5%8f%96%e4%b8%80%e8%a1%8c%e7%a9%ba%e8%a1%8c%e9%97%ae%e9%a2%98%3a%20The%20problem%20about%20file%20reading%20one%20more%20line&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201010cgetline%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <use xlink:href="#twitter"></use>
-</svg>
-    </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201010cgetline%2f&t=%e6%96%87%e4%bb%b6%e8%af%bb%e5%8f%96%e5%a4%9a%e8%af%bb%e5%8f%96%e4%b8%80%e8%a1%8c%e7%a9%ba%e8%a1%8c%e9%97%ae%e9%a2%98%3a%20The%20problem%20about%20file%20reading%20one%20more%20line" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <use xlink:href="#facebook"></use>
-</svg>
-    </a>
-    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="Share on LinkedIn" rel="nofollow">
-      <svg class="icon">
-  <use xlink:href="#linkedin"></use>
-</svg>
-    </a>
-    <a href="https://Jerrysmd.github.io/post/20201010cgetline/" title="Copy Link" class="link link_yank">
-      <svg class="icon">
-  <use xlink:href="#copy"></use>
-</svg>
-    </a>
-  </div>
-  </span>
   </div>
 
     </div>
-    <div class="excerpt_footer partition">
-      <div class="excerpt_thumbnail">
-        <img src='https://Jerrysmd.github.io/images/code1.png' alt="文件读取多读取一行空行问题: The problem about file reading one more line">
-      </div>
-      
-        <div>
-          <p class="pale">
-            
-              <p>getline()/get()/read()会出现多读一行的现象。造成该原因可能文件本身问题和getline()函数的问题。可以在while处判断时先判断getline()/get()/read()，如果拿到数据再处理。</p>
-            
-          </p>
-          <a href="https://Jerrysmd.github.io/post/20201010cgetline/" title="Read More" class="excerpt_more button">Read More</a>
+      <div class="excerpt_footer">
+        <div class="pale">
+          
+            <p>getline()/get()/read()会出现多读一行的现象。造成该原因可能文件本身问题和getline()函数的问题。可以在while处判断时先判断getline()/get()/read()，如果拿到数据再处理。</p>
+          
+          <br>
+          <a href="https://Jerrysmd.github.io/post/20180610cgetline/cgetline/" title="Read More" class="excerpt_more button">Read More</a>
         </div>
       </div>
     </div>
   </li>
 
-      <li class="post_item">
+        <li class="post_item">
   <div class="excerpt">
     <div class="excerpt_header">
       <h3 class="post_link">
-        <a href="https://Jerrysmd.github.io/post/20201007mxml/" title="MXML的使用: The description of mxml">MXML的使用: The description of mxml</a>
+        <a href="https://Jerrysmd.github.io/post/20180507mxml/mxml/" title="MXML的使用: The description of mxml">MXML的使用: The description of mxml</a>
       </h3>
       
   <div class="post_meta">
     <span><svg class="icon">
+  <title>calendar</title>
   <use xlink:href="#calendar"></use>
-</svg></span>
+</svg>
+</span>
     <span class="post_date">
-      Oct 7, 2020</span>
-    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/c' title="c" class="post_tag button button_translucent">c
+      May 7, 2018</span>
+    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/c' title="c" class="post_tag button button_translucent">c
         </a>
     </span>
-    <span class="page_only">&nbsp;·
-  <div class="post_share">
-    Share on:
-    <a href="https://twitter.com/intent/tweet?text=MXML%e7%9a%84%e4%bd%bf%e7%94%a8%3a%20The%20description%20of%20mxml&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201007mxml%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <use xlink:href="#twitter"></use>
-</svg>
-    </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201007mxml%2f&t=MXML%e7%9a%84%e4%bd%bf%e7%94%a8%3a%20The%20description%20of%20mxml" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <use xlink:href="#facebook"></use>
-</svg>
-    </a>
-    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="Share on LinkedIn" rel="nofollow">
-      <svg class="icon">
-  <use xlink:href="#linkedin"></use>
-</svg>
-    </a>
-    <a href="https://Jerrysmd.github.io/post/20201007mxml/" title="Copy Link" class="link link_yank">
-      <svg class="icon">
-  <use xlink:href="#copy"></use>
-</svg>
-    </a>
-  </div>
-  </span>
   </div>
 
     </div>
-    <div class="excerpt_footer partition">
-      <div class="excerpt_thumbnail">
-        <img src='https://Jerrysmd.github.io/images/distribution.png' alt="MXML的使用: The description of mxml">
-      </div>
-      
-        <div>
-          <p class="pale">
-            
-              <p>MXML (Minimal XML) is a small, fast and versatile library that reads a whole XML file and puts it in a DOM tree.</p>
-            
-          </p>
-          <a href="https://Jerrysmd.github.io/post/20201007mxml/" title="Read More" class="excerpt_more button">Read More</a>
+      <div class="excerpt_footer">
+        <div class="pale">
+          
+            <p>MXML (Minimal XML) is a small, fast and versatile library that reads a whole XML file and puts it in a DOM tree.</p>
+          
+          <br>
+          <a href="https://Jerrysmd.github.io/post/20180507mxml/mxml/" title="Read More" class="excerpt_more button">Read More</a>
         </div>
       </div>
     </div>
   </li>
 
-      <li class="post_item">
-  <div class="excerpt">
-    <div class="excerpt_header">
-      <h3 class="post_link">
-        <a href="https://Jerrysmd.github.io/post/20201005hashcode/" title="C语言实现HashMap: C language realize HashMap">C语言实现HashMap: C language realize HashMap</a>
-      </h3>
-      
-  <div class="post_meta">
-    <span><svg class="icon">
-  <use xlink:href="#calendar"></use>
-</svg></span>
-    <span class="post_date">
-      Oct 5, 2020</span>
-    <span class="post_time"> · 8 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/c' title="c" class="post_tag button button_translucent">c
-        </a><a href='https://Jerrysmd.github.io/tags/hash' title="hash" class="post_tag button button_translucent">hash
-        </a>
-    </span>
-    <span class="page_only">&nbsp;·
-  <div class="post_share">
-    Share on:
-    <a href="https://twitter.com/intent/tweet?text=C%e8%af%ad%e8%a8%80%e5%ae%9e%e7%8e%b0HashMap%3a%20C%20language%20realize%20HashMap&url=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201005hashcode%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <use xlink:href="#twitter"></use>
-</svg>
-    </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fJerrysmd.github.io%2fpost%2f20201005hashcode%2f&t=C%e8%af%ad%e8%a8%80%e5%ae%9e%e7%8e%b0HashMap%3a%20C%20language%20realize%20HashMap" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <use xlink:href="#facebook"></use>
-</svg>
-    </a>
-    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="Share on LinkedIn" rel="nofollow">
-      <svg class="icon">
-  <use xlink:href="#linkedin"></use>
-</svg>
-    </a>
-    <a href="https://Jerrysmd.github.io/post/20201005hashcode/" title="Copy Link" class="link link_yank">
-      <svg class="icon">
-  <use xlink:href="#copy"></use>
-</svg>
-    </a>
-  </div>
-  </span>
-  </div>
-
-    </div>
-    <div class="excerpt_footer partition">
-      <div class="excerpt_thumbnail">
-        <img src='https://Jerrysmd.github.io/images/code3.png' alt="C语言实现HashMap: C language realize HashMap">
-      </div>
-      
-        <div>
-          <p class="pale">
-            
-              <p>哈希表是一种十分重要的数据结构，在很多应用场景下都有用到，本文会对哈希表原理进行简单的剖析，并使用C语言实现一个完整的HashMap。</p>
-            
-          </p>
-          <a href="https://Jerrysmd.github.io/post/20201005hashcode/" title="Read More" class="excerpt_more button">Read More</a>
-        </div>
-      </div>
-    </div>
-  </li>
-
-    <li>
+      <li>
     <ul class="pagination pagination-default">
       <li class="page-item">
         <a href="/tags/c/" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
@@ -441,88 +369,95 @@
         <a href="/tags/c/" aria-label="Page 1" class="page-link" role="button">1</a>
       </li>
       <li class="page-item active">
-        <a href="#" aria-current="page" aria-label="Page 2" class="page-link" role="button">2</a>
+        <a aria-current="page" aria-label="Page 2" class="page-link" role="button">2</a>
       </li>
-      <li class="page-item disabled">
-        <a href="#" aria-disabled="true" aria-label="Next" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&raquo;</span></a>
+      <li class="page-item">
+        <a href="/tags/c/page/3/" aria-label="Page 3" class="page-link" role="button">3</a>
       </li>
-      <li class="page-item disabled">
-        <a href="#" aria-disabled="true" aria-label="Last" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      <li class="page-item">
+        <a href="/tags/c/page/3/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/tags/c/page/3/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul>
-    </li>
-  </ul>
+      </li>
+    </ul>
+  </div>
 <aside class="sidebar">
   <section class="sidebar_inner">
-        <h2>刘佳锐</h2>
+    <br>
+    
+  
+  <div class="search">
+    <input type="search" class="search_field form_field" placeholder='Search...' id="find" autocomplete="off" data-scope='post'>
+    <label for="find" class="search_label"><svg class="icon">
+  <title>search</title>
+  <use xlink:href="#search"></use>
+</svg>
+
+    </label>
+    
+    <div class="search_results results"></div>
+  </div>
+
+        <h2>JIARUI LIU</h2>
       <div class="author_bio">
         Technologist, perpetual student, continual incremental improvement.
       </div>
       <a href='https://Jerrysmd.github.io/about/' class="button mt-1" role="button" title='Read More'>Read More</a>
+
+    
+    
     <h2 class="mt-4">Featured Posts</h2>
     <ul>
       <li>
-        <a href="https://Jerrysmd.github.io/post/20210707sparkguide2/sparkguide2/" class="nav-link" title="Spark 简介: Spark Guide, Part Ⅱ">Spark 简介: Spark Guide, Part Ⅱ</a>
+        <a href="https://Jerrysmd.github.io/post/20210204_tensorflow_captcha/article/" class="nav-link" title="Tensorflow Identify Simple Captcha">Tensorflow Identify Simple Captcha</a>
       </li>
       <li>
-        <a href="https://Jerrysmd.github.io/post/20210615hivekeypoint/hivekeypoint/" class="nav-link" title="Hive 重点: Hive Key Points">Hive 重点: Hive Key Points</a>
+        <a href="https://Jerrysmd.github.io/post/20210108_dw_behavior_collection/article/" class="nav-link" title="Data Warehouse: Behavior Collection">Data Warehouse: Behavior Collection</a>
       </li>
       <li>
-        <a href="https://Jerrysmd.github.io/post/20210527sparkguide1/sparkguide1/" class="nav-link" title="Spark 简介: Spark Guide, Part Ⅰ">Spark 简介: Spark Guide, Part Ⅰ</a>
+        <a href="https://Jerrysmd.github.io/post/20201215_parquet_format/parquet_format/" class="nav-link" title="Parquet Format">Parquet Format</a>
       </li>
       <li>
-        <a href="https://Jerrysmd.github.io/post/20210526apparchitecturedevelopment/apparchitecturedevelopment/" class="nav-link" title="应用架构演进历程: The Development of App Architecture">应用架构演进历程: The Development of App Architecture</a>
+        <a href="https://Jerrysmd.github.io/post/20201107_clickhouse_intro/clickhouse_intro/" class="nav-link" title="Clickhouse Introduction">Clickhouse Introduction</a>
       </li>
       <li>
-        <a href="https://Jerrysmd.github.io/post/20210519zookeeper/zookeeper/" class="nav-link" title="Zookeeper核心知识点: Key points of ZooKeeper">Zookeeper核心知识点: Key points of ZooKeeper</a>
+        <a href="https://Jerrysmd.github.io/post/20201016hbase-rowkey-design/hbase-rowkey-design/" class="nav-link" title="Hbase Rowkey Design">Hbase Rowkey Design</a>
       </li>
       <li>
-        <a href="https://Jerrysmd.github.io/post/20210427kafka/" class="nav-link" title="KAFKA和消息队列: Kafka &amp; Message Queue">KAFKA和消息队列: Kafka &amp; Message Queue</a>
+        <a href="https://Jerrysmd.github.io/post/20200811yarn-clusteryarn-client/article/" class="nav-link" title="Spark On Yarn: yarn-cluster, yarn-client">Spark On Yarn: yarn-cluster, yarn-client</a>
       </li>
       <li>
-        <a href="https://Jerrysmd.github.io/post/20210308scalaintroduction/" class="nav-link" title="Scala 简介: Scala Introduction">Scala 简介: Scala Introduction</a>
+        <a href="https://Jerrysmd.github.io/post/20200803sparkguide3/sparkguide3/" class="nav-link" title="Spark Guide, Part Ⅲ">Spark Guide, Part Ⅲ</a>
       </li>
       <li>
-        <a href="https://Jerrysmd.github.io/post/20201109cperformanceoptimization/" class="nav-link" title="C项目性能优化: C Project performance optimization">C项目性能优化: C Project performance optimization</a>
+        <a href="https://Jerrysmd.github.io/post/20200707sparkguide2/sparkguide2/" class="nav-link" title="Spark Guide, Part Ⅱ">Spark Guide, Part Ⅱ</a>
       </li>
       <li>
-        <a href="https://Jerrysmd.github.io/post/20201020read_binary_file/" class="nav-link" title="文件读取的高级方法：Advanced method of reading files">文件读取的高级方法：Advanced method of reading files</a>
+        <a href="https://Jerrysmd.github.io/post/20200527sparkguide1/sparkguide1/" class="nav-link" title="Spark Guide, Part Ⅰ">Spark Guide, Part Ⅰ</a>
       </li>
       <li>
-        <a href="https://Jerrysmd.github.io/post/20201012hyperscan/" class="nav-link" title="Hyperscan: high-performance multiple regex matching library">Hyperscan: high-performance multiple regex matching library</a>
+        <a href="https://Jerrysmd.github.io/post/20200526apparchitecturedevelopment/article/" class="nav-link" title="The Development of App Architecture">The Development of App Architecture</a>
       </li>
     </ul>
     <h2 class="mt-4">Recent Posts</h2>
     <ul class="flex-column">
       <li>
-        <a href="https://Jerrysmd.github.io/post/20210707sparkguide2/sparkguide2/" class="nav-link" title="Spark 简介: Spark Guide, Part Ⅱ">Spark 简介: Spark Guide, Part Ⅱ</a>
+        <a href="https://Jerrysmd.github.io/post/20211218_2021_summary_video/article/" class="nav-link" title="2021 Clips">2021 Clips</a>
       </li>
       <li>
-        <a href="https://Jerrysmd.github.io/post/20210615hivekeypoint/hivekeypoint/" class="nav-link" title="Hive 重点: Hive Key Points">Hive 重点: Hive Key Points</a>
+        <a href="https://Jerrysmd.github.io/post/20210204_tensorflow_captcha/article/" class="nav-link" title="Tensorflow Identify Simple Captcha">Tensorflow Identify Simple Captcha</a>
       </li>
       <li>
-        <a href="https://Jerrysmd.github.io/post/20210527sparkguide1/sparkguide1/" class="nav-link" title="Spark 简介: Spark Guide, Part Ⅰ">Spark 简介: Spark Guide, Part Ⅰ</a>
+        <a href="https://Jerrysmd.github.io/post/20210108_dw_behavior_collection/article/" class="nav-link" title="Data Warehouse: Behavior Collection">Data Warehouse: Behavior Collection</a>
       </li>
       <li>
-        <a href="https://Jerrysmd.github.io/post/20210526apparchitecturedevelopment/apparchitecturedevelopment/" class="nav-link" title="应用架构演进历程: The Development of App Architecture">应用架构演进历程: The Development of App Architecture</a>
+        <a href="https://Jerrysmd.github.io/post/20201215_parquet_format/parquet_format/" class="nav-link" title="Parquet Format">Parquet Format</a>
       </li>
       <li>
-        <a href="https://Jerrysmd.github.io/post/20210526finalkeywordinjava/finalkeywordinjava/" class="nav-link" title="Final 关键字: Final Key Word In Java">Final 关键字: Final Key Word In Java</a>
-      </li>
-      <li>
-        <a href="https://Jerrysmd.github.io/post/20210519zookeeper/zookeeper/" class="nav-link" title="Zookeeper核心知识点: Key points of ZooKeeper">Zookeeper核心知识点: Key points of ZooKeeper</a>
-      </li>
-      <li>
-        <a href="https://Jerrysmd.github.io/post/20210427kafka/" class="nav-link" title="KAFKA和消息队列: Kafka &amp; Message Queue">KAFKA和消息队列: Kafka &amp; Message Queue</a>
-      </li>
-      <li>
-        <a href="https://Jerrysmd.github.io/post/20210326hdfsnfs/" class="nav-link" title="HDFS &amp; NFS">HDFS &amp; NFS</a>
-      </li>
-      <li>
-        <a href="https://Jerrysmd.github.io/post/20210308scalaintroduction/" class="nav-link" title="Scala 简介: Scala Introduction">Scala 简介: Scala Introduction</a>
-      </li>
-      <li>
-        <a href="https://Jerrysmd.github.io/post/20210222javastatic/" class="nav-link" title="Static Keyword in Java">Static Keyword in Java</a>
+        <a href="https://Jerrysmd.github.io/post/20201107_clickhouse_intro/clickhouse_intro/" class="nav-link" title="Clickhouse Introduction">Clickhouse Introduction</a>
       </li>
     </ul>
     <div>
@@ -530,7 +465,12 @@
       <nav class="tags_nav">
         <a href='https://Jerrysmd.github.io/categories/technology/' class="post_tag button button_translucent" title="technology">
           TECHNOLOGY
-          <span class="button_tally">29</span>
+          <span class="button_tally">40</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/categories/life/' class="post_tag button button_translucent" title="life">
+          LIFE
+          <span class="button_tally">2</span>
         </a>
         
         
@@ -539,14 +479,24 @@
     <div>
       <h2 class="mt-4 taxonomy" id="tags-section">Tags</h2>
       <nav class="tags_nav">
+        <a href='https://Jerrysmd.github.io/tags/distribution/' class="post_tag button button_translucent" title="distribution">
+          DISTRIBUTION
+          <span class="button_tally">16</span>
+        </a>
+        
         <a href='https://Jerrysmd.github.io/tags/c/' class="post_tag button button_translucent" title="c">
           C
           <span class="button_tally">15</span>
         </a>
         
-        <a href='https://Jerrysmd.github.io/tags/distribution/' class="post_tag button button_translucent" title="distribution">
-          DISTRIBUTION
-          <span class="button_tally">8</span>
+        <a href='https://Jerrysmd.github.io/tags/spark/' class="post_tag button button_translucent" title="spark">
+          SPARK
+          <span class="button_tally">6</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/hdfs/' class="post_tag button button_translucent" title="hdfs">
+          HDFS
+          <span class="button_tally">4</span>
         </a>
         
         <a href='https://Jerrysmd.github.io/tags/c&#43;&#43;/' class="post_tag button button_translucent" title="c&#43;&#43;">
@@ -559,8 +509,33 @@
           <span class="button_tally">3</span>
         </a>
         
+        <a href='https://Jerrysmd.github.io/tags/sql/' class="post_tag button button_translucent" title="sql">
+          SQL
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/database/' class="post_tag button button_translucent" title="database">
+          DATABASE
+          <span class="button_tally">2</span>
+        </a>
+        
         <a href='https://Jerrysmd.github.io/tags/file/' class="post_tag button button_translucent" title="file">
           FILE
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/hbase/' class="post_tag button button_translucent" title="hbase">
+          HBASE
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/interview/' class="post_tag button button_translucent" title="interview">
+          INTERVIEW
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/life/' class="post_tag button button_translucent" title="life">
+          LIFE
           <span class="button_tally">2</span>
         </a>
         
@@ -569,14 +544,24 @@
           <span class="button_tally">2</span>
         </a>
         
-        <a href='https://Jerrysmd.github.io/tags/spark/' class="post_tag button button_translucent" title="spark">
-          SPARK
+        <a href='https://Jerrysmd.github.io/tags/video/' class="post_tag button button_translucent" title="video">
+          VIDEO
           <span class="button_tally">2</span>
         </a>
         
-        <a href='https://Jerrysmd.github.io/tags/sql/' class="post_tag button button_translucent" title="sql">
-          SQL
-          <span class="button_tally">2</span>
+        <a href='https://Jerrysmd.github.io/tags/algorithm/' class="post_tag button button_translucent" title="algorithm">
+          ALGORITHM
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/beijing/' class="post_tag button button_translucent" title="beijing">
+          BEIJING
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/datawarehouse/' class="post_tag button button_translucent" title="datawarehouse">
+          DATAWAREHOUSE
+          <span class="button_tally">1</span>
         </a>
         
         <a href='https://Jerrysmd.github.io/tags/git/' class="post_tag button button_translucent" title="git">
@@ -584,13 +569,13 @@
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://Jerrysmd.github.io/tags/hash/' class="post_tag button button_translucent" title="hash">
-          HASH
+        <a href='https://Jerrysmd.github.io/tags/graduation/' class="post_tag button button_translucent" title="graduation">
+          GRADUATION
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://Jerrysmd.github.io/tags/hdfs/' class="post_tag button button_translucent" title="hdfs">
-          HDFS
+        <a href='https://Jerrysmd.github.io/tags/hash/' class="post_tag button button_translucent" title="hash">
+          HASH
           <span class="button_tally">1</span>
         </a>
         
@@ -609,90 +594,52 @@
           <span class="button_tally">1</span>
         </a>
         
+        <a href='https://Jerrysmd.github.io/tags/leetcode/' class="post_tag button button_translucent" title="leetcode">
+          LEETCODE
+          <span class="button_tally">1</span>
+        </a>
         
-        <br>
-        <div class="post_tags_toggle button">All Tags</div>
-        <div class="post_tags">
-          <div class="tags_list">
-            
-            <a href='https://Jerrysmd.github.io/tags/c/' class=" post_tag button button_translucent" data-position=15 title="c">C<span class="button_tally">15</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/c&#43;&#43;/' class=" post_tag button button_translucent" data-position=3 title="c&#43;&#43;">C&#43;&#43;<span class="button_tally">3</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/distribution/' class=" post_tag button button_translucent" data-position=8 title="distribution">DISTRIBUTION<span class="button_tally">8</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/file/' class=" post_tag button button_translucent" data-position=2 title="file">FILE<span class="button_tally">2</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/git/' class=" post_tag button button_translucent" data-position=1 title="git">GIT<span class="button_tally">1</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/hash/' class=" post_tag button button_translucent" data-position=1 title="hash">HASH<span class="button_tally">1</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/hdfs/' class=" post_tag button button_translucent" data-position=1 title="hdfs">HDFS<span class="button_tally">1</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/hive/' class=" post_tag button button_translucent" data-position=1 title="hive">HIVE<span class="button_tally">1</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/hyperscan/' class=" post_tag button button_translucent" data-position=1 title="hyperscan">HYPERSCAN<span class="button_tally">1</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/java/' class=" post_tag button button_translucent" data-position=3 title="java">JAVA<span class="button_tally">3</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/kafka/' class=" post_tag button button_translucent" data-position=1 title="kafka">KAFKA<span class="button_tally">1</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/linux/' class=" post_tag button button_translucent" data-position=2 title="linux">LINUX<span class="button_tally">2</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/nfs/' class=" post_tag button button_translucent" data-position=1 title="nfs">NFS<span class="button_tally">1</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/python/' class=" post_tag button button_translucent" data-position=1 title="python">PYTHON<span class="button_tally">1</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/scala/' class=" post_tag button button_translucent" data-position=1 title="scala">SCALA<span class="button_tally">1</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/spark/' class=" post_tag button button_translucent" data-position=2 title="spark">SPARK<span class="button_tally">2</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/sql/' class=" post_tag button button_translucent" data-position=2 title="sql">SQL<span class="button_tally">2</span>
-            </a>
-            
-            
-            <a href='https://Jerrysmd.github.io/tags/zookeeper/' class=" post_tag button button_translucent" data-position=1 title="zookeeper">ZOOKEEPER<span class="button_tally">1</span>
-            </a>
-            
-            <div class="tags_sort"><span title="sort alphabetically">[A~Z]</span><span title="sort by count">[0~9]</span>
-            </div>
-            <span class="tags_hide"><svg class="icon">
-            <use xlink:href="#closeme"></use>
-          </svg></span>
-          </div>
-        </div>
+        <a href='https://Jerrysmd.github.io/tags/machinelearning/' class="post_tag button button_translucent" title="machinelearning">
+          MACHINELEARNING
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/nfs/' class="post_tag button button_translucent" title="nfs">
+          NFS
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/python/' class="post_tag button button_translucent" title="python">
+          PYTHON
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/scala/' class="post_tag button button_translucent" title="scala">
+          SCALA
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/shanghai/' class="post_tag button button_translucent" title="shanghai">
+          SHANGHAI
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/tensorflow/' class="post_tag button button_translucent" title="tensorflow">
+          TENSORFLOW
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/usa/' class="post_tag button button_translucent" title="usa">
+          USA
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://Jerrysmd.github.io/tags/zookeeper/' class="post_tag button button_translucent" title="zookeeper">
+          ZOOKEEPER
+          <span class="button_tally">1</span>
+        </a>
+        
+        
       </nav>
     </div>
   </section>
@@ -736,7 +683,7 @@
   <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="linkedin">
     <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h362c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zM181 406h-60V196h60zm0-240h-60v-60h60zm210 240h-60V286c0-16.54-13.46-30-30-30s-30 13.46-30 30v120h-60V196h60v11.309C286.719 202.422 296.93 196 316 196c40.691.043 75 36.547 75 79.688zm0 0"></path>
   </symbol>
-  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612" id="arrow">
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612" id="to-top">
     <path d="M604.501 440.509L325.398 134.956c-5.331-5.357-12.423-7.627-19.386-7.27-6.989-.357-14.056 1.913-19.387 7.27L7.499 440.509c-9.999 10.024-9.999 26.298 0 36.323s26.223 10.024 36.222 0l262.293-287.164L568.28 476.832c9.999 10.024 26.222 10.024 36.221 0 9.999-10.023 9.999-26.298 0-36.323z"></path>
   </symbol>
   <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="carly">
@@ -761,6 +708,9 @@
   <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="stackoverflow">
     <path d="M21 27v-8h3v11H0V19h3v8h18z"></path><path d="M17.1.2L15 1.8l7.9 10.6 2.1-1.6L17.1.2zm3.7 14.7L10.6 6.4l1.7-2 10.2 8.5-1.7 2zM7.2 12.3l12 5.6 1.1-2.4-12-5.6-1.1 2.4zm-1.8 6.8l13.56 1.96.17-2.38-13.26-2.55-.47 2.97zM19 25H5v-3h14v3z"></path>
   </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="xing">
+    <path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916c-.004-.006-.004-.016 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/>
+  </symbol>
 </svg>
 
 
@@ -772,14 +722,19 @@
     <img src='https://Jerrysmd.github.io/icons_custom/apple-touch-icon.png' class="icon icon_2 transparent" alt="JerrysBlog">
     <p>Copyright&nbsp;<span class="year"></span>&nbsp;JERRYSBLOG. All Rights Reserved</p><a class="to_top" href="#documentTop">
   <svg class="icon">
-  <use xlink:href="#arrow"></use>
+  <title>to-top</title>
+  <use xlink:href="#to-top"></use>
 </svg>
+
 </a>
 
   </div>
 </footer>
 
-    <script type="text/javascript" src="https://Jerrysmd.github.io/js/bundle.min.6d21e9659f73959cafc3aec778949f3800c138be231877dd531b4eb8e1f0d6fb49d860255bd672acfa6e4d291f962c90312ab7aed35a77900d4e4b18fa6b922a.js" integrity="sha512-bSHpZZ9zlZyvw67HeJSfOADBOL4jGHfdUxtOuOHw1vtJ2GAlW9ZyrPpuTSkfliyQMSq3rtNad5ANTksY&#43;muSKg==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://Jerrysmd.github.io/en/js/bundle.04e85a129bf4b8c382b408046a890e945f3b46ca009b33eb3b1dc830a377205cac307382ec797d7e8e939ae6355cf7f9a59acf2e95730482f1cc319bbc52fb46.js" integrity="sha512-BOhaEpv0uMOCtAgEaokOlF87RsoAmzPrOx3IMKN3IFysMHOC7Hl9fo6TmuY1XPf5pZrPLpVzBILxzDGbvFL7Rg==" crossorigin="anonymous"></script>
+
+  <script src="https://Jerrysmd.github.io/js/search.min.f025654ce47f69b033f46c1264953ad1968323b00f3928e0ecf9b0a73a5b913ed7dfadf8f5164844d4a789b19d3cd81da5f90f925e6d32f4b9e45ab43cf0ba73.js"></script>
+
     
   </body>
 </html>
