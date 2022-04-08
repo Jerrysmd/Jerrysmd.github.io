@@ -5,9 +5,25 @@
     <link>https://Jerrysmd.github.io/tags/distribution/</link>
     <description>Recent content in distribution on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 08 Jan 2021 09:43:01 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/distribution/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 08 Mar 2021 10:40:49 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/distribution/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Data Warehouse: Behavior Collection</title>
+      <title>Data Warehouse: Real-Time</title>
+      <link>https://Jerrysmd.github.io/post/20210308_dw_flink/article/</link>
+      <pubDate>Mon, 08 Mar 2021 10:40:49 +0800</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/20210308_dw_flink/article/</guid>
+      <description>
+        
+          
+            &lt;p&gt;Data warehouse is a system that pulls together data derived from operational systems and external data sources within an organization for reporting and analysis. A data warehouse is a central repository of information that provides users with current and historical decision support information.&lt;/p&gt;
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Data Warehouse: Offline</title>
       <link>https://Jerrysmd.github.io/post/20210108_dw_behavior_collection/article/</link>
       <pubDate>Fri, 08 Jan 2021 09:43:01 +0800</pubDate>
       
