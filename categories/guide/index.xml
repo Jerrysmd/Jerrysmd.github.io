@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Guide on JerrysBlog</title>
+    <link>https://Jerrysmd.github.io/categories/guide/</link>
+    <description>Recent content in Guide on JerrysBlog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 01 Oct 2020 05:06:59 -0700</lastBuildDate><atom:link href="https://Jerrysmd.github.io/categories/guide/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Update the BLOG steps</title>
+      <link>https://Jerrysmd.github.io/post/20201001updatablog/</link>
+      <pubDate>Thu, 01 Oct 2020 05:06:59 -0700</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/20201001updatablog/</guid>
+      <description>
+        
+          &lt;p&gt;更新博客步骤。更新静态网页，并push到github pages上。&lt;/p&gt;
+&lt;h2 id=&#34;update-blog&#34;&gt;UPDATE BLOG&lt;/h2&gt;
+&lt;h3 id=&#34;1create-new-blog&#34;&gt;1.create new blog&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;hugo new post/*.md
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2update-the-static-website&#34;&gt;2.update the static website&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;hugo --theme=hugo-clarity --baseUrl=&amp;#34;https://Jerrysmd.github.io/&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3commi-gitbubpages&#34;&gt;3.commi gitbubpages&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;cd public/
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;git add .
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;git commit -m &amp;#39;update blog&amp;#39;
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;git push -u origin master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;complete-operation&#34;&gt;COMPLETE OPERATION&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;hugo --theme=hugo-clarity --baseUrl=&amp;#34;https://Jerrysmd.github.io/&amp;#34;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;cd public/
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;git add .
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;git commit -m &amp;#39;update blog&amp;#39;
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;git push -u origin master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;update-hugo-theme&#34;&gt;UPDATE HUGO THEME&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;cd theme/
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;mv hugo-clarity hugo-clarity.bak
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;git clone https://github.com/chipzoller/hugo-clarity
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;cp -rf hugo-clarity.bak/static/icons/ hugo-clarity/static/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

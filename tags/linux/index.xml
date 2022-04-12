@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on JerrysBlog</title>
+    <link>https://Jerrysmd.github.io/tags/linux/</link>
+    <description>Recent content in Linux on JerrysBlog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 04 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GDB调试: GDB debug guide</title>
+      <link>https://Jerrysmd.github.io/post/20190304gdb_debug/gdb_debug/</link>
+      <pubDate>Mon, 04 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/20190304gdb_debug/gdb_debug/</guid>
+      <description>
+        
+          
+            &lt;p&gt;GDB是一个由GNU开源组织发布的、UNIX/LINUX操作系统下的、基于命令行的、功能强大的程序调试工具。 对于一名Linux下工作的c/c++程序员，gdb是必不可少的工具；&lt;/p&gt;
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>大页内存: HugePages</title>
+      <link>https://Jerrysmd.github.io/post/20190203hugepages/hugepages/</link>
+      <pubDate>Sun, 03 Feb 2019 13:04:09 -0800</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/20190203hugepages/hugepages/</guid>
+      <description>
+        
+          
+            &lt;p&gt;通过增大操作系统页的大小来减小页表，从而避免快表缺失。大页内存优化程序主要是针对其中的malloc机制的，意思就是分配大页，增加tlb的命中率。&lt;/p&gt;
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

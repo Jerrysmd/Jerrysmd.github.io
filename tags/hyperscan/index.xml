@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hyperscan on JerrysBlog</title>
+    <link>https://Jerrysmd.github.io/tags/hyperscan/</link>
+    <description>Recent content in Hyperscan on JerrysBlog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 12 Aug 2018 05:42:44 -0700</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/hyperscan/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hyperscan: high-performance multiple regex matching library</title>
+      <link>https://Jerrysmd.github.io/post/20180812hyperscan/hyperscan/</link>
+      <pubDate>Sun, 12 Aug 2018 05:42:44 -0700</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/20180812hyperscan/hyperscan/</guid>
+      <description>
+        
+          
+            &lt;p&gt;Hyperscan是一款来自于Intel的高性能的正则表达式匹配库。它是基于X86平台以PCRE为原型而开发的。在支持PCRE的大部分语法的前提下，Hyperscan增加了特定的语法和工作模式来保证其在真实网络场景下的实用性。&lt;/p&gt;
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

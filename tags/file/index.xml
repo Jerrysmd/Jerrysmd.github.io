@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>file on JerrysBlog</title>
+    <link>https://Jerrysmd.github.io/tags/file/</link>
+    <description>Recent content in file on JerrysBlog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 20 Dec 2018 18:39:37 -0700</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/file/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C文件读取的高级方法：Advanced method of reading files</title>
+      <link>https://Jerrysmd.github.io/post/20181220read_binary_file/read_binary_file/</link>
+      <pubDate>Thu, 20 Dec 2018 18:39:37 -0700</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/20181220read_binary_file/read_binary_file/</guid>
+      <description>
+        
+          
+            &lt;p&gt;读取二进制文件（任何文件都可以，本文以二进制为例），把二进制文件内容全部读取到char*字符串中。配合fseek()和fread()函数实现文件读取的高级方法。&lt;/p&gt;
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>文件读取多读取一行空行问题: The problem about file reading one more line</title>
+      <link>https://Jerrysmd.github.io/post/20180610cgetline/cgetline/</link>
+      <pubDate>Sun, 10 Jun 2018 21:58:13 -0800</pubDate>
+      
+      <guid>https://Jerrysmd.github.io/post/20180610cgetline/cgetline/</guid>
+      <description>
+        
+          
+            &lt;p&gt;getline()/get()/read()会出现多读一行的现象。造成该原因可能文件本身问题和getline()函数的问题。可以在while处判断时先判断getline()/get()/read()，如果拿到数据再处理。&lt;/p&gt;
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>
