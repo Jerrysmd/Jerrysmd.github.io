@@ -132,7 +132,6 @@
     <li><a href="#ods-数据采集层">ODS 数据采集层</a>
       <ul>
         <li><a href="#日志数据采集">日志数据采集</a></li>
-        <li><a href="#分层">分层</a></li>
       </ul>
     </li>
   </ul>
@@ -156,7 +155,14 @@
 <p>springboot 和 ssm 的关系</p>
 <p>springboot 整合了 springmvc，spring 等核心功能，也就是说本质还是原有的 spring，springmvc 的包，但是 springboot 单独包装了一层，用户不必直接对 springmvc，spring 等在 xml 中配置。</p>
 </blockquote>
-<h3 id="分层">分层</h3>
+<h5 id="springboot分层">springboot分层：</h5>
+<p>掌握写数据接口</p>
+<ul>
+<li>controller层：拦截用户请求，调用Service，响应请求</li>
+<li>service层：调用 DAO，处理数据</li>
+<li>DAO（使用 MyBatis 时称为 Mapper 层）：获取数据</li>
+<li>持久化层：存储数据</li>
+</ul>
     </div>
 
 
