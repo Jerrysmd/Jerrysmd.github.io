@@ -163,6 +163,25 @@
 <li>DAO（使用 MyBatis 时称为 Mapper 层）：获取数据</li>
 <li>持久化层：存储数据</li>
 </ul>
+<h5 id="controller-code">Controller code</h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kn">import</span> <span class="nn">org.springframework.stereotype.Controller</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RequestMapping</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="c1">//@Controller //注解标明 Controller
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="c1"></span><span class="nd">@RestController</span> <span class="c1">//@Controller + @ResponseBody
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LoggerController</span><span class="o">{</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&#34;test&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">test1</span><span class="o">(){</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">        <span class="n">reutrn</span> <span class="s">&#34;success&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">    
+</span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&#34;test2&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">test2</span><span class="o">(</span><span class="nd">@RequestParam</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">)</span> <span class="n">String</span> <span class="n">nn</span><span class="o">,</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">                       <span class="nd">@RequestParam</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">,</span> <span class="n">defaultValue</span> <span class="o">=</span> <span class="s">&#34;18&#34;</span><span class="o">)</span> <span class="kt">int</span> <span class="n">age</span><span class="o">){</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">        
+</span></span><span class="line"><span class="ln">16</span><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div>
     </div>
 
 
