@@ -190,10 +190,10 @@
 </span></span></span><span class="line"><span class="ln">24</span><span class="cl"><span class="cm">        	指定消息key和消息体的编解码方式：
 </span></span></span><span class="line"><span class="ln">25</span><span class="cl"><span class="cm">        		spring.kafka.producer.key-serializer=org.apache.kafka.common.serialization.StringSerilizer 
 </span></span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="cm">        		spring.kafka.producer.value-serializer=org.apache.kafka.common.serialization.StringSerilizer*/</span>
-</span></span><span class="line"><span class="ln">27</span><span class="cl">        <span class="cm">/*2.Resources中添加 logback.xml 配置文件：决定如何打印、落盘日志，类似log4j
+</span></span><span class="line"><span class="ln">27</span><span class="cl">        <span class="cm">/*2.Resources中添加 logback.xml 配置文件：决定如何打印、落盘、打印哪些日志 ，类似log4j
 </span></span></span><span class="line"><span class="ln">28</span><span class="cl"><span class="cm">        	在注释@Slf4j后，使用log.info(jsonStr);log.warn(jsonStr);log.debug();log.error();log.trace()*/</span>
 </span></span><span class="line"><span class="ln">29</span><span class="cl">        <span class="cm">/*3.自动注入kafkaTemplate，producer send 数据，打开zk、kk
-</span></span></span><span class="line"><span class="ln">30</span><span class="cl"><span class="cm">        	运行消费者：bin/kafka-console-consumer.sh */</span>
+</span></span></span><span class="line"><span class="ln">30</span><span class="cl"><span class="cm">        	运行kafka消费者：bin/kafka-console-consumer.sh --bootstrap-server hadoop102:9092 --topic ods_base_log*/</span>
 </span></span><span class="line"><span class="ln">31</span><span class="cl">        <span class="n">kafkaTemplate</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="s">&#34;ods_base_log&#34;</span><span class="o">,</span> <span class="n">jsonStr</span><span class="o">);</span>
 </span></span><span class="line"><span class="ln">32</span><span class="cl">        <span class="k">return</span> <span class="s">&#34;success&#34;</span><span class="o">;</span>
 </span></span><span class="line"><span class="ln">33</span><span class="cl">    <span class="o">}</span>
