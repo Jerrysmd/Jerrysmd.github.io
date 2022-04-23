@@ -163,7 +163,7 @@
 <li>DAO（使用 MyBatis 时称为 Mapper 层）：获取数据</li>
 <li>持久化层：存储数据</li>
 </ul>
-<h5 id="controller-code">Controller code</h5>
+<h5 id="springboot-整合kafka">SpringBoot 整合Kafka</h5>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kn">import</span> <span class="nn">org.springframework.stereotype.Controller</span><span class="o">;</span>
 </span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RequestMapping</span><span class="o">;</span>
 </span></span><span class="line"><span class="ln"> 3</span><span class="cl">
@@ -180,10 +180,17 @@
 </span></span><span class="line"><span class="ln">14</span><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">test2</span><span class="o">(</span><span class="nd">@RequestParam</span><span class="o">(</span><span class="s">&#34;param&#34;</span><span class="o">)</span> <span class="n">String</span> <span class="n">jsonStr</span><span class="o">){</span>
 </span></span><span class="line"><span class="ln">15</span><span class="cl">        <span class="c1">//sparkmall-mock：模拟生成数据模块
 </span></span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="c1"></span>        <span class="c1">//mock服务器不停的访问 http://pc_IP:8080/applog?jsonStr=* 产生原始数据
-</span></span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="c1"></span>        
-</span></span><span class="line"><span class="ln">18</span><span class="cl">        <span class="k">return</span> <span class="s">&#34;success&#34;</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">19</span><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="o">}</span>
+</span></span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="c1"></span>        <span class="c1">//1.修改SpringBoot核心配置：
+</span></span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="c1"></span>        	<span class="c1">//server.port=8081
+</span></span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="c1"></span>        	<span class="c1">//指定kafka代理地址，可以多个：spring.kafka.bootstrap-servers=hadoop102.9092
+</span></span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="c1"></span>        	<span class="c1">//指定消息key和消息体的编解码方式：
+</span></span></span><span class="line"><span class="ln">21</span><span class="cl"><span class="c1"></span>        		<span class="c1">//spring.kafka.producer.key-serializer=org.apache.kafka.common.serialization.StringSerilizer 
+</span></span></span><span class="line"><span class="ln">22</span><span class="cl"><span class="c1"></span>        		<span class="c1">//spring.kafka.producer.value-serializer=org.apache.kafka.common.serialization.StringSerilizer
+</span></span></span><span class="line"><span class="ln">23</span><span class="cl"><span class="c1"></span>        <span class="c1">//2.Resources中添加 logback.xml 配置文件：决定如何打印数据，类似log
+</span></span></span><span class="line"><span class="ln">24</span><span class="cl"><span class="c1"></span>        
+</span></span><span class="line"><span class="ln">25</span><span class="cl">        <span class="k">return</span> <span class="s">&#34;success&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">26</span><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="ln">27</span><span class="cl"><span class="o">}</span>
 </span></span></code></pre></div>
     </div>
 
