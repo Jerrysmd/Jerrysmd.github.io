@@ -192,13 +192,22 @@
 </span></span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="cm">        		spring.kafka.producer.value-serializer=org.apache.kafka.common.serialization.StringSerilizer*/</span>
 </span></span><span class="line"><span class="ln">27</span><span class="cl">        <span class="cm">/*2.Resources中添加 logback.xml 配置文件：决定如何打印、落盘、打印哪些日志 ，类似log4j
 </span></span></span><span class="line"><span class="ln">28</span><span class="cl"><span class="cm">        	在注释@Slf4j后，使用log.info(jsonStr);log.warn(jsonStr);log.debug();log.error();log.trace()*/</span>
-</span></span><span class="line"><span class="ln">29</span><span class="cl">        <span class="cm">/*3.自动注入kafkaTemplate，producer send 数据，打开zk、kk
+</span></span><span class="line"><span class="ln">29</span><span class="cl">        <span class="cm">/*3.自动注入kafkaTemplate，producer send 数据，打开zk、kk服务
 </span></span></span><span class="line"><span class="ln">30</span><span class="cl"><span class="cm">        	运行kafka消费者：bin/kafka-console-consumer.sh --bootstrap-server hadoop102:9092 --topic ods_base_log*/</span>
 </span></span><span class="line"><span class="ln">31</span><span class="cl">        <span class="n">kafkaTemplate</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="s">&#34;ods_base_log&#34;</span><span class="o">,</span> <span class="n">jsonStr</span><span class="o">);</span>
 </span></span><span class="line"><span class="ln">32</span><span class="cl">        <span class="k">return</span> <span class="s">&#34;success&#34;</span><span class="o">;</span>
 </span></span><span class="line"><span class="ln">33</span><span class="cl">    <span class="o">}</span>
 </span></span><span class="line"><span class="ln">34</span><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div>
+</span></span></code></pre></div><h5 id="打包集群部署nginx-反向代理">打包集群部署，Nginx 反向代理</h5>
+<blockquote>
+<p>简介：</p>
+<p>高性能的 HTTP 和 反向代理服务器，特点是占有内存少，并发能力强，在同类型的网页服务器中表现较好。</p>
+</blockquote>
+<blockquote>
+<p>反向代理和正向代理：</p>
+<p>正向代理类似一个跳板机，代理访问外部资源，如 VPN。</p>
+<p>反向代理是指以代理服务器来接受 internet 上的连接请求，然后将请求转发给内部网络上的服务器，</p>
+</blockquote>
     </div>
 
 
