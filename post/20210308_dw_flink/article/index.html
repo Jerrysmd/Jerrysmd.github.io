@@ -263,8 +263,24 @@
 </table>
 <h5 id="flink-cdc-connectors">Flink-cdc-connectors</h5>
 <p>可以直接从 MySQL、PostgreSQL等数据库直接 <strong>读取全量数据</strong>和<strong>增量变更数据</strong>的 source 组件</p>
-<p>Flink：       MySQL -&gt; Canal -&gt; kafka -&gt; Flink -&gt; 业务处理</p>
-<p>Flink-CDC: MySQL -&gt; Fink-CDC -&gt; 业务处理</p>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>业务流程</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Flink：</td>
+<td>MySQL -&gt; Canal -&gt; kafka -&gt; Flink -&gt; 业务处理</td>
+</tr>
+<tr>
+<td>Flink-CDC:</td>
+<td>MySQL -&gt; Fink-CDC -&gt; 业务处理</td>
+</tr>
+</tbody>
+</table>
     </div>
 
 
