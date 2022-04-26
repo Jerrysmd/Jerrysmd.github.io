@@ -118,7 +118,7 @@
 </span>
     <span class="post_date">
       Mar 8, 2021</span>
-    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/datawarehouse' title="datawarehouse" class="post_tag button button_translucent">datawarehouse
+    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://Jerrysmd.github.io/tags/datawarehouse' title="datawarehouse" class="post_tag button button_translucent">datawarehouse
         </a><a href='https://Jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
         </a><a href='https://Jerrysmd.github.io/tags/flink' title="flink" class="post_tag button button_translucent">flink
         </a>
@@ -223,6 +223,44 @@
 <blockquote>
 <p>Change Data Capture(变更数据获取)的简称，捕获增删改。</p>
 </blockquote>
+<h5 id="cdc的种类">CDC的种类</h5>
+<p>CDC主要分为<strong>基于查询</strong>和<strong>基于Binlog</strong>两种方式</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>基于查询</th>
+<th>基于Binlog</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>开源产品</td>
+<td>Sqoop、Kafka JDBC Source</td>
+<td>Canal、Maxwell、Debezium</td>
+</tr>
+<tr>
+<td>执行模式</td>
+<td>Batch</td>
+<td>Streaming</td>
+</tr>
+<tr>
+<td>是否可以捕获所有数据变化</td>
+<td>否</td>
+<td>是</td>
+</tr>
+<tr>
+<td>延迟性</td>
+<td>高延迟</td>
+<td>低延迟</td>
+</tr>
+<tr>
+<td>是否增加数据库压力</td>
+<td>是</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
     </div>
 
 
