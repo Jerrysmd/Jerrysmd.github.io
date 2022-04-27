@@ -116,3 +116,9 @@ use {
 a.nav-link:visited {
     color: var(--text);
 }
+
+a.nav_brand.nav_item {
+    font-family: monospace;
+    font-size: xxx-large;
+    padding: 0 16px 0 0;
+}
