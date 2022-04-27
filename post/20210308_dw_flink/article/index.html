@@ -295,7 +295,7 @@
 </span></span></code></pre></div><h5 id="flinksql">FlinkSQL</h5>
 <blockquote>
 <p>FlinkSQL只能做单表的监控</p>
-<p>Debezium可以做多表的监控</p>
+<p>Debezium可以做多表的监控，需要自定义反序列化器</p>
 </blockquote>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FlihnkCDCWithSQL</span><span class="o">{</span>
 </span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="kd">public</span> <span class="n">staic</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
@@ -306,7 +306,7 @@
 </span></span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="c1"></span>        <span class="c1">//5.启动任务
 </span></span></span><span class="line"><span class="ln">8</span><span class="cl"><span class="c1"></span>    <span class="o">}</span>
 </span></span><span class="line"><span class="ln">9</span><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><h5 id="flink-cdc-customerdeserialization">Flink-cdc CustomerDeserialization</h5>
+</span></span></code></pre></div><h5 id="flink-cdc-datastream-customerdeserialization">Flink-cdc DataStream CustomerDeserialization</h5>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="nd">@Override</span>
 </span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">deserialize</span><span class="o">(</span><span class="n">SourceRecord</span> <span class="n">sourceRecord</span><span class="o">,</span> <span class="n">Collector</span><span class="o">...){</span>
 </span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="c1">//1.创建Json对象用于存储最终数据
