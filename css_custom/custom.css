@@ -124,3 +124,7 @@ a.nav_brand.nav_item {
     font-weight: lighter;
     text-transform: uppercase;
 }
+
+.content {
+    padding-top: 4rem;
+}
