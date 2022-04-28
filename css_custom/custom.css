@@ -118,7 +118,9 @@ a.nav-link:visited {
 }
 
 a.nav_brand.nav_item {
-    font-family: monospace;
+    font-family: 'Edwardian Script ITC';
     font-size: xxx-large;
     padding: 0 16px 0 0;
+    letter-spacing: 2px;
+    font-weight: unset;
 }
