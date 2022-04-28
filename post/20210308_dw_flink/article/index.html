@@ -316,7 +316,49 @@
 </span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="c1"></span>    <span class="c1">//6.写入JSON对象
 </span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="c1"></span>    <span class="c1">//7.输出数据
 </span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="c1"></span><span class="o">}</span>
-</span></span></code></pre></div>
+</span></span></code></pre></div><h5 id="cdc-maxwell-canal-对比">CDC Maxwell Canal 对比</h5>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>FlinkCDC</th>
+<th>Maxwell</th>
+<th>Canal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SQL和数据关系</td>
+<td>无</td>
+<td>无</td>
+<td>一对一</td>
+</tr>
+<tr>
+<td>初始化功能</td>
+<td>有(多库多表)</td>
+<td>有(单表)</td>
+<td>无</td>
+</tr>
+<tr>
+<td>断点续传</td>
+<td>ck</td>
+<td>MySQL</td>
+<td>本地磁盘</td>
+</tr>
+<tr>
+<td>封装格式</td>
+<td>自定义</td>
+<td>JSON</td>
+<td>JSON(c/s自定义)</td>
+</tr>
+<tr>
+<td>高可用</td>
+<td>运行集群</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
     </div>
 
 
