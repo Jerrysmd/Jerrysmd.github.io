@@ -388,9 +388,16 @@
 </tbody>
 </table>
 <h2 id="dwddim">DWD&amp;DIM</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln">1</span><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="o">/</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="o">}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">    <span class="c1">//1.获取执行环境
+</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="c1"></span>    <span class="c1">//2.消费 ods_base_log 主题数据创建流
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="c1"></span>    <span class="c1">//3.将每行数据转换为JSON对象
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="c1"></span>    <span class="c1">//4.新老用户校验，状态编辑
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="c1"></span>    <span class="c1">//5.分流、侧输出流  页面：主流  启动：侧输出流  曝光：侧输出流
+</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="c1"></span>    <span class="c1">//6.提取侧输出流
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="c1"></span>    <span class="c1">//7.将三个流进行打印并输出到对应的kafka主题中
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="c1"></span>    <span class="c1">//8.
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="c1"></span><span class="o">}</span>
 </span></span></code></pre></div>
     </div>
 
