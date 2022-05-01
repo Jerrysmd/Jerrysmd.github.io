@@ -123,10 +123,10 @@
     </span>
   </div>
 
-    <div class="post_toc">
-      <h2>Overview</h2>
-      <nav id="TableOfContents"></nav>
-    </div>
+      <div class="post_toc">
+        <h2>Overview</h2>
+        <nav id="TableOfContents"></nav>
+      </div>
     
     <div class="post_body"><p>YARN is a generic resource-management framework for distributed workloads; in other words, a cluster-level operating system. Although part of the Hadoop ecosystem, YARN can support a lot of varied compute-frameworks (such as Tez, and Spark) in addition to MapReduce.</p>
 <p>Spark支持可插拔的集群管理模式(Standalone、Mesos以及YARN )，集群管理负责启动executor进程，编写Spark application 的人根本不需要知道Spark用的是什么集群管理。Spark支持的三种集群模式，这三种集群模式都由两个组件组成:master和slave。Master服务(YARN ResourceManager,Mesos master和Spark standalone master)决定哪些application可以运行，什么时候运行以及哪里去运行。而slave服务( YARN NodeManager, Mesos slave和Spark standalone slave)实际上运行executor进程。</p>

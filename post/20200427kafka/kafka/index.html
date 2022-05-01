@@ -123,9 +123,9 @@
     </span>
   </div>
 
-    <div class="post_toc">
-      <h2>Overview</h2>
-      <nav id="TableOfContents">
+      <div class="post_toc">
+        <h2>Overview</h2>
+        <nav id="TableOfContents">
   <ul>
     <li><a href="#message-queue">Message queue</a>
       <ul>
@@ -145,7 +145,7 @@
     </li>
   </ul>
 </nav>
-    </div>
+      </div>
     
     <div class="post_body"><p>Apache Kafka aims to provide a unified, high-throughput, low-latency platform for handling real-time data feeds. Kafka can connect to external systems (for data import/export) via Kafka Connect and provides Kafka Streams, a Java stream processing library. Kafka uses a binary TCP-based protocol that is optimized for efficiency and relies on a &quot;message set&quot; abstraction that naturally groups messages together to reduce the overhead of the network roundtrip. This &quot;leads to larger network packets, larger sequential disk operations, contiguous memory blocks [...] which allows Kafka to turn a bursty stream of random message writes into linear writes.&quot;</p>
 <h2 id="message-queue">Message queue</h2>

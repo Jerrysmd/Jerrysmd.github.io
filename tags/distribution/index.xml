@@ -12,7 +12,14 @@
       <pubDate>Mon, 08 Mar 2021 10:40:49 +0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20210308_dw_flink/article/</guid>
-      <description>&lt;p&gt;Data warehouse is a system that pulls together data derived from operational systems and external data sources within an organization for reporting and analysis. A data warehouse is a central repository of information that provides users with current and historical decision support information.&lt;/p&gt;</description>
+      <description>
+        
+          
+            &lt;p&gt;Data warehouse is a system that pulls together data derived from operational systems and external data sources within an organization for reporting and analysis. A data warehouse is a central repository of information that provides users with current and historical decision support information.&lt;/p&gt;
+          
+          
+        
+      </description>
     </item>
     
     <item>
@@ -21,7 +28,14 @@
       <pubDate>Fri, 08 Jan 2021 09:43:01 +0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20210108_dw_behavior_collection/article/</guid>
-      <description>&lt;p&gt;Data warehouse is a system that pulls together data derived from operational systems and external data sources within an organization for reporting and analysis. A data warehouse is a central repository of information that provides users with current and historical decision support information.&lt;/p&gt;</description>
+      <description>
+        
+          
+            &lt;p&gt;Data warehouse is a system that pulls together data derived from operational systems and external data sources within an organization for reporting and analysis. A data warehouse is a central repository of information that provides users with current and historical decision support information.&lt;/p&gt;
+          
+          
+        
+      </description>
     </item>
     
     <item>
@@ -30,7 +44,14 @@
       <pubDate>Tue, 15 Dec 2020 10:47:59 +0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20201215_parquet_format/parquet_format/</guid>
-      <description>&lt;p&gt;Apache Parquet is designed for efficient as well as performant flat columnar storage format of data compared to row based files like CSV or TSV files. Parquet uses the record shredding and assembly algorithm which is superior to simple flattening of nested namespaces. Parquet is optimized to work with complex data in bulk and features different ways for efficient data compression and encoding types. This approach is best especially for those queries that need to read certain columns from a large table. Parquet can only read the needed columns therefore greatly minimizing the IO.&lt;/p&gt;</description>
+      <description>
+        
+          
+            &lt;p&gt;Apache Parquet is designed for efficient as well as performant flat columnar storage format of data compared to row based files like CSV or TSV files. Parquet uses the record shredding and assembly algorithm which is superior to simple flattening of nested namespaces. Parquet is optimized to work with complex data in bulk and features different ways for efficient data compression and encoding types. This approach is best especially for those queries that need to read certain columns from a large table. Parquet can only read the needed columns therefore greatly minimizing the IO.&lt;/p&gt;
+          
+          
+        
+      </description>
     </item>
     
     <item>
@@ -39,7 +60,14 @@
       <pubDate>Sat, 07 Nov 2020 14:55:59 +0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20201107_clickhouse_intro/clickhouse_intro/</guid>
-      <description>&lt;p&gt;A high performance columnar OLAP database management system for real-time analytics using SQL. ClickHouse can be customized with a new set of efficient columnar storage engines, and has realized rich functions such as data ordered storage, primary key indexing, sparse indexing, data sharding, data partitioning, TTL, and primary and backup replication.&lt;/p&gt;</description>
+      <description>
+        
+          
+            &lt;p&gt;A high performance columnar OLAP database management system for real-time analytics using SQL. ClickHouse can be customized with a new set of efficient columnar storage engines, and has realized rich functions such as data ordered storage, primary key indexing, sparse indexing, data sharding, data partitioning, TTL, and primary and backup replication.&lt;/p&gt;
+          
+          
+        
+      </description>
     </item>
     
     <item>
@@ -48,7 +76,14 @@
       <pubDate>Mon, 26 Oct 2020 09:14:35 +0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20201026_hbase_optimize/article/</guid>
-      <description>&lt;p&gt;HBase is a high reliability, high performance, column-oriented, and scalable distributed database. However, the READ/write performance deteriorates when a large amount of concurrent data or existing data is generated. You can use the following methods to improve the HBase search speed.&lt;/p&gt;</description>
+      <description>
+        
+          
+            &lt;p&gt;HBase is a high reliability, high performance, column-oriented, and scalable distributed database. However, the READ/write performance deteriorates when a large amount of concurrent data or existing data is generated. You can use the following methods to improve the HBase search speed.&lt;/p&gt;
+          
+          
+        
+      </description>
     </item>
     
     <item>
@@ -57,7 +92,14 @@
       <pubDate>Fri, 16 Oct 2020 10:30:42 +0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20201016hbase-rowkey-design/hbase-rowkey-design/</guid>
-      <description>&lt;p&gt;Rows in HBase are sorted lexicographically by row key. This design optimizes for scans, allowing you to store related rows, or rows that will be read together, near each other. However, poorly designed row keys are a common source of &lt;em&gt;hotspotting&lt;/em&gt;. Hotspotting occurs when a large amount of client traffic is directed at one node, or only a few nodes, of a cluster. This traffic may represent reads, writes, or other operations. The traffic overwhelms the single machine responsible for hosting that region, causing performance degradation and potentially leading to region unavailability. This can also have adverse effects on other regions hosted by the same region server as that host is unable to service the requested load. It is important to design data access patterns such that the cluster is fully and evenly utilized.&lt;/p&gt;</description>
+      <description>
+        
+          
+            &lt;p&gt;Rows in HBase are sorted lexicographically by row key. This design optimizes for scans, allowing you to store related rows, or rows that will be read together, near each other. However, poorly designed row keys are a common source of &lt;em&gt;hotspotting&lt;/em&gt;. Hotspotting occurs when a large amount of client traffic is directed at one node, or only a few nodes, of a cluster. This traffic may represent reads, writes, or other operations. The traffic overwhelms the single machine responsible for hosting that region, causing performance degradation and potentially leading to region unavailability. This can also have adverse effects on other regions hosted by the same region server as that host is unable to service the requested load. It is important to design data access patterns such that the cluster is fully and evenly utilized.&lt;/p&gt;
+          
+          
+        
+      </description>
     </item>
     
     <item>
@@ -66,7 +108,14 @@
       <pubDate>Fri, 11 Sep 2020 10:57:33 +0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20200911es-wildcard-search/es-wildcard-search/</guid>
-      <description>&lt;p&gt;Elasticsearch is the distributed, RESTful search and analytics engine at the heart of the &lt;a href=&#34;https://www.elastic.co/products&#34;&gt;Elastic Stack&lt;/a&gt;. You can use Elasticsearch to store, search, and manage data for Logs，Metrics，A search backend，Application monitoring，Endpoint security.&lt;/p&gt;</description>
+      <description>
+        
+          
+            &lt;p&gt;Elasticsearch is the distributed, RESTful search and analytics engine at the heart of the &lt;a href=&#34;https://www.elastic.co/products&#34;&gt;Elastic Stack&lt;/a&gt;. You can use Elasticsearch to store, search, and manage data for Logs，Metrics，A search backend，Application monitoring，Endpoint security.&lt;/p&gt;
+          
+          
+        
+      </description>
     </item>
     
     <item>
@@ -75,7 +124,14 @@
       <pubDate>Tue, 11 Aug 2020 10:42:19 +0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20200811yarn-clusteryarn-client/article/</guid>
-      <description>&lt;p&gt;YARN is a generic resource-management framework for distributed workloads; in other words, a cluster-level operating system. Although part of the Hadoop ecosystem, YARN can support a lot of varied compute-frameworks (such as Tez, and Spark) in addition to MapReduce.&lt;/p&gt;</description>
+      <description>
+        
+          
+            &lt;p&gt;YARN is a generic resource-management framework for distributed workloads; in other words, a cluster-level operating system. Although part of the Hadoop ecosystem, YARN can support a lot of varied compute-frameworks (such as Tez, and Spark) in addition to MapReduce.&lt;/p&gt;
+          
+          
+        
+      </description>
     </item>
     
     <item>
@@ -84,7 +140,14 @@
       <pubDate>Mon, 03 Aug 2020 16:10:33 +0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20200803sparkguide3/sparkguide3/</guid>
-      <description>&lt;p&gt;Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.&lt;/p&gt;</description>
+      <description>
+        
+          
+            &lt;p&gt;Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.&lt;/p&gt;
+          
+          
+        
+      </description>
     </item>
     
     <item>
@@ -93,7 +156,14 @@
       <pubDate>Tue, 07 Jul 2020 11:14:54 +0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20200707sparkguide2/sparkguide2/</guid>
-      <description>&lt;p&gt;Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.&lt;/p&gt;</description>
+      <description>
+        
+          
+            &lt;p&gt;Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.&lt;/p&gt;
+          
+          
+        
+      </description>
     </item>
     
     <item>
@@ -102,7 +172,14 @@
       <pubDate>Mon, 15 Jun 2020 09:26:00 +0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20200615hivekeypoint/hivekeypoint/</guid>
-      <description>&lt;p&gt;Hive is a Hadoop-based data warehouse tool that maps structured data files into a database table and provides complete SQL query functionality that converts SQL statements into MapReduce tasks for execution. It is very suitable for statistical analysis of data warehouse.&lt;/p&gt;</description>
+      <description>
+        
+          
+            &lt;p&gt;Hive is a Hadoop-based data warehouse tool that maps structured data files into a database table and provides complete SQL query functionality that converts SQL statements into MapReduce tasks for execution. It is very suitable for statistical analysis of data warehouse.&lt;/p&gt;
+          
+          
+        
+      </description>
     </item>
     
     <item>
@@ -111,7 +188,14 @@
       <pubDate>Wed, 27 May 2020 17:20:52 +0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20200527sparkguide1/sparkguide1/</guid>
-      <description>&lt;p&gt;Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.&lt;/p&gt;</description>
+      <description>
+        
+          
+            &lt;p&gt;Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.&lt;/p&gt;
+          
+          
+        
+      </description>
     </item>
     
     <item>
@@ -120,7 +204,14 @@
       <pubDate>Tue, 26 May 2020 17:17:50 +0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20200526apparchitecturedevelopment/article/</guid>
-      <description>&lt;p&gt;The features of large applications: high availability, high concurrency and big data. High availability: system need to provide service without interruption. High concurrency: still stable under the big access. Big data: store and manage big data well.&lt;/p&gt;</description>
+      <description>
+        
+          
+            &lt;p&gt;The features of large applications: high availability, high concurrency and big data. High availability: system need to provide service without interruption. High concurrency: still stable under the big access. Big data: store and manage big data well.&lt;/p&gt;
+          
+          
+        
+      </description>
     </item>
     
     <item>
@@ -129,7 +220,14 @@
       <pubDate>Tue, 19 May 2020 16:07:17 +0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20200519zookeeper/zookeeper/</guid>
-      <description>&lt;p&gt;ZooKeeper is an open source distributed coordination framework. It is positioned to provide consistent services for distributed applications and is the administrator of the entire big data system. ZooKeeper will encapsulate key services that are complex and error-prone, and provide users with efficient, stable, and easy-to-use services.&lt;/p&gt;</description>
+      <description>
+        
+          
+            &lt;p&gt;ZooKeeper is an open source distributed coordination framework. It is positioned to provide consistent services for distributed applications and is the administrator of the entire big data system. ZooKeeper will encapsulate key services that are complex and error-prone, and provide users with efficient, stable, and easy-to-use services.&lt;/p&gt;
+          
+          
+        
+      </description>
     </item>
     
     <item>
@@ -138,7 +236,14 @@
       <pubDate>Mon, 27 Apr 2020 14:21:19 +0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20200427kafka/kafka/</guid>
-      <description>&lt;p&gt;Apache Kafka aims to provide a unified, high-throughput, low-latency platform for handling real-time data feeds. Kafka can connect to external systems (for data import/export) via Kafka Connect and provides Kafka Streams, a Java stream processing library. Kafka uses a binary TCP-based protocol that is optimized for efficiency and relies on a &amp;quot;message set&amp;quot; abstraction that naturally groups messages together to reduce the overhead of the network roundtrip. This &amp;quot;leads to larger network packets, larger sequential disk operations, contiguous memory blocks [...] which allows Kafka to turn a bursty stream of random message writes into linear writes.&amp;quot;&lt;/p&gt;</description>
+      <description>
+        
+          
+            &lt;p&gt;Apache Kafka aims to provide a unified, high-throughput, low-latency platform for handling real-time data feeds. Kafka can connect to external systems (for data import/export) via Kafka Connect and provides Kafka Streams, a Java stream processing library. Kafka uses a binary TCP-based protocol that is optimized for efficiency and relies on a &amp;quot;message set&amp;quot; abstraction that naturally groups messages together to reduce the overhead of the network roundtrip. This &amp;quot;leads to larger network packets, larger sequential disk operations, contiguous memory blocks [...] which allows Kafka to turn a bursty stream of random message writes into linear writes.&amp;quot;&lt;/p&gt;
+          
+          
+        
+      </description>
     </item>
     
     <item>
@@ -147,7 +252,14 @@
       <pubDate>Thu, 26 Mar 2020 11:02:36 +0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20200326hdfsnfs/hdfsnfs/</guid>
-      <description>&lt;p&gt;The major difference between the two is Replication/Fault Tolerance. HDFS was designed to survive failures. NFS does not have any fault tolerance built in. Other than fault tolerance, HDFS does support multiple replicas of files. This eliminates (or eases) the common bottleneck of many clients accessing a single file. Since files have multiple replicas, on different physical disks, reading performance scales better than NFS.&lt;/p&gt;</description>
+      <description>
+        
+          
+            &lt;p&gt;The major difference between the two is Replication/Fault Tolerance. HDFS was designed to survive failures. NFS does not have any fault tolerance built in. Other than fault tolerance, HDFS does support multiple replicas of files. This eliminates (or eases) the common bottleneck of many clients accessing a single file. Since files have multiple replicas, on different physical disks, reading performance scales better than NFS.&lt;/p&gt;
+          
+          
+        
+      </description>
     </item>
     
     <item>
@@ -156,7 +268,14 @@
       <pubDate>Sat, 08 Feb 2020 10:16:17 +0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20200208scalaintroduction/scalaintroduction/</guid>
-      <description>&lt;p&gt;Scala combines object-oriented and functional programming in one concise, high-level language. Scala&#39;s static types help avoid bugs in complex applications, and its JVM and JavaScript runtimes let you build high-performance systems with easy access to huge ecosystems of libraries.&lt;/p&gt;</description>
+      <description>
+        
+          
+            &lt;p&gt;Scala combines object-oriented and functional programming in one concise, high-level language. Scala&#39;s static types help avoid bugs in complex applications, and its JVM and JavaScript runtimes let you build high-performance systems with easy access to huge ecosystems of libraries.&lt;/p&gt;
+          
+          
+        
+      </description>
     </item>
     
   </channel>

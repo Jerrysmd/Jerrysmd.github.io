@@ -12,7 +12,14 @@
       <pubDate>Tue, 15 Dec 2020 10:47:59 +0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20201215_parquet_format/parquet_format/</guid>
-      <description>&lt;p&gt;Apache Parquet is designed for efficient as well as performant flat columnar storage format of data compared to row based files like CSV or TSV files. Parquet uses the record shredding and assembly algorithm which is superior to simple flattening of nested namespaces. Parquet is optimized to work with complex data in bulk and features different ways for efficient data compression and encoding types. This approach is best especially for those queries that need to read certain columns from a large table. Parquet can only read the needed columns therefore greatly minimizing the IO.&lt;/p&gt;</description>
+      <description>
+        
+          
+            &lt;p&gt;Apache Parquet is designed for efficient as well as performant flat columnar storage format of data compared to row based files like CSV or TSV files. Parquet uses the record shredding and assembly algorithm which is superior to simple flattening of nested namespaces. Parquet is optimized to work with complex data in bulk and features different ways for efficient data compression and encoding types. This approach is best especially for those queries that need to read certain columns from a large table. Parquet can only read the needed columns therefore greatly minimizing the IO.&lt;/p&gt;
+          
+          
+        
+      </description>
     </item>
     
     <item>
@@ -21,7 +28,14 @@
       <pubDate>Mon, 26 Oct 2020 09:14:35 +0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20201026_hbase_optimize/article/</guid>
-      <description>&lt;p&gt;HBase is a high reliability, high performance, column-oriented, and scalable distributed database. However, the READ/write performance deteriorates when a large amount of concurrent data or existing data is generated. You can use the following methods to improve the HBase search speed.&lt;/p&gt;</description>
+      <description>
+        
+          
+            &lt;p&gt;HBase is a high reliability, high performance, column-oriented, and scalable distributed database. However, the READ/write performance deteriorates when a large amount of concurrent data or existing data is generated. You can use the following methods to improve the HBase search speed.&lt;/p&gt;
+          
+          
+        
+      </description>
     </item>
     
     <item>
@@ -30,7 +44,14 @@
       <pubDate>Fri, 16 Oct 2020 10:30:42 +0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20201016hbase-rowkey-design/hbase-rowkey-design/</guid>
-      <description>&lt;p&gt;Rows in HBase are sorted lexicographically by row key. This design optimizes for scans, allowing you to store related rows, or rows that will be read together, near each other. However, poorly designed row keys are a common source of &lt;em&gt;hotspotting&lt;/em&gt;. Hotspotting occurs when a large amount of client traffic is directed at one node, or only a few nodes, of a cluster. This traffic may represent reads, writes, or other operations. The traffic overwhelms the single machine responsible for hosting that region, causing performance degradation and potentially leading to region unavailability. This can also have adverse effects on other regions hosted by the same region server as that host is unable to service the requested load. It is important to design data access patterns such that the cluster is fully and evenly utilized.&lt;/p&gt;</description>
+      <description>
+        
+          
+            &lt;p&gt;Rows in HBase are sorted lexicographically by row key. This design optimizes for scans, allowing you to store related rows, or rows that will be read together, near each other. However, poorly designed row keys are a common source of &lt;em&gt;hotspotting&lt;/em&gt;. Hotspotting occurs when a large amount of client traffic is directed at one node, or only a few nodes, of a cluster. This traffic may represent reads, writes, or other operations. The traffic overwhelms the single machine responsible for hosting that region, causing performance degradation and potentially leading to region unavailability. This can also have adverse effects on other regions hosted by the same region server as that host is unable to service the requested load. It is important to design data access patterns such that the cluster is fully and evenly utilized.&lt;/p&gt;
+          
+          
+        
+      </description>
     </item>
     
     <item>
@@ -39,7 +60,14 @@
       <pubDate>Thu, 26 Mar 2020 11:02:36 +0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20200326hdfsnfs/hdfsnfs/</guid>
-      <description>&lt;p&gt;The major difference between the two is Replication/Fault Tolerance. HDFS was designed to survive failures. NFS does not have any fault tolerance built in. Other than fault tolerance, HDFS does support multiple replicas of files. This eliminates (or eases) the common bottleneck of many clients accessing a single file. Since files have multiple replicas, on different physical disks, reading performance scales better than NFS.&lt;/p&gt;</description>
+      <description>
+        
+          
+            &lt;p&gt;The major difference between the two is Replication/Fault Tolerance. HDFS was designed to survive failures. NFS does not have any fault tolerance built in. Other than fault tolerance, HDFS does support multiple replicas of files. This eliminates (or eases) the common bottleneck of many clients accessing a single file. Since files have multiple replicas, on different physical disks, reading performance scales better than NFS.&lt;/p&gt;
+          
+          
+        
+      </description>
     </item>
     
   </channel>

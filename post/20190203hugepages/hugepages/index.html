@@ -123,9 +123,9 @@
     </span>
   </div>
 
-    <div class="post_toc">
-      <h2>Overview</h2>
-      <nav id="TableOfContents">
+      <div class="post_toc">
+        <h2>Overview</h2>
+        <nav id="TableOfContents">
   <ul>
     <li><a href="#原理">原理</a></li>
     <li><a href="#大页内存的配置和使用">大页内存的配置和使用</a>
@@ -139,7 +139,7 @@
     <li><a href="#大页内存的使用场景">大页内存的使用场景</a></li>
   </ul>
 </nav>
-    </div>
+      </div>
     
     <div class="post_body"><p>通过增大操作系统页的大小来减小页表，从而避免快表缺失。大页内存优化程序主要是针对其中的malloc机制的，意思就是分配大页，增加tlb的命中率。</p>
 <h2 id="原理">原理</h2>

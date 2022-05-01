@@ -125,9 +125,9 @@
     </span>
   </div>
 
-    <div class="post_toc">
-      <h2>Overview</h2>
-      <nav id="TableOfContents">
+      <div class="post_toc">
+        <h2>Overview</h2>
+        <nav id="TableOfContents">
   <ul>
     <li><a href="#1场景描述">1、场景描述：</a></li>
     <li><a href="#2选择parquet的外部因素">2、选择parquet的外部因素</a></li>
@@ -135,7 +135,7 @@
     <li><a href="#4结论">4、结论</a></li>
   </ul>
 </nav>
-    </div>
+      </div>
     
     <div class="post_body"><p>Apache Parquet is designed for efficient as well as performant flat columnar storage format of data compared to row based files like CSV or TSV files. Parquet uses the record shredding and assembly algorithm which is superior to simple flattening of nested namespaces. Parquet is optimized to work with complex data in bulk and features different ways for efficient data compression and encoding types. This approach is best especially for those queries that need to read certain columns from a large table. Parquet can only read the needed columns therefore greatly minimizing the IO.</p>
 <p>HDFS 默认存的是文本格式，所以 hive, presto，都是在文本格式上做计算，hadoop本身是全表扫，只是分布式而以，所以我们之前用的就是分布式的全表扫而以，没有发挥出数据仓库该有的功能,列式存储，天然擅长分析，千万级别的表，count，sum，group by ，秒出结果。</p>
