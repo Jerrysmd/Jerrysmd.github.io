@@ -121,10 +121,9 @@ a.nav_brand.nav_item {
 }
 
 h2, a, p {
-    /* font-family: 'Cascadia Code'; */
+    font-family: Metropolis, sans-serif;
 }
 
 html{
     --bg: #1d1e20; 
-    font-family: 'Cascadia Code';
 }
