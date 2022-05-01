@@ -1,3 +1,8 @@
+html{
+    font-family: 'Metropolis';
+    --bg: #1d1e20; 
+}
+
 img {
     height: auto;
     margin: auto;
@@ -118,9 +123,4 @@ a.nav_brand.nav_item {
 
 .content {
     padding-top: 4rem;
-}
-
-html{
-    font-family: 'Metropolis';
-    --bg: #1d1e20; 
 }
