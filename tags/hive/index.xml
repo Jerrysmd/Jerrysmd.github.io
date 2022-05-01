@@ -12,14 +12,7 @@
       <pubDate>Mon, 15 Jun 2020 09:26:00 +0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20200615hivekeypoint/hivekeypoint/</guid>
-      <description>
-        
-          
-            &lt;p&gt;Hive is a Hadoop-based data warehouse tool that maps structured data files into a database table and provides complete SQL query functionality that converts SQL statements into MapReduce tasks for execution. It is very suitable for statistical analysis of data warehouse.&lt;/p&gt;
-          
-          
-        
-      </description>
+      <description>&lt;p&gt;Hive is a Hadoop-based data warehouse tool that maps structured data files into a database table and provides complete SQL query functionality that converts SQL statements into MapReduce tasks for execution. It is very suitable for statistical analysis of data warehouse.&lt;/p&gt;</description>
     </item>
     
   </channel>

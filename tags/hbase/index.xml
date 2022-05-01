@@ -12,14 +12,7 @@
       <pubDate>Mon, 26 Oct 2020 09:14:35 +0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20201026_hbase_optimize/article/</guid>
-      <description>
-        
-          
-            &lt;p&gt;HBase is a high reliability, high performance, column-oriented, and scalable distributed database. However, the READ/write performance deteriorates when a large amount of concurrent data or existing data is generated. You can use the following methods to improve the HBase search speed.&lt;/p&gt;
-          
-          
-        
-      </description>
+      <description>&lt;p&gt;HBase is a high reliability, high performance, column-oriented, and scalable distributed database. However, the READ/write performance deteriorates when a large amount of concurrent data or existing data is generated. You can use the following methods to improve the HBase search speed.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -28,14 +21,7 @@
       <pubDate>Fri, 16 Oct 2020 10:30:42 +0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20201016hbase-rowkey-design/hbase-rowkey-design/</guid>
-      <description>
-        
-          
-            &lt;p&gt;Rows in HBase are sorted lexicographically by row key. This design optimizes for scans, allowing you to store related rows, or rows that will be read together, near each other. However, poorly designed row keys are a common source of &lt;em&gt;hotspotting&lt;/em&gt;. Hotspotting occurs when a large amount of client traffic is directed at one node, or only a few nodes, of a cluster. This traffic may represent reads, writes, or other operations. The traffic overwhelms the single machine responsible for hosting that region, causing performance degradation and potentially leading to region unavailability. This can also have adverse effects on other regions hosted by the same region server as that host is unable to service the requested load. It is important to design data access patterns such that the cluster is fully and evenly utilized.&lt;/p&gt;
-          
-          
-        
-      </description>
+      <description>&lt;p&gt;Rows in HBase are sorted lexicographically by row key. This design optimizes for scans, allowing you to store related rows, or rows that will be read together, near each other. However, poorly designed row keys are a common source of &lt;em&gt;hotspotting&lt;/em&gt;. Hotspotting occurs when a large amount of client traffic is directed at one node, or only a few nodes, of a cluster. This traffic may represent reads, writes, or other operations. The traffic overwhelms the single machine responsible for hosting that region, causing performance degradation and potentially leading to region unavailability. This can also have adverse effects on other regions hosted by the same region server as that host is unable to service the requested load. It is important to design data access patterns such that the cluster is fully and evenly utilized.&lt;/p&gt;</description>
     </item>
     
   </channel>

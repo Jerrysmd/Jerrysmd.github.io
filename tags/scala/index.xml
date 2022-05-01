@@ -12,14 +12,7 @@
       <pubDate>Sat, 08 Feb 2020 10:16:17 +0800</pubDate>
       
       <guid>https://Jerrysmd.github.io/post/20200208scalaintroduction/scalaintroduction/</guid>
-      <description>
-        
-          
-            &lt;p&gt;Scala combines object-oriented and functional programming in one concise, high-level language. Scala&#39;s static types help avoid bugs in complex applications, and its JVM and JavaScript runtimes let you build high-performance systems with easy access to huge ecosystems of libraries.&lt;/p&gt;
-          
-          
-        
-      </description>
+      <description>&lt;p&gt;Scala combines object-oriented and functional programming in one concise, high-level language. Scala&#39;s static types help avoid bugs in complex applications, and its JVM and JavaScript runtimes let you build high-performance systems with easy access to huge ecosystems of libraries.&lt;/p&gt;</description>
     </item>
     
   </channel>

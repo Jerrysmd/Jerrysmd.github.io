@@ -121,6 +121,6 @@ a.nav_brand.nav_item {
 }
 
 html{
-    --font: 'Metropolis';
+    font-family: 'Metropolis';
     --bg: #1d1e20; 
 }
