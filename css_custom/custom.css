@@ -1,7 +1,3 @@
-html{
-    --bg: #1d1e20; 
-}
-
 img {
     height: auto;
     margin: auto;
@@ -125,5 +121,10 @@ a.nav_brand.nav_item {
 }
 
 h2, a, p {
+    /* font-family: 'Cascadia Code'; */
+}
+
+html{
+    --bg: #1d1e20; 
     font-family: 'Cascadia Code';
 }
