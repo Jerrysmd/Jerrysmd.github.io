@@ -1,5 +1,4 @@
 html{
-    font-family: 'Metropolis';
     --bg: #1d1e20; 
 }
 
@@ -123,4 +122,8 @@ a.nav_brand.nav_item {
 
 .content {
     padding-top: 4rem;
+}
+
+h2, a, p {
+    font-family: 'Metropolis';
 }
