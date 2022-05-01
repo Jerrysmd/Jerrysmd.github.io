@@ -120,10 +120,6 @@ a.nav_brand.nav_item {
     padding-top: 4rem;
 }
 
-h2, a, p, span {
-    font-family: system-ui;
-}
-
 html{
     --bg: #1d1e20; 
 }
