@@ -120,3 +120,7 @@ a.nav_brand.nav_item {
 html {
     --bg: #1d1e20
 }
+
+body {
+    transition: .4s ease-in-out;
+}
