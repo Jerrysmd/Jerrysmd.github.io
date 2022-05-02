@@ -121,6 +121,6 @@ html {
     --bg: #1d1e20
 }
 
-* {
+body,h2,a,li {
     transition: .4s ease-in-out;
 }
