@@ -124,3 +124,7 @@ html {
 * {
     transition: background .3s ease-in-out;
 }
+
+.sidebar_inner::before {
+    background: #ffffff00;
+}
