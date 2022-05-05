@@ -134,7 +134,11 @@
         <li><a href="#业务数据采集">业务数据采集</a></li>
       </ul>
     </li>
-    <li><a href="#dwddim">DWD&amp;DIM</a></li>
+    <li><a href="#dwd-明细数据层">DWD 明细数据层</a>
+      <ul>
+        <li><a href="#日志数据写入dwd层">日志数据写入DWD层</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
       </div>
@@ -387,7 +391,8 @@
 </tr>
 </tbody>
 </table>
-<h2 id="dwddim">DWD&amp;DIM</h2>
+<h2 id="dwd-明细数据层">DWD 明细数据层</h2>
+<h3 id="日志数据写入dwd层">日志数据写入DWD层</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c1">//数据流：web/app -&gt; Nginx -&gt; SpringBoot -&gt;Kafka(ods) -&gt; FlinkApp -&gt; Kafka(dwd)
 </span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="c1">//程序：mocklog -&gt; Nginx -&gt; Logger.sh -&gt; KafkaZ(zk) -&gt; BaseLogApp -&gt; Kafka
 </span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BaseLogApp</span><span class="o">{</span>
