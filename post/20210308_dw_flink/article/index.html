@@ -137,6 +137,7 @@
     <li><a href="#dwd-明细数据层">DWD 明细数据层</a>
       <ul>
         <li><a href="#日志数据写入dwd层">日志数据写入DWD层</a></li>
+        <li><a href="#业务数据写入dwd层">业务数据写入DWD层</a></li>
       </ul>
     </li>
   </ul>
@@ -432,7 +433,16 @@
 </span></span></span><span class="line"><span class="ln">37</span><span class="cl"><span class="c1"></span>    <span class="c1">//8.
 </span></span></span><span class="line"><span class="ln">38</span><span class="cl"><span class="c1"></span><span class="o">}</span>
 </span></span><span class="line"><span class="ln">39</span><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div>
+</span></span></code></pre></div><h3 id="业务数据写入dwd层">业务数据写入DWD层</h3>
+<blockquote>
+<p>在实时计算中一般把维度数据写入存储容器，如 HBASE、Redis、MySQL 等。</p>
+<p>一般把实时数据写入流中，进入dwd层，最终形成宽表。</p>
+<ul>
+<li>HBASE</li>
+<li>Redis</li>
+<li>MySQL</li>
+</ul>
+</blockquote>
     </div>
 
 
