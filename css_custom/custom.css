@@ -39,8 +39,8 @@ span.post_time {
 
 .post_meta span {
     color: #9b9c9d;
-    align-items: center;
-    display: inline-flex
+    /* align-items: center;
+    display: inline-flex */
 }
 
 .nav_body,.nav_header {
