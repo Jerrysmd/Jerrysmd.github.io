@@ -394,6 +394,7 @@
 </table>
 <h2 id="dwd-明细数据层">DWD 明细数据层</h2>
 <h3 id="日志数据写入dwd层">日志数据写入DWD层</h3>
+<h4 id="代码实现">代码实现</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c1">//数据流：web/app -&gt; Nginx -&gt; SpringBoot -&gt;Kafka(ods) -&gt; FlinkApp -&gt; Kafka(dwd)
 </span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="c1">//程序：mocklog -&gt; Nginx -&gt; Logger.sh -&gt; KafkaZ(zk) -&gt; BaseLogApp -&gt; Kafka
 </span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="c1"></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BaseLogApp</span><span class="o">{</span>
@@ -452,6 +453,19 @@
 <li>MySQL存储，使用广播流</li>
 </ul>
 </blockquote>
+<h4 id="代码实现-1">代码实现</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BaseDBApp</span><span class="o">{</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">        <span class="c1">//1.获取执行环境
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="c1"></span>        <span class="c1">//2.消费 kafka ods_base_db 主题数据创建流
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="c1"></span>        <span class="c1">//3.将每行数据转换成JSON对象并过滤 主流
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="c1"></span>        <span class="c1">//4.使用FlinkCDC消费配置表并处理成 广播流
+</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="c1"></span>        <span class="c1">//5.连接主流和广播流
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="c1"></span>        <span class="c1">//6.分流 处理数据 广播流数据和主流数据(根据广播流数据进行处理)
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="c1"></span>        <span class="c1">//7.提取kafka流数据和HBASE流
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="c1"></span>    <span class="o">}</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div>
     </div>
 
 
