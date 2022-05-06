@@ -138,7 +138,6 @@
       <ul>
         <li><a href="#日志数据写入dwd层">日志数据写入DWD层</a></li>
         <li><a href="#业务数据写入dwd层">业务数据写入DWD层</a></li>
-        <li><a href="#实现动态分流方案">实现动态分流方案</a></li>
       </ul>
     </li>
   </ul>
@@ -445,11 +444,12 @@
 <li>MySQL：并发压力大，读取速度慢。</li>
 </ul>
 </blockquote>
-<h3 id="实现动态分流方案">实现动态分流方案</h3>
+<h4 id="实现动态分流方案">实现动态分流方案</h4>
 <blockquote>
 <ul>
 <li>ZK存储，通过 watch 感知数据变化</li>
 <li>MySQL存储，周期性的同步</li>
+<li>MySQL存储，使用广播流</li>
 </ul>
 </blockquote>
     </div>
