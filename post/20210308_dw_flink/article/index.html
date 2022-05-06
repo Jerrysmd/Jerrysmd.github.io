@@ -138,6 +138,7 @@
       <ul>
         <li><a href="#日志数据写入dwd层">日志数据写入DWD层</a></li>
         <li><a href="#业务数据写入dwd层">业务数据写入DWD层</a></li>
+        <li><a href="#实现动态分流方案">实现动态分流方案</a></li>
       </ul>
     </li>
   </ul>
@@ -434,13 +435,21 @@
 </span></span></span><span class="line"><span class="ln">38</span><span class="cl"><span class="c1"></span><span class="o">}</span>
 </span></span><span class="line"><span class="ln">39</span><span class="cl"><span class="o">}</span>
 </span></span></code></pre></div><h3 id="业务数据写入dwd层">业务数据写入DWD层</h3>
+<h4 id="选型">选型</h4>
 <blockquote>
 <p>在实时计算中一般把维度数据写入存储容器，如 HBASE、Redis、MySQL 等。</p>
 <p>一般把实时数据写入流中，进入dwd层，最终形成宽表。</p>
 <ul>
 <li>HBASE：HBase是建立在HDFS之上,提供高可靠性的列存储，实时读写的数据库系统。它介于Nosql和关系型数据库之间，仅通过主键和主键的range来检索数据，仅支持单行事务。主要用来存储非结构化和半结构化的松散数据。</li>
 <li>Redis：分布式缓存，基于内存，强调缓存，支持数据持久化，支持事务操作，NoSQL 类型的Key/vale数据库，同时支持List、Set等更丰富的类型。适合放一些频繁使用，比较热的数据，因为是放在内存中，读写速度都非常快。</li>
-<li>MySQL：并发压力大读取速度慢，</li>
+<li>MySQL：并发压力大，读取速度慢。</li>
+</ul>
+</blockquote>
+<h3 id="实现动态分流方案">实现动态分流方案</h3>
+<blockquote>
+<ul>
+<li>ZK存储，通过 watch 感知数据变化</li>
+<li>MySQL存储，周期性的同步</li>
 </ul>
 </blockquote>
     </div>
