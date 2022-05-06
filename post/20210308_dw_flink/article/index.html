@@ -462,9 +462,11 @@
 </span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="c1"></span>        <span class="c1">//4.使用FlinkCDC消费配置表并处理成 广播流
 </span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="c1"></span>        <span class="c1">//5.连接主流和广播流
 </span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="c1"></span>        <span class="c1">//6.分流 处理数据 广播流数据和主流数据(根据广播流数据进行处理)
-</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="c1"></span>        <span class="c1">//7.提取kafka流数据和HBASE流
-</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="c1"></span>    <span class="o">}</span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="o">}</span>
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="c1"></span>        <span class="c1">//7.提取kafka流数据和HBASE流数据
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="c1"></span>        <span class="c1">//8.将kafka数据写入Kafka主题，将HBASE数据写入Phoenix表
+</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="c1"></span>        <span class="c1">//9.启动
+</span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="c1"></span>    <span class="o">}</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="o">}</span>
 </span></span></code></pre></div>
     </div>
 
