@@ -443,7 +443,42 @@
 <li>HBASE：HBase是建立在HDFS之上,提供高可靠性的列存储，实时读写的数据库系统。它介于Nosql和关系型数据库之间，仅通过主键和主键的range来检索数据，仅支持单行事务。主要用来存储非结构化和半结构化的松散数据。</li>
 <li>Redis：分布式缓存，基于内存，强调缓存，支持数据持久化，支持事务操作，NoSQL 类型的Key/vale数据库，同时支持List、Set等更丰富的类型。适合放一些频繁使用，比较热的数据，因为是放在内存中，读写速度都非常快。</li>
 <li>MySQL：并发压力大，读取速度慢。</li>
-<li></li>
+</ul>
+</blockquote>
+<h5 id="phoenix--hbase">Phoenix &amp; HBASE</h5>
+<blockquote>
+<p>功能：</p>
+<p>Phoenix是一种专门针对于Hbase 所设计的SQL on Hbase 的一个工具
+使用SQL对Hbase进行操作
+使用phoenix自动构建二级索引来进行快速查询和维护</p>
+</blockquote>
+<blockquote>
+<p>原理：</p>
+<ul>
+<li>上层提供了SQL接口</li>
+<li>底层全部通过Hbase Java API来实现，通过构建一系列的Scan和Put来实现数据的读写</li>
+<li>功能非常丰富</li>
+<li>底层封装了大量的内置的协处理器，可以实现各种复杂的处理需求，例如二级索引等</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>优点</p>
+<ul>
+<li>
+<p>支持SQL接口</p>
+</li>
+<li>
+<p>支持自动维护二级索引</p>
+</li>
+</ul>
+<p>缺点</p>
+<ul>
+<li>
+<p>SQL支持的语法不全面</p>
+</li>
+<li>
+<p>Bug比较多</p>
+</li>
 </ul>
 </blockquote>
 <h4 id="实现动态分流方案">实现动态分流方案</h4>
