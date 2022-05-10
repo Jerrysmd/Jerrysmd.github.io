@@ -1,0 +1,126 @@
+img {
+    height: auto;
+    margin: auto
+}
+
+h3.post_link {
+    margin: 0 0 5px 7px
+}
+
+.post_date {
+    margin-right: .3rem;
+    margin-left: .25rem
+}
+
+span.post_time {
+    margin-right: .2rem
+}
+
+.post_meta .button {
+    margin: 2px 0 2px .5rem
+}
+
+.pale p {
+    color: #9b9c9d;
+    margin: 0
+}
+
+.pale p,img,p.pale {
+    padding: 0
+}
+
+.excerpt_footer {
+    padding: 0 1rem .8rem
+}
+
+.post_share,.post_tag {
+    margin: .5rem
+}
+
+.post_meta span {
+    color: #9b9c9d;
+    /* align-items: center;
+    display: inline-flex */
+}
+
+.nav_body,.nav_header {
+    background-color: #1d1e20
+}
+
+.button {
+    background-color: #0075d1;
+    transition: .3s cubic-bezier(.46,.03,.52,.96);
+    transition-property: background-color,border,color
+}
+
+a.post_tag.button.button_translucent:focus,a.post_tag.button.button_translucent:hover {
+    background: #009688;
+    border: 1px solid #009688
+}
+
+a.button.mt-1:hover,a.excerpt_more.button:focus,a.excerpt_more.button:hover,abutton.mt-1:focus {
+    background: #2196f3;
+    border: 1px solid #2196f3
+}
+
+.button_translucent {
+    background: #0077b826;
+    color: #4a9af1;
+    border: 1px solid transparent;
+    font-weight: 500
+}
+
+a.nav_item,h3.post_link a {
+    font-weight: 700;
+    transition: .3s cubic-bezier(.65,.05,.36,1);
+    transition-property: text-shadow
+}
+
+a.nav_item:hover,h3.post_link a:hover {
+    text-shadow: 4px 4px 4px #adadad
+}
+
+a.excerpt_more.button {
+    display: none
+}
+
+.excerpt_footer .pale {
+    margin: 0 0 0 6px
+}
+
+h2 {
+    font-weight: 700
+}
+
+.post_item {
+    margin-bottom: 2.5rem
+}
+
+use {
+    background-image: url(../images/sun.svg);
+    border-image: url(../images/night-moon.jpg)
+}
+
+a.nav-link:visited {
+    color: var(--text)
+}
+
+a.nav_brand.nav_item {
+    font-family: "Cascadia Code";
+    font-size: 2.4rem;
+    padding: 0 16px 0 0;
+    font-weight: lighter;
+    text-transform: uppercase
+}
+
+.content {
+    padding-top: 4rem
+}
+
+html {
+    --bg: #1d1e20
+}
+
+.sidebar_inner::before {
+    background: #ffffff00;
+}
