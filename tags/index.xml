@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on JerrysBlog</title>
-    <link>https://Jerrysmd.github.io/tags/</link>
+    <link>https://jerrysmd.github.io/tags/</link>
     <description>Recent content in Tags on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 18 Dec 2021 10:01:20 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 18 Dec 2021 10:01:20 +0800</lastBuildDate><atom:link href="https://jerrysmd.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

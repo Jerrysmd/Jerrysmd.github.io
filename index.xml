@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>JerrysBlog</title>
-    <link>https://Jerrysmd.github.io/</link>
+    <link>https://jerrysmd.github.io/</link>
     <description>Recent content on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 18 Dec 2021 10:01:20 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 18 Dec 2021 10:01:20 +0800</lastBuildDate><atom:link href="https://jerrysmd.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>2021 Clips</title>
-      <link>https://Jerrysmd.github.io/post/20211218_2021_summary_video/article/</link>
+      <link>https://jerrysmd.github.io/post/20211218_2021_summary_video/article/</link>
       <pubDate>Sat, 18 Dec 2021 10:01:20 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20211218_2021_summary_video/article/</guid>
+      <guid>https://jerrysmd.github.io/post/20211218_2021_summary_video/article/</guid>
       <description>
         
           
@@ -22,10 +22,10 @@
     
     <item>
       <title>Data Warehouse: Real-Time</title>
-      <link>https://Jerrysmd.github.io/post/20210308_dw_flink/article/</link>
+      <link>https://jerrysmd.github.io/post/20210308_dw_flink/article/</link>
       <pubDate>Mon, 08 Mar 2021 10:40:49 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20210308_dw_flink/article/</guid>
+      <guid>https://jerrysmd.github.io/post/20210308_dw_flink/article/</guid>
       <description>
         
           
@@ -38,10 +38,10 @@
     
     <item>
       <title>Tensorflow Identify Simple Captcha</title>
-      <link>https://Jerrysmd.github.io/post/20210204_tensorflow_captcha/article/</link>
+      <link>https://jerrysmd.github.io/post/20210204_tensorflow_captcha/article/</link>
       <pubDate>Thu, 04 Feb 2021 07:10:16 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20210204_tensorflow_captcha/article/</guid>
+      <guid>https://jerrysmd.github.io/post/20210204_tensorflow_captcha/article/</guid>
       <description>
         
           
@@ -54,10 +54,10 @@
     
     <item>
       <title>Data Warehouse: Offline</title>
-      <link>https://Jerrysmd.github.io/post/20210108_dw_behavior_collection/article/</link>
+      <link>https://jerrysmd.github.io/post/20210108_dw_behavior_collection/article/</link>
       <pubDate>Fri, 08 Jan 2021 09:43:01 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20210108_dw_behavior_collection/article/</guid>
+      <guid>https://jerrysmd.github.io/post/20210108_dw_behavior_collection/article/</guid>
       <description>
         
           
@@ -70,10 +70,10 @@
     
     <item>
       <title>Parquet Format</title>
-      <link>https://Jerrysmd.github.io/post/20201215_parquet_format/parquet_format/</link>
+      <link>https://jerrysmd.github.io/post/20201215_parquet_format/parquet_format/</link>
       <pubDate>Tue, 15 Dec 2020 10:47:59 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20201215_parquet_format/parquet_format/</guid>
+      <guid>https://jerrysmd.github.io/post/20201215_parquet_format/parquet_format/</guid>
       <description>
         
           
@@ -86,10 +86,10 @@
     
     <item>
       <title>Clickhouse Introduction</title>
-      <link>https://Jerrysmd.github.io/post/20201107_clickhouse_intro/clickhouse_intro/</link>
+      <link>https://jerrysmd.github.io/post/20201107_clickhouse_intro/clickhouse_intro/</link>
       <pubDate>Sat, 07 Nov 2020 14:55:59 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20201107_clickhouse_intro/clickhouse_intro/</guid>
+      <guid>https://jerrysmd.github.io/post/20201107_clickhouse_intro/clickhouse_intro/</guid>
       <description>
         
           
@@ -102,10 +102,10 @@
     
     <item>
       <title>Hbase Optimize</title>
-      <link>https://Jerrysmd.github.io/post/20201026_hbase_optimize/article/</link>
+      <link>https://jerrysmd.github.io/post/20201026_hbase_optimize/article/</link>
       <pubDate>Mon, 26 Oct 2020 09:14:35 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20201026_hbase_optimize/article/</guid>
+      <guid>https://jerrysmd.github.io/post/20201026_hbase_optimize/article/</guid>
       <description>
         
           
@@ -118,10 +118,10 @@
     
     <item>
       <title>Hbase Rowkey Design</title>
-      <link>https://Jerrysmd.github.io/post/20201016hbase-rowkey-design/hbase-rowkey-design/</link>
+      <link>https://jerrysmd.github.io/post/20201016hbase-rowkey-design/hbase-rowkey-design/</link>
       <pubDate>Fri, 16 Oct 2020 10:30:42 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20201016hbase-rowkey-design/hbase-rowkey-design/</guid>
+      <guid>https://jerrysmd.github.io/post/20201016hbase-rowkey-design/hbase-rowkey-design/</guid>
       <description>
         
           
@@ -134,10 +134,10 @@
     
     <item>
       <title>Elasticsearch Wildcard Search</title>
-      <link>https://Jerrysmd.github.io/post/20200911es-wildcard-search/es-wildcard-search/</link>
+      <link>https://jerrysmd.github.io/post/20200911es-wildcard-search/es-wildcard-search/</link>
       <pubDate>Fri, 11 Sep 2020 10:57:33 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20200911es-wildcard-search/es-wildcard-search/</guid>
+      <guid>https://jerrysmd.github.io/post/20200911es-wildcard-search/es-wildcard-search/</guid>
       <description>
         
           
@@ -150,10 +150,10 @@
     
     <item>
       <title>Spark On Yarn: yarn-cluster, yarn-client</title>
-      <link>https://Jerrysmd.github.io/post/20200811yarn-clusteryarn-client/article/</link>
+      <link>https://jerrysmd.github.io/post/20200811yarn-clusteryarn-client/article/</link>
       <pubDate>Tue, 11 Aug 2020 10:42:19 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20200811yarn-clusteryarn-client/article/</guid>
+      <guid>https://jerrysmd.github.io/post/20200811yarn-clusteryarn-client/article/</guid>
       <description>
         
           
@@ -166,10 +166,10 @@
     
     <item>
       <title>Spark Guide, Part Ⅲ</title>
-      <link>https://Jerrysmd.github.io/post/20200803sparkguide3/sparkguide3/</link>
+      <link>https://jerrysmd.github.io/post/20200803sparkguide3/sparkguide3/</link>
       <pubDate>Mon, 03 Aug 2020 16:10:33 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20200803sparkguide3/sparkguide3/</guid>
+      <guid>https://jerrysmd.github.io/post/20200803sparkguide3/sparkguide3/</guid>
       <description>
         
           
@@ -182,10 +182,10 @@
     
     <item>
       <title>Spark Guide, Part Ⅱ</title>
-      <link>https://Jerrysmd.github.io/post/20200707sparkguide2/sparkguide2/</link>
+      <link>https://jerrysmd.github.io/post/20200707sparkguide2/sparkguide2/</link>
       <pubDate>Tue, 07 Jul 2020 11:14:54 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20200707sparkguide2/sparkguide2/</guid>
+      <guid>https://jerrysmd.github.io/post/20200707sparkguide2/sparkguide2/</guid>
       <description>
         
           
@@ -198,10 +198,10 @@
     
     <item>
       <title>Hive Key Points</title>
-      <link>https://Jerrysmd.github.io/post/20200615hivekeypoint/hivekeypoint/</link>
+      <link>https://jerrysmd.github.io/post/20200615hivekeypoint/hivekeypoint/</link>
       <pubDate>Mon, 15 Jun 2020 09:26:00 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20200615hivekeypoint/hivekeypoint/</guid>
+      <guid>https://jerrysmd.github.io/post/20200615hivekeypoint/hivekeypoint/</guid>
       <description>
         
           
@@ -214,10 +214,10 @@
     
     <item>
       <title>Spark Guide, Part Ⅰ</title>
-      <link>https://Jerrysmd.github.io/post/20200527sparkguide1/sparkguide1/</link>
+      <link>https://jerrysmd.github.io/post/20200527sparkguide1/sparkguide1/</link>
       <pubDate>Wed, 27 May 2020 17:20:52 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20200527sparkguide1/sparkguide1/</guid>
+      <guid>https://jerrysmd.github.io/post/20200527sparkguide1/sparkguide1/</guid>
       <description>
         
           
@@ -230,10 +230,10 @@
     
     <item>
       <title>The Development of App Architecture</title>
-      <link>https://Jerrysmd.github.io/post/20200526apparchitecturedevelopment/article/</link>
+      <link>https://jerrysmd.github.io/post/20200526apparchitecturedevelopment/article/</link>
       <pubDate>Tue, 26 May 2020 17:17:50 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20200526apparchitecturedevelopment/article/</guid>
+      <guid>https://jerrysmd.github.io/post/20200526apparchitecturedevelopment/article/</guid>
       <description>
         
           
@@ -246,10 +246,10 @@
     
     <item>
       <title>Final 关键字: Final Key Word In Java</title>
-      <link>https://Jerrysmd.github.io/post/20200526finalkeywordinjava/finalkeywordinjava/</link>
+      <link>https://jerrysmd.github.io/post/20200526finalkeywordinjava/finalkeywordinjava/</link>
       <pubDate>Tue, 26 May 2020 15:56:36 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20200526finalkeywordinjava/finalkeywordinjava/</guid>
+      <guid>https://jerrysmd.github.io/post/20200526finalkeywordinjava/finalkeywordinjava/</guid>
       <description>
         
           
@@ -262,10 +262,10 @@
     
     <item>
       <title>Key points of ZooKeeper</title>
-      <link>https://Jerrysmd.github.io/post/20200519zookeeper/zookeeper/</link>
+      <link>https://jerrysmd.github.io/post/20200519zookeeper/zookeeper/</link>
       <pubDate>Tue, 19 May 2020 16:07:17 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20200519zookeeper/zookeeper/</guid>
+      <guid>https://jerrysmd.github.io/post/20200519zookeeper/zookeeper/</guid>
       <description>
         
           
@@ -278,10 +278,10 @@
     
     <item>
       <title>Kafka &amp; Message Queue</title>
-      <link>https://Jerrysmd.github.io/post/20200427kafka/kafka/</link>
+      <link>https://jerrysmd.github.io/post/20200427kafka/kafka/</link>
       <pubDate>Mon, 27 Apr 2020 14:21:19 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20200427kafka/kafka/</guid>
+      <guid>https://jerrysmd.github.io/post/20200427kafka/kafka/</guid>
       <description>
         
           
@@ -294,10 +294,10 @@
     
     <item>
       <title>HDFS &amp; NFS</title>
-      <link>https://Jerrysmd.github.io/post/20200326hdfsnfs/hdfsnfs/</link>
+      <link>https://jerrysmd.github.io/post/20200326hdfsnfs/hdfsnfs/</link>
       <pubDate>Thu, 26 Mar 2020 11:02:36 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20200326hdfsnfs/hdfsnfs/</guid>
+      <guid>https://jerrysmd.github.io/post/20200326hdfsnfs/hdfsnfs/</guid>
       <description>
         
           
@@ -310,10 +310,10 @@
     
     <item>
       <title>Scala Introduction</title>
-      <link>https://Jerrysmd.github.io/post/20200208scalaintroduction/scalaintroduction/</link>
+      <link>https://jerrysmd.github.io/post/20200208scalaintroduction/scalaintroduction/</link>
       <pubDate>Sat, 08 Feb 2020 10:16:17 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20200208scalaintroduction/scalaintroduction/</guid>
+      <guid>https://jerrysmd.github.io/post/20200208scalaintroduction/scalaintroduction/</guid>
       <description>
         
           
@@ -326,10 +326,10 @@
     
     <item>
       <title>Static Keyword in Java</title>
-      <link>https://Jerrysmd.github.io/post/20200122javastatic/javastatic/</link>
+      <link>https://jerrysmd.github.io/post/20200122javastatic/javastatic/</link>
       <pubDate>Wed, 22 Jan 2020 11:20:11 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20200122javastatic/javastatic/</guid>
+      <guid>https://jerrysmd.github.io/post/20200122javastatic/javastatic/</guid>
       <description>
         
           
@@ -342,10 +342,10 @@
     
     <item>
       <title>Java Basic</title>
-      <link>https://Jerrysmd.github.io/post/20200101javainterview/javainterview/</link>
+      <link>https://jerrysmd.github.io/post/20200101javainterview/javainterview/</link>
       <pubDate>Wed, 01 Jan 2020 11:18:47 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20200101javainterview/javainterview/</guid>
+      <guid>https://jerrysmd.github.io/post/20200101javainterview/javainterview/</guid>
       <description>
         
           
@@ -358,10 +358,10 @@
     
     <item>
       <title>Leetcode</title>
-      <link>https://Jerrysmd.github.io/post/20200101leetcode/leetcode/</link>
+      <link>https://jerrysmd.github.io/post/20200101leetcode/leetcode/</link>
       <pubDate>Wed, 01 Jan 2020 10:57:11 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20200101leetcode/leetcode/</guid>
+      <guid>https://jerrysmd.github.io/post/20200101leetcode/leetcode/</guid>
       <description>
         
           
@@ -374,10 +374,10 @@
     
     <item>
       <title>Shallow Copy and Deep Copy in JAVA</title>
-      <link>https://Jerrysmd.github.io/post/20191229copyinjava/copyinjava/</link>
+      <link>https://jerrysmd.github.io/post/20191229copyinjava/copyinjava/</link>
       <pubDate>Sun, 29 Dec 2019 22:14:03 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20191229copyinjava/copyinjava/</guid>
+      <guid>https://jerrysmd.github.io/post/20191229copyinjava/copyinjava/</guid>
       <description>
         
           
@@ -390,10 +390,10 @@
     
     <item>
       <title>2019 Clips</title>
-      <link>https://Jerrysmd.github.io/post/20191218_2019_summary_video/article/</link>
+      <link>https://jerrysmd.github.io/post/20191218_2019_summary_video/article/</link>
       <pubDate>Wed, 18 Dec 2019 10:01:12 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20191218_2019_summary_video/article/</guid>
+      <guid>https://jerrysmd.github.io/post/20191218_2019_summary_video/article/</guid>
       <description>
         
           
@@ -404,10 +404,10 @@
     
     <item>
       <title>Git Contribution</title>
-      <link>https://Jerrysmd.github.io/post/20191126gitcontribution/gitcontribution/</link>
+      <link>https://jerrysmd.github.io/post/20191126gitcontribution/gitcontribution/</link>
       <pubDate>Tue, 26 Nov 2019 11:22:47 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20191126gitcontribution/gitcontribution/</guid>
+      <guid>https://jerrysmd.github.io/post/20191126gitcontribution/gitcontribution/</guid>
       <description>
         
           
@@ -420,10 +420,10 @@
     
     <item>
       <title>Various data types in C</title>
-      <link>https://Jerrysmd.github.io/post/20191007u32/u32/</link>
+      <link>https://jerrysmd.github.io/post/20191007u32/u32/</link>
       <pubDate>Mon, 07 Oct 2019 09:11:47 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20191007u32/u32/</guid>
+      <guid>https://jerrysmd.github.io/post/20191007u32/u32/</guid>
       <description>
         
           
@@ -436,10 +436,10 @@
     
     <item>
       <title>The size of structure in C</title>
-      <link>https://Jerrysmd.github.io/post/20190825structsize/structsize/</link>
+      <link>https://jerrysmd.github.io/post/20190825structsize/structsize/</link>
       <pubDate>Sun, 25 Aug 2019 14:38:34 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20190825structsize/structsize/</guid>
+      <guid>https://jerrysmd.github.io/post/20190825structsize/structsize/</guid>
       <description>
         
           
@@ -452,10 +452,10 @@
     
     <item>
       <title>Typedef介绍: The descriptions of typedef</title>
-      <link>https://Jerrysmd.github.io/post/20190717typedef/typedef/</link>
+      <link>https://jerrysmd.github.io/post/20190717typedef/typedef/</link>
       <pubDate>Wed, 17 Jul 2019 09:22:18 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20190717typedef/typedef/</guid>
+      <guid>https://jerrysmd.github.io/post/20190717typedef/typedef/</guid>
       <description>
         
           
@@ -468,10 +468,10 @@
     
     <item>
       <title>条件编译指令: Conditional compilation directives</title>
-      <link>https://Jerrysmd.github.io/post/20190611conditionalcompilation/conditionalcompilation/</link>
+      <link>https://jerrysmd.github.io/post/20190611conditionalcompilation/conditionalcompilation/</link>
       <pubDate>Tue, 11 Jun 2019 10:42:49 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20190611conditionalcompilation/conditionalcompilation/</guid>
+      <guid>https://jerrysmd.github.io/post/20190611conditionalcompilation/conditionalcompilation/</guid>
       <description>
         
           
@@ -484,10 +484,10 @@
     
     <item>
       <title>Python Introduction</title>
-      <link>https://Jerrysmd.github.io/post/20190510pythonintroduction/pythonintroduction/</link>
+      <link>https://jerrysmd.github.io/post/20190510pythonintroduction/pythonintroduction/</link>
       <pubDate>Fri, 10 May 2019 09:34:11 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20190510pythonintroduction/pythonintroduction/</guid>
+      <guid>https://jerrysmd.github.io/post/20190510pythonintroduction/pythonintroduction/</guid>
       <description>
         
           
@@ -500,10 +500,10 @@
     
     <item>
       <title>C Project performance optimization</title>
-      <link>https://Jerrysmd.github.io/post/20190409cperformanceoptimization/cperformanceoptimization/</link>
+      <link>https://jerrysmd.github.io/post/20190409cperformanceoptimization/cperformanceoptimization/</link>
       <pubDate>Tue, 09 Apr 2019 20:04:00 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20190409cperformanceoptimization/cperformanceoptimization/</guid>
+      <guid>https://jerrysmd.github.io/post/20190409cperformanceoptimization/cperformanceoptimization/</guid>
       <description>
         
           
@@ -516,10 +516,10 @@
     
     <item>
       <title>GDB调试: GDB debug guide</title>
-      <link>https://Jerrysmd.github.io/post/20190304gdb_debug/gdb_debug/</link>
+      <link>https://jerrysmd.github.io/post/20190304gdb_debug/gdb_debug/</link>
       <pubDate>Mon, 04 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20190304gdb_debug/gdb_debug/</guid>
+      <guid>https://jerrysmd.github.io/post/20190304gdb_debug/gdb_debug/</guid>
       <description>
         
           
@@ -532,10 +532,10 @@
     
     <item>
       <title>大页内存: HugePages</title>
-      <link>https://Jerrysmd.github.io/post/20190203hugepages/hugepages/</link>
+      <link>https://jerrysmd.github.io/post/20190203hugepages/hugepages/</link>
       <pubDate>Sun, 03 Feb 2019 13:04:09 -0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20190203hugepages/hugepages/</guid>
+      <guid>https://jerrysmd.github.io/post/20190203hugepages/hugepages/</guid>
       <description>
         
           
@@ -548,10 +548,10 @@
     
     <item>
       <title>动态链接和静态链接: Dynamic link library and static link library</title>
-      <link>https://Jerrysmd.github.io/post/20190125dynamicstaticlinklibrary/dynamicstaticlinklibrary/</link>
+      <link>https://jerrysmd.github.io/post/20190125dynamicstaticlinklibrary/dynamicstaticlinklibrary/</link>
       <pubDate>Fri, 25 Jan 2019 22:01:19 -0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20190125dynamicstaticlinklibrary/dynamicstaticlinklibrary/</guid>
+      <guid>https://jerrysmd.github.io/post/20190125dynamicstaticlinklibrary/dynamicstaticlinklibrary/</guid>
       <description>
         
           
@@ -564,10 +564,10 @@
     
     <item>
       <title>C文件读取的高级方法：Advanced method of reading files</title>
-      <link>https://Jerrysmd.github.io/post/20181220read_binary_file/read_binary_file/</link>
+      <link>https://jerrysmd.github.io/post/20181220read_binary_file/read_binary_file/</link>
       <pubDate>Thu, 20 Dec 2018 18:39:37 -0700</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20181220read_binary_file/read_binary_file/</guid>
+      <guid>https://jerrysmd.github.io/post/20181220read_binary_file/read_binary_file/</guid>
       <description>
         
           
@@ -580,10 +580,10 @@
     
     <item>
       <title>SQLcipher Guide</title>
-      <link>https://Jerrysmd.github.io/post/20181118sqlcipher/sqlcipher/</link>
+      <link>https://jerrysmd.github.io/post/20181118sqlcipher/sqlcipher/</link>
       <pubDate>Sun, 18 Nov 2018 21:58:51 -0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20181118sqlcipher/sqlcipher/</guid>
+      <guid>https://jerrysmd.github.io/post/20181118sqlcipher/sqlcipher/</guid>
       <description>
         
           
@@ -596,10 +596,10 @@
     
     <item>
       <title>SQL Introduction</title>
-      <link>https://Jerrysmd.github.io/post/20181017sqlintroduction/sqlintroduction/</link>
+      <link>https://jerrysmd.github.io/post/20181017sqlintroduction/sqlintroduction/</link>
       <pubDate>Wed, 17 Oct 2018 11:52:36 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20181017sqlintroduction/sqlintroduction/</guid>
+      <guid>https://jerrysmd.github.io/post/20181017sqlintroduction/sqlintroduction/</guid>
       <description>
         
           
@@ -612,10 +612,10 @@
     
     <item>
       <title>Makefile Guide</title>
-      <link>https://Jerrysmd.github.io/post/20180915makefile_cmakelist/makefile_cmakelist/</link>
+      <link>https://jerrysmd.github.io/post/20180915makefile_cmakelist/makefile_cmakelist/</link>
       <pubDate>Sat, 15 Sep 2018 21:59:46 -0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20180915makefile_cmakelist/makefile_cmakelist/</guid>
+      <guid>https://jerrysmd.github.io/post/20180915makefile_cmakelist/makefile_cmakelist/</guid>
       <description>
         
           
@@ -628,10 +628,10 @@
     
     <item>
       <title>Hyperscan: high-performance multiple regex matching library</title>
-      <link>https://Jerrysmd.github.io/post/20180812hyperscan/hyperscan/</link>
+      <link>https://jerrysmd.github.io/post/20180812hyperscan/hyperscan/</link>
       <pubDate>Sun, 12 Aug 2018 05:42:44 -0700</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20180812hyperscan/hyperscan/</guid>
+      <guid>https://jerrysmd.github.io/post/20180812hyperscan/hyperscan/</guid>
       <description>
         
           
@@ -644,10 +644,10 @@
     
     <item>
       <title>文件读取多读取一行空行问题: The problem about file reading one more line</title>
-      <link>https://Jerrysmd.github.io/post/20180610cgetline/cgetline/</link>
+      <link>https://jerrysmd.github.io/post/20180610cgetline/cgetline/</link>
       <pubDate>Sun, 10 Jun 2018 21:58:13 -0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20180610cgetline/cgetline/</guid>
+      <guid>https://jerrysmd.github.io/post/20180610cgetline/cgetline/</guid>
       <description>
         
           
@@ -660,10 +660,10 @@
     
     <item>
       <title>MXML的使用: The description of mxml</title>
-      <link>https://Jerrysmd.github.io/post/20180507mxml/mxml/</link>
+      <link>https://jerrysmd.github.io/post/20180507mxml/mxml/</link>
       <pubDate>Mon, 07 May 2018 21:57:23 -0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20180507mxml/mxml/</guid>
+      <guid>https://jerrysmd.github.io/post/20180507mxml/mxml/</guid>
       <description>
         
           
@@ -676,10 +676,10 @@
     
     <item>
       <title>C语言实现HashMap: C language realize HashMap</title>
-      <link>https://Jerrysmd.github.io/post/20180405hashcode/hashcode/</link>
+      <link>https://jerrysmd.github.io/post/20180405hashcode/hashcode/</link>
       <pubDate>Thu, 05 Apr 2018 21:56:51 -0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20180405hashcode/hashcode/</guid>
+      <guid>https://jerrysmd.github.io/post/20180405hashcode/hashcode/</guid>
       <description>
         
           

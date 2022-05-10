@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>c on JerrysBlog</title>
-    <link>https://Jerrysmd.github.io/tags/c/</link>
+    <link>https://jerrysmd.github.io/tags/c/</link>
     <description>Recent content in c on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 07 Oct 2019 09:11:47 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 07 Oct 2019 09:11:47 +0800</lastBuildDate><atom:link href="https://jerrysmd.github.io/tags/c/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Various data types in C</title>
-      <link>https://Jerrysmd.github.io/post/20191007u32/u32/</link>
+      <link>https://jerrysmd.github.io/post/20191007u32/u32/</link>
       <pubDate>Mon, 07 Oct 2019 09:11:47 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20191007u32/u32/</guid>
+      <guid>https://jerrysmd.github.io/post/20191007u32/u32/</guid>
       <description>
         
           
@@ -24,10 +24,10 @@
     
     <item>
       <title>The size of structure in C</title>
-      <link>https://Jerrysmd.github.io/post/20190825structsize/structsize/</link>
+      <link>https://jerrysmd.github.io/post/20190825structsize/structsize/</link>
       <pubDate>Sun, 25 Aug 2019 14:38:34 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20190825structsize/structsize/</guid>
+      <guid>https://jerrysmd.github.io/post/20190825structsize/structsize/</guid>
       <description>
         
           
@@ -40,10 +40,10 @@
     
     <item>
       <title>Typedef介绍: The descriptions of typedef</title>
-      <link>https://Jerrysmd.github.io/post/20190717typedef/typedef/</link>
+      <link>https://jerrysmd.github.io/post/20190717typedef/typedef/</link>
       <pubDate>Wed, 17 Jul 2019 09:22:18 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20190717typedef/typedef/</guid>
+      <guid>https://jerrysmd.github.io/post/20190717typedef/typedef/</guid>
       <description>
         
           
@@ -56,10 +56,10 @@
     
     <item>
       <title>条件编译指令: Conditional compilation directives</title>
-      <link>https://Jerrysmd.github.io/post/20190611conditionalcompilation/conditionalcompilation/</link>
+      <link>https://jerrysmd.github.io/post/20190611conditionalcompilation/conditionalcompilation/</link>
       <pubDate>Tue, 11 Jun 2019 10:42:49 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20190611conditionalcompilation/conditionalcompilation/</guid>
+      <guid>https://jerrysmd.github.io/post/20190611conditionalcompilation/conditionalcompilation/</guid>
       <description>
         
           
@@ -72,10 +72,10 @@
     
     <item>
       <title>C Project performance optimization</title>
-      <link>https://Jerrysmd.github.io/post/20190409cperformanceoptimization/cperformanceoptimization/</link>
+      <link>https://jerrysmd.github.io/post/20190409cperformanceoptimization/cperformanceoptimization/</link>
       <pubDate>Tue, 09 Apr 2019 20:04:00 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20190409cperformanceoptimization/cperformanceoptimization/</guid>
+      <guid>https://jerrysmd.github.io/post/20190409cperformanceoptimization/cperformanceoptimization/</guid>
       <description>
         
           
@@ -88,10 +88,10 @@
     
     <item>
       <title>GDB调试: GDB debug guide</title>
-      <link>https://Jerrysmd.github.io/post/20190304gdb_debug/gdb_debug/</link>
+      <link>https://jerrysmd.github.io/post/20190304gdb_debug/gdb_debug/</link>
       <pubDate>Mon, 04 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20190304gdb_debug/gdb_debug/</guid>
+      <guid>https://jerrysmd.github.io/post/20190304gdb_debug/gdb_debug/</guid>
       <description>
         
           
@@ -104,10 +104,10 @@
     
     <item>
       <title>大页内存: HugePages</title>
-      <link>https://Jerrysmd.github.io/post/20190203hugepages/hugepages/</link>
+      <link>https://jerrysmd.github.io/post/20190203hugepages/hugepages/</link>
       <pubDate>Sun, 03 Feb 2019 13:04:09 -0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20190203hugepages/hugepages/</guid>
+      <guid>https://jerrysmd.github.io/post/20190203hugepages/hugepages/</guid>
       <description>
         
           
@@ -120,10 +120,10 @@
     
     <item>
       <title>动态链接和静态链接: Dynamic link library and static link library</title>
-      <link>https://Jerrysmd.github.io/post/20190125dynamicstaticlinklibrary/dynamicstaticlinklibrary/</link>
+      <link>https://jerrysmd.github.io/post/20190125dynamicstaticlinklibrary/dynamicstaticlinklibrary/</link>
       <pubDate>Fri, 25 Jan 2019 22:01:19 -0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20190125dynamicstaticlinklibrary/dynamicstaticlinklibrary/</guid>
+      <guid>https://jerrysmd.github.io/post/20190125dynamicstaticlinklibrary/dynamicstaticlinklibrary/</guid>
       <description>
         
           
@@ -136,10 +136,10 @@
     
     <item>
       <title>C文件读取的高级方法：Advanced method of reading files</title>
-      <link>https://Jerrysmd.github.io/post/20181220read_binary_file/read_binary_file/</link>
+      <link>https://jerrysmd.github.io/post/20181220read_binary_file/read_binary_file/</link>
       <pubDate>Thu, 20 Dec 2018 18:39:37 -0700</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20181220read_binary_file/read_binary_file/</guid>
+      <guid>https://jerrysmd.github.io/post/20181220read_binary_file/read_binary_file/</guid>
       <description>
         
           
@@ -152,10 +152,10 @@
     
     <item>
       <title>SQLcipher Guide</title>
-      <link>https://Jerrysmd.github.io/post/20181118sqlcipher/sqlcipher/</link>
+      <link>https://jerrysmd.github.io/post/20181118sqlcipher/sqlcipher/</link>
       <pubDate>Sun, 18 Nov 2018 21:58:51 -0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20181118sqlcipher/sqlcipher/</guid>
+      <guid>https://jerrysmd.github.io/post/20181118sqlcipher/sqlcipher/</guid>
       <description>
         
           
@@ -168,10 +168,10 @@
     
     <item>
       <title>Makefile Guide</title>
-      <link>https://Jerrysmd.github.io/post/20180915makefile_cmakelist/makefile_cmakelist/</link>
+      <link>https://jerrysmd.github.io/post/20180915makefile_cmakelist/makefile_cmakelist/</link>
       <pubDate>Sat, 15 Sep 2018 21:59:46 -0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20180915makefile_cmakelist/makefile_cmakelist/</guid>
+      <guid>https://jerrysmd.github.io/post/20180915makefile_cmakelist/makefile_cmakelist/</guid>
       <description>
         
           
@@ -184,10 +184,10 @@
     
     <item>
       <title>Hyperscan: high-performance multiple regex matching library</title>
-      <link>https://Jerrysmd.github.io/post/20180812hyperscan/hyperscan/</link>
+      <link>https://jerrysmd.github.io/post/20180812hyperscan/hyperscan/</link>
       <pubDate>Sun, 12 Aug 2018 05:42:44 -0700</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20180812hyperscan/hyperscan/</guid>
+      <guid>https://jerrysmd.github.io/post/20180812hyperscan/hyperscan/</guid>
       <description>
         
           
@@ -200,10 +200,10 @@
     
     <item>
       <title>文件读取多读取一行空行问题: The problem about file reading one more line</title>
-      <link>https://Jerrysmd.github.io/post/20180610cgetline/cgetline/</link>
+      <link>https://jerrysmd.github.io/post/20180610cgetline/cgetline/</link>
       <pubDate>Sun, 10 Jun 2018 21:58:13 -0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20180610cgetline/cgetline/</guid>
+      <guid>https://jerrysmd.github.io/post/20180610cgetline/cgetline/</guid>
       <description>
         
           
@@ -216,10 +216,10 @@
     
     <item>
       <title>MXML的使用: The description of mxml</title>
-      <link>https://Jerrysmd.github.io/post/20180507mxml/mxml/</link>
+      <link>https://jerrysmd.github.io/post/20180507mxml/mxml/</link>
       <pubDate>Mon, 07 May 2018 21:57:23 -0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20180507mxml/mxml/</guid>
+      <guid>https://jerrysmd.github.io/post/20180507mxml/mxml/</guid>
       <description>
         
           
@@ -232,10 +232,10 @@
     
     <item>
       <title>C语言实现HashMap: C language realize HashMap</title>
-      <link>https://Jerrysmd.github.io/post/20180405hashcode/hashcode/</link>
+      <link>https://jerrysmd.github.io/post/20180405hashcode/hashcode/</link>
       <pubDate>Thu, 05 Apr 2018 21:56:51 -0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20180405hashcode/hashcode/</guid>
+      <guid>https://jerrysmd.github.io/post/20180405hashcode/hashcode/</guid>
       <description>
         
           

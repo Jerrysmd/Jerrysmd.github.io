@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>scala on JerrysBlog</title>
-    <link>https://Jerrysmd.github.io/tags/scala/</link>
+    <link>https://jerrysmd.github.io/tags/scala/</link>
     <description>Recent content in scala on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 08 Feb 2020 10:16:17 +0800</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/scala/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 08 Feb 2020 10:16:17 +0800</lastBuildDate><atom:link href="https://jerrysmd.github.io/tags/scala/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Scala Introduction</title>
-      <link>https://Jerrysmd.github.io/post/20200208scalaintroduction/scalaintroduction/</link>
+      <link>https://jerrysmd.github.io/post/20200208scalaintroduction/scalaintroduction/</link>
       <pubDate>Sat, 08 Feb 2020 10:16:17 +0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20200208scalaintroduction/scalaintroduction/</guid>
+      <guid>https://jerrysmd.github.io/post/20200208scalaintroduction/scalaintroduction/</guid>
       <description>
         
           

@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>file on JerrysBlog</title>
-    <link>https://Jerrysmd.github.io/tags/file/</link>
+    <link>https://jerrysmd.github.io/tags/file/</link>
     <description>Recent content in file on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 20 Dec 2018 18:39:37 -0700</lastBuildDate><atom:link href="https://Jerrysmd.github.io/tags/file/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 20 Dec 2018 18:39:37 -0700</lastBuildDate><atom:link href="https://jerrysmd.github.io/tags/file/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>C文件读取的高级方法：Advanced method of reading files</title>
-      <link>https://Jerrysmd.github.io/post/20181220read_binary_file/read_binary_file/</link>
+      <link>https://jerrysmd.github.io/post/20181220read_binary_file/read_binary_file/</link>
       <pubDate>Thu, 20 Dec 2018 18:39:37 -0700</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20181220read_binary_file/read_binary_file/</guid>
+      <guid>https://jerrysmd.github.io/post/20181220read_binary_file/read_binary_file/</guid>
       <description>
         
           
@@ -24,10 +24,10 @@
     
     <item>
       <title>文件读取多读取一行空行问题: The problem about file reading one more line</title>
-      <link>https://Jerrysmd.github.io/post/20180610cgetline/cgetline/</link>
+      <link>https://jerrysmd.github.io/post/20180610cgetline/cgetline/</link>
       <pubDate>Sun, 10 Jun 2018 21:58:13 -0800</pubDate>
       
-      <guid>https://Jerrysmd.github.io/post/20180610cgetline/cgetline/</guid>
+      <guid>https://jerrysmd.github.io/post/20180610cgetline/cgetline/</guid>
       <description>
         
           
