@@ -163,66 +163,23 @@
 </span></span><span class="line"><span class="ln">8</span><span class="cl"><span class="o">}</span>
 </span></span></code></pre></div><h2 id="shallow-copy">Shallow Copy</h2>
 <p>对于基本类型的的属性，浅拷贝会将属性值复制给新的对象，而对于引用类型的属性，浅拷贝会将引用复制给新的对象。而像<code>String</code>，<code>Integer</code>这些引用类型，都是不可变的，拷贝的时候会创建一份新的内存空间来存放值，并且将新的引用指向新的内存空间。不可变类型是特殊的引用类型，我们姑且认为这些被<code>final</code>标记的引用类型也是复制值。</p>
-<p>
-
-
-
-
-
-<figure>
+<p><figure>
   <picture>
 
     
       
+    <img
+      loading="lazy"
+      decoding="async"
+      alt="shallowCopy"
       
-
+        class="image_figure image_internal image_unprocessed"
+        src="/post/picture/ShallowCopy.png"
       
+      
+    />
 
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-
-        <img class="image_figure image_internal" src="https://jerrysmd.github.io/post/picture/ShallowCopy.png" alt="shallowCopy" loading="lazy" decoding="async" width="435" height="439"  />
-    
-
-  </picture>
+    <figcaption></figcaption></picture>
 </figure>
 </p>
 <p><strong>浅拷贝功能实现</strong></p>
@@ -264,66 +221,23 @@
 </span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="n">User</span><span class="o">{</span><span class="n">age</span><span class="o">=</span><span class="n">20</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">&#39;</span><span class="n">Java</span><span class="err">&#39;</span><span class="o">,</span> <span class="n">dept</span><span class="o">=</span><span class="n">Dept</span><span class="o">{</span><span class="n">deptNo</span><span class="o">=</span><span class="n">12</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">&#39;</span><span class="n">研发部</span><span class="err">&#39;</span><span class="o">}}</span>
 </span></span></code></pre></div><h2 id="deep-copy">Deep Copy</h2>
 <p>相较于浅拷贝而言，深拷贝除了会将基本类型的属性复制外，还会将引用类型的属性也会复制。</p>
-<p>
-
-
-
-
-
-<figure>
+<p><figure>
   <picture>
 
     
       
+    <img
+      loading="lazy"
+      decoding="async"
+      alt="deepCopy"
       
-
+        class="image_figure image_internal image_unprocessed"
+        src="/post/picture/DeepCopy.png"
       
+      
+    />
 
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-
-        <img class="image_figure image_internal" src="https://jerrysmd.github.io/post/picture/DeepCopy.png" alt="deepCopy" loading="lazy" decoding="async" width="435" height="467"  />
-    
-
-  </picture>
+    <figcaption></figcaption></picture>
 </figure>
 </p>
 <p>深拷贝功能实现</p>

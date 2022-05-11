@@ -141,66 +141,23 @@
 </span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="c1"></span><span class="p">};</span> 
 </span></span></code></pre></div><p>Output:</p>
 <p>​	Size of struct: 24</p>
-<p>
-
-
-
-
-
-<figure>
+<p><figure>
   <picture>
 
     
       
+    <img
+      loading="lazy"
+      decoding="async"
+      alt="Output1"
       
-
+        class="image_figure image_internal image_unprocessed"
+        src="/post/picture/struct_sizeof_ex1.png"
       
+      
+    />
 
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-
-        <img class="image_figure image_internal" src="https://jerrysmd.github.io/post/picture/struct_sizeof_ex1.png" alt="Output1" loading="lazy" decoding="async" width="300" height="154"  />
-    
-
-  </picture>
+    <figcaption></figcaption></picture>
 </figure>
 </p>
 <p>The red portion represents the padding added for data alignment and the green portion represents the struct members. In this case, x (int) is followed by z (double), which is larger in size as compared to x. Hence padding is added after x. Also, padding is needed at the end for data alignment.</p>
@@ -220,66 +177,23 @@
 </span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="c1"></span><span class="p">};</span> 
 </span></span></code></pre></div><p>Output:</p>
 <p>​	Size of struct: 16</p>
-<p>
-
-
-
-
-
-<figure>
+<p><figure>
   <picture>
 
     
       
+    <img
+      loading="lazy"
+      decoding="async"
+      alt="output2"
       
-
+        class="image_figure image_internal image_unprocessed"
+        src="/post/picture/struct_sizeof_ex2.png"
       
+      
+    />
 
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-
-        <img class="image_figure image_internal" src="https://jerrysmd.github.io/post/picture/struct_sizeof_ex2.png" alt="output2" loading="lazy" decoding="async" width="300" height="124"  />
-    
-
-  </picture>
+    <figcaption></figcaption></picture>
 </figure>
 </p>
 <p>In this case, the members of the structure are sorted in decreasing order of their sizes. Hence padding is required only at the end.</p>
@@ -299,66 +213,23 @@
 </span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="p">};</span> 
 </span></span></code></pre></div><p>Output:</p>
 <p>​	Size of struct: 16</p>
-<p>
-
-
-
-
-
-<figure>
+<p><figure>
   <picture>
 
     
       
+    <img
+      loading="lazy"
+      decoding="async"
+      alt="output3"
       
-
+        class="image_figure image_internal image_unprocessed"
+        src="/post/picture/struct_sizeof_ex3.png"
       
+      
+    />
 
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-
-        <img class="image_figure image_internal" src="https://jerrysmd.github.io/post/picture/struct_sizeof_ex3.png" alt="output3" loading="lazy" decoding="async" width="300" height="128"  />
-    
-
-  </picture>
+    <figcaption></figcaption></picture>
 </figure>
 </p>
 <p>In this case, y (short int) is followed by x (int) and hence padding is required after y. No padding is needed at the end in this case for data alignment.</p>

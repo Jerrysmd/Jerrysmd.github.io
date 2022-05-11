@@ -148,66 +148,23 @@
 <li>Spark提供了批处理（RDDs），结构化查询（DataFrame），流计算（SparkStreaming），机器学习（MLib），图计算（GraphX）等组件</li>
 <li>这些组件均是依托于通用的计算引擎RDDs而构建出，所以spark-core的RDDs是整个Spark的基础</li>
 </ul>
-<p>
-
-
-
-
-
-<figure>
+<p><figure>
   <picture>
 
     
       
+    <img
+      loading="lazy"
+      decoding="async"
+      alt="sparkStructure"
       
-
+        class="image_figure image_internal image_unprocessed"
+        src="/post/picture/sparkStructure.png"
       
+      
+    />
 
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-
-        <img class="image_figure image_internal" src="https://jerrysmd.github.io/post/picture/sparkStructure.png" alt="sparkStructure" loading="lazy" decoding="async" width="834" height="415"  />
-    
-
-  </picture>
+    <figcaption></figcaption></picture>
 </figure>
 </p>
 <p>2 Spark &amp; Hadoop</p>
@@ -249,66 +206,23 @@
 </table>
 <h2 id="spark-cluster">Spark Cluster</h2>
 <p>1 Cluster  relation</p>
-<p>
-
-
-
-
-
-<figure>
+<p><figure>
   <picture>
 
     
       
+    <img
+      loading="lazy"
+      decoding="async"
+      alt="clusterManager"
       
-
+        class="image_figure image_internal image_unprocessed"
+        src="/post/picture/clusterManager.png"
       
+      
+    />
 
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-
-        <img class="image_figure image_internal" src="https://jerrysmd.github.io/post/picture/clusterManager.png" alt="clusterManager" loading="lazy" decoding="async" width="663" height="335"  />
-    
-
-  </picture>
+    <figcaption></figcaption></picture>
 </figure>
 </p>
 <ul>
@@ -347,66 +261,23 @@
 </span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="k">val</span> <span class="n">rdd3</span> <span class="k">=</span> <span class="n">rdd2</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">item</span><span class="o">,</span><span class="mi">1</span><span class="o">))</span>
 </span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="k">val</span> <span class="n">rdd4</span> <span class="k">=</span> <span class="n">rdd3</span><span class="o">.</span><span class="n">reduceByKey</span><span class="o">((</span><span class="n">curr</span><span class="o">,</span><span class="n">agg</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">curr</span> <span class="o">+</span> <span class="n">agg</span><span class="o">)</span>
 </span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="n">rdd4</span><span class="o">.</span><span class="n">collect</span><span class="o">()</span>
-</span></span></code></pre></div><p>
-
-
-
-
-
-<figure>
+</span></span></code></pre></div><p><figure>
   <picture>
 
     
       
+    <img
+      loading="lazy"
+      decoding="async"
+      alt="sparkDemoRunProcess"
       
-
+        class="image_figure image_internal image_unprocessed"
+        src="/post/picture/sparkDemoRunProcess.png"
       
+      
+    />
 
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-
-        <img class="image_figure image_internal" src="https://jerrysmd.github.io/post/picture/sparkDemoRunProcess.png" alt="sparkDemoRunProcess" loading="lazy" decoding="async" width="1313" height="633"  />
-    
-
-  </picture>
+    <figcaption></figcaption></picture>
 </figure>
 </p>
 <p>2 Local IDEA Run</p>
@@ -489,66 +360,23 @@
 <blockquote>
 <p>RDD需要容错，可以惰性求值，可以移动计算，所以很难支持修改，显著降低问题的复杂度。</p>
 </blockquote>
-<p>
-
-
-
-
-
-<figure>
+<p><figure>
   <picture>
 
     
       
+    <img
+      loading="lazy"
+      decoding="async"
+      alt="sparkRdd"
       
-
+        class="image_figure image_internal image_unprocessed"
+        src="/post/picture/sparkRdd.png"
       
+      
+    />
 
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-
-        <img class="image_figure image_internal" src="https://jerrysmd.github.io/post/picture/sparkRdd.png" alt="sparkRdd" loading="lazy" decoding="async" width="1126" height="513"  />
-    
-
-  </picture>
+    <figcaption></figcaption></picture>
 </figure>
 </p>
 <p>4 sparkContext</p>
@@ -647,66 +475,23 @@
 <li>如何放在集群中运行?</li>
 </ol>
 <blockquote>
-<p>
-
-
-
-
-
-<figure>
+<p><figure>
   <picture>
 
     
       
+    <img
+      loading="lazy"
+      decoding="async"
+      alt="sparkPutFile2Cluster"
       
-
+        class="image_figure image_internal image_unprocessed"
+        src="/post/picture/sparkPutFile2Cluster.png"
       
+      
+    />
 
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-
-        <img class="image_figure image_internal" src="https://jerrysmd.github.io/post/picture/sparkPutFile2Cluster.png" alt="sparkPutFile2Cluster" loading="lazy" decoding="async" width="875" height="309"  />
-    
-
-  </picture>
+    <figcaption></figcaption></picture>
 </figure>
 </p>
 <p>并行计算就是同时使用多个计算资源解决一个问题，有四个要点</p>
@@ -721,66 +506,23 @@
 <li>如果放在集群中，如何对整个计算任务进行分解？</li>
 </ol>
 <blockquote>
-<p>
-
-
-
-
-
-<figure>
+<p><figure>
   <picture>
 
     
       
+    <img
+      loading="lazy"
+      decoding="async"
+      alt="sparkFile2Cluster2"
       
-
+        class="image_figure image_internal image_unprocessed"
+        src="/post/picture/sparkFile2Cluster2.png"
       
+      
+    />
 
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-
-        <img class="image_figure image_internal" src="https://jerrysmd.github.io/post/picture/sparkFile2Cluster2.png" alt="sparkFile2Cluster2" loading="lazy" decoding="async" width="1307" height="533"  />
-    
-
-  </picture>
+    <figcaption></figcaption></picture>
 </figure>
 </p>
 <p><strong>概述</strong></p>
@@ -1162,131 +904,45 @@
 </span></span><span class="line"><span class="ln">10</span><span class="cl"> <span class="kt">+-</span><span class="o">(</span><span class="err">8</span><span class="o">)</span> <span class="kt">MapPartitionsRDD</span><span class="o">[</span><span class="err">2</span><span class="o">]</span> <span class="n">at</span> <span class="n">map</span> <span class="n">at</span> <span class="n">test</span><span class="o">.</span><span class="n">scala</span><span class="k">:</span><span class="err">10</span> <span class="err">[]</span>
 </span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="kt">|</span>  <span class="kt">MapPartitionsRDD</span><span class="o">[</span><span class="err">1</span><span class="o">]</span> <span class="n">at</span> <span class="n">flatMap</span> <span class="n">at</span> <span class="n">test</span><span class="o">.</span><span class="n">scala</span><span class="k">:</span><span class="err">9</span> <span class="err">[]</span>
 </span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="kt">|</span>  <span class="kt">ParallelCollectionRDD</span><span class="o">[</span><span class="err">0</span><span class="o">]</span> <span class="n">at</span> <span class="n">parallelize</span> <span class="n">at</span> <span class="n">test</span><span class="o">.</span><span class="n">scala</span><span class="k">:</span><span class="err">6</span> <span class="err">[]</span>
-</span></span></code></pre></div><p>
-
-
-
-
-
-<figure>
+</span></span></code></pre></div><p><figure>
   <picture>
 
     
       
+    <img
+      loading="lazy"
+      decoding="async"
+      alt="RDDlogic"
       
-
+        class="image_figure image_internal image_unprocessed"
+        src="/post/20200527sparkGuide1/RDDlogic.png"
       
+      
+    />
 
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-
-        <img class="image_figure image_internal" src="https://jerrysmd.github.io/post/20200527sparkGuide1/RDDlogic.png" alt="RDDlogic" loading="lazy" decoding="async" width="597" height="227"  />
-    
-
-  </picture>
+    <figcaption></figcaption></picture>
 </figure>
 </p>
 <p><strong>物理执行图</strong></p>
 <p>当触发Action执行的时候，这一组互相依赖的RDD要被处理，所以要转化为可运行的物理执行图，调度到集群中执行。</p>
 <p>因为大部分RDD是不真正存放数据的，只是数据从中流转，所以不能直接在集群中运行RDD，要有一种pipeline的思想，需要将这组RDD转为Stage和Task，从而运行Task，优化整体执行速度。</p>
-<p>
-
-
-
-
-
-<figure>
+<p><figure>
   <picture>
 
     
       
+    <img
+      loading="lazy"
+      decoding="async"
+      alt="RDDphysic"
       
-
+        class="image_figure image_internal image_unprocessed"
+        src="/post/20200527sparkGuide1/RDDphysic.png"
       
+      
+    />
 
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-
-        <img class="image_figure image_internal" src="https://jerrysmd.github.io/post/20200527sparkGuide1/RDDphysic.png" alt="RDDphysic" loading="lazy" decoding="async" width="756" height="202"  />
-    
-
-  </picture>
+    <figcaption></figcaption></picture>
 </figure>
 </p>
 <p>小结：</p>
@@ -1353,66 +1009,23 @@
 </ul>
 </li>
 </ol>
-<p>
-
-
-
-
-
-<figure>
+<p><figure>
   <picture>
 
     
       
+    <img
+      loading="lazy"
+      decoding="async"
+      alt="sparkFlow"
       
-
+        class="image_figure image_internal image_unprocessed"
+        src="/post/20200527sparkGuide1/sparkFlow.png"
       
+      
+    />
 
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-
-        <img class="image_figure image_internal" src="https://jerrysmd.github.io/post/20200527sparkGuide1/sparkFlow.png" alt="sparkFlow" loading="lazy" decoding="async" width="1486" height="927"  />
-    
-
-  </picture>
+    <figcaption></figcaption></picture>
 </figure>
 </p>
     </div>

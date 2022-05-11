@@ -142,66 +142,23 @@
     <div class="post_body"><p>The features of large applications: high availability, high concurrency and big data. High availability: system need to provide service without interruption. High concurrency: still stable under the big access. Big data: store and manage big data well.</p>
 <h2 id="最简单的架构">最简单的架构</h2>
 <p>开始数据量少，所以只需一台服务器</p>
-<p>
-
-
-
-
-
-<figure>
+<p><figure>
   <picture>
 
     
       
+    <img
+      loading="lazy"
+      decoding="async"
+      alt="smapleArchitecture"
       
-
+        class="image_figure image_internal image_unprocessed"
+        src="/post/20200526appArchitectureDevelopment/smapleArchitecture.png"
       
+      
+    />
 
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-
-        <img class="image_figure image_internal" src="https://jerrysmd.github.io/post/20200526appArchitectureDevelopment/smapleArchitecture.png" alt="smapleArchitecture" loading="lazy" decoding="async" width="800" height="395"  />
-    
-
-  </picture>
+    <figcaption></figcaption></picture>
 </figure>
 </p>
 <p>应用程序、文件、数据库往往都部署在一台服务器上，应用程序部署在Tomcat服务器上，数据库可以使用MySQL</p>
@@ -212,130 +169,44 @@
 <li>数据库服务器需要存储大量的数据以及快速的检索，所以需磁盘的检索速度较快以及存储空间大</li>
 <li>文件服务器需要存储上传的文件，需要更大的磁盘；现在通常情况下会选择第三方的存储服务</li>
 </ul>
-<p>
-
-
-
-
-
-<figure>
+<p><figure>
   <picture>
 
     
       
+    <img
+      loading="lazy"
+      decoding="async"
+      alt="appSeparateData"
       
-
+        class="image_figure image_internal image_unprocessed"
+        src="/post/20200526appArchitectureDevelopment/appSeparateData.png"
       
+      
+    />
 
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-
-        <img class="image_figure image_internal" src="https://jerrysmd.github.io/post/20200526appArchitectureDevelopment/appSeparateData.png" alt="appSeparateData" loading="lazy" decoding="async" width="800" height="372"  />
-    
-
-  </picture>
+    <figcaption></figcaption></picture>
 </figure>
 </p>
 <h2 id="应用服务器集群">应用服务器集群</h2>
 <p>在高并发、大流量的情况下，一台服务器是肯定处理不过来的，这个时候增加服务器，部署集群提供服务，来分担每台服务器的压力。部署集群的另一个好处是可伸缩性。比如双十一增加服务器分摊流量，双十一过后再减少服务器。</p>
-<p>
-
-
-
-
-
-<figure>
+<p><figure>
   <picture>
 
     
       
+    <img
+      loading="lazy"
+      decoding="async"
+      alt="Cluster"
       
-
+        class="image_figure image_internal image_unprocessed"
+        src="/post/20200526appArchitectureDevelopment/Cluster.png"
       
+      
+    />
 
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-
-        <img class="image_figure image_internal" src="https://jerrysmd.github.io/post/20200526appArchitectureDevelopment/Cluster.png" alt="Cluster" loading="lazy" decoding="async" width="800" height="337"  />
-    
-
-  </picture>
+    <figcaption></figcaption></picture>
 </figure>
 </p>
 <p>如果应用服务器是Tomcat，那么可以部署一个Tomcat的集群，外部在部署一个负载均衡器，可以采用随机、轮询或者一致性哈希算法达将用户的请求分发到不同应用服务集群；通常选择的免费的负载均衡是nginx。在这种架构下，应用服务器的负载将不会是整个应用的瓶颈点；</p>
@@ -346,132 +217,46 @@
 </ul>
 <h2 id="缓存">缓存</h2>
 <p>根据二八原则，80%的的业务都是集中访问20%的数据，这20%的数据通常称为热点数据，但是这20%的数据占用的内存也不会小，如果每个应用服务器都存放一份，有些浪费存储空间，所以这时候需要考虑加入分布式缓存服务器（常用的是Redis）；当引入了分布式缓存服务器，再来看上面那个方案的问题，就可以解决了，把用户的会话存放到缓存服务器，不仅可以防止用户数据丢失，效率也不低；架构图如下：</p>
-<p>
-
-
-
-
-
-<figure>
+<p><figure>
   <picture>
 
     
       
+    <img
+      loading="lazy"
+      decoding="async"
+      alt="cache"
       
-
+        class="image_figure image_internal image_unprocessed"
+        src="/post/20200526appArchitectureDevelopment/cache.png"
       
+      
+    />
 
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-
-        <img class="image_figure image_internal" src="https://jerrysmd.github.io/post/20200526appArchitectureDevelopment/cache.png" alt="cache" loading="lazy" decoding="async" width="800" height="416"  />
-    
-
-  </picture>
+    <figcaption></figcaption></picture>
 </figure>
 </p>
 <p>由于分布式缓存服务器毕竟存放在远程，需要经过网络，所以取数据还是要花一点时间；本地缓存访问速度更快，但是内存空间有限，并且还会出现和应用程序争抢资源；所以这种架构搭配了分布式缓存和本地缓存，本地缓存存放少量常用热点数据，当本地缓存中没有命中时在去集中式缓存取</p>
 <p>在引进缓存之后，数据库的访问压力可以的一定的缓解</p>
 <h2 id="数据库读写分离">数据库读写分离</h2>
 <p>虽然在加入了缓存之后，部分数据可以直接走缓存，不需要访问数据库，但是任然会有一些请求，会访问数据库，比如：缓存失效，缓存未命中；当流量大的时候，数据库的访问量也不小。这时候我们需要考虑搭建数据库集群，读写分离</p>
-<p>
-
-
-
-
-
-<figure>
+<p><figure>
   <picture>
 
     
       
+    <img
+      loading="lazy"
+      decoding="async"
+      alt="rwSeparate"
       
-
+        class="image_figure image_internal image_unprocessed"
+        src="/post/20200526appArchitectureDevelopment/rwSeparate.png"
       
+      
+    />
 
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-
-        <img class="image_figure image_internal" src="https://jerrysmd.github.io/post/20200526appArchitectureDevelopment/rwSeparate.png" alt="rwSeparate" loading="lazy" decoding="async" width="800" height="460"  />
-    
-
-  </picture>
+    <figcaption></figcaption></picture>
 </figure>
 </p>
 <p>当应用服务器有写操作时，访问主库，当应用程序有读操作时，访问从库；大多数的应用都是读的操作远远大于写的操作，所以可以配置数据库一主多从来分担数据库的压力；为了让应用程序对应主库和从库无感知，通常需要引入一些读写分离的框架做一个统一的数据访问模块。</p>
@@ -483,66 +268,23 @@
 <li>减轻后端服务器的压力</li>
 </ul>
 <p>架构图如下：</p>
-<p>
-
-
-
-
-
-<figure>
+<p><figure>
   <picture>
 
     
       
+    <img
+      loading="lazy"
+      decoding="async"
+      alt="cdn"
       
-
+        class="image_figure image_internal image_unprocessed"
+        src="/post/20200526appArchitectureDevelopment/cdn.png"
       
+      
+    />
 
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-
-        <img class="image_figure image_internal" src="https://jerrysmd.github.io/post/20200526appArchitectureDevelopment/cdn.png" alt="cdn" loading="lazy" decoding="async" width="800" height="401"  />
-    
-
-  </picture>
+    <figcaption></figcaption></picture>
 </figure>
 </p>
 <p>CDN: 部署在网络提供商的机房，当用户来访问的时候，从距离用户最近的服务器返回数据，尽快呈现给用户；通常情况下在CDN中缓存的是静态资源（html,js,css），达到动静分离；但是有时候遇到了某些数据访问量特别大的时候，后端会生成静态资源放入到CDN，比如：商城的首页，每个用户进入都需要访问的页面，如果每次请求都进入到后端，那么服务器的压力肯定不小，这种情况下会把首页生成静态的文件缓存到cdn和反向代理服务器</p>
@@ -557,66 +299,23 @@
 <p>通常情况下经过了这4级缓存，能够进入到数据库的请求也不多了，很好的释放了数据库的压力</p>
 <h2 id="搜索引擎和nosql">搜索引擎和NoSQL</h2>
 <p>随着业务的不断扩大，对于数据的存储和查询的需求也越来越复杂，通常情况我们需要引入非关系型数据库，比如搜索引擎和NoSQL数据库</p>
-<p>
-
-
-
-
-
-<figure>
+<p><figure>
   <picture>
 
     
       
+    <img
+      loading="lazy"
+      decoding="async"
+      alt="NoSQL"
       
-
+        class="image_figure image_internal image_unprocessed"
+        src="/post/20200526appArchitectureDevelopment/NoSQL.png"
       
+      
+    />
 
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-
-        <img class="image_figure image_internal" src="https://jerrysmd.github.io/post/20200526appArchitectureDevelopment/NoSQL.png" alt="NoSQL" loading="lazy" decoding="async" width="800" height="483"  />
-    
-
-  </picture>
+    <figcaption></figcaption></picture>
 </figure>
 </p>
 <p>有时候我们的查询场景很复杂，需要查询很多数据表，经过一系列的计算才能完成，这时候可以考虑通过数据同步工具（比如canal）拉去数据到大数据平台，使用批处理框架离线计算，把输出的结果存放到搜索引擎或者NoSQL数据库中，应用程序直接查询计算的结果返回给用户。也有可能我们需要汇总多个表的数据做一张宽表，方便应用程序查询</p>
@@ -624,66 +323,23 @@
 <h2 id="业务纵向拆分">业务纵向拆分</h2>
 <p>互联网公司通常的宗旨是小步迭代试错快跑，当业务发展到足够大，对于单体应用想要达到这个宗旨是有难度的，随着业务的发展，应用程序越来越大，研发、维护、发布的成本也越来越大，这时候就需要考虑根据业务把单体应用拆分为多个服务，服务之间可以通过RPC远程调用和消息队列来一起完成用户的请求。</p>
 <p>由于业务的拆分，通常情况下也会相应的对数据库进行拆分，达到一个服务对应一个数据库的理想状态</p>
-<p>
-
-
-
-
-
-<figure>
+<p><figure>
   <picture>
 
     
       
+    <img
+      loading="lazy"
+      decoding="async"
+      alt="vertical"
       
-
+        class="image_figure image_internal image_unprocessed"
+        src="/post/20200526appArchitectureDevelopment/vertical.png"
       
+      
+    />
 
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        
-
-        <img class="image_figure image_internal" src="https://jerrysmd.github.io/post/20200526appArchitectureDevelopment/vertical.png" alt="vertical" loading="lazy" decoding="async" width="800" height="482"  />
-    
-
-  </picture>
+    <figcaption></figcaption></picture>
 </figure>
 </p>
 <p>引入MQ的好处：</p>
