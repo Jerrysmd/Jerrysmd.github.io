@@ -44,7 +44,12 @@ span.post_time {
 }
 
 .nav_header {
-    background-color: #1d1e20
+    background-color: rgb(29 30 32 / 90%);
+    backdrop-filter: blur(4px);
+}
+
+.nav_body.nav_body_left {
+    background-color: rgb(29 30 32 / 100%);
 }
 
 .button {
