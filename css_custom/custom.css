@@ -41,9 +41,14 @@ span.post_time {
     color: #9b9c9d
 }
 
-.nav_header {
-    background-color: hsl(220deg 5% 11%/90%);
-    backdrop-filter: saturate(200%) blur(2px)
+html[data-mode="lit"] .nav_header {
+    background-color: rgba(0,0,0,0.8);
+    backdrop-filter: saturate(180%) blur(4px);
+}
+
+html[data-mode="dim"] .nav_header {
+    background-color: rgba(0,0,0,0);
+    backdrop-filter: saturate(180%) blur(20px);
 }
 
 @media screen and (max-width:769px) {
