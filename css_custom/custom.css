@@ -55,6 +55,7 @@ html[data-mode="dim"] .nav_header {
     .nav_body {
         background-color: rgb(27 28 29);
         bottom: -9999px;
+        transition: transform 1s var(--easing);
     }
 }
 
