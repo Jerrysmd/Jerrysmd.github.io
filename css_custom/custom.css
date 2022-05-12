@@ -38,13 +38,18 @@ span.post_time {
 }
 
 .post_meta span {
-    color: #9b9c9d;
-    /* align-items: center;
-    display: inline-flex */
+    color: #9b9c9d
 }
 
-.nav_header, .nav_body_left {
-    background-color: rgb(29 30 32);
+.nav_header {
+    background-color: hsl(220deg 5% 11%/90%);
+    backdrop-filter: saturate(200%) blur(2px)
+}
+
+@media screen and (max-width:769px) {
+    .nav_body {
+        background-color: rgb(27 28 29)
+    }
 }
 
 .button {
@@ -122,5 +127,5 @@ html {
 }
 
 .sidebar_inner::before {
-    background: #ffffff00;
+    background: #ffffff00
 }
