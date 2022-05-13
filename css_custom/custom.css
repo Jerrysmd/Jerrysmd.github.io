@@ -122,7 +122,8 @@ a.nav_brand.nav_item {
     font-size: 2.4rem;
     padding: 0 16px 0 0;
     font-weight: lighter;
-    text-transform: uppercase
+    text-transform: uppercase;
+    text-shadow: none
 }
 
 .content {
