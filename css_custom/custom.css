@@ -83,7 +83,7 @@ a.button.mt-1:hover,a.excerpt_more.button:focus,a.excerpt_more.button:hover,abut
 }
 
 a.nav_item,h3.post_link a {
-    font-weight: 700;
+    font-weight: 600;
     transition: .3s cubic-bezier(.65,.05,.36,1);
     transition-property: text-shadow
 }
