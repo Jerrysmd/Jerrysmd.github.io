@@ -88,13 +88,12 @@ a.nav_item,h3.post_link a {
     transition-property: text-shadow, text-decoration
 }
 
-a.nav_item:hover a:hover {
+a.nav_item:hover {
     text-shadow: 0 0 8px #ffffff;
 }
 
 h3.post_link a:hover {
     text-decoration: underline;
-    text-shadow: 0 0 8px #ffffff;
 }
 
 a.excerpt_more.button {
