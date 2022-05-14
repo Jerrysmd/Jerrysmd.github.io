@@ -1,7 +1,7 @@
-img {
+/* img {
     height: auto;
     margin: auto
-}
+} */
 
 h3.post_link {
     margin: 0 0 5px 7px
@@ -105,7 +105,7 @@ a.excerpt_more.button {
 }
 
 h2 {
-    font-weight: 700
+    font-weight: 600
 }
 
 .post_item {
@@ -117,9 +117,9 @@ use {
     border-image: url(../images/night-moon.jpg)
 }
 
-a.nav-link:visited {
+/* a.nav-link:visited {
     color: var(--text)
-}
+} */
 
 a.nav_brand.nav_item {
     font-family: "Cascadia Code";
