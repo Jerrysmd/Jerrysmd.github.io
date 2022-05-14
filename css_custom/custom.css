@@ -55,7 +55,8 @@ html[data-mode=dim] .nav_header {
 
 .button {
     background-color: #0075d1;
-    transition:background-color, border, color .3s cubic-bezier(.46, .03, .52, .96);
+    transition: .3s cubic-bezier(.46, .03, .52, .96);
+    transition-property: background-color, border, color;
 }
 
 a.post_tag.button.button_translucent:focus,
@@ -82,7 +83,8 @@ abutton.mt-1:focus {
 a.nav_item,
 h3.post_link a {
     font-weight: 600;
-    transition: text-shadow, text-decoration .3s cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition: .3s cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition-property: text-shadow, text-decoration;
 }
 
 a.nav_item:hover {
