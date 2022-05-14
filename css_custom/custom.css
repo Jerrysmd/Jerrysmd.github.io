@@ -41,21 +41,21 @@ span.post_time {
     color: #9b9c9d
 }
 
-html[data-mode="lit"] .nav_header {
-    background-color: rgba(0,0,0,0.8);
-    backdrop-filter: saturate(180%) blur(8px);
+html[data-mode=lit] .nav_header {
+    background-color: rgba(0,0,0,.8);
+    backdrop-filter: saturate(180%) blur(8px)
 }
 
-html[data-mode="dim"] .nav_header {
-    background-color: rgb(29 30 32 / 60%);
-    backdrop-filter: saturate(180%) blur(20px);
+html[data-mode=dim] .nav_header {
+    background-color: rgb(29 30 32/60%);
+    backdrop-filter: saturate(180%) blur(20px)
 }
 
 @media screen and (max-width:769px) {
     .nav_body {
         background-color: rgb(27 28 29);
         bottom: -9999px;
-        transition: transform 1s var(--easing);
+        transition: transform 1s var(--easing)
     }
 }
 
@@ -85,15 +85,15 @@ a.button.mt-1:hover,a.excerpt_more.button:focus,a.excerpt_more.button:hover,abut
 a.nav_item,h3.post_link a {
     font-weight: 600;
     transition: .3s cubic-bezier(.65,.05,.36,1);
-    transition-property: text-shadow, text-decoration
+    transition-property: text-shadow,text-decoration
 }
 
 a.nav_item:hover {
-    text-shadow: 0 0 8px #ffffff;
+    text-shadow: 0 0 8px #fff
 }
 
 h3.post_link a:hover {
-    text-decoration: underline;
+    text-decoration: underline
 }
 
 a.excerpt_more.button {
