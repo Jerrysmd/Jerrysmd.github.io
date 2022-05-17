@@ -61,7 +61,7 @@ html[data-mode=dim] .nav_header {
 
 a.post_tag.button.button_translucent:focus,
 a.post_tag.button.button_translucent:hover {
-    background: #009688;
+    background-color: #009688;
     border: 1px solid #009688
 }
 
@@ -69,12 +69,12 @@ a.button.mt-1:hover,
 a.excerpt_more.button:focus,
 a.excerpt_more.button:hover,
 abutton.mt-1:focus {
-    background: #2196f3;
+    background-color: #2196f3;
     border: 1px solid #2196f3
 }
 
 .button_translucent {
-    background: #0077b826;
+    background-color: #0077b826;
     color: #4a9af1;
     border: 1px solid transparent;
     font-weight: 500
@@ -133,5 +133,5 @@ html {
 }
 
 .sidebar_inner::before {
-    background: #ffffff00
+    background-color: #ffffff00
 }
