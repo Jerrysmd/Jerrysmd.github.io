@@ -504,7 +504,7 @@
 <h4 id="数据流和程序流程-1">数据流和程序流程</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">数据流：web/app -&gt; Nginx -&gt; SpringBoot -&gt; MySQL -&gt; FlinkApp -&gt; Kafka(ods) -&gt; FlinkApp -&gt; Kafka(dwd)/Hbase
 </span></span><span class="line"><span class="ln">2</span><span class="cl">
-</span></span><span class="line"><span class="ln">3</span><span class="cl">程序：            mockDB -&gt; Mysql -&gt; FlinkCDC -&gt; Kafka(ZK) -&gt; BaseDBApp -&gt; Kafka/Hbase(Phoenix,)
+</span></span><span class="line"><span class="ln">3</span><span class="cl">程序：            mockDB -&gt; Mysql -&gt; FlinkCDC -&gt; Kafka(ZK) -&gt; BaseDBApp -&gt; Kafka/Hbase(Phoenix, zk, hdfs)
 </span></span></code></pre></div><h4 id="代码实现-1">代码实现</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BaseDBApp</span><span class="o">{</span>
 </span></span><span class="line"><span class="ln"> 2</span><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
