@@ -526,7 +526,17 @@
 </span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="c1"># 写过什么脚本</span>
 </span></span><span class="line"><span class="ln">11</span><span class="cl">1. 同步分发
 </span></span><span class="line"><span class="ln">12</span><span class="cl">2. 启动停止
-</span></span></code></pre></div><h3 id="hadoop-1">Hadoop</h3>
+</span></span></code></pre></div><h3 id="sqoop">sqoop</h3>
+<blockquote>
+<p>导入数据的方式：</p>
+<ul>
+<li>全量：where 1=1</li>
+<li>增量：where 创建时间 = 当天</li>
+<li>新增及变化：where 创建时间 = 当天 or 操作时间 = 当天</li>
+<li>特殊：只导入一次</li>
+</ul>
+</blockquote>
+<h3 id="hadoop-1">Hadoop</h3>
 <blockquote>
 <p>常用端口号：</p>
 <ul>
@@ -728,9 +738,9 @@
 <blockquote>
 <p>组成：（source、channel、sink、put事务、take事务）</p>
 <ol>
-<li>source：（选择taildirsource）
+<li>source：（Taildirsource）
 <ol>
-<li>断点续传、多目录</li>
+<li>优点：断点续传、多目录，实时监控</li>
 <li>Apache 1.7、CDH1.6版本产生的</li>
 <li>没有断点续传怎么办：自定义 source，读取的位置始终持久到磁盘上</li>
 <li>挂了：不会丢数据，但有可能重复数据</li>
@@ -738,8 +748,9 @@
 <li>不支持递归遍历文件夹：自定义递归</li>
 </ol>
 </li>
-<li>channel：
+<li>channel：（KafkaChannel）
 <ol>
+<li>优点：将数据写入Kafka，省了</li>
 <li>file channel 磁盘|可靠性高|性能低</li>
 <li>memory channel 内存|可靠性低|性能高</li>
 <li>kafka channel 存kafka里，kafka存在磁盘|可靠性高|性能优于 memory channel + kafka sink</li>
