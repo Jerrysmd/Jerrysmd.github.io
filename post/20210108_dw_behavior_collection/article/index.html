@@ -740,7 +740,7 @@
 <ol>
 <li>source：（Taildirsource）
 <ol>
-<li>优点：断点续传、多目录，实时监控</li>
+<li>优点：断点续传、多目录，实时监控。缺点：文件名更名(如log4j就是更名的日志框架)之后重新读取该文件造成重复。注意：让Taildirsource判断文件时只看iNode值</li>
 <li>Apache 1.7、CDH1.6版本产生的</li>
 <li>没有断点续传怎么办：自定义 source，读取的位置始终持久到磁盘上</li>
 <li>挂了：不会丢数据，但有可能重复数据</li>
@@ -750,7 +750,7 @@
 </li>
 <li>channel：（KafkaChannel）
 <ol>
-<li>优点：将数据写入Kafka，省了</li>
+<li>优点：将数据写入Kafka，省了一层sink</li>
 <li>file channel 磁盘|可靠性高|性能低</li>
 <li>memory channel 内存|可靠性低|性能高</li>
 <li>kafka channel 存kafka里，kafka存在磁盘|可靠性高|性能优于 memory channel + kafka sink</li>
