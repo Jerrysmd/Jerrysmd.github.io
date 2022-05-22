@@ -128,7 +128,7 @@
 </span>
     <span class="post_date">
       Jan 8, 2021</span>
-    <span class="post_time"> · 5 min read</span><span>&nbsp;· <a href='https://jerrysmd.github.io/tags/datawarehouse' title="datawarehouse" class="post_tag button button_translucent">datawarehouse
+    <span class="post_time"> · 6 min read</span><span>&nbsp;· <a href='https://jerrysmd.github.io/tags/datawarehouse' title="datawarehouse" class="post_tag button button_translucent">datawarehouse
         </a><a href='https://jerrysmd.github.io/tags/distribution' title="distribution" class="post_tag button button_translucent">distribution
         </a>
     </span>
@@ -802,8 +802,20 @@
 <ol>
 <li>组成：
 <ol>
-<li>producer</li>
-<li>broker</li>
+<li>producer：
+<ol>
+<li>ACK：0   1   -1</li>
+<li>拦截器，序列化器，分区器</li>
+<li>发送流程</li>
+<li>幂等性，事务</li>
+<li>分区规则： 有指定分区则发往指定分区 ；没有指定分区，则根据key值Hash；没有指定分区也没有key的时候，轮询（粘性）</li>
+</ol>
+</li>
+<li>broker：
+<ol>
+<li>Topic：副本（高可靠）；分区（高并发）</li>
+</ol>
+</li>
 <li>consumer</li>
 <li>zk：存放 broker（id, topic），consumer（相应的 offset），没有生产者信息</li>
 </ol>
