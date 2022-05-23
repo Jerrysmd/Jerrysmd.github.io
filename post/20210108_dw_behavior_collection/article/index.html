@@ -813,11 +813,20 @@
 </li>
 <li>broker：
 <ol>
-<li>Topic：副本（高可靠）</li>
+<li>Topic：副本（高可靠）
+<ol>
+<li>ISR：LEO、HW</li>
+</ol>
+</li>
 <li>分区（高并发，负载均衡，防止热点）</li>
 </ol>
 </li>
-<li>consumer</li>
+<li>consumer
+<ol>
+<li>分区分配规则</li>
+<li>offset保存：默认：__consumer_offsets主题</li>
+</ol>
+</li>
 <li>zk：存放 broker（id, topic），consumer（相应的 offset），没有生产者信息</li>
 </ol>
 </li>
