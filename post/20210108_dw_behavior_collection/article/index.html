@@ -526,7 +526,7 @@
 </span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="c1"># 写过什么脚本</span>
 </span></span><span class="line"><span class="ln">11</span><span class="cl">1. 同步分发
 </span></span><span class="line"><span class="ln">12</span><span class="cl">2. 启动停止
-</span></span></code></pre></div><h3 id="sqoop">sqoop</h3>
+</span></span></code></pre></div><h3 id="sqoop">Sqoop</h3>
 <blockquote>
 <p>导入数据的方式：</p>
 <ul>
@@ -824,7 +824,16 @@
 <li>consumer
 <ol>
 <li>分区分配规则</li>
-<li>offset保存：默认：__consumer_offsets主题</li>
+<li>offset保存：
+<ol>
+<li>默认：__consumer_offsets主题。</li>
+<li>其他：手动维护Offset（MySQL）</li>
+<li>保存数据&amp;保存Offset写到一个事物</li>
+<li>精准一次消费</li>
+<li>先保存数据后保存Offset   重复数据+幂等性（精准一次消费）</li>
+<li>先保存Offset后保存数据   丢失数据</li>
+</ol>
+</li>
 </ol>
 </li>
 <li>zk：存放 broker（id, topic），consumer（相应的 offset），没有生产者信息</li>
