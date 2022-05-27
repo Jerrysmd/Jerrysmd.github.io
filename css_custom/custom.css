@@ -77,12 +77,12 @@ abutton.mt-1:focus {
     background-color: #0077b826;
     color: #4a9af1;
     border: 1px solid transparent;
-    font-weight: 500
+/*     font-weight: 500 */
 }
 
 a.nav_item,
 h3.post_link a {
-    font-weight: 600;
+/*     font-weight: 600; */
     transition: .3s cubic-bezier(0.25, 0.1, 0.25, 1);
     transition-property: text-shadow, text-decoration;
 }
@@ -104,7 +104,7 @@ a.excerpt_more.button {
 }
 
 h2 {
-    font-weight: 600
+/*     font-weight: 600 */
 }
 
 .post_item {
@@ -129,7 +129,7 @@ a.nav_brand.nav_item {
 }
 
 html {
-    --bg: #1d1e20
+    --bg: #1d1e20;
 }
 
 .sidebar_inner::before {
