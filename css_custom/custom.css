@@ -45,13 +45,7 @@ html[data-mode=dim] .nav_header {
     backdrop-filter: saturate(180%) blur(20px)
 }
 
-@media screen and (max-width:769px) {
-    .nav_body {
-        background-color: rgb(27 28 29);
-        bottom: -9999px;
-        transition: transform 1s var(--easing)
-    }
-}
+
 
 .button {
     background-color: #0075d1;
@@ -94,8 +88,7 @@ h3.post_link a:hover {
 }
 
 a.excerpt_more.button {
-    display: none
-}
+    display: none;}
 
 .excerpt_footer .pale {
     margin: 0 0 0 6px
@@ -128,4 +121,20 @@ html {
 
 .sidebar_inner::before {
     background-color: #ffffff00
+}
+
+@media screen and (max-width:769px) {
+    .nav_body {
+        background-color: rgb(27 28 29);
+        bottom: -9999px;
+        transition: transform 1s var(--easing)
+    }
+    a.excerpt_more.button {
+        display: flex;
+        place-content: center;
+    }
+    .excerpt_header{
+        padding: 1rem 1rem 0 1rem;
+    }
+    
 }
