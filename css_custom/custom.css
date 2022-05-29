@@ -89,11 +89,6 @@ a.excerpt_more.button {
     margin-bottom: 2.5rem
 }
 
-use {
-    background-image: url(../images/sun.svg);
-    border-image: url(../images/night-moon.jpg)
-}
-
 a.nav_brand.nav_item {
     font-family: "Cascadia Code";
     font-size: 2.4rem;
@@ -110,10 +105,6 @@ html {
     --bg: #1d1e20
 }
 
-.sidebar_inner::before {
-    background-color: #ffffff00
-}
-
 @media screen and (max-width:769px) {
     .nav_body {
         background-color: rgb(27 28 29);
@@ -128,5 +119,9 @@ html {
 
     .excerpt_header {
         padding: 1rem 1rem 0
+    }
+
+    a.post_tag.button.button_translucent {
+        margin: 0.2rem;
     }
 }
