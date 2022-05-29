@@ -28,7 +28,7 @@ span.post_time {
     margin: .5rem
 }
 
-.post_meta span {
+.post_meta, .excerpt_footer {
     color: #9b9c9d
 }
 
