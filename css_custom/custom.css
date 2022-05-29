@@ -16,9 +16,7 @@ span.post_time {
     margin: 0
 }
 
-.pale p,
-img,
-p.pale {
+.pale p,img,p.pale {
     padding: 0
 }
 
@@ -26,8 +24,7 @@ p.pale {
     padding: 0 1rem .8rem
 }
 
-.post_share,
-.post_tag {
+.post_share,.post_tag {
     margin: .5rem
 }
 
@@ -36,7 +33,7 @@ p.pale {
 }
 
 html[data-mode=lit] .nav_header {
-    background-color: rgba(0, 0, 0, .8);
+    background-color: rgba(0,0,0,.8);
     backdrop-filter: saturate(180%) blur(10px)
 }
 
@@ -45,24 +42,18 @@ html[data-mode=dim] .nav_header {
     backdrop-filter: saturate(180%) blur(20px)
 }
 
-
-
 .button {
     background-color: #0075d1;
-    transition: .3s cubic-bezier(.46, .03, .52, .96);
-    transition-property: background-color, border, color;
+    transition: .3s cubic-bezier(.46,.03,.52,.96);
+    transition-property: background-color,border,color
 }
 
-a.post_tag.button.button_translucent:focus,
-a.post_tag.button.button_translucent:hover {
+a.post_tag.button.button_translucent:focus,a.post_tag.button.button_translucent:hover {
     background-color: #009688;
     border: 1px solid #009688
 }
 
-a.button.mt-1:hover,
-a.excerpt_more.button:focus,
-a.excerpt_more.button:hover,
-abutton.mt-1:focus {
+a.button.mt-1:hover,a.excerpt_more.button:focus,a.excerpt_more.button:hover,abutton.mt-1:focus {
     background-color: #2196f3;
     border: 1px solid #2196f3
 }
@@ -70,13 +61,12 @@ abutton.mt-1:focus {
 .button_translucent {
     background-color: #0077b826;
     color: #4a9af1;
-    border: 1px solid transparent;
+    border: 1px solid transparent
 }
 
-a.nav_item,
-h3.post_link a {
-    transition: .3s cubic-bezier(0.25, 0.1, 0.25, 1);
-    transition-property: text-shadow, text-decoration;
+a.nav_item,h3.post_link a {
+    transition: .3s cubic-bezier(.25,.1,.25,1);
+    transition-property: text-shadow,text-decoration
 }
 
 a.nav_item:hover {
@@ -88,7 +78,8 @@ h3.post_link a:hover {
 }
 
 a.excerpt_more.button {
-    display: none;}
+    display: none
+}
 
 .excerpt_footer .pale {
     margin: 0 0 0 6px
@@ -116,7 +107,7 @@ a.nav_brand.nav_item {
 }
 
 html {
-    --bg: #1d1e20;
+    --bg: #1d1e20
 }
 
 .sidebar_inner::before {
@@ -129,12 +120,13 @@ html {
         bottom: -9999px;
         transition: transform 1s var(--easing)
     }
+
     a.excerpt_more.button {
         display: flex;
-        place-content: center;
+        place-content: center
     }
-    .excerpt_header{
-        padding: 1rem 1rem 0 1rem;
+
+    .excerpt_header {
+        padding: 1rem 1rem 0
     }
-    
 }
