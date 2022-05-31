@@ -34,11 +34,13 @@ span.post_time {
 
 html[data-mode=lit] .nav_header {
     background-color: rgba(0,0,0,.8);
+    -webkit-backdrop-filter:saturate(180%) blur(10px);
     backdrop-filter: saturate(180%) blur(10px)
 }
 
 html[data-mode=dim] .nav_header {
     background-color: rgb(29 30 32/60%);
+    -webkit-backdrop-filter:saturate(180%) blur(20px);
     backdrop-filter: saturate(180%) blur(20px)
 }
 
@@ -95,7 +97,7 @@ use {
 }
 
 a.nav_brand.nav_item {
-    font-family: "Cascadia Code";
+    font-family: Cascadia Code,var(--font);
     font-size: 2.4rem;
     padding: 0 16px 0 0;
     font-weight: lighter;
