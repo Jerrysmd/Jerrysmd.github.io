@@ -46,6 +46,7 @@ html[data-mode=dim] .nav_header {
 
 .button {
     background-color: #0075d1;
+    -webkit-transition:.3s cubic-bezier(.46,.03,.52,.96);
     transition: .3s cubic-bezier(.46,.03,.52,.96);
     transition-property: background-color,border,color
 }
@@ -67,6 +68,7 @@ a.button.mt-1:hover,a.excerpt_more.button:focus,a.excerpt_more.button:hover,abut
 }
 
 a.nav_item,h3.post_link a {
+    -webkit-transition:.3s cubic-bezier(.25,.1,.25,1);
     transition: .3s cubic-bezier(.25,.1,.25,1);
     transition-property: text-shadow,text-decoration
 }
@@ -116,6 +118,7 @@ html {
     .nav_body {
         background-color: rgb(27 28 29);
         bottom: -9999px;
+        -webkit-transition: transform 1s var(--easing);
         transition: transform 1s var(--easing)
     }
 
