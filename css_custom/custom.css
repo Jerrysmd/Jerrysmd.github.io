@@ -111,6 +111,7 @@ a.nav_brand.nav_item {
 }
 
 html {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
     --bg: #1d1e20
 }
 
