@@ -45,7 +45,7 @@ html[data-mode=dim] .nav_header {
 }
 
 .button {
-    background-color: #0075d1;
+    /* background-color: #0075d1; */
     -webkit-transition:.3s cubic-bezier(.46,.03,.52,.96);
     transition: .3s cubic-bezier(.46,.03,.52,.96);
     transition-property: background-color,border,color
