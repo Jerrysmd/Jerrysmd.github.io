@@ -100,7 +100,7 @@ use {
 
 a.nav_brand.nav_item {
     font-family: Cascadia Code,var(--font);
-    font-size: 2.4rem;
+    font-size: 2.3rem;
     padding: 0 16px 0 0;
     font-weight: lighter;
     text-transform: uppercase
@@ -120,8 +120,8 @@ html {
     .nav_body {
         background-color: rgb(27 28 29);
         bottom: -9999px;
-        -webkit-transition: transform 1s var(--easing);
-        transition: transform 1s var(--easing)
+        -webkit-transition: transform .8s var(--easing);
+        transition: transform .8s var(--easing)
     }
 
     a.excerpt_more.button {
