@@ -137,3 +137,8 @@ html {
         margin: 0.2rem;
     }
 }
+
+@font-face {
+    font-family: Cascadia Code;
+    src: url('https://github.com/Jerrysmd/Jerrysmd.github.io/blob/master/fonts/Cascadia-Code.ttf');
+}
