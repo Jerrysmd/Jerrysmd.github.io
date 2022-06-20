@@ -131,7 +131,7 @@
 </span>
     <span class="post_date">
       Mar 8, 2021</span>
-    <span class="post_time"> · 4 min read</span><span>&nbsp;· <a href='https://jerrysmd.github.io/tags/datawarehouse/' title="datawarehouse" class="post_tag button button_translucent">datawarehouse
+    <span class="post_time"> · 3 min read</span><span>&nbsp;· <a href='https://jerrysmd.github.io/tags/datawarehouse/' title="datawarehouse" class="post_tag button button_translucent">datawarehouse
         </a><a href='https://jerrysmd.github.io/tags/distribution/' title="distribution" class="post_tag button button_translucent">distribution
         </a><a href='https://jerrysmd.github.io/tags/flink/' title="flink" class="post_tag button button_translucent">flink
         </a>
@@ -223,10 +223,10 @@
 </span></span><span class="line"><span class="ln">10</span><span class="cl">                       <span class="nd">@RequestParam</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">,</span> <span class="n">defaultValue</span> <span class="o">=</span> <span class="s">&#34;18&#34;</span><span class="o">)</span> <span class="kt">int</span> <span class="n">age</span><span class="o">){</span>
 </span></span><span class="line"><span class="ln">11</span><span class="cl">        <span class="k">return</span> <span class="s">&#34;success&#34;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="n">age</span><span class="o">;</span>
 </span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="ln">13</span><span class="cl">    
+</span></span><span class="line"><span class="ln">13</span><span class="cl">  
 </span></span><span class="line"><span class="ln">14</span><span class="cl">    <span class="nd">@Autowired</span> <span class="c1">//自动注入
 </span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="c1"></span>    <span class="kd">private</span> <span class="n">KafkaTemplate</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">kafkaTemplate</span><span class="o">;</span>
-</span></span><span class="line"><span class="ln">16</span><span class="cl">    
+</span></span><span class="line"><span class="ln">16</span><span class="cl">  
 </span></span><span class="line"><span class="ln">17</span><span class="cl">    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&#34;applog&#34;</span><span class="o">)</span>
 </span></span><span class="line"><span class="ln">18</span><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">test2</span><span class="o">(</span><span class="nd">@RequestParam</span><span class="o">(</span><span class="s">&#34;param&#34;</span><span class="o">)</span> <span class="n">String</span> <span class="n">jsonStr</span><span class="o">){</span>
 </span></span><span class="line"><span class="ln">19</span><span class="cl">        <span class="c1">//sparkmall-mock：模拟生成数据模块
@@ -513,21 +513,13 @@
 <blockquote>
 <p>优点</p>
 <ul>
-<li>
-<p>支持SQL接口</p>
-</li>
-<li>
-<p>支持自动维护二级索引</p>
-</li>
+<li>支持SQL接口</li>
+<li>支持自动维护二级索引</li>
 </ul>
 <p>缺点</p>
 <ul>
-<li>
-<p>SQL支持的语法不全面</p>
-</li>
-<li>
-<p>Bug比较多</p>
-</li>
+<li>SQL支持的语法不全面</li>
+<li>Bug比较多</li>
 </ul>
 </blockquote>
 <h4 id="实现动态分流方案">实现动态分流方案</h4>
@@ -954,7 +946,7 @@
 
 <script type="text/javascript" src="https://jerrysmd.github.io/en/js/bundle.2620573b990aa96d9f86860ad9317c42f2f47af20d87d393a400fad746783e11f8a3d82b69a276891663df1162dffdca17b7b940c2727973a85f57a8b678c09a.js" integrity="sha512-JiBXO5kKqW2fhoYK2TF8QvL0evINh9OTpAD610Z4PhH4o9graaJ2iRZj3xFi3/3KF7e5QMJyeXOoX1eotnjAmg==" crossorigin="anonymous"></script>
 
-  <script src="https://jerrysmd.github.io/js/search.min.6767732f0d8376e0195bfdd536476d8ce8a85add29b570eb6042246dff55d1d29e647ff7233ac8d83efafeee73340b982d4f1315e0e5cf87f956aaa945b5c0b4.js"></script>
+  <script src="https://jerrysmd.github.io/js/search.min.c627ab876c70b15e3317a5a8d5ffc2ee41afd402f8cec1ec0fc7d89fd756a9f5b4aa6977b32e518ceb43af4fc09bab789b36c8ff61d209898f7e4d815115583a.js"></script>
 
   </body>
 </html>
