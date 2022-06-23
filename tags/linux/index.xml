@@ -8,10 +8,10 @@
     <lastBuildDate>Mon, 04 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://jerrysmd.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GDB调试: GDB debug guide</title>
-      <link>https://jerrysmd.github.io/post/20190304gdb_debug/gdb_debug/</link>
+      <link>https://jerrysmd.github.io/post/20190304_gdb_debug/gdb_debug/</link>
       <pubDate>Mon, 04 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://jerrysmd.github.io/post/20190304gdb_debug/gdb_debug/</guid>
+      <guid>https://jerrysmd.github.io/post/20190304_gdb_debug/gdb_debug/</guid>
       <description>
         
           
@@ -24,10 +24,10 @@
     
     <item>
       <title>大页内存: HugePages</title>
-      <link>https://jerrysmd.github.io/post/20190203hugepages/hugepages/</link>
+      <link>https://jerrysmd.github.io/post/20190203_hugepages/hugepages/</link>
       <pubDate>Sun, 03 Feb 2019 13:04:09 -0800</pubDate>
       
-      <guid>https://jerrysmd.github.io/post/20190203hugepages/hugepages/</guid>
+      <guid>https://jerrysmd.github.io/post/20190203_hugepages/hugepages/</guid>
       <description>
         
           

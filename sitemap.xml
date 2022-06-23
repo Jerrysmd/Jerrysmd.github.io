@@ -83,43 +83,43 @@
     <loc>https://jerrysmd.github.io/post/20201026_hbase_optimize/article/</loc>
     <lastmod>2020-10-26T09:14:35+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20201016hbase-rowkey-design/hbase-rowkey-design/</loc>
+    <loc>https://jerrysmd.github.io/post/20201016_hbase-rowkey-design/hbase-rowkey-design/</loc>
     <lastmod>2020-10-16T10:30:42+08:00</lastmod>
   </url><url>
     <loc>https://jerrysmd.github.io/about/</loc>
     <lastmod>2020-10-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20200911es-wildcard-search/es-wildcard-search/</loc>
+    <loc>https://jerrysmd.github.io/post/20200911_es-wildcard-search/es-wildcard-search/</loc>
     <lastmod>2020-09-11T10:57:33+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20200811yarn-clusteryarn-client/article/</loc>
+    <loc>https://jerrysmd.github.io/post/20200811_yarn-clusteryarn-client/article/</loc>
     <lastmod>2020-08-11T10:42:19+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20200803sparkguide3/sparkguide3/</loc>
+    <loc>https://jerrysmd.github.io/post/20200803_sparkguide3/sparkguide3/</loc>
     <lastmod>2020-08-03T16:10:33+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20200707sparkguide2/sparkguide2/</loc>
+    <loc>https://jerrysmd.github.io/post/20200707_sparkguide2/sparkguide2/</loc>
     <lastmod>2020-07-07T11:14:54+08:00</lastmod>
   </url><url>
     <loc>https://jerrysmd.github.io/tags/hive/</loc>
     <lastmod>2020-06-15T09:26:00+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20200615hivekeypoint/hivekeypoint/</loc>
+    <loc>https://jerrysmd.github.io/post/20200615_hivekeypoint/hivekeypoint/</loc>
     <lastmod>2020-06-15T09:26:00+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20200527sparkguide1/sparkguide1/</loc>
+    <loc>https://jerrysmd.github.io/post/20200527_sparkguide1/sparkguide1/</loc>
     <lastmod>2020-05-27T17:20:52+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20200526apparchitecturedevelopment/article/</loc>
+    <loc>https://jerrysmd.github.io/post/20200526_apparchitecturedevelopment/article/</loc>
     <lastmod>2020-05-26T17:17:50+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20200526finalkeywordinjava/finalkeywordinjava/</loc>
+    <loc>https://jerrysmd.github.io/post/20200526_finalkeywordinjava/finalkeywordinjava/</loc>
     <lastmod>2020-05-26T15:56:36+08:00</lastmod>
   </url><url>
     <loc>https://jerrysmd.github.io/tags/java/</loc>
     <lastmod>2020-05-26T15:56:36+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20200519zookeeper/zookeeper/</loc>
+    <loc>https://jerrysmd.github.io/post/20200519_zookeeper/zookeeper/</loc>
     <lastmod>2020-05-19T16:07:17+08:00</lastmod>
   </url><url>
     <loc>https://jerrysmd.github.io/tags/zookeeper/</loc>
@@ -128,10 +128,10 @@
     <loc>https://jerrysmd.github.io/tags/kafka/</loc>
     <lastmod>2020-04-27T14:21:19+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20200427kafka/kafka/</loc>
+    <loc>https://jerrysmd.github.io/post/20200427_kafka/kafka/</loc>
     <lastmod>2020-04-27T14:21:19+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20200326hdfsnfs/hdfsnfs/</loc>
+    <loc>https://jerrysmd.github.io/post/20200326_hdfsnfs/hdfsnfs/</loc>
     <lastmod>2020-03-26T11:02:36+08:00</lastmod>
   </url><url>
     <loc>https://jerrysmd.github.io/tags/nfs/</loc>
@@ -140,10 +140,10 @@
     <loc>https://jerrysmd.github.io/tags/scala/</loc>
     <lastmod>2020-02-08T10:16:17+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20200208scalaintroduction/scalaintroduction/</loc>
+    <loc>https://jerrysmd.github.io/post/20200208_scalaintroduction/scalaintroduction/</loc>
     <lastmod>2020-02-08T10:16:17+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20200122javastatic/javastatic/</loc>
+    <loc>https://jerrysmd.github.io/post/20200122_javastatic/javastatic/</loc>
     <lastmod>2020-01-22T11:20:11+08:00</lastmod>
   </url><url>
     <loc>https://jerrysmd.github.io/tags/interview/</loc>
@@ -158,10 +158,10 @@
     <loc>https://jerrysmd.github.io/tags/leetcode/</loc>
     <lastmod>2020-01-01T10:57:11+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20200101leetcode/leetcode/</loc>
+    <loc>https://jerrysmd.github.io/post/20200101_leetcode/leetcode/</loc>
     <lastmod>2020-01-01T10:57:11+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20191229copyinjava/copyinjava/</loc>
+    <loc>https://jerrysmd.github.io/post/20191229_copyinjava/copyinjava/</loc>
     <lastmod>2019-12-29T22:14:03+08:00</lastmod>
   </url><url>
     <loc>https://jerrysmd.github.io/tags/graduation/</loc>
@@ -176,22 +176,22 @@
     <loc>https://jerrysmd.github.io/tags/git/</loc>
     <lastmod>2019-11-26T11:22:47+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20191126gitcontribution/gitcontribution/</loc>
+    <loc>https://jerrysmd.github.io/post/20191126_gitcontribution/gitcontribution/</loc>
     <lastmod>2019-11-26T11:22:47+08:00</lastmod>
   </url><url>
     <loc>https://jerrysmd.github.io/tags/c/</loc>
     <lastmod>2019-10-07T09:11:47+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20191007u32/u32/</loc>
+    <loc>https://jerrysmd.github.io/post/20191007_u32/u32/</loc>
     <lastmod>2019-10-07T09:11:47+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20190825structsize/structsize/</loc>
+    <loc>https://jerrysmd.github.io/post/20190825_structsize/structsize/</loc>
     <lastmod>2019-08-25T14:38:34+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20190717typedef/typedef/</loc>
+    <loc>https://jerrysmd.github.io/post/20190717_typedef/typedef/</loc>
     <lastmod>2019-07-17T09:22:18+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20190611conditionalcompilation/conditionalcompilation/</loc>
+    <loc>https://jerrysmd.github.io/post/20190611_conditionalcompilation/conditionalcompilation/</loc>
     <lastmod>2019-06-11T10:42:49+08:00</lastmod>
   </url><url>
     <loc>https://jerrysmd.github.io/archives/</loc>
@@ -200,55 +200,55 @@
     <loc>https://jerrysmd.github.io/tags/python/</loc>
     <lastmod>2019-05-10T09:34:11+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20190510pythonintroduction/pythonintroduction/</loc>
+    <loc>https://jerrysmd.github.io/post/20190510_pythonintroduction/pythonintroduction/</loc>
     <lastmod>2019-05-10T09:34:11+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20190409cperformanceoptimization/cperformanceoptimization/</loc>
+    <loc>https://jerrysmd.github.io/post/20190409_cperformanceoptimization/cperformanceoptimization/</loc>
     <lastmod>2019-04-09T20:04:00+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20190304gdb_debug/gdb_debug/</loc>
+    <loc>https://jerrysmd.github.io/post/20190304_gdb_debug/gdb_debug/</loc>
     <lastmod>2019-03-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jerrysmd.github.io/tags/linux/</loc>
     <lastmod>2019-03-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20190203hugepages/hugepages/</loc>
+    <loc>https://jerrysmd.github.io/post/20190203_hugepages/hugepages/</loc>
     <lastmod>2019-02-03T13:04:09-08:00</lastmod>
   </url><url>
     <loc>https://jerrysmd.github.io/tags/c&#43;&#43;/</loc>
     <lastmod>2019-01-25T22:01:19-08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20190125dynamicstaticlinklibrary/dynamicstaticlinklibrary/</loc>
+    <loc>https://jerrysmd.github.io/post/20190125_dynamicstaticlinklibrary/dynamicstaticlinklibrary/</loc>
     <lastmod>2019-01-25T22:01:19-08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20181220read_binary_file/read_binary_file/</loc>
+    <loc>https://jerrysmd.github.io/post/20181220_read_binary_file/read_binary_file/</loc>
     <lastmod>2018-12-20T18:39:37-07:00</lastmod>
   </url><url>
     <loc>https://jerrysmd.github.io/tags/file/</loc>
     <lastmod>2018-12-20T18:39:37-07:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20181118sqlcipher/sqlcipher/</loc>
+    <loc>https://jerrysmd.github.io/post/20181118_sqlcipher/sqlcipher/</loc>
     <lastmod>2018-11-18T21:58:51-08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20181017sqlintroduction/sqlintroduction/</loc>
+    <loc>https://jerrysmd.github.io/post/20181017_sqlintroduction/sqlintroduction/</loc>
     <lastmod>2018-10-17T11:52:36+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20180915makefile_cmakelist/makefile_cmakelist/</loc>
+    <loc>https://jerrysmd.github.io/post/20180915_makefile_cmakelist/makefile_cmakelist/</loc>
     <lastmod>2018-09-15T21:59:46-08:00</lastmod>
   </url><url>
     <loc>https://jerrysmd.github.io/tags/hyperscan/</loc>
     <lastmod>2018-08-12T05:42:44-07:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20180812hyperscan/hyperscan/</loc>
+    <loc>https://jerrysmd.github.io/post/20180812_hyperscan/hyperscan/</loc>
     <lastmod>2018-08-12T05:42:44-07:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20180610cgetline/cgetline/</loc>
+    <loc>https://jerrysmd.github.io/post/20180610_cgetline/cgetline/</loc>
     <lastmod>2018-06-10T21:58:13-08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20180507mxml/mxml/</loc>
+    <loc>https://jerrysmd.github.io/post/20180507_mxml/mxml/</loc>
     <lastmod>2018-05-07T21:57:23-08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20180405hashcode/hashcode/</loc>
+    <loc>https://jerrysmd.github.io/post/20180405_hashcode/hashcode/</loc>
     <lastmod>2018-04-05T21:56:51-08:00</lastmod>
   </url><url>
     <loc>https://jerrysmd.github.io/tags/hash/</loc>
