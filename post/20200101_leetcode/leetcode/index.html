@@ -2630,6 +2630,34 @@
 </span></span></span></code></pre></div></li>
 <li>
 <p>日期差1则可以相加</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="ln">1</span><span class="cl"><span class="k">select</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="n">flag</span><span class="p">,</span><span class="k">sum</span><span class="p">(</span><span class="n">days</span><span class="p">)</span><span class="o">+</span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="n">days</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t5</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="n">flag</span><span class="w">
+</span></span></span></code></pre></div></li>
+<li>
+<p>取最大值</p>
+</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>思路二：数据 lag 下移做差值</p>
+<ol>
+<li>
+<p>将每行数据下移</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="ln">1</span><span class="cl"><span class="k">select</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="n">time</span><span class="p">,</span><span class="n">lag</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">time</span><span class="p">,</span><span class="s1">&#39;1970-01-01&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">over</span><span class="p">(</span><span class="n">partition</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">time</span><span class="p">)</span><span class="w"> </span><span class="n">lagDt</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">tx</span><span class="w">
+</span></span></span></code></pre></div></li>
+<li>
+<p>做差值</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="ln">1</span><span class="cl"><span class="k">select</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="n">time</span><span class="p">,</span><span class="n">datediff</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">lagDt</span><span class="p">)</span><span class="w"> </span><span class="n">dtDiff</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t1</span><span class="w">
+</span></span></span></code></pre></div></li>
+<li>
+<p>差值为 1或2 都视为连续，大于2则为断开，分到另一组</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="ln">1</span><span class="cl"><span class="k">select</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="n">time</span><span class="p">,</span><span class="k">sum</span><span class="p">(</span><span class="k">if</span><span class="p">(</span><span class="n">dtDiff</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="n">over</span><span class="p">(</span><span class="n">partition</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">time</span><span class="p">)</span><span class="w"> </span><span class="n">flag</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t2</span><span class="w">
+</span></span></span></code></pre></div></li>
+<li>
+<p>计算每一组的最大最小值差加一</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="ln">1</span><span class="cl"><span class="k">select</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="n">flag</span><span class="p">,</span><span class="n">datediff</span><span class="p">(</span><span class="k">max</span><span class="p">(</span><span class="n">dt</span><span class="p">),</span><span class="k">min</span><span class="p">(</span><span class="n">dt</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t3</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="n">flag</span><span class="w">
+</span></span></span></code></pre></div></li>
+<li>
+<p>求连续天数的最大值</p>
 </li>
 </ol>
 </blockquote>
