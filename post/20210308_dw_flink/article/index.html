@@ -153,9 +153,11 @@
       <ul>
         <li><a href="#日志数据写入dwd层">日志数据写入DWD层</a></li>
         <li><a href="#业务数据写入dwd层">业务数据写入DWD层</a></li>
+        <li><a href="#维表层dim层">维表层DIM层</a></li>
         <li><a href="#dwd-dim-总结">DWD-DIM 总结</a></li>
       </ul>
     </li>
+    <li><a href="#dwm-数据中间层">DWM 数据中间层</a></li>
   </ul>
 </nav>
       </div>
@@ -548,7 +550,30 @@
 </span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="c1"></span>        <span class="c1">//9.启动
 </span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="c1"></span>    <span class="o">}</span>
 </span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="o">}</span>
-</span></span></code></pre></div><h3 id="dwd-dim-总结">DWD-DIM 总结</h3>
+</span></span></code></pre></div><h3 id="维表层dim层">维表层DIM层</h3>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>业务</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ODS / DWD / DIM</td>
+<td>一般与业务需求无关</td>
+</tr>
+<tr>
+<td>(离线数仓是 DWS 和 DWT) / (实时数仓是 DWM / DWS)</td>
+<td>与业务相关性非常高</td>
+</tr>
+<tr>
+<td>ADS</td>
+<td>等于业务需求</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dwd-dim-总结">DWD-DIM 总结</h3>
 <p>行为数据：DWD（Kafka）</p>
 <ol>
 <li>过滤脏数据 --&gt; 侧输出流  脏数据率</li>
@@ -581,6 +606,19 @@
 </ol>
 </li>
 </ol>
+<h2 id="dwm-数据中间层">DWM 数据中间层</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c1">// 1.过去执行环境
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="c1"></span><span class="n">StreamExecutionEnvironment</span> <span class="n">env</span> <span class="o">=</span> <span class="n">StreamExecutionEnvironment</span><span class="o">.</span><span class="na">getExecutionEnvironment</span><span class="o">();</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="n">env</span><span class="o">.</span><span class="na">setParallelism</span><span class="o">(</span><span class="n">1</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="c1">// 2.读取 kafka dwd_page_log 主题的数据
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="c1"></span><span class="n">env</span><span class="o">.</span><span class="na">addSource</span><span class="o">(</span><span class="n">MyKafkaUtil</span><span class="o">.</span><span class="na">getKafkaConsumer</span><span class="o">(</span><span class="n">sourceTopic</span><span class="o">,</span> <span class="n">groupId</span><span class="o">));</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="c1">// 3.将每行数据转换为 JSON 对象
+</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="c1"></span><span class="n">jsonObjDS</span> <span class="o">=</span> <span class="n">KafkaDS</span><span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">JSON</span><span class="o">::</span><span class="n">parseObject</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="c1">// 4.过滤数据、状态编程、只保留每天第一个数据
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="c1"></span><span class="n">keyedStream</span> <span class="o">=</span> <span class="n">jsonObjDS</span><span class="o">.</span><span class="na">keyBy</span><span class="o">(</span><span class="n">jsonObj</span> <span class="o">-&gt;</span> <span class="n">jsonObj</span><span class="o">.</span><span class="na">getJSONObject</span><span class="o">(</span><span class="s">&#34;common&#34;</span><span class="o">)).</span><span class="na">getString</span><span class="o">(</span><span class="s">&#34;mid&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="c1">// 5.将数据写入 Kafka
+</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="c1">// 6.启动
+</span></span></span></code></pre></div>
     </div>
 
 
