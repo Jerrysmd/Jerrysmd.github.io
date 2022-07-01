@@ -2,14 +2,16 @@
 <!DOCTYPE html>
 <html
   lang="en"
-  data-figures=""
+  data-figures="true"
+  
+    class="page"
   
   
     data-mode="lit"
   
   >
   <head>
-<title>leetcode | JerrysBlog</title>
+<title>Python Introduction | JerrysBlog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,22 +30,21 @@
 <meta property="og:locale" content="en" />
 
 <meta property="og:type" content="article">
-<meta name="description" content="" />
+<meta name="description" content="Article description." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
-<meta name="twitter:title" content="leetcode" />
+<meta name="twitter:title" content="Python Introduction" />
 <meta name="twitter:image" content="https://jerrysmd.github.io/images/thumbnail.png"/>
-<meta property="og:url" content="https://jerrysmd.github.io/tags/leetcode/" />
-<meta property="og:title" content="leetcode" />
-<meta property="og:description" content="" />
+<meta property="og:url" content="https://jerrysmd.github.io/post/20190510_pythonintroduction/article/" />
+<meta property="og:title" content="Python Introduction" />
+<meta property="og:description" content="Article description." />
 <meta property="og:image" content="https://jerrysmd.github.io/images/thumbnail.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://jerrysmd.github.io/icons_custom/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://jerrysmd.github.io/icons_custom/favicon-32x32.png">
 <link rel="manifest" href="https://jerrysmd.github.io/icons_custom/site.webmanifest">
 
-<link rel="canonical" href="https://jerrysmd.github.io/tags/leetcode/">
-<link rel="alternate" type="application/rss+xml" href="https://jerrysmd.github.io/tags/leetcode/index.xml" title="JerrysBlog" />
+<link rel="canonical" href="https://jerrysmd.github.io/post/20190510_pythonintroduction/article/">
 
 
 
@@ -60,7 +61,7 @@
 
   </head>
   <body
-    data-code="7"
+    data-code="40"
     data-lines="true"
     id="documentTop"
   >
@@ -118,17 +119,10 @@
 </header>
 
     <main>
-
+  
 <div class="grid-inverse wrap content">
-  <div>
-    <ul class="posts" id="posts">
-        <li class="post_item">
-  <div class="excerpt">
-    <div class="excerpt_header">
-      <h3 class="post_link">
-        <a href="https://jerrysmd.github.io/post/20200101_leetcode/leetcode/" title="Leetcode">Leetcode</a>
-      </h3>
-      
+  <article class="post_content">
+    <h1 class="post_title">Python Introduction</h1>
   <div class="post_meta">
     <span><svg class="icon">
   <title>calendar</title>
@@ -136,31 +130,241 @@
 </svg>
 </span>
     <span class="post_date">
-      Jan 1, 2020</span>
-    <span class="post_time"> · 37 min read</span><span>&nbsp;· <a href='https://jerrysmd.github.io/tags/interview/' title="interview" class="post_tag button button_translucent">interview
-        </a><a href='https://jerrysmd.github.io/tags/leetcode/' title="leetcode" class="post_tag button button_translucent">leetcode
-        </a><a href='https://jerrysmd.github.io/tags/algorithm/' title="algorithm" class="post_tag button button_translucent">algorithm
+      May 10, 2019</span>
+    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://jerrysmd.github.io/tags/python/' title="python" class="post_tag button button_translucent">python
         </a>
     </span>
   </div>
 
-    </div>
-      <div class="excerpt_footer">
-        <div class="pale">
-          
-            Algorithms are used in every part of computer science. They form the field's backbone. In computer science, an algorithm gives the computer a specific set of instructions, which allows the computer to do everything, be it running a calculator or running a rocket.
-          
-          <br>
-          <a href="https://jerrysmd.github.io/post/20200101_leetcode/leetcode/" title="Read More" class="excerpt_more button">Read More</a>
-        </div>
+      <div class="post_toc">
+        <h2>Overview</h2>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-数据类型转换">1. 数据类型转换</a></li>
+    <li><a href="#2-身份运算">2. 身份运算</a></li>
+    <li><a href="#3-成员检测运算">3. 成员检测运算</a></li>
+    <li><a href="#4-流程控制">4. 流程控制</a></li>
+    <li><a href="#5-函数">5. 函数</a></li>
+    <li><a href="#6-迭代器">6. 迭代器</a></li>
+  </ul>
+</nav>
       </div>
+    
+    <div class="post_body"><p>Python is dynamically-typed and garbage-collected. It supports multiple programming paradigms, including structured (particularly, procedural), object-oriented and functional programming. Python is often described as a &quot;batteries included&quot; language due to its comprehensive standard library.</p>
+<h2 id="1-数据类型转换">1. 数据类型转换</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">整型</th>
+<th style="text-align:center">浮点</th>
+<th style="text-align:center">bool</th>
+<th style="text-align:center">复数</th>
+<th style="text-align:center">string</th>
+<th style="text-align:center">list</th>
+<th style="text-align:center">tuple</th>
+<th style="text-align:center">set</th>
+<th style="text-align:center">dict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">整型</td>
+<td style="text-align:center">\</td>
+<td style="text-align:center">加.0</td>
+<td style="text-align:center">int(0)</td>
+<td style="text-align:center">加0j</td>
+<td style="text-align:center">任意</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">×</td>
+</tr>
+<tr>
+<td style="text-align:center">浮点</td>
+<td style="text-align:center">去小数</td>
+<td style="text-align:center">\</td>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">加0j</td>
+<td style="text-align:center">数据</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">×</td>
+</tr>
+<tr>
+<td style="text-align:center">bool</td>
+<td style="text-align:center">true1<br>false0</td>
+<td style="text-align:center">true1.0<br>false0.0</td>
+<td style="text-align:center">\</td>
+<td style="text-align:center">true1+0j</td>
+<td style="text-align:center">可以</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">×</td>
+</tr>
+<tr>
+<td style="text-align:center">复数</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">0j</td>
+<td style="text-align:center">\</td>
+<td style="text-align:center">转换</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">×</td>
+</tr>
+<tr>
+<td style="text-align:center">string</td>
+<td style="text-align:center">纯数字</td>
+<td style="text-align:center">纯数字</td>
+<td style="text-align:center">''</td>
+<td style="text-align:center">纯数&amp;+0j</td>
+<td style="text-align:center">\</td>
+<td style="text-align:center">每个字符转成每个值</td>
+<td style="text-align:center">每个字符转成每个值</td>
+<td style="text-align:center">每个字符转成每个值+去重</td>
+<td style="text-align:center">×</td>
+</tr>
+<tr>
+<td style="text-align:center">list</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">[]</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">成为</td>
+<td style="text-align:center">\</td>
+<td style="text-align:center">内容不变</td>
+<td style="text-align:center">随机+去重</td>
+<td style="text-align:center">有2个数据的二级列表</td>
+</tr>
+<tr>
+<td style="text-align:center">tuple</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">()</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">str</td>
+<td style="text-align:center">内容不变</td>
+<td style="text-align:center">\</td>
+<td style="text-align:center">随机+去重</td>
+<td style="text-align:center">有2个数据的二级列表</td>
+</tr>
+<tr>
+<td style="text-align:center">set</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">set()</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">格式</td>
+<td style="text-align:center">内容不变+随机</td>
+<td style="text-align:center">内容不变+随机</td>
+<td style="text-align:center">\</td>
+<td style="text-align:center">有2个数据的二级列表</td>
+</tr>
+<tr>
+<td style="text-align:center">dict</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">{}</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">数据</td>
+<td style="text-align:center">仅保留键</td>
+<td style="text-align:center">仅保留键</td>
+<td style="text-align:center">仅保留键</td>
+<td style="text-align:center">\</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-身份运算">2. 身份运算</h2>
+<p>判断地址是否相同</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">x</span> <span class="ow">is</span> <span class="n">y</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">y</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="mf">1.</span><span class="n">字符串</span><span class="err">：</span><span class="n">字符串值相同</span><span class="err">，</span><span class="n">ID相同</span><span class="err">。</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="mf">2.</span><span class="n">列表</span><span class="err">、</span><span class="n">字典</span><span class="err">、</span><span class="n">集合</span><span class="err">：</span><span class="n">无论什么情况ID都不同</span>
+</span></span></code></pre></div><h2 id="3-成员检测运算">3. 成员检测运算</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">val1</span> <span class="ow">in</span> <span class="n">val2</span> 
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">val1</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">val2</span> 
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="o">//</span><span class="n">检测一个数据是否在容器中</span>
+</span></span></code></pre></div><h2 id="4-流程控制">4. 流程控制</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="mf">1.</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="k">if</span> <span class="n">___</span><span class="p">:</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="k">elif</span> <span class="n">___</span><span class="p">:</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="k">elif</span> <span class="n">___</span><span class="p">:</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="mf">2.</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="k">while</span> <span class="n">___</span><span class="p">:</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="mf">3.</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">容器</span><span class="p">:</span>
+</span></span></code></pre></div><h2 id="5-函数">5. 函数</h2>
+<table>
+<thead>
+<tr>
+<th>def</th>
+<th>func(</th>
+<th>name,</th>
+<th>sex = &quot;male&quot;,</th>
+<th>*args,</th>
+<th>like = &quot;乒乓&quot;,</th>
+<th>**kwargs);</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>↓</td>
+<td>↓</td>
+<td>↓</td>
+<td>↓</td>
+<td>↓</td>
+<td>↓</td>
+</tr>
+<tr>
+<td></td>
+<td>func(</td>
+<td>&quot;刘佳锐&quot;,</td>
+<td>&quot;男&quot;,</td>
+<td>&quot;乐色&quot;, &quot;垃圾&quot;,</td>
+<td>like = &quot;羽毛球&quot;,</td>
+<td>skin = &quot;yellow&quot;, hobby = &quot;hello&quot;)</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln">1</span><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="nb">locals</span><span class="p">())</span> <span class="o">//</span><span class="n">获取当前作用域的局部变量</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="nb">globals</span><span class="p">())</span> <span class="o">//</span><span class="n">获取当前作用域的全局变量</span>
+</span></span></code></pre></div><h2 id="6-迭代器">6. 迭代器</h2>
+<ol>
+<li>能被next()函数调用并不断返回下一个值的对象</li>
+<li>特征：迭代器会生成惰性序列，通过计算把值依次返回</li>
+<li>优点：需要数据的时候，一次取一个可以很大节省内存</li>
+<li>检测：
+<ol>
+<li>from collections import Iterable, Iterator</li>
+<li>isinstance()判断数据类型，返回bool值</li>
+<li>print(isinstance(list1,list1))</li>
+</ol>
+</li>
+<li>Iter：使用iter可把迭代数据变为迭代器</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">result</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">list1</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
+</span></span></code></pre></div>
     </div>
-  </li>
 
-      <li>
-      </li>
-    </ul>
-  </div>
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+
+
+
+  </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
     <br>
@@ -505,9 +709,8 @@
   </section>
 </aside>
 
+  
 </div>
-
-
     </main><svg width="0" height="0" class="hidden">
   <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="facebook">
     <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h151V331h-60v-90h60v-61c0-49.629 40.371-90 90-90h91v90h-91v61h91l-15 90h-76v181h121c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zm0 0"></path>
