@@ -7,6 +7,8 @@
     class="page"
   
   
+    data-mode="lit"
+  
   >
   <head>
 <title>Data Warehouse: Real-Time | JerrysBlog</title>
@@ -157,7 +159,7 @@
     </li>
     <li><a href="#dwm-数据中间层">DWM 数据中间层</a>
       <ul>
-        <li></li>
+        <li><a href="#业务数据写入dwm">业务数据写入DWM</a></li>
         <li><a href="#flink-stream-join">Flink Stream Join</a></li>
       </ul>
     </li>
@@ -610,6 +612,7 @@
 </li>
 </ol>
 <h2 id="dwm-数据中间层">DWM 数据中间层</h2>
+<h3 id="业务数据写入dwm">业务数据写入DWM</h3>
 <h4 id="数据流和程序流程-2">数据流和程序流程</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">数据流：web/app -&gt; Nginx -&gt; SpringBoot -&gt;Kafka(ods) -&gt; FlinkApp -&gt; Kafka(dwd) -&gt; [FlinkApp -&gt; Kafka(dwm)]
 </span></span><span class="line"><span class="ln">2</span><span class="cl">
