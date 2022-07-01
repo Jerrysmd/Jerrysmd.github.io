@@ -686,6 +686,50 @@
 <h4 id="优化1加入旁路缓存">优化1：加入旁路缓存</h4>
 <p>维度关联时查询维度表，先查 Redis，再查 HBASE。</p>
 <p>Redis 作为旁路缓存，订单宽表查询维度数据时先查旁路缓存。没有再查询维度数据，同时同步到旁路缓存。</p>
+<blockquote>
+<p>注意问题</p>
+<p>1.缓存要设过期时间，不然冷数据会常驻缓存浪费资源。</p>
+<p>2.要考虑维度数据是否会发生变化，如果发生变化要主动清楚缓存。</p>
+</blockquote>
+<blockquote>
+<p>缓存选型</p>
+<p>两种：堆缓存 或者 独立缓存服务(Redis, memcache)</p>
+<p><strong>堆缓存</strong>，性能好，管理性差。</p>
+<p><strong>独立缓存服务</strong>，有创建连接、网络 IO 等消耗。管理性更强，更容易扩展。</p>
+<p><strong>联合使用</strong>(LRU Cache，最近最少使用)</p>
+</blockquote>
+<p>代码实现</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RedisUtil</span><span class="o">{...}</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DimUtil</span><span class="o">{</span><span class="c1">//维度表关联
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="c1"></span>    <span class="c1">//查询 HBASE 表之前先查询 Redis
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="c1"></span>    <span class="n">Jedis</span> <span class="n">jedis</span> <span class="o">=</span> <span class="n">RedisUtil</span><span class="o">.</span><span class="na">getJedis</span><span class="o">();</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">    <span class="n">String</span> <span class="n">dimInfoJsonStr</span> <span class="o">=</span> <span class="n">jedis</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">redisKey</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    <span class="c1">// RedisKey 不用 hash 的原因：
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="c1"></span>    <span class="c1">//    1.用户数据量大，使用大量数据可能到一条 hash 上，造成热点问题。
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="c1"></span>    <span class="c1">//    2.需要设置过期时间。
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="c1"></span>    <span class="c1">// RedisKey 不用 Set 的原因：
+</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="c1"></span>    <span class="c1">//    1.查询不方便
+</span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="c1"></span>    <span class="c1">//    2.需要设置过期时间。
+</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="c1"></span>    <span class="k">if</span><span class="o">(</span><span class="n">dimInfoJsonStr</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">         <span class="c1">//归还连接
+</span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="c1"></span>    	<span class="n">jedis</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">    	<span class="c1">//重置过期时间
+</span></span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="c1"></span>    	<span class="n">jedis</span><span class="o">.</span><span class="na">expire</span><span class="o">(</span><span class="n">redisKey</span><span class="o">,</span> <span class="n">24</span> <span class="o">*</span> <span class="n">60</span> <span class="o">*</span> <span class="n">60</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">18</span><span class="cl">    	<span class="c1">//返回结果
+</span></span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="c1"></span>    	<span class="k">return</span> <span class="n">JsonObject</span><span class="o">.</span><span class="na">parseObject</span><span class="o">(</span><span class="n">dimInfoJsonStr</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">20</span><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="ln">21</span><span class="cl">    <span class="c1">//从 HBASE 拿数据
+</span></span></span><span class="line"><span class="ln">22</span><span class="cl"><span class="c1"></span>    <span class="o">....</span>
+</span></span><span class="line"><span class="ln">23</span><span class="cl">    <span class="c1">//将数据写入 Redis
+</span></span></span><span class="line"><span class="ln">24</span><span class="cl"><span class="c1"></span>    <span class="n">jedis</span><span class="o">.</span><span class="na">set</span><span class="o">();</span>
+</span></span><span class="line"><span class="ln">25</span><span class="cl">    <span class="n">jedis</span><span class="o">.</span><span class="na">expire</span><span class="o">();</span>
+</span></span><span class="line"><span class="ln">26</span><span class="cl">    <span class="n">jedis</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span></span><span class="line"><span class="ln">27</span><span class="cl">    
+</span></span><span class="line"><span class="ln">28</span><span class="cl">    <span class="k">return</span> <span class="n">dimInfoJson</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">29</span><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><h4 id="优化2异步查询">优化2：异步查询</h4>
+<p>异步查询把查询操作托管给单独的线程池完成，这样不会因为某个查询造成阻塞，单个并行可以连续发送多个请求，提高并发效率。</p>
     </div>
 
 

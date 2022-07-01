@@ -28,25 +28,24 @@ span.post_time {
     margin: .5rem
 }
 
-.post_meta, .excerpt_footer {
+.excerpt_footer,.post_meta {
     color: #9b9c9d
 }
 
 html[data-mode=lit] .nav_header {
     background-color: rgba(0,0,0,.8);
-    -webkit-backdrop-filter:saturate(180%) blur(10px);
+    -webkit-backdrop-filter: saturate(180%) blur(10px);
     backdrop-filter: saturate(180%) blur(10px)
 }
 
 html[data-mode=dim] .nav_header {
     background-color: rgb(29 30 32/60%);
-    -webkit-backdrop-filter:saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
     backdrop-filter: saturate(180%) blur(20px)
 }
 
 .button {
-    /* background-color: #0075d1; */
-    -webkit-transition:.3s cubic-bezier(.46,.03,.52,.96);
+    -webkit-transition: .3s cubic-bezier(.46,.03,.52,.96);
     transition: .3s cubic-bezier(.46,.03,.52,.96);
     transition-property: background-color,border,color
 }
@@ -68,7 +67,7 @@ a.button.mt-1:hover,a.excerpt_more.button:focus,a.excerpt_more.button:hover,abut
 }
 
 a.nav_item,h3.post_link a {
-    -webkit-transition:.3s cubic-bezier(.25,.1,.25,1);
+    -webkit-transition: .3s cubic-bezier(.25,.1,.25,1);
     transition: .3s cubic-bezier(.25,.1,.25,1);
     transition-property: text-shadow,text-decoration
 }
@@ -102,7 +101,6 @@ a.nav_brand.nav_item {
     font-family: Cascadia Code,var(--font);
     font-size: 2.3rem;
     padding: 0 16px 0 0;
-    font-weight: lighter;
     text-transform: uppercase
 }
 
@@ -111,7 +109,7 @@ a.nav_brand.nav_item {
 }
 
 html {
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
     -webkit-font-smoothing: antialiased;
     --bg: #1d1e20
 }
@@ -132,14 +130,12 @@ html {
     .excerpt_header {
         padding: 1rem 1rem 0
     }
-    
+
     a.post_tag.button.button_translucent {
-        margin: 0.2rem;
+        margin: .2rem
     }
 }
 
 @font-face {
-    font-family: Cascadia Code;
-    src: url('https://jerrysmd.github.io/fonts/CascadiaCode-ExtraLight.woff2');
-    src: url('https://jerrysmd.github.io/fonts/CascadiaCode-Light.woff2');
+    font-family:Cascadia Code;src:url(https://jerrysmd.github.io/fonts/CascadiaCode-ExtraLight.woff2)
 }
