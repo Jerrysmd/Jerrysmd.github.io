@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html
   lang="en"
-  data-figures="true"
+  data-figures=""
   
     class="page"
   
@@ -11,7 +11,7 @@
   
   >
   <head>
-<title>文件读取多读取一行空行问题: The problem about file reading one more line | JerrysBlog</title>
+<title>Using OpenStreetMap | JerrysBlog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,24 +27,25 @@
 
 
 
+  
 <meta property="og:locale" content="en" />
 
 <meta property="og:type" content="article">
-<meta name="description" content="Article description." />
+<meta name="description" content="Using Map functionality within this theme using openstreetmap" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@0x4c2">
-<meta name="twitter:title" content="文件读取多读取一行空行问题: The problem about file reading one more line" />
+<meta name="twitter:title" content="Using OpenStreetMap" />
 <meta name="twitter:image" content="https://jerrysmd.github.io/images/thumbnail.png"/>
-<meta property="og:url" content="https://jerrysmd.github.io/post/20180610_cgetline/cgetline/" />
-<meta property="og:title" content="文件读取多读取一行空行问题: The problem about file reading one more line" />
-<meta property="og:description" content="Article description." />
+<meta property="og:url" content="https://jerrysmd.github.io/map/" />
+<meta property="og:title" content="Using OpenStreetMap" />
+<meta property="og:description" content="Using Map functionality within this theme using openstreetmap" />
 <meta property="og:image" content="https://jerrysmd.github.io/images/thumbnail.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://jerrysmd.github.io/icons_custom/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://jerrysmd.github.io/icons_custom/favicon-32x32.png">
 <link rel="manifest" href="https://jerrysmd.github.io/icons_custom/site.webmanifest">
 
-<link rel="canonical" href="https://jerrysmd.github.io/post/20180610_cgetline/cgetline/">
+<link rel="canonical" href="https://jerrysmd.github.io/map/">
 
 
 
@@ -61,7 +62,7 @@
 
   </head>
   <body
-    data-code="40"
+    data-code="7"
     data-lines="true"
     id="documentTop"
   >
@@ -122,7 +123,7 @@
   
 <div class="grid-inverse wrap content">
   <article class="post_content">
-    <h1 class="post_title">文件读取多读取一行空行问题: The problem about file reading one more line</h1>
+    <h1 class="post_title">Using OpenStreetMap</h1>
   <div class="post_meta">
     <span><svg class="icon">
   <title>calendar</title>
@@ -130,63 +131,35 @@
 </svg>
 </span>
     <span class="post_date">
-      Jun 10, 2018</span>
-    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://jerrysmd.github.io/tags/c/' title="c" class="post_tag button button_translucent">c
-        </a><a href='https://jerrysmd.github.io/tags/file/' title="file" class="post_tag button button_translucent">file
-        </a>
-    </span>
+      Feb 14, 2022</span>
+    <span class="post_time"> · 0 min read</span>
   </div>
 
-      <div class="post_toc">
-        <h2>Overview</h2>
-        <nav id="TableOfContents">
-  <ul>
-    <li><a href="#1-问题原因">1. 问题原因</a>
-      <ul>
-        <li><a href="#1-问题1-文件末尾存在回车">1. 问题1: 文件末尾存在回车</a></li>
-        <li><a href="#2问题2-getlines1024n函数">2.问题2: getline(s,1024,'\n')函数</a></li>
-      </ul>
-    </li>
-    <li><a href="#2-解决方法">2. 解决方法</a>
-      <ul>
-        <li><a href="#1-fgets放到while里判断">1. fgets放到while里判断</a></li>
-        <li><a href="#2getline放到while里判断">2.getline放到while里判断</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-      </div>
-    
-    <div class="post_body"><p>getline()/get()/read()会出现多读一行的现象。造成该原因可能文件本身问题和getline()函数的问题。可以在while处判断时先判断getline()/get()/read()，如果拿到数据再处理。</p>
-<p><strong>Insert Lead paragraph here.</strong></p>
-<h2 id="1-问题原因">1. 问题原因</h2>
-<h3 id="1-问题1-文件末尾存在回车">1. 问题1: 文件末尾存在回车</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="ln">1</span><span class="cl">　　<span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">feof</span><span class="p">(</span><span class="n">fp</span><span class="p">))</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">　　<span class="p">{</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">　　	<span class="n">fgets</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="mi">256</span><span class="p">,</span><span class="n">fp</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">　　	<span class="n">j</span><span class="o">++</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl">　　<span class="p">}</span>
-</span></span></code></pre></div><p>feof（）这个函数是用来判断指针是否已经到达文件尾部的。若fp已经指向文件末尾，则feof（fp）函数值为“真”，即返回非零值；否则返回0。</p>
-<p>如果文件还有换行或者空格的时候， 他会继续循环。</p>
-<h3 id="2问题2-getlines1024n函数">2.问题2: getline(s,1024,'\n')函数</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="ln">1</span><span class="cl">　　<span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">feof</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">　　<span class="p">{</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">    　　<span class="n">infile</span><span class="p">.</span><span class="n">getline</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="sc">&#39;\n&#39;</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">　　<span class="p">}</span>
-</span></span></code></pre></div><p>最后语句<mark>infile.getline(s,1024,'\n')</mark>未读到内容，出错后，变量s的内容并没改变，程序仍可继续执行，使s中的原数据再使用了一次。</p>
-<h2 id="2-解决方法">2. 解决方法</h2>
-<h3 id="1-fgets放到while里判断">1. fgets放到while里判断</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="ln">1</span><span class="cl">　　<span class="k">while</span> <span class="p">(</span><span class="n">fgets</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="mi">256</span><span class="p">,</span><span class="n">fp</span><span class="p">))</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">　　<span class="p">{</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">　　	<span class="n">j</span><span class="o">++</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">　　<span class="p">}</span>
-</span></span></code></pre></div><h3 id="2getline放到while里判断">2.getline放到while里判断</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="ln">1</span><span class="cl">　　<span class="k">while</span><span class="p">(</span><span class="n">infile</span><span class="p">.</span><span class="n">getline</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="sc">&#39;\n&#39;</span><span class="p">))</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">　　<span class="p">{</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">　　　　<span class="p">.......</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">　　<span class="p">}</span>
-</span></span></code></pre></div><p>即infile.getline(s,1024,'\n')正确读到数据后再处理。</p>
-<p>同理，对get()/read()等都类似处理。</p>
+    <div class="post_body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<iframe class="openstreetmap" width="100%" height="600px" src="https://umap.openstreetmap.fr/en/map/demo-map_1?scaleControl=true&miniMap=false&scrollWheelZoom=true&zoomControl=true&allowEdit=false&moreControl=true&searchControl=true&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false#14/-37.7989/145.0003"></iframe>
+
+
     </div>
 
 
@@ -205,7 +178,7 @@
     
   
   <div class="search">
-    <input type="search" class="search_field form_field" placeholder='Search...' id="find" autocomplete="off" data-scope='post'>
+    <input type="search" class="search_field form_field" placeholder='Search...' id="find" autocomplete="off" data-scope=''>
     <label for="find" class="search_label"><svg class="icon">
   <title>search</title>
   <use xlink:href="#search"></use>
