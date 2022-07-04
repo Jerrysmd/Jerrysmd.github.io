@@ -16,7 +16,9 @@ span.post_time {
     margin: 0
 }
 
-.pale p,img,p.pale {
+.pale p,
+img,
+p.pale {
     padding: 0
 }
 
@@ -24,16 +26,18 @@ span.post_time {
     padding: 0 1rem .8rem
 }
 
-.post_share,.post_tag {
+.post_share,
+.post_tag {
     margin: .5rem
 }
 
-.excerpt_footer,.post_meta {
+.excerpt_footer,
+.post_meta {
     color: #9b9c9d
 }
 
 html[data-mode=lit] .nav_header {
-    background-color: rgba(0,0,0,.8);
+    background-color: rgba(0, 0, 0, .8);
     -webkit-backdrop-filter: saturate(180%) blur(10px);
     backdrop-filter: saturate(180%) blur(10px)
 }
@@ -45,17 +49,21 @@ html[data-mode=dim] .nav_header {
 }
 
 .button {
-    -webkit-transition: .3s cubic-bezier(.46,.03,.52,.96);
-    transition: .3s cubic-bezier(.46,.03,.52,.96);
-    transition-property: background-color,border,color
+    -webkit-transition: .3s cubic-bezier(.46, .03, .52, .96);
+    transition: .3s cubic-bezier(.46, .03, .52, .96);
+    transition-property: background-color, border, color
 }
 
-a.post_tag.button.button_translucent:focus,a.post_tag.button.button_translucent:hover {
+a.post_tag.button.button_translucent:focus,
+a.post_tag.button.button_translucent:hover {
     background-color: #009688;
     border: 1px solid #009688
 }
 
-a.button.mt-1:hover,a.excerpt_more.button:focus,a.excerpt_more.button:hover,abutton.mt-1:focus {
+a.button.mt-1:hover,
+a.excerpt_more.button:focus,
+a.excerpt_more.button:hover,
+abutton.mt-1:focus {
     background-color: #2196f3;
     border: 1px solid #2196f3
 }
@@ -66,10 +74,11 @@ a.button.mt-1:hover,a.excerpt_more.button:focus,a.excerpt_more.button:hover,abut
     border: 1px solid transparent
 }
 
-a.nav_item,h3.post_link a {
-    -webkit-transition: .3s cubic-bezier(.25,.1,.25,1);
-    transition: .3s cubic-bezier(.25,.1,.25,1);
-    transition-property: text-shadow,text-decoration
+a.nav_item,
+h3.post_link a {
+    -webkit-transition: .3s cubic-bezier(.25, .1, .25, 1);
+    transition: .3s cubic-bezier(.25, .1, .25, 1);
+    transition-property: text-shadow, text-decoration
 }
 
 a.nav_item:hover {
@@ -98,7 +107,7 @@ use {
 }
 
 a.nav_brand.nav_item {
-    font-family: Cascadia Code,var(--font);
+    font-family: Cascadia Code, monospace;
     font-size: 2.3rem;
     padding: 0 16px 0 0;
     font-weight: 300;
@@ -122,21 +131,19 @@ html {
         -webkit-transition: transform .8s var(--easing);
         transition: transform .8s var(--easing)
     }
-
     a.excerpt_more.button {
         display: flex;
         place-content: center
     }
-
     .excerpt_header {
         padding: 1rem 1rem 0
     }
-
     a.post_tag.button.button_translucent {
         margin: .2rem
     }
 }
 
 @font-face {
-    font-family:Cascadia Code;src:url(https://jerrysmd.github.io/fonts/CascadiaCode-ExtraLight.woff2)
+    font-family: Cascadia Code;
+    src: url(https://jerrysmd.github.io/fonts/CascadiaCode-ExtraLight.woff2)
 }

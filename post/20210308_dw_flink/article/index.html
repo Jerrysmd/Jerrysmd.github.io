@@ -131,7 +131,7 @@
 </span>
     <span class="post_date">
       Mar 8, 2021</span>
-    <span class="post_time"> · 5 min read</span><span>&nbsp;· <a href='https://jerrysmd.github.io/tags/datawarehouse/' title="datawarehouse" class="post_tag button button_translucent">datawarehouse
+    <span class="post_time"> · 6 min read</span><span>&nbsp;· <a href='https://jerrysmd.github.io/tags/datawarehouse/' title="datawarehouse" class="post_tag button button_translucent">datawarehouse
         </a><a href='https://jerrysmd.github.io/tags/distribution/' title="distribution" class="post_tag button button_translucent">distribution
         </a><a href='https://jerrysmd.github.io/tags/flink/' title="flink" class="post_tag button button_translucent">flink
         </a>
@@ -730,6 +730,37 @@
 </span></span><span class="line"><span class="ln">29</span><span class="cl"><span class="o">}</span>
 </span></span></code></pre></div><h4 id="优化2异步查询">优化2：异步查询</h4>
 <p>异步查询把查询操作托管给单独的线程池完成，这样不会因为某个查询造成阻塞，单个并行可以连续发送多个请求，提高并发效率。</p>
+<p>代价：消耗更多的 Tasks，threads、Flink-internal network connections</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DimAsyncFunction</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="n">RichAsyncFunciton</span><span class="o">&lt;</span><span class="n">T</span><span class="o">,</span> <span class="n">T</span><span class="o">&gt;{</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">    
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ThreadPoolUtil</span><span class="o">{</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">    
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="n">ThreadPoolExecutor</span> <span class="n">threadPoolExecutor</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">    <span class="kd">private</span> <span class="nf">ThreadPoolUtil</span><span class="o">(){</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">        
+</span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">    
+</span></span><span class="line"><span class="ln">13</span><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="n">ThreadPoolExecutor</span> <span class="n">getThreadPool</span><span class="o">{</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">        <span class="c1">//懒汉式-单例模式
+</span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="n">threadPoolExecutor</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">            <span class="kd">synchronized</span><span class="o">(</span><span class="n">ThreadPoolUtil</span><span class="o">.</span><span class="na">class</span><span class="o">){</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl">                <span class="k">if</span><span class="o">(</span><span class="n">threadPoolExecutor</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
+</span></span><span class="line"><span class="ln">18</span><span class="cl">                    <span class="n">threadPoolExecutor</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ThreadPoolExecutor</span><span class="o">(</span><span class="n">corePoolSize</span> <span class="o">=</span> <span class="n">8</span><span class="o">,</span>
+</span></span><span class="line"><span class="ln">19</span><span class="cl">                                                               <span class="n">maximumPoolSize</span> <span class="o">=</span> <span class="n">16</span><span class="o">,</span>
+</span></span><span class="line"><span class="ln">20</span><span class="cl">                                                               <span class="n">keepAliveTime</span> <span class="o">=</span> <span class="n">1L</span><span class="o">,</span>
+</span></span><span class="line"><span class="ln">21</span><span class="cl">                                                               <span class="n">TimUnit</span><span class="o">.</span><span class="na">MiNUTES</span><span class="o">,</span>
+</span></span><span class="line"><span class="ln">22</span><span class="cl">                                                               <span class="k">new</span> <span class="n">LinkedBlockingDeque</span><span class="o">&lt;&gt;());</span>
+</span></span><span class="line"><span class="ln">23</span><span class="cl">                <span class="o">}</span>
+</span></span><span class="line"><span class="ln">24</span><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="ln">25</span><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="ln">26</span><span class="cl">        
+</span></span><span class="line"><span class="ln">27</span><span class="cl">        <span class="k">return</span> <span class="n">threadPoolExecutor</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">28</span><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="ln">29</span><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div>
     </div>
 
 
