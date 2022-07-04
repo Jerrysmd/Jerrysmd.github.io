@@ -179,7 +179,7 @@
 </nav>
       </div>
     
-    <div class="post_body"><p>Makefile定义了一系列的规则来指定，哪些文件需要先编译，哪些文件需要后编译，哪些文件需要重新编译，甚至于进行更复杂的功能操作，因为makefile就像一个Shell脚本一样，其中也可以执行操作系统的命令。makefile带来的好处就是——“自动化编译”，整个工程完全自动编译，极大的提高了软件开发的效率。</p>
+    <div class="post_body"><p>Makefiles define a set of rules that specify which files need to be compiled first, which files need to be compiled later, which files need to be recompiled, and even more complex functional operations, because makefiles are like Shell scripts that also execute operating system commands. One of the benefits of Makefiles is that they are &quot;automatically compiled&quot;. The entire project is automatically compiled, greatly improving the efficiency of software development.</p>
 <h2 id="关于程序的编译和链接">关于程序的编译和链接</h2>
 <p>无论是C还是C++，首先要把源文件编译成中间代码文件，在Windows下也就是 .obj 文件，UNIX下是 .o 文件，即 Object File，这个动作叫做<font style= "font-weight:bold" color="purple">编译（compile）</font>。然后再把大量的Object File合成执行文件，这个动作叫作<font style= "font-weight:bold" color="purple">链接（link）。</font></p>
 <p>编译时，编译器需要的是语法的正确，函数与变量的声明的正确。对于后者，通常需要告诉编译器头文件的所在位置（头文件中应该只是声明，而定义应该放在C/C++文件中），只要所有的语法正确，编译器就可以编译出中间目标文件。一般来说，每个源文件都应该对应于一个中间目标文件（O文件或是OBJ文件）。</p>

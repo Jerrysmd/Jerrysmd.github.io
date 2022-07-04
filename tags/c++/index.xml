@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 25 Jan 2019 22:01:19 -0800</lastBuildDate><atom:link href="https://jerrysmd.github.io/tags/c++/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>动态链接和静态链接: Dynamic link library and static link library</title>
+      <title>Dynamic link library and static link library</title>
       <link>https://jerrysmd.github.io/post/20190125_dynamicstaticlinklibrary/article/</link>
       <pubDate>Fri, 25 Jan 2019 22:01:19 -0800</pubDate>
       
@@ -15,7 +15,7 @@
       <description>
         
           
-            &lt;p&gt;开发中，我们只需要知道lib是编译时需要的，dll是运行时需要的。如果要完成源代码的编译，有lib就够了。如果要使动态连接的程序运行起来，有dll就够了。本文会更加清晰的了解二者的区别、生成、使用。&lt;/p&gt;
+            &lt;p&gt;In development, we just need to know that lib is needed at compile time and DLL is needed at run time. If you want to compile source code, lib is all you need. If you want dynamically connected programs to run, you need only a DLL. This article will more clearly understand the difference, generation, use of the two.&lt;/p&gt;
           
           
         
@@ -31,7 +31,7 @@
       <description>
         
           
-            &lt;p&gt;Makefile定义了一系列的规则来指定，哪些文件需要先编译，哪些文件需要后编译，哪些文件需要重新编译，甚至于进行更复杂的功能操作，因为makefile就像一个Shell脚本一样，其中也可以执行操作系统的命令。makefile带来的好处就是——“自动化编译”，整个工程完全自动编译，极大的提高了软件开发的效率。&lt;/p&gt;
+            &lt;p&gt;Makefiles define a set of rules that specify which files need to be compiled first, which files need to be compiled later, which files need to be recompiled, and even more complex functional operations, because makefiles are like Shell scripts that also execute operating system commands. One of the benefits of Makefiles is that they are &amp;quot;automatically compiled&amp;quot;. The entire project is automatically compiled, greatly improving the efficiency of software development.&lt;/p&gt;
           
           
         
@@ -47,7 +47,7 @@
       <description>
         
           
-            &lt;p&gt;Hyperscan是一款来自于Intel的高性能的正则表达式匹配库。它是基于X86平台以PCRE为原型而开发的。在支持PCRE的大部分语法的前提下，Hyperscan增加了特定的语法和工作模式来保证其在真实网络场景下的实用性。&lt;/p&gt;
+            &lt;p&gt;Hyperscan is a high-performance regular expression matching library from Intel. It is based on the X86 platform based on PCRE prototype development. While supporting most of the syntax of PCRE, Hyperscan adds specific syntax and working modes to ensure its usefulness in real-world network scenarios.&lt;/p&gt;
           
           
         

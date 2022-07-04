@@ -11,7 +11,7 @@
   
   >
   <head>
-<title>C语言实现HashMap: C language realize HashMap | JerrysBlog</title>
+<title>C language realize HashMap | JerrysBlog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,10 +33,10 @@
 <meta name="description" content="Article description." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
-<meta name="twitter:title" content="C语言实现HashMap: C language realize HashMap" />
+<meta name="twitter:title" content="C language realize HashMap" />
 <meta name="twitter:image" content="https://jerrysmd.github.io/images/thumbnail.png"/>
 <meta property="og:url" content="https://jerrysmd.github.io/post/20180405_hashcode/hashcode/" />
-<meta property="og:title" content="C语言实现HashMap: C language realize HashMap" />
+<meta property="og:title" content="C language realize HashMap" />
 <meta property="og:description" content="Article description." />
 <meta property="og:image" content="https://jerrysmd.github.io/images/thumbnail.png" />
 
@@ -119,7 +119,7 @@
   
 <div class="grid-inverse wrap content">
   <article class="post_content">
-    <h1 class="post_title">C语言实现HashMap: C language realize HashMap</h1>
+    <h1 class="post_title">C language realize HashMap</h1>
   <div class="post_meta">
     <span><svg class="icon">
   <title>calendar</title>
@@ -150,7 +150,7 @@
 </nav>
       </div>
     
-    <div class="post_body"><p>哈希表是一种十分重要的数据结构，在很多应用场景下都有用到，本文会对哈希表原理进行简单的剖析，并使用C语言实现一个完整的HashMap。</p>
+    <div class="post_body"><p>Hash table is a very important data structure, which is useful in many application scenarios. This paper will simply analyze the principle of hash table, and use C language to achieve a complete HashMap.</p>
 <h2 id="1-什么是hashmap">1. 什么是HashMap？</h2>
 <p>存储方式主要有两种<code>线性存储</code>和<code>链式存储</code>，常见的线性存储例如数组，常见的链式存储如链表、二叉树等。哈希表的存储主干为线性存储，这也是它在理想状态(无冲突)下时间复杂度为<code>O(1)</code>的关键所在。普通线性存储的存储内容与索引地址之间没有任何的联系，只能通过索引地址推算出存储内容，不能从存储内容推算出索引地址，是一个<mark>单向不可逆</mark>的过程，而HashMap存储的是一个<mark>&lt;key, value&gt;</mark>的键值对，通过key和索引地址建立了一层关系，这层关系称之为哈希函数(或散列函数)，这样既可以通过key推算出索引地址，也可以通过推算出的索引地址直接定位到键值对，这是一个<mark>双向可逆</mark>的过程。需要注意的一点是HashMap并不直接暴露出键值对的索引地址，但是可以通过哈希函数推算出<code>HashCode</code>，其实HashCode就是真实的索引地址。</p>
 <h2 id="2-定义键值对结构">2. 定义键值对结构</h2>

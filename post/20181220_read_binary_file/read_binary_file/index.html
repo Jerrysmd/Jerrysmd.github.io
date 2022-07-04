@@ -11,7 +11,7 @@
   
   >
   <head>
-<title>C文件读取的高级方法：Advanced method of reading files | JerrysBlog</title>
+<title>The Advanced method of reading files | JerrysBlog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,10 +33,10 @@
 <meta name="description" content="read binary file to char *bytes in c." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
-<meta name="twitter:title" content="C文件读取的高级方法：Advanced method of reading files" />
+<meta name="twitter:title" content="The Advanced method of reading files" />
 <meta name="twitter:image" content="https://jerrysmd.github.io/images/thumbnail.png"/>
 <meta property="og:url" content="https://jerrysmd.github.io/post/20181220_read_binary_file/read_binary_file/" />
-<meta property="og:title" content="C文件读取的高级方法：Advanced method of reading files" />
+<meta property="og:title" content="The Advanced method of reading files" />
 <meta property="og:description" content="read binary file to char *bytes in c." />
 <meta property="og:image" content="https://jerrysmd.github.io/images/thumbnail.png" />
 
@@ -119,7 +119,7 @@
   
 <div class="grid-inverse wrap content">
   <article class="post_content">
-    <h1 class="post_title">C文件读取的高级方法：Advanced method of reading files</h1>
+    <h1 class="post_title">The Advanced method of reading files</h1>
   <div class="post_meta">
     <span><svg class="icon">
   <title>calendar</title>
@@ -151,7 +151,7 @@
 </nav>
       </div>
     
-    <div class="post_body"><p>读取二进制文件（任何文件都可以，本文以二进制为例），把二进制文件内容全部读取到char*字符串中。配合fseek()和fread()函数实现文件读取的高级方法。</p>
+    <div class="post_body"><p>Read the binary file (any file will do; this article uses binary as an example) and read the entire contents of the binary file into a char* string. With fseek() and fread() functions to achieve file reading advanced methods.</p>
 <h1 id="需求">需求</h1>
 <ul>
 <li>使用fwrite(dbdata, dblength, 1,fp)把字节流写入二进制文件。在新程序读取二进制文件遇到问题：二进制内容不能向文本一样行读取，也不知道二进制文件长度，在fread()函数中无从下手。</li>

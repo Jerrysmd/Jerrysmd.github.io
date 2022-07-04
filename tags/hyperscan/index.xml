@@ -15,7 +15,7 @@
       <description>
         
           
-            &lt;p&gt;Hyperscan是一款来自于Intel的高性能的正则表达式匹配库。它是基于X86平台以PCRE为原型而开发的。在支持PCRE的大部分语法的前提下，Hyperscan增加了特定的语法和工作模式来保证其在真实网络场景下的实用性。&lt;/p&gt;
+            &lt;p&gt;Hyperscan is a high-performance regular expression matching library from Intel. It is based on the X86 platform based on PCRE prototype development. While supporting most of the syntax of PCRE, Hyperscan adds specific syntax and working modes to ensure its usefulness in real-world network scenarios.&lt;/p&gt;
           
           
         

@@ -11,7 +11,7 @@
   
   >
   <head>
-<title>大页内存: HugePages | JerrysBlog</title>
+<title>HugePages | JerrysBlog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,10 +33,10 @@
 <meta name="description" content="Article description." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
-<meta name="twitter:title" content="大页内存: HugePages" />
+<meta name="twitter:title" content="HugePages" />
 <meta name="twitter:image" content="https://jerrysmd.github.io/images/thumbnail.png"/>
 <meta property="og:url" content="https://jerrysmd.github.io/post/20190203_hugepages/hugepages/" />
-<meta property="og:title" content="大页内存: HugePages" />
+<meta property="og:title" content="HugePages" />
 <meta property="og:description" content="Article description." />
 <meta property="og:image" content="https://jerrysmd.github.io/images/thumbnail.png" />
 
@@ -119,7 +119,7 @@
   
 <div class="grid-inverse wrap content">
   <article class="post_content">
-    <h1 class="post_title">大页内存: HugePages</h1>
+    <h1 class="post_title">HugePages</h1>
   <div class="post_meta">
     <span><svg class="icon">
   <title>calendar</title>
@@ -152,7 +152,7 @@
 </nav>
       </div>
     
-    <div class="post_body"><p>通过增大操作系统页的大小来减小页表，从而避免快表缺失。大页内存优化程序主要是针对其中的malloc机制的，意思就是分配大页，增加tlb的命中率。</p>
+    <div class="post_body"><p>Reduce page tables by increasing the size of operating system pages to avoid fast table misses. Large page memory optimizer is designed for malloc mechanism, which means allocating large pages to increase TLB hit ratio.</p>
 <h2 id="原理">原理</h2>
 <p>大页内存的原理涉及到操作系统的虚拟地址到物理地址的转换过程。操作系统为了能同时运行多个进程，会为每个进程提供一个虚拟的进程空间，在32位操作系统上，进程空间大小为4G，64位系统为2^64（实际可能小于这个值）。事实上，每个进程的进程空间都是虚拟的，这和物理地址还不一样。两个进行访问相同的虚拟地址，但是转换到物理地址之后是不同的。这个转换就通过页表来实现，涉及的知识是操作系统的分页存储管理。</p>
 <p>分页存储管理将进程的虚拟地址空间，分成若干个页，并为各页加以编号。相应地，物理内存空间也分成若干个块，同样加以编号。页和块的大小相同。</p>

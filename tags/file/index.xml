@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 20 Dec 2018 18:39:37 -0700</lastBuildDate><atom:link href="https://jerrysmd.github.io/tags/file/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>C文件读取的高级方法：Advanced method of reading files</title>
+      <title>The Advanced method of reading files</title>
       <link>https://jerrysmd.github.io/post/20181220_read_binary_file/read_binary_file/</link>
       <pubDate>Thu, 20 Dec 2018 18:39:37 -0700</pubDate>
       
@@ -15,7 +15,7 @@
       <description>
         
           
-            &lt;p&gt;读取二进制文件（任何文件都可以，本文以二进制为例），把二进制文件内容全部读取到char*字符串中。配合fseek()和fread()函数实现文件读取的高级方法。&lt;/p&gt;
+            &lt;p&gt;Read the binary file (any file will do; this article uses binary as an example) and read the entire contents of the binary file into a char* string. With fseek() and fread() functions to achieve file reading advanced methods.&lt;/p&gt;
           
           
         
@@ -23,7 +23,7 @@
     </item>
     
     <item>
-      <title>文件读取多读取一行空行问题: The problem about file reading one more line</title>
+      <title>The problem about file reading one more line</title>
       <link>https://jerrysmd.github.io/post/20180610_cgetline/cgetline/</link>
       <pubDate>Sun, 10 Jun 2018 21:58:13 -0800</pubDate>
       
@@ -31,7 +31,7 @@
       <description>
         
           
-            &lt;p&gt;getline()/get()/read()会出现多读一行的现象。造成该原因可能文件本身问题和getline()函数的问题。可以在while处判断时先判断getline()/get()/read()，如果拿到数据再处理。&lt;/p&gt;
+            &lt;p&gt;Getline ()/get()/read() will read one more line. The cause may be a problem with the file itself or the getline() function. You can judge getLine ()/get()/read() while checking, and then process the data if you get it.&lt;/p&gt;
           
           
         
