@@ -8,10 +8,10 @@
     <lastBuildDate>Mon, 07 Oct 2019 09:11:47 +0800</lastBuildDate><atom:link href="https://jerrysmd.github.io/tags/c/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Various data types in C</title>
-      <link>https://jerrysmd.github.io/post/20191007_u32/u32/</link>
+      <link>https://jerrysmd.github.io/post/20191007_u32/</link>
       <pubDate>Mon, 07 Oct 2019 09:11:47 +0800</pubDate>
       
-      <guid>https://jerrysmd.github.io/post/20191007_u32/u32/</guid>
+      <guid>https://jerrysmd.github.io/post/20191007_u32/</guid>
       <description>
         
           
@@ -24,10 +24,10 @@
     
     <item>
       <title>The size of structure in C</title>
-      <link>https://jerrysmd.github.io/post/20190825_structsize/structsize/</link>
+      <link>https://jerrysmd.github.io/post/20190825_structsize/</link>
       <pubDate>Sun, 25 Aug 2019 14:38:34 +0800</pubDate>
       
-      <guid>https://jerrysmd.github.io/post/20190825_structsize/structsize/</guid>
+      <guid>https://jerrysmd.github.io/post/20190825_structsize/</guid>
       <description>
         
           
@@ -40,10 +40,10 @@
     
     <item>
       <title>The descriptions of typedef</title>
-      <link>https://jerrysmd.github.io/post/20190717_typedef/typedef/</link>
+      <link>https://jerrysmd.github.io/post/20190717_typedef/</link>
       <pubDate>Wed, 17 Jul 2019 09:22:18 +0800</pubDate>
       
-      <guid>https://jerrysmd.github.io/post/20190717_typedef/typedef/</guid>
+      <guid>https://jerrysmd.github.io/post/20190717_typedef/</guid>
       <description>
         
           
@@ -56,10 +56,10 @@
     
     <item>
       <title>Conditional compilation directives</title>
-      <link>https://jerrysmd.github.io/post/20190611_conditionalcompilation/article/</link>
+      <link>https://jerrysmd.github.io/post/20190611_conditionalcompilation/</link>
       <pubDate>Tue, 11 Jun 2019 10:42:49 +0800</pubDate>
       
-      <guid>https://jerrysmd.github.io/post/20190611_conditionalcompilation/article/</guid>
+      <guid>https://jerrysmd.github.io/post/20190611_conditionalcompilation/</guid>
       <description>
         
           
@@ -72,10 +72,10 @@
     
     <item>
       <title>C Project performance optimization</title>
-      <link>https://jerrysmd.github.io/post/20190409_cperformanceoptimization/article/</link>
+      <link>https://jerrysmd.github.io/post/20190409_cperformanceoptimization/</link>
       <pubDate>Tue, 09 Apr 2019 20:04:00 +0800</pubDate>
       
-      <guid>https://jerrysmd.github.io/post/20190409_cperformanceoptimization/article/</guid>
+      <guid>https://jerrysmd.github.io/post/20190409_cperformanceoptimization/</guid>
       <description>
         
           
@@ -88,10 +88,10 @@
     
     <item>
       <title>GDB debug guide</title>
-      <link>https://jerrysmd.github.io/post/20190304_gdb_debug/gdb_debug/</link>
+      <link>https://jerrysmd.github.io/post/20190304_gdb_debug/</link>
       <pubDate>Mon, 04 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://jerrysmd.github.io/post/20190304_gdb_debug/gdb_debug/</guid>
+      <guid>https://jerrysmd.github.io/post/20190304_gdb_debug/</guid>
       <description>
         
           
@@ -104,10 +104,10 @@
     
     <item>
       <title>HugePages</title>
-      <link>https://jerrysmd.github.io/post/20190203_hugepages/hugepages/</link>
+      <link>https://jerrysmd.github.io/post/20190203_hugepages/</link>
       <pubDate>Sun, 03 Feb 2019 13:04:09 -0800</pubDate>
       
-      <guid>https://jerrysmd.github.io/post/20190203_hugepages/hugepages/</guid>
+      <guid>https://jerrysmd.github.io/post/20190203_hugepages/</guid>
       <description>
         
           
@@ -120,10 +120,10 @@
     
     <item>
       <title>Dynamic link library and static link library</title>
-      <link>https://jerrysmd.github.io/post/20190125_dynamicstaticlinklibrary/article/</link>
+      <link>https://jerrysmd.github.io/post/20190125_dynamicstaticlinklibrary/</link>
       <pubDate>Fri, 25 Jan 2019 22:01:19 -0800</pubDate>
       
-      <guid>https://jerrysmd.github.io/post/20190125_dynamicstaticlinklibrary/article/</guid>
+      <guid>https://jerrysmd.github.io/post/20190125_dynamicstaticlinklibrary/</guid>
       <description>
         
           
@@ -136,10 +136,10 @@
     
     <item>
       <title>The Advanced method of reading files</title>
-      <link>https://jerrysmd.github.io/post/20181220_read_binary_file/read_binary_file/</link>
+      <link>https://jerrysmd.github.io/post/20181220_read_binary_file/</link>
       <pubDate>Thu, 20 Dec 2018 18:39:37 -0700</pubDate>
       
-      <guid>https://jerrysmd.github.io/post/20181220_read_binary_file/read_binary_file/</guid>
+      <guid>https://jerrysmd.github.io/post/20181220_read_binary_file/</guid>
       <description>
         
           
@@ -152,10 +152,10 @@
     
     <item>
       <title>SQLcipher Guide</title>
-      <link>https://jerrysmd.github.io/post/20181118_sqlcipher/sqlcipher/</link>
+      <link>https://jerrysmd.github.io/post/20181118_sqlcipher/</link>
       <pubDate>Sun, 18 Nov 2018 21:58:51 -0800</pubDate>
       
-      <guid>https://jerrysmd.github.io/post/20181118_sqlcipher/sqlcipher/</guid>
+      <guid>https://jerrysmd.github.io/post/20181118_sqlcipher/</guid>
       <description>
         
           
@@ -168,10 +168,10 @@
     
     <item>
       <title>Makefile Guide</title>
-      <link>https://jerrysmd.github.io/post/20180915_makefile_cmakelist/makefile_cmakelist/</link>
+      <link>https://jerrysmd.github.io/post/20180915_makefile_cmakelist/</link>
       <pubDate>Sat, 15 Sep 2018 21:59:46 -0800</pubDate>
       
-      <guid>https://jerrysmd.github.io/post/20180915_makefile_cmakelist/makefile_cmakelist/</guid>
+      <guid>https://jerrysmd.github.io/post/20180915_makefile_cmakelist/</guid>
       <description>
         
           
@@ -184,10 +184,10 @@
     
     <item>
       <title>Hyperscan: high-performance multiple regex matching library</title>
-      <link>https://jerrysmd.github.io/post/20180812_hyperscan/hyperscan/</link>
+      <link>https://jerrysmd.github.io/post/20180812_hyperscan/</link>
       <pubDate>Sun, 12 Aug 2018 05:42:44 -0700</pubDate>
       
-      <guid>https://jerrysmd.github.io/post/20180812_hyperscan/hyperscan/</guid>
+      <guid>https://jerrysmd.github.io/post/20180812_hyperscan/</guid>
       <description>
         
           
@@ -200,10 +200,10 @@
     
     <item>
       <title>The problem about file reading one more line</title>
-      <link>https://jerrysmd.github.io/post/20180610_cgetline/cgetline/</link>
+      <link>https://jerrysmd.github.io/post/20180610_cgetline/</link>
       <pubDate>Sun, 10 Jun 2018 21:58:13 -0800</pubDate>
       
-      <guid>https://jerrysmd.github.io/post/20180610_cgetline/cgetline/</guid>
+      <guid>https://jerrysmd.github.io/post/20180610_cgetline/</guid>
       <description>
         
           
@@ -216,10 +216,10 @@
     
     <item>
       <title>The realization of the MXML</title>
-      <link>https://jerrysmd.github.io/post/20180507_mxml/mxml/</link>
+      <link>https://jerrysmd.github.io/post/20180507_mxml/</link>
       <pubDate>Mon, 07 May 2018 21:57:23 -0800</pubDate>
       
-      <guid>https://jerrysmd.github.io/post/20180507_mxml/mxml/</guid>
+      <guid>https://jerrysmd.github.io/post/20180507_mxml/</guid>
       <description>
         
           
@@ -232,10 +232,10 @@
     
     <item>
       <title>C language realize HashMap</title>
-      <link>https://jerrysmd.github.io/post/20180405_hashcode/hashcode/</link>
+      <link>https://jerrysmd.github.io/post/20180405_hashcode/</link>
       <pubDate>Thu, 05 Apr 2018 21:56:51 -0800</pubDate>
       
-      <guid>https://jerrysmd.github.io/post/20180405_hashcode/hashcode/</guid>
+      <guid>https://jerrysmd.github.io/post/20180405_hashcode/</guid>
       <description>
         
           
