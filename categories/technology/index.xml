@@ -5,13 +5,29 @@
     <link>https://jerrysmd.github.io/categories/technology/</link>
     <description>Recent content in Technology on JerrysBlog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 08 Mar 2021 10:40:49 +0800</lastBuildDate><atom:link href="https://jerrysmd.github.io/categories/technology/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 21 Mar 2021 10:04:49 +0800</lastBuildDate><atom:link href="https://jerrysmd.github.io/categories/technology/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Data Warehouse: Real-Time</title>
-      <link>https://jerrysmd.github.io/post/20210308_dw_flink/</link>
+      <title>Data Warehouse: Real-Time, part Ⅱ</title>
+      <link>https://jerrysmd.github.io/post/20210321_dw-flink-part2/</link>
+      <pubDate>Sun, 21 Mar 2021 10:04:49 +0800</pubDate>
+      
+      <guid>https://jerrysmd.github.io/post/20210321_dw-flink-part2/</guid>
+      <description>
+        
+          
+            &lt;p&gt;Data warehouse is a system that pulls together data derived from operational systems and external data sources within an organization for reporting and analysis. A data warehouse is a central repository of information that provides users with current and historical decision support information.&lt;/p&gt;
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Data Warehouse: Real-Time, part Ⅰ</title>
+      <link>https://jerrysmd.github.io/post/20210308_dw-flink/</link>
       <pubDate>Mon, 08 Mar 2021 10:40:49 +0800</pubDate>
       
-      <guid>https://jerrysmd.github.io/post/20210308_dw_flink/</guid>
+      <guid>https://jerrysmd.github.io/post/20210308_dw-flink/</guid>
       <description>
         
           
@@ -24,10 +40,10 @@
     
     <item>
       <title>Tensorflow Identify Simple Captcha</title>
-      <link>https://jerrysmd.github.io/post/20210204_tensorflow_captcha/</link>
+      <link>https://jerrysmd.github.io/post/20210204_tensorflow-captcha/</link>
       <pubDate>Thu, 04 Feb 2021 07:10:16 +0800</pubDate>
       
-      <guid>https://jerrysmd.github.io/post/20210204_tensorflow_captcha/</guid>
+      <guid>https://jerrysmd.github.io/post/20210204_tensorflow-captcha/</guid>
       <description>
         
           
@@ -40,10 +56,10 @@
     
     <item>
       <title>Data Warehouse: Offline</title>
-      <link>https://jerrysmd.github.io/post/20210108_dw_behavior_collection/</link>
+      <link>https://jerrysmd.github.io/post/20210108_dw-behavior-collection/</link>
       <pubDate>Fri, 08 Jan 2021 09:43:01 +0800</pubDate>
       
-      <guid>https://jerrysmd.github.io/post/20210108_dw_behavior_collection/</guid>
+      <guid>https://jerrysmd.github.io/post/20210108_dw-behavior-collection/</guid>
       <description>
         
           
@@ -56,10 +72,10 @@
     
     <item>
       <title>Parquet Format</title>
-      <link>https://jerrysmd.github.io/post/20201215_parquet_format/</link>
+      <link>https://jerrysmd.github.io/post/20201215_parquet-format/</link>
       <pubDate>Tue, 15 Dec 2020 10:47:59 +0800</pubDate>
       
-      <guid>https://jerrysmd.github.io/post/20201215_parquet_format/</guid>
+      <guid>https://jerrysmd.github.io/post/20201215_parquet-format/</guid>
       <description>
         
           
@@ -72,10 +88,10 @@
     
     <item>
       <title>Clickhouse Introduction</title>
-      <link>https://jerrysmd.github.io/post/20201107_clickhouse_intro/</link>
+      <link>https://jerrysmd.github.io/post/20201107_clickhouse-intro/</link>
       <pubDate>Sat, 07 Nov 2020 14:55:59 +0800</pubDate>
       
-      <guid>https://jerrysmd.github.io/post/20201107_clickhouse_intro/</guid>
+      <guid>https://jerrysmd.github.io/post/20201107_clickhouse-intro/</guid>
       <description>
         
           
@@ -88,10 +104,10 @@
     
     <item>
       <title>Hbase Optimize</title>
-      <link>https://jerrysmd.github.io/post/20201026_hbase_optimize/</link>
+      <link>https://jerrysmd.github.io/post/20201026_hbase-optimize/</link>
       <pubDate>Mon, 26 Oct 2020 09:14:35 +0800</pubDate>
       
-      <guid>https://jerrysmd.github.io/post/20201026_hbase_optimize/</guid>
+      <guid>https://jerrysmd.github.io/post/20201026_hbase-optimize/</guid>
       <description>
         
           
@@ -488,10 +504,10 @@
     
     <item>
       <title>GDB debug guide</title>
-      <link>https://jerrysmd.github.io/post/20190304_gdb_debug/</link>
+      <link>https://jerrysmd.github.io/post/20190304_gdb-debug/</link>
       <pubDate>Mon, 04 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://jerrysmd.github.io/post/20190304_gdb_debug/</guid>
+      <guid>https://jerrysmd.github.io/post/20190304_gdb-debug/</guid>
       <description>
         
           
@@ -536,10 +552,10 @@
     
     <item>
       <title>The Advanced method of reading files</title>
-      <link>https://jerrysmd.github.io/post/20181220_read_binary_file/</link>
+      <link>https://jerrysmd.github.io/post/20181220_read-binary-file/</link>
       <pubDate>Thu, 20 Dec 2018 18:39:37 -0700</pubDate>
       
-      <guid>https://jerrysmd.github.io/post/20181220_read_binary_file/</guid>
+      <guid>https://jerrysmd.github.io/post/20181220_read-binary-file/</guid>
       <description>
         
           
@@ -584,10 +600,10 @@
     
     <item>
       <title>Makefile Guide</title>
-      <link>https://jerrysmd.github.io/post/20180915_makefile_cmakelist/</link>
+      <link>https://jerrysmd.github.io/post/20180915_makefile-cmakelist/</link>
       <pubDate>Sat, 15 Sep 2018 21:59:46 -0800</pubDate>
       
-      <guid>https://jerrysmd.github.io/post/20180915_makefile_cmakelist/</guid>
+      <guid>https://jerrysmd.github.io/post/20180915_makefile-cmakelist/</guid>
       <description>
         
           

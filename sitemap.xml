@@ -32,7 +32,7 @@
     <loc>https://jerrysmd.github.io/tags/beijing/</loc>
     <lastmod>2021-12-18T10:01:20+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20211218_2021_summary_video/</loc>
+    <loc>https://jerrysmd.github.io/post/20211218_2021-summary-video/</loc>
     <lastmod>2021-12-18T10:01:20+08:00</lastmod>
   </url><url>
     <loc>https://jerrysmd.github.io/tags/shanghai/</loc>
@@ -41,19 +41,22 @@
     <loc>https://jerrysmd.github.io/tags/video/</loc>
     <lastmod>2021-12-18T10:01:20+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20210308_dw_flink/</loc>
-    <lastmod>2021-03-08T10:40:49+08:00</lastmod>
+    <loc>https://jerrysmd.github.io/post/20210321_dw-flink-part2/</loc>
+    <lastmod>2021-03-21T10:04:49+08:00</lastmod>
   </url><url>
     <loc>https://jerrysmd.github.io/tags/datawarehouse/</loc>
-    <lastmod>2021-03-08T10:40:49+08:00</lastmod>
+    <lastmod>2021-03-21T10:04:49+08:00</lastmod>
   </url><url>
     <loc>https://jerrysmd.github.io/tags/distribution/</loc>
-    <lastmod>2021-03-08T10:40:49+08:00</lastmod>
+    <lastmod>2021-03-21T10:04:49+08:00</lastmod>
   </url><url>
     <loc>https://jerrysmd.github.io/tags/flink/</loc>
-    <lastmod>2021-03-08T10:40:49+08:00</lastmod>
+    <lastmod>2021-03-21T10:04:49+08:00</lastmod>
   </url><url>
     <loc>https://jerrysmd.github.io/categories/technology/</loc>
+    <lastmod>2021-03-21T10:04:49+08:00</lastmod>
+  </url><url>
+    <loc>https://jerrysmd.github.io/post/20210308_dw-flink/</loc>
     <lastmod>2021-03-08T10:40:49+08:00</lastmod>
   </url><url>
     <loc>https://jerrysmd.github.io/tags/machinelearning/</loc>
@@ -62,10 +65,10 @@
     <loc>https://jerrysmd.github.io/tags/tensorflow/</loc>
     <lastmod>2021-02-04T07:10:16+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20210204_tensorflow_captcha/</loc>
+    <loc>https://jerrysmd.github.io/post/20210204_tensorflow-captcha/</loc>
     <lastmod>2021-02-04T07:10:16+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20210108_dw_behavior_collection/</loc>
+    <loc>https://jerrysmd.github.io/post/20210108_dw-behavior-collection/</loc>
     <lastmod>2021-01-08T09:43:01+08:00</lastmod>
   </url><url>
     <loc>https://jerrysmd.github.io/tags/database/</loc>
@@ -74,13 +77,13 @@
     <loc>https://jerrysmd.github.io/tags/hdfs/</loc>
     <lastmod>2020-12-15T10:47:59+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20201215_parquet_format/</loc>
+    <loc>https://jerrysmd.github.io/post/20201215_parquet-format/</loc>
     <lastmod>2020-12-15T10:47:59+08:00</lastmod>
   </url><url>
     <loc>https://jerrysmd.github.io/tags/spark/</loc>
     <lastmod>2020-12-15T10:47:59+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20201107_clickhouse_intro/</loc>
+    <loc>https://jerrysmd.github.io/post/20201107_clickhouse-intro/</loc>
     <lastmod>2020-11-07T14:55:59+08:00</lastmod>
   </url><url>
     <loc>https://jerrysmd.github.io/tags/sql/</loc>
@@ -89,7 +92,7 @@
     <loc>https://jerrysmd.github.io/tags/hbase/</loc>
     <lastmod>2020-10-26T09:14:35+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20201026_hbase_optimize/</loc>
+    <loc>https://jerrysmd.github.io/post/20201026_hbase-optimize/</loc>
     <lastmod>2020-10-26T09:14:35+08:00</lastmod>
   </url><url>
     <loc>https://jerrysmd.github.io/post/20201016_hbase-rowkey-design/</loc>
@@ -176,7 +179,7 @@
     <loc>https://jerrysmd.github.io/tags/graduation/</loc>
     <lastmod>2019-12-18T10:01:12+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20191218_2019_summary_video/</loc>
+    <loc>https://jerrysmd.github.io/post/20191218_2019-summary-video/</loc>
     <lastmod>2019-12-18T10:01:12+08:00</lastmod>
   </url><url>
     <loc>https://jerrysmd.github.io/tags/usa/</loc>
@@ -215,7 +218,7 @@
     <loc>https://jerrysmd.github.io/post/20190409_cperformanceoptimization/</loc>
     <lastmod>2019-04-09T20:04:00+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20190304_gdb_debug/</loc>
+    <loc>https://jerrysmd.github.io/post/20190304_gdb-debug/</loc>
     <lastmod>2019-03-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jerrysmd.github.io/tags/linux/</loc>
@@ -233,7 +236,7 @@
     <loc>https://jerrysmd.github.io/tags/file/</loc>
     <lastmod>2018-12-20T18:39:37-07:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20181220_read_binary_file/</loc>
+    <loc>https://jerrysmd.github.io/post/20181220_read-binary-file/</loc>
     <lastmod>2018-12-20T18:39:37-07:00</lastmod>
   </url><url>
     <loc>https://jerrysmd.github.io/post/20181118_sqlcipher/</loc>
@@ -242,7 +245,7 @@
     <loc>https://jerrysmd.github.io/post/20181017_sqlintroduction/</loc>
     <lastmod>2018-10-17T11:52:36+08:00</lastmod>
   </url><url>
-    <loc>https://jerrysmd.github.io/post/20180915_makefile_cmakelist/</loc>
+    <loc>https://jerrysmd.github.io/post/20180915_makefile-cmakelist/</loc>
     <lastmod>2018-09-15T21:59:46-08:00</lastmod>
   </url><url>
     <loc>https://jerrysmd.github.io/tags/hyperscan/</loc>
