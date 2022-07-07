@@ -24,10 +24,10 @@
     
     <item>
       <title>The size of structure in C</title>
-      <link>https://jerrysmd.github.io/post/20190825_structsize/</link>
+      <link>https://jerrysmd.github.io/post/20190825_struct-size/</link>
       <pubDate>Sun, 25 Aug 2019 14:38:34 +0800</pubDate>
       
-      <guid>https://jerrysmd.github.io/post/20190825_structsize/</guid>
+      <guid>https://jerrysmd.github.io/post/20190825_struct-size/</guid>
       <description>
         
           
@@ -56,10 +56,10 @@
     
     <item>
       <title>Conditional compilation directives</title>
-      <link>https://jerrysmd.github.io/post/20190611_conditionalcompilation/</link>
+      <link>https://jerrysmd.github.io/post/20190611_conditional-compilation/</link>
       <pubDate>Tue, 11 Jun 2019 10:42:49 +0800</pubDate>
       
-      <guid>https://jerrysmd.github.io/post/20190611_conditionalcompilation/</guid>
+      <guid>https://jerrysmd.github.io/post/20190611_conditional-compilation/</guid>
       <description>
         
           
@@ -72,10 +72,10 @@
     
     <item>
       <title>C Project performance optimization</title>
-      <link>https://jerrysmd.github.io/post/20190409_cperformanceoptimization/</link>
+      <link>https://jerrysmd.github.io/post/20190409_cperformance-optimization/</link>
       <pubDate>Tue, 09 Apr 2019 20:04:00 +0800</pubDate>
       
-      <guid>https://jerrysmd.github.io/post/20190409_cperformanceoptimization/</guid>
+      <guid>https://jerrysmd.github.io/post/20190409_cperformance-optimization/</guid>
       <description>
         
           
@@ -104,10 +104,10 @@
     
     <item>
       <title>HugePages</title>
-      <link>https://jerrysmd.github.io/post/20190203_hugepages/</link>
+      <link>https://jerrysmd.github.io/post/20190203_huge-pages/</link>
       <pubDate>Sun, 03 Feb 2019 13:04:09 -0800</pubDate>
       
-      <guid>https://jerrysmd.github.io/post/20190203_hugepages/</guid>
+      <guid>https://jerrysmd.github.io/post/20190203_huge-pages/</guid>
       <description>
         
           
@@ -120,10 +120,10 @@
     
     <item>
       <title>Dynamic link library and static link library</title>
-      <link>https://jerrysmd.github.io/post/20190125_dynamicstaticlinklibrary/</link>
+      <link>https://jerrysmd.github.io/post/20190125_dynamic-static-link-library/</link>
       <pubDate>Fri, 25 Jan 2019 22:01:19 -0800</pubDate>
       
-      <guid>https://jerrysmd.github.io/post/20190125_dynamicstaticlinklibrary/</guid>
+      <guid>https://jerrysmd.github.io/post/20190125_dynamic-static-link-library/</guid>
       <description>
         
           
@@ -200,10 +200,10 @@
     
     <item>
       <title>The problem about file reading one more line</title>
-      <link>https://jerrysmd.github.io/post/20180610_cgetline/</link>
+      <link>https://jerrysmd.github.io/post/20180610_c-getline/</link>
       <pubDate>Sun, 10 Jun 2018 21:58:13 -0800</pubDate>
       
-      <guid>https://jerrysmd.github.io/post/20180610_cgetline/</guid>
+      <guid>https://jerrysmd.github.io/post/20180610_c-getline/</guid>
       <description>
         
           
