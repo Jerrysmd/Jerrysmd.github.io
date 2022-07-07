@@ -128,7 +128,7 @@
         <h2>Overview</h2>
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#最简单的架构">最简单的架构</a></li>
+    <li><a href="#简单的架构">简单的架构</a></li>
     <li><a href="#应用于数据服务分隔">应用于数据服务分隔</a></li>
     <li><a href="#应用服务器集群">应用服务器集群</a></li>
     <li><a href="#缓存">缓存</a></li>
@@ -142,9 +142,10 @@
       </div>
     
     <div class="post_body"><p>The features of large applications: high availability, high concurrency and big data. High availability: system need to provide service without interruption. High concurrency: still stable under the big access. Big data: store and manage big data well.</p>
-<h2 id="最简单的架构">最简单的架构</h2>
+<h2 id="简单的架构">简单的架构</h2>
 <p>开始数据量少，所以只需一台服务器</p>
-<p><figure>
+<p>
+  <figure>
   <picture>
 
     
@@ -160,8 +161,10 @@
       decoding="async"
       alt="smapleArchitecture"
       
-        class="image_figure image_internal image_unprocessed"
-        src="/post/20200526appArchitectureDevelopment/smapleArchitecture.png"
+        class="image_figure image_internal image_processed"
+        width="800"
+        height="395"
+        src="/post/20200526_app-architecture-development/smapleArchitecture.png"
       
       
     />
@@ -177,7 +180,8 @@
 <li>数据库服务器需要存储大量的数据以及快速的检索，所以需磁盘的检索速度较快以及存储空间大</li>
 <li>文件服务器需要存储上传的文件，需要更大的磁盘；现在通常情况下会选择第三方的存储服务</li>
 </ul>
-<p><figure>
+<p>
+  <figure>
   <picture>
 
     
@@ -193,8 +197,10 @@
       decoding="async"
       alt="appSeparateData"
       
-        class="image_figure image_internal image_unprocessed"
-        src="/post/20200526appArchitectureDevelopment/appSeparateData.png"
+        class="image_figure image_internal image_processed"
+        width="800"
+        height="372"
+        src="/post/20200526_app-architecture-development/appSeparateData.png"
       
       
     />
@@ -204,7 +210,8 @@
 </p>
 <h2 id="应用服务器集群">应用服务器集群</h2>
 <p>在高并发、大流量的情况下，一台服务器是肯定处理不过来的，这个时候增加服务器，部署集群提供服务，来分担每台服务器的压力。部署集群的另一个好处是可伸缩性。比如双十一增加服务器分摊流量，双十一过后再减少服务器。</p>
-<p><figure>
+<p>
+  <figure>
   <picture>
 
     
@@ -220,8 +227,10 @@
       decoding="async"
       alt="Cluster"
       
-        class="image_figure image_internal image_unprocessed"
-        src="/post/20200526appArchitectureDevelopment/Cluster.png"
+        class="image_figure image_internal image_processed"
+        width="800"
+        height="337"
+        src="/post/20200526_app-architecture-development/Cluster.png"
       
       
     />
@@ -237,7 +246,8 @@
 </ul>
 <h2 id="缓存">缓存</h2>
 <p>根据二八原则，80%的的业务都是集中访问20%的数据，这20%的数据通常称为热点数据，但是这20%的数据占用的内存也不会小，如果每个应用服务器都存放一份，有些浪费存储空间，所以这时候需要考虑加入分布式缓存服务器（常用的是Redis）；当引入了分布式缓存服务器，再来看上面那个方案的问题，就可以解决了，把用户的会话存放到缓存服务器，不仅可以防止用户数据丢失，效率也不低；架构图如下：</p>
-<p><figure>
+<p>
+  <figure>
   <picture>
 
     
@@ -253,8 +263,10 @@
       decoding="async"
       alt="cache"
       
-        class="image_figure image_internal image_unprocessed"
-        src="/post/20200526appArchitectureDevelopment/cache.png"
+        class="image_figure image_internal image_processed"
+        width="800"
+        height="416"
+        src="/post/20200526_app-architecture-development/cache.png"
       
       
     />
@@ -266,7 +278,8 @@
 <p>在引进缓存之后，数据库的访问压力可以的一定的缓解</p>
 <h2 id="数据库读写分离">数据库读写分离</h2>
 <p>虽然在加入了缓存之后，部分数据可以直接走缓存，不需要访问数据库，但是任然会有一些请求，会访问数据库，比如：缓存失效，缓存未命中；当流量大的时候，数据库的访问量也不小。这时候我们需要考虑搭建数据库集群，读写分离</p>
-<p><figure>
+<p>
+  <figure>
   <picture>
 
     
@@ -282,8 +295,10 @@
       decoding="async"
       alt="rwSeparate"
       
-        class="image_figure image_internal image_unprocessed"
-        src="/post/20200526appArchitectureDevelopment/rwSeparate.png"
+        class="image_figure image_internal image_processed"
+        width="800"
+        height="460"
+        src="/post/20200526_app-architecture-development/rwSeparate.png"
       
       
     />
@@ -300,7 +315,8 @@
 <li>减轻后端服务器的压力</li>
 </ul>
 <p>架构图如下：</p>
-<p><figure>
+<p>
+  <figure>
   <picture>
 
     
@@ -316,8 +332,10 @@
       decoding="async"
       alt="cdn"
       
-        class="image_figure image_internal image_unprocessed"
-        src="/post/20200526appArchitectureDevelopment/cdn.png"
+        class="image_figure image_internal image_processed"
+        width="800"
+        height="401"
+        src="/post/20200526_app-architecture-development/cdn.png"
       
       
     />
@@ -337,7 +355,8 @@
 <p>通常情况下经过了这4级缓存，能够进入到数据库的请求也不多了，很好的释放了数据库的压力</p>
 <h2 id="搜索引擎和nosql">搜索引擎和NoSQL</h2>
 <p>随着业务的不断扩大，对于数据的存储和查询的需求也越来越复杂，通常情况我们需要引入非关系型数据库，比如搜索引擎和NoSQL数据库</p>
-<p><figure>
+<p>
+  <figure>
   <picture>
 
     
@@ -353,8 +372,10 @@
       decoding="async"
       alt="NoSQL"
       
-        class="image_figure image_internal image_unprocessed"
-        src="/post/20200526appArchitectureDevelopment/NoSQL.png"
+        class="image_figure image_internal image_processed"
+        width="800"
+        height="483"
+        src="/post/20200526_app-architecture-development/NoSQL.png"
       
       
     />
@@ -367,7 +388,8 @@
 <h2 id="业务纵向拆分">业务纵向拆分</h2>
 <p>互联网公司通常的宗旨是小步迭代试错快跑，当业务发展到足够大，对于单体应用想要达到这个宗旨是有难度的，随着业务的发展，应用程序越来越大，研发、维护、发布的成本也越来越大，这时候就需要考虑根据业务把单体应用拆分为多个服务，服务之间可以通过RPC远程调用和消息队列来一起完成用户的请求。</p>
 <p>由于业务的拆分，通常情况下也会相应的对数据库进行拆分，达到一个服务对应一个数据库的理想状态</p>
-<p><figure>
+<p>
+  <figure>
   <picture>
 
     
@@ -383,8 +405,10 @@
       decoding="async"
       alt="vertical"
       
-        class="image_figure image_internal image_unprocessed"
-        src="/post/20200526appArchitectureDevelopment/vertical.png"
+        class="image_figure image_internal image_processed"
+        width="800"
+        height="482"
+        src="/post/20200526_app-architecture-development/vertical.png"
       
       
     />

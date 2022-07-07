@@ -141,7 +141,8 @@
 <p>Application Master。在YARN中，每个Application实例都有一个Application Master进程，它是Application启动的第一个容器。它负责和ResourceManager打交道，并请求资源。获取资源之后告诉NodeManager为其启动container。</p>
 </blockquote>
 <p><strong>从深层次的含义讲</strong>，yarn-cluster和yarn-client模式的区别其实就是Application Master进程的区别，yarn-cluster模式下，driver运行在AM(Application Master)中，它负责向YARN申请资源，并监督作业的运行状况。当用户提交了作业之后，就可以关掉Client，作业会继续在YARN上运行。然而yarn-cluster模式不适合运行交互类型的作业。而yarn-client模式下，Application Master仅仅向YARN请求executor，client会和请求的container通信来调度他们工作，也就是说Client不能离开。（上图是yarn-cluster模式，下图是yarn-client模式）：</p>
-<p><figure>
+<p>
+  <figure>
   <picture>
 
     
@@ -157,8 +158,10 @@
       decoding="async"
       alt="spark-yarn-f31"
       
-        class="image_figure image_internal image_unprocessed"
-        src="/post/20200811yarn-cluster&amp;yarn-client/spark-yarn-f31.png"
+        class="image_figure image_internal image_processed"
+        width="620"
+        height="493"
+        src="/post/20200811_yarn-clusteryarn-client/spark-yarn-f31.png"
       
       
     />
@@ -166,7 +169,8 @@
     </picture>
 </figure>
 </p>
-<p><figure>
+<p>
+  <figure>
   <picture>
 
     
@@ -182,8 +186,10 @@
       decoding="async"
       alt="spark-yarn-f22"
       
-        class="image_figure image_internal image_unprocessed"
-        src="/post/20200811yarn-cluster&amp;yarn-client/spark-yarn-f22.png"
+        class="image_figure image_internal image_processed"
+        width="620"
+        height="493"
+        src="/post/20200811_yarn-clusteryarn-client/spark-yarn-f22.png"
       
       
     />
