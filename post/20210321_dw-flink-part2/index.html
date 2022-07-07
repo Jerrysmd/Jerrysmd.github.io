@@ -139,7 +139,11 @@
         <li><a href="#业务数据写入dwm-1">业务数据写入DWM</a></li>
       </ul>
     </li>
-    <li><a href="#dws-数仓汇总层">DWS 数仓汇总层</a></li>
+    <li><a href="#dws-数仓汇总层">DWS 数仓汇总层</a>
+      <ul>
+        <li><a href="#主题宽表写入dws">主题宽表写入DWS</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
       </div>
@@ -306,7 +310,12 @@
 </span></span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="c1">//5.启动任务
 </span></span></span></code></pre></div><h2 id="dws-数仓汇总层">DWS 数仓汇总层</h2>
 <p>轻度聚合，因为 DWS 层要应对很多实时查询，如果完全的明细那么查询的压力是非常大的。</p>
-<p>代码实现 - 访客主题宽表</p>
+<h3 id="主题宽表写入dws">主题宽表写入DWS</h3>
+<h4 id="数据流和程序流程-1">数据流和程序流程</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">数据流：web/app -&gt; Nginx -&gt; SpringBoot -&gt; Mysql -&gt; FlinkApp -&gt; Kafka(ods) -&gt; FlinkApp -&gt; Kafka/Hbase(dwd-dim) -&gt; FlinkApp(redis) -&gt; Kafka(dwm) -&gt; [FlinkApp -&gt; ClickHouse]
+</span></span><span class="line"><span class="ln">2</span><span class="cl">
+</span></span><span class="line"><span class="ln">3</span><span class="cl">程序：mocklog -&gt; Mysql -&gt; FlinkCDC -&gt; KafkaZ(zk) -&gt; BaseLogApp -&gt; Kafka/Phoneix(zk/hdfs/hbase) -&gt; OrderWideApp(Redis) -&gt; Kafka -&gt; [uv/uj -&gt; kafka -&gt; VisitorStatsApp -&gt; ClickHouse]
+</span></span></code></pre></div><h4 id="代码实现---访客主题宽表">代码实现 - 访客主题宽表</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="n">VisitorStatsApp</span><span class="o">;</span>
 </span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="c1">//1.获取执行环境
 </span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="c1">//2.读取 kafka 数据创建流
@@ -315,8 +324,10 @@
 </span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="c1">//5.提取时间戳生成 WaterMark
 </span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="c1">//6.按照维度信息分组
 </span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="c1">//7.开窗聚合 10s 的滚动窗口
-</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="c1">//8.数据写入 ClickHouse
-</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="c1">//9.启动任务
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="c1"></span><span class="n">WindowedStream</span><span class="o">&lt;</span><span class="n">VisitorStats</span><span class="o">,</span> <span class="n">Tuple4</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;,</span> <span class="n">TimeWindow</span><span class="o">&gt;</span> <span class="n">windowedStream</span> <span class="o">=</span> <span class="n">keyedStream</span><span class="o">.</span><span class="na">window</span><span class="o">(</span><span class="n">TumblingEventTimeWindows</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">Time</span><span class="o">.</span><span class="na">seconds</span><span class="o">(</span><span class="n">10</span><span class="o">)));</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="n">windowedStream</span><span class="o">.</span><span class="na">reduce</span><span class="o">(</span><span class="k">new</span> <span class="n">ReduceFunction</span><span class="o">&lt;</span><span class="n">VisitorStats</span><span class="o">&gt;()){}</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="c1">//8.数据写入 ClickHouse
+</span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="c1">//9.启动任务
 </span></span></span></code></pre></div>
     </div>
 
