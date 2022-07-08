@@ -16,11 +16,8 @@ false -}} {{- $toc = dict "enable" false -}} {{- end -}} {{- /* Auto TOC */ -}} 
     <div class="post-meta">
         <div class="post-meta-line">
             {{- $author := $params.author | default .Site.Author.name | default (T "author") -}} {{- $authorLink := $params.authorlink | default .Site.Author.link | default .Site.Home.RelPermalink -}}
-            <span class="post-author">
-                    {{- $options := dict "Class" "author" "Destination" $authorLink "Title" "Author" "Rel" "author" "Icon" (dict "Class" "fas fa-user-circle fa-fw") "Content" $author -}}
-                    {{- partial "plugin/a.html" $options -}}
-                </span> {{- $categories := slice -}} {{- range .Params.categories -}} {{- $category := partialCached "function/path.html" . . | printf "/categories/%v" | $.Site.GetPage -}} {{- $categories = $categories | append (printf `
-            <a href="%v"><i class="far fa-folder fa-fw" aria-hidden="true"></i>%v</a>` $category.RelPermalink $category.Title) -}} {{- end -}} {{- with delimit $categories "&nbsp;" -}} &nbsp;
+            {{- $categories := slice -}} {{- range .Params.categories -}} {{- $category := partialCached "function/path.html" . . | printf "/categories/%v" | $.Site.GetPage -}} {{- $categories = $categories | append (printf `
+            <a href="%v"><i class="far fa-folder fa-fw" aria-hidden="true"></i>%v</a>` $category.RelPermalink $category.Title) -}} {{- end -}} {{- with delimit $categories "&nbsp;" -}}
             <span class="post-category">
                         {{- dict "Categories" . | T "includedInCategories" | safeHTML -}}
                     </span> {{- end -}}

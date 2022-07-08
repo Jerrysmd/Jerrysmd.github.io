@@ -125,7 +125,7 @@ other = "views"
 other = " "
 
 [updatedOnDate]
-other = "Updated on {{ .Date }}"
+other = ""
 
 [readMarkdown]
 other = "Read Markdown"
