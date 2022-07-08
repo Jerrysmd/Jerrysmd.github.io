@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Hyperscan: high-performance multiple regex matching library - JerrysBlog</title><meta name="Description" content="Article description."><meta property="og:title" content="Hyperscan: high-performance multiple regex matching library" />
+<meta property="og:description" content="Article description." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jerrysmd.github.io/20180812_hyperscan/" /><meta property="og:image" content="https://jerrysmd.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2018-08-12T05:42:44-07:00" />
+<meta property="article:modified_time" content="2018-08-12T05:42:44-07:00" /><meta property="og:site_name" content="JerrysBlog" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://jerrysmd.github.io/logo.png"/>
+
+<meta name="twitter:title" content="Hyperscan: high-performance multiple regex matching library"/>
+<meta name="twitter:description" content="Article description."/>
+<meta name="application-name" content="JerrysBlog">
+<meta name="apple-mobile-web-app-title" content="JerrysBlog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://jerrysmd.github.io/20180812_hyperscan/" /><link rel="prev" href="https://jerrysmd.github.io/20180610_c-getline/" /><link rel="next" href="https://jerrysmd.github.io/20180915_makefile-cmakelist/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Hyperscan: high-performance multiple regex matching library",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/jerrysmd.github.io\/20180812_hyperscan\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/jerrysmd.github.io\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "C, C\u002b\u002b, Hyperscan","wordcount":  518 ,
+        "url": "https:\/\/jerrysmd.github.io\/20180812_hyperscan\/","datePublished": "2018-08-12T05:42:44-07:00","dateModified": "2018-08-12T05:42:44-07:00","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/jerrysmd.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": " "
+            },"description": "Article description."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="JerrysBlog">JERRYSBLOG</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/categories/technology/"> Technology </a><a class="menu-item" href="/categories/life/"> Life </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/Jerrysmd" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="JerrysBlog">JERRYSBLOG</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/categories/technology/" title="">Technology</a><a class="menu-item" href="/categories/life/" title="">Life</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/Jerrysmd" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+    <h2 class="toc-title">Contents</h2>
+    <div class="toc-content" id="toc-content-auto"></div>
+</div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Hyperscan: high-performance multiple regex matching library</h1><div class="post-meta">
+        <div class="post-meta-line"><span class="post-author"><a href="about" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i> </a></span>&nbsp;
+            <span class="post-category">· Category in 
+            <a href="/categories/technology/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Technology</a></span></div>
+        <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2018-08-12">2018-08-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;518 words&nbsp;
+            <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;<span id="/20180812_hyperscan/" class="leancloud_visitors" data-flag-title="Hyperscan: high-performance multiple regex matching library">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+            </span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="">
+        <div class="details-summary toc-title">
+            <span>Contents</span>
+            <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-概述">1. 概述</a></li>
+    <li><a href="#2-keywords--keyfunc">2. KeyWords &amp; KeyFunc</a></li>
+    <li><a href="#3-原理">3. 原理</a>
+      <ul>
+        <li><a href="#31编译期">3.1编译期</a></li>
+        <li><a href="#32运行期">3.2运行期</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-hyperscan伪代码">4. Hyperscan伪代码</a>
+      <ul>
+        <li><a href="#41-编译">4.1 编译</a></li>
+        <li><a href="#42-准备匹配临时数据">4.2 准备匹配临时数据</a></li>
+        <li><a href="#43-匹配">4.3 匹配</a>
+          <ul>
+            <li><a href="#431-block模式">4.3.1 BLOCK模式</a></li>
+            <li><a href="#432-匹配回调函数">4.3.2 匹配回调函数</a></li>
+          </ul>
+        </li>
+        <li><a href="#44-清理资源">4.4 清理资源</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+    </div><div class="content" id="content"><p>Hyperscan is a high-performance regular expression matching library from Intel. It is based on the X86 platform based on PCRE prototype development. While supporting most of the syntax of PCRE, Hyperscan adds specific syntax and working modes to ensure its usefulness in real-world network scenarios.</p>
+<h2 id="1-概述">1. 概述</h2>
+<p>Hyperscan demo中使用libpcap从pcap文件中读取数据包，并根据一个规则文件中指定的多个正则表达式对报文进行匹配，并输出匹配结果和一些统计信息。Hyperscan增加了特定的语法和工作模式来保证其在真实网络场景下的实用性。与此同时，大量高效算法及IntelSIMD*指令的使用实现了Hyperscan的高性能匹配。</p>
+<h2 id="2-keywords--keyfunc">2. KeyWords &amp; KeyFunc</h2>
+<ul>
+<li>Patterns: 规则，用来匹配关键词的规则，支持PCRE的大部分语法（正则表达式c十六进制.etc）</li>
+<li>id: 与规则绑定,一个规则对应一个不同的id，匹配命中时返回pattern对应的id</li>
+<li>flags: 与规则绑定,对pattern进行特殊操作，如：与或非逻辑运算(绑定多个pattern),忽略大小写，多行匹配，单次匹配.etc</li>
+<li>hs_compile_*(): 将patterns生成无向连通图(database)，匹配时把数据往连通图里迭代遍历</li>
+<li>Scratch()：在扫描数据时，Hyperscan需要少量的临时内存来存储动态内部数据。但database的数量太大了，无法装入堆栈，特别是对于嵌入式应用程序，而且动态分配内存过于昂贵，因此必须为扫描函数提供预先分配的“Scratch”空间。</li>
+<li>Serialization(): 将生成的database序列化成二进制文件，再由凡序列化拿到databse。</li>
+<li>Scan(): 匹配，将需要匹配的数据放入database无向连通图中匹配，命中后调用回调函数。</li>
+</ul>
+<h2 id="3-原理">3. 原理</h2>
+<p>Hyperscan以自动机理论为基础，其工作流程主要分成两个部分：编译期(compiletime)和运行期(run-time)。</p>
+<h3 id="31编译期">3.1编译期</h3>
+<p>Hyperscan 自带C++编写的正则表达式编译器。如图1所示，它将正则表达式作为输入，针对不同的平台，用户定义的模式及特殊语法，经过复杂的图分析及优化过程，生成对应的数据库。另外，生成的数据库可以被序列化后保存在内存中，以供运行期提取使用。</p>
+<p><figure><a class="lightgallery" href="/posts/picture/Hyperscan-fig-1.jpg" title="Hyperscan-fig-1" data-thumbnail="/posts/picture/Hyperscan-fig-1.jpg" data-sub-html="<h2>Hyperscan-fig-1</h2><p>Hyperscan-fig-1</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/posts/picture/Hyperscan-fig-1.jpg"
+            data-srcset="/posts/picture/Hyperscan-fig-1.jpg, /posts/picture/Hyperscan-fig-1.jpg 1.5x, /posts/picture/Hyperscan-fig-1.jpg 2x"
+            data-sizes="auto"
+            alt="/posts/picture/Hyperscan-fig-1.jpg" />
+    </a><figcaption class="image-caption">Hyperscan-fig-1</figcaption>
+    </figure></p>
+<h3 id="32运行期">3.2运行期</h3>
+<p>Hyperscan的运行期是通过C语言来开发的。图2展示了Hyperscan在运行期的主要流程。用户需要预先分配一段内存来存储临时匹配状态信息，之后利用编译生成的数据库调用Hyperscan内部的匹配引擎(NFA, DFA等)来对输入进行模式匹配。Hyperscan在引擎中使用Intel处理器所具有的SIMD指令进行加速。同时，用户可以通过回调函数来自定义匹配发生后采取的行为。由于生成的数据库是只读的，用户可以在多个CPU核或多线程场景下共享数据库来提升匹配扩展性。</p>
+<p><figure><a class="lightgallery" href="/posts/picture/Hyperscan-fig-2.jpg" title="Hyperscan-fig-2" data-thumbnail="/posts/picture/Hyperscan-fig-2.jpg" data-sub-html="<h2>Hyperscan-fig-2</h2><p>Hyperscan-fig-2</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/posts/picture/Hyperscan-fig-2.jpg"
+            data-srcset="/posts/picture/Hyperscan-fig-2.jpg, /posts/picture/Hyperscan-fig-2.jpg 1.5x, /posts/picture/Hyperscan-fig-2.jpg 2x"
+            data-sizes="auto"
+            alt="/posts/picture/Hyperscan-fig-2.jpg" />
+    </a><figcaption class="image-caption">Hyperscan-fig-2</figcaption>
+    </figure></p>
+<h2 id="4-hyperscan伪代码">4. Hyperscan伪代码</h2>
+<h3 id="41-编译">4.1 编译</h3>
+<p>函数buildDatabase用来编译规则文件中的多个正则表达式，参数mode指定了是BLOCK,STREAM,或者向量模式。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">static</span> <span class="n">hs_database_t</span> <span class="o">*</span><span class="nf">buildDatabase</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*&gt;</span> <span class="o">&amp;</span><span class="n">expressions</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                    <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="o">&gt;</span> <span class="n">flags</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                    <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="o">&gt;</span> <span class="n">ids</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">mode</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">hs_database_t</span> <span class="o">*</span><span class="n">db</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">hs_compile_error_t</span> <span class="o">*</span><span class="n">compileErr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">hs_error_t</span> <span class="n">err</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">Clock</span> <span class="n">clock</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">clock</span><span class="p">.</span><span class="n">start</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">err</span> <span class="o">=</span> <span class="n">hs_compile_multi</span><span class="p">(</span><span class="n">expressions</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span> <span class="n">flags</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span> <span class="n">ids</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">                           <span class="n">expressions</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="n">mode</span><span class="p">,</span> <span class="k">nullptr</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">db</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">compileErr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">clock</span><span class="p">.</span><span class="n">stop</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">err</span> <span class="o">!=</span> <span class="n">HS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">compileErr</span><span class="o">-&gt;</span><span class="n">expression</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// The error does not refer to a particular expression.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;ERROR: &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">compileErr</span><span class="o">-&gt;</span><span class="n">message</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;ERROR: Pattern &#39;&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">expressions</span><span class="p">[</span><span class="n">compileErr</span><span class="o">-&gt;</span><span class="n">expression</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">                 <span class="o">&lt;&lt;</span> <span class="s">&#34;&#39; failed compilation with error: &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">compileErr</span><span class="o">-&gt;</span><span class="n">message</span>
+</span></span><span class="line"><span class="cl">                 <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// As the compileErr pointer points to dynamically allocated memory, if
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">// we get an error, we must be sure to release it. This is not
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">// necessary when no error is detected.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">hs_free_compile_error</span><span class="p">(</span><span class="n">compileErr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中的核心代码是hs_compile_multi的调用，此函数用来编译多个正则表达式，从代码可见除了mode参数，BLOCK和STREAM模式都使用这一API。它的原型是</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">hs_error_t</span> <span class="n">hs_compile_multi</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="k">const</span> <span class="o">*</span> <span class="n">expressions</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                            <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="o">*</span> <span class="n">flags</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                            <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="o">*</span> <span class="n">ids</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                            <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">elements</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                            <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">mode</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                            <span class="k">const</span> <span class="n">hs_platform_info_t</span> <span class="o">*</span> <span class="n">platform</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                            <span class="n">hs_database_t</span> <span class="o">**</span> <span class="n">db</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                            <span class="n">hs_compile_error_t</span> <span class="o">**</span> <span class="n">error</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中，expressions是多个正则表达式字符串，flags和ids分别是expressions对应的flag和id数组；elements是表达式字符串的个数；其余参数与上一个例子中提到的hs_compile的参数涵义相同。</p>
+<p>这里要注意的一个事情是参数ids，它是正则表达式的ID数组。每个表达式都有一个唯一ID，这样命中的时候匹配回调函数可以得到此ID，告诉调用者哪个表达式命中了。如果ids传入NULL，则所有表达式的ID都为0。</p>
+<h3 id="42-准备匹配临时数据">4.2 准备匹配临时数据</h3>
+<p>为接下来的匹配分配足够的临时数据空间(scratch space）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Benchmark</span><span class="p">(</span><span class="k">const</span> <span class="n">hs_database_t</span> <span class="o">*</span><span class="n">streaming</span><span class="p">,</span> <span class="k">const</span> <span class="n">hs_database_t</span> <span class="o">*</span><span class="n">block</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="o">:</span> <span class="n">db_streaming</span><span class="p">(</span><span class="n">streaming</span><span class="p">),</span> <span class="n">db_block</span><span class="p">(</span><span class="n">block</span><span class="p">),</span> <span class="n">scratch</span><span class="p">(</span><span class="k">nullptr</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">          <span class="n">matchCount</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Allocate enough scratch space to handle either streaming or block
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">// mode, so we only need the one scratch region.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">hs_error_t</span> <span class="n">err</span> <span class="o">=</span> <span class="n">hs_alloc_scratch</span><span class="p">(</span><span class="n">db_streaming</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">scratch</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">err</span> <span class="o">!=</span> <span class="n">HS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;ERROR: could not allocate scratch space. Exiting.&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// This second call will increase the scratch size if more is required
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">// for block mode.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">err</span> <span class="o">=</span> <span class="n">hs_alloc_scratch</span><span class="p">(</span><span class="n">db_block</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">scratch</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">err</span> <span class="o">!=</span> <span class="n">HS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;ERROR: could not allocate scratch space. Exiting.&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="43-匹配">4.3 匹配</h3>
+<h4 id="431-block模式">4.3.1 BLOCK模式</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">// Scan each packet (in the ordering given in the PCAP file) through
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// Hyperscan using the block-mode interface.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">void</span> <span class="nf">scanBlock</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="n">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">packets</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">pkt</span> <span class="o">=</span> <span class="n">packets</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">            <span class="n">hs_error_t</span> <span class="n">err</span> <span class="o">=</span> <span class="n">hs_scan</span><span class="p">(</span><span class="n">db_block</span><span class="p">,</span> <span class="n">pkt</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span> <span class="n">pkt</span><span class="p">.</span><span class="n">length</span><span class="p">(),</span> <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                     <span class="n">scratch</span><span class="p">,</span> <span class="n">onMatch</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">matchCount</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">err</span> <span class="o">!=</span> <span class="n">HS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;ERROR: Unable to scan packet. Exiting.&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中，db就是上一步编译的databas；data和length分别是要匹配的数据和数据长度；flags用来在未来版本中控制函数行为，目前未使用；scratch是匹配时要用的临时数据，之前已经分配好；onEvent非常关键，即匹配时调用的回调函数，由用户指定；context是用户自定义指针。</p>
+<h4 id="432-匹配回调函数">4.3.2 匹配回调函数</h4>
+<p>匹配回调函数的原型是</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">typedef</span> <span class="p">(</span><span class="o">*</span> <span class="n">match_event_handler</span><span class="p">)(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">id</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                                <span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">from</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                                <span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">to</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                                <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                                <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中，id是命中的正则表达式的ID，对于使用hs_compile编译的唯一表达式来说，此值为0；如果在编译时指定了相关模式选项(hs_compile中的mode参数），则此值将会设为匹配特征的起始位置，否则会设为0；to是命中数据的下一个字节的偏移；flags目前未用；context是用户自定义指针。</p>
+<p>返回值为非0表示停止匹配，否则继续；在匹配的过程中，每次命中时都将同步调用匹配回调函数，直到匹配结束。</p>
+<h3 id="44-清理资源">4.4 清理资源</h3>
+<p>包括关闭流（hs_close_stream）、释放database等。</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2018-08-12</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/c/">C</a>,&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>,&nbsp;<a href="/tags/hyperscan/">Hyperscan</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/20180610_c-getline/" class="prev" rel="prev" title="The problem about file reading one more line"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>The problem about file reading one more line</a>
+            <a href="/20180915_makefile-cmakelist/" class="next" rel="next" title="Makefile Guide">Makefile Guide<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="about" target="_blank"></a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"2jSYKh8PFUje3v7Ie3Nn5v1g-gzGzoHsz","appKey":"MyWn4P9G5N32q3oM5JDnlpdL","avatar":"retro","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":true,"highlight":true,"lang":"en","meta":["nick","mail"],"pageSize":10,"placeholder":"Your comment ...","recordIP":true,"visitor":true}},"lightgallery":true,"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

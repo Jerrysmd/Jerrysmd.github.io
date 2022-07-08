@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Clickhouse Introduction - JerrysBlog</title><meta name="Description" content="Article description."><meta property="og:title" content="Clickhouse Introduction" />
+<meta property="og:description" content="Article description." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jerrysmd.github.io/20201107_clickhouse-intro/" /><meta property="og:image" content="https://jerrysmd.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-11-07T14:55:59+08:00" />
+<meta property="article:modified_time" content="2020-11-07T14:55:59+08:00" /><meta property="og:site_name" content="JerrysBlog" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://jerrysmd.github.io/logo.png"/>
+
+<meta name="twitter:title" content="Clickhouse Introduction"/>
+<meta name="twitter:description" content="Article description."/>
+<meta name="application-name" content="JerrysBlog">
+<meta name="apple-mobile-web-app-title" content="JerrysBlog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://jerrysmd.github.io/20201107_clickhouse-intro/" /><link rel="prev" href="https://jerrysmd.github.io/20201026_hbase-optimize/" /><link rel="next" href="https://jerrysmd.github.io/20201215_parquet-format/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Clickhouse Introduction",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/jerrysmd.github.io\/20201107_clickhouse-intro\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/jerrysmd.github.io\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "Distribution, SQL","wordcount":  407 ,
+        "url": "https:\/\/jerrysmd.github.io\/20201107_clickhouse-intro\/","datePublished": "2020-11-07T14:55:59+08:00","dateModified": "2020-11-07T14:55:59+08:00","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/jerrysmd.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": " "
+            },"description": "Article description."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="JerrysBlog">JERRYSBLOG</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/categories/technology/"> Technology </a><a class="menu-item" href="/categories/life/"> Life </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/Jerrysmd" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="JerrysBlog">JERRYSBLOG</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/categories/technology/" title="">Technology</a><a class="menu-item" href="/categories/life/" title="">Life</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/Jerrysmd" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+    <h2 class="toc-title">Contents</h2>
+    <div class="toc-content" id="toc-content-auto"></div>
+</div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Clickhouse Introduction</h1><div class="post-meta">
+        <div class="post-meta-line"><span class="post-author"><a href="about" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i> </a></span>&nbsp;
+            <span class="post-category">· Category in 
+            <a href="/categories/technology/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Technology</a></span></div>
+        <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-11-07">2020-11-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;407 words&nbsp;
+            <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;<span id="/20201107_clickhouse-intro/" class="leancloud_visitors" data-flag-title="Clickhouse Introduction">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+            </span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="">
+        <div class="details-summary toc-title">
+            <span>Contents</span>
+            <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#intro">Intro</a></li>
+    <li><a href="#data-type">Data Type</a></li>
+    <li><a href="#table-engine">Table Engine</a>
+      <ul>
+        <li><a href="#1-tinylog">1. TinyLog</a></li>
+        <li><a href="#2-memory">2. Memory</a></li>
+        <li><a href="#3-merge">3. Merge</a></li>
+        <li><a href="#4-mergetree-重点">4. MergeTree (重点)</a></li>
+        <li><a href="#5-replacingmergetree">5. ReplacingMergeTree</a></li>
+        <li><a href="#6-summingmergetree">6. SummingMergeTree</a></li>
+        <li><a href="#7-distributed-重点">7. Distributed (重点)</a></li>
+      </ul>
+    </li>
+    <li><a href="#imexport-hdfs">Im/Export HDFS</a></li>
+    <li><a href="#optimize">Optimize</a></li>
+  </ul>
+</nav></div>
+    </div><div class="content" id="content"><p>A high performance columnar OLAP database management system for real-time analytics using SQL. ClickHouse can be customized with a new set of efficient columnar storage engines, and has realized rich functions such as data ordered storage, primary key indexing, sparse indexing, data sharding, data partitioning, TTL, and primary and backup replication.</p>
+<h2 id="intro">Intro</h2>
+<p>Yandex，2016年，列式存储数据库，在线分析处理查询（OLAP），SQL查询实时生成分析数据报告。</p>
+<h2 id="data-type">Data Type</h2>
+<table>
+<thead>
+<tr>
+<th>MySQL</th>
+<th>Hive</th>
+<th>ClickHouse(区分大小写)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>byte</td>
+<td>tinyint</td>
+<td>Int8</td>
+</tr>
+<tr>
+<td>short</td>
+<td>smallint</td>
+<td>Int16</td>
+</tr>
+<tr>
+<td>int</td>
+<td>bigint</td>
+<td>Int64</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>timestamp</td>
+<td>DataTime</td>
+</tr>
+<tr>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>枚举</p>
+<p>数据类型中没有布尔值，可以通过枚举代替。</p>
+<p>创建一个带有一个枚举 Enum8(&rsquo;true&rsquo; = 1, &lsquo;false&rsquo; = 2) 类型的列：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">t_enum</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">x</span><span class="w"> </span><span class="n">Enum8</span><span class="p">(</span><span class="s1">&#39;true&#39;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;false&#39;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ENGINE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TineLog</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>数组</p>
+<p>Array(T)，不推荐使用多维数组，对多维数组的支持有限。例如，不能在 MergeTree 表中存储多维数组。</p>
+<p>可以使用 <code>array(T)</code> 或 <code>[]</code> 创建数组</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="nb">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">arr</span><span class="p">,</span><span class="w"> </span><span class="n">toTypeName</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>元组</p>
+<p>Tuple(T1, T2, &hellip;)，每个元素都有单独的类型</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SELECT array(1, &#39;a&#39;) AS arr, toTypeName(arr)
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h2 id="table-engine">Table Engine</h2>
+<p>MySQL 默认的引擎：InnoDB 是事务型数据库的首选引擎，支持事务安全表（ACID）。</p>
+<p>使用二十种表引擎决定了：</p>
+<ol>
+<li>数据存储方式和位置，写到内存还是磁盘</li>
+<li>支持哪些查询以及如何支持</li>
+<li>并发访问数据</li>
+<li>索引的使用</li>
+<li>是否多线程请求</li>
+<li>数据复制参数</li>
+</ol>
+<h3 id="1-tinylog">1. TinyLog</h3>
+<p>最简单的表引擎，用于将数据存储在磁盘上。每列都存储在单独的压缩文件中，写入时，数据将附加到文件末尾。</p>
+<ol>
+<li>磁盘</li>
+<li>不支持索引</li>
+<li>不支持并发写，不支持一边读一边写</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">create</span><span class="w"> </span><span class="n">tabele</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="n">UInt16</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">String</span><span class="p">)</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TinyLog</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2-memory">2. Memory</h3>
+<p>内存引擎，重启数据就会消失，读写不互相阻塞，不支持索引。简单查询性能表现超过 10 G/s。测试场景或数据量又不太大的场景（上限大约 1 亿行）。</p>
+<h3 id="3-merge">3. Merge</h3>
+<p>（不要和 MergeTree 引擎混淆）本身不存储数据，但可用于同时从任意多个其他的表中读取数据，读是自动并行的，不支持写入。读数据时，那些被真正读取到数据的表的索引会被使用。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="n">UInt16</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="n">String</span><span class="p">)</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Merge</span><span class="p">(</span><span class="n">currentDatabase</span><span class="p">(),</span><span class="w"> </span><span class="s1">&#39;^t&#39;</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="4-mergetree-重点">4. MergeTree (重点)</h3>
+<p>clickhouse 中最强大的表引擎，当巨量数据要插入到表中，需要高效地一批批写入数据片段，并希望这些数据片段在后台按照一定规则合并。相比插入时不断修改（重写）数据进行存储，这种策略会高效很多。</p>
+<ol>
+<li>数据按照主键排序</li>
+<li>可以使用分区（如果指定了主键）</li>
+<li>支持数据副本</li>
+<li>支持数据采样</li>
+</ol>
+<blockquote>
+<p>参数：</p>
+<p>ENGINE = MergeTree()</p>
+<p>PARTITION BY: 分区键。要按月分区，可以使用表达式toYYYYMM(data_column)</p>
+<p>ORDER BY: 表的排序键，可以是一组列的元组或任意的表达式</p>
+<p>PRIMARY KEY: 主键，需要与排序键字段不同，默认情况下主键跟排序键相同</p>
+<p>SAMPLE BY: 用于抽样的表达式，如果要用抽样表达式，主键中必须包含这个表达式</p>
+<p>SETTINGS: 影响 MergeTree 性能的额外参数：</p>
+<ol>
+<li>index_granularity: 索引粒度，即索引中相邻【标记】间的数据行树，默认 8192</li>
+<li>use_minimalistic_part_header_in_zookeeper: 数据片段头在 Zookeeper  中的存储方式</li>
+<li>min_merge_bytes_to_use_direct_io: 使用直接 I/O （不经过缓存 I/O）来操作磁盘的合并操作时要求的最小数据量。当数据量特别大时，没必要经过缓存 I/O，默认数据小于 10G 会开启缓存 I/O</li>
+</ol>
+</blockquote>
+<h3 id="5-replacingmergetree">5. ReplacingMergeTree</h3>
+<p>在 MergeTree 的基础上，添加了 “处理重复数据” 的功能，该引擎和 MergeTree 的不同之处在于它会删除具有相同主键的重复项。</p>
+<h3 id="6-summingmergetree">6. SummingMergeTree</h3>
+<p>在 MergeTree 的基础上，添加了 “合并重复数据” 的功能，会把具有相同主键的行合并为一行，该行包含了被合并的行中具有数值数据类型的列的汇总值。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">smt_table</span><span class="w"> </span><span class="p">(</span><span class="nb">date</span><span class="w"> </span><span class="nb">Date</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="w"> </span><span class="n">Uint16</span><span class="p">,</span><span class="w"> </span><span class="n">not_sum</span><span class="w"> </span><span class="n">UInt16</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SummingMergeTree</span><span class="p">(</span><span class="k">sum</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">partition</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="nb">date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="p">(</span><span class="nb">date</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="7-distributed-重点">7. Distributed (重点)</h3>
+<p>分布式引擎，本身不存储数据，但可以在多个服务器上进行分布式查询。读是自动并行的。读取时，远程服务器表的索引会被使用。</p>
+<h2 id="imexport-hdfs">Im/Export HDFS</h2>
+<blockquote>
+<p>Clickhouse 从 18.16.0 版本开始支持从 HDFS 读取文件，在 19.1.6 版本支持读和写，在 19.4 版本开始支持 Parquet 格式。</p>
+</blockquote>
+<p>案例一：client 通过 clickhouse 查询引擎访问 HDFS 上的文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 上传 csv 到 hdfs 根目录</span>
+</span></span><span class="line"><span class="cl">hadoop fs -put module.csv /
+</span></span><span class="line"><span class="cl"><span class="c1"># 进入 clickhouse 命令</span>
+</span></span><span class="line"><span class="cl">clickhouse-client -h hadoop2 -m
+</span></span><span class="line"><span class="cl"><span class="c1"># 建表</span>
+</span></span><span class="line"><span class="cl">create table hdfs_module_csv
+</span></span><span class="line"><span class="cl"><span class="o">(</span>
+</span></span><span class="line"><span class="cl">	id Int8,
+</span></span><span class="line"><span class="cl">	name String
+</span></span><span class="line"><span class="cl"><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">Engine</span> <span class="o">=</span> HDFS<span class="o">(</span><span class="s1">&#39;hdfs://hadoop2:9000/module.csv&#39;</span>,<span class="s1">&#39;CSV&#39;</span><span class="o">)</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>验证：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 删除 HDFS 上的 CSV，验证是否在 clickhouse 上占用空间</span>
+</span></span><span class="line"><span class="cl">hadoop fs -rm -r /module.csv
+</span></span><span class="line"><span class="cl"><span class="c1"># sql</span>
+</span></span><span class="line"><span class="cl">SELECT * from hdfs_module_csv<span class="p">;</span> <span class="c1"># error</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>案例二：HDFS 插入数据到本地存储引擎，client 通过 clickhouse 查询引擎查询 clickhouse 本地数据</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">#</span><span class="w"> </span><span class="err">通过</span><span class="w"> </span><span class="k">sql</span><span class="w"> </span><span class="err">插入到本地</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">student_local</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">hdfs_module_csv</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="optimize">Optimize</h2>
+<ol>
+<li>
+<p>max_memory_usage</p>
+<p>此参数在 /etc/clickhouse-server/user.xml 中，表示单词 Query 占用内存最大值，超过 Query 失败，尽量调大。</p>
+</li>
+<li>
+<p>删除多个节点上的同一张表</p>
+<p>使用 on cluster 关键字。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">drop</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="k">cluster</span><span class="w"> </span><span class="k">table_name</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>自动数据备份</p>
+<p>只用 MergeTree 引擎支持副本。</p>
+<p>设置分片和分片副本节点。</p>
+</li>
+</ol></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-11-07</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/distribution/">Distribution</a>,&nbsp;<a href="/tags/sql/">SQL</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/20201026_hbase-optimize/" class="prev" rel="prev" title="Hbase Optimize"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Hbase Optimize</a>
+            <a href="/20201215_parquet-format/" class="next" rel="next" title="Parquet Format">Parquet Format<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="about" target="_blank"></a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"2jSYKh8PFUje3v7Ie3Nn5v1g-gzGzoHsz","appKey":"MyWn4P9G5N32q3oM5JDnlpdL","avatar":"retro","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":true,"highlight":true,"lang":"en","meta":["nick","mail"],"pageSize":10,"placeholder":"Your comment ...","recordIP":true,"visitor":true}},"lightgallery":true,"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

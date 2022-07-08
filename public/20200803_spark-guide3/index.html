@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Spark Guide, Part Ⅲ - JerrysBlog</title><meta name="Description" content="Article description."><meta property="og:title" content="Spark Guide, Part Ⅲ" />
+<meta property="og:description" content="Article description." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jerrysmd.github.io/20200803_spark-guide3/" /><meta property="og:image" content="https://jerrysmd.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-08-03T16:10:33+08:00" />
+<meta property="article:modified_time" content="2020-08-03T16:10:33+08:00" /><meta property="og:site_name" content="JerrysBlog" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://jerrysmd.github.io/logo.png"/>
+
+<meta name="twitter:title" content="Spark Guide, Part Ⅲ"/>
+<meta name="twitter:description" content="Article description."/>
+<meta name="application-name" content="JerrysBlog">
+<meta name="apple-mobile-web-app-title" content="JerrysBlog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://jerrysmd.github.io/20200803_spark-guide3/" /><link rel="prev" href="https://jerrysmd.github.io/20200707_spark-guide2/" /><link rel="next" href="https://jerrysmd.github.io/20200811_yarn-clusteryarn-client/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Spark Guide, Part Ⅲ",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/jerrysmd.github.io\/20200803_spark-guide3\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/jerrysmd.github.io\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "Distribution, Spark","wordcount":  1543 ,
+        "url": "https:\/\/jerrysmd.github.io\/20200803_spark-guide3\/","datePublished": "2020-08-03T16:10:33+08:00","dateModified": "2020-08-03T16:10:33+08:00","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/jerrysmd.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": " "
+            },"description": "Article description."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="JerrysBlog">JERRYSBLOG</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/categories/technology/"> Technology </a><a class="menu-item" href="/categories/life/"> Life </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/Jerrysmd" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="JerrysBlog">JERRYSBLOG</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/categories/technology/" title="">Technology</a><a class="menu-item" href="/categories/life/" title="">Life</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/Jerrysmd" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+    <h2 class="toc-title">Contents</h2>
+    <div class="toc-content" id="toc-content-auto"></div>
+</div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Spark Guide, Part Ⅲ</h1><div class="post-meta">
+        <div class="post-meta-line"><span class="post-author"><a href="about" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i> </a></span>&nbsp;
+            <span class="post-category">· Category in 
+            <a href="/categories/technology/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Technology</a></span></div>
+        <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2020-08-03">2020-08-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1543 words&nbsp;
+            <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;8 minutes&nbsp;<span id="/20200803_spark-guide3/" class="leancloud_visitors" data-flag-title="Spark Guide, Part Ⅲ">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+            </span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="">
+        <div class="details-summary toc-title">
+            <span>Contents</span>
+            <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#project">Project</a></li>
+    <li><a href="#spark-streaming">Spark Streaming</a></li>
+    <li><a href="#structured-streaming">Structured Streaming</a></li>
+    <li><a href="#structured-streaming-hdfs">Structured Streaming HDFS</a></li>
+    <li><a href="#structured-streaming-kafka">Structured Streaming Kafka</a></li>
+  </ul>
+</nav></div>
+    </div><div class="content" id="content"><p>Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.</p>
+<h2 id="project">Project</h2>
+<p><strong>业务场景</strong></p>
+<p>统计出租车利用率(有乘客乘坐的时间和无乘客空跑的时间比例)</p>
+<p><strong>技术要点</strong></p>
+<ol>
+<li>数据清洗</li>
+<li>Json解析</li>
+<li>地理位置信息处理</li>
+<li>探索性数据分析</li>
+<li>会话分析</li>
+</ol>
+<p><strong>数据读取</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">TaxiAnalysisRunner</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//1创建SparkSession
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="nc">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">master</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">appName</span><span class="o">(</span><span class="s">&#34;taxi&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">getOrCreate</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">//2导入隐式转换和函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">import</span> <span class="nn">spark.implicits._</span>
+</span></span><span class="line"><span class="cl">        <span class="k">import</span> <span class="nn">org.apache.spark.sql.functions._</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">//3数据读取
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">val</span> <span class="n">taxiRaw</span><span class="k">:</span> <span class="kt">Dataset</span><span class="o">[</span><span class="kt">Row</span><span class="o">]</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;header&#34;</span><span class="o">,</span> <span class="n">value</span> <span class="k">=</span> <span class="kc">true</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">csv</span><span class="o">(</span><span class="s">&#34;dataset/half_trip.csv&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>抽象数据类</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="line"><span class="cl"><span class="c1">//dataframe是ROW类型的dataset
+</span></span></span><span class="line"><span class="cl"><span class="c1">//读取的dataframe是row类型的，如果是dataset[trip]把类型抽象，对数据方便处理
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">case</span> <span class="k">class</span> <span class="nc">Trip</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">	<span class="n">license</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pickUpTime</span><span class="k">:</span> <span class="kt">Long</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dropOffTime</span><span class="k">:</span> <span class="kt">Long</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pickUpX</span><span class="k">:</span> <span class="kt">Double</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pickUpy</span><span class="k">:</span> <span class="kt">Double</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dropOffX</span><span class="k">:</span> <span class="kt">Double</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dropOffY</span><span class="k">:</span> <span class="kt">Double</span>
+</span></span><span class="line"><span class="cl"><span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>转换DF类型、清洗异常数据</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="line"><span class="cl"><span class="c1">//dataframe[Row] =&gt; dataset[]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">val</span> <span class="n">taxiParsed</span><span class="k">:</span><span class="kt">RDD</span><span class="o">[</span><span class="kt">Either</span><span class="o">[</span><span class="kt">Trip</span>,<span class="o">(</span><span class="kt">Row</span>,<span class="kt">Exception</span><span class="o">)]]</span> <span class="k">=</span> <span class="n">taxiRaw</span><span class="o">.</span><span class="n">rdd</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">safe</span><span class="o">(</span><span class="n">parse</span><span class="o">))</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//异常数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">val</span> <span class="n">exceptionResult</span> <span class="k">=</span> <span class="n">taxiParsed</span><span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="n">e</span> <span class="k">=&gt;</span> <span class="n">e</span><span class="o">.</span><span class="n">isRight</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">e</span> <span class="k">=&gt;</span> <span class="n">e</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">get</span><span class="o">.</span><span class="n">_1</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="n">taxi</span> <span class="nc">Good</span><span class="k">:</span> <span class="kt">Dataset</span><span class="o">[</span><span class="kt">Trip</span><span class="o">]</span> <span class="k">=</span> <span class="n">taxiParsed</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">either</span> <span class="k">=&gt;</span> <span class="n">either</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">get</span><span class="o">).</span><span class="n">toDS</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="n">parse</span><span class="o">(</span><span class="n">row</span><span class="k">:</span> <span class="kt">Row</span><span class="o">)</span><span class="k">:</span> <span class="kt">Trip</span> <span class="o">=</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="n">richRow</span> <span class="k">=</span> <span class="k">new</span> <span class="n">richRow</span><span class="o">(</span><span class="n">row</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="n">license</span> <span class="k">=</span> <span class="n">richRow</span><span class="o">.</span><span class="n">getAs</span><span class="o">[</span><span class="kt">String</span><span class="o">](</span><span class="s">&#34;hack_license&#34;</span><span class="o">).</span><span class="n">orNull</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="n">pickUpTime</span> <span class="k">=</span> <span class="n">parseTime</span><span class="o">(</span><span class="n">richRow</span><span class="o">,</span> <span class="s">&#34;...&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="n">dropOffTime</span> <span class="k">=</span> <span class="n">parseTime</span><span class="o">(</span><span class="n">richRow</span><span class="o">,</span> <span class="s">&#34;...&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="n">pickUpX</span> <span class="k">=</span> <span class="n">parseLocation</span><span class="o">(</span><span class="n">richRow</span><span class="o">,</span> <span class="s">&#34;...&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="n">pickUpy</span> <span class="k">=</span> <span class="n">parseLocation</span><span class="o">(</span><span class="n">richRow</span><span class="o">,</span> <span class="s">&#34;...&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="n">dropOffX</span> <span class="k">=</span> <span class="n">parseLocation</span><span class="o">(</span><span class="n">richRow</span><span class="o">,</span> <span class="s">&#34;...&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="n">dropOffY</span> <span class="k">=</span> <span class="n">parseLocation</span><span class="o">(</span><span class="n">richRow</span><span class="o">,</span> <span class="s">&#34;...&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nc">Trip</span><span class="o">(</span><span class="n">license</span><span class="o">,</span> <span class="n">pickUpTime</span><span class="o">,</span> <span class="n">dropOffTime</span><span class="o">,</span> <span class="n">pickUpX</span><span class="o">,</span> <span class="n">pickUpy</span><span class="o">,</span> <span class="n">dropOffX</span><span class="o">,</span> <span class="n">dropOffY</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">RichRow</span><span class="o">(</span><span class="n">row</span><span class="k">:</span> <span class="kt">Row</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="n">getAs</span><span class="o">[</span><span class="kt">T</span><span class="o">](</span><span class="n">field</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="k">=</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">row</span><span class="o">.</span><span class="n">isNullAt</span><span class="o">(</span><span class="n">row</span><span class="o">.</span><span class="n">fieldIndex</span><span class="o">(</span><span class="n">field</span><span class="o">))){</span>
+</span></span><span class="line"><span class="cl">            <span class="nc">None</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nc">Some</span><span class="o">(</span><span class="n">row</span><span class="o">.</span><span class="n">getAs</span><span class="o">[</span><span class="kt">T</span><span class="o">](</span><span class="n">field</span><span class="o">))</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="n">parseTime</span><span class="o">(</span><span class="n">row</span><span class="k">:</span> <span class="kt">RichRow</span><span class="o">,</span> <span class="n">field</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span><span class="k">:</span> <span class="kt">Long</span> <span class="o">=</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//规定格式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">val</span> <span class="n">pattern</span> <span class="k">=</span> <span class="s">&#34;yyyy-MM-dd HH:mm:ss&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="n">formatter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SimpleDateFormat</span><span class="o">(</span><span class="n">pattern</span><span class="o">,</span> <span class="n">locale</span><span class="o">.</span><span class="nc">ENGLISH</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//执行转换
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">val</span> <span class="n">time</span> <span class="k">=</span> <span class="n">row</span><span class="o">.</span><span class="n">getAs</span><span class="o">[</span><span class="kt">String</span><span class="o">](</span><span class="n">field</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="n">timeOption</span> <span class="k">=</span> <span class="n">time</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">time</span> <span class="k">=&gt;</span> <span class="n">formatter</span><span class="o">.</span><span class="n">parse</span><span class="o">(</span><span class="n">time</span><span class="o">).</span><span class="n">getTime</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//Option代表某个方法，结果可能为空，使得方法调用出必须处理为null的情况
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">//Option对象本身提供了一些对于null的支持
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">timeOption</span><span class="o">.</span><span class="n">getOrElse</span><span class="o">(</span><span class="mi">0L</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="n">parseLocation</span><span class="o">(</span><span class="n">row</span><span class="k">:</span> <span class="kt">RickRow</span><span class="o">,</span> <span class="n">field</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span><span class="k">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="n">location</span> <span class="k">=</span> <span class="n">row</span><span class="o">.</span><span class="n">getAs</span><span class="o">[</span><span class="kt">String</span><span class="o">](</span><span class="n">fiecld</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="n">locationOption</span> <span class="k">=</span> <span class="n">location</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">loc</span> <span class="k">=&gt;</span> <span class="n">loc</span><span class="o">.</span><span class="n">toDouble</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">locationOption</span><span class="o">.</span><span class="n">getOrElse</span><span class="o">(</span><span class="mi">0</span><span class="n">D</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//parse异常处理
+</span></span></span><span class="line"><span class="cl"><span class="c1">//出现异常-&gt;返回异常信息，和当前调用
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">def</span> <span class="n">safe</span><span class="o">[</span><span class="kt">P</span>, <span class="kt">R</span><span class="o">](</span><span class="n">f</span><span class="k">:</span> <span class="kt">P</span> <span class="o">=&gt;</span> <span class="n">R</span><span class="o">)</span><span class="k">:</span> <span class="kt">P</span> <span class="o">=&gt;</span> <span class="nc">Either</span><span class="o">[</span><span class="kt">R</span>,<span class="o">(</span><span class="kt">P</span>,<span class="kt">Exception</span><span class="o">)]={</span>
+</span></span><span class="line"><span class="cl">    <span class="k">new</span> <span class="nc">Function</span><span class="o">[</span><span class="kt">P</span>, <span class="kt">Either</span><span class="o">[</span><span class="kt">R</span>,<span class="o">(</span><span class="kt">P</span>,<span class="kt">Exception</span><span class="o">)]]</span> <span class="k">with</span> <span class="nc">Serializable</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">override</span> <span class="k">def</span> <span class="n">apply</span><span class="o">(</span><span class="n">param</span><span class="k">:</span> <span class="kt">P</span><span class="o">)</span><span class="k">:</span> <span class="kt">Either</span><span class="o">[</span><span class="kt">R</span>, <span class="o">(</span><span class="kt">P</span>, <span class="kt">Exception</span><span class="o">)]</span> <span class="k">=</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">try</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nc">Left</span><span class="o">(</span><span class="n">param</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span><span class="k">catch</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">case</span> <span class="n">e</span><span class="k">:</span> <span class="kt">Exception</span> <span class="o">=&gt;</span> <span class="nc">Right</span><span class="o">((</span><span class="n">param</span><span class="o">,</span> <span class="n">e</span><span class="o">))</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>统计分布</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="line"><span class="cl"><span class="c1">//编写udf，将毫秒转为小时单位
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">val</span> <span class="n">hours</span> <span class="k">=</span> <span class="o">(</span><span class="n">pickUpTime</span><span class="k">:</span> <span class="kt">Long</span><span class="o">,</span> <span class="n">dropOffTime</span><span class="k">:</span> <span class="kt">Long</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="n">duration</span> <span class="k">=</span> <span class="n">dropOffTime</span> <span class="o">-</span> <span class="n">pickUpTime</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="n">hours</span> <span class="k">=</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="nc">HOURS</span><span class="o">.</span><span class="n">convert</span><span class="o">(</span><span class="n">duration</span><span class="o">,</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="nc">MILLISECONDS</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">hours</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="n">hoursUDF</span> <span class="k">=</span> <span class="n">udf</span><span class="o">(</span><span class="n">hours</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//统计
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">taxiGood</span><span class="o">.</span><span class="n">groupBy</span><span class="o">(</span><span class="n">hoursUDF</span><span class="o">(</span><span class="n">$</span><span class="s">&#34;pickUpTime&#34;</span><span class="o">,</span><span class="n">$</span><span class="s">&#34;dropOffTime&#34;</span><span class="o">)</span> <span class="n">as</span> <span class="s">&#34;duration&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">count</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">sort</span><span class="o">(</span><span class="s">&#34;duration&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">show</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//直方图
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">spark</span><span class="o">.</span><span class="n">udf</span><span class="o">.</span><span class="n">register</span><span class="o">(</span><span class="s">&#34;hours&#34;</span><span class="o">,</span> <span class="n">hours</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="n">taxiClean</span> <span class="k">=</span> <span class="n">taxiGood</span><span class="o">.</span><span class="n">where</span><span class="o">(</span><span class="s">&#34;hours(pickUpTime, dropOffTime) BETWEEN 0 AND 3&#34;</span><span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>JSON地理信息</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="line"><span class="cl"><span class="k">case</span> <span class="k">class</span> <span class="nc">FeatureCollection</span><span class="o">(</span><span class="n">features</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Feature</span><span class="o">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">case</span> <span class="k">class</span> <span class="nc">Feature</span><span class="o">(</span><span class="nc">Properties</span><span class="k">:</span> <span class="kt">Map</span><span class="o">[</span><span class="kt">String</span>, <span class="kt">String</span><span class="o">],</span> <span class="n">geometry</span><span class="k">:</span> <span class="kt">JObject</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="n">getGeometry</span><span class="o">()</span><span class="k">:</span> <span class="kt">Geometry</span> <span class="o">=</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">import</span> <span class="nn">org.json4s._</span>
+</span></span><span class="line"><span class="cl">        <span class="k">import</span> <span class="nn">org.json4s.jackson.JsonMethods._</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="n">mapGeo</span> <span class="k">=</span> <span class="nc">GeometryEngine</span><span class="o">.</span><span class="n">geoJsonToGeometry</span><span class="o">(</span><span class="n">compact</span><span class="o">(</span><span class="n">render</span><span class="o">(</span><span class="n">geometry</span><span class="o">)),</span> <span class="mi">0</span><span class="o">,</span> <span class="nc">Geometry</span><span class="o">.</span><span class="nc">Type</span><span class="o">.</span><span class="nc">Unknown</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mapGeo</span><span class="o">.</span><span class="n">getGeometry</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">object</span> <span class="nc">FeatureExtraction</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">//JSON解析
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">def</span> <span class="n">parseJson</span><span class="o">(</span><span class="n">json</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span><span class="k">:</span> <span class="kt">FeatureCollection</span> <span class="o">=</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//1导入一个formats隐式转换
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">implicit</span> <span class="k">val</span> <span class="n">formats</span> <span class="k">=</span> <span class="nc">Serialization</span><span class="o">.</span><span class="n">formats</span><span class="o">(</span><span class="nc">NoTypeHints</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//2JSON -&gt; Obj
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">import</span> <span class="nn">org.json4s.jackson.Serialization.read</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="n">featureCollection</span> <span class="k">=</span> <span class="n">read</span><span class="o">[</span><span class="kt">FeatureCollection</span><span class="o">](</span><span class="n">json</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">featureCollection</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="line"><span class="cl"><span class="c1">//链接行政区信息
+</span></span></span><span class="line"><span class="cl"><span class="c1">//1读取数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">val</span> <span class="n">geoJson</span> <span class="k">=</span> <span class="nc">Source</span><span class="o">.</span><span class="n">fromFile</span><span class="o">(</span><span class="s">&#34;dataset/districts.geojson&#34;</span><span class="o">).</span><span class="n">mkString</span>
+</span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="n">featureColleciton</span> <span class="k">=</span> <span class="nc">FeatureExtraction</span><span class="o">.</span><span class="n">parseJson</span><span class="o">(</span><span class="n">geoJson</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//2排序
+</span></span></span><span class="line"><span class="cl"><span class="c1">//理论上大的区域数量多，把大的区域放在前面，减少搜索次数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">val</span> <span class="n">sortedFeatures</span> <span class="k">=</span> <span class="n">featureCollection</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">sortBy</span><span class="o">(</span><span class="n">feature</span> <span class="k">=&gt;</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">(</span><span class="n">feature</span><span class="o">.</span><span class="n">properties</span><span class="o">(</span><span class="s">&#34;boroughCode&#34;</span><span class="o">),</span> <span class="o">-</span> <span class="n">feature</span><span class="o">.</span><span class="n">getGeometry</span><span class="o">().</span><span class="n">calculateArea2D</span><span class="o">())</span>
+</span></span><span class="line"><span class="cl"><span class="o">})</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//3广播
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">val</span> <span class="n">featuresBC</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sparkContext</span><span class="o">.</span><span class="n">broadcast</span><span class="o">(</span><span class="n">sortedFeatures</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//4UDF
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">val</span> <span class="n">boroughLookUp</span> <span class="k">=</span> <span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">Double</span><span class="o">,</span> <span class="n">y</span><span class="k">:</span> <span class="kt">Double</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//1搜索经纬度所在的区域
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">val</span> <span class="n">featureHit</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">Feature</span><span class="o">]</span> <span class="k">=</span> <span class="n">featuresBC</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">find</span><span class="o">(</span><span class="n">feature</span> <span class="k">=&gt;</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nc">GeometryEngine</span><span class="o">.</span><span class="n">contains</span><span class="o">(</span><span class="n">feature</span><span class="o">.</span><span class="n">getGeometry</span><span class="o">(),</span> <span class="k">new</span> <span class="nc">Point</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">),</span> <span class="nc">SpatialReference</span><span class="o">.</span><span class="n">create</span><span class="o">(</span><span class="mi">4326</span><span class="o">))</span>
+</span></span><span class="line"><span class="cl">    <span class="o">})</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//2转为区域信息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">val</span> <span class="n">borough</span> <span class="k">=</span> <span class="n">featureHit</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">feature</span> <span class="k">=&gt;</span> <span class="n">feature</span><span class="o">.</span><span class="n">properties</span><span class="o">(</span><span class="s">&#34;borought&#34;</span><span class="o">)).</span><span class="n">getOrElse</span><span class="o">(</span><span class="s">&#34;NA&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">borough</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//5统计信息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">val</span> <span class="n">broughUDF</span> <span class="k">=</span> <span class="n">udf</span><span class="o">(</span><span class="n">boroughLookUp</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">taxiClean</span><span class="o">.</span><span class="n">groupBy</span><span class="o">(</span><span class="n">broughUDF</span><span class="o">(</span>&#39;dropOffX<span class="o">,</span>&#39;dropOff<span class="o">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>会话统计</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="line"><span class="cl"><span class="c1">//过滤没有经纬度的数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">val</span> <span class="n">sessions</span> <span class="k">=</span> <span class="n">taxiClean</span><span class="o">.</span><span class="n">where</span><span class="o">(</span><span class="s">&#34;dropOffX != 0 and dropOffY != 0 and pickUp...&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">repartition</span><span class="o">(</span>&#39;license<span class="o">)</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">sortWithinPartitions</span><span class="o">(</span>&#39;license<span class="o">,</span> &#39;pickUpTime<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//求得时间差
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">def</span> <span class="n">boroughDuration</span><span class="o">(</span><span class="n">t1</span><span class="k">:</span> <span class="kt">Trip</span><span class="o">,</span> <span class="n">t2</span><span class="k">:</span> <span class="kt">Trip</span><span class="o">)</span><span class="k">:</span> <span class="o">(</span><span class="kt">String</span><span class="o">,</span> <span class="kt">Long</span><span class="o">)</span> <span class="k">=</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="n">borough</span> <span class="k">=</span> <span class="n">boroughLookUp</span><span class="o">(</span><span class="n">t1</span><span class="o">.</span><span class="n">dropOffX</span><span class="o">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">dropOffY</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="n">duration</span> <span class="k">=</span> <span class="o">(</span><span class="n">t2</span><span class="o">.</span><span class="n">pickUpTime</span> <span class="o">-</span> <span class="n">t1</span><span class="o">.</span><span class="n">dropOffTime</span><span class="o">)/</span><span class="mi">1000</span>
+</span></span><span class="line"><span class="cl">    <span class="o">(</span><span class="n">borough</span><span class="o">,</span> <span class="n">duration</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="n">boroughtDuration</span> <span class="k">=</span> <span class="n">sessions</span><span class="o">.</span><span class="n">mapPartitions</span><span class="o">(</span><span class="n">trips</span> <span class="k">=&gt;</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">trips</span><span class="o">.</span><span class="n">sliding</span><span class="o">(</span><span class="mi">2</span><span class="o">)</span><span class="c1">//长度为2的窗口，移动
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    	<span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">2</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    	<span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="n">p</span> <span class="k">=&gt;</span> <span class="n">p</span><span class="o">.</span><span class="n">head</span><span class="o">.</span><span class="n">license</span> <span class="o">==</span> <span class="n">p</span><span class="o">.</span><span class="n">last</span><span class="o">.</span><span class="n">license</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">viter</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">p</span> <span class="k">=&gt;</span> <span class="n">boroughDuration</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="n">head</span><span class="o">,</span> <span class="n">p</span><span class="o">.</span><span class="n">last</span><span class="o">))</span>
+</span></span><span class="line"><span class="cl"><span class="o">}).</span><span class="n">toDF</span><span class="o">(</span><span class="s">&#34;borough&#34;</span><span class="o">,</span> <span class="s">&#34;seconds&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">boroughtDuration</span><span class="o">.</span><span class="n">where</span><span class="o">(</span><span class="s">&#34;seconds &gt; 0&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">groupBy</span><span class="o">(</span><span class="s">&#34;borough&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">agg</span><span class="o">(</span><span class="n">avg</span><span class="o">(</span>&#39;seconds<span class="o">),</span> <span class="n">stddev</span><span class="o">(</span>&#39;seconds<span class="o">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="spark-streaming">Spark Streaming</h2>
+<p>Spark Streaming 的特点</p>
+<blockquote>
+<ul>
+<li>Spark Streaming 并不是实时流，而是按时间切分小批量，一个一个的小批处理</li>
+<li>Spark Streaming 对数据是按照时间切分为一个又一个的RDD，然后针对RDD进行处理</li>
+</ul>
+</blockquote>
+<p>处理架构</p>
+<blockquote>
+<p>批处理：HDFS</p>
+<p>流处理：Kafka</p>
+<p>混合处理：流式计算和批处理结合</p>
+</blockquote>
+<p>Netcat</p>
+<blockquote>
+<p>Netcat以在两台设备上面相互交互，即侦听模式/传输模式</p>
+<blockquote>
+<p>功能：Telnet功能、获取banner信息、传输文本信息、传输文件/目录、加密传输文件，默认不加密、远程控制、加密所有流量、流媒体服务器、远程克隆硬盘</p>
+</blockquote>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="line"><span class="cl"><span class="k">object</span> <span class="nc">StreamingWordCount</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="n">sparkConf</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkConff</span><span class="o">().</span><span class="n">setAppName</span><span class="o">(</span><span class="s">&#34;stream word count&#34;</span><span class="o">).</span><span class="n">setMaster</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="n">ssc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">StreamingContext</span><span class="o">(</span><span class="n">sparkConf</span><span class="o">,</span> <span class="nc">Seconds</span><span class="o">(</span><span class="mi">1</span><span class="o">))</span><span class="c1">//批次时间，每1秒收集一次数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//在创建Streaming Context的时候也要用到conf，说明Spark Streaming是基于Spark Core的
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//在执行master的时候，不能指定一个线程：因为在Streaming运行的时候，需要开一个新的线程去一直监听数据的获取
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//socketTextStream方法会创建一个DStream，监听Socket输入，当做文本处理
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//DStream可以理解是一个流式的RDD
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">val</span> <span class="n">lines</span><span class="k">:</span> <span class="kt">ReceiverInputDStream</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="k">=</span> <span class="n">ssc</span><span class="o">.</span><span class="n">socketTextStream</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">        	<span class="n">hostnmae</span> <span class="k">=</span> <span class="s">&#34;192.168.169.101&#34;</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">port</span> <span class="k">=</span> <span class="mi">9999</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">storageLevel</span> <span class="k">=</span> <span class="nc">StoreageLevel</span><span class="o">.</span><span class="nc">MEMORY_AND_DISK_SER</span>
+</span></span><span class="line"><span class="cl">        <span class="o">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">//2数据处理
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//	1拆分单词
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">val</span> <span class="n">words</span> <span class="k">=</span> <span class="n">lines</span><span class="o">.</span><span class="n">flatMap</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//	2转换单词
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">val</span> <span class="n">tuples</span> <span class="k">=</span> <span class="n">words</span><span class="o">.</span><span class="n">map</span><span class="o">((</span><span class="k">_</span><span class="o">,</span> <span class="mi">1</span><span class="o">))</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//	3词频reduce
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">val</span> <span class="n">counts</span> <span class="k">=</span> <span class="n">tuples</span><span class="o">.</span><span class="n">reduceByKey</span><span class="o">(</span><span class="k">_</span> <span class="o">+</span> <span class="k">_</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">ssc</span><span class="o">.</span><span class="n">start</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// main方法执行完毕后整个程序就会退出，所以需要阻塞主线程
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">ssc</span><span class="o">.</span><span class="n">awaitTermination</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>容错</strong></p>
+<blockquote>
+<p>热备</p>
+<ul>
+<li>当Receiver获取数据，交给BlockManager存储</li>
+<li>如果设置了StorageLevel.MEMORY_AND_DISK_SER，则意味着BlockManager 不仅会在本机存储，也会发往其它的主机存储，本质就是冗余备份</li>
+<li>如果某一个计算失败了，通过冗余的备份，再次进行计算即可</li>
+</ul>
+<p>冷备</p>
+<ul>
+<li>WAL 预写日志</li>
+<li>当数据出错时，根据Redo log去重新处理数据</li>
+</ul>
+<p>重放</p>
+<ul>
+<li>有一些上游的外部系统是支持重放的，如 Kafka</li>
+<li>Kafka 可以根据Offset来获取数据</li>
+<li>出错时，只需通过Kafka再次读取即可</li>
+</ul>
+</blockquote>
+<h2 id="structured-streaming">Structured Streaming</h2>
+<p><strong>编程模型演进</strong></p>
+<p>RDD：</p>
+<ul>
+<li>针对自定义的数据对象进行处理，可以处理任意类型的对象，比较符合面向对象</li>
+<li>RDD处理数据速较慢</li>
+<li>RDD无法感知数据的结构，无法针对数据结构进行编程</li>
+</ul>
+<p>DataFrame：</p>
+<ul>
+<li>保留元信息，针对数据结构进行处理，例如根据某一列进行排序或者分组</li>
+<li>DF在执行的时候会经过catalyst进行优化，并且序列化更加高效，性能会更好</li>
+<li>DF无法处理非结构化数据，因为DF内部使用Row对象保存数据</li>
+<li>DF的读写框架更加强大，支持多种数据源</li>
+</ul>
+<p>DataSet：</p>
+<ul>
+<li>DS结合了RDD和DF的特点，可以处理结构化数据，也可以处理非结构化数据</li>
+</ul>
+<p><strong>序列化</strong></p>
+<p>将对象的内容变成二进制或存入文件中保存</p>
+<p>数据场景：</p>
+<ul>
+<li>持久化对象数据</li>
+<li>网络中不能传输Java对象，只能将其序列化后传输二进制数据</li>
+</ul>
+<p><strong>序列化应用场景</strong></p>
+<ul>
+<li>Task分发：Master的driver往Worker的Executor任务分发</li>
+<li>RDD缓存：序列化后分布式存储</li>
+<li>广播变量：序列化后分布式存储</li>
+<li>Shuffle过程</li>
+<li>Spark Streaming 的 Receiver：kafka传入的数据是序列化的数据</li>
+</ul>
+<p><strong>RDD的序列化</strong></p>
+<p>Kryo是Spark引入的一个外部的序列化工具，可以增快RDD的运行速度</p>
+<p>因为Kryo序列化后的对象更小，序列化和反序列化速度非常快</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="line"><span class="cl"><span class="k">val</span> <span class="n">conf</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkConf</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">setMaster</span><span class="o">(</span><span class="s">&#34;local[2]&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">setAppName</span><span class="o">(</span><span class="s">&#34;KyroTest&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">conf</span><span class="o">.</span><span class="n">set</span><span class="o">(</span><span class="s">&#34;spark.serializer&#34;</span><span class="o">,</span> <span class="s">&#34;org.apache.spark.serializer.KryoSerializer&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">conf</span><span class="o">.</span><span class="n">registerKryoClasses</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">classOf</span><span class="o">[</span><span class="kt">Person</span><span class="o">]))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="n">sc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkContext</span><span class="o">(</span><span class="n">conf</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">rdd</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">arr</span> <span class="k">=&gt;</span> <span class="nc">Person</span><span class="o">(</span><span class="n">arr</span><span class="o">(</span><span class="mi">0</span><span class="o">),</span> <span class="n">arr</span><span class="o">(</span><span class="mi">1</span><span class="o">),</span> <span class="n">arr</span><span class="o">(</span><span class="mi">2</span><span class="o">)))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>StructuredStreaming区别</strong></p>
+<ol>
+<li>StructuredStreaming相比于SparkStreaming的进步类似于RDD到Dataset的进步</li>
+<li>StructuredStreaming支持连续流模型，类似于Flink那样的实时流</li>
+</ol>
+<p><strong>StructuredStreaming Project</strong></p>
+<p>需求</p>
+<ul>
+<li>对流式数据进行累加词频统计</li>
+</ul>
+<p>整体结构</p>
+<ol>
+<li>Socket Server 发送数据， Structured Streaming 程序接受数据</li>
+<li>Socket Server 使用 Netcat nc 来实现</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="line"><span class="cl"><span class="c1">//1.创建sparkSession
+</span></span></span><span class="line"><span class="cl"><span class="c1">//2.数据读取
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">val</span> <span class="n">source</span><span class="k">:</span> <span class="kt">DataFrame</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">readStream</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="s">&#34;socket&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;host&#34;</span><span class="o">,</span> <span class="s">&#34;192.168.168.101&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;port&#34;</span><span class="o">,</span> <span class="mi">9999</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">load</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="n">sourceDS</span><span class="k">:</span> <span class="kt">Dataset</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="k">=</span> <span class="n">source</span><span class="o">.</span><span class="n">as</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//3.数据处理
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">val</span> <span class="n">words</span> <span class="k">=</span> <span class="n">sourceDS</span><span class="o">.</span><span class="n">flatMap</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">))</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">map</span><span class="o">((</span><span class="k">_</span><span class="o">,</span> <span class="mi">1</span><span class="o">))</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">groupByKey</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">_1</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">count</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//4.结果生成
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">words</span><span class="o">.</span><span class="n">writeStream</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">outputMode</span><span class="o">(</span><span class="nc">OutputMode</span><span class="o">.</span><span class="nc">Complete</span><span class="o">())</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="s">&#34;console&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">start</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">	<span class="o">.</span><span class="n">awaitTermination</span><span class="o">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 开启Netcat</span>
+</span></span><span class="line"><span class="cl">nc -lk <span class="m">9999</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>StreamExecution 分为三个重要的部分</p>
+<ul>
+<li>Source 从外部数据源读取数据，例如kafka</li>
+<li>LogicalPlan 逻辑计划，在流上查询计划，根据源头DF处理生成逻辑计划</li>
+<li>Sink 写入结果</li>
+</ul>
+<p><strong>StateStore</strong></p>
+<ul>
+<li>Structured Streaming 虽然从API角度上模拟出来的是一个无线扩展的表，但其内部还是增量处理。</li>
+<li>每一批次处理完成，会将结果写入状态。每一批次处理之前，拉出来最新的状态，合并到处理过程中</li>
+</ul>
+<h2 id="structured-streaming-hdfs">Structured Streaming HDFS</h2>
+<p><strong>场景</strong></p>
+<ul>
+<li>
+<p>Sqoop</p>
+<blockquote>
+<p>MySQL -&gt; Sqoop -&gt; HDFS[增量数据1，增量数据2，&hellip; ] -&gt; Structured Streaming -&gt; Hbase</p>
+</blockquote>
+</li>
+<li>
+<p>Ngix</p>
+<blockquote>
+<p>Ngix[log1, log2，&hellip; ] -&gt; Flume -&gt; HDFS[增量数据1，增量数据2，&hellip; ] -&gt; Structured Streaming -&gt; Hbase</p>
+</blockquote>
+</li>
+<li>
+<p>特点</p>
+<ul>
+<li>会产生大量小文件在HDFS上</li>
+</ul>
+</li>
+</ul>
+<p><strong>Project</strong></p>
+<blockquote>
+<ol>
+<li>Python程序生成数据到HDFS</li>
+<li>Structured Streaming 从HDFS中获取数据</li>
+<li>Structured Streaming 处理数据</li>
+</ol>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Python程序生成数据到HDFS</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#1.文件内容</span>
+</span></span><span class="line"><span class="cl">    <span class="n">content</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    {&#34;name&#34;: &#34;Michael&#34;}
+</span></span></span><span class="line"><span class="cl"><span class="s2">    {&#34;name&#34;: &#34;Andy&#34;, &#34;age&#34;: 30}
+</span></span></span><span class="line"><span class="cl"><span class="s2">    {&#34;name&#34;: &#34;Justin&#34;, &#34;age&#34;: 19}
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">#2.文件路径</span>
+</span></span><span class="line"><span class="cl">    <span class="n">file_name</span> <span class="o">=</span> <span class="s2">&#34;/export/dataset/text</span><span class="si">{0}</span><span class="s2">.json&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">#3.打开文件，写入内容</span>
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s2">&#34;w&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">    <span class="c1">#4.执行HDFS命令，创建HDFS目录，上传文件到HDFS中</span>
+</span></span><span class="line"><span class="cl">    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&#34;/export/servers/haddop/bin/hdfs dfs -mkdir -p /dataset/dataset/&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&#34;/export/servers/haddop/bin/hdfs dfs -put </span><span class="si">{0}</span><span class="s2"> /dataset/dataset&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file_name</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="line"><span class="cl"><span class="c1">//Structured Streaming 从HDFS中获取数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">object</span> <span class="nc">HDFSSource</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nc">System</span><span class="o">.</span><span class="n">setProperty</span><span class="o">(</span><span class="s">&#34;hadoop.home.dir&#34;</span><span class="o">,</span> <span class="s">&#34;C:\\winutil&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">//1.创建SparkSession
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">val</span> <span class="n">spark</span> <span class="k">=</span> <span class="nc">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">appName</span><span class="o">(</span><span class="s">&#34;hdfs_souce&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">master</span><span class="o">(</span><span class="s">&#34;local[6]&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">getOrCreate</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//2.数据读取
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">val</span> <span class="n">schema</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">StructType</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">add</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">,</span> <span class="s">&#34;string&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">add</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">,</span> <span class="s">&#34;integer&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="n">souce</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">readStream</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">scheme</span><span class="o">(</span><span class="n">schema</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">json</span><span class="o">(</span><span class="s">&#34;hdfs://node01:8020/dataset/dataset&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">//3.输出结果
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">source</span><span class="o">.</span><span class="n">writeStream</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">outputMode</span><span class="o">(</span><span class="nc">OutputMode</span><span class="o">.</span><span class="nc">Append</span><span class="o">())</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="s">&#34;console&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">start</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">awaitTermination</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="structured-streaming-kafka">Structured Streaming Kafka</h2>
+<p><strong>Kafka是一个 Pub/Sub 系统</strong></p>
+<blockquote>
+<ul>
+<li>Publisher / Subscriber 发布订阅系统</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">发布者  --&gt;  kafka  --&gt;  订阅者
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>发布订阅系统可以有多个Publisher对应一个Subscriber，例如多个系统都会产生日志，一个日志处理器可以简单的获取所有系统产生的日志</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">用户系统  --&gt;
+</span></span><span class="line"><span class="cl">订单系统  --&gt;  kafka  --&gt;  日志处理器
+</span></span><span class="line"><span class="cl">内容系统  --&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>发布订阅系统也可以一个Publisher对应多个Subscriber， 这样就类似于广播了，例如通过这样的方式可以非常轻易的将一个订单的请求分发给所有感兴趣的系统，减少耦合性</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">                      --&gt;  日志处理器
+</span></span><span class="line"><span class="cl"> 用户系统  --&gt;  kafka  --&gt;  日志处理器
+</span></span><span class="line"><span class="cl">                      --&gt;  日志处理器
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>大数据系统中，消息系统往往可以作为整个数据平台的入口，左边对接业务系统各个模块，右边对接数据系统各个计算工具</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  业务系统                     数据系统
+</span></span><span class="line"><span class="cl"> [用户系统]  --&gt;         --&gt;  [HDFS]
+</span></span><span class="line"><span class="cl"> [订单系统]  --&gt;  kafka  --&gt;  [Structured Streaming]
+</span></span><span class="line"><span class="cl"> [服务系统]  --&gt;         --&gt;  [MapReduce]
+</span></span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<p><strong>Kafka 的特点</strong></p>
+<blockquote>
+<p>Kafka 非常重要的应用场景就是对接业务系统和数据系统，作为一个数据管道，其需要流通的数据量惊人，所以 Kafka 一定有：</p>
+<ul>
+<li>高吞吐量</li>
+<li>高可靠性</li>
+</ul>
+</blockquote>
+<p><strong>Topic 和 Partitions</strong></p>
+<blockquote>
+<ul>
+<li>
+<p>消息和事件经常是不同类型的，例如用户注册是一种消息，订单创建也是一种消息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">创建订单事件  --&gt;
+</span></span><span class="line"><span class="cl">                  kafka  --&gt;  structured Streaming
+</span></span><span class="line"><span class="cl">用户注册事件  --&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>Kafka 中使用 Topic 来组织不同类型的消息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">创建订单事件  --&gt;  Topic Order
+</span></span><span class="line"><span class="cl">                               --&gt;  structured Streaming
+</span></span><span class="line"><span class="cl">用户注册事件  --&gt;  Topic Order
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>Kafka 中的 Topic 要承受非常大的吞吐量，所以 Topic 应该是可以分片的，应该是分布式的</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Anatomy of a Topic
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Partition 0 [0][1][2][3]
+</span></span><span class="line"><span class="cl">Partition 1 [0][1]
+</span></span><span class="line"><span class="cl">Partition 3 [0][1][2]
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Old  --&gt;  New
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</blockquote>
+<p><strong>Kafka 和 Structured Streaming 整合的结构</strong></p>
+<blockquote>
+<ul>
+<li>Structured Streaming 中使用 Source 对接外部系统，对接 Kafka 的 Source 叫做 KafkaSource</li>
+<li>KafkaSource 中会使用 KafkaSourceRDD 来映射外部 Kafka 的 Topic，两者的 Partition 一一对应</li>
+<li>Structured Streaming 会并行的从 Kafka 中获取数据</li>
+</ul>
+</blockquote>
+<p><strong>Structured Streaming 读取 Kafka 消息的三种方式</strong></p>
+<blockquote>
+<ul>
+<li>Earlist 从每个 Kafka 分区最开始处开始获取</li>
+<li>Assign 手动指定每个 Kafka 分区中的 Offset</li>
+<li>Latest 不再处理之前的消息，只获取流计算启动后新产生的数据</li>
+</ul>
+</blockquote>
+<p><strong>PROJECT</strong></p>
+<p>需求</p>
+<blockquote>
+<ol>
+<li>模拟物联网系统的数据统计</li>
+<li>使用生产者在 Kafka 的 Topic：Streaming-test 中输入 JSON 数据</li>
+<li>使用 Structured Streaming 过滤出来家里有人的数据</li>
+</ol>
+</blockquote>
+<p>创建 Topic 并输入数据到 Topic</p>
+<blockquote>
+<ol>
+<li>
+<p>使用命令创建 Topic</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">bin/kafka-topics.sh --create streaming-test --replication-factor <span class="m">1</span> --partitions <span class="m">3</span> --zookeeper node01:2181
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>开启 Producer</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">bin/kafka-console-producer.sh --broker-list node01:9092,node02:9092,node03:9092 -topic streaming-test
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>把 Json 转为单行输入</p>
+</li>
+</ol>
+</blockquote>
+<p>Spark 读取 kafka 的 Topic</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="line"><span class="cl"><span class="k">object</span> <span class="nc">KafkaSource</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//1.创建 SparkSession
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        
+</span></span><span class="line"><span class="cl">        <span class="c1">//2.读取 Kafka 数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">val</span> <span class="n">source</span><span class="k">:</span> <span class="kt">Dadaset</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="k">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">readSteam</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="s">&#34;kafka&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;kafka.bootstrap.servers&#34;</span><span class="o">,</span> <span class="s">&#34;node01:9092,node02:9092,node03:9092&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;subscribe&#34;</span><span class="o">,</span> <span class="s">&#34;streaming_test_1&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;startingOffsets&#34;</span><span class="o">,</span> <span class="s">&#34;earliest&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">load</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">selectExpr</span><span class="o">(</span><span class="s">&#34;CAST(value AS STRING) as value&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">as</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">//3.处理数据，Dataset(String) -&gt; Dataset(id, name, category)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//1::Toy Story (1995)::Animation|Children&#39;s|Comedy
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">source</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">item</span> <span class="k">=&gt;</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">val</span> <span class="n">arr</span> <span class="k">=</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="o">(</span><span class="s">&#34;::&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">            <span class="o">(</span><span class="n">arr</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="n">toInt</span><span class="o">,</span> <span class="n">arr</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="n">toString</span><span class="o">,</span> <span class="n">arr</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="n">toString</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}).</span><span class="n">as</span><span class="o">[(</span><span class="kt">Int</span>, <span class="kt">String</span>, <span class="kt">String</span><span class="o">)].</span><span class="n">toDF</span><span class="o">(</span><span class="s">&#34;id&#34;</span><span class="o">,</span> <span class="s">&#34;name&#34;</span><span class="o">,</span> <span class="s">&#34;category&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">//4.Sink to HDFS
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">result</span><span class="o">.</span><span class="n">writeStream</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="s">&#34;parquet&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;path&#34;</span><span class="o">,</span> <span class="s">&#34;/dataset/streaming/movies/&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;checkpointLocation&#34;</span><span class="o">,</span> <span class="s">&#34;checkpoint&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">start</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">awaitTermination</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">//4.Sink to Kafka
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">result</span><span class="o">.</span><span class="n">writeStream</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="s">&#34;kafka&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">outputMode</span><span class="o">(</span><span class="nc">OutputMode</span><span class="o">.</span><span class="nc">Append</span><span class="o">())</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;checkpointLocation&#34;</span><span class="o">,</span> <span class="s">&#34;checkpoint&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;kafka.bootstrap.servers&#34;</span><span class="o">,</span> <span class="s">&#34;node01:9092, node2:9092&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">option</span><span class="o">(</span><span class="s">&#34;topic&#34;</span><span class="o">,</span> <span class="s">&#34;streaming_test_3&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">start</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">        	<span class="o">.</span><span class="n">awaitTermination</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">//4.Sink to Mysql
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//使用foreachWriter
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Sink Trigger</strong></p>
+<ul>
+<li>
+<p>微批次</p>
+<p>默认一秒间隔</p>
+</li>
+<li>
+<p>连续流</p>
+<p>Trigger.Continuous(&ldquo;1 second&rdquo;)，只支持Map类的类型操作，不支持聚合，Source和Sink只支持Kafka</p>
+</li>
+</ul></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-08-03</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/distribution/">Distribution</a>,&nbsp;<a href="/tags/spark/">Spark</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/20200707_spark-guide2/" class="prev" rel="prev" title="Spark Guide, Part Ⅱ"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Spark Guide, Part Ⅱ</a>
+            <a href="/20200811_yarn-clusteryarn-client/" class="next" rel="next" title="Spark On Yarn: yarn-cluster, yarn-client">Spark On Yarn: yarn-cluster, yarn-client<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="about" target="_blank"></a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"2jSYKh8PFUje3v7Ie3Nn5v1g-gzGzoHsz","appKey":"MyWn4P9G5N32q3oM5JDnlpdL","avatar":"retro","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":true,"highlight":true,"lang":"en","meta":["nick","mail"],"pageSize":10,"placeholder":"Your comment ...","recordIP":true,"visitor":true}},"lightgallery":true,"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Hash code - Tag - JerrysBlog</title>
+        <link>https://jerrysmd.github.io/tags/hash-code/</link>
+        <description>Hash code - Tag - JerrysBlog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>0x004c2@gmail.com</managingEditor>
+            <webMaster>0x004c2@gmail.com</webMaster><lastBuildDate>Thu, 05 Apr 2018 21:56:51 -0800</lastBuildDate><atom:link href="https://jerrysmd.github.io/tags/hash-code/" rel="self" type="application/rss+xml" /><item>
+    <title>C language realize HashMap</title>
+    <link>https://jerrysmd.github.io/20180405_hashcode/</link>
+    <pubDate>Thu, 05 Apr 2018 21:56:51 -0800</pubDate>
+    <author> </author>
+    <guid>https://jerrysmd.github.io/20180405_hashcode/</guid>
+    <description><![CDATA[<p>Hash table is a very important data structure, which is useful in many application scenarios. This paper will simply analyze the principle of hash table, and use C language to achieve a complete HashMap.</p>]]></description>
+</item>
+</channel>
+</rss>

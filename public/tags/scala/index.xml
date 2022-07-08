@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Scala - Tag - JerrysBlog</title>
+        <link>https://jerrysmd.github.io/tags/scala/</link>
+        <description>Scala - Tag - JerrysBlog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>0x004c2@gmail.com</managingEditor>
+            <webMaster>0x004c2@gmail.com</webMaster><lastBuildDate>Sat, 08 Feb 2020 10:16:17 &#43;0800</lastBuildDate><atom:link href="https://jerrysmd.github.io/tags/scala/" rel="self" type="application/rss+xml" /><item>
+    <title>Scala Introduction</title>
+    <link>https://jerrysmd.github.io/20200208_scalaintroduction/</link>
+    <pubDate>Sat, 08 Feb 2020 10:16:17 &#43;0800</pubDate>
+    <author> </author>
+    <guid>https://jerrysmd.github.io/20200208_scalaintroduction/</guid>
+    <description><![CDATA[<p>Scala combines object-oriented and functional programming in one concise, high-level language. Scala&rsquo;s static types help avoid bugs in complex applications, and its JVM and JavaScript runtimes let you build high-performance systems with easy access to huge ecosystems of libraries.</p>]]></description>
+</item>
+</channel>
+</rss>

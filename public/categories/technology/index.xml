@@ -1,0 +1,56 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Technology - Category - JerrysBlog</title>
+        <link>https://jerrysmd.github.io/categories/technology/</link>
+        <description>Technology - Category - JerrysBlog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>0x004c2@gmail.com</managingEditor>
+            <webMaster>0x004c2@gmail.com</webMaster><lastBuildDate>Sun, 21 Mar 2021 10:04:49 &#43;0800</lastBuildDate><atom:link href="https://jerrysmd.github.io/categories/technology/" rel="self" type="application/rss+xml" /><item>
+    <title>Data Warehouse: Real-Time, part Ⅱ</title>
+    <link>https://jerrysmd.github.io/20210321_dw-flink-part2/</link>
+    <pubDate>Sun, 21 Mar 2021 10:04:49 &#43;0800</pubDate>
+    <author> </author>
+    <guid>https://jerrysmd.github.io/20210321_dw-flink-part2/</guid>
+    <description><![CDATA[<p>Data warehouse is a system that pulls together data derived from operational systems and external data sources within an organization for reporting and analysis. A data warehouse is a central repository of information that provides users with current and historical decision support information.</p>]]></description>
+</item>
+<item>
+    <title>Data Warehouse: Real-Time, part Ⅰ</title>
+    <link>https://jerrysmd.github.io/20210308_dw-flink/</link>
+    <pubDate>Mon, 08 Mar 2021 10:40:49 &#43;0800</pubDate>
+    <author> </author>
+    <guid>https://jerrysmd.github.io/20210308_dw-flink/</guid>
+    <description><![CDATA[<p>Data warehouse is a system that pulls together data derived from operational systems and external data sources within an organization for reporting and analysis. A data warehouse is a central repository of information that provides users with current and historical decision support information.</p>]]></description>
+</item>
+<item>
+    <title>Tensorflow Identify Simple Captcha</title>
+    <link>https://jerrysmd.github.io/20210204_tensorflow-captcha/</link>
+    <pubDate>Thu, 04 Feb 2021 07:10:16 &#43;0800</pubDate>
+    <author> </author>
+    <guid>https://jerrysmd.github.io/20210204_tensorflow-captcha/</guid>
+    <description><![CDATA[<p>CAPTCHA stands for &lsquo;Completely Automated Public Turing test to tell Computers and Humans Apart&rsquo;. It’s already possible to solve it with the rise of deep learning and computer vision.</p>]]></description>
+</item>
+<item>
+    <title>Data Warehouse: Offline</title>
+    <link>https://jerrysmd.github.io/20210108_dw-behavior-collection/</link>
+    <pubDate>Fri, 08 Jan 2021 09:43:01 &#43;0800</pubDate>
+    <author> </author>
+    <guid>https://jerrysmd.github.io/20210108_dw-behavior-collection/</guid>
+    <description><![CDATA[<p>Data warehouse is a system that pulls together data derived from operational systems and external data sources within an organization for reporting and analysis. A data warehouse is a central repository of information that provides users with current and historical decision support information.</p>]]></description>
+</item>
+<item>
+    <title>Parquet Format</title>
+    <link>https://jerrysmd.github.io/20201215_parquet-format/</link>
+    <pubDate>Tue, 15 Dec 2020 10:47:59 &#43;0800</pubDate>
+    <author> </author>
+    <guid>https://jerrysmd.github.io/20201215_parquet-format/</guid>
+    <description><![CDATA[<p>Apache Parquet is designed for efficient as well as performant flat columnar storage format of data compared to row based files like CSV or TSV files. Parquet uses the record shredding and assembly algorithm which is superior to simple flattening of nested namespaces. Parquet is optimized to work with complex data in bulk and features different ways for efficient data compression and encoding types. This approach is best especially for those queries that need to read certain columns from a large table. Parquet can only read the needed columns therefore greatly minimizing the IO.</p>]]></description>
+</item>
+<item>
+    <title>Clickhouse Introduction</title>
+    <link>https://jerrysmd.github.io/20201107_clickhouse-intro/</link>
+    <pubDate>Sat, 07 Nov 2020 14:55:59 &#43;0800</pubDate>
+    <author> </author>
+    <guid>https://jerrysmd.github.io/20201107_clickhouse-intro/</guid>
+    <description><![CDATA[<p>A high performance columnar OLAP database management system for real-time analytics using SQL. ClickHouse can be customized with a new set of efficient columnar storage engines, and has realized rich functions such as data ordered storage, primary key indexing, sparse indexing, data sharding, data partitioning, TTL, and primary and backup replication.</p>]]></description>
+</item>
+</channel>
+</rss>
