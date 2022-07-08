@@ -19,7 +19,6 @@ categories:
   - Technology
 tags:
   - Dataware house
-  - Distribution
   - Flink
 
 ---

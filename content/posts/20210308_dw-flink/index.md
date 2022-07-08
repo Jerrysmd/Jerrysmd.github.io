@@ -19,7 +19,6 @@ categories:
   - Technology
 tags:
   - Dataware house
-  - Distribution
   - Flink
 ---
 Data warehouse is a system that pulls together data derived from operational systems and external data sources within an organization for reporting and analysis. A data warehouse is a central repository of information that provides users with current and historical decision support information.
