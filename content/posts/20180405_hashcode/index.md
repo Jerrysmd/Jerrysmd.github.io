@@ -16,7 +16,7 @@ categories:
   - Technology
 tags:
   - C
-  - Hash code
+  - HashCode
 # comment: false # Disable comment if false.
 
 ---

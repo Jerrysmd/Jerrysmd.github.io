@@ -17,7 +17,7 @@ usePageBundles: true # Set to true to group assets like images in the same folde
 categories:
   - Technology
 tags:
-  - Dataware house
+  - DataWarehouse
   - Distribution
 comments: true # Disable comment if false.
 ---
