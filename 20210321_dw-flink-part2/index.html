@@ -1,0 +1,283 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><title>Data Warehouse: Real-Time, part Ⅱ - JerrysBlog</title><meta name=Description content><meta property="og:title" content="Data Warehouse: Real-Time, part Ⅱ"><meta property="og:description" content="Data warehouse is a system that pulls together data derived from operational systems and external data sources within an organization for reporting and analysis. A data warehouse is a central repository of information that provides users with current and historical decision support information."><meta property="og:type" content="article"><meta property="og:url" content="https://jerrysmd.github.io/20210321_dw-flink-part2/"><meta property="og:image" content="https://jerrysmd.github.io/logo.png"><meta property="article:section" content="posts"><meta property="article:published_time" content="2021-03-21T10:04:49+08:00"><meta property="article:modified_time" content="2022-07-08T17:26:45+08:00"><meta property="og:site_name" content="JerrysBlog"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://jerrysmd.github.io/logo.png"><meta name=twitter:title content="Data Warehouse: Real-Time, part Ⅱ"><meta name=twitter:description content="Data warehouse is a system that pulls together data derived from operational systems and external data sources within an organization for reporting and analysis. A data warehouse is a central repository of information that provides users with current and historical decision support information."><meta name=application-name content="JerrysBlog"><meta name=apple-mobile-web-app-title content="JerrysBlog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://jerrysmd.github.io/20210321_dw-flink-part2/><link rel=prev href=https://jerrysmd.github.io/20210308_dw-flink/><link rel=next href=https://jerrysmd.github.io/20211218_2021-summary-video/><link rel=stylesheet href=/css/style.min.css><link rel=preload href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css></noscript><link rel=preload href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css></noscript><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Data Warehouse: Real-Time, part Ⅱ","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/jerrysmd.github.io\/20210321_dw-flink-part2\/"},"image":[{"@type":"ImageObject","url":"https:\/\/jerrysmd.github.io\/images\/Apple-Devices-Preview.png","width":3200,"height":2048}],"genre":"posts","keywords":"Dataware house, Distribution, Flink","wordcount":667,"url":"https:\/\/jerrysmd.github.io\/20210321_dw-flink-part2\/","datePublished":"2021-03-21T10:04:49+08:00","dateModified":"2022-07-08T17:26:45+08:00","publisher":{"@type":"Organization","name":"xxxx","logo":{"@type":"ImageObject","url":"https:\/\/jerrysmd.github.io\/images\/avatar.png","width":528,"height":560}},"author":{"@type":"Person","name":" "},"description":""}</script></head><body data-header-desktop=fixed data-header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem("theme")?localStorage.getItem("theme")==="dark":"auto"==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:"auto"==="dark")&&document.body.setAttribute("theme","dark")</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title=JerrysBlog>JERRYSBLOG</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/>Home </a><a class=menu-item href=/categories/technology/>Technology </a><a class=menu-item href=/categories/life/>Life </a><a class=menu-item href=/tags/>Tags </a><a class=menu-item href=/about/>About </a><a class=menu-item href=https://github.com/Jerrysmd title=GitHub rel="noopener noreffer" target=_blank><i class='fab fa-github fa-fw' aria-hidden=true></i> </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder="Search titles or contents..." id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=Search><i class="fas fa-search fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=Clear><i class="fas fa-times-circle fa-fw" aria-hidden=true></i></a>
+<span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i></span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title="Switch Theme"><i class="fas fa-adjust fa-fw" aria-hidden=true></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title=JerrysBlog>JERRYSBLOG</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder="Search titles or contents..." id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=Search><i class="fas fa-search fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=Clear><i class="fas fa-times-circle fa-fw" aria-hidden=true></i></a>
+<span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>Cancel</a></div><a class=menu-item href=/ title>Home</a><a class=menu-item href=/categories/technology/ title>Technology</a><a class=menu-item href=/categories/life/ title>Life</a><a class=menu-item href=/tags/ title>Tags</a><a class=menu-item href=/about/ title>About</a><a class=menu-item href=https://github.com/Jerrysmd title=GitHub rel="noopener noreffer" target=_blank><i class='fab fa-github fa-fw' aria-hidden=true></i></a><a href=javascript:void(0); class="menu-item theme-switch" title="Switch Theme">
+<i class="fas fa-adjust fa-fw" aria-hidden=true></i></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>Contents</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Data Warehouse: Real-Time, part Ⅱ</h1><div class=post-meta><div class=post-meta-line><span class=post-author><a href=about title=Author rel=author class=author><i class="fas fa-user-circle fa-fw" aria-hidden=true></i> </a></span>&nbsp;
+<span class=post-category>· Category in
+<a href=/categories/technology/><i class="far fa-folder fa-fw" aria-hidden=true></i>Technology</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt fa-fw" aria-hidden=true></i>&nbsp;<time datetime=2021-03-21>2021-03-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden=true></i>&nbsp;667 words&nbsp;
+<i class="far fa-clock fa-fw" aria-hidden=true></i>&nbsp;4 minutes&nbsp;<span id=/20210321_dw-flink-part2/ class=leancloud_visitors data-flag-title="Data Warehouse: Real-Time, part Ⅱ">
+<i class="far fa-eye fa-fw" aria-hidden=true></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+</span>&nbsp;</div></div><div class="details toc" id=toc-static data-kept><div class="details-summary toc-title"><span>Contents</span>
+<span><i class="details-icon fas fa-angle-right" aria-hidden=true></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#dwm-数据中间层>DWM 数据中间层</a><ul><li><a href=#业务数据写入dwm>业务数据写入DWM</a><ul><li><a href=#数据流和程序流程>数据流和程序流程</a></li><li><a href=#代码实现---用户第一次访问>代码实现 - 用户第一次访问</a></li><li><a href=#代码实现---用户跳出页面>代码实现 - 用户跳出页面</a></li></ul></li><li><a href=#flink-stream-join>Flink Stream Join</a><ul><li><a href=#window-join>Window Join</a></li><li><a href=#interval-join>Interval Join</a></li><li><a href=#代码实现---订单明细表双流-join>代码实现 - 订单明细表双流 Join</a></li></ul></li><li><a href=#维度表关联>维度表关联</a><ul><li><a href=#优化1加入旁路缓存>优化1：加入旁路缓存</a></li><li><a href=#优化2异步查询>优化2：异步查询</a></li></ul></li><li><a href=#主流数据丢失>主流数据丢失</a></li><li><a href=#业务数据写入dwm-1>业务数据写入DWM</a><ul><li><a href=#代码实现---支付宽表>代码实现 - 支付宽表</a></li></ul></li></ul></li><li><a href=#dws-数仓汇总层>DWS 数仓汇总层</a><ul><li><a href=#主题宽表写入dws>主题宽表写入DWS</a><ul><li><a href=#数据流和程序流程-1>数据流和程序流程</a></li><li><a href=#代码实现---访客主题宽表>代码实现 - 访客主题宽表</a></li></ul></li></ul></li></ul></nav></div></div><div class=content id=content><p>Data warehouse is a system that pulls together data derived from operational systems and external data sources within an organization for reporting and analysis. A data warehouse is a central repository of information that provides users with current and historical decision support information.</p><h2 id=dwm-数据中间层>DWM 数据中间层</h2><h3 id=业务数据写入dwm>业务数据写入DWM</h3><h4 id=数据流和程序流程>数据流和程序流程</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>数据流：：web/app -&gt; Nginx -&gt; SpringBoot -&gt; Mysql -&gt; FlinkApp -&gt; Kafka(ods) -&gt; FlinkApp -&gt; Kafka/Hbase(dwd-dim) -&gt; [FlinkApp -&gt; Kafka(dwm)]
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>程序：mocklog -&gt; Mysql -&gt; FlinkCDC -&gt; KafkaZ(zk) -&gt; BaseLogApp -&gt; Kafka/Phoneix(zk/hdfs/hbase) -&gt; [UniqueVisitApp -&gt; Kafka]
+</span></span></code></pre></td></tr></table></div></div><h4 id=代码实现---用户第一次访问>代码实现 - 用户第一次访问</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=c1>//UniqueVisitApp
+</span></span></span><span class=line><span class=cl><span class=c1>// 1.获取执行环境
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>StreamExecutionEnvironment</span> <span class=n>env</span> <span class=o>=</span> <span class=n>StreamExecutionEnvironment</span><span class=o>.</span><span class=na>getExecutionEnvironment</span><span class=o>();</span>
+</span></span><span class=line><span class=cl><span class=n>env</span><span class=o>.</span><span class=na>setParallelism</span><span class=o>(</span><span class=n>1</span><span class=o>);</span>
+</span></span><span class=line><span class=cl><span class=c1>// 2.读取 kafka dwd_page_log 主题的数据
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>env</span><span class=o>.</span><span class=na>addSource</span><span class=o>(</span><span class=n>MyKafkaUtil</span><span class=o>.</span><span class=na>getKafkaConsumer</span><span class=o>(</span><span class=n>sourceTopic</span><span class=o>,</span> <span class=n>groupId</span><span class=o>));</span>
+</span></span><span class=line><span class=cl><span class=c1>// 3.将每行数据转换为 JSON 对象
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>jsonObjDS</span> <span class=o>=</span> <span class=n>KafkaDS</span><span class=o>.</span><span class=na>map</span><span class=o>(</span><span class=n>JSON</span><span class=o>::</span><span class=n>parseObject</span><span class=o>);</span>
+</span></span><span class=line><span class=cl><span class=c1>// 4.过滤数据、状态编程、只保留每天第一个数据
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>keyedStream</span> <span class=o>=</span> <span class=n>jsonObjDS</span><span class=o>.</span><span class=na>keyBy</span><span class=o>(</span><span class=n>jsonObj</span> <span class=o>-&gt;</span> <span class=n>jsonObj</span><span class=o>.</span><span class=na>getJSONObject</span><span class=o>(</span><span class=s>&#34;common&#34;</span><span class=o>)).</span><span class=na>getString</span><span class=o>(</span><span class=s>&#34;mid&#34;</span><span class=o>);</span>
+</span></span><span class=line><span class=cl><span class=n>uvDS</span> <span class=o>=</span> <span class=n>keyedStream</span><span class=o>.</span><span class=na>filter</span><span class=o>(</span><span class=k>new</span> <span class=n>RichFilterFunction</span><span class=o>&lt;</span><span class=n>JSONObject</span><span class=o>&gt;(){</span>
+</span></span><span class=line><span class=cl>    <span class=kd>private</span> <span class=n>ValueState</span><span class=o>&lt;</span><span class=n>String</span><span class=o>&gt;</span> <span class=n>dataState</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>    <span class=kd>private</span> <span class=n>SimpleDateFormat</span> <span class=n>simpleDateFormat</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>    <span class=nd>@Override</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kt>void</span> <span class=nf>open</span><span class=o>(</span><span class=n>Configuration</span> <span class=n>parameters</span><span class=o>)</span> <span class=kd>throws</span> <span class=n>Exception</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>valueStateDescriptor</span> <span class=o>=</span> <span class=k>new</span> <span class=n>ValueStateDescriptor</span><span class=o>&lt;&gt;(</span><span class=s>&#34;data-state&#34;</span><span class=o>,</span> <span class=n>String</span><span class=o>.</span><span class=na>class</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>dataState</span> <span class=o>=</span> <span class=n>getRuntimeContext</span><span class=o>().</span><span class=na>getState</span><span class=o>(</span><span class=n>valueStateDescriptor</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>simpleDateFormat</span> <span class=o>=</span> <span class=k>new</span> <span class=n>SimpleDateFormat</span><span class=o>(</span><span class=s>&#34;yyyy-MM-dd&#34;</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>    <span class=nd>@Override</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kt>boolean</span> <span class=nf>filter</span><span class=o>(</span><span class=n>JSONObject</span> <span class=n>value</span><span class=o>)</span> <span class=kd>throws</span> <span class=n>Exception</span><span class=o>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=o>{...};</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>
+</span></span><span class=line><span class=cl><span class=o>});</span>
+</span></span><span class=line><span class=cl><span class=c1>// 5.将数据写入 Kafka
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>uvDS</span><span class=o>.</span><span class=na>map</span><span class=o>(</span><span class=n>JSONAware</span><span class=o>::</span><span class=n>toJSONString</span><span class=o>).</span><span class=na>addSink</span><span class=o>(</span><span class=n>MyKafkaUtil</span><span class=o>.</span><span class=na>getKafkaProducer</span><span class=o>(</span><span class=n>sinkTopic</span><span class=o>));</span>
+</span></span><span class=line><span class=cl><span class=c1>// 6.启动
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>env</span><span class=o>.</span><span class=na>execute</span><span class=o>(</span><span class=s>&#34;UniqueVisitApp&#34;</span><span class=o>);</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=代码实现---用户跳出页面>代码实现 - 用户跳出页面</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=c1>//UserJumpDetailApp
+</span></span></span><span class=line><span class=cl><span class=c1>// 1.获取执行环境
+</span></span></span><span class=line><span class=cl><span class=c1>// 2.读取 kafka 主题数据创建流
+</span></span></span><span class=line><span class=cl><span class=c1>// 3.将每行数据转换为 JSON 对象，提取时间戳
+</span></span></span><span class=line><span class=cl><span class=c1>// 4.定义模式序列
+</span></span></span><span class=line><span class=cl><span class=c1>// 5.将模式序列作用到流上
+</span></span></span><span class=line><span class=cl><span class=c1>// 6.提取匹配上的超时事件, UNION 两种事件
+</span></span></span><span class=line><span class=cl><span class=c1>// 7.将数据写入 Kafka
+</span></span></span><span class=line><span class=cl><span class=c1>// 6.启动
+</span></span></span></code></pre></td></tr></table></div></div><h3 id=flink-stream-join>Flink Stream Join</h3><h4 id=window-join>Window Join</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=n>stream</span><span class=o>.</span><span class=na>join</span><span class=o>(</span><span class=n>otherStream</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>      <span class=o>.</span><span class=na>where</span><span class=o>(&lt;</span><span class=n>KeySelector</span><span class=o>&gt;)</span>
+</span></span><span class=line><span class=cl>      <span class=o>.</span><span class=na>equalTo</span><span class=o>(&lt;</span><span class=n>KeySelector</span><span class=o>&gt;)</span>
+</span></span><span class=line><span class=cl>      <span class=o>.</span><span class=na>window</span><span class=o>(&lt;</span><span class=n>WindowAssigner</span><span class=o>&gt;)</span>
+</span></span><span class=line><span class=cl>      <span class=o>.</span><span class=na>apply</span><span class=o>(&lt;</span><span class=n>JoinFunction</span><span class=o>&gt;)</span>
+</span></span></code></pre></td></tr></table></div></div><p>Tumbing Window Join</p><p>滚动窗口：和 SparkStreaming 直接 Join 一样</p><p>Sliding Window Join</p><p>滑动窗口：有可能数据重复 Join</p><p>Session Window join</p><p>会话窗口：两个流的数据一段时间都没有数据，两个流开始 Join</p><h4 id=interval-join>Interval Join</h4><p>对被Join的流有 lower bound 和 upper bound 范围选择（范围选择则要用到状态编程、当前仅支持状态时间，需提取出状态时间）</p><h4 id=代码实现---订单明细表双流-join>代码实现 - 订单明细表双流 Join</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=c1>//OrderWideApp
+</span></span></span><span class=line><span class=cl><span class=c1>//1.获取执行环境
+</span></span></span><span class=line><span class=cl><span class=c1>//2.读取 Kafka 主题的数据，转化为 JavaBean 对象并且提取时间戳生成 WaterMark
+</span></span></span><span class=line><span class=cl><span class=c1>//3.双流 Join
+</span></span></span><span class=line><span class=cl><span class=c1>//4.关联维度信息
+</span></span></span><span class=line><span class=cl><span class=c1>//5.写入Kafka
+</span></span></span><span class=line><span class=cl><span class=c1>//6.启动任务
+</span></span></span></code></pre></td></tr></table></div></div><h3 id=维度表关联>维度表关联</h3><h4 id=优化1加入旁路缓存>优化1：加入旁路缓存</h4><p>维度关联时查询维度表，先查 Redis，再查 HBASE。</p><p>Redis 作为旁路缓存，订单宽表查询维度数据时先查旁路缓存。没有再查询维度数据，同时同步到旁路缓存。</p><blockquote><p>注意问题</p><p>1.缓存要设过期时间，不然冷数据会常驻缓存浪费资源。</p><p>2.要考虑维度数据是否会发生变化，如果发生变化要主动清楚缓存。</p></blockquote><blockquote><p>缓存选型</p><p>两种：堆缓存 或者 独立缓存服务(Redis, memcache)</p><p><strong>堆缓存</strong>，性能好，管理性差。</p><p><strong>独立缓存服务</strong>，有创建连接、网络 IO 等消耗。管理性更强，更容易扩展。</p><p><strong>联合使用</strong>(LRU Cache，最近最少使用)</p></blockquote><p>代码实现</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=kd>public</span> <span class=kd>class</span> <span class=nc>RedisUtil</span><span class=o>{...}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=kd>class</span> <span class=nc>DimUtil</span><span class=o>{</span><span class=c1>//维度表关联
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=c1>//查询 HBASE 表之前先查询 Redis
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>Jedis</span> <span class=n>jedis</span> <span class=o>=</span> <span class=n>RedisUtil</span><span class=o>.</span><span class=na>getJedis</span><span class=o>();</span>
+</span></span><span class=line><span class=cl>    <span class=n>String</span> <span class=n>dimInfoJsonStr</span> <span class=o>=</span> <span class=n>jedis</span><span class=o>.</span><span class=na>get</span><span class=o>(</span><span class=n>redisKey</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// RedisKey 不用 hash 的原因：
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=c1>//    1.用户数据量大，使用大量数据可能到一条 hash 上，造成热点问题。
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=c1>//    2.需要设置过期时间。
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=c1>// RedisKey 不用 Set 的原因：
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=c1>//    1.查询不方便
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=c1>//    2.需要设置过期时间。
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>if</span><span class=o>(</span><span class=n>dimInfoJsonStr</span> <span class=o>!=</span> <span class=kc>null</span><span class=o>){</span>
+</span></span><span class=line><span class=cl>         <span class=c1>//归还连接
+</span></span></span><span class=line><span class=cl><span class=c1></span>    	<span class=n>jedis</span><span class=o>.</span><span class=na>close</span><span class=o>();</span>
+</span></span><span class=line><span class=cl>    	<span class=c1>//重置过期时间
+</span></span></span><span class=line><span class=cl><span class=c1></span>    	<span class=n>jedis</span><span class=o>.</span><span class=na>expire</span><span class=o>(</span><span class=n>redisKey</span><span class=o>,</span> <span class=n>24</span> <span class=o>*</span> <span class=n>60</span> <span class=o>*</span> <span class=n>60</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>    	<span class=c1>//返回结果
+</span></span></span><span class=line><span class=cl><span class=c1></span>    	<span class=k>return</span> <span class=n>JsonObject</span><span class=o>.</span><span class=na>parseObject</span><span class=o>(</span><span class=n>dimInfoJsonStr</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//从 HBASE 拿数据
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=o>....</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//将数据写入 Redis
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>jedis</span><span class=o>.</span><span class=na>set</span><span class=o>();</span>
+</span></span><span class=line><span class=cl>    <span class=n>jedis</span><span class=o>.</span><span class=na>expire</span><span class=o>();</span>
+</span></span><span class=line><span class=cl>    <span class=n>jedis</span><span class=o>.</span><span class=na>close</span><span class=o>();</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>dimInfoJson</span><span class=o>;</span>
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=优化2异步查询>优化2：异步查询</h4><p>异步查询把查询操作托管给单独的线程池完成，这样不会因为某个查询造成阻塞，单个并行可以连续发送多个请求，提高并发效率。</p><p>代价：消耗更多的 Tasks，threads、Flink-internal network connections</p><p>数据流和程序流程</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>数据流：web/app -&gt; Nginx -&gt; SpringBoot -&gt; Mysql -&gt; FlinkApp -&gt; Kafka(ods) -&gt; FlinkApp -&gt; Kafka/Hbase(dwd-dim) -&gt; [FlinkApp(redis)] -&gt; Kafka(dwm)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>程序：mocklog -&gt; Mysql -&gt; FlinkCDC -&gt; KafkaZ(zk) -&gt; BaseLogApp -&gt; Kafka/Phoneix(zk/hdfs/hbase) -&gt; [OrderWideApp(Redis) -&gt; Kafka]
+</span></span></code></pre></td></tr></table></div></div><p>代码实现</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=kd>public</span> <span class=kd>class</span> <span class=nc>DimAsyncFunction</span><span class=o>&lt;</span><span class=n>T</span><span class=o>&gt;</span> <span class=kd>extends</span> <span class=n>RichAsyncFunciton</span><span class=o>&lt;</span><span class=n>T</span><span class=o>,</span> <span class=n>T</span><span class=o>&gt;{</span>
+</span></span><span class=line><span class=cl>    <span class=nd>@Override</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kt>void</span> <span class=nf>open</span><span class=o>(){}</span>
+</span></span><span class=line><span class=cl>    <span class=nd>@Override</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kt>void</span> <span class=nf>asyncInvoke</span><span class=o>(){}</span>
+</span></span><span class=line><span class=cl>    <span class=nd>@Override</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kt>void</span> <span class=nf>timeout</span><span class=o>(){}</span>
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=kd>class</span> <span class=nc>ThreadPoolUtil</span><span class=o>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>private</span> <span class=kd>static</span> <span class=n>ThreadPoolExecutor</span> <span class=n>threadPoolExecutor</span> <span class=o>=</span> <span class=kc>null</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>    <span class=kd>private</span> <span class=nf>ThreadPoolUtil</span><span class=o>(){</span>   
+</span></span><span class=line><span class=cl>    <span class=o>}</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kd>static</span> <span class=n>ThreadPoolExecutor</span> <span class=n>getThreadPool</span><span class=o>{</span>
+</span></span><span class=line><span class=cl>        <span class=c1>//懒汉式-单例模式
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=k>if</span><span class=o>(</span><span class=n>threadPoolExecutor</span> <span class=o>==</span> <span class=kc>null</span><span class=o>){</span>
+</span></span><span class=line><span class=cl>            <span class=kd>synchronized</span><span class=o>(</span><span class=n>ThreadPoolUtil</span><span class=o>.</span><span class=na>class</span><span class=o>){</span>
+</span></span><span class=line><span class=cl>                <span class=k>if</span><span class=o>(</span><span class=n>threadPoolExecutor</span> <span class=o>==</span> <span class=kc>null</span><span class=o>){</span>
+</span></span><span class=line><span class=cl>                    <span class=n>threadPoolExecutor</span> <span class=o>=</span> <span class=k>new</span> <span class=n>ThreadPoolExecutor</span><span class=o>(</span><span class=n>corePoolSize</span> <span class=o>=</span> <span class=n>8</span><span class=o>,</span><span class=n>maximumPoolSize</span> <span class=o>=</span> <span class=n>16</span><span class=o>,</span><span class=n>keepAliveTime</span> <span class=o>=</span> <span class=n>1L</span><span class=o>,</span><span class=n>TimUnit</span><span class=o>.</span><span class=na>MiNUTES</span><span class=o>,</span><span class=k>new</span> <span class=n>LinkedBlockingDeque</span><span class=o>&lt;&gt;());</span>
+</span></span><span class=line><span class=cl>                <span class=o>}</span>
+</span></span><span class=line><span class=cl>            <span class=o>}</span>
+</span></span><span class=line><span class=cl>        <span class=o>}</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>threadPoolExecutor</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=主流数据丢失>主流数据丢失</h3><p>使用 intervalJoin 来管理流的状态时间，保证当支流数据到达时主流数据还保存在状态中。</p><h3 id=业务数据写入dwm-1>业务数据写入DWM</h3><h4 id=代码实现---支付宽表>代码实现 - 支付宽表</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=n>PaymentWideApp</span><span class=o>;</span>
+</span></span><span class=line><span class=cl><span class=c1>//1.获取执行环境
+</span></span></span><span class=line><span class=cl><span class=c1>//2.读取 kafka 主题数据创建流
+</span></span></span><span class=line><span class=cl><span class=c1>//3.双流 Join
+</span></span></span><span class=line><span class=cl><span class=c1>//4.写入Kafka
+</span></span></span><span class=line><span class=cl><span class=c1>//5.启动任务
+</span></span></span></code></pre></td></tr></table></div></div><h2 id=dws-数仓汇总层>DWS 数仓汇总层</h2><p>轻度聚合，因为 DWS 层要应对很多实时查询，如果完全的明细那么查询的压力是非常大的。</p><h3 id=主题宽表写入dws>主题宽表写入DWS</h3><h4 id=数据流和程序流程-1>数据流和程序流程</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>数据流：web/app -&gt; Nginx -&gt; SpringBoot -&gt; Mysql -&gt; FlinkApp -&gt; Kafka(ods) -&gt; FlinkApp -&gt; Kafka/Hbase(dwd-dim) -&gt; FlinkApp(redis) -&gt; Kafka(dwm) -&gt; [FlinkApp -&gt; ClickHouse]
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>程序：mocklog -&gt; Mysql -&gt; FlinkCDC -&gt; KafkaZ(zk) -&gt; BaseLogApp -&gt; Kafka/Phoneix(zk/hdfs/hbase) -&gt; OrderWideApp(Redis) -&gt; Kafka -&gt; [uv/uj -&gt; kafka -&gt; VisitorStatsApp -&gt; ClickHouse]
+</span></span></code></pre></td></tr></table></div></div><h4 id=代码实现---访客主题宽表>代码实现 - 访客主题宽表</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=n>VisitorStatsApp</span><span class=o>;</span>
+</span></span><span class=line><span class=cl><span class=c1>//1.获取执行环境
+</span></span></span><span class=line><span class=cl><span class=c1>//2.读取 kafka 数据创建流
+</span></span></span><span class=line><span class=cl><span class=c1>//3.将每个流处理成相同的数据类型
+</span></span></span><span class=line><span class=cl><span class=c1>//4.Union 所有流
+</span></span></span><span class=line><span class=cl><span class=c1>//5.提取时间戳生成 WaterMark
+</span></span></span><span class=line><span class=cl><span class=c1>//6.按照维度信息分组
+</span></span></span><span class=line><span class=cl><span class=c1>//7.开窗聚合 10s 的滚动窗口
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>WindowedStream</span><span class=o>&lt;</span><span class=n>VisitorStats</span><span class=o>,</span> <span class=n>Tuple4</span><span class=o>&lt;</span><span class=n>String</span><span class=o>,</span> <span class=n>String</span><span class=o>,</span> <span class=n>String</span><span class=o>,</span> <span class=n>String</span><span class=o>&gt;,</span> <span class=n>TimeWindow</span><span class=o>&gt;</span> <span class=n>windowedStream</span> <span class=o>=</span> <span class=n>keyedStream</span><span class=o>.</span><span class=na>window</span><span class=o>(</span><span class=n>TumblingEventTimeWindows</span><span class=o>.</span><span class=na>of</span><span class=o>(</span><span class=n>Time</span><span class=o>.</span><span class=na>seconds</span><span class=o>(</span><span class=n>10</span><span class=o>)));</span>
+</span></span><span class=line><span class=cl><span class=n>windowedStream</span><span class=o>.</span><span class=na>reduce</span><span class=o>(</span><span class=k>new</span> <span class=n>ReduceFunction</span><span class=o>&lt;</span><span class=n>VisitorStats</span><span class=o>&gt;()){}</span>
+</span></span><span class=line><span class=cl><span class=c1>//8.数据写入 ClickHouse
+</span></span></span><span class=line><span class=cl><span class=c1>//9.启动任务
+</span></span></span></code></pre></td></tr></table></div></div></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>Updated on 2022-07-08&nbsp;<a class=git-hash href=https://github.com/Jerrysmd/Jerrysmd.github.io/commit/fb2d9f184a907ba0f36906d9724c8fa2a22941e7 target=_blank title="commit by JiaRui(currysmd@qq.com) fb2d9f184a907ba0f36906d9724c8fa2a22941e7: UPDATE">
+<i class="fas fa-hashtag fa-fw" aria-hidden=true></i>fb2d9f18</a></span></div></div><div class=post-info-line><div class=post-info-md></div><div class=post-info-share><span></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fas fa-tags fa-fw" aria-hidden=true></i>&nbsp;<a href=/tags/dataware-house/>Dataware house</a>,&nbsp;<a href=/tags/distribution/>Distribution</a>,&nbsp;<a href=/tags/flink/>Flink</a></section><section><span><a href=javascript:void(0); onclick=window.history.back()>Back</a></span>&nbsp;|&nbsp;<span><a href=/>Home</a></span></section></div><div class=post-nav><a href=/20210308_dw-flink/ class=prev rel=prev title="Data Warehouse: Real-Time, part Ⅰ"><i class="fas fa-angle-left fa-fw" aria-hidden=true></i>Data Warehouse: Real-Time, part Ⅰ</a>
+<a href=/20211218_2021-summary-video/ class=next rel=next title="Memories of 2021">Memories of 2021<i class="fas fa-angle-right fa-fw" aria-hidden=true></i></a></div></div><div id=comments><div id=valine class=comment></div><noscript>Please enable JavaScript to view the comments powered by <a href=https://valine.js.org/>Valine</a>.</noscript></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="far fa-copyright fa-fw" aria-hidden=true></i><span itemprop=copyrightYear>2018 - 2022</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=about target=_blank></a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title="Back to Top"><i class="fas fa-arrow-up fa-fw" aria-hidden=true></i>
+</a><a href=# id=view-comments class=fixed-button title="View Comments"><i class="fas fa-comment fa-fw" aria-hidden=true></i></a></div><link rel=stylesheet href=/lib/valine/valine.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css><script type=text/javascript src=https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"Copy to clipboard",maxShownLines:50},comment:{valine:{appId:"2jSYKh8PFUje3v7Ie3Nn5v1g-gzGzoHsz",appKey:"MyWn4P9G5N32q3oM5JDnlpdL",avatar:"retro",el:"#valine",emojiCDN:"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/",emojiMaps:{100:"1f4af.png",alien:"1f47d.png",anger:"1f4a2.png",angry:"1f620.png",anguished:"1f627.png",astonished:"1f632.png",black_heart:"1f5a4.png",blue_heart:"1f499.png",blush:"1f60a.png",bomb:"1f4a3.png",boom:"1f4a5.png",broken_heart:"1f494.png",brown_heart:"1f90e.png",clown_face:"1f921.png",cold_face:"1f976.png",cold_sweat:"1f630.png",confounded:"1f616.png",confused:"1f615.png",cry:"1f622.png",crying_cat_face:"1f63f.png",cupid:"1f498.png",dash:"1f4a8.png",disappointed:"1f61e.png",disappointed_relieved:"1f625.png",dizzy:"1f4ab.png",dizzy_face:"1f635.png",drooling_face:"1f924.png",exploding_head:"1f92f.png",expressionless:"1f611.png",face_vomiting:"1f92e.png",face_with_cowboy_hat:"1f920.png",face_with_hand_over_mouth:"1f92d.png",face_with_head_bandage:"1f915.png",face_with_monocle:"1f9d0.png",face_with_raised_eyebrow:"1f928.png",face_with_rolling_eyes:"1f644.png",face_with_symbols_on_mouth:"1f92c.png",face_with_thermometer:"1f912.png",fearful:"1f628.png",flushed:"1f633.png",frowning:"1f626.png",ghost:"1f47b.png",gift_heart:"1f49d.png",green_heart:"1f49a.png",grimacing:"1f62c.png",grin:"1f601.png",grinning:"1f600.png",hankey:"1f4a9.png",hear_no_evil:"1f649.png",heart:"2764-fe0f.png",heart_decoration:"1f49f.png",heart_eyes:"1f60d.png",heart_eyes_cat:"1f63b.png",heartbeat:"1f493.png",heartpulse:"1f497.png",heavy_heart_exclamation_mark_ornament:"2763-fe0f.png",hole:"1f573-fe0f.png",hot_face:"1f975.png",hugging_face:"1f917.png",hushed:"1f62f.png",imp:"1f47f.png",innocent:"1f607.png",japanese_goblin:"1f47a.png",japanese_ogre:"1f479.png",joy:"1f602.png",joy_cat:"1f639.png",kiss:"1f48b.png",kissing:"1f617.png",kissing_cat:"1f63d.png",kissing_closed_eyes:"1f61a.png",kissing_heart:"1f618.png",kissing_smiling_eyes:"1f619.png",laughing:"1f606.png",left_speech_bubble:"1f5e8-fe0f.png",love_letter:"1f48c.png",lying_face:"1f925.png",mask:"1f637.png",money_mouth_face:"1f911.png",nauseated_face:"1f922.png",nerd_face:"1f913.png",neutral_face:"1f610.png",no_mouth:"1f636.png",open_mouth:"1f62e.png",orange_heart:"1f9e1.png",partying_face:"1f973.png",pensive:"1f614.png",persevere:"1f623.png",pleading_face:"1f97a.png",pouting_cat:"1f63e.png",purple_heart:"1f49c.png",rage:"1f621.png",relaxed:"263a-fe0f.png",relieved:"1f60c.png",revolving_hearts:"1f49e.png",right_anger_bubble:"1f5ef-fe0f.png",robot_face:"1f916.png",rolling_on_the_floor_laughing:"1f923.png",scream:"1f631.png",scream_cat:"1f640.png",see_no_evil:"1f648.png",shushing_face:"1f92b.png",skull:"1f480.png",skull_and_crossbones:"2620-fe0f.png",sleeping:"1f634.png",sleepy:"1f62a.png",slightly_frowning_face:"1f641.png",slightly_smiling_face:"1f642.png",smile:"1f604.png",smile_cat:"1f638.png",smiley:"1f603.png",smiley_cat:"1f63a.png",smiling_face_with_3_hearts:"1f970.png",smiling_imp:"1f608.png",smirk:"1f60f.png",smirk_cat:"1f63c.png",sneezing_face:"1f927.png",sob:"1f62d.png",space_invader:"1f47e.png",sparkling_heart:"1f496.png",speak_no_evil:"1f64a.png",speech_balloon:"1f4ac.png","star-struck":"1f929.png",stuck_out_tongue:"1f61b.png",stuck_out_tongue_closed_eyes:"1f61d.png",stuck_out_tongue_winking_eye:"1f61c.png",sunglasses:"1f60e.png",sweat:"1f613.png",sweat_drops:"1f4a6.png",sweat_smile:"1f605.png",thinking_face:"1f914.png",thought_balloon:"1f4ad.png",tired_face:"1f62b.png",triumph:"1f624.png",two_hearts:"1f495.png",unamused:"1f612.png",upside_down_face:"1f643.png",weary:"1f629.png",white_frowning_face:"2639-fe0f.png",white_heart:"1f90d.png",wink:"1f609.png",woozy_face:"1f974.png",worried:"1f61f.png",yawning_face:"1f971.png",yellow_heart:"1f49b.png",yum:"1f60b.png",zany_face:"1f92a.png",zipper_mouth_face:"1f910.png",zzz:"1f4a4.png"},enableQQ:!0,highlight:!0,lang:"en",meta:["nick","mail"],pageSize:10,placeholder:"Your comment ...",recordIP:!0,visitor:!0}},lightgallery:!0,search:{highlightTag:"em",lunrIndexURL:"/index.json",maxResultLength:10,noResultsFound:"No results found",snippetLength:30,type:"lunr"}}</script><script type=text/javascript src=/js/theme.min.js></script></body></html>

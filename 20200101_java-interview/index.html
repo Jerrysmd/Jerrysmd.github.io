@@ -1,0 +1,245 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><title>Java Basic - JerrysBlog</title><meta name=Description content="Article description."><meta property="og:title" content="Java Basic"><meta property="og:description" content="Article description."><meta property="og:type" content="article"><meta property="og:url" content="https://jerrysmd.github.io/20200101_java-interview/"><meta property="og:image" content="https://jerrysmd.github.io/logo.png"><meta property="article:section" content="posts"><meta property="article:published_time" content="2020-01-01T11:18:47+08:00"><meta property="article:modified_time" content="2022-07-08T17:26:45+08:00"><meta property="og:site_name" content="JerrysBlog"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://jerrysmd.github.io/logo.png"><meta name=twitter:title content="Java Basic"><meta name=twitter:description content="Article description."><meta name=application-name content="JerrysBlog"><meta name=apple-mobile-web-app-title content="JerrysBlog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://jerrysmd.github.io/20200101_java-interview/><link rel=prev href=https://jerrysmd.github.io/20200101_leetcode/><link rel=next href=https://jerrysmd.github.io/20200122_java-static/><link rel=stylesheet href=/css/style.min.css><link rel=preload href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css></noscript><link rel=preload href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css></noscript><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Java Basic","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/jerrysmd.github.io\/20200101_java-interview\/"},"image":[{"@type":"ImageObject","url":"https:\/\/jerrysmd.github.io\/images\/Apple-Devices-Preview.png","width":3200,"height":2048}],"genre":"posts","keywords":"Interview","wordcount":836,"url":"https:\/\/jerrysmd.github.io\/20200101_java-interview\/","datePublished":"2020-01-01T11:18:47+08:00","dateModified":"2022-07-08T17:26:45+08:00","publisher":{"@type":"Organization","name":"xxxx","logo":{"@type":"ImageObject","url":"https:\/\/jerrysmd.github.io\/images\/avatar.png","width":528,"height":560}},"author":{"@type":"Person","name":" "},"description":"Article description."}</script></head><body data-header-desktop=fixed data-header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem("theme")?localStorage.getItem("theme")==="dark":"auto"==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:"auto"==="dark")&&document.body.setAttribute("theme","dark")</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title=JerrysBlog>JERRYSBLOG</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/>Home </a><a class=menu-item href=/categories/technology/>Technology </a><a class=menu-item href=/categories/life/>Life </a><a class=menu-item href=/tags/>Tags </a><a class=menu-item href=/about/>About </a><a class=menu-item href=https://github.com/Jerrysmd title=GitHub rel="noopener noreffer" target=_blank><i class='fab fa-github fa-fw' aria-hidden=true></i> </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder="Search titles or contents..." id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=Search><i class="fas fa-search fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=Clear><i class="fas fa-times-circle fa-fw" aria-hidden=true></i></a>
+<span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i></span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title="Switch Theme"><i class="fas fa-adjust fa-fw" aria-hidden=true></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title=JerrysBlog>JERRYSBLOG</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder="Search titles or contents..." id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=Search><i class="fas fa-search fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=Clear><i class="fas fa-times-circle fa-fw" aria-hidden=true></i></a>
+<span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>Cancel</a></div><a class=menu-item href=/ title>Home</a><a class=menu-item href=/categories/technology/ title>Technology</a><a class=menu-item href=/categories/life/ title>Life</a><a class=menu-item href=/tags/ title>Tags</a><a class=menu-item href=/about/ title>About</a><a class=menu-item href=https://github.com/Jerrysmd title=GitHub rel="noopener noreffer" target=_blank><i class='fab fa-github fa-fw' aria-hidden=true></i></a><a href=javascript:void(0); class="menu-item theme-switch" title="Switch Theme">
+<i class="fas fa-adjust fa-fw" aria-hidden=true></i></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>Contents</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Java Basic</h1><div class=post-meta><div class=post-meta-line><span class=post-author><a href=about title=Author rel=author class=author><i class="fas fa-user-circle fa-fw" aria-hidden=true></i> </a></span>&nbsp;
+<span class=post-category>· Category in
+<a href=/categories/technology/><i class="far fa-folder fa-fw" aria-hidden=true></i>Technology</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt fa-fw" aria-hidden=true></i>&nbsp;<time datetime=2020-01-01>2020-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden=true></i>&nbsp;836 words&nbsp;
+<i class="far fa-clock fa-fw" aria-hidden=true></i>&nbsp;4 minutes&nbsp;<span id=/20200101_java-interview/ class=leancloud_visitors data-flag-title="Java Basic">
+<i class="far fa-eye fa-fw" aria-hidden=true></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+</span>&nbsp;</div></div><div class="details toc" id=toc-static data-kept><div class="details-summary toc-title"><span>Contents</span>
+<span><i class="details-icon fas fa-angle-right" aria-hidden=true></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#jvm>JVM</a></li><li><a href=#gc>GC</a></li><li><a href=#multi-thread>Multi Thread</a></li><li><a href=#redis>Redis</a></li></ul></nav></div></div><div class=content id=content><p>JVM, Garbage Collection, Multi - thread, Redis</p><h2 id=jvm>JVM</h2><p><strong>Java从编码到执行</strong></p><blockquote><ol><li>javac 将 x.java(任何语言) 文件编码成 x.class 文件</li><li>JVM 中的 ClassLoader 将 x.class 文件装载到内存里，通常也会把 java类库也装载到内存里</li><li>JVM 调用 字节码解释器 或 JIT即时编译器(常用的代码使用即时编译，第二次编译的时候直接调用) 来进行解释或编译 *jvm是解释执行也是编译执行的，也可以混合执行</li><li>JVM 执行引擎开始执行</li></ol></blockquote><p><strong>JVM</strong></p><blockquote><ol><li>jvm 是一种规范</li><li>它是虚构出来的一台计算机</li></ol></blockquote><p><strong>ClassFileFormat</strong></p><blockquote><ul><li>二进制字节流</li><li>CLASS文件结构<ol><li>前4个字节：magic</li><li>两个字节：minor version</li><li>两个字节：major version</li><li>两个字节：constant pool count 常量池个数 ，2个字节，最多65535个</li><li>常量池结构：<ol><li>constant_utf8_info: <strong>tag</strong>:1,占用空间一个字节。<strong>length</strong>: utf-8字符串占用的字节数。<strong>bytes</strong>: 长度位length的字符串</li><li>constant_integer_info: <strong>tag</strong>:3,占用空间一个字节。<strong>bytes</strong>: 4个字节，big-endian（高位在前）存储的int值</li><li>constant_methodref_info: <strong>tag</strong>:10 <strong>index</strong>:2字节，指向声明方法的类或者接口描述符constant_class_info的索引项 <strong>index</strong>: 2字节，指向字段描述符constant_nameAndType的索引项</li></ol></li><li>class/this_class/super_class</li><li>interfaces</li><li>fields</li><li>methods</li></ol></li></ul></blockquote><p><strong>Class Loading Linking Initializing</strong></p><p><strong>class文件load到内存的过程</strong></p><blockquote><ol><li>loading: class文件放到内存</li><li>双亲委派，安全</li><li>lazyLoading 五中情况</li><li>classLoader：findInCache -> parent.loadClass -> findClass()</li><li>自定义类加载器<ol><li>extends ClassLoader</li><li>overwrite findClass() -> defineClass(byte[] -> Class clazz)</li></ol></li><li>混合执行</li><li>linking<ol><li>verification：文件符合jvm规定：0xCAFEBABE&mldr;</li><li>preparation：静态成员变量赋默认值，int = 0&mldr;</li><li>resolution：类、方法、属性符号应用解析为直接引用，常量池中的各个符号引用解析为指针、偏移量等内存地址的直接引用</li></ol></li><li>initializing：静态变量这时才赋为初始值<ol><li>load 静态成员变量 -> 默认值 -> 初始值</li><li>new Object -> 申请内存 -> 默认值 -> 初始值：单例模式中，volatile 确保指令执行顺序，先初始化后再把内存给 t ，否则有可能先指向内存再初始化</li></ol></li></ol></blockquote><p><strong>类加载器</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>JVM 是按需动态加载，采用双亲委派机制	
+</span></span><span class=line><span class=cl>（自顶向下，进行实际查找和加载child方向）
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Bootstrap   -----&gt; 加载lib/rt.jar charset.jar 等核心类，C++实现
+</span></span><span class=line><span class=cl>    |
+</span></span><span class=line><span class=cl>Extension   -----&gt; 加载扩展jar包(jre/lib/ext/*.jar)，或由 Djava.ext.dirs指定
+</span></span><span class=line><span class=cl>    |
+</span></span><span class=line><span class=cl>Application -----&gt; 加载classpath指定内容
+</span></span><span class=line><span class=cl>    |
+</span></span><span class=line><span class=cl>Custom ClassLoader -----&gt; 自定义 classLoader
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>（自底向上检查该类是否已经加载parent方向）
+</span></span></code></pre></td></tr></table></div></div><p>双亲委派</p><blockquote><ul><li>父加载器</li></ul><p>-父加载器不是"类加载器的加载器"，！！也不是"类加载器的父类加载器"</p><ul><li>双亲委派是一个孩子向父亲方向，然后父亲向孩子方向的双亲委派过程</li></ul></blockquote><p><figure><a class=lightgallery href=/20200101_java-interview/classLoading.jpg title=classLoadProcess data-thumbnail=/20200101_java-interview/classLoading.jpg data-sub-html="<h2>classLoadProcess</h2><p>classLoadProcess</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20200101_java-interview/classLoading.jpg data-srcset="/20200101_java-interview/classLoading.jpg, /20200101_java-interview/classLoading.jpg 1.5x, /20200101_java-interview/classLoading.jpg 2x" data-sizes=auto alt=/20200101_java-interview/classLoading.jpg width=1880 height=1005></a><figcaption class=image-caption>classLoadProcess</figcaption></figure></p><p>为什么要做双亲委派</p><blockquote><p>安全</p><p>双亲委派机制能够保证类加载器加载某个类时，最终都是由一个加载器加载，确保最终加载结果相同</p><p>比如 java.long.object, 从 custom classLoader 从下向上开始，到Bootstrap 发现已经加载过了，就不再加载了</p></blockquote><p>补充</p><blockquote><ul><li><p>class load到内存中有<strong>两块</strong>东西，一是class二进制文件，二是class对象。其他自己写的对象访问内存中的class对象，通过class对象访问内存中的二进制文件</p></li><li><p>method Area ：</p></li></ul><p>class对象是存储在 method Area 中，method Area 在内存是存储在 metaspace中，也就是 permanent generation。1.8之前叫 permanent generation， 1.8之后叫 metaspace</p><ul><li>什么时候需要调用loadclass函数？</li></ul><ol><li>spring 里有动态代理，spring 就调用 loadclass 把 class 加载到缓存里</li><li>tomcat，load自定义的class</li><li>热部署，热启动</li></ol></blockquote><p><strong>类编译</strong></p><blockquote><ul><li>解释器</li></ul><p>-bytecode intepreter</p><ul><li>JIT</li></ul><p>-Just In Time compiler</p><ul><li>混合模式：</li></ul><p>-混合使用解释器 + 热点代码编译</p><p>-起始阶段采用解释执行</p><p>-热点代码检测</p><ul><li>多次被调用的方法（方法计数器：监测方法执行频率）</li><li>多次被调用的方法（循环计数器：检测循环执行频率）</li><li>进行编译</li></ul><blockquote><ul><li>Xmixed: 默认为混合模式，开始解释执行，启动速度较快，对热点代码实行检测和编译</li><li>Xint: 解释模式，启动很快执行稍慢</li><li>Xcomp: 纯编译模式，执行很快，启动很慢</li></ul></blockquote></blockquote><p><strong>懒加载</strong></p><blockquote><ul><li>new/ get static / put static / invoke static 指令，访问 final 变量除外</li><li>java.lang.reflect 对类进行反射调用时</li><li>初始化子类的时候，父类首先初始化</li><li>jvm启动时，被执行的主类必须初始化</li><li>动态语言支持REF_putstatic/REF_getstatic/REF_invokestatic的方法句柄时，该类必须初始化</li></ul></blockquote><p><strong>Initializing</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=c1>//例：求 T.count
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>main</span><span class=o>(){</span>
+</span></span><span class=line><span class=cl>    <span class=n>System</span><span class=o>.</span><span class=na>out</span><span class=o>.</span><span class=na>println</span><span class=o>(</span><span class=n>T</span><span class=o>.</span><span class=na>count</span><span class=o>);</span>
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span><span class=line><span class=cl><span class=kd>class</span> <span class=nc>T</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kd>static</span> <span class=n>T</span> <span class=n>t</span> <span class=o>=</span> <span class=k>new</span> <span class=n>T</span><span class=o>();</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kd>static</span> <span class=kt>int</span> <span class=n>count</span> <span class=o>=</span> <span class=n>2</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>    <span class=kd>private</span> <span class=nf>T</span><span class=o>(){</span>
+</span></span><span class=line><span class=cl>        <span class=n>count</span> <span class=o>++;</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span><span class=line><span class=cl><span class=c1>//T.class load，然后linking，
+</span></span></span><span class=line><span class=cl><span class=c1>//到preparation，静态成员变量赋值默认值。t为null，count为0
+</span></span></span><span class=line><span class=cl><span class=c1>//然后到initializing，t先执行构造方法，count赋值为2, count为2
+</span></span></span><span class=line><span class=cl><span class=c1></span>
+</span></span><span class=line><span class=cl><span class=kd>class</span> <span class=nc>T</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kd>static</span> <span class=kt>int</span> <span class=n>count</span> <span class=o>=</span> <span class=n>2</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kd>static</span> <span class=n>T</span> <span class=n>t</span> <span class=o>=</span> <span class=k>new</span> <span class=n>T</span><span class=o>();</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>    <span class=kd>private</span> <span class=nf>T</span><span class=o>(){</span>
+</span></span><span class=line><span class=cl>        <span class=n>count</span> <span class=o>++;</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span><span class=line><span class=cl><span class=c1>//initializing，count赋值为2，t再执行构造方法 count = 2++ = 3
+</span></span></span></code></pre></td></tr></table></div></div><h2 id=gc>GC</h2><blockquote><p>熟悉GC常用算法，熟悉常见垃圾收集器，具有实际JVM调优实战经验</p></blockquote><blockquote><p><figure><a class=lightgallery href=/20200101_java-interview/gc1.jpg title=gc1 data-thumbnail=/20200101_java-interview/gc1.jpg data-sub-html="<h2>gc1</h2><p>gc1</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20200101_java-interview/gc1.jpg data-srcset="/20200101_java-interview/gc1.jpg, /20200101_java-interview/gc1.jpg 1.5x, /20200101_java-interview/gc1.jpg 2x" data-sizes=auto alt=/20200101_java-interview/gc1.jpg width=659 height=369></a><figcaption class=image-caption>gc1</figcaption></figure></p></blockquote><p>程序的栈和堆</p><blockquote><p>栈：</p><ul><li>每个线程一个栈，栈中照先进先出，存放方法</li></ul><p>堆：</p><ul><li>动态内存块，比如 new 对象</li></ul></blockquote><p>什么是垃圾</p><blockquote><p>没有引用指向他了就是垃圾</p></blockquote><p>回收垃圾的方法</p><blockquote><ol><li>引用计数法（reference count）<ul><li>当引用指向为0，回收</li><li>缺点：当三个内存垃圾互相指向，无法回收</li><li>Python</li></ul></li><li>根可达算法（root searching）<ul><li>GC roots: 线程栈变量，静态变量，常量池，JNI指针</li></ul></li></ol></blockquote><p>GC 的演化</p><blockquote><p>随着内存大小的不断增长而演进</p></blockquote><p>堆内存逻辑分区</p><blockquote><p>分代模型：</p><p>刚刚诞生的对象优先放在新生代内存区，</p><p>随着GC器的扫描新生代，新生代内存若多次没被回收(在Surviver两个区反复横跳多次)会变成老年代(gc正常不管这片区域)</p></blockquote><p>GC 算法</p><blockquote><ul><li>Mark - Sweep (标记清除)<ul><li>标记分为：存货对象，未使用内存区，可回收内存区</li><li>缺点：碎片化严重，分大块内存时不便</li></ul></li><li>Copying<ul><li>基于标记，整齐拷贝到新区域，原内存整体性回收</li><li>缺点：浪费内存</li></ul></li><li>Mark - Compact (标记压缩)<ul><li>基于copying，回收时直接整理内存</li><li>缺点：效率最低</li></ul></li></ul></blockquote><p>GC 器</p><blockquote><p>Serial GC:</p><ul><li>优点：单线程精简的GC实现，无需维护复杂的数据结构，初始化简单，是client模式下JVM默认选项。最古老的GC。</li><li>缺点：会进入"Stop-The World"状态。</li></ul><p>ParNew GC：</p><ul><li>新生代GC实现，是SerialGC的多线程版本，最常见的应用场景是配合老年代的CMS GC 工作</li></ul><p>CMS（<strong>Concurrent</strong> Mark Sweep）GC :</p><ul><li>初始标记 (STW) -> 并发标记 -> 重新标记 (STW) (三色标记)-> 并发清理</li><li>三色标记算法：<ul><li>黑色：自己已经标记，子节点都标记完成。下次扫描不扫描</li><li>灰色：自己已经标记，子节点还没标记。下次扫描只扫描子节点</li><li>白色：没有遍历到的节点。</li><li>Incremental update</li></ul></li><li>优点： 基于标记-清除（Mark-Sweep）算法，尽量减少停顿时间。</li><li>缺点： Incremental update天然bug，会有漏标的问题，所以CMS的remark阶段，必须重头扫描一遍，STW是所有时间最长的。存在碎片化问题，在长时间运行的情况下会发生full GC，导致恶劣停顿。会占用更多的CPU资源，和用户争抢线程。在JDK 9中被标记为废弃。</li></ul><p><strong>Parrallel GC（parallel Scavenge + parallel old）</strong>：</p><ul><li>在<strong>JDK8</strong>等版本中，是server模式JVM的默认GC选择，也被称为吞吐量优先的GC，算法和Serial GC相似，特点是老生代和新生代GC并行进行，更加高效。</li></ul><p>G1 GC：</p><ul><li>兼顾了吞吐量和停顿时间的GC实现，是Oracle JDK 9后默认的GC</li><li>可以直观的设值停顿时间，相对于CMS GC ，G1未必能做到CMS最好情况下的延时停顿，但比最差情况要好得多</li><li>G1 仍存在年代的概念，<strong>G1物理上不分代，逻辑分代</strong>，使用了Region棋盘算法，实际上是标记-整理（Mark-Compact）算法，可以避免内存碎片，尤其是堆非常大的时候，G1优势更明显。</li><li>G1 吞吐量和停顿表现都非常不错。</li></ul><p>ZGC：</p><ul><li>colored Pointer + Load Barrier</li><li>不再分代</li></ul><p>shenandoah：</p><ul><li>和 ZGC 类似</li></ul></blockquote><p>GC 调优</p><blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>java -Xms200M -Xmx200m -XX:+PrintGC com.jvm
+</span></span></code></pre></td></tr></table></div></div><ul><li>-Xms200M -Xmx200m : 防止内存抖动，消耗资源</li></ul></blockquote><p>cpu 占用率居高不下如何调试 jvm</p><blockquote><p>项目中，产生内存泄露的问题， 频繁GC但是回收不到内存，通过定位发现泄露是因为一个类创建了海量的对象</p></blockquote><blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>top 			<span class=c1>#查看哪个进程占CPU比较高</span>
+</span></span><span class=line><span class=cl>top -Hp PID		<span class=c1>#查看进程里哪个线程占CPU</span>
+</span></span><span class=line><span class=cl>jstack/PrintGC 	<span class=c1>#找到进程，看是 VM GC 进程还是业务进程</span>
+</span></span><span class=line><span class=cl>				<span class=c1>#若是 GC 则一定是频繁的 full GC，使用 PrintGC 查看GC每次回收是否正常</span>
+</span></span><span class=line><span class=cl>				<span class=c1>#java -printgc -heapDumpOnOutOfMemoryError, OOM会下载dump文件</span>
+</span></span><span class=line><span class=cl>jmap			<span class=c1>#查看堆中对象占用内存的情况；查看堆转储文件</span>
+</span></span><span class=line><span class=cl>MAT/jhat/jvisualbm	<span class=c1>#进行dump文件分析</span>
+</span></span></code></pre></td></tr></table></div></div></blockquote><blockquote><p>jmap 为了把里面的对象全输出出来，会 STW，让整个JVM卡死</p><ol><li>jmap 命令在压测环境上观察的</li><li>机器做了负载均衡，发现问题后把有问题的机器从负载环境摘出来，再把堆转储文件导出来</li><li>使用tcpcopy复制两份，一份到生产环境，一份到测试环境</li></ol></blockquote><blockquote><p>arthas：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>java -jar arthas-boot.jar
+</span></span><span class=line><span class=cl><span class=c1># 运行后会自动找机器中java的进程</span>
+</span></span><span class=line><span class=cl><span class=c1># 性能上有所降低，但不会stw</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>dashboard
+</span></span><span class=line><span class=cl><span class=c1># 展示线程占用、年代堆栈内存</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>heapdump
+</span></span><span class=line><span class=cl><span class=c1># 替代jmap命令</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>thread -b
+</span></span><span class=line><span class=cl><span class=c1># 查找线程中死锁，代替 jstack</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>jvm
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>jad
+</span></span><span class=line><span class=cl><span class=c1># 在线反编译，在线定位一些问题</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>redefine
+</span></span><span class=line><span class=cl><span class=c1># 在线修改class，临时解决版本bug。多台服务器写个脚本批量修改</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>trace
+</span></span><span class=line><span class=cl><span class=c1># 查看方法所用时间</span>
+</span></span></code></pre></td></tr></table></div></div></blockquote><h2 id=multi-thread>Multi Thread</h2><p>启动线程的三种方式:</p><blockquote><ol><li>extends Thread</li><li>implements Runnable</li><li>Executors.newCachedThread</li></ol></blockquote><p>线程的状态：</p><blockquote><p><figure><a class=lightgallery href=/20200101_java-interview/multi_thread1.jpg title=classLoadProcess data-thumbnail=/20200101_java-interview/multi_thread1.jpg data-sub-html="<h2>classLoadProcess</h2><p>classLoadProcess</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20200101_java-interview/multi_thread1.jpg data-srcset="/20200101_java-interview/multi_thread1.jpg, /20200101_java-interview/multi_thread1.jpg 1.5x, /20200101_java-interview/multi_thread1.jpg 2x" data-sizes=auto alt=/20200101_java-interview/multi_thread1.jpg width=1033 height=561></a><figcaption class=image-caption>classLoadProcess</figcaption></figure></p></blockquote><p><strong>JVM内存模型</strong></p><p>存储器的层次结构</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>l0:寄存器
+</span></span><span class=line><span class=cl>l1:高速缓存
+</span></span><span class=line><span class=cl>l2:高速缓存--------------cpu内部
+</span></span><span class=line><span class=cl>--------------------------------
+</span></span><span class=line><span class=cl>l3:高速缓存
+</span></span><span class=line><span class=cl>l4:主存
+</span></span><span class=line><span class=cl>l5:硬盘
+</span></span><span class=line><span class=cl>l6:远程文件存储-----------cpu共享
+</span></span><span class=line><span class=cl>--------------------------------
+</span></span></code></pre></td></tr></table></div></div><p>cache line 的概念 / 缓存行对其 / 伪共享</p><p>缓存行：</p><blockquote><p>缓存行越大，局部性空间效率越高，但读取时间慢</p><p>缓存行越小，局部性空间效率越低，但读取时间快</p><p>目前用：64字节</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>缓存对其，在cpu内部的L2高速缓存处理时多线程，属于硬件问题：
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>[x  y        main memory]
+</span></span><span class=line><span class=cl>[x  y           L3 cache]
+</span></span><span class=line><span class=cl>[x  y    L2][x  y     L2]
+</span></span><span class=line><span class=cl>[x  y    L1][x  y     L1]
+</span></span><span class=line><span class=cl>[计算单元与寄存器][计寄存器]
+</span></span></code></pre></td></tr></table></div></div><p>高速缓存数据一致性解决方法</p><blockquote><p>老的CPU：<strong>总线锁</strong> 大大降低了性能</p><p>新的CPU：<strong>MESI</strong> Cache 数据一致性协议等(intel 用 MESI) + 总线锁</p><ul><li>Modified</li><li>Exclusive</li><li>Shared</li><li>Invalid</li></ul><p>有些无法被缓存的数据，或者跨越多个缓存行的数据，依然必须使用总线锁</p></blockquote><p>缓存行对其 / 伪共享</p><blockquote><p>位于同一缓存行的两个不同数据，被两个不同CPU锁定，产生互相影响的伪共享问题</p><p>解决方法：</p><ul><li>缓存行对其：扩大字节数，使其不在统一缓存行</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=kd>private</span> <span class=kd>static</span> <span class=kd>class</span> <span class=nc>Padding</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kt>long</span> <span class=n>p1</span><span class=o>,</span> <span class=n>p2</span><span class=o>,</span> <span class=n>p3</span><span class=o>,</span> <span class=n>p4</span><span class=o>,</span> <span class=n>p5</span><span class=o>,</span> <span class=n>p6</span><span class=o>,</span> <span class=n>p7</span><span class=o>;</span> <span class=c1>//cache line padding
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=kd>private</span> <span class=kd>volatile</span> <span class=kt>long</span> <span class=n>cursor</span> <span class=o>=</span> <span class=n>INITIAL_CURSOR_VALUE</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kt>long</span> <span class=n>p8</span><span class=o>,</span> <span class=n>p9</span><span class=o>,</span> <span class=n>p10</span><span class=o>,</span> <span class=n>p11</span><span class=o>,</span> <span class=n>p12</span><span class=o>,</span> <span class=n>p13</span><span class=o>,</span> <span class=n>p14</span><span class=o>;</span> <span class=c1>//cache line padding
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=o>}</span>
+</span></span></code></pre></td></tr></table></div></div></blockquote><p>乱序问题</p><blockquote><p>cpu为了提高指令执行效率，去同时执行另一条指令（前提两条指令没有依赖关系:int a = 0; a++;）这样的cpu的执行就是乱序的。</p><p>而且</p><p>必须使用Memory Barrier来做好指令排序</p><p>volatile的底层就是这么实现的(windows 是 lock 指令)</p></blockquote><p>如何保证特定情况下不乱序</p><blockquote><p>volatile 有序：</p><ul><li>使用 <strong>CPU 内存屏障</strong>， 原理：</li><li>sfence指令前的写操作必须在sfence指令后的写操作前完成</li><li>Ifence指令前的读操作必须在Ifence指令后的读操作前完成</li><li>mfence指令前的读写操作必须在mfence指令后的读写操作前完成</li></ul><p>实际使用的是 Intel lock 汇编指令</p></blockquote><p>volatile</p><blockquote><p>作用：</p><ol><li>保持线程间的可见性</li><li>禁止指令重排序（通过内存屏障）</li></ol></blockquote><p>关于 Object o = new Object()</p><ol><li><p>解释对象的创建过程（半初始化）</p><blockquote><p>T t = new T() jvm 编译成 class 汇编码5条指令:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=k>new</span>	<span class=err>#</span><span class=n>2</span> <span class=o>&lt;</span><span class=n>T</span><span class=o>&gt;</span>		<span class=c1>//申请内存空间, 成员变量是默认值
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>dup</span>
+</span></span><span class=line><span class=cl><span class=n>invokespecial</span> <span class=err>#</span><span class=n>3</span> <span class=o>&lt;</span><span class=n>T</span><span class=o>.&lt;</span><span class=n>init</span><span class=o>&gt;&gt;</span>	<span class=c1>//调用初始化方法，成员变量初始化
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>astore</span>			<span class=c1>//t 和 new 出的对象进行关联
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=k>return</span>
+</span></span></code></pre></td></tr></table></div></div><p>由于指令重排的存在</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=n>invokespecial</span> <span class=err>#</span><span class=n>3</span> <span class=o>&lt;</span><span class=n>T</span><span class=o>.&lt;</span><span class=n>init</span><span class=o>&gt;&gt;</span>	
+</span></span><span class=line><span class=cl><span class=n>astore</span>
+</span></span><span class=line><span class=cl><span class=c1>//有可能乱序执行,先指向内存再初始化变量
+</span></span></span></code></pre></td></tr></table></div></div></blockquote></li><li><p>DCL与volatile问题（指令重排）</p></li></ol><blockquote><p>1.Double Check Lock</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=kd>public</span> <span class=kd>static</span> <span class=kd>volatile</span> <span class=n>T</span> <span class=n>INSTANCE</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=kd>static</span> <span class=n>T</span> <span class=nf>getInstance</span><span class=o>(){</span>
+</span></span><span class=line><span class=cl> <span class=k>if</span> <span class=o>(</span><span class=n>INSTANCE</span> <span class=o>==</span> <span class=kc>null</span><span class=o>){</span>
+</span></span><span class=line><span class=cl>     <span class=kd>synchronized</span><span class=o>(</span><span class=n>T</span><span class=o>.</span><span class=na>class</span><span class=o>){</span>
+</span></span><span class=line><span class=cl>         <span class=k>if</span><span class=o>(</span><span class=n>INSTANCE</span> <span class=o>==</span> <span class=kc>null</span><span class=o>){</span>
+</span></span><span class=line><span class=cl>             <span class=k>try</span><span class=o>{</span>
+</span></span><span class=line><span class=cl>                 <span class=n>Thread</span><span class=o>.</span><span class=na>sleep</span><span class=o>(</span><span class=n>1</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>             <span class=o>}</span><span class=k>catch</span><span class=o>(</span><span class=n>InterruptedException</span> <span class=n>e</span><span class=o>)</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>                 <span class=n>e</span><span class=o>.</span><span class=na>printStackTrace</span><span class=o>();</span>
+</span></span><span class=line><span class=cl>             <span class=o>}</span>
+</span></span><span class=line><span class=cl>             <span class=n>INSTANCE</span> <span class=o>=</span> <span class=k>new</span> <span class=n>T</span><span class=o>();</span>
+</span></span><span class=line><span class=cl>         <span class=o>}</span>
+</span></span><span class=line><span class=cl>     <span class=o>}</span>
+</span></span><span class=line><span class=cl> <span class=o>}</span>
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>2.DCL单例必须要加volatile</p><blockquote><p>指令重排，对象初始化时先指向内存，再初始化赋值</p><p>若此时线程2进入，则直接拿到未初始化赋值的对象</p></blockquote></blockquote><ol start=3><li>对象在内存中的存储布局（对象与数组的存储不同）</li><li>对象头具体包括什么（markword klasspointer）</li><li>synchronized锁信息</li><li>对象怎么定位（直接 间接）</li><li>对象怎么分配（栈上 线程本地 Eden Old）</li><li>Object o = new Object()在内存中占用多少字节</li></ol><h2 id=redis>Redis</h2><p>项目中Redis的应用场景</p><blockquote><ol><li>五大value类型</li><li>基本上就是缓存</li><li>为的是服务<strong>无状态</strong>，（延伸：看项目中有哪些数据结构，如分布式锁，抽出来放到Redis）</li><li>无锁化</li></ol></blockquote><p>Redis是单线程还是多线程</p><blockquote><ol><li>无论哪个版本，工作线程就是一个</li><li>6.x 高版本出现了IO多线程</li></ol></blockquote></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>Updated on 2022-07-08&nbsp;<a class=git-hash href=https://github.com/Jerrysmd/Jerrysmd.github.io/commit/fb2d9f184a907ba0f36906d9724c8fa2a22941e7 target=_blank title="commit by JiaRui(currysmd@qq.com) fb2d9f184a907ba0f36906d9724c8fa2a22941e7: UPDATE">
+<i class="fas fa-hashtag fa-fw" aria-hidden=true></i>fb2d9f18</a></span></div></div><div class=post-info-line><div class=post-info-md></div><div class=post-info-share><span></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fas fa-tags fa-fw" aria-hidden=true></i>&nbsp;<a href=/tags/interview/>Interview</a></section><section><span><a href=javascript:void(0); onclick=window.history.back()>Back</a></span>&nbsp;|&nbsp;<span><a href=/>Home</a></span></section></div><div class=post-nav><a href=/20200101_leetcode/ class=prev rel=prev title=Leetcode><i class="fas fa-angle-left fa-fw" aria-hidden=true></i>Leetcode</a>
+<a href=/20200122_java-static/ class=next rel=next title="Static Keyword in Java">Static Keyword in Java<i class="fas fa-angle-right fa-fw" aria-hidden=true></i></a></div></div><div id=comments><div id=valine class=comment></div><noscript>Please enable JavaScript to view the comments powered by <a href=https://valine.js.org/>Valine</a>.</noscript></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="far fa-copyright fa-fw" aria-hidden=true></i><span itemprop=copyrightYear>2018 - 2022</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=about target=_blank></a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title="Back to Top"><i class="fas fa-arrow-up fa-fw" aria-hidden=true></i>
+</a><a href=# id=view-comments class=fixed-button title="View Comments"><i class="fas fa-comment fa-fw" aria-hidden=true></i></a></div><link rel=stylesheet href=/lib/valine/valine.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css><script type=text/javascript src=https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"Copy to clipboard",maxShownLines:50},comment:{valine:{appId:"2jSYKh8PFUje3v7Ie3Nn5v1g-gzGzoHsz",appKey:"MyWn4P9G5N32q3oM5JDnlpdL",avatar:"retro",el:"#valine",emojiCDN:"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/",emojiMaps:{100:"1f4af.png",alien:"1f47d.png",anger:"1f4a2.png",angry:"1f620.png",anguished:"1f627.png",astonished:"1f632.png",black_heart:"1f5a4.png",blue_heart:"1f499.png",blush:"1f60a.png",bomb:"1f4a3.png",boom:"1f4a5.png",broken_heart:"1f494.png",brown_heart:"1f90e.png",clown_face:"1f921.png",cold_face:"1f976.png",cold_sweat:"1f630.png",confounded:"1f616.png",confused:"1f615.png",cry:"1f622.png",crying_cat_face:"1f63f.png",cupid:"1f498.png",dash:"1f4a8.png",disappointed:"1f61e.png",disappointed_relieved:"1f625.png",dizzy:"1f4ab.png",dizzy_face:"1f635.png",drooling_face:"1f924.png",exploding_head:"1f92f.png",expressionless:"1f611.png",face_vomiting:"1f92e.png",face_with_cowboy_hat:"1f920.png",face_with_hand_over_mouth:"1f92d.png",face_with_head_bandage:"1f915.png",face_with_monocle:"1f9d0.png",face_with_raised_eyebrow:"1f928.png",face_with_rolling_eyes:"1f644.png",face_with_symbols_on_mouth:"1f92c.png",face_with_thermometer:"1f912.png",fearful:"1f628.png",flushed:"1f633.png",frowning:"1f626.png",ghost:"1f47b.png",gift_heart:"1f49d.png",green_heart:"1f49a.png",grimacing:"1f62c.png",grin:"1f601.png",grinning:"1f600.png",hankey:"1f4a9.png",hear_no_evil:"1f649.png",heart:"2764-fe0f.png",heart_decoration:"1f49f.png",heart_eyes:"1f60d.png",heart_eyes_cat:"1f63b.png",heartbeat:"1f493.png",heartpulse:"1f497.png",heavy_heart_exclamation_mark_ornament:"2763-fe0f.png",hole:"1f573-fe0f.png",hot_face:"1f975.png",hugging_face:"1f917.png",hushed:"1f62f.png",imp:"1f47f.png",innocent:"1f607.png",japanese_goblin:"1f47a.png",japanese_ogre:"1f479.png",joy:"1f602.png",joy_cat:"1f639.png",kiss:"1f48b.png",kissing:"1f617.png",kissing_cat:"1f63d.png",kissing_closed_eyes:"1f61a.png",kissing_heart:"1f618.png",kissing_smiling_eyes:"1f619.png",laughing:"1f606.png",left_speech_bubble:"1f5e8-fe0f.png",love_letter:"1f48c.png",lying_face:"1f925.png",mask:"1f637.png",money_mouth_face:"1f911.png",nauseated_face:"1f922.png",nerd_face:"1f913.png",neutral_face:"1f610.png",no_mouth:"1f636.png",open_mouth:"1f62e.png",orange_heart:"1f9e1.png",partying_face:"1f973.png",pensive:"1f614.png",persevere:"1f623.png",pleading_face:"1f97a.png",pouting_cat:"1f63e.png",purple_heart:"1f49c.png",rage:"1f621.png",relaxed:"263a-fe0f.png",relieved:"1f60c.png",revolving_hearts:"1f49e.png",right_anger_bubble:"1f5ef-fe0f.png",robot_face:"1f916.png",rolling_on_the_floor_laughing:"1f923.png",scream:"1f631.png",scream_cat:"1f640.png",see_no_evil:"1f648.png",shushing_face:"1f92b.png",skull:"1f480.png",skull_and_crossbones:"2620-fe0f.png",sleeping:"1f634.png",sleepy:"1f62a.png",slightly_frowning_face:"1f641.png",slightly_smiling_face:"1f642.png",smile:"1f604.png",smile_cat:"1f638.png",smiley:"1f603.png",smiley_cat:"1f63a.png",smiling_face_with_3_hearts:"1f970.png",smiling_imp:"1f608.png",smirk:"1f60f.png",smirk_cat:"1f63c.png",sneezing_face:"1f927.png",sob:"1f62d.png",space_invader:"1f47e.png",sparkling_heart:"1f496.png",speak_no_evil:"1f64a.png",speech_balloon:"1f4ac.png","star-struck":"1f929.png",stuck_out_tongue:"1f61b.png",stuck_out_tongue_closed_eyes:"1f61d.png",stuck_out_tongue_winking_eye:"1f61c.png",sunglasses:"1f60e.png",sweat:"1f613.png",sweat_drops:"1f4a6.png",sweat_smile:"1f605.png",thinking_face:"1f914.png",thought_balloon:"1f4ad.png",tired_face:"1f62b.png",triumph:"1f624.png",two_hearts:"1f495.png",unamused:"1f612.png",upside_down_face:"1f643.png",weary:"1f629.png",white_frowning_face:"2639-fe0f.png",white_heart:"1f90d.png",wink:"1f609.png",woozy_face:"1f974.png",worried:"1f61f.png",yawning_face:"1f971.png",yellow_heart:"1f49b.png",yum:"1f60b.png",zany_face:"1f92a.png",zipper_mouth_face:"1f910.png",zzz:"1f4a4.png"},enableQQ:!0,highlight:!0,lang:"en",meta:["nick","mail"],pageSize:10,placeholder:"Your comment ...",recordIP:!0,visitor:!0}},lightgallery:!0,search:{highlightTag:"em",lunrIndexURL:"/index.json",maxResultLength:10,noResultsFound:"No results found",snippetLength:30,type:"lunr"}}</script><script type=text/javascript src=/js/theme.min.js></script></body></html>
