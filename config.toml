@@ -554,6 +554,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
         # 可以在你的项目下相同路径存放你自己的数据文件:
         # "assets/lib/valine/emoji/"
         # emoji = ""
+        emojiCDN = "https://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/"
       # Facebook comment config (https://developers.facebook.com/docs/plugins/comments)
       # Facebook 评论系统设置 (https://developers.facebook.com/docs/plugins/comments)
       [params.page.comment.facebook]
