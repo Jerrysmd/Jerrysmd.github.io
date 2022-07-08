@@ -1,0 +1,126 @@
+h3.post_link
+  margin: 0 0 5px 7px
+
+.post_date
+  margin-right: .3rem
+  margin-left: 0.25rem
+
+span.post_time
+  margin-right: 0.2rem
+
+.pale p
+  color: #9b9c9d
+  margin: 0
+  padding: 0
+
+img, p.pale
+  padding: 0
+
+.excerpt_footer
+  padding: 0 1rem 0.8rem
+
+.post_share, .post_tag
+  margin: 0.5rem
+
+.excerpt_footer, .post_meta
+  color: #9b9c9d
+
+html
+  &[data-mode=lit] .nav_header
+    background-color: #000000cc
+    -webkit-backdrop-filter: saturate(180%) blur(10px)
+    backdrop-filter: saturate(180%) blur(10px)
+
+  &[data-mode=dim] .nav_header
+    background-color: #1d1e2099;
+    -webkit-backdrop-filter: saturate(180%) blur(20px)
+    backdrop-filter: saturate(180%) blur(20px)
+
+.button
+  -webkit-transition: 0.3s cubic-bezier(0.46, 0.03, 0.52, 0.96)
+  transition: 0.3s cubic-bezier(0.46, 0.03, 0.52, 0.96)
+  transition-property: background-color, border, color
+
+a
+  &.post_tag.button.button_translucent
+    &:focus, &:hover
+      background-color: #009688
+      border: 1px solid #009688
+
+  &.button.mt-1:hover
+    background-color: #2196f3
+    border: 1px solid #2196f3
+
+  &.excerpt_more.button
+    &:focus, &:hover
+      background-color: #2196f3
+      border: 1px solid #2196f3
+
+abutton.mt-1:focus
+  background-color: #2196f3
+  border: 1px solid #2196f3
+
+.button_translucent
+  background-color: #0077b826
+  color: #4a9af1
+  border: 1px solid transparent
+
+a.nav_item, h3.post_link a
+  -webkit-transition: 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)
+  transition: 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)
+  transition-property: text-shadow, text-decoration
+
+a.nav_item:hover
+  text-shadow: 0 0 8px #fff
+
+h3.post_link a:hover
+  text-decoration: underline
+
+a.excerpt_more.button
+  display: none
+
+.excerpt_footer .pale
+  margin: 0 0 0 6px
+
+.post_item
+  margin-bottom: 2.5rem
+
+use
+  background-image: url(../images/sun.svg)
+  border-image: url(../images/night-moon.jpg)
+
+a.nav_brand.nav_item
+  font-family: Cascadia Code, monospace
+  font-size: 2.3rem
+  padding: 0 16px 0 0
+  font-weight: 300
+  text-transform: uppercase
+
+.content
+  padding-top: 4rem
+
+html
+  -webkit-tap-highlight-color: transparent
+  -webkit-font-smoothing: antialiased
+  --bg: #1d1e20
+
+@media screen and (max-width: $mobile-menu-breakpoint)
+  .nav_body
+    background-color: #1b1c1d
+    bottom: -9999px
+    -webkit-transition: transform 0.8s var(--easing)
+    transition: transform 0.8s var(--easing)
+
+  a.excerpt_more.button
+    display: flex
+    place-content: center
+
+  .excerpt_header
+    padding: 1rem 1rem 0
+
+  a.post_tag.button.button_translucent
+    margin: 0.2rem
+
+@font-face
+  font-family: Cascadia Code
+  src: url(https://jerrysmd.github.io/fonts/CascadiaCode-ExtraLight.woff2)

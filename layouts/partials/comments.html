@@ -1,0 +1,31 @@
+<!-- add custom comments markup here -->
+
+<head>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+</head>
+
+<!-- id 将作为查询条件 -->
+<!-- <span id=window.location.pathname class="leancloud_visitors" data-flag-title="reading-num">
+    <em class="post-meta-item-text">Pageviews </em>
+    <i class="leancloud-visitors-count"></i>
+</span> -->
+
+<body>
+    <br>
+    <hr>
+    <br>
+    <div id="vcomments"></div>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: '2jSYKh8PFUje3v7Ie3Nn5v1g-gzGzoHsz',
+            appKey: 'MyWn4P9G5N32q3oM5JDnlpdL',
+            enableQQ: true,
+            avatar: 'retro', // (''/mp/identicon/monsterid/wavatar/robohash/retro/hide)
+            meta: ['nick', 'mail'],
+            recordIP: true,
+            lang: 'en'
+                // visitor: true // 阅读量统计
+        })
+    </script>
+</body>
