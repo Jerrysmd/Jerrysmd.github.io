@@ -93,7 +93,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     identifier = "tags"
     pre = ""
     post = ""
-    name = "Tags"
+    name = "AllTags"
     url = "/tags/"
     title = ""
   [[menu.main]]
