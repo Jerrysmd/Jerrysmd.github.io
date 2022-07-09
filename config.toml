@@ -143,7 +143,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   [params.header]
     # desktop header mode ["fixed", "normal", "auto"]
     # 桌面端导航栏模式 ["fixed", "normal", "auto"]
-    desktopMode = "auto"
+    desktopMode = "fixed"
     # mobile header mode ["fixed", "normal", "auto"]
     # 移动端导航栏模式 ["fixed", "normal", "auto"]
     mobileMode = "auto"
