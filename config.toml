@@ -164,7 +164,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       post = ""
       # whether to use typeit animation for title name
       # 是否为标题显示打字机动画
-      typeit = false
+      typeit = true
 
   # Footer config
   # 页面底部信息配置
@@ -307,7 +307,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       enable = true
       # special amount of posts in each home posts page
       # 主页每页显示文章数量
-      paginate = 10
+      paginate = 8
   # Social config in home page
   # 主页的社交信息设置
   [params.social]
@@ -648,7 +648,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     cursorChar = "|"
     # cursor duration after typing finishing (measured in milliseconds, "-1" means unlimited)
     # 打字结束之后光标的持续时间 (单位是毫秒, "-1" 代表无限大)
-    duration = -1
+    duration = 0
 
   # Site verification code for Google/Bing/Yandex/Pinterest/Baidu
   # 网站验证代码，用于 Google/Bing/Yandex/Pinterest/Baidu
