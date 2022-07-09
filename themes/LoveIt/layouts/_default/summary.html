@@ -18,9 +18,9 @@
         {{- $author := $params.author | default .Site.Author.name | default (T "author") -}} {{- $authorLink := $params.authorlink | default .Site.Author.link | default .Site.Home.RelPermalink -}}
         {{- with .Site.Params.dateFormat | default "2006-01-02" | .PublishDate.Format -}}
         <span class="post-publish">
-                {{- printf `<time datetime="%v">%v</time>` . . | dict "Date" | T "publishedOnDate" | safeHTML -}} &nbsp;&nbsp;·
+                {{- printf `<time datetime="%v">%v</time>` . . | dict "Date" | T "publishedOnDate" | safeHTML -}} &nbsp;·&nbsp;
             </span> {{- end -}} {{- $categories := slice -}} {{- range .Params.categories -}} {{- $category := partialCached "function/path.html" . . | printf "/categories/%v" | $.Site.GetPage -}} {{- $categories = $categories | append (printf
-        `<a href="%v"><i class="far fa-folder fa-fw" aria-hidden="true"></i>%v</a>` $category.RelPermalink $category.Title) -}} {{- end -}} {{- with delimit $categories "&nbsp;" -}} &nbsp;
+        `<a href="%v"><i class="far fa-folder fa-fw" aria-hidden="true"></i>%v</a>` $category.RelPermalink $category.Title) -}} {{- end -}} {{- with delimit $categories "&nbsp;" -}}
         <span class="post-category">
                 {{- dict "Categories" . | T "includedInCategories" | safeHTML -}}
             </span> {{- end -}}
