@@ -3,12 +3,12 @@
     "short_name": "LoveIt",
     "icons": [
         {
-            "src": "/android-chrome-192x192.png",
-            "sizes": "192x192",
+            "src": "https://cdn-icons-png.flaticon.com/256/738/738671.png",
+            "sizes": "256x256",
             "type": "image/png"
         },
         {
-            "src": "/android-chrome-512x512.png",
+            "src": "https://cdn-icons-png.flaticon.com/512/738/738671.png",
             "sizes": "512x512",
             "type": "image/png"
         }
