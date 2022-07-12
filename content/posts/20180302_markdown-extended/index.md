@@ -53,9 +53,9 @@ This is a **right-aligned** paragraph.
 
 {{< version 0.2.0 >}}
 
-`link` shortcode is an alternative to [Markdown link syntax](../basic-markdown-syntax#links). `link` shortcode can provide some other features and can be used in code blocks.
+`link` shortcode is an alternative to [Markdown link syntax](https://hugoloveit.com/basic-markdown-syntax#links). `link` shortcode can provide some other features and can be used in code blocks.
 
-{{< version 0.2.10 >}} The complete usage of [local resource references](../theme-documentation-content#contents-organization) is supported.
+{{< version 0.2.10 >}} The complete usage of [local resource references](https://hugoloveit.com/theme-documentation-content#contents-organization) is supported.
 
 The `link` shortcode has the following named parameters:
 
@@ -119,9 +119,9 @@ The rendered output looks like this (hover over the link, there should be a tool
 
 {{< version 0.2.0 changed >}}
 
-`image` shortcode is an alternative to [`figure` shortcode](../theme-documentation-built-in-shortcodes#figure). `image` shortcode can take full advantage of the dependent libraries of [lazysizes](https://github.com/aFarkas/lazysizes) and [lightGallery](https://github.com/sachinchoolur/lightgallery).
+`image` shortcode is an alternative to [`figure` shortcode](https://hugoloveit.com/theme-documentation-built-in-shortcodes#figure). `image` shortcode can take full advantage of the dependent libraries of [lazysizes](https://github.com/aFarkas/lazysizes) and [lightGallery](https://github.com/sachinchoolur/lightgallery).
 
-{{< version 0.2.10 >}} The complete usage of [local resource references](../theme-documentation-content#contents-organization) is supported.
+{{< version 0.2.10 >}} The complete usage of [local resource references](https://hugoloveit.com/theme-documentation-content#contents-organization) is supported.
 
 The `image` shortcode has the following named parameters:
 
@@ -273,13 +273,13 @@ A **tip** banner
 
 The `mermaid` shortcode supports diagrams in Hugo with [Mermaid](https://mermaidjs.github.io/) library.
 
-The full documentation is provided in [Theme Documentation - mermaid Shortcode](../theme-documentation-mermaid-shortcode).
+The full documentation is provided in [Theme Documentation - mermaid Shortcode](https://hugoloveit.com/theme-documentation-mermaid-shortcode).
 
 ## 6 echarts
 
 The `echarts` shortcode supports data visualization in Hugo with [ECharts](https://echarts.apache.org/) library.
 
-The full documentation is provided in [Theme Documentation - echarts Shortcode](../theme-documentation-echarts-shortcode).
+The full documentation is provided in [Theme Documentation - echarts Shortcode](https://hugoloveit.com/theme-documentation-echarts-shortcode).
 
 ## 7 mapbox
 
@@ -287,13 +287,13 @@ The full documentation is provided in [Theme Documentation - echarts Shortcode](
 
 The `mapbox` shortcode supports interactive maps in Hugo with [Mapbox GL JS](https://docs.mapbox.com/mapbox-gl-js) library.
 
-The full documentation is provided in [Theme Documentation - mapbox Shortcode](../theme-documentation-mapbox-shortcode).
+The full documentation is provided in [Theme Documentation - mapbox Shortcode](https://hugoloveit.com/theme-documentation-mapbox-shortcode).
 
 ## 8 music
 
 The `music` shortcode embeds a responsive music player based on [APlayer](https://github.com/MoePlayer/APlayer) and [MetingJS](https://github.com/metowolf/MetingJS) library.
 
-The full documentation is provided in [Theme Documentation - music Shortcode](../theme-documentation-music-shortcode).
+The full documentation is provided in [Theme Documentation - music Shortcode](https://hugoloveit.com/theme-documentation-music-shortcode).
 
 ## 9 bilibili
 
@@ -301,13 +301,13 @@ The full documentation is provided in [Theme Documentation - music Shortcode](..
 
 The `bilibili` shortcode embeds a responsive video player for bilibili videos.
 
-The full documentation is provided in [Theme Documentation - bilibili Shortcode](../theme-documentation-bilibili-shortcode).
+The full documentation is provided in [Theme Documentation - bilibili Shortcode](https://hugoloveit.com/theme-documentation-bilibili-shortcode).
 
 ## 10 typeit
 
 The `typeit` shortcode provides typing animation based on [TypeIt](https://typeitjs.com/) library.
 
-The full documentation is provided in [Theme Documentation - typeit Shortcode](../theme-documentation-typeit-shortcode).
+The full documentation is provided in [Theme Documentation - typeit Shortcode](https://hugoloveit.com/theme-documentation-typeit-shortcode).
 
 ## 11 script
 
