@@ -649,7 +649,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     cursorChar = "丨"
     # cursor duration after typing finishing (measured in milliseconds, "-1" means unlimited)
     # 打字结束之后光标的持续时间 (单位是毫秒, "-1" 代表无限大)
-    duration = 0
+    duration = -1
 
   # Site verification code for Google/Bing/Yandex/Pinterest/Baidu
   # 网站验证代码，用于 Google/Bing/Yandex/Pinterest/Baidu
