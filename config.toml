@@ -71,7 +71,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     url = ""
     # title will be shown when you hover on this menu link
     # 当您将鼠标悬停在此菜单链接上时, 将显示标题
-    title = ""
+    title = "Home"
   [[menu.main]]
     weight = 2
     identifier = "Technology"
@@ -79,7 +79,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     post = ""
     name = "Technology"
     url = "/categories/technology/"
-    title = ""
+    title = "Technology Posts List"
   [[menu.main]]
     weight = 3
     identifier = "Life"
@@ -87,7 +87,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     post = ""
     name = "Life"
     url = "/categories/life/"
-    title = ""
+    title = "Life Posts List"
   [[menu.main]]
     weight = 4
     identifier = "tags"
@@ -95,7 +95,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     post = ""
     name = "Tags"
     url = "/tags/"
-    title = ""
+    title = "Tags Cloud"
   [[menu.main]]
     weight = 5
     identifier = "about"
@@ -103,7 +103,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     post = ""
     name = "About"
     url = "/about/"
-    title = ""
+    title = "About Blog"
   [[menu.main]]
     weight = 6
     identifier = "github"
