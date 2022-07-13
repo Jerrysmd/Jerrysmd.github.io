@@ -182,7 +182,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     copyright = true
     # whether to show the author
     # 是否显示作者
-    author = true
+    author = false
     # site creation time
     # 网站创立年份
     since = 2018
