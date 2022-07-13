@@ -254,9 +254,47 @@ VisitorStatsApp;
 //5.提取时间戳生成 WaterMark
 //6.按照维度信息分组
 //7.开窗聚合 10s 的滚动窗口
-WindowedStream<VisitorStats, Tuple4<String, String, String, String>, TimeWindow> windowedStream = keyedStream.window(TumblingEventTimeWindows.of(Time.seconds(10)));
-windowedStream.reduce(new ReduceFunction<VisitorStats>()){}
+WindowedStream<VisitorStats, Tuple4, TimeWindow> windowedStream = keyedStream.window(TumblingEventTimeWindows.of(Time.seconds(10)));
+	// reducefunction 增量聚合，效率高
+	// windowsfunction 全量聚合，包含窗口信息
+	// reduce + window
+windowedStream.reduce(new ReduceFunction<VisitorStats>(){}, new WindowFunction<VisitorStats, VisitorStats, Tuple4, TimeWindow(){})
 //8.数据写入 ClickHouse
 //9.启动任务
 ```
+
+{{< admonition info >}}
+
+维度聚合采用方式：`uv, 0, 0, 0 ,0` union `0, pv, 0, 0, 0` union `0, 0, sv, 0, 0` ... 先union再根据主键聚合
+
+{{< /admonition >}}
+
+{{< admonition question >}}
+
+uv pv sv uj dur 不同流的数据进行维度聚合时，出现有流数据( uj )会丢失一直显示是 0 的情况，为什么？
+
++ 计算完 uj 表输入流，滚动窗口设置的 10 秒已经关闭。
+
+{{< mermaid >}}
+
+flowchart LR;
+
+  pv --> dwd-page-log
+
+dwd-page-log --> |consume|visitors-topic & uj
+
+uj --> |consume|visitors-topic
+
+{{< /mermaid >}}
+
++ dwd-page-log 第一条数据到达，visitors-topic 开窗[ts + 0, ts + 10)秒的窗口来接收dwd-page-log这10秒的全部数据
++ 但 visitors-topic 同时使用 dwd-page-log 和 uj 两个流的数据，uj 需要10秒后才输出流，visitors-topic 开窗已经关闭
+
+解决方法：
+
++ 方法一：数据本身时间切换成处理的时间。不建议，数据时间不统一，不具有幂等性
++ 方法二：增加延迟时间
+
+{{< /admonition >}}
+
 
