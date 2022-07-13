@@ -79,7 +79,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     post = ""
     name = "Technology"
     url = "/categories/technology/"
-    title = "Technology Posts List"
+    title = "Technology article list"
   [[menu.main]]
     weight = 3
     identifier = "Life"
@@ -87,7 +87,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     post = ""
     name = "Life"
     url = "/categories/life/"
-    title = "Life Posts List"
+    title = "Life article list"
   [[menu.main]]
     weight = 4
     identifier = "tags"
@@ -95,7 +95,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     post = ""
     name = "Tags"
     url = "/tags/"
-    title = "Tags Cloud"
+    title = "Tags cloud"
   [[menu.main]]
     weight = 5
     identifier = "about"
@@ -103,7 +103,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     post = ""
     name = "About"
     url = "/about/"
-    title = "About Blog"
+    title = "About blog"
   [[menu.main]]
     weight = 6
     identifier = "github"
