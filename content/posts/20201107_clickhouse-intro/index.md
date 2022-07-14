@@ -25,9 +25,33 @@ A high performance columnar OLAP database management system for real-time analyt
 
 <!--more-->
 
-## Intro
+## Feature
 
-Yandex，2016年，列式存储数据库，在线分析处理查询（OLAP），SQL查询实时生成分析数据报告。
+Yandex，**列式存储数据库**，在线分析处理查询（OLAP），SQL查询实时生成分析数据报告。
+
+{{< admonition tip 列式存储 >}}
+
+| `id1` | `id2` | `id3` | *name1* | *name2* | *name3* | `value1` | `value2` | `value3` |
+| ----- | ----- | ----- | ------- | ------- | ------- | -------- | -------- | -------- |
+
+1. 更擅长做 count、sum 、聚合等操作，优于行式存储。
+2. 压缩效率高。由于某一列的数据类型都是相同的，针对于数据存储更容易进行数据压缩，每一列选择更优的数据压缩算法，大大提高了数据压缩的比重。
+
+{{< /admonition >}}
+
+{{< admonition note OLAP >}}
+
+OLAP：更擅长一次写入，多次读取。更偏向于查数据
+
+OLTP：更偏向于增删改查数据
+
+{{< /admonition >}}
+
+{{< admonition info 高吞吐的写入能力 >}}
+
+与 HBASE 的存储结构相似，ClickHouse 采用类 LSM Tree 的结构，数据写入后定期在后台 compaction. 
+
+{{< /admonition >}}
 
 ## Data Type
 
@@ -71,7 +95,7 @@ Yandex，2016年，列式存储数据库，在线分析处理查询（OLAP），
   SELECT array(1, 'a') AS arr, toTypeName(arr)
   ```
 
-## Table Engine
+## Table Engine⭐
 
 MySQL 默认的引擎：InnoDB 是事务型数据库的首选引擎，支持事务安全表（ACID）。
 
