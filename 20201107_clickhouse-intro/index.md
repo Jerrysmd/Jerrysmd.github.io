@@ -29,7 +29,15 @@ OLTP：更偏向于增删改查数据
 
 {{< admonition info 高吞吐的写入能力 >}}
 
-与 HBASE 的存储结构相似，ClickHouse 采用类 LSM Tree 的结构，数据写入后定期在后台 compaction. 
+与 HBASE 的存储结构相似，ClickHouse 采用类 LSM Tree 的结构，数据写入后定期在后台 compaction 操作。通过类 LSM tree的结构，ClickHouse 在数据导入时全部是顺序 append 写，写入后数据段不可更改，在后台 compaction 时也是多个段 merge sort 后顺序写回磁盘。顺序写的特性，充分利用了磁盘的吞吐能力，磁盘的吞吐能力，即便在 HDD 上也有着友谊的写入性能。
+
+{{< /admonition >}}
+
+{{< admonition warning 数据分区与线程级并行 >}}
+
+分区和切片不同，分区是将数据分为多个 partition，每个 partition 再进一步划分为多个 index granularity (索引粒度)，然后通过 CPU 的多核分别处理其中的一部分来实现并行数据处理。**单条 query 查询就能利用整机所有 CPU。** 极致的并行处理能力，极大的降低了查询延时。
+
+所以也不利于多条并发查询，对于高 qps 的查询业务不是 CH 的强项。
 
 {{< /admonition >}}
 
@@ -52,7 +60,7 @@ OLTP：更偏向于增删改查数据
   ```sql
   CREATE TABLE t_enum
   (
-  	x Enum8('true' = 1, 'false' = 2)
+      x Enum8('true' = 1, 'false' = 2)
   )
   ENGINE = TineLog
   ```
