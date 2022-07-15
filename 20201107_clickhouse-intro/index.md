@@ -130,32 +130,45 @@ clickhouse 中最强大的表引擎，当巨量数据要插入到表中，需要
 3. 支持数据副本
 4. 支持数据采样
 
-> 参数：
->
-> ENGINE = MergeTree()
->
-> + -[PARTITION BY]: 分区键。
->
->   + 与 hive 的分区相同，目的主要是降低扫描的范围，优化查询速度。
->
->   + 默认为一个分区。
->
->   + 分区目录：MergeTree 是以列文件 + 索引文件 + 表定义文件组成的
->   
->   + 要按月分区，可以使用表达式 toYYYYMM(data_column)
->
->
-> + ORDER BY(建表必选项): 表的排序键，可以是一组列的元组或任意的表达式
->
-> + -[PRIMARY KEY]: 主键，需要与排序键字段不同，默认情况下主键跟排序键相同.可以不唯一，带有索引
->
-> + -[SAMPLE BY]: 用于抽样的表达式，如果要用抽样表达式，主键中必须包含这个表达式
->
-> SETTINGS: 影响 MergeTree 性能的额外参数：
->
-> 1. index_granularity: 索引粒度，即索引中相邻【标记】间的数据行树，默认 8192
-> 2. use_minimalistic_part_header_in_zookeeper: 数据片段头在 Zookeeper  中的存储方式
-> 3. min_merge_bytes_to_use_direct_io: 使用直接 I/O （不经过缓存 I/O）来操作磁盘的合并操作时要求的最小数据量。当数据量特别大时，没必要经过缓存 I/O，默认数据小于 10G 会开启缓存 I/O
+{{< admonition note 建表参数 >}}
+
+ENGINE = MergeTree()
+
++ -[PARTITION BY]: 分区键。
+  + 作用：与 hive 的分区相同，目的主要是降低扫描的范围，优化查询速度。
+  
+  + 默认：为一个分区。
+  
+  + 分区目录：MergeTree 是以列文件 + 索引文件 + 表定义文件组成的，如果设定了分区那么这些文件就会保存到不同的分区目录中。(tip: 要按月分区，可以使用表达式 toYYYYMM(data_column) )
+  
+  + 并行：跨分区的查询统计，CH 会以分区为单位并行处理。
+  
+  + 写入和分区合并：任何一个批次的数据写入都会产生一个临时的分区，不会纳入任何已有的分区。十几分钟后 CH 会自动执行合并操作。或手动合并 `optimize table x final;`
+
++ -[PRIMARY KEY]: 主键。
+  + 与其他数据库不同，它只提供了数据的一级索引，但却不是唯一约束。可以有相同的 key 数据。
+  + 主键的设定依据查询语句，查询最频繁的字段作为 主键。根据条件通过对主键进行某种形式的二分查找，能够定位到对应的 index granularity，避免了全表扫描。
+  + index_granularity: 稀疏索引，索引粒度，即索引中相邻【标记】间的数据行数，默认 8192 行一个索引。这就要求字段有序
+
++ ORDER BY: 表的排序键，可以是一组列的元组或任意的表达式。
+  + 设定 **分区内** 的数据按照哪些字段顺序进行有序保存。
+  + ORDER BY 是 MergeTree 中唯一一个必须项，比 primary key 更重要，没有主键依照 order by 的字段进行处理（比如去重汇总）
+  + **主键必须是 order by 字段的前缀字段** ，如 order by 字段是 (id, sku_id, line)，那么主键必须是 id、 (id, sku_id) 或者 (id, sku_id, line)
+
++ -[SAMPLE BY]: 用于抽样的表达式，如果要用抽样表达式，主键中必须包含这个表达式
+
+SETTINGS: 影响 MergeTree 性能的额外参数：
+
+1. use_minimalistic_part_header_in_zookeeper: 数据片段头在 Zookeeper 中的存储方式
+2. min_merge_bytes_to_use_direct_io: 使用直接 I/O （不经过缓存 I/O）来操作磁盘的合并操作时要求的最小数据量。当数据量特别大时，没必要经过缓存 I/O，默认数据小于 10G 会开启缓存 I/O
+
+{{< /admonition >}}
+
+{{< admonition success 数据TTL >}}
+
+Time To Live, MergeTree 提供了可以管理数据或列的 **生命周期** 的功能。给字段设置时间，到期后字段数据归 0
+
+{{< /admonition >}}
 
 ### 5. ReplacingMergeTree
 
