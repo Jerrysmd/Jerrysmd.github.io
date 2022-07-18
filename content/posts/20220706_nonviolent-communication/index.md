@@ -142,6 +142,8 @@ tags:
 
 ### 区分感受与想法
 
+在非暴力沟通中，我们需要区分：**我们是在表达自己的感受，还是在表达对自己的想法或诉求。**
+
 {{< admonition tip >}} 
 
 我们使用语言的习惯时常会引发这样一个混淆，在使用“觉得／感到／感觉”这类词时，我们实际上并没有在表达感受。例如，在“我觉得没有得到公平对待”这句话中，将“我觉得”换成“我认为”也许更恰当。在以下例子中，说话者在使用“觉得”时都并未准确地表达自己的感受。
@@ -170,4 +172,100 @@ tags:
 
 {{< /admonition >}}
 
-在非暴力沟通中，我们需要区分：我们是在表达自己的感受，还是在表达对自己的想法或诉求。
+### 建立感受词汇表
+
+> 使用具体而非模糊或笼统的情绪词汇，有助于我们表达感受。
+>
+> 通过建立表达感受的词汇表，我们可以更清晰明确地体会和表达感受，从而更好地与他人建立连结。允许自己表达感受、袒露脆弱，也会有助于化解冲突。
+
+1. `当需要得到满足时，我们的感受可能是：`
+
+|   感受   |     Feel     |   感受   |      Feel      |   感受   |    Feel     |
+| :------: | :----------: | :------: | :------------: | :------: | :---------: |
+| 全神贯注 |   absorbed   | 聚精会神 |   engrossed    |   感动   |    moved    |
+|   新奇   | adventurous  |   活跃   |   enlivened    |   乐观   | optimistic  |
+|   深情   | affectionate |   热情   |  enthusiastic  |   大喜   | over-joyed  |
+|   机敏   |    alert     |   激动   |    excited     | 受宠若惊 | overwhelmed |
+|  有活力  |    alive     |   兴奋   |  exhilarated   |   宁静   |  peaceful   |
+|   惊奇   |    amazed    |   开朗   |   expansive    |   活泼   |    perky    |
+|   开怀   |    amused    |   期盼   |   expectant    |   愉快   |  pleasant   |
+| 生机勃勃 |   animated   | 兴高采烈 |    exultant    |   开心   |   pleased   |
+|   感激   | appreciative |   着迷   |   fascinated   |   自豪   |    proud    |
+|   热心   |    ardent    |   自在   |      free      |   安静   |    quiet    |
+|   振作   |   aroused    |   友善   |    friendly    | 容光焕发 |   radiant   |
+|   惊讶   |  astonished  |   满足   |   fulfilled    |   痴迷   |  rapturous  |
+| 极为幸福 |   blissful   |   高兴   |      glad      | 神清气爽 |  refreshed  |
+| 屏气敛息 |  breathless  | 欢欣雀跃 |    gleeful     |   放松   |   relaxed   |
+|   快活   |   buoyant    |   明媚   |    glorious    | 如释重负 |  relieved   |
+|   平静   |     calm     | 热情洋溢 |    glowing     |   满意   |  satisfied  |
+| 无忧无虑 |   carefree   |   快乐   |  good-humored  |   安全   |   secure    |
+|   开心   |   cheerful   |   感谢   |    grateful    |   敏感   |  sensitive  |
+|   舒适   | comfortable  | 心满意足 |   gratified    |   安详   |   serene    |
+|   得意   |  complacent  |   幸福   |     happy      |   入迷   | spellbound  |
+|   镇静   |   composed   |   热心   |    helpful     | 心花怒放 |  splendid   |
+|   关切   |  concerned   | 满怀希望 |    hopeful     |   激励   | stimulated  |
+|   自信   |  confident   |  感兴趣  |  inquisitive   |   惊喜   |  surprised  |
+|   惬意   |  contented   |  受启迪  |    inspired    |   柔软   |   tender    |
+|   冷静   |     cool     |   热切   |    intense     |   欣慰   |  thankful   |
+|   好奇   |   curious    |   趣味   |   interested   | 乐不可支 |  thrilled   |
+|   倾倒   |   dazzled    |   迷住   |   intrigued    |   触动   |   touched   |
+|   愉悦   |  delighted   | 精神焕发 |  invigorated   |   恬静   |  tranquil   |
+|   热忱   |    eager     |   热衷   |    involved    | 满怀信任 |  trusting   |
+|   奔放   |  ebullient   |   欢乐   | joyous, joyful | 乐观开朗 |   upbeat    |
+| 欣喜若狂 |   ecstatic   |   欢腾   |    jubilant    |   温暖   |    warm     |
+| 兴高采烈 | effervescent |   亢奋   |    keyed-up    |   清醒   | wide-awake  |
+| 欢欣鼓舞 |    elated    |  有爱心  |     loving     |   美妙   |  wonderful  |
+|   陶醉   |  enchanted   |   甜美   |     mellow     | 热情高涨 |   zestful   |
+|  受鼓舞  |  encouraged  |   轻快   |     merry      |          |             |
+| 精力充沛 |  energetic   |   欢喜   |    mirthful    |          |             |
+
+2. `当需要没有得到满足时，我们的感受可能是：`
+
+|   感受   |     Feel      |   感受   |    Feel     |   感受   |     Feel      |
+| :------: | :-----------: | :------: | :---------: | :------: | :-----------: |
+|   畏惧   |    afraid     |   烦躁   |    edgy     |   紧绷   |  overwhelmed  |
+|   气恼   |  aggravated   |   惭愧   | embarrassed | 惊慌失措 |    panicky    |
+|   焦躁   |   agitated    |   愤恨   | embittered  |   被动   |    passive    |
+|   惊慌   |    alarmed    |   恼火   | exasperated |   迷茫   |   perplexed   |
+|   冷漠   |     aloof     |   耗尽   |  exhausted  |   悲观   |  pessimistic  |
+|   愤怒   |     angry     | 精疲力竭 |  fatigued   | 苦思冥想 |    puzzled    |
+|   痛苦   |   anguished   |   担忧   |   fearful   | 充满敌意 |   rancorous   |
+|   烦扰   |    annoyed    | 坐立不安 |   fidgety   |   迟疑   |   reluctant   |
+|   焦虑   |    anxious    |   愁苦   |   forlorn   |   排斥   |   repelled    |
+|   冷淡   |   apathetic   |   惊吓   | frightened  |   仇恨   |   resentful   |
+|   担心   | apprehensive  |   懊恼   | frustrated  |   躁动   |   restless    |
+|   刺激   |    aroused    |   大怒   |   furious   |   难过   |      sad      |
+|   羞愧   |    ashamed    |   低落   |   gloomy    |   害怕   |    scared     |
+|   丧气   |     beat      |   内疚   |   guilty    |   敏感   |   sensitive   |
+|   迷惑   |  bewildered   |   逼迫   |   harried   |   颤抖   |     shaky     |
+|   苦涩   |    bitter     |   沉重   |    heavy    |   震惊   |    shocked    |
+|   乏味   |     blah      |   无助   |  helpless   |   批判   |   skeptical   |
+|   忧郁   |     blue      |   犹豫   |  hesitant   |   困乏   |    sleepy     |
+|   无聊   |     bored     |   恐惧   |  horrified  |   哀痛   |   sorrowful   |
+|   心碎   | brokenhearted |   敌对   |   hostile   |   歉意   |     sorry     |
+|   屈辱   |   chagrined   |   灼热   |     hot     | 没有斗志 |  spiritless   |
+|   寒冷   |     cold      |   单调   |   humdrum   | 失魂落魄 |   startled    |
+|   忧虑   |   concerned   |   受伤   |    hurt     |   惊讶   |   surprised   |
+|   困惑   |   confused    |  不耐烦  |  impatient  |   怀疑   |  suspicious   |
+|   冷酷   |     cool      |  不在乎  | indifferent | 不冷不热 |     tepid     |
+|   生气   |     cross     |   激烈   |   intense   |   惊恐   |   terrified   |
+|   低落   |   dejected    |   怒气   |    irate    |   劳累   |     tired     |
+|   抑郁   |   depressed   |   恼怒   |    irked    |   烦恼   |   troubled    |
+|   绝望   |  despairing   |   激怒   |  irritated  |   不适   | uncomfortable |
+|   沮丧   |  despondent   |   嫉妒   |   jealous   | 不感兴趣 |  unconcerned  |
+|   抽离   |   detached    | 紧张不安 |   jittery   | 心神不宁 |    uneasy     |
+|   不满   |  disaffected  | 激动不安 |  keyed-up   | 心烦意乱 |    unglued    |
+|   失望   | disappointed  |   懒散   |    lazy     |  不开心  |    unhappy    |
+|   挫败   |  discouraged  |   疑虑   |    leery    |   气馁   |   unnerved    |
+|   幻灭   | disenchanted  |   倦怠   |  lethargic  |  不稳定  |   unsteady    |
+|  不高兴  |  disgruntled  | 无精打采 |  listless   |   烦乱   |     upset     |
+|   厌恶   |   disgusted   |   孤独   |   lonely    |   拘谨   |    uptight    |
+|   灰心   | disheartened  |   气愤   |     mad     |   棘手   |     vexed     |
+|   惊愕   |    dismay     |   汗颜   |    mean     |   厌倦   |     weary     |
+|   不快   |  displeased   |   郁闷   |  miserable  |   伤感   |    wistful    |
+|   不安   |  disquieted   |   昏沉   |    mopey    |   退缩   |   withdrawn   |
+|   苦恼   |  distressed   |   阴郁   |   morose    |   悲伤   |    woeful     |
+|   麻烦   |   disturbed   |   哀悼   |  mournful   |   着急   |    worried    |
+| 垂头丧气 |   downcast    |   紧张   |   nervous   |   糟糕   |   wretched    |
+|   消沉   |  downhearted  | 心乱如麻 |   nettled   |          |               |
+|   沉闷   |     dull      |   麻木   |    numb     |          |               |
