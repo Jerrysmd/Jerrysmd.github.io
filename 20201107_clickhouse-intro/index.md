@@ -172,7 +172,7 @@ Time To Live, MergeTree 提供了可以管理数据或列的 **生命周期** �
 
 ### 5. ReplacingMergeTree
 
-在 MergeTree 的基础上，添加了 “处理重复数据” 的功能，该引擎和 MergeTree 的不同之处在于它会删除具有相同主键的重复项。
+在 MergeTree 的基础上，添加了 “处理重复数据” 的功能，该引擎和 MergeTree 的不同之处在于它会删除具有相同主键的重复项。使用 `order by` 使用的字段来规定去重字段。
 
 ### 6. SummingMergeTree
 
