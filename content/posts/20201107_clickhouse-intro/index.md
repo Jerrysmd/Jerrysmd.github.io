@@ -17,7 +17,7 @@ categories:
   - Technology
 tags:
   - Distribution
-  - SQL
+  - ClickHouse
 comments: true # Disable comment if false.
 ---
 

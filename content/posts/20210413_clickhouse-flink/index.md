@@ -1,8 +1,8 @@
 ---
-title: "{{ replace .TranslationBaseName "-" " " | title }}"
+title: "ClickHouse with Flink"
 # subtitle: ""
-date: {{ .Date }}
-# lastmod: {{ .Date }}
+date: 2021-04-13T17:55:21+08:00
+# lastmod: 2022-07-18T17:55:21+08:00
 draft: false
 # author: ""
 # authorLink: ""
@@ -10,11 +10,11 @@ draft: false
 # license: ""
 # images: []
 
-tags: ["", ""]
+tags: ["DataWarehouse", "ClickHouse"]
 categories: ["Technology"]
 
-# featuredImage: ""
-# featuredImagePreview: ""
+featuredImage: ""
+featuredImagePreview: ""
 
 hiddenFromHomePage: false
 hiddenFromSearch: false
@@ -58,5 +58,7 @@ hiddenFromSearch: false
 #   images: []
 #   # ...
 ---
+
+
 
 <!--more-->
