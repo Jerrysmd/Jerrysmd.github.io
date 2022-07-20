@@ -211,6 +211,13 @@ order by (date, name)
 
 分布式引擎，本身不存储数据，但可以在多个服务器上进行分布式查询。读是自动并行的。读取时，远程服务器表的索引会被使用。
 
+## SQL Operation
+
+1. insert
+2. update / delete
+3. select
+4. alter
+
 ## Im/Export HDFS
 
 > Clickhouse 从 18.16.0 版本开始支持从 HDFS 读取文件，在 19.1.6 版本支持读和写，在 19.4 版本开始支持 Parquet 格式。
@@ -246,6 +253,28 @@ SELECT * from hdfs_module_csv; # error
 # 通过 sql 插入到本地
 insert into student_local select * from hdfs_module_csv
 ```
+
+## Back Up
+
+基于 ZK，需在配置 ZK
+
+## Shard
+
+### 集群写入流程
+
+### 集群读取流程
+
++ 优先选择 errors_count 小的副本
++ errors_count 相同的有随机、顺序、随机、host 名称相似等四种选择方式。
+
+### 配置三节点集群及副本
+
+| hadoop102                                              | hadoop103                                                    | hadoop104          |
+| ------------------------------------------------------ | ------------------------------------------------------------ | ------------------ |
+| shard1, shard1副本                                     | shard1, shard1副本<br />(103数据和102数据相同)               | shard2, shard2副本 |
+| 102_shard1_replica1 + 104_shard2_replica1 组成完整数据 | 103_shard1_replica2 + 104_shard2_replica1 也可以组成完整数据 |                    |
+
+
 
 ## Optimize
 
