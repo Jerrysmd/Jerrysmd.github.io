@@ -24,3 +24,63 @@ There are systems that can store values of different columns separately, but tha
 
 {{< /admonition>}}
 
+## Flink JDBC  CH
+
+业务：
+
+```java
+result.addSink(JdbcSink.sink());
+//question: Phoenix 也是 JDBC，为什么没有用 JdbcSink?
+//          因为之前访问 Hbase 的表都不一样，表字段也不一样。( phoenix 可以用 自定义的 MySQLSink 或 JDBC)
+//          CH 数据来源唯一
+
+//使用工具类
+result.addSink(ClickHouseUtil.getSink("insert into line(?, ?, ?)"))
+```
+
+工具类：
+
+```java
+public class ClickHouseUtil{
+    public static <T> SinkFunction<T> getSink()String sql{
+        return JdbcSink.<T>sink(sql,
+                               new JdbcStatementBuilder<T>(){
+                                   @Override
+                                   public void accept(PreparedStatement preparedStatement, T t) throws SQLException{
+                                       //获取所有属性信息
+                                       Field[] fields = t.getClass().getDeclaredFields();
+                                       for (int i = 0; i < fields.length; i++){
+                                           Field field = fields[i];
+                                           //反射 获取值
+                                           Object value = field.get(t);
+                                           //给预编译 SQL 对象赋值
+                                           preparedStatement.setObject(i + 1, value);
+                                       }
+                                   }
+                               },
+                               new JdbcExecutionOptions.Builder().withBatchSize(5).build(),
+                               new JdbcConnectionOptions.JdbcConnectionOptionsBuilder()
+                                .withDriverName("")
+                                .withUrl("")
+                                .build());
+    }
+}
+```
+
+## Kafka2CH
+
+Goods topic from Kafka2CH
+
+```java
+//1.get exeEnv
+//2.read kafka all topic, create stream
+//3.uniform all stream format
+//4.union all stream
+//5.get tm from data and create WaterMark
+//6.group by, window, reduce. (按 id 分组，10秒滚动窗口，增量聚合(累加值)和全量聚合(提取窗口信息))
+//7.join dimension info
+//8.wite stream to CH
+```
+
+## Sugar 大屏展示
+
