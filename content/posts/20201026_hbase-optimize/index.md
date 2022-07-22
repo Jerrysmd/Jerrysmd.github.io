@@ -1,5 +1,5 @@
 ---
-title: "Hbase Optimize" # Title of the blog post.
+title: "Hbase Optimization" # Title of the blog post.
 date: 2020-10-26T09:14:35+08:00 # Date of post creation.
 description: "Article description." # Description used for search engine.
 featured: false # Sets if post is a featured post, making appear on the home page side bar.

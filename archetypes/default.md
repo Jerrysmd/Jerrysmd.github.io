@@ -57,6 +57,11 @@ hiddenFromSearch: false
 # seo:
 #   images: []
 #   # ...
+# admonition:
+# {{< admonition tip>}}{{< /admonition >}}
+# note abstract info tip success question warning failure danger bug example quote
+# mermaid:
+# {{< mermaid >}}{{< /mermaid >}}
 ---
 
 <!--more-->

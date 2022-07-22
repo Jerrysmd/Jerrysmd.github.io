@@ -48,14 +48,14 @@ In development, we just need to know that lib is needed at compile time and DLL 
 
 以下面这个图来简单说明一下从静态链接到可执行文件的过程，根据在源文件中包含的头文件和程序中使用到的库函数，如stdio.h中定义的printf()函数，在libc.a中找到目标文件printf.o(这里暂且不考虑printf()函数的依赖关系)，然后将这个目标文件和我们hello.o这个文件进行链接形成我们的可执行文件。
 
-```mermaid
+{{< mermaid >}}
 graph TD
 A[Christmas] -->|Get money| B(Go shopping)
 B --> C{Let me think}
 C -->|One| D[Laptop]
 C -->|Two| E[iPhone]
 C -->|Three| F[fa:fa-car Car]
-```
+{{< /mermaid >}}
 
 
 
