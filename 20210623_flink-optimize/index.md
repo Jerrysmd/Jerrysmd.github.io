@@ -1,4 +1,4 @@
-# Flink Optimization
+# Flink Performance Optimization
 
 
 Flink optimization includes resource configuration optimization, back pressure processing, data skew, KafkaSource optimization and FlinkSQL optimization.
@@ -110,19 +110,105 @@ cp 防止数据挂掉，从 cp 恢复数据；
 
 ### Flink parameterTool 读取配置
 
+#### 读取运行参数
 
+使用 `parameterTool.get("host")` 替换 `args[0]`
 
+传参时使用 `--host hadoop102 --poart 9999`
 
+#### 读取系统属性
 
+#### 读取配置文件
 
+`parameterTool.fromPropertiesFile("/application.properties")`
 
+#### 配置全局参数
 
+### 压测方式
 
+先在 kafka 中积压数据，之后开启 Flink 任务，出现反压，就是处理瓶颈。
 
+## 反压处理
 
+### 反压现象及定位
 
+#### 反压现象
 
+kafka 反压：
 
+1. 逐级传递；
+2. transform 的 compute 端有读缓存和写缓存，缓存满了向上级拉取数据的延迟增大；比如上级是 source 端；
+3. source 端同理，向 kafka 客户端服务端拉取数据延迟增大；
+4. 会造成 kafka 数据延迟，有可能造成机器内存溢出。
+
+spark 反压
+
+1. spark 开启反压一定是基于 receiver 模式。
+
+2. executor -> executor -> executor... 
+
+   与 kafka 不同 executor 出现数据反压不会逐级向上游传递，会直接通信 Driver，Driver 会直接通信最上级 executor 放慢速度。
+
+{{< admonition tip>}}
+
+逐级更好：
+
+1. 设置了缓存就是为了处理这种情况
+2. 直接通信 Driver，会影响整体的进程，不方便确定问题。
+
+{{< /admonition >}}
+
+#### 利用 Flink Web UI 定位
+
+#### 利用 Metrics 监控工具定位反压位置
+
+反压时，观察到 `遇到瓶颈的该 Task 的 inPoolUage 为 1`
+
+### 反压的原因及处理
+
+#### 系统资源
+
+1. 内存和CPU资源。一般情况 本都磁盘及网卡资源不会是瓶颈。如果某些资源被充分利用或大量使用，可以借助分析工具分析性能瓶颈（JVM Profiler + FlameGraph 生成火焰图）
+
+   **火焰图表示了 CPU 执行各个功能的时间，从下自上展示了方法的调用关系，尖顶通常表示执行正常，平顶表示运行时间过长，通常为瓶颈。**
+
+2. 针对特定的资源调优 Flink
+
+3. 减少瓶颈算子上游的并行度，从而减少瓶颈算子接受的数据量（可能会造成 Job 数据延迟增大）
+
+#### 垃圾回收GC
+
+1. 运行时打开参数 printGCDetails
+2. 下载 GC 日志：因为是 on yarn 模式，一个一个节点看日志比较麻烦，可以打开 WebUI，在 JobManager 或 TaskManager，下载 Stdout
+3. 使用 GCviewer 分析数据：最重要的指标是 **Funll GC 后，老年代剩余大小** 这个指标，按照 *Java 性能优化权威指南*  这本书 Java 堆大小计算法则，设 Full GC 后老年代剩余大小空间为 M，那么堆的大小建议设置为 3 ~ 4倍 M，新生代为 1 ~ 1.5 倍 M，老年代为 2 ~ 3倍 M。
+
+#### CPU/线程瓶颈 & 线程竞争
+
+（还是资源问题，使用压测保证资源合理）。 subtask 可能会因为共享资源上高负载线程的竞争成为瓶颈。同样可以考虑上述分析工具。考虑在代码中查找同步开销、锁竞争、尽管避免在代码中添加同步。
+
+#### 负载不平衡
+
+属于数据倾斜问题
+
+#### 外部依赖
+
+source 端读取性能比较低或者 Sink 端性能较差，需要检查第三方组件是否遇到瓶颈。如：
+
+1. kafka集群是否需要扩容，kafka 连接器是否并行度较低；
+2. HBASE 的 rowkey 是否遇到热点问题。
+3. 需要结合具体组件来分析
+
+解决方案：`旁路缓存 + 异步IO`
+
+## 数据倾斜
+
+### 判断是否存在数据倾斜
+
+通过 Flink Web UI 可以精确的看到每个 subtask 处理了多少数据，即可以判断出 Flink 任务是否存在数据倾斜。通常数据倾斜也会引起反压。
+
+### 数据倾斜的解决
+
+#### keyBy 之前发生数据倾斜
 
 
 
