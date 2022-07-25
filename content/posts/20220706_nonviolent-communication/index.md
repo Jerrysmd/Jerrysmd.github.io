@@ -6,15 +6,12 @@ featured: false # Sets if post is a featured post, making appear on the home pag
 draft: false # Sets whether to render this page. Draft of true will not be rendered.
 toc: true # Controls if a table of contents should be generated for first-level links automatically.
 # menu: main
-usePageBundles: true # Set to true to group assets like images in the same folder as this post.
+# usePageBundles: true # Set to true to group assets like images in the same folder as this post.
 # featureImage: "/images/path/file.jpg" # Sets featured image on blog post.
 # featureImageAlt: 'Description of image' # Alternative text for featured image.
 # featureImageCap: 'This is the featured image.' # Caption (optional).
 # thumbnail: "images/.png" # Sets thumbnail image appearing inside card on homepage.
 # shareImage: "/images/path/share.png" # Designate a separate image for social media sharing.
-codeMaxLines: 40 # Override global value for how many lines within a code block before auto-collapsing.
-codeLineNumbers: true # Override global value for showing of line numbers within code block.
-figurePositionShow: true # Override global value for showing the figure label.
 hiddenFromHomePage: true
 categories:
   - Life
@@ -317,3 +314,11 @@ tags:
 > 2. 看看我们有哪些评判性的想法。
 > 3. 与我们的需要连结。
 > 4. 表达我们的感受和未被满足的需要。
+
+## 化解冲突
+
+1. 首先表达自己的需要。
+2. 其次无论对方说什么，设法找出他们真正的需要。如果他们表达的是想法、评判或分析而不是需要，可以继续寻找背后的需要。
+3. 确认我们都准确理解彼此的需要，否则继续寻找背后的需要。
+4. 尽可能地同理对方，以便让双方都能确切了解彼此的需要。
+5. 当双方都澄清了事件中的需要后，我们就可以用正向的描述提出化解冲突的策略。

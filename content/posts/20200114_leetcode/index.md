@@ -1,6 +1,6 @@
 ---
 title: "Leetcode" # Title of the blog post.
-date: 2020-01-01T10:57:11+08:00 # Date of post creation.
+date: 2020-01-14T10:57:11+08:00 # Date of post creation.
 description: "Article description." # Description used for search engine.
 featured: false # Sets if post is a featured post, making appear on the home page side bar.
 draft: false # Sets whether to render this page. Draft of true will not be rendered.
