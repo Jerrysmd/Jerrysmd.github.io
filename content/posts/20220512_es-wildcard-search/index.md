@@ -1,7 +1,7 @@
 ---
 title: "Elasticsearch Wildcard Search" # Title of the blog post.
 date: 2022-05-12T10:57:33+08:00 # Date of post creation.
-description: "Article description." # Description used for search engine.
+description: "" # Description used for search engine.
 featured: false # Sets if post is a featured post, making appear on the home page side bar.
 draft: false # Sets whether to render this page. Draft of true will not be rendered.
 toc: true # Controls if a table of contents should be generated for first-level links automatically.
@@ -9,19 +9,18 @@ toc: true # Controls if a table of contents should be generated for first-level 
 # featureImage: "/images/path/file.jpg" # Sets featured image on blog post.
 # featureImageAlt: 'Description of image' # Alternative text for featured image.
 # featureImageCap: 'This is the featured image.' # Caption (optional).
-codeLineNumbers: true # Override global value for showing of line numbers within code block.
-codeMaxLines: 40 # Override global value for how many lines within a code block before auto-collapsing.
-codeLineNumbers: true # Override global value for showing of line numbers within code block.
-figurePositionShow: true # Override global value for showing the figure label.
+# codeLineNumbers: true # Override global value for showing of line numbers within code block.
+# codeMaxLines: 40 # Override global value for how many lines within a code block before auto-collapsing.
+# codeLineNumbers: true # Override global value for showing of line numbers within code block.
+# figurePositionShow: true # Override global value for showing the figure label.
 categories:
   - Technology
 tags:
   - Distribution
   - Spark
-comments: true # Disable comment if false.
 ---
 
-There is a problem about word segmentation when I use Chinese language in ES. Elasticsearch is the distributed, restful search and analytics engine. You can use Elasticsearch to store, search, and manage data for Logs，Metrics，A search backend，Application monitoring，Endpoint security.
+There is a problem about word segmentation when I use Chinese in ES. Elasticsearch is the distributed, restful search and analytics engine. You can use Elasticsearch to store, search, and manage data for Logs，Metrics，A search backend，Application monitoring，Endpoint security.
 
 <!--more-->
 
