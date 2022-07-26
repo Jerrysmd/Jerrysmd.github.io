@@ -290,28 +290,43 @@ Hive、mr、spark 都有可能 keyby 数据倾斜的通用方法：
 
 #### keyBy 后的窗口聚合操作存在数据倾斜
 
+窗口就是批处理，窗口只输出一次结果。
 
+但是两个窗口也会出现 4+4 变成 4+8 的现象。（将多个窗口的数据放在一起）（第一个窗口 4 个 a，最终窗口keyby后输出 [a, 4]，第二个窗口又来 4 个 a，去掉随机数后由于都是 a，第二窗口的 [a, 4] 就会和第一个窗口的 [a, 4] sum 操作 变成 [a, 8]，第一个窗口和第二个窗口累加就会出现 [a, 12] 这个错误结果）
 
+解决方法：带上窗口信息进行聚合。
 
+实现思路：
 
+1. key 拼接随机数前缀或后缀，进行 keyby 、开窗、聚合；
 
+   **注意：** 聚合完不再是 windowedStream，要获取 windowEnd 作为窗口标记作为第二阶段分组依据，避免不同窗口的结果聚合到一起。
 
+2. 去掉随机数前缀或后缀，按照原来的 key 及 windowEnd 作为 keyby、聚合。
 
+## KafkaSource 调优
 
+### 动态发现分区
 
+### 从 kafka 数据源生成 watermark
 
+kafka 单分区内有序，多分区无序，这种情况下，由于网络延迟等因素造成数据无序、错乱等隐患。
 
+使用 flink 中可识别 kafka分区的 watermark 生成机制。将在 kafka 消费端内部针对每个 kafka 分区生成 watermark，且不同分区 watermark  的合并方式与在数据流 shuffle 时的合并方式相同。
 
+### 设置空闲等待
 
+如果数据源中的某一分区/分片在一段时间内未发送事件数据，则以为着 watermarkGenerator 也不会过得任何新数据去生成 watermark。该分区watermark 一直为 long 的最小值 minValue。比如在 kafka 的 topic 中，个别 partition 一直没有新的数据。
 
-{{< admonition question 关于各种框架优化的回答>}}
+由于下游算子 watermark 的计算方式是取所有不同的上游并行数据源 watermark 的最小值，则导致窗口、定时器不会被触发。
 
-问法：做过什么优化？ 解决过什么问题？遇到哪些问题？
+可以使用 watermarkStrategy 来检测空闲输入并将其标记为空闲状态。
 
-1. 说明业务场景；
-2. 遇到了什么问题 --> 往往通过监控工具结合报警系统；
-3. 排查问题；
-4. 解决手段；
-5. 问题被解决。
+`.withIdleness(Duration.ofMinutes(5))`
 
-{{< /admonition >}}
+### kafka 的 offset 消费策略
+
+1. 默认消费策略：读取上次的 offset 信息，第一次读会根据 auto.offset.reset 的值来进行消费数据
+2. 从最早的数据开始进行消费，忽略存储 offset 信息；
+3. 从最新的数据信息消费，忽略存储 offset 信息；
+4. 从指定位置开始消费；

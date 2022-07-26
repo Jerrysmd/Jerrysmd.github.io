@@ -27,7 +27,7 @@ hiddenFromSearch = true
 + ☎️ Phone：+86 15735184098
 + 📬 E-mail：0x004c2@gmail.com
 + 📖 BLOG ：[Jerrysmd.github.io](https://jerrysmd.github.io)
-+ {{< typeit >}}🎨 Hobbies：⚽ 🏓 🎮 🎹 📱 📸 🌎 ...  {{< /typeit >}}
++ {{< typeit >}}🏀 Hobbies：⚽ 🏓 🎮 🎹 📱 📸 🌎 ...  {{< /typeit >}}
 
 ## Licenses
 
