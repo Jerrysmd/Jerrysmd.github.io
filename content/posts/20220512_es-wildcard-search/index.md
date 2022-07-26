@@ -1,6 +1,6 @@
 ---
 title: "Elasticsearch Wildcard Search" # Title of the blog post.
-date: 2020-09-11T10:57:33+08:00 # Date of post creation.
+date: 2022-05-12T10:57:33+08:00 # Date of post creation.
 description: "Article description." # Description used for search engine.
 featured: false # Sets if post is a featured post, making appear on the home page side bar.
 draft: false # Sets whether to render this page. Draft of true will not be rendered.
@@ -21,11 +21,17 @@ tags:
 comments: true # Disable comment if false.
 ---
 
-Elasticsearch is the distributed, RESTful search and analytics engine at the heart of the [Elastic Stack](https://www.elastic.co/products). You can use Elasticsearch to store, search, and manage data for Logs，Metrics，A search backend，Application monitoring，Endpoint security.
+There is a problem about word segmentation when I use Chinese language in ES. Elasticsearch is the distributed, restful search and analytics engine. You can use Elasticsearch to store, search, and manage data for Logs，Metrics，A search backend，Application monitoring，Endpoint security.
 
 <!--more-->
 
-> **问题描述**：ES 使用 **wildcard** 进行模糊查询，有些情况模糊查询失败，如："\*日本\*"，但测试别的数据，如 "\*192.168\*" 可以模糊匹配。这是因为 ES 对查询文本分词造成的结果。
+## 问题描述
+
+{{< admonition question>}}
+
+ES 使用 **wildcard** 进行模糊查询，有些情况模糊查询失败，如："\*日本\*"，但测试别的数据，如 "\*192.168\*" 可以模糊匹配。这是因为 ES 对查询文本分词造成的结果。
+
+{{< /admonition >}}
 
 ## match：分词模糊查询
 
@@ -125,6 +131,6 @@ Wildcard 性能会比较慢。如果非必要，尽量避免在开头加通配�
 
 
 
-## 总结：
+## 总结
 
  Es 模糊查询， 分词的用match； 短语的用match_phrase；查询任意的，用wildcard通配符，注意查询的内容是否分词，分词的添加keyword，查询非空的情况，用"**"。
