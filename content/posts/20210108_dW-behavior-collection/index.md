@@ -30,14 +30,6 @@ Data warehouse is a system that pulls together data derived from operational sys
 
 ### 概念
 
-+ 业务数据：
-
-  处理事务过程中产生的数据。登录、下单、支付。
-
-+ 用户行为数据：
-
-  与客户端产品交互过程产生的数据。浏览、点击、停留。
-
 ![dataWarehouse_introduction](dataWarehouse_introduction.jpg "offline DW process")
 
 > 数仓是对数据进行 **备份、清洗、聚合、统计** 等操作。
