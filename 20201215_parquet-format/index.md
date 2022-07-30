@@ -1,13 +1,13 @@
-# Parquet Format
+# HDFS: Parquet Format
 
 
 Apache Parquet is designed for efficient as well as performant flat columnar storage format of data compared to row based files like CSV or TSV files. Parquet uses the record shredding and assembly algorithm which is superior to simple flattening of nested namespaces. Parquet is optimized to work with complex data in bulk and features different ways for efficient data compression and encoding types. This approach is best especially for those queries that need to read certain columns from a large table. Parquet can only read the needed columns therefore greatly minimizing the IO.
 
 <!--more-->
 
-HDFS 默认存的是文本格式，所以 hive, presto，都是在文本格式上做计算，hadoop本身是全表扫，只是分布式而以，所以我们之前用的就是分布式的全表扫而以，没有发挥出数据仓库该有的功能,列式存储，天然擅长分析，千万级别的表，count，sum，group by ，秒出结果。
+HDFS 默认存的是文本格式，所以 hive, presto 都是在文本格式上做计算，hadoop本身是全表扫，只是分布式而以，所以之前使用的就是分布式的全表扫，没有发挥出数据仓库该有的功能,列式存储，天然擅长分析，千万级别的表，count，sum，group by ，秒出结果。
 
-## 1、场景描述：
+## 1、场景描述
 
 对客户日志做了数据仓库，但实际业务使用中有一些个共同点，
 
@@ -19,7 +19,7 @@ C 只关注其中极少的字段
 
 基于以上业务，我们决定每天定时统一关联维度表，对关联后的数据进行另外存储。各个业务直接使用关联后的数据进行离线计算。
 
-## 2、选择parquet的外部因素
+## 2、选择 parquet 的外部因素
 
 在各种列存储中，我们最终选择 parquet 的原因有许多。除了 parquet 自身的优点，还有以下因素：
 
@@ -29,7 +29,7 @@ B、hive 支持 parquet 格式存储，如果以后使用hivesql 进行查询，
 
 ## 3、选择 parquet 的内在原因
 
-下面通过对比 parquet 和 csv，说说parquet自身都有哪些优势
+下面通过对比 parquet 和 csv 说说 parquet 自身都有哪些优势
 
 csv在hdfs上存储的大小与实际文件大小一样。若考虑副本，则为实际文件大小*副本数目。（若没有压缩）
 
