@@ -56,7 +56,7 @@ hiddenFromSearch: false
 #     # someJS = "https://cdn.example.com/some.js"
 # seo:
 #   images: []
-#   # ...
+
 # admonition:
 # {{< admonition tip>}}{{< /admonition >}}
 # note abstract info tip success question warning failure danger bug example quote
