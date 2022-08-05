@@ -2361,10 +2361,6 @@ The above output corresponds to the 5 unique BST's shown below:
 >
 > Dijkstra算法：适用范围没有权值为负数的边
 
-## 暴力递归
-
-> 
-
 ## 哈希函数
 
 **问题**：2的32次方个由 0 - 2 的32次方组成的随机数，用1G内存，返回出现次数最多的数
