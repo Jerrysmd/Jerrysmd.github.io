@@ -18,8 +18,6 @@ tags:
   - Algorithm
 # comments: true # Disable comment if false.
 
-
-
 ---
 
 Algorithms are used in every part of computer science. They form the field's backbone. In computer science, an algorithm gives the computer a specific set of instructions, which allows the computer to do everything, be it running a calculator or running a rocket.
@@ -2381,10 +2379,6 @@ The above output corresponds to the 5 unique BST's shown below:
 > prim算法：适用范围要求无向图
 >
 > Dijkstra算法：适用范围没有权值为负数的边
-
-## 暴力递归
-
-> 
 
 ## 哈希函数
 
