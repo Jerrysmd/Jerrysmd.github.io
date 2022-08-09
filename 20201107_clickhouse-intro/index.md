@@ -29,7 +29,7 @@ OLTP：更偏向于增删改查数据
 
 {{< admonition info 高吞吐的写入能力 >}}
 
-与 HBASE 的存储结构相似，ClickHouse 采用类 LSM Tree 的结构，数据写入后定期在后台 compaction 操作。通过类 LSM tree的结构，ClickHouse 在数据导入时全部是顺序 append 写，写入后数据段不可更改，在后台 compaction 时也是多个段 merge sort 后顺序写回磁盘。顺序写的特性，充分利用了磁盘的吞吐能力，磁盘的吞吐能力，即便在 HDD 上也有着友谊的写入性能。
+与 HBASE 的存储结构相似，ClickHouse 采用类 LSM Tree 的结构，数据写入后定期在后台 compaction 操作。通过类 LSM tree的结构，ClickHouse 在数据导入时全部是顺序 append 写，写入后数据段不可更改，在后台 compaction 时也是多个段 merge sort 后顺序写回磁盘。顺序写的特性，充分利用了磁盘的吞吐能力，磁盘的吞吐能力，即便在 HDD 上也有着不错的写入性能。
 
 {{< /admonition >}}
 
