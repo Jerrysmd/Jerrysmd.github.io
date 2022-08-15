@@ -27,11 +27,9 @@ Data warehouse is a system that pulls together data derived from operational sys
 + 元数据管理：Atlas
 + 权限管理：Ranger
 
-### 系统流程图
+### 系统流程
 
-![system_design](system_design.jpg "system_design")
-
-+ `业务数据 / 前端 js 埋点行为数据：`持久化或不持久化写入数据库。
++ `业务数据 / 前端 js 数据：`持久化或不持久化写入数据库。
 
 + `Nginx：`负载均衡，使每个节点数据量保持合理。
 
