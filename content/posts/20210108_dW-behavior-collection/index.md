@@ -4,7 +4,7 @@ date: 2021-01-08T09:43:01+08:00 # Date of post creation.
 description: "" # Description used for search engine.
 featured: true # Sets if post is a featured post, making appear on the home page side bar.
 draft: false # Sets whether to render this page. Draft of true will not be rendered.
-toc: false # Controls if a table of contents should be generated for first-level links automatically.
+toc: true # Controls if a table of contents should be generated for first-level links automatically.
 # thumbnail: "images/distribution2.png" # Sets thumbnail image appearing inside card on homepage.
 # featureImage: "/images/path/file.jpg" # Sets featured image on blog post.
 # featureImageAlt: 'Description of image' # Alternative text for featured image.
@@ -48,11 +48,9 @@ Data warehouse is a system that pulls together data derived from operational sys
 + 元数据管理：Atlas
 + 权限管理：Ranger
 
-### 系统流程图
+### 系统流程
 
-![system_design](system_design.jpg "system_design")
-
-+ `业务数据 / 前端 js 埋点行为数据：`持久化或不持久化写入数据库。
++ `业务数据 / 前端 js 数据：`持久化或不持久化写入数据库。
 
 + `Nginx：`负载均衡，使每个节点数据量保持合理。
 
