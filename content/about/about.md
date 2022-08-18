@@ -19,8 +19,9 @@ hiddenFromSearch = true
 
 +++
 
-
 ## Author
+
+![corpus](20191011083753_IMG_2610-01.jpeg "corpus")
 
 ### JIARUI LIU
 
