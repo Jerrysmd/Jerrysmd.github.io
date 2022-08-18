@@ -6,11 +6,16 @@
 ### JIARUI LIU
 
 + ☎️ Phone：+86 15735184098
+
 + 📬 E-mail：0x004c2@gmail.com
+
 + 📖 BLOG ：[Jerrysmd.github.io](https://jerrysmd.github.io)
+
 + {{< typeit >}}🏀 Hobbies：⚽ 🏓 🎮 🎹 📱 📸 🌎 ...  {{< /typeit >}}
 
-![Corpus Christi](/posts/picture/20191011083753_IMG_2610-01.jfif "Corpus Christi")
+  
+
+![Texas](/posts/picture/20191011083753_IMG_2610-01.jfif "Corpus Christi")
 
 ## Licenses
 
