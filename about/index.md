@@ -3,7 +3,7 @@
 
 ## Author
 
-![corpus](20191011083753_IMG_2610-01.jfif "corpus")
+![corpus](/posts/picture/20191011083753_IMG_2610-01.jfif "corpus")
 
 ### JIARUI LIU
 
