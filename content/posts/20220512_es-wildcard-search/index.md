@@ -18,6 +18,7 @@ categories:
 tags:
   - Distribution
   - Spark
+  - ElasticSearch
 ---
 
 There is a problem about word segmentation when I use Chinese in ES. Elasticsearch is the distributed, restful search and analytics engine. You can use Elasticsearch to store, search, and manage data for Logs，Metrics，A search backend，Application monitoring，Endpoint security.
