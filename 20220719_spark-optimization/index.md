@@ -236,6 +236,39 @@ Catalyst 会使用 constantFolding 规则，自动用表达式的结果进行替
 
 ### 基于 CBO 优化
 
+#### Statistics 收集
+
+需要先执行特定的 SQL 语句来收集所需的表和列的统计信息。
+
+🔵 生成表级别统计信息（扫表）：
+
+`ANALYZE TABLE 表明 COMPUTE STATISTICS`
+
+#### 使用 CBO
+
+通过 `spark.sql.cbo.enabled` 来开启，默认是 false。CBO 优化器可以基于表和列的统计信息，选择出最优的查询计划。比如：Build 侧选择、优化 Join 类型、优化多表 Join 顺序。
+
+### 广播 Join
+
+#### 通过参数指定自动广播
+
+广播 join 默认值为 10MB，由 `spark.sql.autoBroadcastJoinThreshold`参数控制。
+
+#### 指定广播
+
+1. sparkSQL 加 HINT 方式
+2. 使用 function._ broadcast API 
+
+### SMB Join
+
+大表 JOIN 大表，进行 SMB（sort merge bucket）操作：
+
+需要进行分桶，首先会进行排序，然后根据 key 值合并，把相同 key 的数据放到同一个 bucket 中（按照 key 进行 hash）。分桶的目的就是把大表化成小表。相同的 key 的数据都在同一个桶中，再进行 join 操作，那么在联合的时候就会大幅度的减小无关项的扫描。
+
+## 数据倾斜
+
+### 现象
+
 
 
 ------
