@@ -241,7 +241,7 @@ The `admonition` shortcode has the following named parameters:
 
     Title of the `admonition` banner, default value is the value of **type** parameter.
 
-* **open** *[optional]* (**third** positional parameter) {{< version 0.2.0 changed >}}
+* **open** *[optional]* (**third** positional parameter) 
 
     Whether the content will be expandable by default, default value is `true`.
 
