@@ -332,7 +332,105 @@ Catalyst 会使用 constantFolding 规则，自动用表达式的结果进行替
 
 ### 现象
 
+绝大多数 Task 任务运行速度很快，但几个 Task 任务运行速度极其缓慢，慢慢的可能接着报内存溢出的问题。
 
+![image-20220822170107186](image-20220822170107186.png "Task数据倾斜")
+
+### 原因
+
+数据倾斜发生在 shuffle 类的算子，比如 distinct、groupByKey、reduceByKey、aggregateByKey、join、cogroup 等，涉及到数据重分区，如果其中某一个 key 数量特别大，就发生了数据倾斜。需要先对大 Key 进行定位。
+
+### 数据倾斜大 key 定位
+
+使用抽取采样方法
+
+```scala
+val top10key = df
+.select(keyColumn).sample(false, 0.1).rdd //抽取 10%
+.map(k => (k, 1)).reduceByKey(_+_)
+.map(k => (k._2, k._1)).sortByKey(false) //按统计的key进行排序
+.take(10)
+```
+
+### 单表数据倾斜优化
+
+#### 单表优化
+
+为了减少 shuffle 以及 reduce 端的压力，SparkSQL 会在 map 端会做一个 partial aggregate（预聚合或者偏聚合），即在 shuffle 前将同一分区内所属同 key 的记录先进行一个预结算，再将结果进行 shuffle，发送到 reduce 端做一个汇总，类似 MR 的提前 Combiner，所以执行计划中 Hashaggregate 通常成对出现。
+
+#### 二次聚合
+
+```hive
+select 
+	id,
+	sum(course) total
+from
+(
+	select 
+		remove_random_prefix(random_courseid) courseid,
+		course
+	from
+	(
+    	select 
+        	random_id,
+        	sum(sellmoney) course
+        from
+        (
+        	select
+            	random_prefix(id, 6) random_id,
+            	sellmoney
+            from
+            	doubleAggre
+        )t1
+        group by random_id
+    )t2
+)t3
+group by id
+```
+
+```scala
+def randomPrefixUDF(value, num):String = {
+    new Random().nextInt(num).toString + "_" + value
+}
+
+def removeRandomPrefixUDF(value):String = {
+    value.toString.split("_")(1)
+}
+```
+
+### Join数据倾斜优化
+
+#### 广播Join
+
+##### 通过参数指定自动广播
+
+广播 join 默认值为 10MB，由 `spark.sql.autoBroadcastJoinThreshold`参数控制。
+
+##### 指定广播
+
+1. sparkSQL 加 HINT 方式
+2. 使用 function._ broadcast API 
+
+#### 拆分大 key 打散大表 扩容小表
+
+> 与单表数据倾斜优化的二次聚合不同，join 数据倾斜调优要对两表都进行调整。
+>
+> 因为大表为了分区加入了前缀，为了和小表匹配上，小表也应建立对应的前缀与之匹配。如：（假设有3个 task，把大key重新打散到所有task上）
+
+|                                                              |      |                 |                                                  |                                                              |       |                                     |
+| ------------------------------------------------------------ | ---- | --------------- | ------------------------------------------------ | ------------------------------------------------------------ | ----- | ----------------------------------- |
+| 1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />2<br />3 | Join | 1<br />2<br />3 | 拆分大 key<br />打散大表<br />扩容小表<br />---> | 0_1<br />1_1<br />2_1<br />0_1<br />1_1<br />2_1<br />0_1<br />1_1 | Join  | 0_1<br />1_1<br />2_1<br />2<br />3 |
+|                                                              |      |                 |                                                  |                                                              | Union |                                     |
+|                                                              |      |                 |                                                  | 2<br />3                                                     | Join  | 1<br />2<br />3                     |
+
+
+
+1. 拆分倾斜的 key：根据 key 过滤出倾斜的数据和除倾斜外的其他数据；
+2. 将切斜的 key 打散：打散成 task 数量的份数(比如有36个task)，key 值前加(0 ~ 36)随机数；
+3. 小表进行扩容：扩大成 task 数量的份数，key 值用 flatmap 生成 36 份，`i + "_" + key`
+4. 倾斜的大 key 与扩容后的表进行join；
+5. 没有倾斜的 key与原来的表进行join；
+6. 将倾斜 key join 后的结果与普通 key join 后的结果，union起来。
 
 ------
 
