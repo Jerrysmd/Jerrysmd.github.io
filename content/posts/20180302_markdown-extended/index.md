@@ -19,8 +19,6 @@ Multiple shortcodes on top of built-in ones in Hugo.
 
 ## 1 style
 
-{{< version 0.2.0 changed >}}
-
 {{< admonition >}}
 Hugo **extended** version is necessary for `style` shortcode.
 {{< /admonition >}}
@@ -51,7 +49,6 @@ This is a **right-aligned** paragraph.
 
 ## 2 link
 
-{{< version 0.2.0 >}}
 
 `link` shortcode is an alternative to [Markdown link syntax](https://hugoloveit.com/basic-markdown-syntax#links). `link` shortcode can provide some other features and can be used in code blocks.
 
@@ -117,7 +114,6 @@ The rendered output looks like this (hover over the link, there should be a tool
 
 ## 3 image {#image}
 
-{{< version 0.2.0 changed >}}
 
 `image` shortcode is an alternative to [`figure` shortcode](https://hugoloveit.com/theme-documentation-built-in-shortcodes#figure). `image` shortcode can take full advantage of the dependent libraries of [lazysizes](https://github.com/aFarkas/lazysizes) and [lightGallery](https://github.com/sachinchoolur/lightgallery).
 
@@ -180,8 +176,6 @@ Example `image` input:
 ```
 
 The rendered output looks like this:
-
-{{< image src="/images/lighthouse.jpg" caption="Lighthouse (`image`)" src_s="/images/lighthouse-small.jpg" src_l="/images/lighthouse-large.jpg" >}}
 
 ## 4 admonition
 
@@ -283,8 +277,6 @@ The full documentation is provided in [Theme Documentation - echarts Shortcode](
 
 ## 7 mapbox
 
-{{< version 0.2.0 >}}
-
 The `mapbox` shortcode supports interactive maps in Hugo with [Mapbox GL JS](https://docs.mapbox.com/mapbox-gl-js) library.
 
 The full documentation is provided in [Theme Documentation - mapbox Shortcode](https://hugoloveit.com/theme-documentation-mapbox-shortcode).
@@ -296,8 +288,6 @@ The `music` shortcode embeds a responsive music player based on [APlayer](https:
 The full documentation is provided in [Theme Documentation - music Shortcode](https://hugoloveit.com/theme-documentation-music-shortcode).
 
 ## 9 bilibili
-
-{{< version 0.2.0 changed >}}
 
 The `bilibili` shortcode embeds a responsive video player for bilibili videos.
 
@@ -311,8 +301,6 @@ The full documentation is provided in [Theme Documentation - typeit Shortcode](h
 
 ## 11 script
 
-{{< version 0.2.8 >}}
-
 `script` is a shortcode to insert custom **:(fab fa-js fa-fw): Javascript** in your post.
 
 {{< admonition >}}
@@ -323,19 +311,17 @@ Example `script` input:
 
 ```markdown
 {{</* script */>}}
-console.log('Hello LoveIt!');
+console.log('Hello');
 {{</* /script */>}}
 ```
 
 You can see the output in the console of the developer tool.
 
 {{< script >}}
-console.log('Hello LoveIt!');
+console.log('Hello');
 {{< /script >}}
 
 ## 12 raw
-
-{{< version 0.2.11 >}}
 
 `raw` is a shortcode to insert raw **:(fab fa-html5 fa-fw): HTML** content in your post.
 This is useful when you want to include some Markdown content to **avoid being rendered or escaped** by Hugo.
@@ -365,10 +351,8 @@ Block Formula:
 {{< /raw >}}
 
 {{< script >}}
-console.log('Hello LoveIt!');
+console.log('Hello');
 {{< /script >}}
-
-This renders as {{< person "https://dillonzq.com/" Dillon "author of the LoveIt theme" >}}.
 Raw content using Markdown syntax: {{< raw >}}**Hello**{{< /raw >}}
 
 ## 13 person
@@ -406,9 +390,3 @@ Example `person` input:
 This renders as {{< person url="https://evgenykuznetsov.org" name="Evgeny Kuznetsov" nick="nekr0z" text="author of this shortcode" picture="https://evgenykuznetsov.org/img/avatar.jpg" >}}.
 
 Without an explicitly given picture, a generic icon is used. This input:
-
-```markdown
-{{</* person "https://dillonzq.com/" Dillon "author of the LoveIt theme" */>}}
-```
-
-This renders as {{< person "https://dillonzq.com/" Dillon "author of the LoveIt theme" >}}.
