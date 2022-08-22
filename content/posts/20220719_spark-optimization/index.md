@@ -166,3 +166,73 @@ Spark SQL is the top active component in latest spark release. 46% of the resolv
 
 ### 持久化和序列化
 
+#### RDD
+
+##### Kryo 序列化缓存
+
+使用：
+
+1. sparkConf 指定 kryo 序列化器
+2. sparkConf 注册样例类
+
+```scala
+new SparkConf()
+...
+.set("spark.serializer","...kryoSerializer")
+.registerKryoClasses(Array(classOf[...]))
+
+result.persist(StorageLevel.MEMORY_ONLY_SER)
+```
+
+测试：
+
+> 2G 的 HIVE 元数据，使用 RDD 缓存，完成 100% Fraction Cached 需要 7 G左右内存，使 partition 很容易挂掉。使用 Kryo 序列器完成 Cached 需要 1 G内存。
+
+#### DF、DS
+
+cache 默认使用 `MEMORY_AND_DISK`缓存
+
+{{< admonition note>}}
+
+1. 序列化器(Java, Kryo)是针对 RDD 而言的；而 DF、DS 是由 encoder 选择的。
+2. encoder 由 SparkSql 自己实现的，也有可能使用 kryo 的方式。
+3. 对 DF、DS使用序列化差别不大。
+
+{{< /admonition >}}
+
+###  CPU优化
+
+#### CPU 低效原因
+
+##### 并行度
+
+并行度就是 Task 数量。
+
+🟠RDD 并行度参数：
+
++ `spark.default.parallelism`
+
++ 不设置时，默认由 join、reduceByKey 和 parallelize 等转换决定。
+
+🟡SparkSQL 并行度参数：与 RDD 并行度互不影响
+
++ `spark.sql.shuffle.partitions`
+
++ 默认是 200，只能控制 SparkSQL、DataFrame、Dataset 分区个数。
+
+##### 并发度
+
+并发度：同时执行的 Task 数量。
+
+##### CPU 低效原因
+
+1. 并行度较低、数据分片较大容易导致 CPU 线程挂起；
+2. 并行度过高、数据过于分散会让调度开销更多；
+
+#### CPU 资源调整
+
+🟣官方推荐并行度（Task 数）设置成并发度（vcore 数）的 2 倍到 3 倍。
+
+例：如果以目前的资源（3 个 executor）去提交，每个 executor 有两个核，总共 6 个核，则并行度设置为 12 ~ 18。
+
+`spark-submit --master yarn --deploy-mode client --driver-memory 1g --num-executors 3 --executor-cores 4 --executor-memory 6g --class com.jar`
