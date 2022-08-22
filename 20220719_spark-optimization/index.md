@@ -168,9 +168,77 @@ cache 默认使用 `MEMORY_AND_DISK`缓存
 
 #### CPU 资源调整
 
+`spark-submit --master yarn --deploy-mode client --driver-memory 1g --num-executors 3 --executor-cores 4 --executor-memory 6g --class com.jar`
+
 🟣官方推荐并行度（Task 数）设置成并发度（vcore 数）的 2 倍到 3 倍。
 
 例：如果以目前的资源（3 个 executor）去提交，每个 executor 有两个核，总共 6 个核，则并行度设置为 12 ~ 18。
 
-`spark-submit --master yarn --deploy-mode client --driver-memory 1g --num-executors 3 --executor-cores 4 --executor-memory 6g --class com.jar`
+```scala
+SparkConf()
+...
+.set("spark.sql.shuffle.partitions", "18")
+```
+
+## SparkSQL 语法优化
+
+### 基于 RBO 优化
+
+#### 谓词下推
+
+```scala
+//=============Inner on 左表=============
+spark.sqlContext.sql(
+  """
+    |select
+    | l.id,
+    | l.name,
+    | r.id,
+    | r.name
+    |from course l join student r
+    | on l.id=r.id and l.dt=r.dt and l.dn=r.dn
+    |on l.id<2
+    |""".stripMargin)
+//=============Inner where 左表=============
+spark.sqlContext.sql(
+  """
+    |select
+    | l.id,
+    | l.name,
+    | r.id,
+    | r.name
+    |from course l join student r
+    | on l.id=r.id and l.dt=r.dt and l.dn=r.dn
+    |where l.id<2
+    |""".stripMargin)
+```
+
+**inner join**
+
++ 无论是 ON 还是 WHERE，无论条件是右表还是左表。从 logic plan -> Analyzed logical plan 到 **optimized logical plan**，sparkSQL 都会优化**先过滤数据再进行 join** 连接，而且其中一表过滤，**另一表也优化提前过滤**（最终要过滤数据，另一表也没有存在的必要）
+
+**left join**
+
++ |                 | 条件在 左表 | 条件在 右表 |
+  | --------------- | ----------- | ----------- |
+  | 条件在 on 后    | 只下推右表  | 只下推右表  |
+  | 条件在 where 后 | 两表都下推  | 两表都下推  |
+
++ 注意：外关联时，过滤条件在 on 与 where，语义是不同的，结果也是不同的。
+
+#### 列裁剪
+
+扫描数据源的时候，只读取那些与查询相关的字段。
+
+#### 常量替换
+
+Catalyst 会使用 constantFolding 规则，自动用表达式的结果进行替换。
+
+### 基于 CBO 优化
+
+
+
+------
+
+👋未完待续👋
 
