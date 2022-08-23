@@ -355,10 +355,10 @@ def removeRandomPrefixUDF(value):String = {
 > 因为大表为了分区加入了前缀，为了和小表匹配上，小表也应建立对应的前缀与之匹配。如：（假设有3个 task，把大key重新打散到所有task上）
 
 |                                                              |      |                 |                                                  |                                                              |       |                                     |
-| ------------------------------------------------------------ | ---- | --------------- | ------------------------------------------------ | ------------------------------------------------------------ | ----- | ----------------------------------- |
+| :----------------------------------------------------------: | :--: | :-------------: | :----------------------------------------------: | :----------------------------------------------------------: | :---: | :---------------------------------: |
 | 1<br />1<br />1<br />1<br />1<br />1<br />1<br />1<br />2<br />3 | Join | 1<br />2<br />3 | 拆分大 key<br />打散大表<br />扩容小表<br />---> | 0_1<br />1_1<br />2_1<br />0_1<br />1_1<br />2_1<br />0_1<br />1_1 | Join  | 0_1<br />1_1<br />2_1<br />2<br />3 |
 |                                                              |      |                 |                                                  |                                                              | Union |                                     |
-|                                                              |      |                 |                                                  | 2<br />3                                                     | Join  | 1<br />2<br />3                     |
+|                                                              |      |                 |                                                  |                           2<br />3                           | Join  |           1<br />2<br />3           |
 
 
 
@@ -368,6 +368,41 @@ def removeRandomPrefixUDF(value):String = {
 4. 倾斜的大 key 与扩容后的表进行join；
 5. 没有倾斜的 key与原来的表进行join；
 6. 将倾斜 key join 后的结果与普通 key join 后的结果，union起来。
+
+代价：shuffle 次数增多了，但是每次 shuffle 数据更均匀了。
+
+## Job 优化
+
+### Map 端优化
+
+#### Map 端聚合
+
+parkSQL 会在 map 端会做一个 partial aggregate（预聚合或者偏聚合），即在 shuffle 前将同一分区内所属同 key 的记录先进行一个预结算，再将结果进行 shuffle，发送到 reduce 端做一个汇总，类似 MR 的提前 Combiner，所以执行计划中 Hashaggregate 通常成对出现。
+
+SparkSQL 本身的 Hashaggregate 就会实现本地预聚合 + 全局聚合。
+
+#### 读取小文件的优化
+
+HIVE 的 `CombineHiveInputformat` 输入格式会将小文件读到同一个 Map 端里面去。
+
+SparkSQL 中也会自动合并，参数如下：
+
+```shell
+spark.sql.files.maxPartitionBytes=128MB #默认 128m
+spark.files.openCostInBytes=4194304 #默认 4m
+```
+
++ 切片大小 = Math.min(defaultMaxSplitBytes, Math.max(openCostInBytes, bytesPerCore))
+
++ bytesPerCore = totalBytes / defaultParallelism
+
++ 计算 totalBytes 时，每个文件都要加上一个 open 开销：
+
+  当 (文件1大小 + openCostInBytes) + (文件2大小 + openCostInBytes)+...  <= maxPartitionBytes 时，n个文件可以读入同一分区。
+
+### Reduce 端优化
+
+### 整体优化
 
 ------
 
