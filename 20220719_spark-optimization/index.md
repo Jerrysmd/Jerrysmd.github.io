@@ -1,7 +1,7 @@
 # Spark Performance Optimization
 
 
-Spark SQL is the top active component in latest spark release. 46% of the resolved tickets are for Spark SQL. These enhancements benefit all the higher-level libraries, including structured streaming and MLlib, and higher level APIs, including SQL and DataFrames. Various related optimizations are added in latest release.
+Spark SQL is the top active component in spark 3.0 release. Most of the resolved tickets are for Spark SQL. These enhancements benefit all the higher-level libraries, including structured streaming and MLlib, and higher level APIs, including SQL and DataFrames. Various related optimizations are added in latest release.
 
 <!--more-->
 
@@ -400,11 +400,193 @@ spark.files.openCostInBytes=4194304 #默认 4m
 
   当 (文件1大小 + openCostInBytes) + (文件2大小 + openCostInBytes)+...  <= maxPartitionBytes 时，n个文件可以读入同一分区。
 
+#### 增大 map 溢写时输出流 buffer
+
+![image-20220824110005487](image-20220824110005487.png "SortShuffle")
+
+源码理解：
+
+```scala
+/**
+ * Spills the current in-memory collection to disk if needed. Attempts to acquire more
+ * memory before spilling.
+ *
+ * @param collection collection to spill to disk
+ * @param currentMemory estimated size of the collection in bytes
+ * @return true if `collection` was spilled to disk; false otherwise
+ */
+protected def maybeSpill(collection: C, currentMemory: Long): Boolean = {
+  var shouldSpill = false
+  if (elementsRead % 32 == 0 && currentMemory >= myMemoryThreshold) {
+    // Claim up to double our current memory from the shuffle memory pool
+    val amountToRequest = 2 * currentMemory - myMemoryThreshold
+    val granted = acquireMemory(amountToRequest)
+    myMemoryThreshold += granted
+    // If we were granted too little memory to grow further (either tryToAcquire returned 0,
+    // or we already had more memory than myMemoryThreshold), spill the current collection
+    shouldSpill = currentMemory >= myMemoryThreshold
+  }
+  shouldSpill = shouldSpill || _elementsRead > numElementsForceSpillThreshold
+  // Actually spill
+  if (shouldSpill) {
+    _spillCount += 1
+    logSpillage(currentMemory)
+    spill(collection)
+    _elementsRead = 0
+    _memoryBytesSpilled += currentMemory
+    releaseMemory()
+  }
+  shouldSpill
+}
+```
+
+1. map 端 Shuffle Write 有一个缓冲区，初始阈值 5m，超过阈值尝试增加到 2*当前使用内存，自动扩容。如果申请不到内存，则进行溢写。这个参数是 internal，指定无效。
+
+2. 溢写时使用输出流缓冲区默认 32k，这些缓冲区减少了磁盘搜索和系统调用次数，**适当提高可以提升溢写效率。**
+
+   | Property Name               | Default | Meaning                                                      |
+   | --------------------------- | ------- | ------------------------------------------------------------ |
+   | `spark.shuffle.file.buffer` | 32k     | Size of the in-memory buffer for each shuffle file output stream, in KiB unless otherwise specified. These buffers reduce the number of disk seeks and system calls made in creating intermediate shuffle files. |
+
+   
+
+3. Shuffle 文件涉及到序列化，是采用批的方式读写，默认没批次 1 万条去读写，设置得太低会导致在序列化时过度复制。
+
 ### Reduce 端优化
+
+#### 合理设置 Reduce 数量 
+
+`Reduce 的数量 = shuffle 后的分区数 = 也就是 Task 数量 = 也就是并行度 = spark.sql.shuffle.partitions 默认的200。`
+
+`并发度是整个集群 spark 的核数，如并发度是12，并行度为并发度的 3~6 倍，设置为 36`
+
+过多的 CPU 资源出现空转浪费，过少影响任务性能。
+
+#### 输出产生小文件优化
+
+##### Join后的结果插入新表
+
+join 结果插入新表，生成的文件数等于 shuffle 并行度，默认就是 200 份插入到 hdfs 上。
+
+解决方式一：在插入表数据前进行缩小分区操作来解决小文件过多问题，如 coalesce、repartition 算子。
+
+解决方式二：调整并行度。
+
+##### 动态分区插入数据
+
+1. 没有 shuffle 的情况下。最差的情况。每个 Task 中都有各个分区的记录，那最终文件数达到 Task 数量 * 表分区数。这种情况极易产生小文件。
+
+   ```hive
+   INSERT overwrite table A partition (aa)
+   SELECT * FROM B;
+   ```
+
+![image-20220824122130265](image-20220824122130265.png "动态分区插入-没有shuffle")
+
+2. 有 shuffle 的情况下。上面的 Task 数量就变成了 200。那么最差情况就会有 200 * 表分区数。
+
+   当 `shuffle.partitions` 设置大了小文件问题就产生了，设置小了，任务的并行度就下降了，性能随之受到影响。
+
+   最理想的情况是根据分区字段进行 shuffle，在上面的 SQL 中加入 distribute by aa。把同一分区的记录都哈希到同一分区中去，由一个 Spark 的 Task 进行写入，这样只会产生 N 个文件，但这种情况也容易出现数据倾斜的问题。
+
+![image-20220824122300415](image-20220824122300415.png "动态分区插入-shuffle")
+
+数据倾斜解决思路：
+
+结合之前解决数据倾斜的思路，在确定哪个分区键倾斜的情况下，将倾斜的分区键单独拿出：
+
+将入库的 SQL 拆成（where 分区 != 倾斜分区键）和（where 分区 = 倾斜分区键）两个部分，非倾斜分区键的部分正常 distribute by 分区字段，倾斜分区键的部分 distribute by 随机数：
+
+```hive
+#1.非倾斜部分
+INSERT overwrite table A partition (aa)
+SELECT *
+FROM B where aa != 大key
+distribute by aa; #主动产生 shuffle，将同一个分区的数据放到一个 task 中，再执行写入
+
+#2.倾斜键部分
+INSERT overwrite table A partition (aa)
+SELECT *
+FROM B where aa = 大key
+distribute by cast(rand() * 5 as int); #打散成5份，5个task，写入5个文件
+```
+
+#### 增大 reduce 缓冲区，减少拉去次数
+
+一般不会调整，ShuffleReader.scala，默认值 reduce 一次读取 48M。
+
+#### 调节 reduce 端拉取数据重试次数
+
+一般不会调整，默认为 3 次。
+
+#### 调节 reduce 端拉取数据等待间隔
+
+一般不会调整，默认为 5 秒。
+
+#### 合理利用 bypass
+
+| Property Name                             | Default | Meaning                                                      |
+| ----------------------------------------- | ------- | ------------------------------------------------------------ |
+| `spark.shuffle.sort.bypassMergeThreshold` | 200     | (Advanced) In the sort-based shuffle manager, avoid merge-sorting data if there is no map-side aggregation and there are at most this many reduce partitions. |
+
+当 shuffleManager 为 SortShuffleManager 时，如果 shuffle read task 的数量小于这个阈值（默认200）且不需要 map 端进行合并操作（使用 groupby、sum 聚合算子会预聚合，从执行计划可以得知有一个 hashaggregate -> exchange -> hashaggregate），则shuffle write 过程不会进行排序，使用 `BypassMergeSortShuffleWriter` 去写数据，但最后会将每个 task 产生的所有临时磁盘文件都合并成一个文件，并会创建单独的索引文件。
+
+当使用 shuffleManager 时，如果确实不需要排序操作，那么建议将这个参数调大一些，大于 shuffle read task 的数量。那么此时就会自动启动 bypass 机制，map-side 就不会进行排序了，减少了排序的性能开销。但这种方式下，依然会产生大量的磁盘文件，因此 shuffle write 性能有待提高。
+
+```scala
+  /**
+   * Register a shuffle with the manager and obtain a handle for it to pass to tasks.
+   */
+  override def registerShuffle[K, V, C](
+      shuffleId: Int,
+      numMaps: Int,
+      dependency: ShuffleDependency[K, V, C]): ShuffleHandle = {
+    if (SortShuffleWriter.shouldBypassMergeSort(SparkEnv.get.conf, dependency)) {
+      // If there are fewer than spark.shuffle.sort.bypassMergeThreshold partitions and we don't
+      // need map-side aggregation, then write numPartitions files directly and just concatenate
+      // them at the end. This avoids doing serialization and deserialization twice to merge
+      // together the spilled files, which would happen with the normal code path. The downside is
+      // having multiple files open at a time and thus more memory allocated to buffers.
+      new BypassMergeSortShuffleHandle[K, V](
+        shuffleId, numMaps, dependency.asInstanceOf[ShuffleDependency[K, V, V]])
+    } else if (SortShuffleManager.canUseSerializedShuffle(dependency)) {
+      // Otherwise, try to buffer map outputs in a serialized form, since this is more efficient:
+      new SerializedShuffleHandle[K, V](
+        shuffleId, numMaps, dependency.asInstanceOf[ShuffleDependency[K, V, V]])
+    } else {
+      // Otherwise, buffer map outputs in a deserialized form:
+      new BaseShuffleHandle(shuffleId, numMaps, dependency)
+    }
+  }
+```
 
 ### 整体优化
 
-------
+#### 调节数据本地化等待时长
 
-👋未完待续👋
+在 Spark 项目开发阶段，可以使用 client 模式对程序进行测试，此时可以看到比较全的日志信息，日志信息中有明确的 task 数据本地化的级别，如果大部分都是 Process_LOCAL(进程本地化: 数据和计算是在同一个JVM进程里面)、NODE_LOCAL(节点本地化: 数据和计算是在同一个服务器上)，那么就无需进行调节，但如果很多是 RACK_LOCAL(机架本地化: 数据和计算是在同一个机架上)、ANY，那么需要对本地化的等待时长进行调节，慢慢调整大一些，应该是反复调节，每次调节后观察运行日志，看看大部分的 task 的本地化级别有没有提升，观察整个 spark 作业的运行时间有没有缩短。
+
+#### 使用堆外内存
+
+堆外内存可以减轻垃圾回收的工作，也加快了复制的速度。
+
+当需要缓存非常大的数据量时，虚拟机将承受非常大的 GC 压力，因为虚拟接必须检查每个对象是否可以手机并必须访问所有内存也，本地缓存是最快的，但会给虚拟机带来 GC 压力，所以当需要处理非常多的数据量时可以考虑使用堆外内存来进行优化，因为这不会给 Java GC 带来任何压力，让 Java GC 为引用程序完成工作，缓存操作交给堆外。
+
+`result.persist(StorageLevel.OFF_HEAP)`
+
+#### 调节连接等待时长
+
+## 故障排除
+
+### 控制 reduce 端缓冲大小以避免 OOM
+
+reduce 缓冲区默认 48 m，调大是以性能换执行。
+
+### JVM GC 导致的 shuffle 文件拉取失败
+
+GC 导致连接停滞，连接停滞导致 timeout。提高重试次数和等待时长。
+
+### 各种序列化导致的报错
+
+不可以在 RDD 的元素类型、算子函数里使用第三方不支持序列化的类型，例如 connection。
 
