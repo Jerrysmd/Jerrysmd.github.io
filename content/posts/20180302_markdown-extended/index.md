@@ -11,6 +11,7 @@ draft: false
 #   src: "featured-image-preview.jpg"
 tags: ["Markdown"]
 categories: ["Life"]
+hiddenFromHomePage: true
 ---
 
 Multiple shortcodes on top of built-in ones in Hugo.
