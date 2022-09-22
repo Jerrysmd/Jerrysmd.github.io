@@ -9,9 +9,9 @@
 
 + 📬 E-mail：0x004c2@gmail.com
 
-+ 📖 BLOG ：[Jerrysmd.github.io](https://jerrysmd.github.io)
++ 📖 B l o g：[Jerrysmd.github.io](https://jerrysmd.github.io)
 
-+ {{< typeit >}}🏀 Hobbies：⚽ 🏓 🎹 📱 📸  ...  {{< /typeit >}}
++ {{< typeit >}}🏀 Hobby：⚽🏓🎹📱📸 ...{{< /typeit >}}
 
   
 
