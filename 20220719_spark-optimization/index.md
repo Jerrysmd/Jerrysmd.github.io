@@ -1,4 +1,4 @@
-# Spark Performance Optimization
+# Spark Performance Tuning
 
 
 Spark SQL is the top active component in spark 3.0 release. Most of the resolved tickets are for Spark SQL. These enhancements benefit all the higher-level libraries, including structured streaming and MLlib, and higher level APIs, including SQL and DataFrames. Various related optimizations are added in latest release.

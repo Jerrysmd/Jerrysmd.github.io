@@ -542,11 +542,11 @@ object HDFSSource{
 >
 >   ```
 >   Anatomy of a Topic
->       
+>         
 >   Partition 0 [0][1][2][3]
 >   Partition 1 [0][1]
 >   Partition 3 [0][1][2]
->       
+>         
 >   Old  -->  New
 >   ```
 

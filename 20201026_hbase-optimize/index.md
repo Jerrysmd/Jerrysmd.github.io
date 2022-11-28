@@ -1,4 +1,4 @@
-# Hbase Performance Optimization
+# Hbase Performance Tuning
 
 
 HBase is a high reliability, high performance, column-oriented, and scalable distributed database. However, the READ/write performance deteriorates when a large amount of concurrent data or existing data is generated. You can use the following methods to improve the HBase search speed.  

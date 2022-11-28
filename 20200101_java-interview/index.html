@@ -67,7 +67,7 @@
 </span></span><span class=line><span class=cl><span class=o>}</span>
 </span></span><span class=line><span class=cl><span class=kd>class</span> <span class=nc>T</span> <span class=o>{</span>
 </span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kd>static</span> <span class=n>T</span> <span class=n>t</span> <span class=o>=</span> <span class=k>new</span> <span class=n>T</span><span class=o>();</span>
-</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kd>static</span> <span class=kt>int</span> <span class=n>count</span> <span class=o>=</span> <span class=n>2</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kd>static</span> <span class=kt>int</span> <span class=n>count</span> <span class=o>=</span> <span class=mi>2</span><span class=o>;</span>
 </span></span><span class=line><span class=cl>    
 </span></span><span class=line><span class=cl>    <span class=kd>private</span> <span class=nf>T</span><span class=o>(){</span>
 </span></span><span class=line><span class=cl>        <span class=n>count</span> <span class=o>++;</span>
@@ -78,7 +78,7 @@
 </span></span></span><span class=line><span class=cl><span class=c1>//然后到initializing，t先执行构造方法，count赋值为2, count为2
 </span></span></span><span class=line><span class=cl><span class=c1></span>
 </span></span><span class=line><span class=cl><span class=kd>class</span> <span class=nc>T</span> <span class=o>{</span>
-</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kd>static</span> <span class=kt>int</span> <span class=n>count</span> <span class=o>=</span> <span class=n>2</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kd>static</span> <span class=kt>int</span> <span class=n>count</span> <span class=o>=</span> <span class=mi>2</span><span class=o>;</span>
 </span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kd>static</span> <span class=n>T</span> <span class=n>t</span> <span class=o>=</span> <span class=k>new</span> <span class=n>T</span><span class=o>();</span>
 </span></span><span class=line><span class=cl>    
 </span></span><span class=line><span class=cl>    <span class=kd>private</span> <span class=nf>T</span><span class=o>(){</span>
@@ -195,15 +195,15 @@
 </span><span class=lnt>3
 </span><span class=lnt>4
 </span><span class=lnt>5
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=k>new</span>	<span class=err>#</span><span class=n>2</span> <span class=o>&lt;</span><span class=n>T</span><span class=o>&gt;</span>		<span class=c1>//申请内存空间, 成员变量是默认值
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=k>new</span>	<span class=err>#</span><span class=mi>2</span> <span class=o>&lt;</span><span class=n>T</span><span class=o>&gt;</span>		<span class=c1>//申请内存空间, 成员变量是默认值
 </span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>dup</span>
-</span></span><span class=line><span class=cl><span class=n>invokespecial</span> <span class=err>#</span><span class=n>3</span> <span class=o>&lt;</span><span class=n>T</span><span class=o>.&lt;</span><span class=n>init</span><span class=o>&gt;&gt;</span>	<span class=c1>//调用初始化方法，成员变量初始化
+</span></span><span class=line><span class=cl><span class=n>invokespecial</span> <span class=err>#</span><span class=mi>3</span> <span class=o>&lt;</span><span class=n>T</span><span class=o>.&lt;</span><span class=n>init</span><span class=o>&gt;&gt;</span>	<span class=c1>//调用初始化方法，成员变量初始化
 </span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>astore</span>			<span class=c1>//t 和 new 出的对象进行关联
 </span></span></span><span class=line><span class=cl><span class=c1></span><span class=k>return</span>
 </span></span></code></pre></td></tr></table></div></div><p>由于指令重排的存在</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=n>invokespecial</span> <span class=err>#</span><span class=n>3</span> <span class=o>&lt;</span><span class=n>T</span><span class=o>.&lt;</span><span class=n>init</span><span class=o>&gt;&gt;</span>	
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=n>invokespecial</span> <span class=err>#</span><span class=mi>3</span> <span class=o>&lt;</span><span class=n>T</span><span class=o>.&lt;</span><span class=n>init</span><span class=o>&gt;&gt;</span>	
 </span></span><span class=line><span class=cl><span class=n>astore</span>
 </span></span><span class=line><span class=cl><span class=c1>//有可能乱序执行,先指向内存再初始化变量
 </span></span></span></code></pre></td></tr></table></div></div></blockquote></li><li><p>DCL与volatile问题（指令重排）</p></li></ol><blockquote><p>1.Double Check Lock</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
@@ -229,7 +229,7 @@
 </span></span><span class=line><span class=cl>     <span class=kd>synchronized</span><span class=o>(</span><span class=n>T</span><span class=o>.</span><span class=na>class</span><span class=o>){</span>
 </span></span><span class=line><span class=cl>         <span class=k>if</span><span class=o>(</span><span class=n>INSTANCE</span> <span class=o>==</span> <span class=kc>null</span><span class=o>){</span>
 </span></span><span class=line><span class=cl>             <span class=k>try</span><span class=o>{</span>
-</span></span><span class=line><span class=cl>                 <span class=n>Thread</span><span class=o>.</span><span class=na>sleep</span><span class=o>(</span><span class=n>1</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>                 <span class=n>Thread</span><span class=o>.</span><span class=na>sleep</span><span class=o>(</span><span class=mi>1</span><span class=o>);</span>
 </span></span><span class=line><span class=cl>             <span class=o>}</span><span class=k>catch</span><span class=o>(</span><span class=n>InterruptedException</span> <span class=n>e</span><span class=o>)</span> <span class=o>{</span>
 </span></span><span class=line><span class=cl>                 <span class=n>e</span><span class=o>.</span><span class=na>printStackTrace</span><span class=o>();</span>
 </span></span><span class=line><span class=cl>             <span class=o>}</span>
