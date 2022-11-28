@@ -12,7 +12,7 @@ figurePositionShow: true # Override global value for showing the figure label.
 categories:
   - Technology
 tags:
-  - Distribution
+  - Java
   - Spark
 comments: true # Disable comment if false.
 ---
@@ -558,11 +558,11 @@ object HDFSSource{
 >
 >   ```
 >   Anatomy of a Topic
->       
+>         
 >   Partition 0 [0][1][2][3]
 >   Partition 1 [0][1]
 >   Partition 3 [0][1][2]
->       
+>         
 >   Old  -->  New
 >   ```
 

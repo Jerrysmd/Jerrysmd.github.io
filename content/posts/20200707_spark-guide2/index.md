@@ -12,7 +12,7 @@ figurePositionShow: true # Override global value for showing the figure label.
 categories:
   - Technology
 tags:
-  - Distribution
+  - Java
   - Spark
 comments: true # Disable comment if false.
 ---
@@ -478,7 +478,7 @@ SparkSQL整合Hive的MetaStore
 >    	lines terminated by '\n'
 >    stored as textfile
 >    location '/dataset/hive'
->                
+>                   
 >    load Data INPATH '/dataset/studenttab10k' OVERWRITE INTO TABLE student;
 >    ```
 

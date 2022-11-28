@@ -13,7 +13,7 @@ figurePositionShow: true # Override global value for showing the figure label.
 categories:
   - Technology
 tags:
-  - Distribution
+  - Java
   - Spark
 comments: true # Disable comment if false.
 ---

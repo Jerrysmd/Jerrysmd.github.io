@@ -16,8 +16,7 @@ toc: true # Controls if a table of contents should be generated for first-level 
 categories:
   - Technology
 tags:
-  - Distribution
-  - Spark
+  - Java
   - ElasticSearch
 ---
 

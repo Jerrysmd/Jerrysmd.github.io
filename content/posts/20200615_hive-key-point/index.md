@@ -13,7 +13,7 @@ usePageBundles: true # Set to true to group assets like images in the same folde
 categories:
   - Technology
 tags:
-  - Distribution
+  - Hdfs
   - Hive
 comments: true # Disable comment if false.
 ---

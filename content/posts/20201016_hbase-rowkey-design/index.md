@@ -17,8 +17,8 @@ categories:
   - Technology
 tags:
   - Hbase
-  - Distribution
   - Hdfs
+  - SQL
 comments: true # Disable comment if false.
 ---
 

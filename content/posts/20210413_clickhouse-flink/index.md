@@ -10,7 +10,7 @@ draft: false
 # license: ""
 # images: []
 
-tags: ["DataWarehouse", "ClickHouse"]
+tags: ["DataWarehouse", "Flink", "ClickHouse"]
 categories: ["Technology"]
 
 # featuredImage: ""

@@ -17,8 +17,8 @@ categories:
   - Technology
 tags:
   - Spark
-  - Distribution
   - Hdfs
+  - Hive
 comments: true # Disable comment if false.
 ---
 

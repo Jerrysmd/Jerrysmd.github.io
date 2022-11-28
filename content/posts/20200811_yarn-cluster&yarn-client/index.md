@@ -17,8 +17,8 @@ usePageBundles: true # Set to true to group assets like images in the same folde
 categories:
   - Technology
 tags:
-  - Distribution
   - Spark
+  - Yarn
 comments: true # Disable comment if false.
 ---
 

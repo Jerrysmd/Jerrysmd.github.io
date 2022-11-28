@@ -1,5 +1,5 @@
 ---
-title: "Spark Performance Optimization"
+title: "Spark Performance Tuning"
 # subtitle: ""
 date: 2022-07-19T14:54:16+08:00
 # lastmod: 2022-07-19T14:54:16+08:00
@@ -10,7 +10,7 @@ draft: false
 # license: ""
 # images: []
 
-tags: ["Distribution", "Spark", "Hive"]
+tags: ["Tuning", "Spark", "SQL", "Hive"]
 categories: ["Technology"]
 
 # featuredImage: ""

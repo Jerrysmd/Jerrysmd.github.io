@@ -16,8 +16,8 @@ figurePositionShow: true # Override global value for showing the figure label.
 categories:
   - Technology
 tags:
-  - Distribution
   - ClickHouse
+  - SQL
 comments: true # Disable comment if false.
 ---
 

@@ -18,7 +18,6 @@ categories:
   - Technology
 tags:
   - DataWarehouse
-  - Distribution
 comments: true # Disable comment if false.
 ---
 
