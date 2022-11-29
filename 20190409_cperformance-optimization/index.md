@@ -1,4 +1,4 @@
-# C Project performance optimization
+# C Project Performance Tuning
 
 Performance optimization methods and ideas for large C projects. Performance optimization strategies for x86 projects that encounter performance bottlenecks when porting to low performance processors. 
 <!--more-->
