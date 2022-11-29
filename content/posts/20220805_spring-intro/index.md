@@ -145,9 +145,38 @@ public class DaoImpl2 implements Dao{
 > IoC Intro Case 步骤
 >
 > ```xml
-> <!--pom.xml-->
-> <!--Mavern文件-->
-> <!--1.导入 spring-context-->
+> <!--Mavern文件：pom.xml-->
+> <!--第一步：导入 spring-context-->
+> 
+> <dependencies>
+>     <dependency>
+>         <groupId>org.springframework</groupId>
+>         <artifactId>spring-context</artifactId>
+>         <version>*.*.*.RELEASE</version>
+>     </dependency>
+> </dependencies>
+> ```
+>
+> ```xml
+> <!--配置文件：applicationContext.xml-->
+> <!--第二步：新建 applicationContext.xml 文件，配置 bean:
+> bean 标签标识配置 bean
+> id 属性标示 bean 的名字
+> class 属性标示给 bean 定义类型-->
+> <bean id="bookDao" class="com.jerry.dao.impl.BookDaoImpl"/>
+> <bean id="bookService" class="com.jerry.service.impl.BookServiceImpl"/>
+> ```
+>
+> ```java
+> //App2.java
+> //第三步：拿容器然后拿到 bean
+> package com.jerry;
+> public class App2{
+>     public static void main(String[] args){
+>         //获取 IoC 容器，根据配置文件创建 IoC
+>         ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+>     }
+> }
 > ```
 >
 > 
