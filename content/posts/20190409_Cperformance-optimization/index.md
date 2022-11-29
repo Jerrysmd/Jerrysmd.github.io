@@ -1,5 +1,5 @@
 ---
-title: "C Project performance optimization" # Title of the blog post.
+title: "C Project Performance Tuning" # Title of the blog post.
 date: 2019-04-09T20:04:00+08:00 # Date of post creation.
 description: "Article description." # Description used for search engine.
 featured: true # Sets if post is a featured post, making appear on the home page side bar.
@@ -15,6 +15,7 @@ figurePositionShow: true # Override global value for showing the figure label.
 categories:
   - Technology
 tags:
+  - Tuning
   - C
 # comment: false # Disable comment if false.
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Flink Performance Optimization"
+title: "Flink Performance Tuning"
 # subtitle: ""
 date: 2021-06-23T10:32:19+08:00
 # lastmod: 2022-07-22T10:32:19+08:00
@@ -10,7 +10,7 @@ draft: false
 # license: ""
 # images: []
 
-tags: ["DataWarehouse", "Flink"]
+tags: ["DataWarehouse", "Tuning","Flink"]
 categories: ["Technology"]
 
 # featuredImage: ""

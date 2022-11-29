@@ -1,5 +1,5 @@
 ---
-title: "Data Warehouse: Offline, Optimization" # Title of the blog post.
+title: "Data Warehouse: Offline Tuning" # Title of the blog post.
 date: 2021-01-08T09:43:01+08:00 # Date of post creation.
 description: "" # Description used for search engine.
 featured: true # Sets if post is a featured post, making appear on the home page side bar.
@@ -18,6 +18,7 @@ categories:
   - Technology
 tags:
   - DataWarehouse
+  - Tuning
 comments: true # Disable comment if false.
 ---
 
