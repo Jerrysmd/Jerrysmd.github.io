@@ -142,24 +142,38 @@ public class DaoImpl2 implements Dao{
 3. 被管理的对象交给 IoC 容器，如何获取到 IoC 容器？（接口）
 4. IoC 容器得到后，如何从容器中获取 bean？（接口方法）
 
-> IoC Intro Case 步骤
+> **IoC Intro Case 步骤（XML）**
+>
+> 第一步：导入 spring-context
 >
 > ```xml
 > <!--Mavern文件：pom.xml-->
-> <!--第一步：导入 spring-context-->
-> 
-> <dependencies>
->     <dependency>
->         <groupId>org.springframework</groupId>
->         <artifactId>spring-context</artifactId>
->         <version>*.*.*.RELEASE</version>
->     </dependency>
-> </dependencies>
+> <dependency>
+>     <groupId>org.springframework</groupId>
+>     <artifactId>spring-context</artifactId>
+>     <version>*.*.*.RELEASE</version>
+> </dependency>
 > ```
+>
+> 第二步：定义 Spring 管理的类和接口
+>
+> ```java
+> public interface BookService{
+>     public void save();
+> }
+> public class BookServiceImpl implements BookService{
+>     private BookDao bookDao = new BookDaoImpl();
+>     public void save(){
+>         bookDao.save();
+>     }
+> }
+> ```
+>
+> 第三步：创建 Spring 配置文件，配置对应类作为 Spring 管理的 bean
 >
 > ```xml
 > <!--配置文件：applicationContext.xml-->
-> <!--第二步：新建 applicationContext.xml 文件，配置 bean:
+> <!--第三步：新建 applicationContext.xml 文件，配置 bean:
 > bean 标签标识配置 bean
 > id 属性标示 bean 的名字
 > class 属性标示给 bean 定义类型-->
@@ -167,16 +181,57 @@ public class DaoImpl2 implements Dao{
 > <bean id="bookService" class="com.jerry.service.impl.BookServiceImpl"/>
 > ```
 >
+> 第四步：初始化 IoC 容器（Spring 容器），通过容器获取 bean
+>
 > ```java
 > //App2.java
-> //第三步：拿容器然后拿到 bean
 > package com.jerry;
 > public class App2{
 >     public static void main(String[] args){
->         //获取 IoC 容器，根据配置文件创建 IoC
+>         // 获取 IoC 容器，根据配置文件创建 IoC
 >         ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+>         // 获取 bean，与配置文件的 id 对应      
+>         BookService bookService = (BookService) ctx.getBean("bookService");
+>         bookService.save();// Service层是由一个或多个Dao层操作组成的。
 >     }
 > }
+> ```
+
+#### DI Intro Case
+
+1. 基于 IoC 管理 bean（基于 IoC Intro Case）
+2. Service 中使用 new 形式创建 Dao 对象？（否，使用 new 耦合性仍然很高）
+3. Service 中需要的 Dao 对象如何进入到 Service 中？（提供方法）
+4. Service 与 Dao 间的关系如何描述，Spring 如何知道该关系？（配置）
+
+> **DI Intro Case 步骤（XML）**
+>
+> 第一步：删除业务层中使用 new 的方式创建的 dao 对象，提供依赖对象对应的 setter 方法
+>
+> ```java
+> public class BookServiceImpl implements BookService{
+>     // 5.删除业务层中使用 new 的方式创建的 dao 对象
+>     private BookDao bookDao;
+>     public void save(){
+>         bookDao.save();
+>     }
+>     // 6.提供对应的 set 方法
+>     public void setBookDao(bookDao bookDao){
+>         this.bookDao = bookDao;
+>     }
+> }
+> ```
+>
+> 第二步：配置 service 与 dao 之间的关系
+>
+> ```xml
+> <bean id="bookDao" class="com.jerry.dao.impl.BookDaoImpl"/>
+> <bean id="bookService" class="com.jerry.service.impl.BookServiceImpl">
+>     <!--7.配置 server 与 dao 的关系-->
+>     <!--name 属性表示配置哪一个具体的属性-->
+>     <!--ref 属性表示参照哪一个 bean，与 bean id 对应-->
+>     <property name="bookDao" ref="bookDao"></property>
+> </bean>
 > ```
 >
 > 
