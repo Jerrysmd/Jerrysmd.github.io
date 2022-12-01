@@ -1,5 +1,5 @@
 ---
-title: "Spring Framework Intro"
+title: "Spring Framework Introduction"
 # subtitle: ""
 date: 2022-08-05T11:38:27+08:00
 # lastmod: 2022-11-28T11:38:27+08:00
@@ -233,5 +233,192 @@ public class DaoImpl2 implements Dao{
 >     <property name="bookDao" ref="bookDao"></property>
 > </bean>
 > ```
->
-> 
+
+### Bean
+
+#### Bean 配置
+
+bean 基础配置
+
+| 类别     | 描述                                                         |
+| -------- | ------------------------------------------------------------ |
+| 属性列表 | id：使用容器可以通过 id 获取对应的 bean<br />class：bean 的类型，即配置 bean 的全路径类名 |
+| 范例     | \<bean id="bookDao" class="com.jerry.dao.impl.BookDaoImpl"/><br/>\<bean id="bookService" class="com.jerry.service.impl.BookServiceImpl"/> |
+
+bean 作用范围配置
+
+| 类别 | 描述                                                         |
+| ---- | ------------------------------------------------------------ |
+| 属性 | scope                                                        |
+| 功能 | 定义 bean 的作用范围，可选范围如下<br /> 1. singleton：单例（默认）<br /> 2. prototype：非单例 |
+| 范例 | \<bean id="bookDao" class="com.jerry.dao.impl.BookDaoImpl"/> |
+
++ 为什么 bean 默认为单例？
+
+  > 这些对象复用没有问题，所以默认为单例，节省内存。
+
++ 适合交给容器进行管理的 bean
+
+  | 适合交给容器管理的 bean | 不适合交给容器管理的 bean              |
+  | ----------------------- | -------------------------------------- |
+  | 表现层对象              | 封装实体的域对象（记录成员变量的对象） |
+  | 业务层对象              |                                        |
+  | 数据层对象              |                                        |
+  | 工具类对象              |                                        |
+
+  
+
+#### Bean 实例化
+
+Bean 的四种实例化
+
+**方法一：构造方法实例化（常用）**
+
++ 提供可访问的构造方法
+
+  ```java
+  public class BookDaoImpl implements BookDao{
+      public BookDaoImpl(){
+          print("book constructor is running");
+      }
+      public void save(){
+          print("book dao save");
+      }
+  }
+  ```
+
++ 配置
+
+  ```xml
+  <bean id="bookDao" class="com.jerry.dao.impl.BookDaoImpl"></bean>
+  ```
+
++ 无参构造方法如果不存在，将抛出异常 **BeanCreateionException**
+
+
+**方法二：静态工厂实例化**
+
++ 静态工厂
+
+  ```java
+  public class OrderDaoFactory{
+      public static OrderDao getOrderDao(){
+          return new OrderDaoImpl();
+      }
+  }
+  ```
+
++ 配置
+
+  ```xml
+  <bean id="orderDao" class="com.jerry.factory.OrderDaoFactory" factory-method="getOrderDao"></bean>
+  ```
+
++ 使用
+
+  ```java
+  main(){
+      UserDaoFactory userDaoFactory = new UserDaoFactory();
+      UserDao userDao = userDaoFactory.getUserDao();
+      userDao.save();
+  }
+  ```
+
+**方法三：使用实例工厂实例化**
+
++ 实例工厂
+
+  ```java
+  public class UserDaoFactory{
+      public UserDao getUserDao(){
+          return new UserDaoImpl();
+      }
+  }
+  ```
+
++ 配置
+
+  ```xml
+  <bean id="userFactory" class="com.jerry.factory.UserDaoFactory"></bean>
+  <bean id="userDao" factory-method="getUserDao" factory-bean="userFactory"></bean>
+  ```
+
+**方法四：使用 FactoryBean 实例化 bean（重要）**
+
++ FactoryBean 
+
+  ```java
+  public class UserDaoFactoryBean implements FactoryBean<UserDao>{
+      //代替原始实例工厂中创建对象的方法
+      public UserDao getObject() throws Exception{
+          return new UserDaoImpl();
+      }
+      public Class<?> getObjectType(){
+          return UserDao.class;
+      }
+      public boolean isSingleton(){
+          return true;
+      }
+  }
+  ```
+
++ 配置
+
+  ```xml
+  <bean id="userDao" class="com.jerry.factory.UserDaoFactoryBean"></bean>
+  ```
+
+#### Bean 的生命周期
+
+##### bean 生命周期控制方法
+
+方法一：配置文件管理控制方法
+
+```xml
+<bean id="bookDao" class="com.jerry.dao.impl.BookDaoImpl" init-method="init" destroy-method="destory"></bean>
+```
+
+方法二：使用接口控制（了解）
+
+```java
+//实现 InitializingBean，DisposableBean 接口
+public class BookServiceImpl implements BookService, InitializingBean, DisposableBean{
+    public void save(){}
+    public void afterPropertiesSet() throws Exception{}
+    public void destroy() throws Exception{}
+}
+```
+
+##### 生命周期
+
++ 初始化容器
+  1. 创建对象（内存分配）
+  2. 执行构造方法
+  3. 执行属性注入（set 操作）
+  4. **执行 bean 初始化方法**
++ 使用 bean
+  + 执行业务操作
++ 销毁容器
+  + **执行 bean 销毁方法**
+
+##### 关闭容器
+
++ ConfigurableApplicationContext
+  + close()
+  + registerShutdownHook()
+
+#### 依赖注入方式
+
++ 向一个类中传递数据的方式有几种？
+  + 普通方法（set 方法）
+  + 构造方法
++ 依赖注入描述了在容器中建立 bean 与 bean 之间依赖关系的过程，如果 bean 运行需要的是数字或字符串呢？
+  + 引用类型
+  + 简单类型（基本数据类型与 String）
++ 依赖注入方式
+  + setter 注入
+    + 简单类型
+    + 引用类型
+  + 构造器注入
+    + 简单类型
+    + 引用类型
