@@ -15,7 +15,7 @@
 
   
 
-![Texas](/posts/picture/20191011083753_IMG_2610-01.jfif "Corpus Christi")
+![the United States](/posts/picture/20191011083753_IMG_2610-01.jfif "Corpus Christi, Texas")
 
 ## Licenses
 
