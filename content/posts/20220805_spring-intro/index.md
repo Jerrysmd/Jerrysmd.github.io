@@ -418,7 +418,98 @@ public class BookServiceImpl implements BookService, InitializingBean, Disposabl
 + 依赖注入方式
   + setter 注入
     + 简单类型
-    + 引用类型
+    + **引用类型**
   + 构造器注入
     + 简单类型
     + 引用类型
+
+**Setter 注入 - 引用类型**
+
++ 在 bean 中定义引用类型属性并提供可访问的 set 方法
+
+  ```java
+  public class BookServiceImpl implements BookService {
+      private BookDao bookDao;
+      public void setBookDao(BookDao bookDao){
+          this.bookDao = bookDao;
+      }
+  }
+  ```
+
++ 配置中使用 property 标签 ref 属性注入引用类型对象
+
+  ```xml
+  <bean id="bookDao" class="com.jerry.dao.impl.BookDaoImpl"/>
+  <bean id="bookService" class="com.jerry.service.impl.BookServiceImpl">
+      <!--配置 server 与 dao 的关系-->
+      <!--name 属性表示配置哪一个具体的属性-->
+      <!--ref 属性表示参照哪一个 bean，与 bean id 对应-->
+      <property name="bookDao" ref="bookDao"></property>
+  </bean>
+  ```
+
+**Setter 注入 - 简单类型**
+
++ 配置文件注入值
+
+  ```xml
+  <bean id="userkDao" class="com.jerry.dao.impl.UserDaoImpl"/>
+  <bean id="bookDao" class="com.jerry.dao.impl.BookDaoImpl">
+      <property name="databaseName" value="mysql"></property>
+      <property name="connectionNum" value="10"></property>
+  </bean>
+  
+  <bean id="bookService" class="com.jerry.service.impl.BookServiceImpl">
+      <property name="bookDao" ref="bookDao"></property>
+      <property name="userDao" ref="userDao"></property>
+  </bean>
+  ```
+
++ 在 bean 中定义引用类型属性并提供可访问的 set 方法
+
+  ```java
+  public class BookDaoImpl implements BookDao{
+      private int connectionNum;
+      private String databaseName;
+      
+      public void setConnectionNum(int connectionNum){
+          this.connectionNum = connectionNum;
+      }
+      public void setDatabaseName(String databaseName){
+          this.databaseName = databaseName;
+      }
+      public void save(){
+          System.out.println("book dao save" + databaseName + connectionNum);
+      }
+  }
+  ```
+
+
+**构造器注入 - 引用类型（了解）**
+
++ 在 bean 中定义引用类型属性并提供可访问的构造方法
++ 配置中使用 constructor-arg 标签 ref 属性注入引用类型对象
+
+**依赖注入方式选择**
+
+1. 使用 setter 注入进行，灵活性强
+2. 如果受控对象没有提供 setter 方法就必须使用构造器注入
+3. **自己开发的模块推荐使用 setter 注入**
+
+#### 依赖自动装配
+
++ IoC 容器根据 bean 所依赖的资源在容器中自动查找并注入到 bean 的过程称为自动装配
++ 自动装配方式
+  + 按类型（常用）
+  + 按名称
+  + 按构造方法
+  + 不启用自动装配
+
++ 配置中使用 bean 标签 autowire 属性设置自动装备的类型
+
+  ```xml
+  <bean id="bookDao" class="com.jerry.dao.impl.BookDaoImpl"></bean>
+  <bean id="bookService" class="com.jerry.service.impl.BookServiceImpl" autowire="byType"></bean>
+  ```
+
+  

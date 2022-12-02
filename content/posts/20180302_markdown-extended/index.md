@@ -50,10 +50,9 @@ This is a **right-aligned** paragraph.
 
 ## 2 link
 
+`link` shortcode is an alternative to [Markdown link syntax](). `link` shortcode can provide some other features and can be used in code blocks.
 
-`link` shortcode is an alternative to [Markdown link syntax](https://hugoloveit.com/basic-markdown-syntax#links). `link` shortcode can provide some other features and can be used in code blocks.
-
-The complete usage of [local resource references](https://hugoloveit.com/theme-documentation-content#contents-organization) is supported.
+The complete usage of [local resource references]() is supported.
 
 The `link` shortcode has the following named parameters:
 
@@ -115,10 +114,9 @@ The rendered output looks like this (hover over the link, there should be a tool
 
 ## 3 image {#image}
 
+`image` shortcode is an alternative to [`figure` shortcode](). `image` shortcode can take full advantage of the dependent libraries of [lazysizes](https://github.com/aFarkas/lazysizes) and [lightGallery](https://github.com/sachinchoolur/lightgallery).
 
-`image` shortcode is an alternative to [`figure` shortcode](https://hugoloveit.com/theme-documentation-built-in-shortcodes#figure). `image` shortcode can take full advantage of the dependent libraries of [lazysizes](https://github.com/aFarkas/lazysizes) and [lightGallery](https://github.com/sachinchoolur/lightgallery).
-
-The complete usage of [local resource references](https://hugoloveit.com/theme-documentation-content#contents-organization) is supported.
+The complete usage of [local resource references]() is supported.
 
 The `image` shortcode has the following named parameters:
 
