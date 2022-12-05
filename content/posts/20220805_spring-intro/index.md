@@ -512,4 +512,38 @@ public class BookServiceImpl implements BookService, InitializingBean, Disposabl
   <bean id="bookService" class="com.jerry.service.impl.BookServiceImpl" autowire="byType"></bean>
   ```
 
-  
+**依赖自动装配特征**
+
++ 自动装配用于引用类型依赖注入，不能对简单类型进行操作
++ 使用按类型装配时（byType）必须保障容器中相同类型的 bean 唯一（推荐使用）
++ 使用按名称装配时（byName）必须保障容器中具有指定名称的 bean，因为变量名与配置耦合（不推荐使用）
++ 自动装配优先级低于 setter 注入与构造器注入，同时出现时自动装配配置失效
+
+#### 集合注入
+
+```xml
+<bean id="bookDao" class="com.jerry.dao.impl.BookDaoImpl">
+    <!--array,list,set-->
+    <property name="array"> <!--list, set 同理-->
+        <array>
+            <value>100</value>
+            <value>200</value>
+        </array>
+    </property>
+    <!--map-->
+    <property name="map">
+        <map>
+            <entry key="country" value="China"></entry>
+            <entry key="province" value="Shanghai"></entry>
+        </map>
+    </property>
+    <!--prope-->
+    <property name="properties">
+        <props>
+            <prop key="country">China</prop>
+            <prop key="province">Shanghai</prop>
+        </props>
+    </property>
+</bean>
+```
+
