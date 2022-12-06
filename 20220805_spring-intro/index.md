@@ -474,7 +474,7 @@ public class BookServiceImpl implements BookService, InitializingBean, Disposabl
             <entry key="province" value="Shanghai"></entry>
         </map>
     </property>
-    <!--prope-->
+    <!--properties-->
     <property name="properties">
         <props>
             <prop key="country">China</prop>
@@ -483,5 +483,22 @@ public class BookServiceImpl implements BookService, InitializingBean, Disposabl
     </property>
 </bean>
 ```
+
+#### 加载 properties 文件
+
+1. 在 applicationContext.xml 中新建 context 命名空间
+2. 使用 context 空间加载 properties 文件
+3. 使用属性占位符${}读取 properties 文件中的属性
+
+```xml
+<beans xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd"></beans>
+<context:property-placeholder location="classpath*:*.properties" system-properties-mode="NEVER"/>
+<property name="username" value="${jdbc.username}"
+```
+
+#### 容器
 
 
