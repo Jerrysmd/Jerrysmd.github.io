@@ -83,7 +83,9 @@ Spring makes programming Java quicker, easier, and safer. Spring’s focus on sp
 | Data Access / Integration | 数据访问 / 集成    |
 | **Transactions**          | **事务**           |
 
-### IoC & DI
+### 核心容器
+
+#### IoC & DI
 
 > IoC (Inversion of Control) 控制反转
 >
@@ -135,7 +137,7 @@ public class DaoImpl2 implements Dao{
 + 最终效果
   + 使用对象时不仅可以直接
 
-#### IoC Intro Case
+##### IoC Intro Case
 
 1. IoC 管理什么？（Service、Dao、Service和Dao 关系）
 2. 如何将被管理的对象告知 IoC 容器？（配置）
@@ -197,7 +199,7 @@ public class DaoImpl2 implements Dao{
 > }
 > ```
 
-#### DI Intro Case
+##### DI Intro Case
 
 1. 基于 IoC 管理 bean（基于 IoC Intro Case）
 2. Service 中使用 new 形式创建 Dao 对象？（否，使用 new 耦合性仍然很高）
@@ -234,9 +236,9 @@ public class DaoImpl2 implements Dao{
 > </bean>
 > ```
 
-### Bean
+#### Bean
 
-#### Bean 配置
+##### Bean 配置
 
 bean 基础配置
 
@@ -268,7 +270,7 @@ bean 作用范围配置
 
   
 
-#### Bean 实例化
+##### Bean 实例化
 
 Bean 的四种实例化
 
@@ -368,9 +370,9 @@ Bean 的四种实例化
   <bean id="userDao" class="com.jerry.factory.UserDaoFactoryBean"></bean>
   ```
 
-#### Bean 的生命周期
+##### Bean 的生命周期
 
-##### bean 生命周期控制方法
+###### bean 生命周期控制方法
 
 方法一：配置文件管理控制方法
 
@@ -389,7 +391,7 @@ public class BookServiceImpl implements BookService, InitializingBean, Disposabl
 }
 ```
 
-##### 生命周期
+###### 生命周期
 
 + 初始化容器
   1. 创建对象（内存分配）
@@ -401,13 +403,13 @@ public class BookServiceImpl implements BookService, InitializingBean, Disposabl
 + 销毁容器
   + **执行 bean 销毁方法**
 
-##### 关闭容器
+###### 关闭容器
 
 + ConfigurableApplicationContext
   + close()
   + registerShutdownHook()
 
-#### 依赖注入方式
+##### 依赖注入方式
 
 + 向一个类中传递数据的方式有几种？
   + 普通方法（set 方法）
@@ -496,7 +498,7 @@ public class BookServiceImpl implements BookService, InitializingBean, Disposabl
 2. 如果受控对象没有提供 setter 方法就必须使用构造器注入
 3. **自己开发的模块推荐使用 setter 注入**
 
-#### 依赖自动装配
+##### 依赖自动装配
 
 + IoC 容器根据 bean 所依赖的资源在容器中自动查找并注入到 bean 的过程称为自动装配
 + 自动装配方式
@@ -519,7 +521,7 @@ public class BookServiceImpl implements BookService, InitializingBean, Disposabl
 + 使用按名称装配时（byName）必须保障容器中具有指定名称的 bean，因为变量名与配置耦合（不推荐使用）
 + 自动装配优先级低于 setter 注入与构造器注入，同时出现时自动装配配置失效
 
-#### 集合注入
+##### 集合注入
 
 ```xml
 <bean id="bookDao" class="com.jerry.dao.impl.BookDaoImpl">
@@ -547,7 +549,7 @@ public class BookServiceImpl implements BookService, InitializingBean, Disposabl
 </bean>
 ```
 
-#### 加载 properties 文件
+##### 加载 properties 文件
 
 1. 在 applicationContext.xml 中新建 context 命名空间
 2. 使用 context 空间加载 properties 文件
@@ -562,5 +564,50 @@ public class BookServiceImpl implements BookService, InitializingBean, Disposabl
 <property name="username" value="${jdbc.username}"
 ```
 
-#### 容器
+#### 核心容器总结
+
+容器相关：
+
++ BeanFactory 是 IoC 容器的顶层接口，初始化 BeanFactory 对象时，加载的 bean 延迟加载
++ ApplicationContext 接口是 Spring 容器的核心接口，初始化时 bean 立即加载
++ ApplicationContext 接口提供基础的 bean 操作相关方法，通过其他接口扩展其功能
++ ApplicationContext 接口常用初始化类
+  + ClassPathXmlApplicationContext
+  + FileSystemXmlApplicationContext
+
+Bean 相关：
+
+| <bean          | />                                      |
+| -------------- | --------------------------------------- |
+| id             | bean 的 id                              |
+| name           | bean 别名                               |
+| class          | bean 类型，静态工厂类，FactoryBean 类   |
+| scope          | 控制 bean 的实例数量                    |
+| init-method    | 生命周期初始化方法                      |
+| destroy-method | 生命周期销毁方法                        |
+| autowire       | 自动装配类型                            |
+| factory-method | bean 工厂方法，应用于静态工厂或实例工厂 |
+| factory-bean   | 实例工厂 bean                           |
+| lazy-init      | 控制 bean 延迟加载                      |
+
+### 注解
+
+```java
+@Component("bookDao")
+public class BookDaoImpl implements BookDao{
+    public void save(){
+        print("boook dao save");
+    }
+}
+```
+
+```xml
+<context:component-scan base-package="com.jerry"/> <!--扫描 com.jerry 下的所有的包-->
+```
+
+@Component 注解代表了原来使用 applicationContext.xml 中的
+
+```xml
+<bean id="bookDao" class="com.jerry.dao.impl.BookDaoImpl"/>
+```
 
