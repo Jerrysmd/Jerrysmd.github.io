@@ -611,3 +611,10 @@ public class BookDaoImpl implements BookDao{
 <bean id="bookDao" class="com.jerry.dao.impl.BookDaoImpl"/>
 ```
 
+#### 衍生注解
+
+Spring 提供 @Component 注解的三个衍生注解，和 @Component 功能一样，只是方便理解。
+
++ @Controller：用于表现层 bean 定义
++ @Service：用于业务层 bean 定义
++ @Repository：用于数据层 bean 定义
