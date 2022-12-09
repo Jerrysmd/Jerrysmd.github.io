@@ -11,7 +11,7 @@
 
 + 📖 B l o g：[Jerrysmd.github.io](https://jerrysmd.github.io)
 
-+ {{< typeit >}}🏀 Hobby：⚽🏓🎹📱📸 ...{{< /typeit >}}
++ {{< typeit >}}🏀 Hobby：⚽📸🏓🎹📱📖🚲 ...{{< /typeit >}}
 
   
 
