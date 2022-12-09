@@ -611,10 +611,53 @@ public class BookDaoImpl implements BookDao{
 <bean id="bookDao" class="com.jerry.dao.impl.BookDaoImpl"/>
 ```
 
-#### 衍生注解
+#### 衍生注解定义 bean
 
 Spring 提供 @Component 注解的三个衍生注解，和 @Component 功能一样，只是方便理解。
 
 + @Controller：用于表现层 bean 定义
 + @Service：用于业务层 bean 定义
 + @Repository：用于数据层 bean 定义
+
+#### 纯注解开发
+
++ Spring 3.0 开始了纯注解开发模式，使用 Java 类替代配置文件，开启了 Spring 快速开发
+
++ Java 类代替 Spring 核心配置文件
+
+  ```java
+  @Configuration
+  @ComponentScan("com.jerry")
+  public class SpringConfig{...}
+  ```
+
+  两个注解完全代替了原本的 applicationContext.xml 文件，不需再使用配置文件
+
++ 读取 Spring 核心配置文件初始化容器对象切换为读取 Java 配置类初始化容器对象
+
+  ```java
+  ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+  ApplicationContext ctx = new AnnotationConfigApplicationContext(SpringConfig.class);
+  ```
+
+##### Bean 的作用范围
+
+使用 @Scope 定义 bean 作用范围
+
+使用 @PostConstruct、@PreDestroy 定义 bean 生命周期
+
+```java
+@Repository
+@Scope("singletion")
+public class BookDaoImpl implements BookDao{
+    public BookDaoImpl(){print("...")}
+    @PostConstruct
+    public void init(){print("...")}
+    @PreDestroy
+    public void destroy(){print("...")}
+}
+```
+
+##### 依赖注入
+
+ 
