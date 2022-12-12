@@ -597,5 +597,79 @@ public class BookDaoImpl implements BookDao{
 
 ##### 依赖注入
 
- 
+使用 @Autowired 注解开启自动装配模式（按类型）
+
+```java
+@Service
+public class BookServiceImpl implements BookService{
+    ////////////////////////////////
+    @Autowired
+    private BookDao bookDao;
+    //@Autowired 代替了 setter 方法
+    //public void setBookDao(BookDao bookDao){
+    //    this.bookDao = bookDao;
+    //}
+    ////////////////////////////////
+    public void save(){
+        bookDao.save();
+    }
+}
+```
+
+注意：
+
++ 自动装配基于反射设计创建对象并暴力反射对应属性为私有属性初始化数据，因此无需提供 setter 方法
++ 自动装配建议使用无参构造方法创建对象（默认），如果不提供对应构造方法，请提供唯一的构造方法
+
+使用 @Qualifier 注解开启指定名称装配 bean
+
+```java
+@Autowired
+@Qualifier("bookDao")
+private BookDao bookDao;
+```
+
+使用 @Value 实现简单类型注入
+
+```java
+@Repository("bookDao")
+public class BookDaoImpl implements BookDao{
+    @Value("100")
+    private String connectionNum;
+}
+```
+
+```java
+@Repository("bookDao")
+public class BookDaoImpl implements BookDao{
+    @Value("${connectionNum}")
+    private String connectionNum;
+}
+```
+
+###### 第三方 bean 管理
+
+将独立的配置类加入核心配置
+
++ 导入式
+
+```java
+public class JdbcConfig{
+    @Bean
+    public DataSource dataSource(){
+        DruidDataSource ds = new DruidDataSource();
+        //相关配置
+        return ds;
+    }
+}
+```
+
++ 使用 @Import 注解手动加入配置类到核心配置，此注解只能添加一次，多个数据使用数组格式
+
+```java
+@Configuration
+@Import(JdbcConfig.class)
+public class Sp
+```
+
 
