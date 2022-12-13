@@ -710,7 +710,7 @@ public class BookDaoImpl implements BookDao{
 }
 ```
 
-###### 第三方 bean 管理
+##### 第三方 bean 管理
 
 将独立的配置类加入核心配置
 
@@ -727,11 +727,106 @@ public class JdbcConfig{
 }
 ```
 
-+ 使用 @Import 注解手动加入配置类到核心配置，此注解只能添加一次，多个数据使用数组格式
+> 使用 @Import 注解手动加入配置类到核心配置，此注解只能添加一次，多个数据使用数组格式
 
 ```java
 @Configuration
 @Import(JdbcConfig.class)
-public class Sp
+public class SpringConfig{}
 ```
+
+##### 第三方 bean 依赖注入
+
++ 简单类型依赖注入
+
+```java
+public class JdbcConfig{
+    @Value("com.mysql.jdbc.Driver")
+    private String driver;
+    @Value("jdbc:mysql://localhost:3306/spring_db")
+    private String url;
+    //...
+    @Bean
+    public DataSource dataSource(){
+        DruidDataSource ds = new DruidDataSource();
+        ds.setDriverClassName(driver);
+        ds.setUrl(url);
+        return ds;
+    } 
+}
+```
+
++ 引用类型依赖注入
+
+```java
+@Bean
+ public DataSource dataSource(BookService bookService){
+     print(bookService);
+     DruidDataSource ds = new DruidDataSource();
+     //属性设置
+     return ds;
+ }
+```
+
+> 引用类型注入只需要为 bean 定义方法设置形参即可，容器会根据类型自动装备对象。
+
+#### 注解总结
+
++ XML 配置对比注解配置
+
+  | 功能            | XML 配置                                                     | 注解                                                         |
+  | --------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+  | 定义 bean       | bean 标签<br />* id 属性<br />* class 属性                   | @Component<br />* @Controller<br />* **@Service** <br />* @Repository<br />**@ComponentScan** |
+  | 设置依赖注入    | setter 注入（set 方法）<br />* 引用 / 简单<br />构造器注入（构造方法）<br />* 引用 / 简单<br />自动装配 | **@Autowired** <br />* @Qualifier<br />@Value                |
+  | 配置第三方 bean | bean 标签<br />静态工厂、实例工厂、FactoryBean               | **@Bean**                                                    |
+  | 作用范围        | scope 属性                                                   | @Scope                                                       |
+  | 生命周期        | 标准接口<br />* init-method<br />* destroy-method            | @PostConstructor<br />@PreDestroy                            |
+
+  
+
+## MyBatis
+
+> MyBatis is a popular, open-source persistence framework for Java that simplifies the process of working with databases.
+
+ ### Spring 整合 MyBatis
+
++ MyBatis 程序核心对象分析
+
+```java
+//1. 创建 SqlSessionFactoryBuilder 对象
+SQLSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
+//2. 加载 SqlMapConfig.xml 配置文件
+InputStream inputStream = Resources.getResourceAsStream("SqlMapConfig.xml");
+//3. 创建 SqlSessionFactory 对象
+SqlSessionFactory sqlSessionFactory = sqlSeeesionFactoryBuilder.build(inputStream);
+//4. 获取 SqlSession
+SqlSession sqlSession = sqlSessionFactory.openSession();
+//5. 执行 SqlSession 对象执行查询，获取结果 User
+AccountDao accountDao = sqlSession.getMapper(AccountDao.class);
+Account ac = accountDao.findById(2);
+println(ac);
+//6. 释放资源
+sqlSession.cloase();
+```
+
+1. 使用 bean 替换原始的 mybatis-config.xml 中的环境配置
+
+```java
+@Bean
+public SqlSessionFactoryBean sqlSessionFactory(DataSource dataSource){
+    SqlSesssionFactoryBean ssfb = new SqlSessionFactoryBean();
+    ssfb.setTypeAliasesPackage("com.jerry.domain");
+    ssfb.setDataSource(dataSource);
+    return ssfb;
+}
+```
+
+2. 使用 bean 替换原始的 mybatis-config.xml 中的 mapper 配置
+
+```java
+@Bean
+public
+```
+
+
 
