@@ -784,11 +784,9 @@ public class JdbcConfig{
 
   
 
-## MyBatis
+### Spring 整合 MyBatis
 
 > MyBatis is a popular, open-source persistence framework for Java that simplifies the process of working with databases.
-
- ### Spring 整合 MyBatis
 
 + MyBatis 程序核心对象分析
 
@@ -825,8 +823,125 @@ public SqlSessionFactoryBean sqlSessionFactory(DataSource dataSource){
 
 ```java
 @Bean
-public
+public MapperScannerConfigurer mapperScannerConfigurer(){
+    MapperScannerConfigurer msc = new MapperScannerConfigurer();
+    msc.setBasePackage("com.jerry.dao");
+    return msc;
+}
 ```
 
+### Spring 整合 JUnit
 
++ 使用 Spring 整合 JUnit 专用的类加载器
+
+```java
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = SpringConfig.class)
+public class BookServiceTest{
+    @Autowired
+    private BookService bookService;
+    
+    @Test
+    public void testSave(){
+        bookService.save();
+    }
+}
+```
+
+### AOP
+
++ AOP(Aspect Oriented Programming)面向切面编程，一种编程范式，指导开发者如何组织程序结构
++ 作用：在不惊动原始设计的基础上为其进行功能增强
++ Spring 理念：无侵入式
+
+AOP 核心概念
+
++ **连接点**（JoinPoint）：程序执行过程中的任意位置，粒度为执行方法、抛出异常、设置变量等
+  + 在 SpringAOP 中，理解为方法的执行
++ **切入点**（Pointcut）：匹配连接点的式子
+  + 在 SpringAOP 中，一个切入点可以只描述一个具体方法，也可以匹配多个方法
+    + 一个具体方法：com.jerry.dao 包下的 BookDao 接口中的无形参无返回值的 save 方法
+    + 匹配多个方法：所有的 save 方法，所有的 get 开头的方法，所有以 Dao 结尾的接口中的任意方法，所有带一个参数的方法
++ **通知**（Advice）：在切入点处执行的操作，也就是共性功能
+  + 在 SpringAOP 中，功能最终以方法的形式呈现
++ **通知类**：定义通知的类
++ **切面**（Aspect）：描述通知与切入点的对应关系
+
+#### 实例
+
++ 案例设定：测定接口执行效率
++ 简化设定：在接口执行前输出当前系统时间
++ 开发模式：XML 或 注解
++ 思路分析：
+  1. 导入坐标（pom.xml）
+  2. 制作连接点方法（原始操作，Dao 接口与实现类）
+  3. 制作共性功能（通知类与通知）
+  4. 定义切入点
+  5. 绑定切入点与通知关系（切面）
+
+```java
+public class MyAdvice{
+    @Pointcut("execution(void com.jerry.dao.BookDao.update())")
+    private void pt(){}
+    
+    @Before("pt()")
+    public void before(){
+        println("before the func");
+    }
+}
+```
+
+#### AOP 工作流程
+
+1. Spring 容器启动
+2. 读取所有切面配置中的切入点
+3. 初始化 bean，判定 bean 对应的类中的方法是否匹配到任意切入点
+   + 匹配失败，创建对象
+   + 匹配成功，创建原始对象（**目标对象**）的**代理**对象
+4. 获取 bean 执行方法
+   + 获取 bean，调用方法并执行，完成操作
+   + 获取的 bean 是代理对象时，根据代理对象的运行模式运行原始方法与增强的内容，完成操作
+
+> SpringAOP本质：代理模式
+
+#### AOP 切入点表达式
+
+#### AOP 通知类型
+
+AOP 通知共分为 5 种类型
+
++ 前置通知
++ 后置通知
++ 环绕通知（重点）
++ 返回后通知（了解）
++ 抛出异常后通知（了解）
+
+#### Demo
+
+统计一个方法万次执行时间
+
+```java
+@Aspect
+public class ProjectAdvice{
+    @Pointcut("execution(* com.jerry.service.*Service.*(..))")
+    private void servicePt(){}
+    
+    @Around("servicePt()")
+    public void runSpeed(ProceedingJoinPoint pjp) throws Throwable{
+        //获取执行签名信息
+        Signature signature = pjp.getSignature();
+        //通过签名获取执行类型（接口名）
+        String className = signature.getDeclaringTypeName();
+        //通过签名获取执行操作名称（方法名）
+        String methodName = signature.getName();
+        
+        long start = System.currentTimeMillis();
+        for(int i = 0; i < 10000; i++){
+            pjp.proceed();
+        }
+        long end = System.currentTimeMillis();
+        println("业务层接口万次执行时间："+ className + methodName + "：" + (end - start) + "ms");
+    }
+}
+```
 
