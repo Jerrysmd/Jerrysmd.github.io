@@ -853,7 +853,7 @@ AOP 通知共分为 5 种类型
 + 返回后通知（了解）
 + 抛出异常后通知（了解）
 
-#### Demo
+#### Demo 统计执行时间
 
 统计一个方法万次执行时间
 
@@ -882,4 +882,84 @@ public class ProjectAdvice{
 }
 ```
 
+#### AOP 通知获取数据
+
++ 获取切入点方法的参数
+  + JoinPoint：适用于前置、后置、返回后、抛出异常后通知
+  + ProceedJoinPoint：适用于环绕通知
++ 获取切入点返回值
+  + 返回后通知
+  + 环绕通知
++ 获取切入点方法运行异常信息
+  + 抛出异常后通知
+  + 环绕通知
+
+### 事务
+
++ 事务作用：在数据层保障一系列的数据库操作同时成功同时失败
++ Spring 事务作用：在数据层或**业务层**保障一系列的数据库操作同时成功同时失败
+
+```java
+public interface PlatformTransactionManager{
+    void commit(TransactionStatus status) throws TransactionException;
+    void roolback(TransactionStatus status) throws TransactionException;
+}
+```
+
+```java
+public class DataSourceTransactionManager{
+    //...
+}
+```
+
+#### Demo 银行转账
+
+1. 数据层提供基础操作，指定账户减钱（outMoney），指定账户加钱（inMoney）
+2. 业务层提供转账操作（transfer），调用减钱与加钱的操作
+3. 基于 Spring 整合 MyBatista 环境搭建
+
+步骤：
+
+1. 在业务层接口上添加事务管理
+
+   ```java
+   public interface AccountService{
+       @Transactional
+       public void transer(String out, String in, Double money);
+   }
+   ```
+
+   > 注意事项
+   >
+   > Spring 注解式事务通常添加在业务层接口中而不会添加到业务层实现类中，降低耦合
+
+2. 设置事务管理器
+
+   ```java
+   @Bean
+   public PlatformTransactionManager transactionManager(DataSource dataSource){
+       DataSourceTransactionManager ptm = new DataSourceTransactionManager();
+       ptm.setDataSource(dataSource);
+       return ptm;
+   }
+   ```
+
+   > 注意事项
+   >
+   > 事务管理器要根据实现技术进行选择
+   >
+   > MyBatis框架使用的是 JDBC 事务
+
+3. 开启注解式事务驱动
+
+   ```java
+   @Configuration
+   @ComponentScan("com.jerry")
+   @PropertySource("classpath:jdbc.properties")
+   @Import({JdbcConfig.class, MybatisConfig.class})
+   @EnableTransactionMangement
+   public class SpringConfig{}
+   ```
+
+   
 
