@@ -7,7 +7,9 @@ A Chrome extension is a small software program that is designed to add functiona
 
 ## Introduction
 
-**Github Project:** https://github.com/Jerrysmd/weibo-content-filter
+> **Github Project**
+>
+> https://github.com/Jerrysmd/weibo-content-filter
 
 This is a Chrome extension that serves as a new version of the Weibo plugin. 
 
@@ -198,4 +200,5 @@ Detecting the GUCCI advertising，add the attribute of `display: none`
 ## Deployment
 
 ![image-20221219140615001](image-20221219140615001.png "Deployment")
+
 
