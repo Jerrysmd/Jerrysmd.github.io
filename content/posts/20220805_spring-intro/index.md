@@ -68,9 +68,7 @@ Spring makes programming Java quicker, easier, and safer. Spring’s focus on sp
 
 <!--more-->
 
-## Spring
-
-### Framework
+## Framework
 
 ![spring-overview](spring-overview.png "spring-overview")
 
@@ -83,9 +81,9 @@ Spring makes programming Java quicker, easier, and safer. Spring’s focus on sp
 | Data Access / Integration | 数据访问 / 集成    |
 | **Transactions**          | **事务**           |
 
-### 核心容器
+## 核心容器
 
-#### IoC & DI
+### IoC & DI
 
 > IoC (Inversion of Control) 控制反转
 >
@@ -137,7 +135,7 @@ public class DaoImpl2 implements Dao{
 + 最终效果
   + 使用对象时不仅可以直接
 
-##### IoC Intro Case
+#### IoC Intro Case
 
 1. IoC 管理什么？（Service、Dao、Service和Dao 关系）
 2. 如何将被管理的对象告知 IoC 容器？（配置）
@@ -199,7 +197,7 @@ public class DaoImpl2 implements Dao{
 > }
 > ```
 
-##### DI Intro Case
+#### DI Intro Case
 
 1. 基于 IoC 管理 bean（基于 IoC Intro Case）
 2. Service 中使用 new 形式创建 Dao 对象？（否，使用 new 耦合性仍然很高）
@@ -236,9 +234,9 @@ public class DaoImpl2 implements Dao{
 > </bean>
 > ```
 
-#### Bean
+### Bean
 
-##### Bean 配置
+#### Bean 配置
 
 bean 基础配置
 
@@ -270,7 +268,7 @@ bean 作用范围配置
 
   
 
-##### Bean 实例化
+#### Bean 实例化
 
 Bean 的四种实例化
 
@@ -370,9 +368,9 @@ Bean 的四种实例化
   <bean id="userDao" class="com.jerry.factory.UserDaoFactoryBean"></bean>
   ```
 
-##### Bean 的生命周期
+#### Bean 的生命周期
 
-###### bean 生命周期控制方法
+##### bean 生命周期控制方法
 
 方法一：配置文件管理控制方法
 
@@ -391,7 +389,7 @@ public class BookServiceImpl implements BookService, InitializingBean, Disposabl
 }
 ```
 
-###### 生命周期
+##### 生命周期
 
 + 初始化容器
   1. 创建对象（内存分配）
@@ -403,13 +401,13 @@ public class BookServiceImpl implements BookService, InitializingBean, Disposabl
 + 销毁容器
   + **执行 bean 销毁方法**
 
-###### 关闭容器
+##### 关闭容器
 
 + ConfigurableApplicationContext
   + close()
   + registerShutdownHook()
 
-##### 依赖注入方式
+#### 依赖注入方式
 
 + 向一个类中传递数据的方式有几种？
   + 普通方法（set 方法）
@@ -498,7 +496,7 @@ public class BookServiceImpl implements BookService, InitializingBean, Disposabl
 2. 如果受控对象没有提供 setter 方法就必须使用构造器注入
 3. **自己开发的模块推荐使用 setter 注入**
 
-##### 依赖自动装配
+#### 依赖自动装配
 
 + IoC 容器根据 bean 所依赖的资源在容器中自动查找并注入到 bean 的过程称为自动装配
 + 自动装配方式
@@ -521,7 +519,7 @@ public class BookServiceImpl implements BookService, InitializingBean, Disposabl
 + 使用按名称装配时（byName）必须保障容器中具有指定名称的 bean，因为变量名与配置耦合（不推荐使用）
 + 自动装配优先级低于 setter 注入与构造器注入，同时出现时自动装配配置失效
 
-##### 集合注入
+#### 集合注入
 
 ```xml
 <bean id="bookDao" class="com.jerry.dao.impl.BookDaoImpl">
@@ -549,7 +547,7 @@ public class BookServiceImpl implements BookService, InitializingBean, Disposabl
 </bean>
 ```
 
-##### 加载 properties 文件
+#### 加载 properties 文件
 
 1. 在 applicationContext.xml 中新建 context 命名空间
 2. 使用 context 空间加载 properties 文件
@@ -564,7 +562,7 @@ public class BookServiceImpl implements BookService, InitializingBean, Disposabl
 <property name="username" value="${jdbc.username}"
 ```
 
-#### 核心容器总结
+### 核心容器总结
 
 容器相关：
 
@@ -590,7 +588,7 @@ Bean 相关：
 | factory-bean   | 实例工厂 bean                           |
 | lazy-init      | 控制 bean 延迟加载                      |
 
-### 注解
+## 注解
 
 ```java
 @Component("bookDao")
@@ -611,7 +609,7 @@ public class BookDaoImpl implements BookDao{
 <bean id="bookDao" class="com.jerry.dao.impl.BookDaoImpl"/>
 ```
 
-#### 衍生注解定义 bean
+### 衍生注解定义 bean
 
 Spring 提供 @Component 注解的三个衍生注解，和 @Component 功能一样，只是方便理解。
 
@@ -619,7 +617,7 @@ Spring 提供 @Component 注解的三个衍生注解，和 @Component 功能一�
 + @Service：用于业务层 bean 定义
 + @Repository：用于数据层 bean 定义
 
-#### 纯注解开发
+### 纯注解开发
 
 + Spring 3.0 开始了纯注解开发模式，使用 Java 类替代配置文件，开启了 Spring 快速开发
 
@@ -640,7 +638,7 @@ Spring 提供 @Component 注解的三个衍生注解，和 @Component 功能一�
   ApplicationContext ctx = new AnnotationConfigApplicationContext(SpringConfig.class);
   ```
 
-##### Bean 的作用范围
+#### Bean 的作用范围
 
 使用 @Scope 定义 bean 作用范围
 
@@ -658,7 +656,7 @@ public class BookDaoImpl implements BookDao{
 }
 ```
 
-##### 依赖注入
+#### 依赖注入
 
 使用 @Autowired 注解开启自动装配模式（按类型）
 
@@ -710,7 +708,7 @@ public class BookDaoImpl implements BookDao{
 }
 ```
 
-##### 第三方 bean 管理
+#### 第三方 bean 管理
 
 将独立的配置类加入核心配置
 
@@ -735,7 +733,7 @@ public class JdbcConfig{
 public class SpringConfig{}
 ```
 
-##### 第三方 bean 依赖注入
+#### 第三方 bean 依赖注入
 
 + 简单类型依赖注入
 
@@ -770,7 +768,7 @@ public class JdbcConfig{
 
 > 引用类型注入只需要为 bean 定义方法设置形参即可，容器会根据类型自动装备对象。
 
-#### 注解总结
+### 注解总结
 
 + XML 配置对比注解配置
 
@@ -784,7 +782,7 @@ public class JdbcConfig{
 
   
 
-### Spring 整合 MyBatis
+## Spring 整合 MyBatis
 
 > MyBatis is a popular, open-source persistence framework for Java that simplifies the process of working with databases.
 
@@ -830,7 +828,7 @@ public MapperScannerConfigurer mapperScannerConfigurer(){
 }
 ```
 
-### Spring 整合 JUnit
+## Spring 整合 JUnit
 
 + 使用 Spring 整合 JUnit 专用的类加载器
 
@@ -848,7 +846,7 @@ public class BookServiceTest{
 }
 ```
 
-### AOP
+## AOP
 
 + AOP(Aspect Oriented Programming)面向切面编程，一种编程范式，指导开发者如何组织程序结构
 + 作用：在不惊动原始设计的基础上为其进行功能增强
@@ -867,7 +865,7 @@ AOP 核心概念
 + **通知类**：定义通知的类
 + **切面**（Aspect）：描述通知与切入点的对应关系
 
-#### 实例
+### 实例
 
 + 案例设定：测定接口执行效率
 + 简化设定：在接口执行前输出当前系统时间
@@ -891,7 +889,7 @@ public class MyAdvice{
 }
 ```
 
-#### AOP 工作流程
+### AOP 工作流程
 
 1. Spring 容器启动
 2. 读取所有切面配置中的切入点
@@ -904,9 +902,9 @@ public class MyAdvice{
 
 > SpringAOP本质：代理模式
 
-#### AOP 切入点表达式
+### AOP 切入点表达式
 
-#### AOP 通知类型
+### AOP 通知类型
 
 AOP 通知共分为 5 种类型
 
@@ -916,7 +914,7 @@ AOP 通知共分为 5 种类型
 + 返回后通知（了解）
 + 抛出异常后通知（了解）
 
-#### Demo 统计执行时间
+### Demo 统计执行时间
 
 统计一个方法万次执行时间
 
@@ -945,7 +943,7 @@ public class ProjectAdvice{
 }
 ```
 
-#### AOP 通知获取数据
+### AOP 通知获取数据
 
 + 获取切入点方法的参数
   + JoinPoint：适用于前置、后置、返回后、抛出异常后通知
@@ -957,7 +955,7 @@ public class ProjectAdvice{
   + 抛出异常后通知
   + 环绕通知
 
-### 事务
+## 事务
 
 + 事务作用：在数据层保障一系列的数据库操作同时成功同时失败
 + Spring 事务作用：在数据层或**业务层**保障一系列的数据库操作同时成功同时失败
@@ -975,7 +973,7 @@ public class DataSourceTransactionManager{
 }
 ```
 
-#### Demo 银行转账
+### Demo 银行转账
 
 1. 数据层提供基础操作，指定账户减钱（outMoney），指定账户加钱（inMoney）
 2. 业务层提供转账操作（transfer），调用减钱与加钱的操作
@@ -1025,3 +1023,27 @@ public class DataSourceTransactionManager{
    ```
 
    
+
+### 事务传播行为
+
++ 场景：交易记录后并写入日志。
++ 问题：因为交易和写入日志默认为同一事务，如果交易出错，也不会写入日志。
++ 解决：给事务添加传播属性，让其形成新事务。
+
+@Transactional(`添加传播属性`)
+
+| 传播属性         | 事务管理员                                  | 事务协调员 |
+| ---------------- | ------------------------------------------- | ---------- |
+| REQUIRED（默认） | 开启T                                       | 加入T      |
+|                  | 无                                          | 新建T2     |
+| REQUIRES_NEW     | 开启T                                       | 新建T2     |
+|                  | 无                                          | 新建T2     |
+| SUPPORTS         | 开启T                                       | 加入T      |
+|                  | 无                                          | 无         |
+| NOT_SUPPORTED    | 开启T                                       | 无         |
+|                  | 无                                          | 无         |
+| MANDATORY        | 开启T                                       | 加入T      |
+|                  | 无                                          | ERROR      |
+| NEVER            | 开启T                                       | ERROR      |
+|                  | 无                                          | 无         |
+| NESTED           | 设置 savePoint，<br />由客户响应提交 / 回滚 |            |
