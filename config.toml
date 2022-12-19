@@ -230,7 +230,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     noFavicon = false
     # modern SVG favicon to use in place of older style .png and .ico files
     # 更现代的 SVG 网站图标, 可替代旧的 .png 和 .ico 文件
-    svgFavicon = "https://cdn-icons-png.flaticon.com/512/299/299750.png"
+    svgFavicon = "https://cdn-icons-png.flaticon.com/512/321/321211.png"
     # Android browser theme color
     # Android 浏览器主题色
     themeColor = "#ffffff"
