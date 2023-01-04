@@ -2,7 +2,7 @@
 # weight: 4
 title: "Documentation - Extended Shortcodes"
 date: 2018-03-02T16:29:41+08:00
-draft: false
+draft: true
 # images: []
 # resources:
 # - name: "featured-image"

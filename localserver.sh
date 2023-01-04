@@ -1,1 +1,1 @@
-hugo server --disableFastRender
+hugo server --disableFastRender --buildDrafts
