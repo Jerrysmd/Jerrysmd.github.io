@@ -1,10 +1,14 @@
 name: github pages
 
 on:
+  schedule:
+    - cron: '0 7 * * *'
   push:
     branches:
-      - blog-source  # Set a branch to deploy
+    - blog-source
   pull_request:
+      branches:
+      - blog-source
 
 jobs:
   deploy:
