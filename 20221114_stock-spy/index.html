@@ -1,0 +1,398 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><title>Stock Monitoring and Notification Project - JerrysBlog</title><meta name=Description content><meta property="og:title" content="Stock Monitoring and Notification Project"><meta property="og:description" content="The system will be flexible and allow users to specify their own set of rules for price movements and triggers for notifications. This is a useful tool for anyone interested in keeping track of their investments and making informed decisions in the stock market."><meta property="og:type" content="article"><meta property="og:url" content="https://jerrysmd.github.io/20221114_stock-spy/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-11-14T17:46:58+08:00"><meta property="article:modified_time" content="2022-11-14T17:46:58+08:00"><meta property="og:site_name" content="JerrysBlog"><meta name=twitter:card content="summary"><meta name=twitter:title content="Stock Monitoring and Notification Project"><meta name=twitter:description content="The system will be flexible and allow users to specify their own set of rules for price movements and triggers for notifications. This is a useful tool for anyone interested in keeping track of their investments and making informed decisions in the stock market."><meta name=application-name content="JerrysBlog"><meta name=apple-mobile-web-app-title content="JerrysBlog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=https://cdn-icons-png.flaticon.com/512/321/321211.png><link rel=apple-touch-icon sizes=180x180 href=https://cdn-icons-png.flaticon.com/256/738/738671.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://jerrysmd.github.io/20221114_stock-spy/><link rel=prev href=https://jerrysmd.github.io/20220929_chrome-extension-project/><link rel=stylesheet href=/css/style.min.css><link rel=preload href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css></noscript><link rel=preload href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css></noscript><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Stock Monitoring and Notification Project","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/jerrysmd.github.io\/20221114_stock-spy\/"},"genre":"posts","keywords":"Python","wordcount":1202,"url":"https:\/\/jerrysmd.github.io\/20221114_stock-spy\/","datePublished":"2022-11-14T17:46:58+08:00","dateModified":"2022-11-14T17:46:58+08:00","publisher":{"@type":"Organization","name":"xxxx","logo":"https:\/\/jerrysmd.github.io\/images\/avatar.png"},"author":{"@type":"Person","name":" "},"description":""}</script></head><body data-header-desktop=fixed data-header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem("theme")?localStorage.getItem("theme")==="dark":"auto"==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:"auto"==="dark")&&document.body.setAttribute("theme","dark")</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title=JerrysBlog><span class=header-title-pre><i class='far fa-edit fa-fw' aria-hidden=true></i></span>JERRYSBLOG</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/ title=Home>Home </a><a class=menu-item href=/categories/technology/ title="Technology article list">Technology </a><a class=menu-item href=/categories/life/ title="Life article list">Life </a><a class=menu-item href=/tags/ title="Tags cloud">Tags </a><a class=menu-item href=/about/ title="About blog">About </a><a class=menu-item href=https://github.com/Jerrysmd title=GitHub rel="noopener noreffer" target=_blank><i class='fab fa-github fa-fw' aria-hidden=true></i> </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder="Search titles or contents..." id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=Search><i class="fas fa-search fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=Clear><i class="fas fa-times-circle fa-fw" aria-hidden=true></i></a>
+<span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i></span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title="Switch Theme"><i class="fas fa-moon fa-fw" aria-hidden=true></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title=JerrysBlog><span class=header-title-pre><i class='far fa-edit fa-fw' aria-hidden=true></i></span>JERRYSBLOG</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder="Search titles or contents..." id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=Search><i class="fas fa-search fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=Clear><i class="fas fa-times-circle fa-fw" aria-hidden=true></i></a>
+<span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>Cancel</a></div><a class=menu-item href=/ title=Home>Home</a><a class=menu-item href=/categories/technology/ title="Technology article list">Technology</a><a class=menu-item href=/categories/life/ title="Life article list">Life</a><a class=menu-item href=/tags/ title="Tags cloud">Tags</a><a class=menu-item href=/about/ title="About blog">About</a><a class=menu-item href=https://github.com/Jerrysmd title=GitHub rel="noopener noreffer" target=_blank><i class='fab fa-github fa-fw' aria-hidden=true></i></a><a href=javascript:void(0); class="menu-item theme-switch" title="Switch Theme">
+<i class="fas fa-moon fa-fw" aria-hidden=true></i></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>Contents</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Stock Monitoring and Notification Project</h1><div class=post-meta><div class=post-meta-line><span class=post-category>Category in
+<a href=/categories/technology/><i class="far fa-folder fa-fw" aria-hidden=true></i>Technology</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt fa-fw" aria-hidden=true></i>&nbsp;<time datetime=2022-11-14>2022-11-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden=true></i>&nbsp;1202 words&nbsp;
+<i class="far fa-clock fa-fw" aria-hidden=true></i>&nbsp;6 minutes&nbsp;<span id=/20221114_stock-spy/ class=leancloud_visitors data-flag-title="Stock Monitoring and Notification Project">
+<i class="far fa-eye fa-fw" aria-hidden=true></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+</span>&nbsp;</div></div><div class="details toc" id=toc-static data-kept><div class="details-summary toc-title"><span>Contents</span>
+<span><i class="details-icon fas fa-angle-right" aria-hidden=true></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#introduction>Introduction</a></li><li><a href=#design>Design</a><ul><li><a href=#tencent>Tencent</a></li><li><a href=#sina>Sina</a></li></ul></li><li><a href=#implementation>Implementation</a></li><li><a href=#code>Code</a></li></ul></nav></div></div><div class=content id=content><p>The system will be flexible and allow users to specify their own set of rules for price movements and triggers for notifications. This is a useful tool for anyone interested in keeping track of their investments and making informed decisions in the stock market.</p><h2 id=introduction>Introduction</h2><p>In this project, we will be developing functions to retrieve stock data from Tencent and Sina using the Python programming language. The functions will be able to retrieve both daily and minute-level data, and will allow users to specify the stock code, time range, and frequency of the data.</p><h2 id=design>Design</h2><h3 id=tencent>Tencent</h3><p>For the Tencent functions, we will be using the <code>requests</code> library to make HTTP requests to the Tencent stock data API. The API will return the stock data in JSON format, which we will then parse and convert into a Pandas dataframe for easier manipulation.</p><p>The <code>get_price_day_tx</code> function will be used to retrieve daily data, while the <code>get_price_min_tx</code> function will be used to retrieve minute-level data. Users will be able to specify the stock code, end date (optional), number of periods to retrieve, and the frequency of the data (e.g. daily, weekly, monthly).</p><h3 id=sina>Sina</h3><p>For the Sina function, we will be using the <code>pandas_datareader</code> library to retrieve stock data from the Sina API. The <code>get_price_sina</code> function will allow users to specify the stock code, start and end dates, and the frequency of the data.</p><h2 id=implementation>Implementation</h2><p>The Tencent functions will follow the steps outlined below:</p><ol><li>Define the function and parse the input parameters.</li><li>Make the HTTP request to the Tencent API using the <code>requests</code> library.</li><li>Parse the JSON response and extract the relevant data.</li><li>Convert the data into a Pandas dataframe.</li><li>Return the dataframe to the user.</li></ol><p>The Sina function will follow these steps:</p><ol><li>Define the function and parse the input parameters.</li><li>Use the <code>pandas_datareader</code> library to retrieve the stock data from the Sina API.</li><li>Return the data to the user.</li></ol><h2 id=code>Code</h2><ul><li>使用 requests 从接口获取数据</li><li>使用 pandas 将数据转化成表格</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span><span class=lnt>63
+</span><span class=lnt>64
+</span><span class=lnt>65
+</span><span class=lnt>66
+</span><span class=lnt>67
+</span><span class=lnt>68
+</span><span class=lnt>69
+</span><span class=lnt>70
+</span><span class=lnt>71
+</span><span class=lnt>72
+</span><span class=lnt>73
+</span><span class=lnt>74
+</span><span class=lnt>75
+</span><span class=lnt>76
+</span><span class=lnt>77
+</span><span class=lnt>78
+</span><span class=lnt>79
+</span><span class=lnt>80
+</span><span class=lnt>81
+</span><span class=lnt>82
+</span><span class=lnt>83
+</span><span class=lnt>84
+</span><span class=lnt>85
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>import</span> <span class=nn>datetime</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>json</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>requests</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>pandas</span> <span class=k>as</span> <span class=nn>pd</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 腾讯日线</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>get_price_day_tx</span><span class=p>(</span><span class=n>code</span><span class=p>,</span> <span class=n>end_date</span><span class=o>=</span><span class=s1>&#39;&#39;</span><span class=p>,</span> <span class=n>count</span><span class=o>=</span><span class=mi>10</span><span class=p>,</span> <span class=n>frequency</span><span class=o>=</span><span class=s1>&#39;1d&#39;</span><span class=p>):</span>  <span class=c1># 日线获取</span>
+</span></span><span class=line><span class=cl>    <span class=n>unit</span> <span class=o>=</span> <span class=s1>&#39;week&#39;</span> <span class=k>if</span> <span class=n>frequency</span> <span class=ow>in</span> <span class=s1>&#39;1w&#39;</span> <span class=k>else</span> <span class=s1>&#39;month&#39;</span> <span class=k>if</span> <span class=n>frequency</span> <span class=ow>in</span> <span class=s1>&#39;1M&#39;</span> <span class=k>else</span> <span class=s1>&#39;day&#39;</span>  <span class=c1># 判断日线，周线，月线</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>end_date</span><span class=p>:</span>  <span class=n>end_date</span> <span class=o>=</span> <span class=n>end_date</span><span class=o>.</span><span class=n>strftime</span><span class=p>(</span><span class=s1>&#39;%Y-%m-</span><span class=si>%d</span><span class=s1>&#39;</span><span class=p>)</span> <span class=k>if</span> <span class=nb>isinstance</span><span class=p>(</span><span class=n>end_date</span><span class=p>,</span> <span class=n>datetime</span><span class=o>.</span><span class=n>date</span><span class=p>)</span> <span class=k>else</span> \
+</span></span><span class=line><span class=cl>    <span class=n>end_date</span><span class=o>.</span><span class=n>split</span><span class=p>(</span><span class=s1>&#39; &#39;</span><span class=p>)[</span><span class=mi>0</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>    <span class=n>end_date</span> <span class=o>=</span> <span class=s1>&#39;&#39;</span> <span class=k>if</span> <span class=n>end_date</span> <span class=o>==</span> <span class=n>datetime</span><span class=o>.</span><span class=n>datetime</span><span class=o>.</span><span class=n>now</span><span class=p>()</span><span class=o>.</span><span class=n>strftime</span><span class=p>(</span><span class=s1>&#39;%Y-%m-</span><span class=si>%d</span><span class=s1>&#39;</span><span class=p>)</span> <span class=k>else</span> <span class=n>end_date</span>  <span class=c1># 如果日期今天就变成空</span>
+</span></span><span class=line><span class=cl>    <span class=n>URL</span> <span class=o>=</span> <span class=sa>f</span><span class=s1>&#39;http://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=</span><span class=si>{</span><span class=n>code</span><span class=si>}</span><span class=s1>,</span><span class=si>{</span><span class=n>unit</span><span class=si>}</span><span class=s1>,,</span><span class=si>{</span><span class=n>end_date</span><span class=si>}</span><span class=s1>,</span><span class=si>{</span><span class=n>count</span><span class=si>}</span><span class=s1>,qfq&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=n>st</span> <span class=o>=</span> <span class=n>json</span><span class=o>.</span><span class=n>loads</span><span class=p>(</span><span class=n>requests</span><span class=o>.</span><span class=n>get</span><span class=p>(</span><span class=n>URL</span><span class=p>)</span><span class=o>.</span><span class=n>content</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=n>ms</span> <span class=o>=</span> <span class=s1>&#39;qfq&#39;</span> <span class=o>+</span> <span class=n>unit</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>stk</span> <span class=o>=</span> <span class=n>st</span><span class=p>[</span><span class=s1>&#39;data&#39;</span><span class=p>][</span><span class=n>code</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>    <span class=n>buf</span> <span class=o>=</span> <span class=n>stk</span><span class=p>[</span><span class=n>ms</span><span class=p>]</span> <span class=k>if</span> <span class=n>ms</span> <span class=ow>in</span> <span class=n>stk</span> <span class=k>else</span> <span class=n>stk</span><span class=p>[</span><span class=n>unit</span><span class=p>]</span>  <span class=c1># 指数返回不是qfqday,是day</span>
+</span></span><span class=line><span class=cl>    <span class=n>df</span> <span class=o>=</span> <span class=n>pd</span><span class=o>.</span><span class=n>DataFrame</span><span class=p>(</span><span class=n>buf</span><span class=p>,</span> <span class=n>columns</span><span class=o>=</span><span class=p>[</span><span class=s1>&#39;time&#39;</span><span class=p>,</span> <span class=s1>&#39;open&#39;</span><span class=p>,</span> <span class=s1>&#39;close&#39;</span><span class=p>,</span> <span class=s1>&#39;high&#39;</span><span class=p>,</span> <span class=s1>&#39;low&#39;</span><span class=p>,</span> <span class=s1>&#39;volume&#39;</span><span class=p>],</span> <span class=n>dtype</span><span class=o>=</span><span class=s1>&#39;float&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>df</span><span class=o>.</span><span class=n>time</span> <span class=o>=</span> <span class=n>pd</span><span class=o>.</span><span class=n>to_datetime</span><span class=p>(</span><span class=n>df</span><span class=o>.</span><span class=n>time</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=n>df</span><span class=o>.</span><span class=n>set_index</span><span class=p>([</span><span class=s1>&#39;time&#39;</span><span class=p>],</span> <span class=n>inplace</span><span class=o>=</span><span class=kc>True</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=n>df</span><span class=o>.</span><span class=n>index</span><span class=o>.</span><span class=n>name</span> <span class=o>=</span> <span class=s1>&#39;&#39;</span>  <span class=c1># 处理索引</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>df</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 腾讯分钟线</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>get_price_min_tx</span><span class=p>(</span><span class=n>code</span><span class=p>,</span> <span class=n>end_date</span><span class=o>=</span><span class=kc>None</span><span class=p>,</span> <span class=n>count</span><span class=o>=</span><span class=mi>10</span><span class=p>,</span> <span class=n>frequency</span><span class=o>=</span><span class=s1>&#39;1d&#39;</span><span class=p>):</span>  <span class=c1># 分钟线获取</span>
+</span></span><span class=line><span class=cl>    <span class=n>ts</span> <span class=o>=</span> <span class=nb>int</span><span class=p>(</span><span class=n>frequency</span><span class=p>[:</span><span class=o>-</span><span class=mi>1</span><span class=p>])</span> <span class=k>if</span> <span class=n>frequency</span><span class=p>[:</span><span class=o>-</span><span class=mi>1</span><span class=p>]</span><span class=o>.</span><span class=n>isdigit</span><span class=p>()</span> <span class=k>else</span> <span class=mi>1</span>  <span class=c1># 解析K线周期数</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>end_date</span><span class=p>:</span> <span class=n>end_date</span> <span class=o>=</span> <span class=n>end_date</span><span class=o>.</span><span class=n>strftime</span><span class=p>(</span><span class=s1>&#39;%Y-%m-</span><span class=si>%d</span><span class=s1>&#39;</span><span class=p>)</span> <span class=k>if</span> <span class=nb>isinstance</span><span class=p>(</span><span class=n>end_date</span><span class=p>,</span> <span class=n>datetime</span><span class=o>.</span><span class=n>date</span><span class=p>)</span> <span class=k>else</span> \
+</span></span><span class=line><span class=cl>    <span class=n>end_date</span><span class=o>.</span><span class=n>split</span><span class=p>(</span><span class=s1>&#39; &#39;</span><span class=p>)[</span><span class=mi>0</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>    <span class=n>URL</span> <span class=o>=</span> <span class=sa>f</span><span class=s1>&#39;http://ifzq.gtimg.cn/appstock/app/kline/mkline?param=</span><span class=si>{</span><span class=n>code</span><span class=si>}</span><span class=s1>,m</span><span class=si>{</span><span class=n>ts</span><span class=si>}</span><span class=s1>,,</span><span class=si>{</span><span class=n>count</span><span class=si>}</span><span class=s1>&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=n>st</span> <span class=o>=</span> <span class=n>json</span><span class=o>.</span><span class=n>loads</span><span class=p>(</span><span class=n>requests</span><span class=o>.</span><span class=n>get</span><span class=p>(</span><span class=n>URL</span><span class=p>)</span><span class=o>.</span><span class=n>content</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=n>buf</span> <span class=o>=</span> <span class=n>st</span><span class=p>[</span><span class=s1>&#39;data&#39;</span><span class=p>][</span><span class=n>code</span><span class=p>][</span><span class=s1>&#39;m&#39;</span> <span class=o>+</span> <span class=nb>str</span><span class=p>(</span><span class=n>ts</span><span class=p>)]</span>
+</span></span><span class=line><span class=cl>    <span class=n>df</span> <span class=o>=</span> <span class=n>pd</span><span class=o>.</span><span class=n>DataFrame</span><span class=p>(</span><span class=n>buf</span><span class=p>,</span> <span class=n>columns</span><span class=o>=</span><span class=p>[</span><span class=s1>&#39;time&#39;</span><span class=p>,</span> <span class=s1>&#39;open&#39;</span><span class=p>,</span> <span class=s1>&#39;close&#39;</span><span class=p>,</span> <span class=s1>&#39;high&#39;</span><span class=p>,</span> <span class=s1>&#39;low&#39;</span><span class=p>,</span> <span class=s1>&#39;volume&#39;</span><span class=p>,</span> <span class=s1>&#39;n1&#39;</span><span class=p>,</span> <span class=s1>&#39;n2&#39;</span><span class=p>])</span>
+</span></span><span class=line><span class=cl>    <span class=n>df</span> <span class=o>=</span> <span class=n>df</span><span class=p>[[</span><span class=s1>&#39;time&#39;</span><span class=p>,</span> <span class=s1>&#39;open&#39;</span><span class=p>,</span> <span class=s1>&#39;close&#39;</span><span class=p>,</span> <span class=s1>&#39;high&#39;</span><span class=p>,</span> <span class=s1>&#39;low&#39;</span><span class=p>,</span> <span class=s1>&#39;volume&#39;</span><span class=p>]]</span>
+</span></span><span class=line><span class=cl>    <span class=n>df</span><span class=p>[[</span><span class=s1>&#39;open&#39;</span><span class=p>,</span> <span class=s1>&#39;close&#39;</span><span class=p>,</span> <span class=s1>&#39;high&#39;</span><span class=p>,</span> <span class=s1>&#39;low&#39;</span><span class=p>,</span> <span class=s1>&#39;volume&#39;</span><span class=p>]]</span> <span class=o>=</span> <span class=n>df</span><span class=p>[[</span><span class=s1>&#39;open&#39;</span><span class=p>,</span> <span class=s1>&#39;close&#39;</span><span class=p>,</span> <span class=s1>&#39;high&#39;</span><span class=p>,</span> <span class=s1>&#39;low&#39;</span><span class=p>,</span> <span class=s1>&#39;volume&#39;</span><span class=p>]]</span><span class=o>.</span><span class=n>astype</span><span class=p>(</span><span class=s1>&#39;float&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>df</span><span class=o>.</span><span class=n>time</span> <span class=o>=</span> <span class=n>pd</span><span class=o>.</span><span class=n>to_datetime</span><span class=p>(</span><span class=n>df</span><span class=o>.</span><span class=n>time</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=n>df</span><span class=o>.</span><span class=n>set_index</span><span class=p>([</span><span class=s1>&#39;time&#39;</span><span class=p>],</span> <span class=n>inplace</span><span class=o>=</span><span class=kc>True</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=n>df</span><span class=o>.</span><span class=n>index</span><span class=o>.</span><span class=n>name</span> <span class=o>=</span> <span class=s1>&#39;&#39;</span>  <span class=c1># 处理索引</span>
+</span></span><span class=line><span class=cl>    <span class=n>df</span><span class=p>[</span><span class=s1>&#39;close&#39;</span><span class=p>][</span><span class=o>-</span><span class=mi>1</span><span class=p>]</span> <span class=o>=</span> <span class=nb>float</span><span class=p>(</span><span class=n>st</span><span class=p>[</span><span class=s1>&#39;data&#39;</span><span class=p>][</span><span class=n>code</span><span class=p>][</span><span class=s1>&#39;qt&#39;</span><span class=p>][</span><span class=n>code</span><span class=p>][</span><span class=mi>3</span><span class=p>])</span>  <span class=c1># 最新基金数据是3位的</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>df</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># sina新浪全周期获取函数，分钟线 5m,15m,30m,60m  日线1d=240m   周线1w=1200m  1月=7200m</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>get_price_sina</span><span class=p>(</span><span class=n>code</span><span class=p>,</span> <span class=n>end_date</span><span class=o>=</span><span class=s1>&#39;&#39;</span><span class=p>,</span> <span class=n>count</span><span class=o>=</span><span class=mi>10</span><span class=p>,</span> <span class=n>frequency</span><span class=o>=</span><span class=s1>&#39;60m&#39;</span><span class=p>):</span>  <span class=c1># 新浪全周期获取函数</span>
+</span></span><span class=line><span class=cl>    <span class=n>frequency</span> <span class=o>=</span> <span class=n>frequency</span><span class=o>.</span><span class=n>replace</span><span class=p>(</span><span class=s1>&#39;1d&#39;</span><span class=p>,</span> <span class=s1>&#39;240m&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>replace</span><span class=p>(</span><span class=s1>&#39;1w&#39;</span><span class=p>,</span> <span class=s1>&#39;1200m&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>replace</span><span class=p>(</span><span class=s1>&#39;1M&#39;</span><span class=p>,</span> <span class=s1>&#39;7200m&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=n>mcount</span> <span class=o>=</span> <span class=n>count</span>
+</span></span><span class=line><span class=cl>    <span class=n>ts</span> <span class=o>=</span> <span class=nb>int</span><span class=p>(</span><span class=n>frequency</span><span class=p>[:</span><span class=o>-</span><span class=mi>1</span><span class=p>])</span> <span class=k>if</span> <span class=n>frequency</span><span class=p>[:</span><span class=o>-</span><span class=mi>1</span><span class=p>]</span><span class=o>.</span><span class=n>isdigit</span><span class=p>()</span> <span class=k>else</span> <span class=mi>1</span>  <span class=c1># 解析K线周期数</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=n>end_date</span> <span class=o>!=</span> <span class=s1>&#39;&#39;</span><span class=p>)</span> <span class=o>&amp;</span> <span class=p>(</span><span class=n>frequency</span> <span class=ow>in</span> <span class=p>[</span><span class=s1>&#39;240m&#39;</span><span class=p>,</span> <span class=s1>&#39;1200m&#39;</span><span class=p>,</span> <span class=s1>&#39;7200m&#39;</span><span class=p>]):</span>
+</span></span><span class=line><span class=cl>        <span class=n>end_date</span> <span class=o>=</span> <span class=n>pd</span><span class=o>.</span><span class=n>to_datetime</span><span class=p>(</span><span class=n>end_date</span><span class=p>)</span> <span class=k>if</span> <span class=ow>not</span> <span class=nb>isinstance</span><span class=p>(</span><span class=n>end_date</span><span class=p>,</span> <span class=n>datetime</span><span class=o>.</span><span class=n>date</span><span class=p>)</span> <span class=k>else</span> <span class=n>end_date</span>  <span class=c1># 转换成datetime</span>
+</span></span><span class=line><span class=cl>        <span class=n>unit</span> <span class=o>=</span> <span class=mi>4</span> <span class=k>if</span> <span class=n>frequency</span> <span class=o>==</span> <span class=s1>&#39;1200m&#39;</span> <span class=k>else</span> <span class=mi>29</span> <span class=k>if</span> <span class=n>frequency</span> <span class=o>==</span> <span class=s1>&#39;7200m&#39;</span> <span class=k>else</span> <span class=mi>1</span>  <span class=c1># 4,29多几个数据不影响速度</span>
+</span></span><span class=line><span class=cl>        <span class=n>count</span> <span class=o>=</span> <span class=n>count</span> <span class=o>+</span> <span class=p>(</span><span class=n>datetime</span><span class=o>.</span><span class=n>datetime</span><span class=o>.</span><span class=n>now</span><span class=p>()</span> <span class=o>-</span> <span class=n>end_date</span><span class=p>)</span><span class=o>.</span><span class=n>days</span> <span class=o>//</span> <span class=n>unit</span>  <span class=c1># 结束时间到今天有多少天自然日(肯定 &gt;交易日)</span>
+</span></span><span class=line><span class=cl>        <span class=c1># print(code,end_date,count)</span>
+</span></span><span class=line><span class=cl>    <span class=n>URL</span> <span class=o>=</span> <span class=sa>f</span><span class=s1>&#39;http://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=</span><span class=si>{</span><span class=n>code</span><span class=si>}</span><span class=s1>&amp;scale=</span><span class=si>{</span><span class=n>ts</span><span class=si>}</span><span class=s1>&amp;ma=5&amp;datalen=</span><span class=si>{</span><span class=n>count</span><span class=si>}</span><span class=s1>&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=n>dstr</span> <span class=o>=</span> <span class=n>json</span><span class=o>.</span><span class=n>loads</span><span class=p>(</span><span class=n>requests</span><span class=o>.</span><span class=n>get</span><span class=p>(</span><span class=n>URL</span><span class=p>)</span><span class=o>.</span><span class=n>content</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=c1># df=pd.DataFrame(dstr,columns=[&#39;day&#39;,&#39;open&#39;,&#39;high&#39;,&#39;low&#39;,&#39;close&#39;,&#39;volume&#39;],dtype=&#39;float&#39;)</span>
+</span></span><span class=line><span class=cl>    <span class=n>df</span> <span class=o>=</span> <span class=n>pd</span><span class=o>.</span><span class=n>DataFrame</span><span class=p>(</span><span class=n>dstr</span><span class=p>,</span> <span class=n>columns</span><span class=o>=</span><span class=p>[</span><span class=s1>&#39;day&#39;</span><span class=p>,</span> <span class=s1>&#39;open&#39;</span><span class=p>,</span> <span class=s1>&#39;high&#39;</span><span class=p>,</span> <span class=s1>&#39;low&#39;</span><span class=p>,</span> <span class=s1>&#39;close&#39;</span><span class=p>,</span> <span class=s1>&#39;volume&#39;</span><span class=p>])</span>
+</span></span><span class=line><span class=cl>    <span class=n>df</span><span class=p>[</span><span class=s1>&#39;open&#39;</span><span class=p>]</span> <span class=o>=</span> <span class=n>df</span><span class=p>[</span><span class=s1>&#39;open&#39;</span><span class=p>]</span><span class=o>.</span><span class=n>astype</span><span class=p>(</span><span class=nb>float</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=n>df</span><span class=p>[</span><span class=s1>&#39;high&#39;</span><span class=p>]</span> <span class=o>=</span> <span class=n>df</span><span class=p>[</span><span class=s1>&#39;high&#39;</span><span class=p>]</span><span class=o>.</span><span class=n>astype</span><span class=p>(</span><span class=nb>float</span><span class=p>);</span>  <span class=c1># 转换数据类型</span>
+</span></span><span class=line><span class=cl>    <span class=n>df</span><span class=p>[</span><span class=s1>&#39;low&#39;</span><span class=p>]</span> <span class=o>=</span> <span class=n>df</span><span class=p>[</span><span class=s1>&#39;low&#39;</span><span class=p>]</span><span class=o>.</span><span class=n>astype</span><span class=p>(</span><span class=nb>float</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=n>df</span><span class=p>[</span><span class=s1>&#39;close&#39;</span><span class=p>]</span> <span class=o>=</span> <span class=n>df</span><span class=p>[</span><span class=s1>&#39;close&#39;</span><span class=p>]</span><span class=o>.</span><span class=n>astype</span><span class=p>(</span><span class=nb>float</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=n>df</span><span class=p>[</span><span class=s1>&#39;volume&#39;</span><span class=p>]</span> <span class=o>=</span> <span class=n>df</span><span class=p>[</span><span class=s1>&#39;volume&#39;</span><span class=p>]</span><span class=o>.</span><span class=n>astype</span><span class=p>(</span><span class=nb>float</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>df</span><span class=o>.</span><span class=n>day</span> <span class=o>=</span> <span class=n>pd</span><span class=o>.</span><span class=n>to_datetime</span><span class=p>(</span><span class=n>df</span><span class=o>.</span><span class=n>day</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=n>df</span><span class=o>.</span><span class=n>set_index</span><span class=p>([</span><span class=s1>&#39;day&#39;</span><span class=p>],</span> <span class=n>inplace</span><span class=o>=</span><span class=kc>True</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=n>df</span><span class=o>.</span><span class=n>index</span><span class=o>.</span><span class=n>name</span> <span class=o>=</span> <span class=s1>&#39;&#39;</span>  <span class=c1># 处理索引</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=n>end_date</span> <span class=o>!=</span> <span class=s1>&#39;&#39;</span><span class=p>)</span> <span class=o>&amp;</span> <span class=p>(</span><span class=n>frequency</span> <span class=ow>in</span> <span class=p>[</span><span class=s1>&#39;240m&#39;</span><span class=p>,</span> <span class=s1>&#39;1200m&#39;</span><span class=p>,</span> <span class=s1>&#39;7200m&#39;</span><span class=p>]):</span> <span class=k>return</span> <span class=n>df</span><span class=p>[</span><span class=n>df</span><span class=o>.</span><span class=n>index</span> <span class=o>&lt;=</span> <span class=n>end_date</span><span class=p>][</span>
+</span></span><span class=line><span class=cl>                                                                            <span class=o>-</span><span class=n>mcount</span><span class=p>:]</span>  <span class=c1># 日线带结束时间先返回</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>df</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>get_price</span><span class=p>(</span><span class=n>code</span><span class=p>,</span> <span class=n>end_date</span><span class=o>=</span><span class=s1>&#39;&#39;</span><span class=p>,</span> <span class=n>count</span><span class=o>=</span><span class=mi>10</span><span class=p>,</span> <span class=n>frequency</span><span class=o>=</span><span class=s1>&#39;1d&#39;</span><span class=p>,</span> <span class=n>fields</span><span class=o>=</span><span class=p>[]):</span>  <span class=c1># 对外暴露只有唯一函数，这样对用户才是最友好的</span>
+</span></span><span class=line><span class=cl>    <span class=n>xcode</span> <span class=o>=</span> <span class=n>code</span><span class=o>.</span><span class=n>replace</span><span class=p>(</span><span class=s1>&#39;.XSHG&#39;</span><span class=p>,</span> <span class=s1>&#39;&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>replace</span><span class=p>(</span><span class=s1>&#39;.XSHE&#39;</span><span class=p>,</span> <span class=s1>&#39;&#39;</span><span class=p>)</span>  <span class=c1># 证券代码编码兼容处理</span>
+</span></span><span class=line><span class=cl>    <span class=n>xcode</span> <span class=o>=</span> <span class=s1>&#39;sh&#39;</span> <span class=o>+</span> <span class=n>xcode</span> <span class=k>if</span> <span class=p>(</span><span class=s1>&#39;XSHG&#39;</span> <span class=ow>in</span> <span class=n>code</span><span class=p>)</span> <span class=k>else</span> <span class=s1>&#39;sz&#39;</span> <span class=o>+</span> <span class=n>xcode</span> <span class=k>if</span> <span class=p>(</span><span class=s1>&#39;XSHE&#39;</span> <span class=ow>in</span> <span class=n>code</span><span class=p>)</span> <span class=k>else</span> <span class=n>code</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>frequency</span> <span class=ow>in</span> <span class=p>[</span><span class=s1>&#39;1d&#39;</span><span class=p>,</span> <span class=s1>&#39;1w&#39;</span><span class=p>,</span> <span class=s1>&#39;1M&#39;</span><span class=p>]:</span>  <span class=c1># 1d日线  1w周线  1M月线</span>
+</span></span><span class=line><span class=cl>        <span class=k>try</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=n>get_price_sina</span><span class=p>(</span><span class=n>xcode</span><span class=p>,</span> <span class=n>end_date</span><span class=o>=</span><span class=n>end_date</span><span class=p>,</span> <span class=n>count</span><span class=o>=</span><span class=n>count</span><span class=p>,</span> <span class=n>frequency</span><span class=o>=</span><span class=n>frequency</span><span class=p>)</span>  <span class=c1># 主力</span>
+</span></span><span class=line><span class=cl>        <span class=k>except</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=n>get_price_day_tx</span><span class=p>(</span><span class=n>xcode</span><span class=p>,</span> <span class=n>end_date</span><span class=o>=</span><span class=n>end_date</span><span class=p>,</span> <span class=n>count</span><span class=o>=</span><span class=n>count</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                                    <span class=n>frequency</span><span class=o>=</span><span class=n>frequency</span><span class=p>)</span>  <span class=c1># 备用</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>frequency</span> <span class=ow>in</span> <span class=p>[</span><span class=s1>&#39;1m&#39;</span><span class=p>,</span> <span class=s1>&#39;5m&#39;</span><span class=p>,</span> <span class=s1>&#39;15m&#39;</span><span class=p>,</span> <span class=s1>&#39;30m&#39;</span><span class=p>,</span> <span class=s1>&#39;60m&#39;</span><span class=p>]:</span>  <span class=c1># 分钟线 ,1m只有腾讯接口  5分钟5m   60分钟60m</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=n>frequency</span> <span class=ow>in</span> <span class=s1>&#39;1m&#39;</span><span class=p>:</span> <span class=k>return</span> <span class=n>get_price_min_tx</span><span class=p>(</span><span class=n>xcode</span><span class=p>,</span> <span class=n>end_date</span><span class=o>=</span><span class=n>end_date</span><span class=p>,</span> <span class=n>count</span><span class=o>=</span><span class=n>count</span><span class=p>,</span> <span class=n>frequency</span><span class=o>=</span><span class=n>frequency</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>try</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=n>get_price_sina</span><span class=p>(</span><span class=n>xcode</span><span class=p>,</span> <span class=n>end_date</span><span class=o>=</span><span class=n>end_date</span><span class=p>,</span> <span class=n>count</span><span class=o>=</span><span class=n>count</span><span class=p>,</span> <span class=n>frequency</span><span class=o>=</span><span class=n>frequency</span><span class=p>)</span>  <span class=c1># 主力</span>
+</span></span><span class=line><span class=cl>        <span class=k>except</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=n>get_price_min_tx</span><span class=p>(</span><span class=n>xcode</span><span class=p>,</span> <span class=n>end_date</span><span class=o>=</span><span class=n>end_date</span><span class=p>,</span> <span class=n>count</span><span class=o>=</span><span class=n>count</span><span class=p>,</span> <span class=n>frequency</span><span class=o>=</span><span class=n>frequency</span><span class=p>)</span>  <span class=c1># 备用</span>
+</span></span></code></pre></td></tr></table></div></div><ul><li>监控 2500 日均线和当天股票情况</li><li>满足判断条件后使用 smtplib 发送提示邮件</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span><span class=lnt>63
+</span><span class=lnt>64
+</span><span class=lnt>65
+</span><span class=lnt>66
+</span><span class=lnt>67
+</span><span class=lnt>68
+</span><span class=lnt>69
+</span><span class=lnt>70
+</span><span class=lnt>71
+</span><span class=lnt>72
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>email.header</span> <span class=kn>import</span> <span class=n>Header</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>email.mime.text</span> <span class=kn>import</span> <span class=n>MIMEText</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>Ashare</span> <span class=kn>import</span> <span class=o>*</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>smtplib</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>os</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>send_email</span><span class=p>(</span><span class=n>body</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=n>smtp_mail</span> <span class=o>=</span> <span class=n>os</span><span class=o>.</span><span class=n>environ</span><span class=o>.</span><span class=n>get</span><span class=p>(</span><span class=s1>&#39;SMTP_MAIL&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>smtp_token</span> <span class=o>=</span> <span class=n>os</span><span class=o>.</span><span class=n>environ</span><span class=o>.</span><span class=n>get</span><span class=p>(</span><span class=s1>&#39;SMTP_TOKEN&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># 设置发件人和收件人的邮箱地址</span>
+</span></span><span class=line><span class=cl>    <span class=n>sender</span> <span class=o>=</span> <span class=n>smtp_mail</span>
+</span></span><span class=line><span class=cl>    <span class=n>recipient</span> <span class=o>=</span> <span class=n>smtp_mail</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># 设置邮件主题</span>
+</span></span><span class=line><span class=cl>    <span class=n>subject</span> <span class=o>=</span> <span class=s2>&#34;Github Actions: stock-spy Repository Remind&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>msg</span> <span class=o>=</span> <span class=n>MIMEText</span><span class=p>(</span><span class=n>body</span><span class=p>,</span> <span class=s2>&#34;plain&#34;</span><span class=p>,</span> <span class=s2>&#34;utf-8&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>msg</span><span class=p>[</span><span class=s2>&#34;Subject&#34;</span><span class=p>]</span> <span class=o>=</span> <span class=n>Header</span><span class=p>(</span><span class=n>subject</span><span class=p>,</span> <span class=s2>&#34;utf-8&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>msg</span><span class=p>[</span><span class=s2>&#34;from&#34;</span><span class=p>]</span> <span class=o>=</span> <span class=n>sender</span>
+</span></span><span class=line><span class=cl>    <span class=n>msg</span><span class=p>[</span><span class=s2>&#34;to&#34;</span><span class=p>]</span> <span class=o>=</span> <span class=n>recipient</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># 连接到SMTP服务器</span>
+</span></span><span class=line><span class=cl>    <span class=n>server</span> <span class=o>=</span> <span class=n>smtplib</span><span class=o>.</span><span class=n>SMTP</span><span class=p>(</span><span class=s2>&#34;smtp.qq.com&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># 登录到SMTP服务器</span>
+</span></span><span class=line><span class=cl>    <span class=n>status</span><span class=p>,</span> <span class=n>response</span> <span class=o>=</span> <span class=n>server</span><span class=o>.</span><span class=n>login</span><span class=p>(</span><span class=n>smtp_mail</span><span class=p>,</span> <span class=n>smtp_token</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>status</span> <span class=o>==</span> <span class=mi>235</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;SMTP 登录成功&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=n>body</span> <span class=o>!=</span> <span class=s1>&#39;&#39;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=c1># 发送邮件</span>
+</span></span><span class=line><span class=cl>            <span class=n>server</span><span class=o>.</span><span class=n>sendmail</span><span class=p>(</span><span class=n>sender</span><span class=p>,</span> <span class=n>recipient</span><span class=p>,</span> <span class=n>msg</span><span class=o>.</span><span class=n>as_string</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>            <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;邮件已发送&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>else</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;无需发送邮件&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>else</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;SMTP 登录失败&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># 关闭连接</span>
+</span></span><span class=line><span class=cl>    <span class=n>server</span><span class=o>.</span><span class=n>quit</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=vm>__name__</span> <span class=o>==</span> <span class=s1>&#39;__main__&#39;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>dfTenYears</span> <span class=o>=</span> <span class=n>get_price</span><span class=p>(</span><span class=s1>&#39;sh000001&#39;</span><span class=p>,</span> <span class=n>frequency</span><span class=o>=</span><span class=s1>&#39;1d&#39;</span><span class=p>,</span> <span class=n>count</span><span class=o>=</span><span class=mi>2500</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>lowLine</span> <span class=o>=</span> <span class=n>dfTenYears</span><span class=p>[</span><span class=s1>&#39;close&#39;</span><span class=p>]</span><span class=o>.</span><span class=n>mean</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>highLine</span> <span class=o>=</span> <span class=n>lowLine</span> <span class=o>+</span> <span class=mi>470</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>dfOneDay</span> <span class=o>=</span> <span class=n>get_price</span><span class=p>(</span><span class=s1>&#39;sh000001&#39;</span><span class=p>,</span> <span class=n>frequency</span><span class=o>=</span><span class=s1>&#39;1d&#39;</span><span class=p>,</span> <span class=n>count</span><span class=o>=</span><span class=mi>1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>lowPoint</span> <span class=o>=</span> <span class=n>dfOneDay</span><span class=p>[</span><span class=s1>&#39;low&#39;</span><span class=p>]</span><span class=o>.</span><span class=n>mean</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>highPoint</span> <span class=o>=</span> <span class=n>dfOneDay</span><span class=p>[</span><span class=s1>&#39;high&#39;</span><span class=p>]</span><span class=o>.</span><span class=n>mean</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>body</span> <span class=o>=</span> <span class=sa>f</span><span class=s2>&#34;当前高水位是：</span><span class=si>{</span><span class=n>highLine</span><span class=si>}</span><span class=se>\n</span><span class=s2>&#34;</span> \
+</span></span><span class=line><span class=cl>           <span class=sa>f</span><span class=s2>&#34;当前收盘价是：</span><span class=si>{</span><span class=n>dfOneDay</span><span class=p>[</span><span class=s1>&#39;close&#39;</span><span class=p>]</span><span class=o>.</span><span class=n>mean</span><span class=p>()</span><span class=si>}</span><span class=se>\n</span><span class=s2>&#34;</span> \
+</span></span><span class=line><span class=cl>           <span class=sa>f</span><span class=s2>&#34;当前低水位是：</span><span class=si>{</span><span class=n>lowLine</span><span class=si>}</span><span class=s2>&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=n>body</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>lowPoint</span> <span class=o>&lt;</span> <span class=n>lowLine</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=n>send_email</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;当前最低点是：</span><span class=si>{</span><span class=n>lowPoint</span><span class=si>}</span><span class=se>\n</span><span class=s2>&#34;</span>
+</span></span><span class=line><span class=cl>                   <span class=sa>f</span><span class=s2>&#34;当前低水位是：</span><span class=si>{</span><span class=n>lowLine</span><span class=si>}</span><span class=se>\n</span><span class=s2>&#34;</span>
+</span></span><span class=line><span class=cl>                   <span class=sa>f</span><span class=s2>&#34;该买了&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>elif</span> <span class=n>highPoint</span> <span class=o>&gt;</span> <span class=n>highLine</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=n>send_email</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;当前最高点是：</span><span class=si>{</span><span class=n>highPoint</span><span class=si>}</span><span class=se>\n</span><span class=s2>&#34;</span>
+</span></span><span class=line><span class=cl>                   <span class=sa>f</span><span class=s2>&#34;当前高水位是：</span><span class=si>{</span><span class=n>highLine</span><span class=si>}</span><span class=se>\n</span><span class=s2>&#34;</span>
+</span></span><span class=line><span class=cl>                   <span class=sa>f</span><span class=s2>&#34;该卖了&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>else</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=n>send_email</span><span class=p>(</span><span class=s1>&#39;&#39;</span><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div><ul><li>设置 Github Actions 每天运行脚本</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Python application</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>on</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>schedule</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=nt>cron</span><span class=p>:</span><span class=w> </span><span class=s1>&#39;0 8 * * *&#39;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>workflow_dispatch</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>permissions</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>contents</span><span class=p>:</span><span class=w> </span><span class=l>read</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>jobs</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>run_python_script</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>runs-on</span><span class=p>:</span><span class=w> </span><span class=l>ubuntu-latest</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>steps</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>actions/checkout@v3</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Set up Python 3.10</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>actions/setup-python@v3</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>with</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>python-version</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;3.10&#34;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Install dependencies</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>run</span><span class=p>:</span><span class=w> </span><span class=p>|</span><span class=sd>
+</span></span></span><span class=line><span class=cl><span class=sd>        python -m pip install --upgrade pip
+</span></span></span><span class=line><span class=cl><span class=sd>        pip install flake8 pytest
+</span></span></span><span class=line><span class=cl><span class=sd>        python -m pip install requests pandas
+</span></span></span><span class=line><span class=cl><span class=sd>        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi</span><span class=w>        
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Set Environment Variables</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>run</span><span class=p>:</span><span class=w> </span><span class=p>|</span><span class=sd>
+</span></span></span><span class=line><span class=cl><span class=sd>        echo &#34;SMTP_MAIL=${{ secrets.SMTP_MAIL }}&#34; &gt;&gt; $GITHUB_ENV
+</span></span></span><span class=line><span class=cl><span class=sd>        echo &#34;SMTP_TOKEN=${{ secrets.SMTP_TOKEN }}&#34; &gt;&gt; $GITHUB_ENV</span><span class=w>        
+</span></span></span><span class=line><span class=cl><span class=w>    </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Run Python script</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>run</span><span class=p>:</span><span class=w> </span><span class=p>|</span><span class=sd>
+</span></span></span><span class=line><span class=cl><span class=sd>        </span><span class=w>        </span><span class=l>python main.py</span><span class=w>
+</span></span></span></code></pre></td></tr></table></div></div></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span></span></div></div><div class=post-info-line><div class=post-info-md></div><div class=post-info-share><span></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fas fa-tags fa-fw" aria-hidden=true></i>&nbsp;<a href=/tags/python/>Python</a></section><section><span><a href=javascript:void(0); onclick=window.history.back()>Back</a></span>&nbsp;|&nbsp;<span><a href=/>Home</a></span></section></div><div class=post-nav><a href=/20220929_chrome-extension-project/ class=prev rel=prev title="Chrome Extension Project: Weibo Advertising Filter"><i class="fas fa-angle-left fa-fw" aria-hidden=true></i>Chrome Extension Project: Weibo Advertising Filter</a></div></div><div id=comments><div id=valine class=comment></div><noscript>Please enable JavaScript to view the comments powered by <a href=https://valine.js.org/>Valine</a>.</noscript></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="far fa-copyright fa-fw" aria-hidden=true></i><span itemprop=copyrightYear>2018 - 2023</span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title="Back to Top"><i class="fas fa-arrow-up fa-fw" aria-hidden=true></i>
+</a><a href=# id=view-comments class=fixed-button title="View Comments"><i class="fas fa-comment fa-fw" aria-hidden=true></i></a></div><link rel=stylesheet href=/lib/valine/valine.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css><script type=text/javascript src=https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"Copy to clipboard",maxShownLines:40},comment:{valine:{appId:"2jSYKh8PFUje3v7Ie3Nn5v1g-gzGzoHsz",appKey:"MyWn4P9G5N32q3oM5JDnlpdL",avatar:"retro",el:"#valine",emojiCDN:"https://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/",enableQQ:!0,highlight:!0,lang:"en",meta:["nick","mail"],pageSize:10,placeholder:"Your comment ...",recordIP:!0,visitor:!0}},lightgallery:!0,search:{algoliaAppID:"BADKNNRXHD",algoliaIndex:"index",algoliaSearchKey:"7a8c2923330a44bdd9985698e3f28e0c",highlightTag:"em",maxResultLength:6,noResultsFound:"No results found",snippetLength:30,type:"algolia"}}</script><script type=text/javascript src=/js/theme.min.js></script></body></html>
