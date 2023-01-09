@@ -10,7 +10,7 @@ draft: false
 # license: ""
 # images: []
 
-tags: ["Python"]
+tags: ["Python", "Pandas"]
 categories: ["Technology"]
 
 # featuredImage: ""
