@@ -1,0 +1,636 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><title>Spark Java Sharing - JerrysBlog</title><meta name=Description content><meta property="og:title" content="Spark Java Sharing"><meta property="og:description" content="Apache Spark™ is a multi-language engine for executing data engineering, data science, and machine learning on single-node machines or clusters."><meta property="og:type" content="article"><meta property="og:url" content="https://jerrysmd.github.io/20221231_spark-sharing/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-12-31T14:43:47+08:00"><meta property="article:modified_time" content="2022-12-31T14:43:47+08:00"><meta property="og:site_name" content="JerrysBlog"><meta name=twitter:card content="summary"><meta name=twitter:title content="Spark Java Sharing"><meta name=twitter:description content="Apache Spark™ is a multi-language engine for executing data engineering, data science, and machine learning on single-node machines or clusters."><meta name=application-name content="JerrysBlog"><meta name=apple-mobile-web-app-title content="JerrysBlog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=https://cdn-icons-png.flaticon.com/512/321/321211.png><link rel=apple-touch-icon sizes=180x180 href=https://cdn-icons-png.flaticon.com/256/738/738671.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://jerrysmd.github.io/20221231_spark-sharing/><link rel=prev href=https://jerrysmd.github.io/20221114_stock-spy/><link rel=stylesheet href=/css/style.min.css><link rel=preload href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css></noscript><link rel=preload href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css></noscript><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Spark Java Sharing","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/jerrysmd.github.io\/20221231_spark-sharing\/"},"genre":"posts","keywords":"Java, Spark","wordcount":1085,"url":"https:\/\/jerrysmd.github.io\/20221231_spark-sharing\/","datePublished":"2022-12-31T14:43:47+08:00","dateModified":"2022-12-31T14:43:47+08:00","publisher":{"@type":"Organization","name":"xxxx","logo":"https:\/\/jerrysmd.github.io\/images\/avatar.png"},"author":{"@type":"Person","name":" "},"description":""}</script></head><body data-header-desktop=fixed data-header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem("theme")?localStorage.getItem("theme")==="dark":"auto"==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:"auto"==="dark")&&document.body.setAttribute("theme","dark")</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title=JerrysBlog><span class=header-title-pre><i class='far fa-edit fa-fw' aria-hidden=true></i></span>JERRYSBLOG</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/ title=Home>Home </a><a class=menu-item href=/categories/technology/ title="Technology article list">Technology </a><a class=menu-item href=/categories/life/ title="Life article list">Life </a><a class=menu-item href=/tags/ title="Tags cloud">Tags </a><a class=menu-item href=/about/ title="About blog">About </a><a class=menu-item href=https://github.com/Jerrysmd title=GitHub rel="noopener noreffer" target=_blank><i class='fab fa-github fa-fw' aria-hidden=true></i> </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder="Search titles or contents..." id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=Search><i class="fas fa-search fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=Clear><i class="fas fa-times-circle fa-fw" aria-hidden=true></i></a>
+<span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i></span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title="Switch Theme"><i class="fas fa-moon fa-fw" aria-hidden=true></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title=JerrysBlog><span class=header-title-pre><i class='far fa-edit fa-fw' aria-hidden=true></i></span>JERRYSBLOG</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder="Search titles or contents..." id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=Search><i class="fas fa-search fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=Clear><i class="fas fa-times-circle fa-fw" aria-hidden=true></i></a>
+<span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>Cancel</a></div><a class=menu-item href=/ title=Home>Home</a><a class=menu-item href=/categories/technology/ title="Technology article list">Technology</a><a class=menu-item href=/categories/life/ title="Life article list">Life</a><a class=menu-item href=/tags/ title="Tags cloud">Tags</a><a class=menu-item href=/about/ title="About blog">About</a><a class=menu-item href=https://github.com/Jerrysmd title=GitHub rel="noopener noreffer" target=_blank><i class='fab fa-github fa-fw' aria-hidden=true></i></a><a href=javascript:void(0); class="menu-item theme-switch" title="Switch Theme">
+<i class="fas fa-moon fa-fw" aria-hidden=true></i></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>Contents</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Spark Java Sharing</h1><div class=post-meta><div class=post-meta-line><span class=post-category>Category in
+<a href=/categories/technology/><i class="far fa-folder fa-fw" aria-hidden=true></i>Technology</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt fa-fw" aria-hidden=true></i>&nbsp;<time datetime=2022-12-31>2022-12-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden=true></i>&nbsp;1085 words&nbsp;
+<i class="far fa-clock fa-fw" aria-hidden=true></i>&nbsp;6 minutes&nbsp;<span id=/20221231_spark-sharing/ class=leancloud_visitors data-flag-title="Spark Java Sharing">
+<i class="far fa-eye fa-fw" aria-hidden=true></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+</span>&nbsp;</div></div><div class="details toc" id=toc-static data-kept><div class="details-summary toc-title"><span>Contents</span>
+<span><i class="details-icon fas fa-angle-right" aria-hidden=true></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#1spark-简介>1.Spark 简介</a><ul><li><a href=#1-spark-的背景>1. Spark 的背景</a></li><li><a href=#2-spark-的核心模块>2. Spark 的核心模块</a></li><li><a href=#3-spark-的生态组件>3. Spark 的生态组件</a></li></ul></li><li><a href=#2spark-代码快速上手>2.Spark 代码快速上手</a><ul><li><a href=#1-离线批处理场景>1. 离线批处理场景</a></li><li><a href=#2-实时流处理场景>2. 实时流处理场景</a></li><li><a href=#3-机器学习场景>3. 机器学习场景</a></li><li><a href=#4-图计算场景>4. 图计算场景</a></li></ul></li><li><a href=#3spark-数据处理与分析场景>3.Spark 数据处理与分析场景</a></li><li><a href=#4spark-分布式计算框架和编程模型-mapreduce>4.Spark 分布式计算框架和编程模型 MapReduce</a></li><li><a href=#5spark-弹性数据集-rdd-和结构化数据-dataset>5.Spark 弹性数据集 RDD 和结构化数据 Dataset</a></li><li><a href=#6spark抽象概念架构与运行环境>6.Spark抽象概念、架构与运行环境</a></li></ul></nav></div></div><div class=content id=content><p>Apache Spark™ is a multi-language engine for executing data engineering, data science, and machine learning on single-node machines or clusters.</p><h2 id=1spark-简介>1.Spark 简介</h2><h3 id=1-spark-的背景>1. Spark 的背景</h3><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230102224511013.png title=image-20230102224511013 data-thumbnail=/20221231_spark-sharing/image-20230102224511013.png data-sub-html="<h2> </h2><p>image-20230102224511013</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230102224511013.png data-srcset="/20221231_spark-sharing/image-20230102224511013.png, /20221231_spark-sharing/image-20230102224511013.png 1.5x, /20221231_spark-sharing/image-20230102224511013.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230102224511013.png width=1640 height=316></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20221228141948679.png title=image-20221228141948679 data-thumbnail=/20221231_spark-sharing/image-20221228141948679.png data-sub-html="<h2> </h2><p>image-20221228141948679</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20221228141948679.png data-srcset="/20221231_spark-sharing/image-20221228141948679.png, /20221231_spark-sharing/image-20221228141948679.png 1.5x, /20221231_spark-sharing/image-20221228141948679.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20221228141948679.png width=1468 height=191></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103022138334.png title=image-20230103022138334 data-thumbnail=/20221231_spark-sharing/image-20230103022138334.png data-sub-html="<h2> </h2><p>image-20230103022138334</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103022138334.png data-srcset="/20221231_spark-sharing/image-20230103022138334.png, /20221231_spark-sharing/image-20230103022138334.png 1.5x, /20221231_spark-sharing/image-20230103022138334.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103022138334.png width=1462 height=207></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20221228142003610.png title=image-20221228142003610 data-thumbnail=/20221231_spark-sharing/image-20221228142003610.png data-sub-html="<h2> </h2><p>image-20221228142003610</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20221228142003610.png data-srcset="/20221231_spark-sharing/image-20221228142003610.png, /20221231_spark-sharing/image-20221228142003610.png 1.5x, /20221231_spark-sharing/image-20221228142003610.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20221228142003610.png width=1468 height=226></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20221228152404383.png title=image-20221228152404383 data-thumbnail=/20221231_spark-sharing/image-20221228152404383.png data-sub-html="<h2> </h2><p>image-20221228152404383</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20221228152404383.png data-srcset="/20221231_spark-sharing/image-20221228152404383.png, /20221231_spark-sharing/image-20221228152404383.png 1.5x, /20221231_spark-sharing/image-20221228152404383.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20221228152404383.png width=1468 height=226></a><figcaption class=image-caption></figcaption></figure></p><hr><h3 id=2-spark-的核心模块>2. Spark 的核心模块</h3><p>Spark 的定义：一个通用的大数据分析引擎</p><p>Spark 的核心模块：</p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20221228164246025.png title=image-20221228164246025 data-thumbnail=/20221231_spark-sharing/image-20221228164246025.png data-sub-html="<h2> </h2><p>image-20221228164246025</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20221228164246025.png data-srcset="/20221231_spark-sharing/image-20221228164246025.png, /20221231_spark-sharing/image-20221228164246025.png 1.5x, /20221231_spark-sharing/image-20221228164246025.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20221228164246025.png width=1171 height=608></a><figcaption class=image-caption></figcaption></figure></p><hr><h3 id=3-spark-的生态组件>3. Spark 的生态组件</h3><p>Spark 的生态：</p><p><figure><a class=lightgallery href=/20221231_spark-sharing/largest-open-source-apache-spark.png title="Spark - Apache Spark" data-thumbnail=/20221231_spark-sharing/largest-open-source-apache-spark.png data-sub-html="<h2> </h2><p>Spark - Apache Spark</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/largest-open-source-apache-spark.png data-srcset="/20221231_spark-sharing/largest-open-source-apache-spark.png, /20221231_spark-sharing/largest-open-source-apache-spark.png 1.5x, /20221231_spark-sharing/largest-open-source-apache-spark.png 2x" data-sizes=auto alt=/20221231_spark-sharing/largest-open-source-apache-spark.png width=684 height=509></a><figcaption class=image-caption></figcaption></figure></p><h2 id=2spark-代码快速上手>2.Spark 代码快速上手</h2><p>Maven 配置：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-xml data-lang=xml><span class=line><span class=cl><span class=cp>&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;project</span> <span class=na>xmlns=</span><span class=s>&#34;http://maven.apache.org/POM/4.0.0&#34;</span>
+</span></span><span class=line><span class=cl>         <span class=na>xmlns:xsi=</span><span class=s>&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+</span></span><span class=line><span class=cl>         <span class=na>xsi:schemaLocation=</span><span class=s>&#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;modelVersion&gt;</span>4.0.0<span class=nt>&lt;/modelVersion&gt;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;groupId&gt;</span>org.example<span class=nt>&lt;/groupId&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;artifactId&gt;</span>spark-demo<span class=nt>&lt;/artifactId&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;version&gt;</span>1.0-SNAPSHOT<span class=nt>&lt;/version&gt;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;properties&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&lt;maven.compiler.source&gt;</span>8<span class=nt>&lt;/maven.compiler.source&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&lt;maven.compiler.target&gt;</span>8<span class=nt>&lt;/maven.compiler.target&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&lt;scala.version&gt;</span>2.13<span class=nt>&lt;/scala.version&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&lt;spark.version&gt;</span>3.3.1<span class=nt>&lt;/spark.version&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;/properties&gt;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;dependencies&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&lt;dependency&gt;</span>
+</span></span><span class=line><span class=cl>            <span class=nt>&lt;groupId&gt;</span>org.apache.spark<span class=nt>&lt;/groupId&gt;</span>
+</span></span><span class=line><span class=cl>            <span class=nt>&lt;artifactId&gt;</span>spark-core_${scala.version}<span class=nt>&lt;/artifactId&gt;</span>
+</span></span><span class=line><span class=cl>            <span class=nt>&lt;version&gt;</span>${spark.version}<span class=nt>&lt;/version&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&lt;/dependency&gt;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=nt>&lt;dependency&gt;</span>
+</span></span><span class=line><span class=cl>            <span class=nt>&lt;groupId&gt;</span>org.apache.spark<span class=nt>&lt;/groupId&gt;</span>
+</span></span><span class=line><span class=cl>            <span class=nt>&lt;artifactId&gt;</span>spark-sql_${scala.version}<span class=nt>&lt;/artifactId&gt;</span>
+</span></span><span class=line><span class=cl>            <span class=nt>&lt;version&gt;</span>${spark.version}<span class=nt>&lt;/version&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&lt;/dependency&gt;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=nt>&lt;dependency&gt;</span>
+</span></span><span class=line><span class=cl>            <span class=nt>&lt;groupId&gt;</span>org.apache.spark<span class=nt>&lt;/groupId&gt;</span>
+</span></span><span class=line><span class=cl>            <span class=nt>&lt;artifactId&gt;</span>spark-mllib_${scala.version}<span class=nt>&lt;/artifactId&gt;</span>
+</span></span><span class=line><span class=cl>            <span class=nt>&lt;version&gt;</span>${spark.version}<span class=nt>&lt;/version&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&lt;/dependency&gt;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=nt>&lt;dependency&gt;</span>
+</span></span><span class=line><span class=cl>            <span class=nt>&lt;groupId&gt;</span>org.apache.spark<span class=nt>&lt;/groupId&gt;</span>
+</span></span><span class=line><span class=cl>            <span class=nt>&lt;artifactId&gt;</span>spark-graphx_${scala.version}<span class=nt>&lt;/artifactId&gt;</span>
+</span></span><span class=line><span class=cl>            <span class=nt>&lt;version&gt;</span>${spark.version}<span class=nt>&lt;/version&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&lt;/dependency&gt;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=nt>&lt;dependency&gt;</span>
+</span></span><span class=line><span class=cl>            <span class=nt>&lt;groupId&gt;</span>mysql<span class=nt>&lt;/groupId&gt;</span>
+</span></span><span class=line><span class=cl>            <span class=nt>&lt;artifactId&gt;</span>mysql-connector-java<span class=nt>&lt;/artifactId&gt;</span>
+</span></span><span class=line><span class=cl>            <span class=nt>&lt;version&gt;</span>8.0.22<span class=nt>&lt;/version&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&lt;/dependency&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;/dependencies&gt;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nt>&lt;/project&gt;</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=1-离线批处理场景>1. 离线批处理场景</h3><p>需求一: 离线批处理场景</p><p>数据来源于葡萄牙银行电话调查的结果</p><p>原始数据中的关键列：</p><table><thead><tr><th>lname</th><th>fname</th><th>province</th><th>city</th><th>age</th><th>dur</th><th>cam</th></tr></thead><tbody><tr><td>Santos</td><td>Antonio</td><td>Lisbon</td><td>Porto</td><td>20</td><td>261</td><td>1</td></tr><tr><td>Silva</td><td>Maria</td><td>Porto</td><td>Braga</td><td>57</td><td>149</td><td>1</td></tr><tr><td>Pereira</td><td>Jorge</td><td>Braga</td><td>Faro</td><td>37</td><td>226</td><td>1</td></tr><tr><td>Martins</td><td>Ana</td><td>Faro</td><td>Coimbra</td><td>40</td><td>151</td><td>1</td></tr><tr><td>&mldr;</td><td>&mldr;</td><td>&mldr;</td><td>&mldr;</td><td>..</td><td>&mldr;</td><td>.</td></tr></tbody></table><p>需求一: 离线批处理场景</p><p>需求列表：</p><ol><li>Spark 读取 CSV 文件</li><li>过滤掉通话时间少于50秒的数据</li><li>过滤掉年龄小于20的人</li><li>生成完整名字，使用逗号连接姓和名字段得出</li><li>生成详细地址字段，使用逗号连接州和城市字段得出</li><li>根据年龄将客户分组，并统计各组客户的客户总数、通话联系的平均次数、电话联系的平均时间</li><li>写入 mysql 数据库中</li></ol><p>代码实现：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span><span class=lnt>63
+</span><span class=lnt>64
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=kn>import</span> <span class=nn>org.apache.spark.sql.*</span><span class=o>;</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>org.apache.spark.sql.expressions.UserDefinedFunction</span><span class=o>;</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>org.apache.spark.sql.types.DataTypes</span><span class=o>;</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>java.util.Properties</span><span class=o>;</span>
+</span></span><span class=line><span class=cl><span class=kn>import static</span> <span class=nn>org.apache.spark.sql.functions.*</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=kd>class</span> <span class=nc>spark01_helloworld</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kd>static</span> <span class=kt>void</span> <span class=nf>main</span><span class=o>(</span><span class=n>String</span><span class=o>[]</span> <span class=n>args</span><span class=o>){</span>
+</span></span><span class=line><span class=cl>        <span class=n>SparkSession</span> <span class=n>sparkSession</span> <span class=o>=</span> <span class=k>new</span> <span class=n>SparkSession</span><span class=o>.</span><span class=na>Builder</span><span class=o>()</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>appName</span><span class=o>(</span><span class=s>&#34;csv2db&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>master</span><span class=o>(</span><span class=s>&#34;local[*]&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>getOrCreate</span><span class=o>();</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>Dataset</span><span class=o>&lt;</span><span class=n>Row</span><span class=o>&gt;</span> <span class=n>bankTable</span> <span class=o>=</span> <span class=n>sparkSession</span><span class=o>.</span><span class=na>read</span><span class=o>()</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>format</span><span class=o>(</span><span class=s>&#34;csv&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>option</span><span class=o>(</span><span class=s>&#34;header&#34;</span><span class=o>,</span> <span class=s>&#34;true&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>load</span><span class=o>(</span><span class=s>&#34;C:\\Users\\JiaRui\\Desktop\\bank-additional-full.csv&#34;</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1>//TODO: 1.过滤掉通话时间少于50秒的数据
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=n>bankTable</span> <span class=o>=</span> <span class=n>bankTable</span><span class=o>.</span><span class=na>filter</span><span class=o>(</span><span class=s>&#34;duration &gt;= 50&#34;</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1>//TODO: 2.过滤掉年龄小于20
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=n>bankTable</span><span class=o>.</span><span class=na>createOrReplaceTempView</span><span class=o>(</span><span class=s>&#34;bank_table&#34;</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>bankTable</span> <span class=o>=</span> <span class=n>sparkSession</span><span class=o>.</span><span class=na>sql</span><span class=o>(</span><span class=s>&#34;select * from bank_table where age &gt;= 20&#34;</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1>//TODO: 3.生成完整名字，使用逗号连接姓和名字段得出
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=n>bankTable</span><span class=o>=</span> <span class=n>bankTable</span><span class=o>.</span><span class=na>withColumn</span><span class=o>(</span>
+</span></span><span class=line><span class=cl>                <span class=s>&#34;name&#34;</span><span class=o>,</span>
+</span></span><span class=line><span class=cl>                <span class=n>concat</span><span class=o>(</span><span class=n>bankTable</span><span class=o>.</span><span class=na>col</span><span class=o>(</span><span class=s>&#34;lname&#34;</span><span class=o>),</span> <span class=n>lit</span><span class=o>(</span><span class=s>&#34;, &#34;</span><span class=o>),</span> <span class=n>bankTable</span><span class=o>.</span><span class=na>col</span><span class=o>(</span><span class=s>&#34;fname&#34;</span><span class=o>))</span>
+</span></span><span class=line><span class=cl>        <span class=o>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1>//TODO: 4.生成详细地址字段，使用逗号连接州和城市字段得出
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=n>UserDefinedFunction</span> <span class=n>mergeUdf</span> <span class=o>=</span> <span class=n>udf</span><span class=o>(</span>
+</span></span><span class=line><span class=cl>                <span class=o>(</span><span class=n>String</span> <span class=n>x</span><span class=o>,</span> <span class=n>String</span> <span class=n>y</span><span class=o>)</span> <span class=o>-&gt;</span> <span class=n>x</span> <span class=o>+</span> <span class=s>&#34;, &#34;</span> <span class=o>+</span> <span class=n>y</span><span class=o>,</span> <span class=n>DataTypes</span><span class=o>.</span><span class=na>StringType</span>
+</span></span><span class=line><span class=cl>        <span class=o>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>sparkSession</span><span class=o>.</span><span class=na>udf</span><span class=o>().</span><span class=na>register</span><span class=o>(</span><span class=s>&#34;merge&#34;</span><span class=o>,</span> <span class=n>mergeUdf</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>bankTable</span> <span class=o>=</span> <span class=n>bankTable</span><span class=o>.</span><span class=na>withColumn</span><span class=o>(</span><span class=s>&#34;address&#34;</span><span class=o>,</span>
+</span></span><span class=line><span class=cl>                <span class=n>call_udf</span><span class=o>(</span><span class=s>&#34;merge&#34;</span><span class=o>,</span><span class=n>col</span><span class=o>(</span><span class=s>&#34;province&#34;</span><span class=o>),</span><span class=n>col</span><span class=o>(</span><span class=s>&#34;city&#34;</span><span class=o>)));</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1>//TODO: 5.根据年龄将客户分组，并统计各组客户的客户总数、通话联系的平均次数、电话联系的平均时间
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=n>Dataset</span><span class=o>&lt;</span><span class=n>Row</span><span class=o>&gt;</span> <span class=n>reportTable</span> <span class=o>=</span> <span class=n>bankTable</span><span class=o>.</span><span class=na>groupBy</span><span class=o>(</span><span class=s>&#34;age&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>agg</span><span class=o>(</span><span class=n>count</span><span class=o>(</span><span class=s>&#34;age&#34;</span><span class=o>).</span><span class=na>name</span><span class=o>(</span><span class=s>&#34;total customers&#34;</span><span class=o>),</span>
+</span></span><span class=line><span class=cl>                        <span class=n>round</span><span class=o>(</span><span class=n>avg</span><span class=o>(</span><span class=s>&#34;campaign&#34;</span><span class=o>),</span> <span class=mi>2</span><span class=o>).</span><span class=na>name</span><span class=o>(</span><span class=s>&#34;avg_calls&#34;</span><span class=o>),</span>
+</span></span><span class=line><span class=cl>                        <span class=n>round</span><span class=o>(</span><span class=n>avg</span><span class=o>(</span><span class=s>&#34;duration&#34;</span><span class=o>),</span> <span class=mi>2</span><span class=o>).</span><span class=na>name</span><span class=o>(</span><span class=s>&#34;avg_dur&#34;</span><span class=o>))</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>orderBy</span><span class=o>(</span><span class=s>&#34;age&#34;</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>String</span> <span class=n>url</span> <span class=o>=</span> <span class=s>&#34;jdbc:mysql://172.20.121.222:3306/test&#34;</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>Properties</span> <span class=n>properties</span> <span class=o>=</span> <span class=k>new</span> <span class=n>Properties</span><span class=o>();</span>
+</span></span><span class=line><span class=cl>        <span class=n>properties</span><span class=o>.</span><span class=na>setProperty</span><span class=o>(</span><span class=s>&#34;dirver&#34;</span><span class=o>,</span><span class=s>&#34;com.mysql.cj.jdbc.Driver&#34;</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>properties</span><span class=o>.</span><span class=na>setProperty</span><span class=o>(</span><span class=s>&#34;user&#34;</span><span class=o>,</span><span class=s>&#34;root&#34;</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>properties</span><span class=o>.</span><span class=na>setProperty</span><span class=o>(</span><span class=s>&#34;password&#34;</span><span class=o>,</span><span class=s>&#34;123456&#34;</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>bankTable</span><span class=o>.</span><span class=na>write</span><span class=o>()</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>mode</span><span class=o>(</span><span class=n>SaveMode</span><span class=o>.</span><span class=na>Overwrite</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>jdbc</span><span class=o>(</span><span class=n>url</span><span class=o>,</span><span class=s>&#34;bank_table&#34;</span><span class=o>,</span><span class=n>properties</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>reportTable</span><span class=o>.</span><span class=na>write</span><span class=o>()</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>mode</span><span class=o>(</span><span class=n>SaveMode</span><span class=o>.</span><span class=na>Overwrite</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>jdbc</span><span class=o>(</span><span class=n>url</span><span class=o>,</span><span class=s>&#34;report_table&#34;</span><span class=o>,</span><span class=n>properties</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>sparkSession</span><span class=o>.</span><span class=na>stop</span><span class=o>();</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=2-实时流处理场景>2. 实时流处理场景</h3><p>需求二: 实时流处理场景</p><p>数据源是股票价格数据的实时数据，每分钟更新</p><p>样例数据：</p><blockquote><p>key: <strong>000002.SZ</strong> value: <strong>1502126681, 22.71, 21.54, 22.32, 22.17</strong></p></blockquote><blockquote><p>其中每个字段分别是股票代码、事件时间戳、现价、买入价、卖出价、成交均价。</p></blockquote><p>需求列表：</p><ol><li>读取 kafka 数据</li><li>记录每支股票每半个小时的最高价和最低价</li><li>写入 Hbase 数据库中</li></ol><p>代码实现：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=kn>import</span> <span class=nn>org.apache.spark.sql.SparkSession</span><span class=o>;</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>org.apache.spark.sql.streaming.Trigger</span><span class=o>;</span>
+</span></span><span class=line><span class=cl><span class=kn>import static</span> <span class=nn>org.apache.spark.sql.functions.*</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=kd>class</span> <span class=nc>spark02_streaming</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kd>static</span> <span class=kt>void</span> <span class=nf>main</span><span class=o>(</span><span class=n>String</span><span class=o>[]</span> <span class=n>args</span><span class=o>)</span> <span class=kd>throws</span> <span class=n>Exception</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>SparkSession</span> <span class=n>sparkSession</span> <span class=o>=</span> <span class=n>SparkSession</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>builder</span><span class=o>()</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>master</span><span class=o>(</span><span class=s>&#34;local[*]&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>appName</span><span class=o>(</span><span class=s>&#34;StockCCI&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>getOrCreate</span><span class=o>();</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1>//分别设置window长度、容忍最大晚到时间和触发间隔
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=n>String</span> <span class=n>windowDuration</span> <span class=o>=</span> <span class=s>&#34;30 minutes&#34;</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>        <span class=n>String</span> <span class=n>waterThreshold</span> <span class=o>=</span> <span class=s>&#34;5 minutes&#34;</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>        <span class=n>String</span> <span class=n>triggerTime</span> <span class=o>=</span> <span class=s>&#34;1 minutes&#34;</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>sparkSession</span><span class=o>.</span><span class=na>readStream</span><span class=o>()</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>format</span><span class=o>(</span><span class=s>&#34;kafka&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>option</span><span class=o>(</span><span class=s>&#34;kafka.bootstrap.servers&#34;</span><span class=o>,</span><span class=s>&#34;broker1:port1,broker2:port2&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>option</span><span class=o>(</span><span class=s>&#34;subcribe&#34;</span><span class=o>,</span><span class=s>&#34;stock&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>load</span><span class=o>()</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>selectExpr</span><span class=o>(</span>
+</span></span><span class=line><span class=cl>                        <span class=s>&#34;CAST(key AS STRING)&#34;</span><span class=o>,</span>
+</span></span><span class=line><span class=cl>                        <span class=s>&#34;CAST(value AS STRING)&#34;</span><span class=o>.</span><span class=na>split</span><span class=o>(</span><span class=s>&#34;,&#34;</span><span class=o>)[</span><span class=mi>0</span><span class=o>],</span>
+</span></span><span class=line><span class=cl>                        <span class=s>&#34;CAST(value AS STRING)&#34;</span><span class=o>.</span><span class=na>split</span><span class=o>(</span><span class=s>&#34;,&#34;</span><span class=o>)[</span><span class=mi>1</span><span class=o>],</span>
+</span></span><span class=line><span class=cl>                        <span class=s>&#34;CAST(value AS STRING)&#34;</span><span class=o>.</span><span class=na>split</span><span class=o>(</span><span class=s>&#34;,&#34;</span><span class=o>)[</span><span class=mi>2</span><span class=o>],</span>
+</span></span><span class=line><span class=cl>                        <span class=s>&#34;CAST(value AS STRING)&#34;</span><span class=o>.</span><span class=na>split</span><span class=o>(</span><span class=s>&#34;,&#34;</span><span class=o>)[</span><span class=mi>3</span><span class=o>],</span>
+</span></span><span class=line><span class=cl>                        <span class=s>&#34;CAST(value AS STRING)&#34;</span><span class=o>.</span><span class=na>split</span><span class=o>(</span><span class=s>&#34;,&#34;</span><span class=o>)[</span><span class=mi>4</span><span class=o>])</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>toDF</span><span class=o>(</span><span class=s>&#34;companyno&#34;</span><span class=o>,</span><span class=s>&#34;timestamp&#34;</span><span class=o>,</span><span class=s>&#34;price&#34;</span><span class=o>,</span><span class=s>&#34;bidprice&#34;</span><span class=o>,</span><span class=s>&#34;sellpirce&#34;</span><span class=o>,</span><span class=s>&#34;avgprice&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>selectExpr</span><span class=o>(</span>
+</span></span><span class=line><span class=cl>                        <span class=s>&#34;CAST(companyno AS STRING)&#34;</span><span class=o>,</span>
+</span></span><span class=line><span class=cl>                        <span class=s>&#34;CAST(timestamp AS TIMESTAMP)&#34;</span><span class=o>,</span>
+</span></span><span class=line><span class=cl>                        <span class=s>&#34;CAST(price AS DOUBLE)&#34;</span><span class=o>,</span>
+</span></span><span class=line><span class=cl>                        <span class=s>&#34;CAST(bidprice AS DOUBLE)&#34;</span><span class=o>,</span>
+</span></span><span class=line><span class=cl>                        <span class=s>&#34;CAST(sellpirce AS DOUBLE)&#34;</span><span class=o>,</span>
+</span></span><span class=line><span class=cl>                        <span class=s>&#34;CAST(avgprice AS DOUBLE)&#34;</span>
+</span></span><span class=line><span class=cl>                <span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=c1>//设定水位
+</span></span></span><span class=line><span class=cl><span class=c1></span>                <span class=o>.</span><span class=na>withWatermark</span><span class=o>(</span><span class=s>&#34;timestamp&#34;</span><span class=o>,</span><span class=n>waterThreshold</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>groupBy</span><span class=o>(</span><span class=s>&#34;timestamp&#34;</span><span class=o>,</span>
+</span></span><span class=line><span class=cl>                        <span class=n>windowDuration</span><span class=o>,</span>
+</span></span><span class=line><span class=cl>                        <span class=s>&#34;companyno&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=c1>//求出最高价和最低价
+</span></span></span><span class=line><span class=cl><span class=c1></span>                <span class=o>.</span><span class=na>agg</span><span class=o>(</span>
+</span></span><span class=line><span class=cl>                        <span class=n>max</span><span class=o>(</span><span class=n>col</span><span class=o>(</span><span class=s>&#34;price&#34;</span><span class=o>)).</span><span class=na>as</span><span class=o>(</span><span class=s>&#34;max_price&#34;</span><span class=o>),</span>
+</span></span><span class=line><span class=cl>                        <span class=n>min</span><span class=o>(</span><span class=n>col</span><span class=o>(</span><span class=s>&#34;price&#34;</span><span class=o>)).</span><span class=na>as</span><span class=o>(</span><span class=s>&#34;min_price&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>writeStream</span><span class=o>()</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>outputMode</span><span class=o>(</span><span class=s>&#34;append&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>trigger</span><span class=o>(</span><span class=n>Trigger</span><span class=o>.</span><span class=na>ProcessingTime</span><span class=o>(</span><span class=n>triggerTime</span><span class=o>))</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>format</span><span class=o>(</span><span class=s>&#34;HBaseWriter&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>start</span><span class=o>()</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>awaitTermination</span><span class=o>();</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=3-机器学习场景>3. 机器学习场景</h3><p>需求三: 机器学习场景</p><p>数据源是文本和打分标签</p><p>训练数据：</p><table><thead><tr><th>id</th><th>text</th><th>label</th></tr></thead><tbody><tr><td>0L</td><td>&ldquo;a b c spark&rdquo;</td><td>1.0</td></tr><tr><td>1L</td><td>&ldquo;b d&rdquo;</td><td>0.0</td></tr><tr><td>2L</td><td>&ldquo;spark f g h&rdquo;</td><td>1.0</td></tr><tr><td>3L</td><td>&ldquo;hadoop mapr&rdquo;</td><td>0.0</td></tr></tbody></table><p>测试数据：</p><table><thead><tr><th>id</th><th>&ldquo;text&rdquo;</th></tr></thead><tbody><tr><td>4L</td><td>&ldquo;spark i j&rdquo;</td></tr><tr><td>5L</td><td>&ldquo;l m n&rdquo;</td></tr><tr><td>6L</td><td>&ldquo;spark hadoop spark&rdquo;</td></tr><tr><td>7L</td><td>&ldquo;apache hadoop&rdquo;</td></tr></tbody></table><p>需求三: 机器学习场景</p><p>需求列表：</p><ol><li>将文档分词</li><li>将分词的结果转换为词向量</li><li>学习模型</li><li>预测（是否为垃圾邮件）</li></ol><p>代码实现：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span><span class=lnt>63
+</span><span class=lnt>64
+</span><span class=lnt>65
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=kn>import</span> <span class=nn>org.apache.spark.ml.Pipeline</span><span class=o>;</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>org.apache.spark.ml.PipelineModel</span><span class=o>;</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>org.apache.spark.ml.PipelineStage</span><span class=o>;</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>org.apache.spark.ml.classification.LogisticRegression</span><span class=o>;</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>org.apache.spark.ml.feature.HashingTF</span><span class=o>;</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>org.apache.spark.ml.feature.Tokenizer</span><span class=o>;</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>org.apache.spark.sql.Dataset</span><span class=o>;</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>org.apache.spark.sql.Row</span><span class=o>;</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>org.apache.spark.sql.SparkSession</span><span class=o>;</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>org.apache.spark.sql.types.DataTypes</span><span class=o>;</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>org.apache.spark.sql.types.Metadata</span><span class=o>;</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>org.apache.spark.sql.types.StructField</span><span class=o>;</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>org.apache.spark.sql.types.StructType</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=kd>class</span> <span class=nc>spark03_mlpipeline</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kd>static</span> <span class=kt>void</span> <span class=nf>main</span><span class=o>(</span><span class=n>String</span><span class=o>[]</span> <span class=n>args</span><span class=o>)</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>SparkSession</span> <span class=n>sparkSession</span> <span class=o>=</span> <span class=n>SparkSession</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>builder</span><span class=o>()</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>master</span><span class=o>(</span><span class=s>&#34;local[*]&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>appName</span><span class=o>(</span><span class=s>&#34;mlpipeline&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>getOrCreate</span><span class=o>();</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>Dataset</span><span class=o>&lt;</span><span class=n>Row</span><span class=o>&gt;</span> <span class=n>training</span> <span class=o>=</span> <span class=n>sparkSession</span><span class=o>.</span><span class=na>read</span><span class=o>()</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>format</span><span class=o>(</span><span class=s>&#34;csv&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>option</span><span class=o>(</span><span class=s>&#34;header&#34;</span><span class=o>,</span> <span class=s>&#34;true&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>schema</span><span class=o>(</span><span class=k>new</span> <span class=n>StructType</span><span class=o>(</span><span class=k>new</span> <span class=n>StructField</span><span class=o>[]</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>                        <span class=k>new</span> <span class=n>StructField</span><span class=o>(</span><span class=s>&#34;id&#34;</span><span class=o>,</span> <span class=n>DataTypes</span><span class=o>.</span><span class=na>LongType</span><span class=o>,</span> <span class=kc>false</span><span class=o>,</span> <span class=n>Metadata</span><span class=o>.</span><span class=na>empty</span><span class=o>()),</span>
+</span></span><span class=line><span class=cl>                        <span class=k>new</span> <span class=n>StructField</span><span class=o>(</span><span class=s>&#34;text&#34;</span><span class=o>,</span> <span class=n>DataTypes</span><span class=o>.</span><span class=na>StringType</span><span class=o>,</span> <span class=kc>false</span><span class=o>,</span> <span class=n>Metadata</span><span class=o>.</span><span class=na>empty</span><span class=o>()),</span>
+</span></span><span class=line><span class=cl>                        <span class=k>new</span> <span class=n>StructField</span><span class=o>(</span><span class=s>&#34;label&#34;</span><span class=o>,</span> <span class=n>DataTypes</span><span class=o>.</span><span class=na>DoubleType</span><span class=o>,</span> <span class=kc>false</span><span class=o>,</span> <span class=n>Metadata</span><span class=o>.</span><span class=na>empty</span><span class=o>())</span>
+</span></span><span class=line><span class=cl>                <span class=o>}))</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>load</span><span class=o>(</span><span class=s>&#34;C:\\Users\\JiaRui\\Desktop\\training.csv&#34;</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>Tokenizer</span> <span class=n>tokenizer</span> <span class=o>=</span> <span class=k>new</span> <span class=n>Tokenizer</span><span class=o>()</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>setInputCol</span><span class=o>(</span><span class=s>&#34;text&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>setOutputCol</span><span class=o>(</span><span class=s>&#34;words&#34;</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>HashingTF</span> <span class=n>hashingTF</span> <span class=o>=</span> <span class=k>new</span> <span class=n>HashingTF</span><span class=o>()</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>setNumFeatures</span><span class=o>(</span><span class=mi>1000</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>setInputCol</span><span class=o>(</span><span class=n>tokenizer</span><span class=o>.</span><span class=na>getOutputCol</span><span class=o>())</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>setOutputCol</span><span class=o>(</span><span class=s>&#34;features&#34;</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>LogisticRegression</span> <span class=n>lr</span> <span class=o>=</span> <span class=k>new</span> <span class=n>LogisticRegression</span><span class=o>()</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>setMaxIter</span><span class=o>(</span><span class=mi>10</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>setRegParam</span><span class=o>(</span><span class=mf>0.001</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>Pipeline</span> <span class=n>pipeline</span> <span class=o>=</span> <span class=k>new</span> <span class=n>Pipeline</span><span class=o>()</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>setStages</span><span class=o>(</span><span class=k>new</span> <span class=n>PipelineStage</span><span class=o>[]{</span><span class=n>tokenizer</span><span class=o>,</span><span class=n>hashingTF</span><span class=o>,</span><span class=n>lr</span><span class=o>});</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>PipelineModel</span> <span class=n>model</span> <span class=o>=</span> <span class=n>pipeline</span><span class=o>.</span><span class=na>fit</span><span class=o>(</span><span class=n>training</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>Dataset</span><span class=o>&lt;</span><span class=n>Row</span><span class=o>&gt;</span> <span class=n>test</span> <span class=o>=</span> <span class=n>sparkSession</span><span class=o>.</span><span class=na>read</span><span class=o>()</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>format</span><span class=o>(</span><span class=s>&#34;csv&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>option</span><span class=o>(</span><span class=s>&#34;header&#34;</span><span class=o>,</span> <span class=s>&#34;true&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>schema</span><span class=o>(</span><span class=k>new</span> <span class=n>StructType</span><span class=o>(</span><span class=k>new</span> <span class=n>StructField</span><span class=o>[]{</span>
+</span></span><span class=line><span class=cl>                        <span class=k>new</span> <span class=n>StructField</span><span class=o>(</span><span class=s>&#34;id&#34;</span><span class=o>,</span> <span class=n>DataTypes</span><span class=o>.</span><span class=na>LongType</span><span class=o>,</span> <span class=kc>false</span><span class=o>,</span> <span class=n>Metadata</span><span class=o>.</span><span class=na>empty</span><span class=o>()),</span>
+</span></span><span class=line><span class=cl>                        <span class=k>new</span> <span class=n>StructField</span><span class=o>(</span><span class=s>&#34;text&#34;</span><span class=o>,</span> <span class=n>DataTypes</span><span class=o>.</span><span class=na>StringType</span><span class=o>,</span> <span class=kc>false</span><span class=o>,</span> <span class=n>Metadata</span><span class=o>.</span><span class=na>empty</span><span class=o>())</span>
+</span></span><span class=line><span class=cl>                <span class=o>}))</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>load</span><span class=o>(</span><span class=s>&#34;C:\\Users\\JiaRui\\Desktop\\test.csv&#34;</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>Dataset</span><span class=o>&lt;</span><span class=n>Row</span><span class=o>&gt;</span> <span class=n>res</span> <span class=o>=</span> <span class=n>model</span><span class=o>.</span><span class=na>transform</span><span class=o>(</span><span class=n>test</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>select</span><span class=o>(</span><span class=s>&#34;id&#34;</span><span class=o>,</span> <span class=s>&#34;text&#34;</span><span class=o>,</span> <span class=s>&#34;probability&#34;</span><span class=o>,</span> <span class=s>&#34;prediction&#34;</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>res</span><span class=o>.</span><span class=na>show</span><span class=o>();</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=4-图计算场景>4. 图计算场景</h3><p>需求四: 图计算场景</p><p>需求：使用 GraphX 实现了 PageRank 得分。</p><img src=Ciqc1F8WpJGARXVJAAJi6KATlWk577.png alt=img style=zoom:40%><p>代码实现：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=kn>import</span> <span class=nn>org.apache.spark.api.java.JavaRDD</span><span class=o>;</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>org.apache.spark.graphx.Graph</span><span class=o>;</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>org.apache.spark.graphx.lib.PageRank</span><span class=o>;</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>org.apache.spark.sql.SparkSession</span><span class=o>;</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>org.apache.spark.storage.StorageLevel</span><span class=o>;</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>scala.Tuple2</span><span class=o>;</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>scala.reflect.ClassTag</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=kd>class</span> <span class=nc>spark04_grahpx</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kd>static</span> <span class=kt>void</span> <span class=nf>main</span><span class=o>(</span><span class=n>String</span><span class=o>[]</span> <span class=n>args</span><span class=o>)</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>SparkSession</span> <span class=n>sparkSession</span> <span class=o>=</span> <span class=k>new</span> <span class=n>SparkSession</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>Builder</span><span class=o>()</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>appName</span><span class=o>(</span><span class=s>&#34;pageRank&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>master</span><span class=o>(</span><span class=s>&#34;local[*]&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>getOrCreate</span><span class=o>();</span>
+</span></span><span class=line><span class=cl>        <span class=n>sparkSession</span><span class=o>.</span><span class=na>sparkContext</span><span class=o>().</span><span class=na>setLogLevel</span><span class=o>(</span><span class=s>&#34;WARN&#34;</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1>//     URL         neighbor URL
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=c1>//     URL         neighbor URL
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=c1>//     ...
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=n>JavaRDD</span><span class=o>&lt;</span><span class=n>String</span><span class=o>&gt;</span> <span class=n>lines</span> <span class=o>=</span> <span class=n>sparkSession</span><span class=o>.</span><span class=na>read</span><span class=o>()</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>textFile</span><span class=o>(</span><span class=s>&#34;C:\\Users\\JiaRui\\Desktop\\pageRank.csv&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>javaRDD</span><span class=o>();</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>JavaRDD</span><span class=o>&lt;</span><span class=n>Tuple2</span><span class=o>&lt;</span><span class=n>Object</span><span class=o>,</span> <span class=n>Object</span><span class=o>&gt;&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=n>lines</span><span class=o>.</span><span class=na>map</span><span class=o>(</span><span class=n>s</span> <span class=o>-&gt;</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>            <span class=n>String</span><span class=o>[]</span> <span class=n>parts</span> <span class=o>=</span> <span class=n>s</span><span class=o>.</span><span class=na>split</span><span class=o>(</span><span class=s>&#34;\\s+&#34;</span><span class=o>);</span>
+</span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=k>new</span> <span class=n>Tuple2</span><span class=o>&lt;&gt;(</span><span class=n>parts</span><span class=o>[</span><span class=mi>0</span><span class=o>],</span> <span class=n>parts</span><span class=o>[</span><span class=mi>1</span><span class=o>]);</span>
+</span></span><span class=line><span class=cl>        <span class=o>});</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>Graph</span><span class=o>&lt;</span><span class=n>Object</span><span class=o>,</span> <span class=n>Object</span><span class=o>&gt;</span> <span class=n>graph</span> <span class=o>=</span> <span class=n>Graph</span><span class=o>.</span><span class=na>fromEdgeTuples</span><span class=o>(</span><span class=n>edges</span><span class=o>.</span><span class=na>rdd</span><span class=o>(),</span>
+</span></span><span class=line><span class=cl>                <span class=mi>1</span><span class=o>,</span>
+</span></span><span class=line><span class=cl>                <span class=kc>null</span><span class=o>,</span>
+</span></span><span class=line><span class=cl>                <span class=n>StorageLevel</span><span class=o>.</span><span class=na>MEMORY_AND_DISK</span><span class=o>(),</span>
+</span></span><span class=line><span class=cl>                <span class=n>StorageLevel</span><span class=o>.</span><span class=na>MEMORY_AND_DISK</span><span class=o>(),</span>
+</span></span><span class=line><span class=cl>                <span class=n>ClassTag</span><span class=o>.</span><span class=na>Any</span><span class=o>());</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>Graph</span><span class=o>&lt;</span><span class=n>Object</span><span class=o>,</span> <span class=n>Object</span><span class=o>&gt;</span> <span class=n>rankedGraph</span> <span class=o>=</span> <span class=n>PageRank</span><span class=o>.</span><span class=na>runUntilConvergence</span><span class=o>(</span><span class=n>graph</span><span class=o>,</span> <span class=mf>0.001</span><span class=o>,</span> <span class=mf>0.001</span><span class=o>,</span> <span class=n>ClassTag</span><span class=o>.</span><span class=na>Any</span><span class=o>(),</span> <span class=n>ClassTag</span><span class=o>.</span><span class=na>Any</span><span class=o>());</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>JavaRDD</span><span class=o>&lt;</span><span class=n>Tuple2</span><span class=o>&lt;</span><span class=n>Object</span><span class=o>,</span> <span class=n>Object</span><span class=o>&gt;&gt;</span> <span class=n>pageRankValues</span> <span class=o>=</span> <span class=n>rankedGraph</span><span class=o>.</span><span class=na>vertices</span><span class=o>().</span><span class=na>toJavaRDD</span><span class=o>();</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>pageRankValues</span><span class=o>.</span><span class=na>foreach</span><span class=o>(</span><span class=n>x</span> <span class=o>-&gt;</span> <span class=n>System</span><span class=o>.</span><span class=na>out</span><span class=o>.</span><span class=na>println</span><span class=o>(</span><span class=n>x</span><span class=o>));</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=3spark-数据处理与分析场景>3.Spark 数据处理与分析场景</h2><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103003313975.png title=image-20230103003313975 data-thumbnail=/20221231_spark-sharing/image-20230103003313975.png data-sub-html="<h2> </h2><p>image-20230103003313975</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103003313975.png data-srcset="/20221231_spark-sharing/image-20230103003313975.png, /20221231_spark-sharing/image-20230103003313975.png 1.5x, /20221231_spark-sharing/image-20230103003313975.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103003313975.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103003344870.png title=image-20230103003344870 data-thumbnail=/20221231_spark-sharing/image-20230103003344870.png data-sub-html="<h2> </h2><p>image-20230103003344870</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103003344870.png data-srcset="/20221231_spark-sharing/image-20230103003344870.png, /20221231_spark-sharing/image-20230103003344870.png 1.5x, /20221231_spark-sharing/image-20230103003344870.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103003344870.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103002305382.png title=image-20230103002305382 data-thumbnail=/20221231_spark-sharing/image-20230103002305382.png data-sub-html="<h2> </h2><p>image-20230103002305382</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103002305382.png data-srcset="/20221231_spark-sharing/image-20230103002305382.png, /20221231_spark-sharing/image-20230103002305382.png 1.5x, /20221231_spark-sharing/image-20230103002305382.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103002305382.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103004037120.png title=image-20230103004037120 data-thumbnail=/20221231_spark-sharing/image-20230103004037120.png data-sub-html="<h2> </h2><p>image-20230103004037120</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103004037120.png data-srcset="/20221231_spark-sharing/image-20230103004037120.png, /20221231_spark-sharing/image-20230103004037120.png 1.5x, /20221231_spark-sharing/image-20230103004037120.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103004037120.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><h2 id=4spark-分布式计算框架和编程模型-mapreduce>4.Spark 分布式计算框架和编程模型 MapReduce</h2><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103004647836.png title=image-20230103004647836 data-thumbnail=/20221231_spark-sharing/image-20230103004647836.png data-sub-html="<h2> </h2><p>image-20230103004647836</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103004647836.png data-srcset="/20221231_spark-sharing/image-20230103004647836.png, /20221231_spark-sharing/image-20230103004647836.png 1.5x, /20221231_spark-sharing/image-20230103004647836.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103004647836.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103004858306.png title=image-20230103004858306 data-thumbnail=/20221231_spark-sharing/image-20230103004858306.png data-sub-html="<h2> </h2><p>image-20230103004858306</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103004858306.png data-srcset="/20221231_spark-sharing/image-20230103004858306.png, /20221231_spark-sharing/image-20230103004858306.png 1.5x, /20221231_spark-sharing/image-20230103004858306.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103004858306.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103005156175.png title=image-20230103005156175 data-thumbnail=/20221231_spark-sharing/image-20230103005156175.png data-sub-html="<h2> </h2><p>image-20230103005156175</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103005156175.png data-srcset="/20221231_spark-sharing/image-20230103005156175.png, /20221231_spark-sharing/image-20230103005156175.png 1.5x, /20221231_spark-sharing/image-20230103005156175.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103005156175.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103005203517.png title=image-20230103005203517 data-thumbnail=/20221231_spark-sharing/image-20230103005203517.png data-sub-html="<h2> </h2><p>image-20230103005203517</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103005203517.png data-srcset="/20221231_spark-sharing/image-20230103005203517.png, /20221231_spark-sharing/image-20230103005203517.png 1.5x, /20221231_spark-sharing/image-20230103005203517.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103005203517.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103005213224.png title=image-20230103005213224 data-thumbnail=/20221231_spark-sharing/image-20230103005213224.png data-sub-html="<h2> </h2><p>image-20230103005213224</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103005213224.png data-srcset="/20221231_spark-sharing/image-20230103005213224.png, /20221231_spark-sharing/image-20230103005213224.png 1.5x, /20221231_spark-sharing/image-20230103005213224.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103005213224.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103005221361.png title=image-20230103005221361 data-thumbnail=/20221231_spark-sharing/image-20230103005221361.png data-sub-html="<h2> </h2><p>image-20230103005221361</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103005221361.png data-srcset="/20221231_spark-sharing/image-20230103005221361.png, /20221231_spark-sharing/image-20230103005221361.png 1.5x, /20221231_spark-sharing/image-20230103005221361.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103005221361.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103005310680.png title=image-20230103005310680 data-thumbnail=/20221231_spark-sharing/image-20230103005310680.png data-sub-html="<h2> </h2><p>image-20230103005310680</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103005310680.png data-srcset="/20221231_spark-sharing/image-20230103005310680.png, /20221231_spark-sharing/image-20230103005310680.png 1.5x, /20221231_spark-sharing/image-20230103005310680.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103005310680.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103005325609.png title=image-20230103005325609 data-thumbnail=/20221231_spark-sharing/image-20230103005325609.png data-sub-html="<h2> </h2><p>image-20230103005325609</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103005325609.png data-srcset="/20221231_spark-sharing/image-20230103005325609.png, /20221231_spark-sharing/image-20230103005325609.png 1.5x, /20221231_spark-sharing/image-20230103005325609.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103005325609.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103005415875.png title=image-20230103005415875 data-thumbnail=/20221231_spark-sharing/image-20230103005415875.png data-sub-html="<h2> </h2><p>image-20230103005415875</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103005415875.png data-srcset="/20221231_spark-sharing/image-20230103005415875.png, /20221231_spark-sharing/image-20230103005415875.png 1.5x, /20221231_spark-sharing/image-20230103005415875.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103005415875.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><h2 id=5spark-弹性数据集-rdd-和结构化数据-dataset>5.Spark 弹性数据集 RDD 和结构化数据 Dataset</h2><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103005612116.png title=image-20230103005612116 data-thumbnail=/20221231_spark-sharing/image-20230103005612116.png data-sub-html="<h2> </h2><p>image-20230103005612116</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103005612116.png data-srcset="/20221231_spark-sharing/image-20230103005612116.png, /20221231_spark-sharing/image-20230103005612116.png 1.5x, /20221231_spark-sharing/image-20230103005612116.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103005612116.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103005619762.png title=image-20230103005619762 data-thumbnail=/20221231_spark-sharing/image-20230103005619762.png data-sub-html="<h2> </h2><p>image-20230103005619762</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103005619762.png data-srcset="/20221231_spark-sharing/image-20230103005619762.png, /20221231_spark-sharing/image-20230103005619762.png 1.5x, /20221231_spark-sharing/image-20230103005619762.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103005619762.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103005632326.png title=image-20230103005632326 data-thumbnail=/20221231_spark-sharing/image-20230103005632326.png data-sub-html="<h2> </h2><p>image-20230103005632326</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103005632326.png data-srcset="/20221231_spark-sharing/image-20230103005632326.png, /20221231_spark-sharing/image-20230103005632326.png 1.5x, /20221231_spark-sharing/image-20230103005632326.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103005632326.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103005703582.png title=image-20230103005703582 data-thumbnail=/20221231_spark-sharing/image-20230103005703582.png data-sub-html="<h2> </h2><p>image-20230103005703582</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103005703582.png data-srcset="/20221231_spark-sharing/image-20230103005703582.png, /20221231_spark-sharing/image-20230103005703582.png 1.5x, /20221231_spark-sharing/image-20230103005703582.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103005703582.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103005730095.png title=image-20230103005730095 data-thumbnail=/20221231_spark-sharing/image-20230103005730095.png data-sub-html="<h2> </h2><p>image-20230103005730095</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103005730095.png data-srcset="/20221231_spark-sharing/image-20230103005730095.png, /20221231_spark-sharing/image-20230103005730095.png 1.5x, /20221231_spark-sharing/image-20230103005730095.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103005730095.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103005801680.png title=image-20230103005801680 data-thumbnail=/20221231_spark-sharing/image-20230103005801680.png data-sub-html="<h2> </h2><p>image-20230103005801680</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103005801680.png data-srcset="/20221231_spark-sharing/image-20230103005801680.png, /20221231_spark-sharing/image-20230103005801680.png 1.5x, /20221231_spark-sharing/image-20230103005801680.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103005801680.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103005844423.png title=image-20230103005844423 data-thumbnail=/20221231_spark-sharing/image-20230103005844423.png data-sub-html="<h2> </h2><p>image-20230103005844423</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103005844423.png data-srcset="/20221231_spark-sharing/image-20230103005844423.png, /20221231_spark-sharing/image-20230103005844423.png 1.5x, /20221231_spark-sharing/image-20230103005844423.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103005844423.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103005907207.png title=image-20230103005907207 data-thumbnail=/20221231_spark-sharing/image-20230103005907207.png data-sub-html="<h2> </h2><p>image-20230103005907207</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103005907207.png data-srcset="/20221231_spark-sharing/image-20230103005907207.png, /20221231_spark-sharing/image-20230103005907207.png 1.5x, /20221231_spark-sharing/image-20230103005907207.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103005907207.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103010040834.png title=image-20230103010040834 data-thumbnail=/20221231_spark-sharing/image-20230103010040834.png data-sub-html="<h2> </h2><p>image-20230103010040834</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103010040834.png data-srcset="/20221231_spark-sharing/image-20230103010040834.png, /20221231_spark-sharing/image-20230103010040834.png 1.5x, /20221231_spark-sharing/image-20230103010040834.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103010040834.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=c1>//读取 json 文件
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>spark</span><span class=o>.</span><span class=na>read</span><span class=o>.</span><span class=na>json</span><span class=o>(</span><span class=s>&#34;examples/src/main/resources/people.json&#34;</span><span class=o>);</span>
+</span></span><span class=line><span class=cl><span class=c1>//读取 csv 文件
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>spark</span><span class=o>.</span><span class=na>read</span><span class=o>.</span><span class=na>csv</span><span class=o>(</span><span class=s>&#34;examples/src/main/resources/people.csv&#34;</span><span class=o>);</span>
+</span></span><span class=line><span class=cl><span class=c1>//读取 parquet 文件
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>spark</span><span class=o>.</span><span class=na>read</span><span class=o>.</span><span class=na>parquet</span><span class=o>(</span><span class=s>&#34;examples/src/main/resources/people.parquet&#34;</span><span class=o>);</span>
+</span></span><span class=line><span class=cl><span class=c1>//读取 orc 文件
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>spark</span><span class=o>.</span><span class=na>read</span><span class=o>.</span><span class=na>orc</span><span class=o>(</span><span class=s>&#34;examples/src/main/resources/people.orc&#34;</span><span class=o>);</span>
+</span></span><span class=line><span class=cl><span class=c1>//读取文本文件
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>spark</span><span class=o>.</span><span class=na>read</span><span class=o>.</span><span class=na>text</span><span class=o>(</span><span class=s>&#34;examples/src/main/resources/people.csv&#34;</span><span class=o>);</span>
+</span></span><span class=line><span class=cl><span class=c1>//通过 JDBC 连接外部数据库生成
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>spark</span><span class=o>.</span><span class=na>read</span><span class=o>.</span><span class=na>format</span><span class=o>(</span><span class=s>&#34;jdbc&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>          <span class=o>.</span><span class=na>option</span><span class=o>(</span><span class=s>&#34;url&#34;</span><span class=o>,</span><span class=s>&#34;jdbc:driver&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>          <span class=o>.</span><span class=na>option</span><span class=o>(</span><span class=s>&#34;user&#34;</span><span class=o>,</span><span class=s>&#34;&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>          <span class=o>.</span><span class=na>option</span><span class=o>(</span><span class=s>&#34;password&#34;</span><span class=o>,</span><span class=s>&#34;&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>          <span class=o>.</span><span class=na>load</span><span class=o>();</span>
+</span></span></code></pre></td></tr></table></div></div><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103010154205.png title=image-20230103010154205 data-thumbnail=/20221231_spark-sharing/image-20230103010154205.png data-sub-html="<h2> </h2><p>image-20230103010154205</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103010154205.png data-srcset="/20221231_spark-sharing/image-20230103010154205.png, /20221231_spark-sharing/image-20230103010154205.png 1.5x, /20221231_spark-sharing/image-20230103010154205.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103010154205.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=c1>//条件查询
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>df</span><span class=o>.</span><span class=na>select</span><span class=o>(</span><span class=s>&#34;age&#34;</span><span class=o>).</span><span class=na>where</span><span class=o>(</span><span class=s>&#34;name is not null and age &gt; 10&#34;</span><span class=o>).</span><span class=na>foreach</span><span class=o>(</span><span class=n>println</span><span class=o>(</span><span class=n>_</span><span class=o>));</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>//分组统计
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>df</span><span class=o>.</span><span class=na>groupBy</span><span class=o>(</span><span class=s>&#34;age&#34;</span><span class=o>).</span><span class=na>count</span><span class=o>().</span><span class=na>foreach</span><span class=o>(</span><span class=n>println</span><span class=o>(</span><span class=n>_</span><span class=o>));</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>//连接操作: 
+</span></span></span><span class=line><span class=cl><span class=c1>//支持 inner/cross/outer/full/full_outer/left/left_outer/cross/left_semi/left_anti等
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>leftDF</span><span class=o>.</span><span class=na>join</span><span class=o>(</span><span class=n>rightDF</span><span class=o>,</span> <span class=n>leftDF</span><span class=o>(</span><span class=s>&#34;pid&#34;</span><span class=o>)</span> <span class=o>==</span> <span class=n>rightDF</span><span class=o>(</span><span class=s>&#34;fid&#34;</span><span class=o>),</span><span class=s>&#34;left_outer&#34;</span><span class=o>);</span>
+</span></span></code></pre></td></tr></table></div></div><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103010411090.png title=image-20230103010411090 data-thumbnail=/20221231_spark-sharing/image-20230103010411090.png data-sub-html="<h2> </h2><p>image-20230103010411090</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103010411090.png data-srcset="/20221231_spark-sharing/image-20230103010411090.png, /20221231_spark-sharing/image-20230103010411090.png 1.5x, /20221231_spark-sharing/image-20230103010411090.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103010411090.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103010448097.png title=image-20230103010448097 data-thumbnail=/20221231_spark-sharing/image-20230103010448097.png data-sub-html="<h2> </h2><p>image-20230103010448097</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103010448097.png data-srcset="/20221231_spark-sharing/image-20230103010448097.png, /20221231_spark-sharing/image-20230103010448097.png 1.5x, /20221231_spark-sharing/image-20230103010448097.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103010448097.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103010558781.png title=image-20230103010558781 data-thumbnail=/20221231_spark-sharing/image-20230103010558781.png data-sub-html="<h2> </h2><p>image-20230103010558781</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103010558781.png data-srcset="/20221231_spark-sharing/image-20230103010558781.png, /20221231_spark-sharing/image-20230103010558781.png 1.5x, /20221231_spark-sharing/image-20230103010558781.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103010558781.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103010617926.png title=image-20230103010617926 data-thumbnail=/20221231_spark-sharing/image-20230103010617926.png data-sub-html="<h2> </h2><p>image-20230103010617926</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103010617926.png data-srcset="/20221231_spark-sharing/image-20230103010617926.png, /20221231_spark-sharing/image-20230103010617926.png 1.5x, /20221231_spark-sharing/image-20230103010617926.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103010617926.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103010703015.png title=image-20230103010703015 data-thumbnail=/20221231_spark-sharing/image-20230103010703015.png data-sub-html="<h2> </h2><p>image-20230103010703015</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103010703015.png data-srcset="/20221231_spark-sharing/image-20230103010703015.png, /20221231_spark-sharing/image-20230103010703015.png 1.5x, /20221231_spark-sharing/image-20230103010703015.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103010703015.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><h2 id=6spark抽象概念架构与运行环境>6.Spark抽象概念、架构与运行环境</h2><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103011404026.png title=image-20230103011404026 data-thumbnail=/20221231_spark-sharing/image-20230103011404026.png data-sub-html="<h2> </h2><p>image-20230103011404026</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103011404026.png data-srcset="/20221231_spark-sharing/image-20230103011404026.png, /20221231_spark-sharing/image-20230103011404026.png 1.5x, /20221231_spark-sharing/image-20230103011404026.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103011404026.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103011415040.png title=image-20230103011415040 data-thumbnail=/20221231_spark-sharing/image-20230103011415040.png data-sub-html="<h2> </h2><p>image-20230103011415040</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103011415040.png data-srcset="/20221231_spark-sharing/image-20230103011415040.png, /20221231_spark-sharing/image-20230103011415040.png 1.5x, /20221231_spark-sharing/image-20230103011415040.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103011415040.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103011433296.png title=image-20230103011433296 data-thumbnail=/20221231_spark-sharing/image-20230103011433296.png data-sub-html="<h2> </h2><p>image-20230103011433296</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103011433296.png data-srcset="/20221231_spark-sharing/image-20230103011433296.png, /20221231_spark-sharing/image-20230103011433296.png 1.5x, /20221231_spark-sharing/image-20230103011433296.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103011433296.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103011446069.png title=image-20230103011446069 data-thumbnail=/20221231_spark-sharing/image-20230103011446069.png data-sub-html="<h2> </h2><p>image-20230103011446069</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103011446069.png data-srcset="/20221231_spark-sharing/image-20230103011446069.png, /20221231_spark-sharing/image-20230103011446069.png 1.5x, /20221231_spark-sharing/image-20230103011446069.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103011446069.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103011540310.png title=image-20230103011540310 data-thumbnail=/20221231_spark-sharing/image-20230103011540310.png data-sub-html="<h2> </h2><p>image-20230103011540310</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103011540310.png data-srcset="/20221231_spark-sharing/image-20230103011540310.png, /20221231_spark-sharing/image-20230103011540310.png 1.5x, /20221231_spark-sharing/image-20230103011540310.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103011540310.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103011655270.png title=image-20230103011655270 data-thumbnail=/20221231_spark-sharing/image-20230103011655270.png data-sub-html="<h2> </h2><p>image-20230103011655270</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103011655270.png data-srcset="/20221231_spark-sharing/image-20230103011655270.png, /20221231_spark-sharing/image-20230103011655270.png 1.5x, /20221231_spark-sharing/image-20230103011655270.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103011655270.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103011727430.png title=image-20230103011727430 data-thumbnail=/20221231_spark-sharing/image-20230103011727430.png data-sub-html="<h2> </h2><p>image-20230103011727430</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103011727430.png data-srcset="/20221231_spark-sharing/image-20230103011727430.png, /20221231_spark-sharing/image-20230103011727430.png 1.5x, /20221231_spark-sharing/image-20230103011727430.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103011727430.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><p>| 基于某个运行环境初始化 SparkSession</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=n>SparkSession</span> <span class=n>sparkSession</span> <span class=o>=</span> <span class=k>new</span> <span class=n>SparkSession</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>Builder</span><span class=o>()</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>appName</span><span class=o>(</span><span class=s>&#34;newApp&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>master</span><span class=o>(</span><span class=s>&#34;yarn-client&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>config</span><span class=o>(</span><span class=s>&#34;spark.executor.instances&#34;</span><span class=o>,</span> <span class=s>&#34;10&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>config</span><span class=o>(</span><span class=s>&#34;spark.executor.memory&#34;</span><span class=o>,</span> <span class=s>&#34;10g&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                <span class=o>.</span><span class=na>getOrCreate</span><span class=o>();</span>
+</span></span></code></pre></td></tr></table></div></div><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103012158083.png title=image-20230103012158083 data-thumbnail=/20221231_spark-sharing/image-20230103012158083.png data-sub-html="<h2> </h2><p>image-20230103012158083</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103012158083.png data-srcset="/20221231_spark-sharing/image-20230103012158083.png, /20221231_spark-sharing/image-20230103012158083.png 1.5x, /20221231_spark-sharing/image-20230103012158083.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103012158083.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103012322816.png title=image-20230103012322816 data-thumbnail=/20221231_spark-sharing/image-20230103012322816.png data-sub-html="<h2> </h2><p>image-20230103012322816</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103012322816.png data-srcset="/20221231_spark-sharing/image-20230103012322816.png, /20221231_spark-sharing/image-20230103012322816.png 1.5x, /20221231_spark-sharing/image-20230103012322816.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103012322816.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p><p><figure><a class=lightgallery href=/20221231_spark-sharing/image-20230103012415474.png title=image-20230103012415474 data-thumbnail=/20221231_spark-sharing/image-20230103012415474.png data-sub-html="<h2> </h2><p>image-20230103012415474</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/20221231_spark-sharing/image-20230103012415474.png data-srcset="/20221231_spark-sharing/image-20230103012415474.png, /20221231_spark-sharing/image-20230103012415474.png 1.5x, /20221231_spark-sharing/image-20230103012415474.png 2x" data-sizes=auto alt=/20221231_spark-sharing/image-20230103012415474.png width=1920 height=1080></a><figcaption class=image-caption></figcaption></figure></p></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span></span></div></div><div class=post-info-line><div class=post-info-md></div><div class=post-info-share><span></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fas fa-tags fa-fw" aria-hidden=true></i>&nbsp;<a href=/tags/java/>Java</a>,&nbsp;<a href=/tags/spark/>Spark</a></section><section><span><a href=javascript:void(0); onclick=window.history.back()>Back</a></span>&nbsp;|&nbsp;<span><a href=/>Home</a></span></section></div><div class=post-nav><a href=/20221114_stock-spy/ class=prev rel=prev title="Stock Monitoring and Notification Project"><i class="fas fa-angle-left fa-fw" aria-hidden=true></i>Stock Monitoring and Notification Project</a></div></div><div id=comments><div id=valine class=comment></div><noscript>Please enable JavaScript to view the comments powered by <a href=https://valine.js.org/>Valine</a>.</noscript></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="far fa-copyright fa-fw" aria-hidden=true></i><span itemprop=copyrightYear>2018 - 2023</span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title="Back to Top"><i class="fas fa-arrow-up fa-fw" aria-hidden=true></i>
+</a><a href=# id=view-comments class=fixed-button title="View Comments"><i class="fas fa-comment fa-fw" aria-hidden=true></i></a></div><link rel=stylesheet href=/lib/valine/valine.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css><script type=text/javascript src=https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"Copy to clipboard",maxShownLines:40},comment:{valine:{appId:"2jSYKh8PFUje3v7Ie3Nn5v1g-gzGzoHsz",appKey:"MyWn4P9G5N32q3oM5JDnlpdL",avatar:"retro",el:"#valine",emojiCDN:"https://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/",enableQQ:!0,highlight:!0,lang:"en",meta:["nick","mail"],pageSize:10,placeholder:"Your comment ...",recordIP:!0,visitor:!0}},lightgallery:!0,search:{algoliaAppID:"BADKNNRXHD",algoliaIndex:"index",algoliaSearchKey:"7a8c2923330a44bdd9985698e3f28e0c",highlightTag:"em",maxResultLength:6,noResultsFound:"No results found",snippetLength:30,type:"algolia"}}</script><script type=text/javascript src=/js/theme.min.js></script></body></html>
