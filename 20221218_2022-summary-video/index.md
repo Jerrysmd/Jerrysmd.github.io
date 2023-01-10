@@ -5,7 +5,7 @@ Photos and videos recorded in 2022.
 
 <!--more-->
 
-<video id="video" controls="" preload="auto" poster="IMG_6474.jpg" width=100% height=100%>
+<video id="video" controls="" preload="auto" poster="mmexport1673251586581.jpg" width=100% height=100%>
     <source 
             id="mp4"
             src="https://github.com/Jerrysmd/Jerrysmd.github.io/releases/download/video/2022Memory.mp4"
