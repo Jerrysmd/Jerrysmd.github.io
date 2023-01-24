@@ -1,4 +1,4 @@
-# Nonviolent Communication
+# Book Summary: Nonviolent Communication
 
 
 *Nonviolent Communication* is about connecting with ourselves and others from the heart. It’s about seeing the humanity in all of us. It’s about recognizing our commonalities and differences and finding ways to make life wonderful for all of us.
