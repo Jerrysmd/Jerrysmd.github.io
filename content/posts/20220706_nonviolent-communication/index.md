@@ -1,5 +1,5 @@
 ---
-title: "Nonviolent Communication" # Title of the blog post.
+title: "Book Summary: Nonviolent Communication" # Title of the blog post.
 date: 2022-07-06T10:35:10+08:00 # Date of post creation.
 description: "" # Description used for search engine.
 featured: false # Sets if post is a featured post, making appear on the home page side bar.
