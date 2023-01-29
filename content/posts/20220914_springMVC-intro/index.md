@@ -148,3 +148,66 @@ Spring MVC is a module in the Spring framework that helps you build web applicat
 + 优点
   + 使用简单，相比 Servlet 开发便捷
   + 灵活性强
+
+### Demo
+
+com.jerry.controller.UserController
+
+```java
+//使用 @Controller 定义 bean
+@Controller
+public class UserController{
+    //设置当前操作的访问路径
+    @RequestMapping("/save")
+    //设置当前操作的返回值
+    @ResponseBody
+    public String save(){
+        return "{'module':'springmvc'}";
+    }
+}
+```
+
+工作流程分析：
+
++ 启动服务器初始化过程
+
+  ![image-20230129120943352](image-20230129120943352.png " ")
+
++ 单词请求过程
+
+  ![image-20230129121714997](image-20230129121714997.png " ")
+
+### Bean 加载控制
+
+![image-20230129122527722](image-20230129122527722.png " ")
+
+### 请求与相应
+
+#### 请求映射路径
+
++ 名称：@RequestMapping
+
++ 类型：方法注解 \ 类注解
+
++ 位置：SpringMVC 控制器方法定义上方
+
++ 作用：设置当前控制器方法请求访问路径，如果设置在类上统一设置当前控制器方法请求访问路径前缀
+
++ 范例：
+
+  com.jerry.controller.UserController
+
+  ```java
+  @Controller
+  @RequestMapping("/user")
+  public class UserController{
+      @RequestMapping("/save")
+      @ResponseBody
+      public String save(){
+          return "{'module':'springmvc'}";
+      }
+  }
+  ```
+
+#### Get & Post
+
