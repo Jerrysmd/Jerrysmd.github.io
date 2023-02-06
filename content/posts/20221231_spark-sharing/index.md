@@ -70,7 +70,7 @@ Apache Spark™ is a multi-language engine for executing data engineering, data 
 
 {{< admonition note>}}
 
-This is my knowledge sharing on **how to get start with Spark Java development**.
+This is my <mark>Knowledge Transfer</mark> about **How to get start with Spark Java development**.
 
 And this is my slide:
 
