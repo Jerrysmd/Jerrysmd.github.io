@@ -72,7 +72,15 @@ Spring makes programming Java quicker, easier, and safer. Spring’s focus on sp
 
 This is my <mark>Knowledge Transfer</mark> about **Java and Spring Basic Conception Sharing**.
 
-And this is my slide:
+{{< /admonition >}}
+
+{{< admonition info>}}
+
+And here is my live slide:
+
+https://jerrysmd.github.io/spring-sharing-slide
+
+![image-20230211143116134](image-20230211143116134.png " ")
 
 {{< /admonition >}}
 

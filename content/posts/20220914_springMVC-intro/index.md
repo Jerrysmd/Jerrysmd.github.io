@@ -211,3 +211,41 @@ public class UserController{
 
 #### Get & Post
 
+请求参数
+
++ 普通参数：url 地址传参，地址参数名与形参变量名相同，定义形参即可接收参数
+
+  `http://localhost/commonParam?name=jerry&age=15`
+
+  ```java
+  @RequestMapping("/commonParam")
+  @ResponseBody
+  public String commonParam(String name, int age){
+      sout(name);
+      sout(age);
+      return "'module':'common param'"
+  }
+  ```
+
++ 普通参数：请求参数名与形参变量名不同，使用 @RequestParam 绑定参数关系
+
+  `http://localhost/commonParam?name=jerry&age=15`
+
+  ```java
+  @RequestMapping("/commonParam")
+  @ResponseBody
+  public String commonParam(@RequestParam("name") String userName, int age){
+      sout(name);
+      sout(age);
+      return "'module':'common param'"
+  }
+  ```
+
++ Json 数据：请求 body 中添加 json 数据
+
+  postman -> get -> body -> row -> JSON
+
+  开启自动转化 json 数据的支持 **@EnableWebMvc**
+
+  在参数前加 @RequestBody
+
