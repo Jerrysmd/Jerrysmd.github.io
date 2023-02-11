@@ -181,7 +181,7 @@ public class UserController{
 
 ![image-20230129122527722](image-20230129122527722.png " ")
 
-### 请求与相应
+### 请求与响应
 
 #### 请求映射路径
 
@@ -248,4 +248,27 @@ public class UserController{
   开启自动转化 json 数据的支持 **@EnableWebMvc**
 
   在参数前加 @RequestBody
+
+#### 响应
+
++ 名称：@ResponseBody
+
++ 类型：方法注解
+
++ 位置：SpringMVC 控制器方法定义上方
+
++ 作用：位置当前控制器方法相应内容为当前返回值，无需解析。**设置当前控制器返回值作为响应体**
+
++ 样例：
+
+  ```java
+  @RequestMapping("/save")
+  @ResponseBody
+  public String save(){
+      sout("save");
+      return "'info':'springmvc'"
+  }
+  ```
+
+### REST 风格
 
