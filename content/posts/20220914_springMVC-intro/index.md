@@ -272,3 +272,186 @@ public class UserController{
 
 ### REST 风格
 
+#### REST 简介
+
++ REST (Repesentational State Transfer)，表现形式状态转化
+
+  + 传统风格资源描述形式：
+
+    ​	http://localhost/user/`get`ById?id=1
+
+    ​	http://localhost/user/`save`User
+
+  + REST 风格描述形式：
+
+    ​	http://localhost/user/1
+
+    ​	http://localhost/user
+
++ 优点：
+
+  + 隐藏资源的访问行为，无法通过地址得知对资源是何种操作
+  + 书写简化
+
+#### REST 风格简介
+
++ 按照 REST 风格访问资源时使用`行为动作`区分对资源进行何种操作
+
+  | URL                      | 请求方式 | 对应行为  |
+  | ------------------------ | -------- | --------- |
+  | http://localhost/users   | GET      | 查询      |
+  | http://localhost/users/1 | GET      | 查询指定  |
+  | http://localhost/users   | POST     | 新增/保存 |
+  | http://localhost/users   | PUT      | 修改/更新 |
+  | http://localhost/users/1 | DELETE   | 删除      |
+
++ 根据 REST 风格对资源进行访问称为 RESTful
+
+> 注意：
+>
+> + REST 是一种风格，而不是规范
+> + 描述模块的名称通常使用复数
+
+#### REST Demo
+
+##### 项目结构
+
++ java
+  + com.jerry
+    + config
+      + ServletContainersInitConfig
+      + SpringMvcConfig
+    + controller
+      + BookController
+      + UserController
+    + domain
+
+##### UserController
+
+```java
+@Controller
+public class UserController{
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    @ResponseBody
+    public String getAll(){}
+    
+    @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public String getById(@PathVariable Integer id){}
+    
+    @RequestMapping(value = "/users", method = RequestMethod.POST)
+    @ResponseBody
+    public String save(){}
+    
+    @RequestMapping(value = "/users", method = RequestMethod.PUT)
+    @ResponseBody
+    public String update(@RequestBody User user){}
+    
+    @RequestMapping(value = "/users/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
+    public String delete(@PathVariable Integer id){}
+}
+```
+
+#### 接收参数的三种方式
+
+@RequestBody, @RequestParam, @PathVariable
+
++ 区别
+  + @RequestBody 用于接收 json 数据
+  + RequestParam 用于接收 url 地址传参或者表单传参
+  + @PathVariable 用于接收路径参数，使用{参数名称}描述路径参数
++ 应用
+  + 开发中，发送请求参数超过1个时，以 json 格式为主，@RequestBody 应用较广
+  + 如果发送非 json 格式数据，选用 @RequestParam 接收参数
+  + 使用 RESTful 进行开发，当参数数量较少时，可以采用 @PathVariable 接收请求路径变量，通常用于传递 id 值
+
+#### REST 继续简化注解
+
+```java
+//@Controller
+//@ResponseBody
+@RestController
+@RequestMapping("/users")
+public class UserController{
+    //@RequestMapping(value = "/users", method = RequestMethod.GET)
+    @GetMapping
+    public String getAll(){}
+    
+    //@RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
+    @GetMapping("/{id}")
+    public String getById(@PathVariable Integer id){}
+    
+    //@RequestMapping(value = "/users", method = RequestMethod.POST)
+    @PostMapping
+    public String save(){}
+    
+    //@RequestMapping(value = "/users", method = RequestMethod.PUT)
+    @PutMapping
+    public String update(@RequestBody User user){}
+    
+    //@RequestMapping(value = "/users/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable Integer id){}
+}
+```
+
++ @RestController
+  + 类注解
+  + SpringMVC 的 RESTful 开发控制器类定义上方
+  + 设置当前控制器类为 RESTful 风格，等同于 @Controller 和 @ResponseBody 两个注解
+
++ @GetMapping, @PostMapping, @PutMapping, @DeleteMapping
+  + 方法注解
+  + SpringMVC 的 RESTful 开发控制器方法定义上方
+
+#### REST Case
+
+基于 RESTful 页面数据交互
+
+##### 项目结构
+
++ java
+  + com.jerry
+    + config
+      + ServletContainersInitConfig
+      + SpringMvcConfig
+      + SpringMvcSupport
+    + controller
+      + BookController
+    + domain
+      + Book
++ webapp
+  + css
+  + js
+  + pages
+  + plugins
+
+##### BookController
+
+```java
+@RestController
+@RequestMapping("/books")
+public class BookController{
+    @PostMapping
+    public String save(@RequestBody Book book){}
+    
+    @GatMapping
+    public List<Book> getAll(){
+        List<Book> bookList = new ArrayList<Book>();
+        
+        Book book1 = new Book();
+        book1.setType("cs");
+        book1.setName("Spring");
+        bookList.add(book1);
+        
+        Book book2 = new Book();
+        book2.setType("cs");
+        book2.setName("MVC");
+        bookList.add(book2);
+        
+        return bookList;
+    }
+}
+```
+
