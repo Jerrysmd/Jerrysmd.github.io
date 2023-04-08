@@ -366,6 +366,10 @@ public class UserController{
 
 ##### BookController
 
+BookController.java
+
+第一步：制作 SpringMVC 控制器，并通过 PostMan 测试接口功能
+
 ```java
 @RestController
 @RequestMapping("/books")
@@ -392,4 +396,50 @@ public class BookController{
 }
 ```
 
+##### SpringMvcSupport
+
+SpringMvcSupport.java
+
+第二步：设置对静态资源的访问放行（不放行静态资源会被 SpringMVC 默认拦截）
+
+```java
+@Configuration
+public class SpringMvcSupport extends WebMvcConfigurationSupport{
+    @Override
+    protected void addResourceHandlers(ResourceHandlerRegistry registry){
+        // 当访问 /pages/* 路径的时候，走 /pages 目录下的内容
+        registry.addResourceHandler("/pages/**").addResourceLocations("/pages/");
+        registry.addResourceHandler("/js/**").addResourceLocations("/js/");
+        registry.addResourceHandler("/css/**").addResourceLocations("/css/");
+        registry.addResourceHandler("/plugins/**").addResourceLocations("/plugins/");
+    }
+}
+```
+
+第三步：前端页面通过异步提交访问后台控制器
+
+# SSM 整合
+
+## SSM 整合配置
+
+### SSM 整合流程
+
+1. SSM 整合
+   + Spring
+     + SpringConfig
+   + MyBatis
+     + MybatisConfig
+     + JdbcConfig
+     + jdbc.properties
+   + SpringMVC
+     + ServletConfig
+     + SpringMvcConfig
+2. 功能模块
+   + 表和实体类
+   + dao （接口 + 自动代理）
+     + 业务层接口测试
+   + controller
+     + 表现层接口测试
+
+### SSM 文件结构
 
