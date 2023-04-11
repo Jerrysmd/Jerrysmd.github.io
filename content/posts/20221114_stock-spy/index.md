@@ -68,19 +68,19 @@ The system will be flexible and allow users to specify their own set of rules fo
 
 <!--more-->
 
-## Introduction
+## Project Introduction
 
-In this project, we will be developing functions to retrieve stock data from Tencent and Sina using the Python programming language. The functions will be able to retrieve both daily and minute-level data, and will allow users to specify the stock code, time range, and frequency of the data.
+In this project, we will spy A-share market data from Tencent and Sina API. The functions will be able to retrieve both daily and minute-level data, and will allow users to specify the stock code, time range, and frequency of the data.
 
-## Design
+## Program Design
 
-### Tencent
+### API：Tencent  Stock API
 
 For the Tencent functions, we will be using the `requests` library to make HTTP requests to the Tencent stock data API. The API will return the stock data in JSON format, which we will then parse and convert into a Pandas dataframe for easier manipulation.
 
 The `get_price_day_tx` function will be used to retrieve daily data, while the `get_price_min_tx` function will be used to retrieve minute-level data. Users will be able to specify the stock code, end date (optional), number of periods to retrieve, and the frequency of the data (e.g. daily, weekly, monthly).
 
-### Sina
+### API：Sina  Stock  API
 
 For the Sina function, we will be using the `pandas_datareader` library to retrieve stock data from the Sina API. The `get_price_sina` function will allow users to specify the stock code, start and end dates, and the frequency of the data.
 
@@ -100,10 +100,11 @@ The Sina function will follow these steps:
 2. Use the `pandas_datareader` library to retrieve the stock data from the Sina API.
 3. Return the data to the user.
 
-## Code
+## Demo Code
 
-+ 使用 requests 从接口获取数据
-+ 使用 pandas 将数据转化成表格
+### Use `requests` get data from API
+
+### Use `pandas` transfer data to table
 
 ```python
 import datetime
@@ -193,8 +194,9 @@ def get_price(code, end_date='', count=10, frequency='1d', fields=[]):  # 对外
             return get_price_min_tx(xcode, end_date=end_date, count=count, frequency=frequency)  # 备用
 ```
 
-+ 监控 2500 日均线和当天股票情况
-+ 满足判断条件后使用 smtplib 发送提示邮件 
+### Monitor the 2500-day moving average and the daily stock situation. 
+
+### Send a notification email using `smtplib` when the judgment conditions are met.
 
 ```python
 from email.header import Header
@@ -271,7 +273,7 @@ if __name__ == '__main__':
         send_email('')
 ```
 
-+ 设置 Github Actions 每天运行脚本
+### Set up Github Actions to run the script daily.
 
 ```yaml
 name: Python application
