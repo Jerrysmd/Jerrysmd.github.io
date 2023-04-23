@@ -481,11 +481,9 @@ public class SpringMvcSupport extends WebMvcConfigurationSupport{
 
 第三步：前端页面通过异步提交访问后台控制器
 
-# SSM 整合
+## SSM 整合
 
-## SSM 整合配置
-
-### SSM 整合流程
+### SSM 整合步骤
 
 1. SSM 整合
    + Spring
@@ -504,4 +502,205 @@ public class SpringMvcSupport extends WebMvcConfigurationSupport{
    + controller
      + 表现层接口测试
 
-### SSM 文件结构
+### SSM 整合详细步骤
+
++ 配置
+
+  + SpringConfig
+
+    ```java
+    @Configuration
+    @ComponentScan("com.jerry")
+    @PropertySource("classpath:jdbc.properies")
+    @Import({JdbcConfig.class, MybatisConfig.class})
+    public class SpringConfig{}
+    ```
+
+  + JDBCConfig, jdbc.properties
+
+    ```java
+    public class JdbcConfig{
+        @Value("${jdbc.driver}")
+        private String driver;
+        @Value("${jdbc.url}")
+        private String url;
+        @Value("${jdbc.username}")
+        private String username;
+        @Value("${jdbc.password}")
+        private String password;
+        @Bean
+        public DataSource dataSource(){
+            DruidDataSource ds = new DruidDataSource();
+            ds.setDriverClassName(driver);
+            ds.setUrl(url);
+            ds.setUsername(userName);
+            ds.setPassword(password);
+            return ds;
+        }
+    }
+    ```
+
+  + MyBatisConfig
+
+    ```java
+    public class MybatisConfig{
+        @Bean
+        public SqlSessionFactoryBean sqlSessionFactory(DataSource dataSource){
+            SqlSessionFactoryBean ssfb = new SqlSessionFactoryBean();
+            ssfb.setTypeAliasesPackage("com.jerry.domain");
+            ssfb.setDataSource(dataSource);
+            return ssfb;
+        }
+        @Bean
+        public MapperScannerConfigurer mapperScannerConfigurer(){
+            MapperScannerConfigurer msc = new MapperScannerConfigurer();
+            msc.setBasePackage("com.jerry.dao");
+            return msc;
+        }
+    }
+    ```
+
++ 模型
+
+  + Book
+
+    ```java
+    public class Book{
+        private Integer id;
+        private String name;
+        private String type;
+        private String description;
+    }
+    ```
+
++ 数据层标准开发
+
+  + BookDao
+
+    ```java
+    public interface BookDao{
+        @Insert("insert into tbl_book(type,name,description)values(#{type},#{name},#{description})")
+        void save(Book book);
+        @Delete("delete from tbl_book where id = #{id}")
+        void delete(Integer id);
+        @Update("update tbl_book set type = #{type}, name = #{name}, description = #{description} where id = #id")
+        void update(Book book);
+        @Select("select * from tbl_book where id = #{id}")
+        Book getById(Integer id);
+    }
+    ```
+
++ 业务层标准开发
+
+  + BookService
+
+    ```java
+    public interface BookService{
+        void save(Book book);
+        void delete(Integer id);
+        void update(Book book);
+        List<Book> getAll();
+        Book getById(Integer id);
+    }
+    ```
+
+  + BookServiceImpl
+
+    ```java
+    @Service
+    public class BookServiceImpl implements BookService{
+        @Autowried
+        private BookDao bookDao;
+        public void save(Book book){bookDao.save(book);}
+        public void update(Book book){bookDao.update(book);}
+        public void delete(Integer id){bookDao.delete(id);}
+        public Book getById(Integer id){bookDao.getById(id);}
+    }
+    ```
+
++ 测试接口
+
+  + BookServiceTest
+
+    ```java
+    @RunWith(SpringJUnit4ClassRunner.class)
+    @ContextConfiguration(classes = SpringConfig.class)
+    public class BookServiceTest{
+        @Autowired
+        private BookService bookService;
+        @Test
+        public void testGetById(){
+            Sout(bookService.getById(1));
+        }
+    }
+    ```
+
++ 事务处理
+
+  ```java
+  public class JdbcConfig{
+      @Bean
+      public PlatformTransactionManager transactionManager(DataSource dataSource){
+          DataSourceTransactionManager transactionManager = new DataSourceTransactionManager(dataSource);
+          return transactionManager;
+      }
+  }
+  ```
+
+  ```java
+  @Configuration
+  @ComponentScan("com.jerry")
+  @PropertySource("classpath:jdbc.properties")
+  @Import({JdbcConfig.class,MybatisConfig.class})
+  @EnableTransactionManagement
+  public class SpringConfig{}
+  ```
+
++ Spring 整合 SpringMVC
+
+  + web 配置类
+
+    ```java
+    public class ServletContainersInitConfig extends AbstractAnnotationConfigDispatcherServletInitializer{
+        protected Class<?>[] getRootConfigclasses(){
+            return new Class[]{SpringConfig.class};
+        }
+        protected Class<?>[] getServletConfigclasses(){
+            return new Class[]{SpringMvcConfig.class};
+        }
+        protected String[] getServletMappings(){
+            return new String[]{"/"};
+        }
+        @Override
+        protected Filter[] getServletFilters(){
+            characterEncodingFilter filter = new CharacterEncodingFilter();
+            filter.setEncoding("UTF-8");
+            return new Filter[]{filter};
+        }
+    }
+    ```
+
+  + 基于 RESTful 的 Controller 开发
+
+    ```java
+    @RestController
+    @RequestMapping("/books")
+    public class BookController{
+        @Autowired
+        private BookService bookService;
+        @PostMapping
+        public void save(@RequestBody Book book){
+            bookService.save(book);
+        }
+        @PutMapping
+        public void update(@RequestBody Book book){
+            bookService.update(book);
+        }
+        @DeleteMapping("/{id}")
+        public void delete(@PathVariable Integer id){
+            bookService.delete(book);
+        }
+    }
+    ```
+
+    
