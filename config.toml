@@ -675,7 +675,7 @@ theme = "DoIt"
     # 位于 "themes/DoIt/assets/data/cdn/" 目录
     # 可以在你的项目下相同路径存放你自己的数据文件:
     # "assets/data/cdn/"
-    data = ""
+    data = "jsdelivr.yml"
 
   # 兼容性设置
   [params.compatibility]
