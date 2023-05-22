@@ -1,0 +1,16 @@
+{{- $resource := 0 -}}
+{{- $suffixList := slice ".jpeg" ".jpg" ".png" ".gif" ".bmp" ".tif" ".tiff" ".webp" ".avif" ".svg" -}}
+
+{{- if (dict "Path" . "Suffixes" $suffixList | partial "function/suffixValidation.html") -}}
+    {{- with $remoteResource := resources.GetRemote . -}}
+        {{- with .Err -}}
+            {{- warnf "%s" . -}}
+        {{ else }}
+            {{- if eq $remoteResource.ResourceType "image" -}}
+                {{- $resource = $remoteResource -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+
+{{- return $resource -}}

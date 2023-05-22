@@ -1,0 +1,73 @@
+{
+    "localBasePath": "./assets/lib",
+    "dependencies": [
+        {
+            "name": "twikoo",
+            "version": "1.6.16",
+            "files": [
+                {
+                    "remote": "dist/twikoo.all.min.js",
+                    "local": "twikoo/twikoo.all.min.js"
+                },
+                {
+                    "remote": "dist/twikoo.min.js",
+                    "local": "twikoo/twikoo.min.js"
+                }
+            ]
+        },
+        {
+            "name": "@waline/client",
+            "version": "2.15.5",
+            "files": [
+                {
+                    "remote": "dist/waline.css",
+                    "local": "waline/waline.css"
+                },
+                {
+                    "remote": "dist/waline.js",
+                    "local": "waline/waline.js"
+                }
+            ]
+        },
+        {
+            "name": "katex",
+            "version": "0.16.7",
+            "files": [
+                {
+                    "remote": "dist/katex.min.js",
+                    "local": "katex/katex.min.js"
+                },
+                {
+                    "remote": "dist/katex.min.css",
+                    "local": "katex/katex.min.css"
+                },
+                {
+                    "remote": "dist/contrib/auto-render.min.js",
+                    "local": "katex/auto-render.min.js"
+                },
+                {
+                    "remote": "dist/contrib/copy-tex.min.js",
+                    "local": "katex/copy-tex.min.js"
+                },
+                {
+                    "remote": "dist/contrib/mhchem.min.js",
+                    "local": "katex/mhchem.min.js"
+                }
+            ]
+        },
+        {
+            "name": "echarts",
+            "version": "5.4.2",
+            "files": [
+                {
+                    "remote": "dist/echarts.min.js",
+                    "local": "echarts/echarts.min.js"
+                },
+                {
+                    "remote": "theme/macarons.min.js",
+                    "local": "echarts/macarons.min.js"
+                }
+            ]
+        }
+    ]
+}
