@@ -108,7 +108,7 @@ other = "Contents"
 other = "{{ .Date }}"
 
 [includedInCategories]
-other = " Category in {{ .Categories }}"
+other = " Category {{ .Categories }}"
 
 [wordCount]
 one = "One word"
@@ -122,7 +122,7 @@ other = "{{ .Count }} minutes"
 other = "views"
 
 [author]
-other = " "
+other = ""
 
 [updatedOnDate]
 other = ""
