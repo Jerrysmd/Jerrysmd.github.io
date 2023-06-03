@@ -640,5 +640,176 @@ public class SpringMvcSupport extends WebMvcConfigurationSupport{
     }
     ```
 
+
+### 表现层数据封装
+
++ 目前程序前端可能接收到数据格式
+
+  + 增删改：
+
+    ```true```
+
+  + 查单条：
+
+    ```json
+    {
+        "id": 1,
+        "type": "计算机理论",
+        "name": "Spring book",
+        "description": "Spring intro"
+    }
+    ```
+
+  + 查全部
+
+    ```json
+    {
+        {
+        	"id": 1,
+        	"type": "计算机理论",
+        	"name": "Spring book",
+        	"description": "Spring intro"
+    	},
+    	{
+            "id": 1,
+            "type": "计算机理论",
+            "name": "Spring book",
+            "description": "Spring intro"
+    	}
+    }
+    ```
+
++ 结论：格式不统一，必须统一成一种格式
+
++ 更合理的前端接受数据格式
+
+  + 增删改：
+
+    ```json
+    {
+        "code": 20031, //代表增删改的一种操作
+        "data":true
+    }
+    ```
+
+  + 查单条：
+
+    ```json
+    {
+        "code": 20041, //代表查询
+        "data":{
+            "id": 1,
+        	"type": "计算机理论",
+        	"name": "Spring book",
+        	"description": "Spring intro"
+        }
+    }
+    ```
+
+    ```json
+    {
+        "code": 20040, //代表查询失败，比如规定只要是0结尾的code都代表失败
+        "data": null,
+        "msg": "数据查询失败，请重试"
+    }
+    ```
+
+  + 查全部
+
+    ```json
+    {
+        "code": 20041, 
+        "data":[
+            {
+                "id": 1,
+                "type": "计算机理论",
+                "name": "Spring book",
+                "description": "Spring intro"
+            },
+            {
+                "id": 1,
+                "type": "计算机理论",
+                "name": "Spring book",
+                "description": "Spring intro"
+            }
+        ]
+    }
+    ```
+
+#### 设置统一数据返回结果类
+
+java>com>jerry>controller>Result.java
+
+```java
+public class Result{
+    private Object data;
+    private Integer code;
+    private String msg;
+}
+```
+
+java>com>jerry>controller>Code.java
+
+```java
+public class Code{
+    public static final Integer SAVE_OK = 20011;
+    public static final Integer DELETE_OK = 20021;
+	public static final Integer UPDATE_OK = 20031;
+    public static final Integer GET_OK = 20041;
     
+    public static final Integer SAVE_ERR = 20010;
+    public static final Integer DELETE_ERR = 20020;
+	public static final Integer UPDATE_ERR = 20030;
+    public static final Integer GET_ERR = 20040;
+}
+```
+
+java>com>jerry>controller>BookController.java
+
+```java
+@RestController
+@RequestMapping("/books")
+public class BookController{
+    @Autowired
+    private BookService bookService;
+    @PostMapping
+    public Result save(@RequestBody Book book){
+        boolean flag = bookService.save(book);
+        return new Result(flag ? Code.SAVE_OK:Code.SAVE_ERR, flag);
+    }
+    @PutMapping
+    public Result update(@RequestBody Book book){
+        boolean flag = bookService.update(book);
+        return new Result(flag ? Code.UPDATE_OK:Code.UPDATE_ERR, flag);
+    }
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Integer id){
+        boolean flag = bookService.delete(ID);
+        return new Result(flag ? Code.DELETE_OK:Code.DELETE_ERR, flag);
+    }
+    @GetMapping("/{id}")
+    public Book getById(@PathVariable Integer id){
+        Book book = bookService.getById(id);
+        Integer code = book != null ? Code.GET_Ok : GET_ERR;
+        String msg = book != null ? "" : "数据查询失败，请重试";
+        return new Result(code, book, msg);
+    }
+}
+```
+
+### 异常处理器
+
+java>com>jerry>controller>ProjectExceptionAdvice.java
+
+```java
+@RestConstrollerAdvice
+public class ProjectExceptionAdvice{
+    
+    @ExceptionHandler(Exception.class)
+    public void doException(Exception ex){
+        return new Result(666, null);
+    }
+}
+```
+
 
