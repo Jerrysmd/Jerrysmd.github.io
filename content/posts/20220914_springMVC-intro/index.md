@@ -875,3 +875,31 @@ public class ProjectExceptionAdvice{
 }
 ```
 
+### 项目异常处理方案
+
+项目异常分类
+
++ 业务异常(BusinessException)
+  + 规范的用户行为产生的异常
+  + 不规范的用户行为操作产生的异常
++ 系统异常(SystemException)
+  + 项目运行过程中可预计且无法避免的异常
++ 其他异常(Exception)
+  + 编程人员未逾期到的异常
+
+## 拦截器
+
+### 概念
+
++ 拦截器（Interceptor）是一种动态拦截方法调用的机制，在 SpringMVC 中动态拦截控制器方法的执行
++ 作用：
+  + 在动态请求 Controller 前或后增加一些通用性的操作，如权限控制。
+  + 在指定的方法调用前后执行预先设定的代码
+  + 阻止原始方法的执行
+
+![image-20230609171349249](image-20230609171349249.png " ")
+
+### 拦截器与过滤器区别
+
++ 归属不同：Filter 属于 Servlet 技术，Interceptor 属于 SpringMVC 技术
++ 拦截内容不同：Filter 对所有访问进行增强，Interceptor 仅针对对 SpringMVC 的访问进行增强
