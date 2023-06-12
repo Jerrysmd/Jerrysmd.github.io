@@ -15,7 +15,7 @@ Spring MVC is a module in the Spring framework that helps you build web applicat
 
 **Servlet 实现** 
 
-+ com.jerry.servlet.**UserSaveServlet**.java:
++ com.jerry > servlet📂 > **UserSaveServlet**.java:
 
   ```java
   package com.jerry.servlet;
@@ -47,7 +47,7 @@ Spring MVC is a module in the Spring framework that helps you build web applicat
 
 **SpringMVC 实现** 
 
-+ com.jerry.springmvc.UserController.java:
++ com.jerry > springmvc📂 > UserController.java:
 
   ```java
   package com.jerry.springmvc;
@@ -88,7 +88,7 @@ Spring MVC is a module in the Spring framework that helps you build web applicat
 
 ### Demo
 
-com.jerry.controller.UserController
+com.jerry > controller📂 > UserController.java
 
 ```java
 //使用 @Controller 定义 bean
@@ -132,7 +132,7 @@ public class UserController{
 
 + 范例：
 
-  com.jerry.controller.UserController
+  com.jerry > controller📂 > UserController
 
   ```java
   @Controller
@@ -253,15 +253,14 @@ public class UserController{
 
 ##### 项目结构
 
-+ java
-  + com.jerry
-    + config
-      + ServletContainersInitConfig
-      + SpringMvcConfig
-    + controller
-      + BookController
-      + UserController
-    + domain
++ 📂com.jerry
+  + 📂config
+    + ServletContainersInitConfig
+    + SpringMvcConfig
+  + 📂controller
+    + BookController
+    + UserController
+  + 📂domain
 
 ##### UserController
 
@@ -349,20 +348,20 @@ public class UserController{
 ##### 项目结构
 
 + java
-  + com.jerry
-    + config
+  + 📂com.jerry
+    + 📂config
       + ServletContainersInitConfig
       + SpringMvcConfig
       + SpringMvcSupport
-    + controller
+    + 📂controller
       + BookController
-    + domain
+    + 📂domain
       + Book
 + webapp
-  + css
-  + js
-  + pages
-  + plugins
+  + 📂css
+  + 📂js
+  + 📂pages
+  + 📂plugins
 
 ##### BookController
 
@@ -738,7 +737,7 @@ public class SpringMvcSupport extends WebMvcConfigurationSupport{
 
 #### 设置统一数据返回结果类
 
-java>com>jerry>controller>Result.java
+com.jerry > controller📂 > Result.java
 
 ```java
 public class Result{
@@ -748,7 +747,7 @@ public class Result{
 }
 ```
 
-java>com>jerry>controller>Code.java
+com.jerry > controller📂 > Code.java
 
 ```java
 public class Code{
@@ -764,7 +763,7 @@ public class Code{
 }
 ```
 
-java>com>jerry>controller>BookController.java
+com.jerry > controller📂 > BookController.java
 
 ```java
 @RestController
@@ -799,7 +798,7 @@ public class BookController{
 
 ### 异常处理器
 
-java>com>jerry>controller>ProjectExceptionAdvice.java
+com.jerry > controller📂 > ProjectExceptionAdvice.java
 
 ```java
 @RestConstrollerAdvice
@@ -840,4 +839,67 @@ public class ProjectExceptionAdvice{
 
 + 归属不同：Filter 属于 Servlet 技术，Interceptor 属于 SpringMVC 技术
 + 拦截内容不同：Filter 对所有访问进行增强，Interceptor 仅针对对 SpringMVC 的访问进行增强
+
+com.jerry > config📂> SpringMvcConfig.java
+
+```java
+@Configuration
+@ComponentScan("con.jerry.controller")
+@EnableWebMvc
+public class SpringMvcConfig implements WebMvcConfigurer{
+    @Autowired
+    private ProjectInterceptor projectInterceptor;
+    
+    @Override
+    protected void addResourceHandlers(ResourceHandlerRegistry registry){
+        registry.addResourceHandler("/pages/**").addResourceLocations("/pages/");
+    }
+    
+    @Override
+    protected void addInterceptors(InterceptorRegistry registry){
+        registry.addInterceptor(projectInterceptor).addPathPatterns("/books","/books/*");
+    }
+}
+```
+
+com.jerry > controller📂 > interceptor📂 > ProjecInterceptor.java
+
+```java
+public class ProjecInterceptor implements HandlerInterceptor{
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception{
+        Sout("preHandle");
+        return true;
+        // 用 False 可以终止原始操作的运行
+    }
+    
+    @Override
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception{
+        Sout("postHandle");
+    }
+    
+    @Override
+    public void afterHandle(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception{
+        Sout("afterHandle");
+    }
+}
+```
+
+![image-20230612133004236](image-20230612133004236.png " ")
+
+### 拦截器参数
+
++ 前置处理
+  + request: 请求对象
+  + response: 响应对象
+  + handler: 被调用的处理器对象，本质上是一个方法对象，对反射技术中的 Method 对象进行了再包
+
++ 后置处理
+  + modelAndView: 如果处理器执行完成具有返回结果，可以读取到对应数据与页面信息，并进行调整。(现有开发模式不用使用)
++ 完成后处理
+  + ex: 处理过程中出现的异常对象。(Mvc 的异常处理机制可以完美替代这个操作)
+
+### 拦截器链配置
+
+![image-20230612134410284](image-20230612134410284.png " ")
 
