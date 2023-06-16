@@ -227,7 +227,198 @@ This article delves into advanced techniques and best practices for using Maven,
 
 ## 属性管理
 
+![image-20230616104217837](image-20230616104217837.png " ")
+
+### 资源文件引用属性
+
++ 步骤一：定义属性
+
+  ```xml
+  <properties>
+      <spring.version>5.2.10.RELEASE</spring.version>
+      <junit.version>4.12</junit.version>
+      <jdbc.url>jdbc:mysql://127.0.0.1:3306/ssm_db</jdbc.url>
+  </properties>
+  ```
+
++ 步骤二：配置文件中引用属性
+
+  ```xml
+  jdbc.driver=com.mysql.jdbc.Driver
+  jdbc.url=${jdbc.url}
+  jdbc.username=root
+  jdbc.password=root
+  ```
+
++ 步骤三：(最重要) 开启资源文件目录加载属性的过滤器
+
+  ```xml
+  <build>
+      <resources>
+          <resource>
+              <directory>${project.basedir}/src/main/resources</directory>
+          	<filtering>true</filtering>
+          </resource>
+      </resources>
+  </build>
+  ```
+
++ 步骤四：(了解) 配置 maven 打 war 包时，忽略 web.xml 检查
+
+  ```xml
+  <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-war-plugin</artifactId>
+      <version>3.2.3</version>
+      <configration>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+      </configration>
+  </plugin>
+  ```
+
+### 其他属性
+
+|   属性分类    |          引用格式          |            示例             |
+| :-----------: | :------------------------: | :-------------------------: |
+|  自定义属性   |      ${自定义属性名}       |      ${spring.version}      |
+|   内置属性    |       ${内置属性名}        |    ${basedir} ${version}    |
+| Setting 属性  |     ${setting.属性名}      | ${settings.localRepository} |
+| Java 系统属性 | ${系统属性分类.系统属性名} |        ${user.home}         |
+| 环境变量属性  |   ${evn.环境变量属性名}    |      ${env.JAVA_HOME}       |
+
+## 版本管理
+
+![image-20230616111425539](image-20230616111425539.png " ")
+
+![image-20230616111547100](image-20230616111547100.png " ")
+
 ## 多环境配置与应用
 
+### 多环境开发
+
+![image-20230616111756641](image-20230616111756641.png " ")
+
++ 步骤一：定义多环境
+
+  ```xml
+  <!--配置多环境-->
+  <profiles>
+      <profile>
+          <id>env_dep</id>
+          <properties>
+              <jdbc.url>jdbc:mysql://127.1.1.1:3306/ssm_db</jdbc.url>
+          </properties>
+          <!--设定默认启动环境-->
+          <activation>
+              <activeByDefault>true</activeByDefault>
+          </activation>
+      </profile>
+      
+      <profile>
+          <id>env_pro</id>
+          <properties>
+              <jdbc.url>jdbc:mysql://127.2.2.2:3306/ssm_db</jdbc.url>
+          </properties>
+      </profile>
+      
+      <profile>
+          <id>env_test</id>
+          <properties>
+              <jdbc.url>jdbc:mysql://127.3.3.3:3306/ssm_db</jdbc.url>
+          </properties>
+      </profile>
+  </profiles>
+  ```
+
++ 步骤二：构建过程
+
+  ```shell
+  mvn 指令 -P 定义环境id
+  ```
+
+  范例：
+
+  ```shell
+  mvn install -P pro_env
+  ```
+
+  
+
+### 跳过测试
+
+![image-20230616113112811](image-20230616113112811.png " ")
+
 ## 私服
+
+![image-20230616113357140](image-20230616113357140.png " ")
+
+![image-20230616113511499](image-20230616113511499.png " ")
+
+![image-20230616114314058](image-20230616114314058.png " ")
+
+### 私服仓库分类
+
+![image-20230616114800517](image-20230616114800517.png " ")
+
+| 仓库类别 |  Name  |           功能            | 关联操作 |
+| :------: | :----: | :-----------------------: | :------: |
+| 宿主仓库 | hosted | 保存自主研发 + 第三方资源 |   上传   |
+| 代理仓库 | proxy  |     代理连接中央仓库      |   下载   |
+|  仓库组  | group  |  为仓库编组简化下载操作   |   下载   |
+
+### 本地仓库访问私服配置
+
+![image-20230616134600068](image-20230616134600068.png " ")
+
++ 步骤一：配置位置（Maven setting.xml 文件中）
+
+  ```xml
+  <servers>
+      <server>
+          <id>jerry-release</id>
+          <username>admin</username>
+          <password>admin</password>
+      </server>
+      <server>
+          <id>jerry-snapshots</id>
+          <username>admin</username>
+          <password>admin</password>
+      </server>
+  </servers>
+  ```
+
++ 步骤二：配置私服地址（Maven setting.xml 文件中）
+
+  ```xml
+  <mirrors>
+      <mirror>
+          <id>nexus-jerry</id>
+          <mirrorOf>*</mirrorOf>
+          <url>http://localhost:8081/repository/maven-public</url>
+      </mirror>
+  </mirrors>
+  ```
+
++ 步骤三：配置发布管理（工程 pom 文件中）
+
+  ```xml
+  <distributionManagement>
+      <repository>
+          <id>jerry-release</id>
+          <url>http://localhost:8081/repository/maven-release</url>
+      </repository>
+      <snapshotRepository>
+          <id>jerry-snapshots</id>
+          <url>http://localhost:8081/repository/maven-snapshots</url>
+      </snapshotRepository>
+  </distributionManagement>
+  ```
+
+  发布命令
+
+  ```shell
+  mvn deploy
+  ```
+
+  
 
