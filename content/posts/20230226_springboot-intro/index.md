@@ -115,7 +115,7 @@ Spring 程序与 SpringBoot 程序对比
 | Spring / SpringMVC 配置类 | 手工制作 |     无     |
 |          控制器           | 手工制作 |  手工制作  |
 
-### SpringBoot 项目快速启动
+### 项目快速启动
 
 ![image-20230628192957700](image-20230628192957700.png " ")
 
@@ -127,9 +127,7 @@ Spring 程序与 SpringBoot 程序对比
 
 ![image-20230628194011356](image-20230628194011356.png " ")
 
-## SpringBoot 简介
-
-### 概述
+## SpringBoot Introduction
 
 + 用来简化 Spring 应用的初始搭建以及开发过程
 + Spring 程序缺点：
@@ -355,6 +353,163 @@ Spring 程序与 SpringBoot 程序对比
   + 1级与2级作为系统打包后设置通用属性
   + 3级与4级用于系统开发阶段设置通用属性
 
-## 整合第三方技术
+## Integrating JUnit
 
-> unfinished, to be continued
+### 整合 JUnit 对比
+
++ Spring 整合 JUnit 
+
+  {{< admonition tip "Spring Integrating JUnit" false>}}
+
+  ![image-20230630112950652](image-20230630112950652.png " "){{< /admonition >}}
+
++ SpringBoot 整合 JUnit
+
+  {{< admonition tip "SpringBoot Integrating JUnit" true>}}
+
+  ![image-20230630113839655](image-20230630113839655.png " ")
+
+  + 注意事项
+
+    如果测试类在 SpringBoot 启动类的包或子包中，可以省略启动类的设置，也就是省略 classes 的设定
+
+  {{< /admonition >}}
+
+## Integrating SSM
+
++ SpringBoot 整合 Spring（不存在）
++ SpringBoot 整合 SpringMVC（不存在）
++ SpringBoot 整合 MyBatis（主要）
+
+### 整合 MyBatis 对比
+
++ Spring 整合 MyBatis
+
+  {{< admonition tip "Spring Integrating  MyBatis" false>}}
+
+  + SpringConfig
+
+    + 导入 JdbcConfig
+    + 导入 MyBatisConfig
+
+    ```java
+    @configuration
+    @ComponentScan("com.jerry")
+    @PropertySource("classpath:jdbc.properties")
+    @Import({JdbcConfig.class,MyBatisConfig.class})
+    public class SpringConfig{
+    }
+    ```
+
+  + JDBCConfig
+
+    + 定义数据源（加载 properties）
+
+      ```java
+      public class JdbcConfig{
+          @Value("$(jdbc.driver)")
+          private String drive;
+          @Value("$(jdbc.url)")
+          private String url;
+          @Value("$(jdbc.username)")
+          private String userName;
+          @Value("$(jdbc.passwordy")
+          private String password;
+          @Bean
+          public DataSource getDataSource(){
+              DruidDataSource ds = new DruidDataSource();
+              ds.setDriverClassName(driver);
+              ds.setUrl(url);
+              ds.setUsername(userName);
+              ds.setPassword(password);
+              return ds;
+          }
+      }
+      ```
+
+    + 定义配置信息(yml 或者 properties 文件)
+
+      ```properties
+      jdbc.driver=com.mysql.jdbc.Driver
+      jdbc.url=
+      jdbc.username=
+      jdbc.password=
+      ```
+
+  + MybatisConfig
+
+    + 定义 SqlSessionFactoryBean
+
+      ```java
+      @Bean
+      public SqlSessionFactoryBean getSqlSessionFactoryBean(DataSource dataSource){
+          SqlSessionFactoryBean ssfb = new SqlSessionFactoryBean();
+          ssfb.setTypeAliasesPackage("com.jerry.domain");
+          ssfb.setDataSource(dataSource);
+          return ssfb;
+      }
+      ```
+
+    + 定义映射配置
+
+      ```java
+      @Bean
+      public MapperScannerConfigurer getMapperScannerConfigurer(){
+          MapperScannerConfigurer msc = new MapperScannerConfigurer();
+          msc.setBasePackage("com.jerry.dao");
+          return msc;
+      }
+      ```
+
+      
+
+  {{< /admonition >}}
+
++ SpringBoot 整合 MyBatis
+
+  {{< admonition tip "SpringBoot Integrating  MyBatis" true>}}
+
+  + 第一步：创建新模块，选择 Spring 初始化，配置基础信息
+
+  + 第二步：选择当前模块需要使用的技术（MyBatis、MySQL）
+
+  + 第三步：设置数据源参数
+
+    ```yaml
+    spring:
+    	datasource:
+    		type: com.alibaba.druid.pool.DruidDataSource
+    		driver-class-name: com.mysql.cj.jdbc.Driver
+    		url: jdbc:mysql://localhost:33o6/ssm_db
+    		username: root
+    		password: root
+    ```
+
+  + 第四步：定义数据层接口与映射配置
+
+    ```java
+    //com.jerry.dao.bookDao
+    @Mapper
+    public interface BookDao{
+        @Select("select * from book where id = #{id}")
+        public Book getById(Integer id);
+    }
+    ```
+
+  + 第五步：测试类中注入 dao 接口
+
+    ```java
+    @SpringBootTest
+    class SpringbootMybatisApplicationTests{
+        @Autowired
+        private BookDao bookDao;
+        @Test
+        public void testGetById(){
+            Bookbook=bookDao.getById(1);
+            System.out.println(book);
+        }
+    }
+    ```
+
+  {{< /admonition >}}
+
