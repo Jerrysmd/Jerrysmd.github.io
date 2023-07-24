@@ -10,8 +10,8 @@ draft: false
 # license: ""
 # images: []
 
-tags: ["video"]
-categories: ["Life"]
+tags: ["DaVinci", "Video"]
+categories: ["Technology"]
 
 # featuredImage: ""
 # featuredImagePreview: ""
@@ -68,7 +68,7 @@ DaVinci Resolve is the world’s only solution that combines editing, color corr
 
 <!--more-->
 
-## 入门笔记
+## 入门大纲
 
 ### 创建新项目
 
