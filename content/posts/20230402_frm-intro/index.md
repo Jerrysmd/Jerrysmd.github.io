@@ -72,36 +72,65 @@ The Financial Risk Manager (FRM) Certification is the true standard for educatio
 
 ### Interest Rates
 
-+ **Required rate of return**
+- **Required Rate of Return**
+  - Required rate of return / 要求回报率 / yield
+  - Influenced by the `supply and demand of funds` in the market.
+  - Represents the return that investors and savers need to convince them to willingly lend their money.
+  - Typically associated with a specific investment.
+  - Example: If I deposit my money in a bank, what would the interest rate be?
+    - In this case:
+    - Interest rate = Required Rate of Return = Real Risk-free Return (真实无风险收益率) + Inflation Rate (通货膨胀收益率)
+  - Breaking down the required rate of return:
+    - Nominal risk-free rate = real risk-free rate + expected inflation rate.
+    - Required interest rate on a security = nominal risk-free rate + default risk premium + liquidity risk premium + maturity risk premium.
+- **Discount Rate**
+  - Discount rate / 折现率
+  - This is the interest rate used to `discount future payments`.
+  - It is often used interchangeably with the term "interest rate".
+  - Depending on the situation, "interest rate" can have different names:
+    - Example 1: I deposit \$100 in a bank for one year and receive a 10% interest rate. After one year, I have 110.
+      - In this scenario, the 10% interest rate is referred to as the 10% Required Rate of Return.
+    - Example 2: I want to have \$10 after one year. If the interest rate is 10%, how much should I deposit in the bank? Using the formula (x+10)/(1+10%) = x, we find x = 100.
+      - In this scenario, the 10% interest rate is referred to as the 10% Discount Rate.
+- **Opportunity Cost**
+  - Opportunity cost / 机会成本
+  - This can be seen as a type of interest rate. It represents the value that investors give up when they choose a particular course of action.
 
-  + Required rate of return / 要求回报率 / yield
-  + Affected by the `supply and demand of funds` in the market
-  + The return that investors and savers require to get them to willingly lend their funds
-  + Usually for particular investment
+### Basic Calculation
 
-  + Situation: If my money will save in one bank, what is the interest rates?
-    + In this situation:
-    + Interest rates = Required rate of return = Real Risk-free Return(真实无风险收益率) + Inflation rate(通货膨胀收益率)
-  + Decompose required rate of return:
-    + Nominal risk-free = real risk-free rate + expected inflation rate
-    + Required interest rate on a security = nominal risk-free rate + default risk premium + liquidity risk premium + maturity risk premium
++ **Future Value (FV):**
 
-+ **Discount rate**
+  + Amount to which investment grows after one or more compounding periods
 
-  + Discount rate / 折现率
-  + The interest rate we use to `discount payments` to be made in the future
-  + Usually used interchangeable with the interest rate
-  + In different situation, we have different name for Interest rates：
-    + Situation1: 100$ save in bank for one year, we got 10% interest rates, after one year I got 110$. 
-    + In this situation, 10% interest rates called 10% Required rate of return
-    + Situation2: I want to got 10$ after one year, the interest rates is 10%, how much shoud I save in bank? (x+10)/(1+10%) = x, x = 100
-    + In this situation, 10% interest rates called 10% Discount rate
++ **Present Value (PV):**
 
-+ **Opportunity cost**
+  + Current value of some future cash flow
 
-  + Opportunity cost / 机会成本
-  + Also understood as a form of interest rate. It is the value that investors forgo by choosing a particular course of action
+  + If interests are compounded m times per year, and `invest 1 year`: 
+
+    $$
+    FV=PV(1+\frac{r}{m})^m
+    $$
+
+  + If interests are compounded m times per year, and `invest n years`:
+    $$
+    FV=PV(1+\frac{r}{m})^{mn}
+    $$
+    Where: 
+  
+    `m` is the compounding frequency;
+  
+    `r` is the nominal / quoted annual interest rate
+  
++ **Continuously Compounding:**
+  $$
+  FV=PV\lim_{m\rightarrow\infty}(1+\frac{r}{m})^{mn}=PVe^{nr}
+  $$
+  
 
 ## Framework of FRM Program
 
 ## Things To Know About FRM Exam
+
+
+
