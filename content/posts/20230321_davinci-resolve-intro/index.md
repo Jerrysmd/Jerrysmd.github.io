@@ -68,6 +68,8 @@ DaVinci Resolve is the world’s only solution that combines editing, color corr
 
 <!--more-->
 
+{{< bilibili BV1B7411A7M1>}}
+
 ## 入门大纲
 
 ### 创建新项目
