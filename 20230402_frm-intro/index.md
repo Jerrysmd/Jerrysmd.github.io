@@ -40,11 +40,11 @@ The Financial Risk Manager (FRM) Certification is the true standard for educatio
 
 ### Basic Calculation
 
-#### Future Value (FV):
+#### Future Value (FV)
 
   + Amount to which investment grows after one or more compounding periods
 
-#### Present Value (PV):
+#### Present Value (PV)
 
   + Current value of some future cash flow
 
@@ -134,7 +134,26 @@ $$
 
 ## Framework of FRM Program
 
-## Things To Know About FRM Exam
+### PART Ⅰ
 
+1. Foundations of Risk Management 风险管理基础(20%)
+   + 基础知识，学完其他三门基本掌握该部分知识
+2. Quantitative Analysis 数量分析(20%)
+   + 金融：在不确定的情况下，资产的跨期配置
+   + 概率论和统计学
+3. Financial Markets and Products 金融市场与金融产品(30%)⭐
+   + Part Ⅰ 3/4 是二级市场分险的前导
+   + Part Ⅰ 3/4 最好同时学习
+4. Valuation and Risk Models 估值与风险建模(30%)⭐
+
+### PART  Ⅱ
+
+1. Market Risk Measurement and Management 市场分险测量与管理(25%)
+2. Credit Risk Measurement and Management 信用分险测量与管理(25%)
+3. Operational and Integrated Risk Management 操作及综合风险管理(25%)
+4. Risk Management and Investment Management 投资风险管理(15%)
+5. Current Issues in Financial Markets 金融市场前沿话题(10%)
+
+## Things To Know About FRM Exam
 
 
