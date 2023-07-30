@@ -134,7 +134,9 @@ $$
 
 ## Framework of FRM Program
 
-### PART Ⅰ
+### Outline
+
+**PART Ⅰ**
 
 1. Foundations of Risk Management 风险管理基础(20%)
    + 基础知识，学完其他三门基本掌握该部分知识
@@ -142,17 +144,47 @@ $$
    + 金融：在不确定的情况下，资产的跨期配置
    + 概率论和统计学
 3. Financial Markets and Products 金融市场与金融产品(30%)⭐
-   + Part Ⅰ 3/4 是二级市场分险的前导
-   + Part Ⅰ 3/4 最好同时学习
+   + Part Ⅰ 3/4 是二级`市场分险`的基础
+   + Part Ⅰ 3/4 最好放在一起学习
 4. Valuation and Risk Models 估值与风险建模(30%)⭐
 
-### PART  Ⅱ
+**PART  Ⅱ**
 
 1. Market Risk Measurement and Management 市场分险测量与管理(25%)
 2. Credit Risk Measurement and Management 信用分险测量与管理(25%)
 3. Operational and Integrated Risk Management 操作及综合风险管理(25%)
 4. Risk Management and Investment Management 投资风险管理(15%)
 5. Current Issues in Financial Markets 金融市场前沿话题(10%)
+
+### PART Ⅰ
+
+#### Foundations of Risk Management
+
+> 1. Risk Management (Best practice)⭐
+>    + Risk management and Corporate Governance Perspective
+>    + Implementing Risk Appetite Frameworks
+>    + Principles for Effective Data Aggregation and Risk Reporting
+>    + Risk Management Failures
+> 2. Capital Asset Pricing Model (Theory)⭐⭐⭐
+>    + The Standard Capital Asset Pricing Model
+>    + Arbitrage Pricing Theory and Multifactor Models of Risk and Return
+>    + Applying the CAPM to Performance Measurement
+> 3. Information Risk and Data Quality Management
+> 4. Financial Disasters⭐⭐
+> 5. The Credit Crisis of 2007
+> 6. GARP Code of Conduct
+
+##### Risk
+
++ Definition of Risk
+  + Risk is defined as the unexpected variability of asset prices and/or earnings. It is a mix of danger and opportunity
++ Sources of Risk
+  + `Business risk` is the risk that a firm is subjected to during daily operations and includes the risks that result from business decisions and the business environment
+  + `Financial risks` are the results of a firm's financial market activities
+
+![image-20230730094838069](image-20230730094838069.png)
+
+### PART  Ⅱ
 
 ## Things To Know About FRM Exam
 
