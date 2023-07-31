@@ -247,6 +247,50 @@ $$
 
 ![image-20230730094838069](image-20230730094838069.png)
 
+#### Quantitative Analysis
+
+> 1. Probability
+> 2. Basic Statistics
+> 3. Distributions
+> 4. Hypothesis Tests and Confidence Intervals
+> 5. Linear Regression
+>    + Linear Regression with One Regressor
+>    + Linear Regression with Multiple Regressors
+> 6. Simulation Modeling⭐
+> 7. Estimating Volatilities and Correlations⭐
+> 8. Correlation and Copulas
+
+#### Financial Markets and Products
+
+> 1. Derivative Contract
+>    + Structure and mechanics of OTC and exchange markets
+>    + Structure, mechanics, and valuation of Derivative Contracts
+>      + Forwards, Futures and Swaps
+>      + Options
+>    + Hedging wit derivatives
+> 2. Financial Product (Fixed Income)
+>    + Interest rates and measures of interest rate sensitivity
+>    + Foreign exchange risk
+>    + Corporate bonds
+>    + Mortgage-backed securities
+>    + Rating agencies
+
+#### Valuation and Risk Models
+
+> 1. Valuation
+>    + Option valuation
+>    + Fixed income valuation
+> 2. Risk Models
+>    + Value-at-Risk (VaR)
+>    + Expected shortfall (ES)
+>    + Stress testing and scenario analysis
+> 3. Risk Management
+>    + Hedging
+>    + Country and sovereign risk models and management
+>    + External and internal credit ratings
+>    + Expected and unexpected losses
+>    + Operational risk
+
 ### PART  Ⅱ
 
 ## Things To Know About FRM Exam
