@@ -61,11 +61,11 @@
 </span></span></code></pre></td></tr></table></div></div><p>其中，countOfWriters 被称为静态变量，它有别于 name 和 age 这两个成员变量，因为它前面多了一个修饰符 <code>static</code>。</p><p>这意味着无论这个类被初始化多少次，静态变量的值都会在所有类的对象中共享。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=n>Writer</span> <span class=n>w1</span> <span class=o>=</span> <span class=k>new</span> <span class=n>Writer</span><span class=o>(</span><span class=s>&#34;沉默王二&#34;</span><span class=o>,</span><span class=mi>18</span><span class=o>);</span>
-</span></span><span class=line><span class=cl><span class=n>Writer</span> <span class=n>w2</span> <span class=o>=</span> <span class=k>new</span> <span class=n>Writer</span><span class=o>(</span><span class=s>&#34;沉默王三&#34;</span><span class=o>,</span><span class=mi>16</span><span class=o>);</span>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=n>Writer</span> <span class=n>w1</span> <span class=o>=</span> <span class=k>new</span> <span class=n>Writer</span><span class=o>(</span><span class=s>&#34;沉默王二&#34;</span><span class=o>,</span><span class=n>18</span><span class=o>);</span>
+</span></span><span class=line><span class=cl><span class=n>Writer</span> <span class=n>w2</span> <span class=o>=</span> <span class=k>new</span> <span class=n>Writer</span><span class=o>(</span><span class=s>&#34;沉默王三&#34;</span><span class=o>,</span><span class=n>16</span><span class=o>);</span>
 </span></span><span class=line><span class=cl><span class=n>System</span><span class=o>.</span><span class=na>out</span><span class=o>.</span><span class=na>println</span><span class=o>(</span><span class=n>Writer</span><span class=o>.</span><span class=na>countOfWriters</span><span class=o>);</span>
 </span></span></code></pre></td></tr></table></div></div><p>按照上面的逻辑，你应该能推理得出，countOfWriters 的值此时应该为 2 而不是 1。从内存的角度来看，静态变量将会存储在 Java 虚拟机中一个名叫“Metaspace”（元空间，Java 8 之后）的特定池中。</p><p>静态变量和成员变量有着很大的不同，成员变量的值属于某个对象，不同的对象之间，值是不共享的；但静态变量不是的，它可以用来统计对象的数量，因为它是共享的。就像上面例子中的 countOfWriters，创建一个对象的时候，它的值为 1，创建两个对象的时候，它的值就为 2。</p><p>Summary:</p><ol><li>由于静态变量属于一个类，所以不能通过对象引用来访问，而应该直接通过类名来访问；</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=n>w1</span><span class=o>.</span><span class=na>countOfWriters</span> <span class=err>#不应该通过类实例访问静态成员</span>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=n>w1</span><span class=o>.</span><span class=na>countOfWriters</span> <span class=err>#</span><span class=n>不应该通过类实例访问静态成员</span>
 </span></span></code></pre></td></tr></table></div></div><ol start=2><li>不需要初始化类就可以访问静态变量。</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
@@ -91,7 +91,7 @@
 </span></span><span class=line><span class=cl>    <span class=n>cos</span><span class=o>(</span><span class=kt>double</span> <span class=n>a</span><span class=o>)</span>
 </span></span><span class=line><span class=cl>    <span class=o>...</span>
 </span></span></code></pre></td></tr></table></div></div><p>Summary:</p><ol><li>Java 中的静态方法在编译时解析，因为静态方法不能被重写（方法重写发生在运行时阶段，为了多态）。</li><li>抽象方法不能是静态的。</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=kd>static</span> <span class=kd>abstract</span> <span class=kt>void</span> <span class=nf>paly</span><span class=o>();</span> <span class=err>#修饰符</span><span class=kd>abstract</span> <span class=err>和</span> <span class=n>static</span><span class=err>的组合非法</span>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=kd>static</span> <span class=kd>abstract</span> <span class=kt>void</span> <span class=nf>paly</span><span class=o>();</span> <span class=err>#</span><span class=n>修饰符abstract</span> <span class=n>和</span> <span class=n>static的组合非法</span>
 </span></span></code></pre></td></tr></table></div></div><ol start=3><li>静态方法不能使用 this 和 super 关键字。</li><li>成员方法可以直接访问其他成员方法和成员变量。</li><li>成员方法也可以直接方法静态方法和静态变量。</li><li>静态方法可以访问所有其他静态方法和静态变量。</li><li>静态方法无法直接访问成员方法和成员变量。</li></ol><h2 id=3-static-code-block>3. Static Code Block</h2><p>静态代码块可以用来初始化静态变量，尽管静态方法也可以在声明的时候直接初始化，但有些时候，我们需要多行代码来完成初始化。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
 </span><span class=lnt> 2
 </span><span class=lnt> 3
@@ -130,8 +130,8 @@
 </span></span><span class=line><span class=cl><span class=o>}</span>
 </span></span></code></pre></td></tr></table></div></div><p>writes 是一个静态的 ArrayList，所以不太可能在声明的时候完成初始化，因此需要在静态代码块中完成初始化。</p><p>Summary:</p><ol><li>一个类可以有多个静态代码块。</li><li>静态代码块的解析和执行顺序和它在类中的位置保持一致。为了验证这个结论，可以在 StaticBlockDemo 类中加入空的 main 方法，执行完的结果如下所示：</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=err>第一块</span>
-</span></span><span class=line><span class=cl><span class=err>第二块</span>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=n>第一块</span>
+</span></span><span class=line><span class=cl><span class=n>第二块</span>
 </span></span></code></pre></td></tr></table></div></div><h2 id=4-static-inner-class>4. Static Inner Class</h2><p>Java 允许我们在一个类中声明一个内部类，它提供了一种令人信服的方式，允许我们只在一个地方使用一些变量，使代码更具有条理性和可读性。</p><p>常见的内部类有四种，成员内部类、局部内部类、匿名内部类和静态内部类。</p><p>静态内部类：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
 </span><span class=lnt> 2
 </span><span class=lnt> 3

@@ -182,7 +182,7 @@ $$
   + `Business risk` is the risk that a firm is subjected to during daily operations and includes the risks that result from business decisions and the business environment
   + `Financial risks` are the results of a firm's financial market activities
 
-![image-20230730094838069](image-20230730094838069.png)
+![image-20230730094838069](image-20230730094838069.png " ")
 
 #### Quantitative Analysis
 
@@ -227,9 +227,5 @@ $$
 >    + External and internal credit ratings
 >    + Expected and unexpected losses
 >    + Operational risk
-
-### PART  Ⅱ
-
-## Things To Know About FRM Exam
 
 

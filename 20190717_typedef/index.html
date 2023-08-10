@@ -33,12 +33,12 @@ RedisSubCommand函数的参数是一个PFunCallBack类型的回调函数，返�
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-c data-lang=c><span class=line><span class=cl><span class=k>typedef</span><span class=err>　</span><span class=kt>char</span><span class=o>*</span><span class=err>　</span><span class=n>pStr1</span><span class=p>;</span>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-c data-lang=c><span class=line><span class=cl><span class=k>typedef</span>　<span class=kt>char</span><span class=o>*</span>　<span class=n>pStr1</span><span class=p>;</span>
 </span></span><span class=line><span class=cl><span class=cp>#define　pStr2　char*　
-</span></span></span><span class=line><span class=cl><span class=cp></span><span class=n>pStr1</span><span class=err>　</span><span class=n>s1</span><span class=p>,</span> <span class=n>s2</span><span class=p>;</span>
-</span></span><span class=line><span class=cl><span class=n>pStr2</span><span class=err>　</span><span class=n>s3</span><span class=p>,</span> <span class=n>s4</span><span class=p>;</span>
+</span></span></span><span class=line><span class=cl><span class=cp></span><span class=n>pStr1</span>　<span class=n>s1</span><span class=p>,</span> <span class=n>s2</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=n>pStr2</span>　<span class=n>s3</span><span class=p>,</span> <span class=n>s4</span><span class=p>;</span>
 </span></span></code></pre></td></tr></table></div></div><p>在上述的变量定义中，s1、s2、s3都被定义为char<em>类型；但是s4则定义成了char类型，而不是我们所预期的指针变量char</em>，这是因为#define只做简单的字符串替换，替换后的相关代码等同于为：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-c data-lang=c><span class=line><span class=cl><span class=kt>char</span><span class=o>*</span><span class=err>　</span><span class=n>s3</span><span class=p>,</span> <span class=n>s4</span><span class=p>;</span>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-c data-lang=c><span class=line><span class=cl><span class=kt>char</span><span class=o>*</span>　<span class=n>s3</span><span class=p>,</span> <span class=n>s4</span><span class=p>;</span>
 </span></span></code></pre></td></tr></table></div></div><p>而使用typedef为char*定义了新类型pStr1后，相关代码等同于为：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-c data-lang=c><span class=line><span class=cl><span class=kt>char</span> <span class=o>*</span><span class=n>s3</span><span class=p>,</span> <span class=o>*</span><span class=n>s4</span><span class=p>;</span>
 </span></span></code></pre></td></tr></table></div></div><p>3.1 示例2

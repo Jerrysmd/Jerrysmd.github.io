@@ -570,7 +570,7 @@
 </span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>SqlSession</span> <span class=n>sqlSession</span> <span class=o>=</span> <span class=n>sqlSessionFactory</span><span class=o>.</span><span class=na>openSession</span><span class=o>();</span>
 </span></span><span class=line><span class=cl><span class=c1>//5. 执行 SqlSession 对象执行查询，获取结果 User
 </span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>AccountDao</span> <span class=n>accountDao</span> <span class=o>=</span> <span class=n>sqlSession</span><span class=o>.</span><span class=na>getMapper</span><span class=o>(</span><span class=n>AccountDao</span><span class=o>.</span><span class=na>class</span><span class=o>);</span>
-</span></span><span class=line><span class=cl><span class=n>Account</span> <span class=n>ac</span> <span class=o>=</span> <span class=n>accountDao</span><span class=o>.</span><span class=na>findById</span><span class=o>(</span><span class=mi>2</span><span class=o>);</span>
+</span></span><span class=line><span class=cl><span class=n>Account</span> <span class=n>ac</span> <span class=o>=</span> <span class=n>accountDao</span><span class=o>.</span><span class=na>findById</span><span class=o>(</span><span class=n>2</span><span class=o>);</span>
 </span></span><span class=line><span class=cl><span class=n>println</span><span class=o>(</span><span class=n>ac</span><span class=o>);</span>
 </span></span><span class=line><span class=cl><span class=c1>//6. 释放资源
 </span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>sqlSession</span><span class=o>.</span><span class=na>cloase</span><span class=o>();</span>
@@ -677,7 +677,7 @@
 </span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=n>String</span> <span class=n>methodName</span> <span class=o>=</span> <span class=n>signature</span><span class=o>.</span><span class=na>getName</span><span class=o>();</span>
 </span></span><span class=line><span class=cl>        
 </span></span><span class=line><span class=cl>        <span class=kt>long</span> <span class=n>start</span> <span class=o>=</span> <span class=n>System</span><span class=o>.</span><span class=na>currentTimeMillis</span><span class=o>();</span>
-</span></span><span class=line><span class=cl>        <span class=k>for</span><span class=o>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=o>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=mi>10000</span><span class=o>;</span> <span class=n>i</span><span class=o>++){</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span><span class=o>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=n>0</span><span class=o>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>10000</span><span class=o>;</span> <span class=n>i</span><span class=o>++){</span>
 </span></span><span class=line><span class=cl>            <span class=n>pjp</span><span class=o>.</span><span class=na>proceed</span><span class=o>();</span>
 </span></span><span class=line><span class=cl>        <span class=o>}</span>
 </span></span><span class=line><span class=cl>        <span class=kt>long</span> <span class=n>end</span> <span class=o>=</span> <span class=n>System</span><span class=o>.</span><span class=na>currentTimeMillis</span><span class=o>();</span>
