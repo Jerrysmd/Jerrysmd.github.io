@@ -52,12 +52,55 @@ The Fundamentals of Risk Management is Chapter 1 of Part 1 for the FRM exam. Thi
 
 ### Analyze and measure risk
 
-+ Quantitative Risk Measures
++ **Quantitative Risk Measures**
   + VaR(Value at risk)
-    + Developed by Dennis Weatherstone,CEO of J.P.Morgan
+    + Developed by Dennis Weatherstone,CEO of J.P. Morgan
     + VaR uses the loss distribution associated with a position or portfolio to estimate losses at a given level of likelihood (or confidence).
-      + E.g. a one day 99% confidence level VaR of USD 1 million
-+ Qualitative Risk Measures
+      + E.g. a one day 99% **confidence level**（置信水平） VaR of USD 1 million
++ **Qualitative Risk Measures**
   + Scenario analysis
   + Stress testing
+
+![image-20230811113053307](image-20230811113053307.png " ")
+
+### Tail Risk
+
++ Some credit portfolios, however exhibit a much moreextreme variance in their losses over `longer intervals of time`(e.g., a decade). 
++ **From the crisis lesson, we focus on the tail risk beyond confidence level which cannot be explained by VaR.**
+  + *Extreme value theory*(EVT)（FRM Part2 内容） focuses on tail distribution to understand the black swans 
+  + *Expected shortfall*（指所有极端值的平均数） is the EL of tail distribution
+
+### Expected Loss(EL)
+
++ EL is the average loss expected to incur from a position or a portfolio. It can be estimated by historical data of a period of time. 
+  + It can be treated as a predictable expense rather than a risk or
+    uncertainty
++  In the case of the credit risk of a loan: 
+  + EL=EAD x LGD x PD (part1 估值与风险建模 会重讲)
+    + PD: Probability of default 
+    + EAD: Exposure amount at default 
+    + LGD: Loss given default
++ EL is often **priced into the product directly.**
+
+### Unexpected Loss(UL)
+
++ On a bad day, losses can range above the expected level. **Unexpected loss is the surprising loss that above the EL in bad days.**
+  + Value at risk (VaR) uses the loss distribution to estimate losses at a given level of likelihood(confidence). 
+  + UL= VaR - EL (Unexpected loss is the surprising loss that above the EL in bad days)
+  + **Economic capital**(usually called risk capital) is the amount of liquid -
+    capital used to cover unexpected loss. 
++ **Correlation risk**,where unfavorable events happen together, will drive potential losses to unexpected levels. 
++ In practice, **concentration** makes the probability of multiple losses high for a portfolio. As a result, we need more capital to cover the UL.
+
+### Balance Between Risk and Reward 
+
++ There is a natural trade-off between risk and reward: the more risk takes, the more potential reward is earned. 
++ However, there are challenges. 
+  1. Conflicts between EL and UL, can be solved by RAROC
+     + Risk adjusted return on capital(RAROC)=after-tax risk-adjusted expected return(EL is subtracted)/economic capital
+  2. Correlation between risk factors is changing
+  3. Conflicts of interests among different units, can be solved by three lines of defense
+     + business line that generates,owns, and manages risk;
+     + risk managers implement day-to-day oversight;
+     + periodic independent oversight and assurance, such as internal audit
 
