@@ -159,10 +159,135 @@ The Fundamentals of Risk Management is Chapter 1 of Part 1 for the FRM exam. Thi
 
 + There is a natural trade-off between risk and reward: the more risk takes, the more potential reward is earned. 
 + However, there are challenges. 
-  1. Conflicts between EL and UL, can be solved by RAROC
+  1. Conflicts between EL and UL, can be solved by **RAROC**
      + Risk adjusted return on capital(RAROC)=after-tax risk-adjusted expected return(EL is subtracted)/economic capital
   2. Correlation between risk factors is changing
-  3. Conflicts of interests among different units, can be solved by three lines of defense
-     + business line that generates,owns, and manages risk;
-     + risk managers implement day-to-day oversight;
-     + periodic independent oversight and assurance, such as internal audit
+  3. Conflicts of interests among different units, can be solved by **three lines of defense**：
+     1. business line that generates,owns, and manages risk;
+     2. risk managers implement day-to-day oversight;
+     3. periodic independent oversight and assurance, such as internal audit
+
+### Example 1
+
+> Tail risk techniques are dealt by:
+>
+> - [x] A. Extreme value Theory
+>
+> - [ ] B. VaR Theory
+>
+> - [ ] C. Probably of Default Theory
+>
+> - [ ] D. Standard deviation
+
+## Basic Risk Types
+
+![image-20230816104536020](image-20230816104536020.png " ")
+
+### Typology of Risk Exposures
+
+1. Market Risk
+
+> + **Market risk(市场风险) is the risk that changes in financial market prices（金融产品发生变化就是市场风险） and rates will reduce the value of a security or a portfolio.** 
+>   + Equity price risk （股票价格风险）
+>   + Interest rate risk （利率风险）
+>   + Currency (Foreign exchange) risk （外汇风险） 
+>   + Commodity price risk （大宗商品风险）
+> + **Market risk is driven by:** 
+>   + General market risk (systematic risk)（系统性风险）
+>   + Specific risk (idiosyncratic risk)（个体风险/非系统性风险）
+
+2. Credit Risk
+
+> + **Credit risk**: It arises from the failure of one party to fulfill its financial obligations to another party（一方没有对另一方尽到义务）. Some examples of credit risk include
+>   + A debtor fails to pay interest or principal on a loan(**bankruptcy risk**)（翻译违约风险而不是倒闭风险）
+>   + An obliger or counterparty is downgraded(**downgrade risk**),indicating an increase in risk that may lead to an immediate loss in value of a credit-linked security; and 
+>   + A counterparty to a market trade fails to perform (counterparty risk) including **settlement** or **Herstatt risk**. (结算风险)
+
+3. Liquidity Risk (特别针对于银行)
+
+> + **Funding Liquidity Risk**: a firm's ability to raise the necessary cash to roll over its debt; to meet the cash requirements,the margin requirements, and the collateral requirements; and to satisfy the need of capital withdrawals. (还钱时没钱)
+> + **Market (Trading) Liquidity Risk**: an institution will not be able to execute a transaction at the prevailing market price because there is temporarily no appetite for the deal on the other side of the market. (交易需打折)
+
+4. Operational Risk
+
+> + Operational Risk refers to potential losses resulting from inadequate or failed internal processes, **people, and systems** or from external events.
+>   + It includes **legal risk**(诉讼风险), *but excludes* **business, strategic and reputational risk.**
+>     + **Legal risk**: the potential for litigation to create uncertainty for a firm.
+>     + **Regulatory risk**: the uncertainty actions by governmental entity
+>   + Under broad definition,it includes everything from
+>     + anti-money laundering risk, (AML Risk 反洗钱)
+>     + cyber risk to risks of terrorist attacks, 
+>     + rogue trading, 
+>     + model risk: The risk of potential indirect costs of relying on models
+
+5. Business, Strategic and Reputation Risk
+
+> + **Business Risk**: lies at the heart of any business and includes all the usual worries of firms, such as **customer demands,pricing decisions, supplier negotiations, and product innovation management.** (错误预估需求、错误定价，协商失败 等等导致亏损，但不能称之为 Risk，很多时候只能归类到 “Unknown Unknowns” 和 “Unknown Unknowns”)
+> + **Strategic Risk**: involves making critical,long-term decisions about the firm's direction, often accompanied by major investments of capital, human resources, etc. 
+> + **Reputation Risk**: the danger that a firm will suffer a sudden fall in its market standing or brand with economic consequences. (known Unknowns)
+
+### Risk Aggregation
+
++ Given the many different types of risk and risk metrics, a key problem in risk management is the challenge of seeing the bigger picture, also called **risk aggregation.** 
+  + One challenge occurs when one single risk factor could ultimately spill over many kinds of risks, which will increase correlations 
+    + This is dangerous with UL.
+  + Another challenge occurs when aggregating different risks at enterprise level. 
+    + Different risks have different **characteristics**, such as loss
+      distributions.
+
+### Example 1
+
+> Operational risk includes:
+>
+> - [ ] A. counterparty risk
+> - [x] B. cyber risk
+> - [ ] C. reputation risk
+> - [ ] D. business risk
+
+## How Do Firms Manage Financial Risk
+
+### Risk Management Strategies
+
++ **Make four basic choices in risk management** 
+  1. **Avoid** or undertake risk 
+  2. Whether **transfer** risk to third parties 
+  3. **Mitigate** risk or not 
+  4. **Assume**(keep) or not assume risk
++ **Before making the choice, a risk appetite(口味) must be determined.**
+
+### Risk Appetite
+
++ **Risk appetite** describes the amount and types of risk a firm is willing to accept. This is in contrast to risk capacity,which describes the maximum amount of risk a firm can absorb
+
+![image-20230816160623437](image-20230816160623437.png "Risk appetite as a metric")
+
++ Note
+  + Capacity: 真正能力上限, 由客观事实决定
+  + Risk Appetite: 最大容忍风险，董事会决定
+  + Profile: Current level，由 CRO 决定
+
++ **Issues related with risk appetite**
+  + The **board**(董事会) must characterize an appropriate "risk appetite"for the firm 
+  + Be connected to a firm's overall **business strategy and capital plan**. 
+  + **Clear communication throughout the firm** of the firm's risk appetite and risk position. 
+  + Effective risk management program should be consistent with fundamental strategic and risk appetite choices. 
+  + Risk appetites can be expressed in a number of ways,including **quantitative and qualitative**（定量和定性） statements. 
+  + Banks have to choose their level of risk subject to **external constraints**
+
+## Risk Management Tools
+
++ **Risk Limits**
+  + Limits vary by the nature of the risk, the competitive positioning of the firm,and the span of its activities
+  + Practically speaking, these limits should be designed such that the probability of exceeding them during the normal situation of business is low.
++ **Derivatives**
+  + In many cases,the risk manager will decide to **transfer** a portion of a financial risk to the risk management markets. 
+  + The use of these instruments requires firms to make key decisions based on their **specific needs**
+
+Risk Limits:
+
+| Limit                        | Nature                                                       | Example Weakness                                             |
+| ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Stop Loss Limits<br />止损点 | Loss threshold and associated action (e.g. close out, escalation) | Will not prevent future exposure, only limit realized losses. |
+| Notional Limits              | Notional size of exposure                                    | Notional amount may not be strongly related to economic risk of derivative instruments, especially options |
+| Risk Specific Limits         | Limits referencing some special feature of risk in question (e.g. liquidity ratios for liquidity risk) | These limits are difficult to aggregate; may require specialized knowledge to interpret. |
+
