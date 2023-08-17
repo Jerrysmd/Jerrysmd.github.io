@@ -216,16 +216,39 @@ The Fundamentals of Risk Management is Chapter 1 of Part 1 for the FRM exam. Thi
 + **Risk Limits**
   + Limits vary by the nature of the risk, the competitive positioning of the firm,and the span of its activities
   + Practically speaking, these limits should be designed such that the probability of exceeding them during the normal situation of business is low.
+  + **Risk Limits ≠ Risk appetite**，Risk appetite >> Risk Limits
 + **Derivatives**
-  + In many cases,the risk manager will decide to **transfer** a portion of a financial risk to the risk management markets. 
+  + In many cases,the risk manager will decide to **transfer** a portion of a financial risk to the risk management markets (衍生产品的主要目的是为了转移风险). 
   + The use of these instruments requires firms to make key decisions based on their **specific needs**
 
 Risk Limits:
 
-| Limit                        | Nature                                                       | Example Weakness                                             |
-| ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Stop Loss Limits<br />止损点 | Loss threshold and associated action (e.g. close out, escalation) | Will not prevent future exposure, only limit realized losses. |
-| Notional Limits              | Notional size of exposure                                    | Notional amount may not be strongly related to economic risk of derivative instruments, especially options |
-| Risk Specific Limits         | Limits referencing some special feature of risk in question (e.g. liquidity ratios for liquidity risk) | These limits are difficult to aggregate; may require specialized knowledge to interpret. |
+| Limit                                                        | Nature                                                       | Example Weakness                                             |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Stop Loss Limits<br />止损点                                 | Loss threshold and associated action (e.g. close out, escalation) | Will not prevent future exposure, only limit realized losses. |
+| Notional Limits<br />本金上限                                | Notional size of exposure                                    | Notional amount may not be strongly related to economic risk of derivative instruments, especially options |
+| Risk Specific Limits<br />风险指标                           | Limits referencing some special feature of risk in question (e.g. liquidity ratios（流动性比例） for liquidity risk) | These limits are difficult to aggregate; may require specialized knowledge to interpret. |
+| Maturity/Gap Limits<br />期限/缺口限制                       | Limit amount of transactions that mature or reset/ reprice in each time period | These limits reduce the risk that a large volume of transactions will need to be dealt with in a given time frame,with all the operational and liquidity risks this can bring. But they do not speak directly to price risk. |
+| Concentration Limits<br />集中度限制                         | Limits of concentrations of various kinds(e.g.,to individual counterparties,or product type) | These limits must be set with the understanding of correlation risks. They may not capture correlation risks in stressed markets. |
+| Greek Limits<br />特殊限制<br />《估值与风险建模》           | Option positions need to be limited in terms of their unique risk characteristics (e.g.,delta,gamma, vega risk | These limits suffer from all the classic model risks and calculation may be compromised at trading desk level without the right controls and independence |
+| VaR                                                          | Aggregate statistical number                                 | VaR suffers from all the classic model risks and may be misinterpreted by senior management. Specifically, VaR does not indicate how bad a loss might get in an unusually stressed market |
+| Stress, Sensitivity, and Scenario Analysis<br />压力测试（最严重）<br />Sensitivity（强调一个风险）<br />Scenario（强调的是一种情景，由多个风险构成） | These limits are based on exploring how bad things could get in a plausible worst-case scenario. Stress tests look at specific stresses. Sensitivity tests look at the sensitivity of a position or portfolio to changes in key variables. Scenario modeling looks at given real-world scenarios(hypothetical or historical). | Varies in sophistication. Dependent on deep knowledge of the firm's exposures and market behavior. Difficult to be sure that all the bases are covered(e.g.,there are endless possible scenarios) |
+
++ Gap Limits：在银行业务中
+  + 吸收储蓄：一年；给出利息如 2%
+  + 发放贷款：三十年；拿到利息如 5%
+  + 这种“借短头长”是普遍策略，但三十年和一年的差二十九年就是风险，时间越长风险越大
+
+Derivatives:
+
+| Instrument Type                                             | Defining Features                                            |
+| ----------------------------------------------------------- | ------------------------------------------------------------ |
+| Forward<br />远期(指未来买卖资产，且约定了一个价格)         | It is a tailored agreement to exchange an agreed upon quantity of an asset at a pre-agreed price at some future settlement date. The asset may be delivered physically, or the contract may stipulate a cash settlement (i.e.,the difference between the agreed upon price and some specified spot or current price) |
+| Futures<br />从 Forward 衍生出来的一种标准化合约            | It is an exchange-listed forward with standardized terms, subject to margining. |
+| Swap<br />从 Forward 衍生出来的一系列远期                   | It is an over-the-counter(OTC) agreement to swap the cash flows(or value) associated with two different economic positions until(or at) the maturity of the contract. For example,one side to an interest rate swap might agree to pay a fixed interest rate on an agreed upon notional amount for an agreed upon period,while the other agrees to pay the variable rate. Swaps take different forms depending on the underlying market. |
+| Call Option<br/>Option 叫做期权，是一种买卖的权利<br />看涨 | The purchaser of a call option has the right, but not the obligation,to buy the underlying asset at an agreed upon strike price,either at the maturity date(European option) or at any point during an agreed upon period(American option). |
+| Put Option<br/>看跌                                         | The purchaser of a put option has the right,but not the obligation,to self the underlying asset at the agreed upon strike price at the maturity date(European option) or at any point during an agreed upon period(American option). |
+| Exotic Option<br/>歧义                                      | There are many different options beyond the standard or plain vanilla puts and calls. These include Asian (or average price) options and basket options(based on a basket of prices). |
+| Swaption<br />swap + option                                 | It is the right, but not the obligation,to enter a swap at some future date at pre-agreed terms. |
 
 
