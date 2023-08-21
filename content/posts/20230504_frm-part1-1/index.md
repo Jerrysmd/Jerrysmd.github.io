@@ -274,7 +274,7 @@ The Fundamentals of Risk Management is Chapter 1 of Part 1 for the FRM exam. Thi
   + Risk appetites can be expressed in a number of ways,including **quantitative and qualitative**（定量和定性） statements. 
   + Banks have to choose their level of risk subject to **external constraints**
 
-## Risk Management Tools
+### Risk Management Tools
 
 + **Risk Limits**
   + Limits vary by the nature of the risk, the competitive positioning of the firm,and the span of its activities
@@ -314,3 +314,96 @@ Derivatives:
 | Exotic Option<br/>歧义                                      | There are many different options beyond the standard or plain vanilla puts and calls. These include Asian (or average price) options and basket options(based on a basket of prices). |
 | Swaption<br />swap + option                                 | It is the right, but not the obligation,to enter a swap at some future date at pre-agreed terms. |
 
+### Hedging Philosophy
+
+对冲 / 套期保值
+
++ Just because a risk can be hedged does not mean that it should be hedged Hedging is simply a tool and, like any tool, it has limitations.
+  + Hedging has advantages.
+  + Hedging has disadvantages. 
+  + How to hedge?
+
+#### Advantages of Hedging Risk Exposures
+
+1. By employing risk management tools, management can better achieve the board's objectives. 
+2. Hedging reduces the cost of capital and enhances the ability to finance growth. 
+3. Hedging increases the debt capacity(负债率) of companies  
+   + increasing interest tax deductions 
+4. A firm can stabilize its cost through hedging
+   + A competitive advantage 
+5. Purchasing insurance is expensive
+
+#### Disadvantages of Hedging Risk Exposures 
+
+1. Using hedging tools cannot increase the value of the firm. 
+   + Franco Modigliani and Merton Miller (M&M),laid out in 1958:the valueof a firm cannot be changed merely by means of financial transactions 
+2. Active hedge may distract management from its core business. 
+3. Hedging requires specific skills.  
+   + A careless risk management strategy can drag a firm down even more quickly than the underlying risk. 
+4. Risk management strategy has **compliance(合规) cost**, including disclosure 
+5. Hedging could increase the firm's earnings variability due to the gap **between accounting earnings and economic cash flows** 
+6. The problem will be amplified by poor communication.
+
+#### How to hedge? 
+
++ **Static and Dynamic hedging strategies**  
+  + The latter is more complex, time consuming and expensive 
++ **Hedge operational risk and financial risk** 
+  + Hedging operational risk means stabilizing expenses and revenues (就是现金流 cash flow). 
+  + Hedging financial risk means stabilizing assets and liabilities (就是 accounting performance).  
+  + E.g. Price risk, interest rate risk and foreign exchange risk 
++ A firm may misunderstand the **type of risk** that it faces. It may map or measure the risk incorrectly, fail to notice changes in the market structure, or suffer from a rogue traders on its team.
+
+### Example 1
+
+> + Which of the following statements regarding the amount of risk taken by a bank and the impact on the value of a bank is most likely correct? 
+>   - [ ] A.Banks need to take on a small amount risk in order to maximize shareholder value while satisfying the constraints imposed by bank regulators.(风险和股东价值没有一定关系)
+>   - [ ] B.Banks that are conservative in practice and take on less risk will always end up generating more value because they avoid incurring losses that would be associated with taking on more risk.（小风险不会带来更大的价值）
+>   - [x] C.Banks that are valued for their ability to provide liquid investments to their customers should take on less risk in order to maximize value （提供充足流动性可以增加银行价值）
+>   - [ ] D.Banks that are conservative in practice typically assume an optimal amount of risk of zero
+
+## The Governance of Risk Management
+
+### Introduction 
+
++ Corporate governance
+  + The way in which companies are run. 
+  + Describes the roles and responsibilities of a firm's shareholders, board of directors, and senior management, etc. 
+  + Three main regulatory acts making standards of corporate governance
+    + Sarbanes-Oxley Act (安然事件 - 财务造假事件 - 法案规避财务舞弊)
+    + The Basel Committee on Banking Supervision (BCBS) 
+    + Dodd-Frank Act（08年次贷危机）
+
+### Sarbanes-Oxley Act (SOX) 
+
++ Came into effect on July 30,2003,creating stricter legal requirements for boards, senior management, and external/internal auditors 
++ CEO and CFO must:  
+  + Ensure that reports filed with SEC（美国证监会） are accurate for publicly traded firms  
+  + Affirm that disclosures provide a complete and accurate presentation of their company's financial conditions and operations.
+  +  Be responsible for internal controls, including their design and maintenance
+  + Review annually the effectiveness of a firm's reporting procedures and controls. 
+  + Disclose the names of individuals who serve on the board audit 0 committee.
+
+### Key Post Crisis Corporate Governance Concerns 
+
+1. **Stakeholder Priority**  
+   + Depositors, debt holders, and taxpayers have a much stronger interest in minimizing the risk of bank failure than do most shareholders, who often seem to press for short-term results. 
+   + Shareholder empowerment, the usual remedy to corporate governance ills, may therefore be an inadequate solution for the banking industry's woes.
+2. **Board Composition**
+   + The crisis reignited a longstanding debate as to how to ensure bank boards can achieve the appropriate balance of independence, engagement, and financial industry expertise.  
+   + Analyses of failed banks do not show any clear correlation between success and a predominance of either insiders or outsiders. One can note, however, that failed bank Northern Rock had several banking experts on its board.
+
+#### The Evolution of BCBS
+
++ The Basel Committee on Banking Supervision (BCBS), an organization comprised of the central banks and bank supervisors from 27 jurisdictions focuses on formalizing international standards for prudential banking regulation.
+
+![image-20230821160545655](image-20230821160545655.png " ")
+
+#### Key Post Crisis Corporate Governance Concerns
+
+1. **Stakeholder Priority**
+   + Depositors, debt holders, and taxpayers have a much stronger interest in - minimizing the risk of bank failure than do most shareholders, who often seem to press for short-term results. 
+   + Shareholder empowerment, the usual remedy to corporate governance ills, may therefore be an inadequate solution for the banking industry's woes. 
+2. **Board Composition**
+   + The crisis reignited a longstanding debate as to how to ensure bank boards can achieve the appropriate balance of independence, engagement, and financial industry expertise 
+   + Analyses of failed banks do not show any clear correlation between success and a predominance of either insiders or outsiders. One can note, however, that failed bank Northern Rock had several banking experts on its board.
