@@ -307,9 +307,9 @@ Derivatives:
   + The way in which companies are run. 
   + Describes the roles and responsibilities of a firm's shareholders, board of directors, and senior management, etc. 
   + Three main regulatory acts making standards of corporate governance
-    + Sarbanes-Oxley Act (安然事件 - 财务造假事件 - 法案规避财务舞弊)
-    + The Basel Committee on Banking Supervision (BCBS) 
-    + Dodd-Frank Act（08年次贷危机）
+    + **Sarbanes-Oxley Act (安然事件 - 财务造假事件 - 法案规避财务舞弊)**
+    + **The Basel Committee on Banking Supervision (BCBS)** 
+    + **Dodd-Frank Act（08年次贷危机）**
 
 ### Sarbanes-Oxley Act (SOX) 
 
@@ -344,4 +344,12 @@ Derivatives:
 2. **Board Composition**
    + The crisis reignited a longstanding debate as to how to ensure bank boards can achieve the appropriate balance of independence, engagement, and financial industry expertise 
    + Analyses of failed banks do not show any clear correlation between success and a predominance of either insiders or outsiders. One can note, however, that failed bank Northern Rock had several banking experts on its board.
+3. **Board Risk Oversight**
+   + The importance of boards being proactive in risk oversight became increasingly recognized following the crisis.（事必躬亲）
+4. **Risk Appetite**
+   + Regulators have pushed banks to articulate a formal, board-approved risk appetite that defines a firm's willingness to undertake risk and tolerate threats to solvency. **This can be translated into an enterprise- wide setting of risk limits.**
+5. **Compensation**
+   + One of a board's key levers in determining risk behavior is its control over compensation（股权激励） schemes. Boards have a duty to examine how pay structures might affect risk-taking and whether risk- adjustment mechanisms capture all key long-term risks.
+
+​         
 
