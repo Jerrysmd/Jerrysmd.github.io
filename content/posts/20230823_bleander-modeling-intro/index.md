@@ -1,0 +1,96 @@
+---
+title: "Blender 3D modeling introduction"
+# subtitle: ""
+date: 2023-08-23T21:54:46+08:00
+# lastmod: 2023-08-23T21:54:46+08:00
+draft: false
+# author: ""
+# authorLink: ""
+# description: ""
+# license: ""
+# images: []
+
+tags: ["Modeling", "3D"]
+categories: ["Technology"]
+
+# featuredImage: ""
+# featuredImagePreview: ""
+
+hiddenFromHomePage: false
+hiddenFromSearch: false
+# twemoji: false
+# lightgallery: true
+# ruby: true
+# fraction: true
+# fontawesome: true
+# linkToMarkdown: true
+# rssFullText: false
+
+# toc:
+#   enable: true
+#   auto: true
+# code:
+#   copy: true
+#   maxShownLines: 50
+# math:
+#   enable: false
+#   # ...
+# mapbox:
+#   # ...
+# share:
+#   enable: true
+#   # ...
+# comment:
+#   enable: true
+#   # ...
+# library:
+#   css:
+#     # someCSS = "some.css"
+#     # located in "assets/"
+#     # Or
+#     # someCSS = "https://cdn.example.com/some.css"
+#   js:
+#     # someJS = "some.js"
+#     # located in "assets/"
+#     # Or
+#     # someJS = "https://cdn.example.com/some.js"
+# seo:
+#   images: []
+
+# admonition:
+# {{< admonition tip>}}{{< /admonition >}}
+# note abstract info tip success question warning failure danger bug example quote
+# mermaid:
+# {{< mermaid >}}{{< /mermaid >}}
+---
+
+Blender is the free and open source 3D creation suite. It supports the entirety of the 3D pipeline—modeling, rigging, animation, simulation, rendering, compositing and motion tracking, even video editing and game creation.
+
+<!--more-->
+
+## Interface and Tool Operations
+
+### Common Techniques
+
++ View Editing
+  + Move view: `Shit` + `middle mouse button`
+  + Rotate view: `Middle mouse button`
+  + Zoom view: Scroll the `Middle mouse button`
++ View Adjusting
+  + Front view:  `Numpad 1`
+  + Side view: `Numpad 3`
+  + Perspective view: `Numpad 5`
+  + Top view: `Numpad 7`
+  + Maximize display: `Numpad Solid dot` or ` + 3
+  + Independent display: `Slash`
++ Object Viewing
+  + Front view:  ` + 1
+  + Side view: ` + 3
+  + Perspective view: ` +  5
+  + Top view: ` +  7
++ Object Editing
+  + Move: `G`
+  + Rotate: `R`
+  + Zoom: `S`
+  + Based on this, click `XYZ` again to edit along the corresponding axis.
+
