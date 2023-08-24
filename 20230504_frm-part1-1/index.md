@@ -351,5 +351,97 @@ Derivatives:
 5. **Compensation**
    + One of a board's key levers in determining risk behavior is its control over compensation（股权激励） schemes. Boards have a duty to examine how pay structures might affect risk-taking and whether risk- adjustment mechanisms capture all key long-term risks.
 
-​         
+#### The Evolution of Dodd-Frank Act
+
++ In July 2010, the Dodd-Frank Act was signed into law 
++ The Dodd-Frank Act is a federal law with 2300 pages in USA that gives regulation of the financial industry
+
+| Glass-Stegall Act                              |  \|  | Graham-Leach-Bliley Act |  \|  | Dodd-Frank Act |
+| ---------------------------------------------- | :--: | :---------------------: | :--: | :------------: |
+| 分业经营<br />（投资银行业和商业银行业要分开） | 1999 |        混业经营         | 2010 |  重回分业经营  |
+
+#### Dodd-Frank Act
+
++ The Dodd-Frank Act aims to prevent another significant financial crisis by creating new financial regulatory processes that enforce transparency and accountability while implementing rules for consumer protection. 
+  + Strengthening the Federal Reserve's(联邦政府) regulatory reach for systemic risk
+  + Ending too-big-to-fail by creating an orderly liquidation authority -
+  + Resolution plan called "living will"(生前遗嘱)
+  + Helping derivatives markets(禁止自营) participants with counterparty risk -
+  + The Volcker Rule
+  + Protecting consumers
+  + Stress testing
+
+### Infrastructure of Risk Governance
+
++ **Three critical questions on infrastructure of risk governance** 
+  1. Are corporate governance **best practices** related to best practice in risk management, and if so, how? 
+  2. How is risk management delegated through the organization? **What**
+     **roles do the executive staff and board committees undertake** in the execution and oversight of risk management?
+  3. How does **risk management policy filter down** to business managers
+     and how is it reflected in the way regular business is conducted?
+
+#### 1. Best Practice of Corporate Governance
+
++ The board should
+  + Look after the interests of **shareholders** (gatekeeper) 
+  + Be responsible for the concerns of other **stakeholders** (debtholders and employees). 
+  + **Oversee** executive management and alert for any **conflict** of interests between the management and stakeholders (agency problems) 
+    + Clawback(要回分红) provisions 
+    + Separate the role of the CEO and the chairman of the board 
+  + Comprise a majority of independent members 
+  + Consider introducing a CRO
++ The board plays a central role in risk management, especially in shaping and overseeing risk
+  + Decide appropriate risk appetite 
+  + Assess firm's risk management systems and procedures 
+  + **Strive for economic performance(对应 operation risk) not accounting performance(对应 financial risk)** 
+  + Ensure major transactions are consistent with the risk authorized 
+  + Keep the disclosure adequate and transparent 
+  + Balance the risk and rewards 
+  + Take the ultimate responsibility 
+  + Be trained on risk issues 
+  + Establish and maintain CRO 
+  + Maintain the independence of audit committee
+
+#### 2. Corporate Governance at Board Level
+
++ **The board often delegates its power to some professional committees to implement risk appetite and break it down into a set of practical restrictions and limitations.**
+  + Risk Management Committee(风险管理委员会，属于 Board)
+    + Set risk appetite on annual basis 
+    + Translate the overall risk appetite into a set of limits 
+    + Approve and independently review risk levels 
+    + Report back to the board on a variety of items, such as all loans and credits over a specified dollar limit. 
+  + Risk Advisory Director （RAD，属于 Board）: is a member of the board who specializes in risk matters. 
++ **Compensation Committee**
+  + Determine the compensation of top executives .  
+  + Be aligned with the long-term interests of stakeholders, and with risk-adjusted return on capital  
+  + Removal of guaranteed bonuses  
+  + Stock-based compensation can encourage risk-taking
++ **Audit Committee of The Board**
+  + Independently verify whether the firm is doing what it claims to be doing 
+  + Check for discrepancies and infringements in regulatory, legal compliance, and risk management activities. 
+  + Assess the quality of reporting, compliance, internal control, and risk management processes. 
+  + Audit committee members are required to be knowledgeable, capable of independent judgement, financially literate, and have the utmost integrity.
+
+#### 2. Corporate Governance at Management Level
+
++ The Role of the CRO
+  + The CRO is usually a member of the risk committee and is responsible for the design of the firm's risk management program 
+  + The CRO is also responsible for risk policies, analysis approaches, and methodologies,as well as the risk management infrastructure and governance inside the organization. 
+  + The bank's senior risk committee delegates the power(分权) to make day-to day decisions to the CRO 
+  + CRO should also report directly to the CEO, maintain a seat on the board risk committee, and have a voice in approving new financial instruments and lines of business.
+    + At many banks,CROs act as a **liaison** between the board and
+      management.
+
+#### 3. Risk Appetite filters down
+
++ **Risk appetite and business strategy**
+  + There needs to be an **iterative** relationship between setting risk -
+    appetite and implementing business strategy 
+    + Iteration starts with a concept of risk appetite -> implementing
+      business strategy -> aggregation -> checking back with the risk appetite framework -> adjusting as necessary (先有 risk appetite, 然后一步一步往下级调整)
+  + There are always challenges to strike balance between business 1
+    opportunity and risk limits 
+    + Fail to exercise the right amount of flexibility
+      + Too restrictive: policemen
+      + Too flexible: potential of large loss
 
