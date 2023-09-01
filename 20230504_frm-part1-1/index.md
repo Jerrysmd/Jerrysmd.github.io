@@ -293,11 +293,11 @@ Derivatives:
 
 ### Example 1
 
-> + Which of the following statements regarding the amount of risk taken by a bank and the impact on the value of a bank is most likely correct? 
->   - [ ] A.Banks need to take on a small amount risk in order to maximize shareholder value while satisfying the constraints imposed by bank regulators.(风险和股东价值没有一定关系)
->   - [ ] B.Banks that are conservative in practice and take on less risk will always end up generating more value because they avoid incurring losses that would be associated with taking on more risk.（小风险不会带来更大的价值）
->   - [x] C.Banks that are valued for their ability to provide liquid investments to their customers should take on less risk in order to maximize value （提供充足流动性可以增加银行价值）
->   - [ ] D.Banks that are conservative in practice typically assume an optimal amount of risk of zero
+> Which of the following statements regarding the amount of risk taken by a bank and the impact on the value of a bank is most likely correct? 
+> - [ ] A.Banks need to take on a small amount risk in order to maximize shareholder value while satisfying the constraints imposed by bank regulators.(风险和股东价值没有一定关系)
+> - [ ] B.Banks that are conservative in practice and take on less risk will always end up generating more value because they avoid incurring losses that would be associated with taking on more risk.（小风险不会带来更大的价值）
+> - [x] C.Banks that are valued for their ability to provide liquid investments to their customers should take on less risk in order to maximize value （提供充足流动性可以增加银行价值）
+> - [ ] D.Banks that are conservative in practice typically assume an optimal amount of risk of zero
 
 ## The Governance of Risk Management
 
@@ -422,7 +422,7 @@ Derivatives:
   + Assess the quality of reporting, compliance, internal control, and risk management processes. 
   + Audit committee members are required to be knowledgeable, capable of independent judgement, financially literate, and have the utmost integrity.
 
-#### 2. Corporate Governance at Management Level
+#### 3. Corporate Governance at Management Level
 
 + The Role of the CRO
   + The CRO is usually a member of the risk committee and is responsible for the design of the firm's risk management program 
@@ -432,16 +432,71 @@ Derivatives:
     + At many banks,CROs act as a **liaison** between the board and
       management.
 
-#### 3. Risk Appetite filters down
+#### 4. Risk Appetite filters down
 
 + **Risk appetite and business strategy**
+  
   + There needs to be an **iterative** relationship between setting risk -
     appetite and implementing business strategy 
-    + Iteration starts with a concept of risk appetite -> implementing
-      business strategy -> aggregation -> checking back with the risk appetite framework -> adjusting as necessary (先有 risk appetite, 然后一步一步往下级调整)
+    + Iteration starts with a concept of risk appetite **->** implementing
+      business strategy **->** aggregation **->** checking back with the risk appetite framework **->** adjusting as necessary (先有 risk appetite, 然后一步一步往下级调整, 调整比较困难)
   + There are always challenges to strike balance between business 1
     opportunity and risk limits 
     + Fail to exercise the right amount of flexibility
-      + Too restrictive: policemen
+      + Too restrictive: policemen （CRO ）
       + Too flexible: potential of large loss
+  + It is now widely recognized that compensation is part of a sound risk culture. The compensation committee needs to ensure that managerial remuneration reinforces the firm's risk appetite.
+  + G-20 recommendations include.
+    + Deferral of certain compensation 
+    + The elimination of multi-annual guaranteed bonuses
+    + share-based remuneration to incentivize long-term value creation
+    + Limitations on the amount of variable compensation granted to
+      employees relative to total net revenues 
+    + Disclosure requirements to enhance transparency 
+    + Affirming the independence of the committees responsible for executive compensation oversight to ensure their alignment with performance and risk
+  
+  
+  
+  #### The Independence of Functional Units
+  
+  | Risk Management Committee                                    |      |                                                              |
+  | :----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+  | ↓ Supervise                                                  |      |                                                              |
+  | **Senior Management (CRO)**<br />+ Sets business level risk tolerances<br />+ Designs and manages policy<br />+ Evaluates performance | →    | **Business Line**<br />+ Takes on and manages exposure 1 to approved risks<br />+ Implement risk policy |
+  | ↑                                                            |      | ↓                                                            |
+  | **Risk Management**<br />+ Monitors limits<br />+ Gives senior management independent risk assessments | ←    | **Finance & Operations** 中台<br />+ executes risk mitigation/transfer strategies<br />+ Manages and supports analyses required for business planning |
+  
+  
+
+### Example
+
+> Which of the following statements about best practices in corporate governance and risk management is most accurate? 
+>
+> - [x] A.The board should keep the risk committee separate from the audit committee. 
+>
+> - [ ] B. The board should **ensure** that it has the firm's chief risk officer as a member of the board. 
+>
+> - [ ] C. The board should focus on management's actions and their impact on the interests of the firm's shareholders 
+>
+> - [ ] D.The board should focus on **accounting performance** instead of **economic performance** because of the importance of maintaining or enhancing the firm's stock price 
+
+> Which of the following statements regarding the firm's risk appetite and/or its business strategy is most accurate? 
+>
+> - [ ] A. The firm's risk appetite does not consider its willingness to accept risk. 
+>
+> - [x] B. The board needs to work with management to develop the firm's overall strategic plan. 
+>
+> - [ ] C. Management will set the firm's risk appetite and the board will provide its approval of the strategic plan. 
+>
+> - [ ] D. Management should obtain the risk management team's approval once the business planning process is finalized.
+
+> The major roles of the audit committee do not include
+>
+> - [ ] A. reviewing the risk management process
+>
+> - [x] B. preparing the annual financial report.
+>
+> - [ ] C. analyzing the integrity of risk governance.
+>
+> - [ ] D. affirming the reliability of vetting processes.
 

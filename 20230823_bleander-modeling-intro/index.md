@@ -18,17 +18,63 @@ Blender is the free and open source 3D creation suite. It supports the entirety 
   + Side view: `Numpad 3`
   + Perspective view: `Numpad 5`
   + Top view: `Numpad 7`
-  + Maximize display: `Numpad Solid dot` or ` + 3
+  + Maximize display: `Numpad Solid dot` or **` + 3**
   + Independent display: `Slash`
 + Object Viewing
-  + Front view:  ` + 1
-  + Side view: ` + 3
-  + Perspective view: ` +  5
-  + Top view: ` +  7
+  + Front view:  **` + 1**
+  + Side view: **` + 3**
+  + Perspective view: **` + 5**
+  + Top view: **` + 7**
 + Object Editing
   + Move: `G`
   + Rotate: `R`
   + Zoom: `S`
   + Based on this, click `XYZ` again to edit along the corresponding axis.
+
+## Object Practice - Chair
+
++ Create Object: `Shit + A`
+
+![image-20230827172853109](image-20230827172853109.png " ")
+
++ Transprant Display: `Ctrl+ Tab` -> `6`
+
+![image-20230827173829270](image-20230827173829270.png " ")
+
+
+
+
+
+
+
+
+
+
+
+---
+
+
+
+Ctrl + B / Ctrl + Alt + B = 区域渲染 / 取消
+
+Ctrl + F / 当找不到节点视图的时候 按Ctrl + F 选择任意节点即可回到节点视图
+
+当画面平移难动的时候 按小键盘【.】键，可重置移动画面 【.】放大到当前选择物体适应视图
+
+小键盘【5】可以切换透视正交
+
+Ctrl + Alt + 0 将当前视角变成相机视角
+
+Ctrl + Alt + Q 四视图
+
+ Home将所有物体显示出来
+
+SHIFT + TAB 打开关闭吸附功能，或者按住CTRL键进行临时开启关闭
+
+SHIFT + S 游标 - 》到选中项
+
+SHIFT + R 重复执行上一步 SHIT + D复制
+
+CTRL + M 镜像
 
 
