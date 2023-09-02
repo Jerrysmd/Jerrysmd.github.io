@@ -1,5 +1,5 @@
 ---
-title: "Radiation Dose Chart"
+title: "Chart of Ionizing Radiation Doses Absorbed by Individuals"
 # subtitle: ""
 date: 2023-08-24T21:50:17+08:00
 # lastmod: 2023-08-24T21:50:17+08:00
@@ -64,7 +64,7 @@ toc:
 # {{< mermaid >}}{{< /mermaid >}}
 ---
 
-This is a chart of the ionizing radiation dose a person can absorb from various sources. The unit for absorbed dose is "sievert" (Sv), and measures the effect a dose of radiation will have on the cells of the body. One sievert (all at once) will make you sick, and too many more will kill you, but we safely absorb small amounts of natural radiation daily.
+This is a chart of the ionizing radiation dose a person can absorb from various sources. The unit for absorbed dose is "Sievert" (Sv), and measures the effect a dose of radiation will have on the cells of the body. One sievert (all at once) will make you sick, and too many more will kill you, but we safely absorb small amounts of natural radiation daily.
 
 <!--more-->
 
