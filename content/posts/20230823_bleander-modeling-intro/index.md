@@ -100,11 +100,46 @@ Blender is the free and open source 3D creation suite. It supports the entirety 
 
 ![image-20230827172853109](image-20230827172853109.png " ")
 
-+ Transprant Display: `Ctrl+ Tab` -> `6`
++ Switch to front view by pressing `Numpad 1`.
++ Enter editing mode: `Ctrl+ Tab` -> `6`
 
 ![image-20230827173829270](image-20230827173829270.png " ")
 
++ Transparent Display：`Alt + z` OR `activate it by clicking on the top-right corner`
 
++ Choose point mode and select the upper half
+
++ Compress this cube into a cushion: `G (Move object) + Z(Follow the Z-axis)`
+
++ Round the edges of the cuboid:
+
+  1. `Ctrl+ Tab -> 6 (Enter editing mode)`
+
+  2. `Activate Edge mode by clicking on the top-left corner`
+
+  3. `Hold down the Shift key and left-click to select all the edges` OR `Press Alt + Shift and click on a face to perform a loop selection of edges`
+
+  4. Rounding Operation: `Ctrl + B`+`click object`
+
+  5. Set the Rounding attribute on the bottom-left corner
+
+     ![image-20230904071429348](image-20230904071429348.png " ")
+
+  6. Smooth shading: `Right-click on the object to apply Smooth shading`
+
++ Delete Object: `X`
+
++ Copy Object: `Shift + D`
+
++ Mirror copy：
+
+  ![image-20230904073304757](image-20230904073304757.png " ")
+
++ Rotate: `R`
+
+  ![image-20230904073813228](image-20230904073813228.png " ")
+
++ Scale down at the same proportion: `S`
 
 
 
