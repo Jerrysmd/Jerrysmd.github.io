@@ -78,38 +78,7 @@ Blender is the free and open source 3D creation suite. It supports the entirety 
 
 + Scale down at the same proportion: `S`
 
+## Material and Light Practice
 
-
-
-
-
-
-
-
----
-
-
-
-Ctrl + B / Ctrl + Alt + B = 区域渲染 / 取消
-
-Ctrl + F / 当找不到节点视图的时候 按Ctrl + F 选择任意节点即可回到节点视图
-
-当画面平移难动的时候 按小键盘【.】键，可重置移动画面 【.】放大到当前选择物体适应视图
-
-小键盘【5】可以切换透视正交
-
-Ctrl + Alt + 0 将当前视角变成相机视角
-
-Ctrl + Alt + Q 四视图
-
- Home将所有物体显示出来
-
-SHIFT + TAB 打开关闭吸附功能，或者按住CTRL键进行临时开启关闭
-
-SHIFT + S 游标 - 》到选中项
-
-SHIFT + R 重复执行上一步 SHIT + D复制
-
-CTRL + M 镜像
-
++ Split Window: Place the mouse cursor on the top-left corner of the window border, and a crosshair cursor will appear. Dragging it will separate the view into separate windows.
 
