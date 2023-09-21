@@ -68,6 +68,10 @@ Blender is the free and open source 3D creation suite. It supports the entirety 
 
 <!--more-->
 
+> Please take a look at my Blender project called "ImmersiveOffice" hosted on GitHub. You can find the project at the following URL: 
+>
+> [GitHub - archichen/ImmersiveOffice](https://github.com/archichen/ImmersiveOffice)
+
 ## Interface and Tool Operations
 
 ### Common Techniques
@@ -144,3 +148,11 @@ Blender is the free and open source 3D creation suite. It supports the entirety 
 ## Material and Light Practice
 
 + Split Window: Place the mouse cursor on the top-left corner of the window border, and a crosshair cursor will appear. Dragging it will separate the view into separate windows.
+
+
+
+
+
+
+
+To be continued...
