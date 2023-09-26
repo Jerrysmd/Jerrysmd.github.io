@@ -1,5 +1,5 @@
 ---
-title: "Spark Guide, Part Ⅱ" # Title of the blog post.
+title: "Spark: A Framework for Large-Scale Data Processing, Part Ⅱ" # Title of the blog post.
 date: 2020-07-07T11:14:54+08:00 # Date of post creation.
 description: "Article description." # Description used for search engine.
 featured: false # Sets if post is a featured post, making appear on the home page side bar.
@@ -478,7 +478,7 @@ SparkSQL整合Hive的MetaStore
 >    	lines terminated by '\n'
 >    stored as textfile
 >    location '/dataset/hive'
->                   
+>                      
 >    load Data INPATH '/dataset/studenttab10k' OVERWRITE INTO TABLE student;
 >    ```
 

@@ -1,5 +1,5 @@
 ---
-title: "An Introduction to Blender 3D Modeling"
+title: "Blender: A Powerful and Flexible Software for 3D Design and Rendering"
 # subtitle: ""
 date: 2023-08-23T21:54:46+08:00
 # lastmod: 2023-08-23T21:54:46+08:00

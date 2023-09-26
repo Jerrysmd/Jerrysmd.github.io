@@ -1,5 +1,5 @@
 ---
-title: "HDFS & NFS" # Title of the blog post.
+title: "HDFS NFS Gateway: Benefits, Configuration, and Usage" # Title of the blog post.
 date: 2020-03-26T11:02:36+08:00 # Date of post creation.
 description: "Article description." # Description used for search engine.
 featured: false # Sets if post is a featured post, making appear on the home page side bar.

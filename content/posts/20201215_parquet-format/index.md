@@ -1,5 +1,5 @@
 ---
-title: "HDFS: Parquet Format" # Title of the blog post.
+title: "Parquet: A Columnar File Format for Big Data Analysis" # Title of the blog post.
 date: 2020-12-15T10:47:59+08:00 # Date of post creation.
 description: "Article description." # Description used for search engine.
 featured: true # Sets if post is a featured post, making appear on the home page side bar.

@@ -1,5 +1,5 @@
 ---
-title: "Hive Key Points"
+title: "Hive: A Data Warehouse System for Big Data Analytics"
 date: 2020-06-15T09:26:00+08:00
 description: "Article description." # Description used for search engine.
 featured: f # Sets if post is a featured post, making appear on the home page side bar.

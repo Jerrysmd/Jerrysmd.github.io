@@ -1,5 +1,5 @@
 ---
-title: "Spark Guide, Part Ⅲ" # Title of the blog post.
+title: "Spark: A Framework for Large-Scale Data Processing, Part Ⅲ" # Title of the blog post.
 date: 2020-08-03T16:10:33+08:00 # Date of post creation.
 description: "Article description." # Description used for search engine.
 featured: true # Sets if post is a featured post, making appear on the home page side bar.
@@ -558,11 +558,11 @@ object HDFSSource{
 >
 >   ```
 >   Anatomy of a Topic
->         
+>           
 >   Partition 0 [0][1][2][3]
 >   Partition 1 [0][1]
 >   Partition 3 [0][1][2]
->         
+>           
 >   Old  -->  New
 >   ```
 

@@ -1,5 +1,5 @@
 ---
-title: "Leetcode" # Title of the blog post.
+title: "LeetCode: Solve Algorithm and Data Structure Problems" # Title of the blog post.
 date: 2020-01-14T10:57:11+08:00 # Date of post creation.
 description: "Article description." # Description used for search engine.
 featured: false # Sets if post is a featured post, making appear on the home page side bar.

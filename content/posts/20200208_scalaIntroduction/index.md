@@ -1,5 +1,5 @@
 ---
-title: "Scala Introduction" # Title of the blog post.
+title: "Scala: A Multi-Paradigm Programming Language for the JVM" # Title of the blog post.
 date: 2020-02-08T10:16:17+08:00 # Date of post creation.
 description: "Article description." # Description used for search engine.
 featured: f # Sets if post is a featured post, making appear on the home page side bar.

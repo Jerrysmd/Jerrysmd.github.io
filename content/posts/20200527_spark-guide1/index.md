@@ -1,5 +1,5 @@
 ---
-title: "Spark Guide, Part Ⅰ" # Title of the blog post.
+title: "Spark: A Framework for Large-Scale Data Processing, Part Ⅰ" # Title of the blog post.
 date: 2020-05-27T17:20:52+08:00 # Date of post creation.
 description: "Article description." # Description used for search engine.
 featured: false # Sets if post is a featured post, making appear on the home page side bar.

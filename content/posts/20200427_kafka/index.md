@@ -1,5 +1,5 @@
 ---
-title: "Kafka & Message Queue" # Title of the blog post.
+title: "Kafka: A Stream Processing Platform for Distributed Applications" # Title of the blog post.
 date: 2020-04-27T14:21:19+08:00 # Date of post creation.
 description: "Article description." # Description used for search engine.
 featured: true # Sets if post is a featured post, making appear on the home page side bar.

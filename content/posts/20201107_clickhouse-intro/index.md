@@ -1,5 +1,5 @@
 ---
-title: "Clickhouse Introduction" # Title of the blog post.
+title: "ClickHouse: A Distributed Database for High-Performance Analytics" # Title of the blog post.
 date: 2020-11-07T14:55:59+08:00 # Date of post creation.
 description: "Article description." # Description used for search engine.
 featured: false # Sets if post is a featured post, making appear on the home page side bar.

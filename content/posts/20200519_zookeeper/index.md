@@ -1,5 +1,5 @@
 ---
-title: "Key points of ZooKeeper" # Title of the blog post.
+title: "ZooKeeper: A Coordination Service for Distributed Systems" # Title of the blog post.
 date: 2020-05-19T16:07:17+08:00 # Date of post creation.
 description: "Article description." # Description used for search engine.
 featured: false # Sets if post is a featured post, making appear on the home page side bar.

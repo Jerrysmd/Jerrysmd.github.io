@@ -1,5 +1,5 @@
 ---
-title: "Spark Java Sharing"
+title: "Spark Sharing: A Framework for Sharing Data and Resources Across Clusters"
 # subtitle: ""
 date: 2022-12-31T14:43:47+08:00
 # lastmod: 2023-01-09T14:43:47+08:00

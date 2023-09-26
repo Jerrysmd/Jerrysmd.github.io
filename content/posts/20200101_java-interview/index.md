@@ -1,5 +1,5 @@
 ---
-title: "Java Basic" # Title of the blog post.
+title: "Java: Popular and Versatile Features, History, and Examples" # Title of the blog post.
 date: 2020-01-01T11:18:47+08:00 # Date of post creation.
 description: "Article description." # Description used for search engine.
 featured: false # Sets if post is a featured post, making appear on the home page side bar.
