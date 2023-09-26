@@ -1,4 +1,4 @@
-# Spark Guide, Part Ⅰ
+# Spark: A Framework for Large-Scale Data Processing, Part Ⅰ
 
 Apache Spark has its architectural foundation in the resilient distributed dataset (RDD), a read-only multiset of data items distributed over a cluster of machines, that is maintained in a fault-tolerant way. The Dataframe API was released as an abstraction on top of the RDD, followed by the Dataset API.
 <!--more-->

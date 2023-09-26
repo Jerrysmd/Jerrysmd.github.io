@@ -1,4 +1,4 @@
-# Hive Key Points
+# Hive: A Data Warehouse System for Big Data Analytics
 
 Hive is a Hadoop-based data warehouse tool that maps structured data files into a database table and provides complete SQL query functionality that converts SQL statements into MapReduce tasks for execution. It is very suitable for statistical analysis of data warehouse.
 <!--more-->

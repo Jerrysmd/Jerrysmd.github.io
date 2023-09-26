@@ -1,4 +1,4 @@
-# Java Basic
+# Java: Popular and Versatile Features, History, and Examples
 
 JVM, Garbage Collection, Multi - thread, Redis
 <!--more-->

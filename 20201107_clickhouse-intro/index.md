@@ -1,4 +1,4 @@
-# Clickhouse Introduction
+# ClickHouse: A Distributed Database for High-Performance Analytics
 
 
 A high performance columnar OLAP database management system for real-time analytics using SQL. ClickHouse can be customized with a new set of efficient columnar storage engines, and has realized rich functions such as data ordered storage, primary key indexing, sparse indexing, data sharding, data partitioning, TTL, and primary and backup replication.

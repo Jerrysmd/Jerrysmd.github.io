@@ -1,4 +1,4 @@
-# An Introduction to Blender 3D Modeling
+# Blender: A Powerful and Flexible Software for 3D Design and Rendering
 
 
 Blender is the free and open source 3D creation suite. It supports the entirety of the 3D pipeline—modeling, rigging, animation, simulation, rendering, compositing and motion tracking, even video editing and game creation.

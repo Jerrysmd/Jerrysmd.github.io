@@ -1,4 +1,4 @@
-# HDFS & NFS
+# HDFS NFS Gateway: Benefits, Configuration, and Usage
 
 The major difference between the two is Replication/Fault Tolerance. HDFS was designed to survive failures. NFS does not have any fault tolerance built in. Other than fault tolerance, HDFS does support multiple replicas of files. This eliminates (or eases) the common bottleneck of many clients accessing a single file. Since files have multiple replicas, on different physical disks, reading performance scales better than NFS.
 <!--more-->

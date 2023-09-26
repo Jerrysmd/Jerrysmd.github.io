@@ -1,4 +1,4 @@
-# Spark Java Sharing
+# Spark Sharing: A Framework for Sharing Data and Resources Across Clusters
 
 
 Apache Spark™ is a multi-language engine for executing data engineering, data science, and machine learning on single-node machines or clusters.

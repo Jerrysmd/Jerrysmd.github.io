@@ -1,4 +1,4 @@
-# Key points of ZooKeeper
+# ZooKeeper: A Coordination Service for Distributed Systems
 
 ZooKeeper is an open source distributed coordination framework. It is positioned to provide consistent services for distributed applications and is the administrator of the entire big data system. ZooKeeper will encapsulate key services that are complex and error-prone, and provide users with efficient, stable, and easy-to-use services.
 <!--more-->
