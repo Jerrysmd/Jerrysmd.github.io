@@ -50,7 +50,7 @@ jobs:
           ref: gh-pages
       
       - name: Algolia Docsearch Uploader
-        uses: guzhongren/algolia-docsearch-upload-action@v2.0.0
+        uses: guzhongren/algolia-docsearch-upload-action@v2.1.0
         env:
           FILE_PATH: "index.json"
           APPLICATION_ID: "BADKNNRXHD"
