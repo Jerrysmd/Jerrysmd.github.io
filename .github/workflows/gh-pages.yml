@@ -54,5 +54,5 @@ jobs:
         env:
           FILE_PATH: "index.json"
           APPLICATION_ID: "BADKNNRXHD"
-          ADMIN_API_KEY: "7a8c2923330a44bdd9985698e3f28e0c"
+          ADMIN_API_KEY: ${{secrets.ALGOLIA_API_KEY}}
           INDEX_NAME: "index"
