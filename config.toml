@@ -250,16 +250,16 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     type = "algolia"
     # max index length of the chunked content
     # 文章内容最长索引长度
-    contentLength = 4000
+    contentLength = 6000
     # placeholder of the search bar
     # 搜索框的占位提示语
     placeholder = ""
     # max number of results length
     # 最大结果数目
-    maxResultLength = 6
+    maxResultLength = 8
     # snippet length of the result
     # 结果内容片段长度
-    snippetLength = 30
+    snippetLength = 40
     # HTML tag name of the highlight part in results
     # 搜索结果中高亮部分的 HTML 标签
     highlightTag = "em"
