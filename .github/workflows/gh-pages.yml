@@ -35,3 +35,9 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
+
+      - uses: darrenjennings/algolia-docsearch-action@master
+        with:
+          algolia_application_id: 'BADKNNRXHD'
+          algolia_api_key: '7a8c2923330a44bdd9985698e3f28e0c'
+          file: 'index.json'
