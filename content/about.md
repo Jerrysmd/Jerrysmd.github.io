@@ -18,13 +18,22 @@ math:
 + 🧑‍💻 Name： **Liu, Jiarui Jerry**
 + ☎️ Phone：`Kzg2MTU3MzUxODQwOTg=`
 + 📬 E-mail：`MHgwMDRjMkBnbWFpbC5jb20=`
-+ 📖 B l o g：[Jerrysmd.github.io](https://jerrysmd.github.io)
++ 🔭 B l o g：[Jerrysmd.github.io](https://jerrysmd.github.io)
 + {{< typeit >}}🏀 Hobby：⚽📸🏓🎹📱📖🚲🏊💪...{{< /typeit >}}
 
 
 
 
 ![the United States](/posts/picture/20191011083753_IMG_2610-01.jfif "Corpus Christi, Texas")
+
+## Reading notes
+
++ 📖 My Reading List and Notes: [https://www.notion.so/c36b33378ab44eaa8a4e0d51acb419cd](https://www.notion.so/c36b33378ab44eaa8a4e0d51acb419cd?v=f866caf0636341839c3ddd977cbb4bfe&pvs=4)
++ 📝 Synchronization: Real-time sync in Notion :(fa-solid fa-book-bookmark):
+
+
+
+![Weread Reading Notes](/posts/picture/image-20231010224455342.png "Weread Reading Notes")
 
 ## Blog
 
