@@ -100,6 +100,39 @@ class Solution {
 
 
 
+## F59 - 239. 滑动窗口最大值
+
+### 解题
+
+**单调队列**
+
++ 遍历给定数组中的元素，如果队列不为空且当前元素大于等于队尾元素，则将队尾元素移除。直到，队列为空或当前考察元素小于新的队尾元素；
++ 当队首元素的下标小于滑动窗口左侧边界left时，表示队首元素已经不再滑动窗口内，因此将其从队首移除。
++ 由于数组下标从0开始，因此当窗口左边界大于等于0时，意味着窗口形成。此时，队首元素就是该窗口内的最大值。
+
+```java
+class Solution {
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        int[] res = new int[nums.length - k + 1];
+        Deque<Integer> queue = new LinkedList<Integer>();
+        for(int right = 0; right < nums.length; right++){
+            while(!queue.isEmpty() && nums[queue.peekLast()] < nums[right]){
+                queue.removeLast();
+            }
+            queue.addLast(right);
+            int left = right - k + 1;
+            if(queue.peekFirst() < left){
+                queue.removeFirst();
+            }
+            if(left >= 0){
+                res[left] = nums[queue.peekFirst()];
+            }
+        }
+        return res;
+    }
+}
+```
+
 ## F105 - 739. 每日温度
 
 ### 关键字
@@ -140,7 +173,21 @@ class Solution {
 | ------------------------------------------------------ | -------- |
 | 可以拆分成子问题解决<br />如 "从结果倒推" 的爬楼梯问题 | 动态规划 |
 
+### 解题
 
-
-## 239
+```java
+class Solution {
+    public int numSquares(int n) {
+        // n + 1长度，0不用，使得 temp[n] 和 n 对其。值均为0
+        int[] temp = new int[n + 1];
+        for(int i = 1; i < n + 1; i++){
+            temp[i] = i;
+            for(int j = 1;(i - j * j) >= 0 ; j++){
+                temp[i] = Math.min(temp[i], temp[i - j * j] + 1);
+            }
+        }
+        return temp[n];
+    }
+}
+```
 
