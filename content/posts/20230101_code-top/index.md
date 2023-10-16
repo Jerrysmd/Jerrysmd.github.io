@@ -67,6 +67,8 @@ hiddenFromSearch: false
 
 ## F1 - 146. LRU缓存机制
 
+https://leetcode.cn/problems/lru-cache
+
 ### 关键字
 
 | 关键字                        | 对应信息                                    |
@@ -95,7 +97,89 @@ hiddenFromSearch: false
 
 > 哈希表中已经存了 `key`，为什么链表中还要存 `key` 和 `val` 呢，只存 `val` 不就行了？
 
+```java
+public class LRUCache {
+    class Node{
+        int key;
+        int val;
+        Node preNode;
+        Node nextNode;
+        Node(int key, int val){
+            this.key = key;
+            this.val = val;
+        }
+    }
+    Map<Integer, Node> map = new HashMap<Integer, Node>();
+    int size;
+    int capasity;
+    Node head, tail;
+    
+    public LRUCache(int capasity){
+        this.capasity = capasity;
+        size = 0;
+        head = new Node(0, 0);
+        tial = new Node(0, 0);
+        head.nextNode = tail;
+        tail.preNode = head;
+    }
+    
+    public int get(int key){
+        Node node = map.get(key);
+        if(node == null){
+            return -1;
+        }
+        move2first(node);
+        return node.val;
+    }
+    
+    public void put(int key, int val){
+        Node node = map.get(key);
+        if(node != null){
+            node.val = val;
+            move2first(node);
+        } else {
+            Node newNode = new Node(key, val);
+            map.put(key,newNode);
+            addNode(newNode);
+            size++;
+            if(size > capasity){
+                Node deleted = deleteLastNode();
+                map.remove(deleted.key);
+                size--;
+            }
+        }
+    }
+    
+    private void move2first(Node node){
+        deleteNode(node);
+        addNode(node);
+    }
+    
+    private void deleteNode(Node node){
+        node.preNode.nextNode = node.nextNode;
+        node.nextNode.preNode = node.preNode;
+    }
+    
+    private void addNode(Node node){
+        node.nextNode = head.nextNode;
+        head.nextNode.preNode = node;
+        head.nextNode = node;
+        node.preNode = head;
+    }
+    
+    private Node deleteLastNode(){
+        Node res = tail.preNode;
+        deleteNode(res);
+        return res;
+    }
+}
+```
+
+
+
 ## F2 - 206. 反转链表
+
+https://leetcode.cn/problems/reverse-linked-list
 
 ### 解题
 
@@ -149,16 +233,40 @@ class Solution {
 
 先申请一个动态扩容的数组或者容器，比如 ArrayList 这样的。 然后不断遍历链表，将链表中的元素添加到这个容器中。 再利用容器自身的 API，反转整个容器，这样就达到反转的效果了。 最后同时遍历容器和链表，将链表中的值改为容器中的值。
 
+
+
 ## F3 - 3. 无重复字符的最长子串
+
+https://leetcode.cn/problems/longest-substring-without-repeating-characters
 
 ### 关键字
 
 | 关键字                           | 模式识别                                                     |
 | -------------------------------- | ------------------------------------------------------------ |
-| 重复字符（或者说`出现一次以上`） | 一旦涉及出现次数，需要用到**散列表**<br />构造子串，散列表存下标 |
-| 子串                             | 涉及子串，考虑**滑动窗口**<br />- 滑动窗口就是窗口扩张和窗口收缩 |
+| 重复字符（或者说`出现一次以上`） | 一旦涉及出现次数，需要用到 **散列表**<br />构造子串，散列表存下标 |
+| 子串                             | 涉及子串，考虑**滑动窗口**，滑动窗口就是队列<br />- 滑动窗口就是窗口扩张和窗口收缩 |
 
 ### 解题
+
+```java
+class Solution{
+    public int lengthOfLongestSubstring(String s){
+        int left = 0;
+        int max = 0;
+        HashMap<Character, Integer> map = new HashMap<Character, Integer>();
+        for(int right = 0; right < s.length(); right++){
+            if(map,containsKey(s.charAt(right))){
+                //碰到了重复字符，使窗口左窗向移动到后面遇到的这个重复字符后面
+                left = Math.max(left, map.get(s.charAt(right)) + 1);
+            }
+            //在碰到重复字符之前，右窗口一直向右移动，并记录最大长度
+            map.put(s.charAt(right), right);
+            max = Math.max(max, right - left + 1);
+        }
+        return max;
+    }
+}
+```
 
 
 
@@ -195,6 +303,8 @@ class Solution {
 }
 ```
 
+
+
 ## F105 - 739. 每日温度
 
 ### 关键字
@@ -226,6 +336,8 @@ class Solution {
     }
 }
 ```
+
+
 
 ## F199 - 279. 完全平方数
 
