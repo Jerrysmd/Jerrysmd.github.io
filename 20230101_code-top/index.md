@@ -3,7 +3,7 @@
 
 <!--more-->
 
-## F1 - 146. LRU缓存机制
+## F1 - 🟨146. LRU缓存机制
 
 https://leetcode.cn/problems/lru-cache
 
@@ -115,7 +115,7 @@ public class LRUCache {
 
 
 
-## F2 - 206. 反转链表
+## F2 - 🟩206. 反转链表
 
 https://leetcode.cn/problems/reverse-linked-list
 
@@ -173,7 +173,7 @@ class Solution {
 
 
 
-## F3 - 3. 无重复字符的最长子串
+## F3 - 🟨3. 无重复字符的最长子串
 
 https://leetcode.cn/problems/longest-substring-without-repeating-characters
 
@@ -205,6 +205,12 @@ class Solution{
     }
 }
 ```
+
+
+
+## F4 - 🟥25. K 个一组翻转链表
+
+https://leetcode.cn/problems/reverse-nodes-in-k-group
 
 
 
