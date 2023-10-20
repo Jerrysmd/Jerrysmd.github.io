@@ -212,6 +212,60 @@ class Solution{
 
 https://leetcode.cn/problems/reverse-nodes-in-k-group
 
+### 解题
+
+![k个一组翻转链表.png](866b404c6b0b52fa02385e301ee907fc015742c3766c80c02e24ef3a8613e5ad-k个一组翻转链表.png " ")
+
+```java
+class Solution{
+    public Node reverseKGroup(Node head, int k){
+        Node dummy = new Node();
+        dummy.next = head;
+        
+        Node pre = dummy;
+        Node end = dummy;
+        while(end.next != null){
+            for(int i = 0;i<k && end!=null; i++) end = end.next;
+            if(end==null) break;
+            Node start = pre.next;
+            Node nextStart = end.next;
+            end.next = null;
+            
+            pre.next = reverse(start);
+            
+            start.next = nextStart;
+            pre = start;
+            end = pre;
+        }
+        return dummy.next;
+    }
+    
+    public Node reverse(Node head){
+        Node pre = null;
+        Node cur = head;
+        while(cur!=null){
+            Node next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+        return pre;
+    }
+}
+```
+
+
+
+## F5 - 🟨215. 数组中的第K个最大元素
+
+### 关键字
+
+| 关键字  | 模式识别                                                     |
+| ------- | ------------------------------------------------------------ |
+| 第 K 个 | 维护动态数据的最大最小值，可以考虑堆<br />建立容量为 k 的最小值堆 |
+| 第 K 个 | 确定数量的情况下寻找第 K 大的数，可以利用快速选择算法<br />快速排序算法中的轴值计算 |
+
+
 
 
 ## F59 - 239. 滑动窗口最大值
