@@ -301,7 +301,7 @@ class Solution{
         }
         return dummy.next;
     }
-    
+    // 反转链表，固定方法
     public Node reverse(Node head){
         Node pre = null;
         Node cur = head;
@@ -327,10 +327,78 @@ class Solution{
 | 第 K 个 | 维护动态数据的最大最小值，可以考虑堆<br />建立容量为 k 的最小值堆 |
 | 第 K 个 | 确定数量的情况下寻找第 K 大的数，可以利用快速选择算法<br />快速排序算法中的轴值计算 |
 
+### 解题
+
+`PriorityQueue` 可以看做是一个最大堆或最小堆
+
++ `new PriorityQueue<Integer>()` 可以看做最小堆
++ `new PriorityQueue<Integer>(Comparator.reverseOrder())`可以看做最大堆
+
+```java
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        // 使用 PriorityQueue 来作为最小堆，大小为 k
+        PriorityQueue<Integer> minHeap = new PriorityQueue<Integer>(k);
+        for (int num : nums) {
+            if (minHeap.size() < k) {
+                // 当优先队列不满时，直接插入
+                minHeap.add(num);
+            } else if (num > minHeap.peek()) {
+                // 如果当前元素大于堆顶(也就是最小)元素，替换堆顶元素
+                minHeap.poll();
+                minHeap.add(num);
+            }
+        }
+        return minHeap.peek();
+    }
+}
+
+```
 
 
 
-## F59 - 239. 滑动窗口最大值
+## F6 - 🟨15. 三数之和
+
+### 解题
+
+排序 + 双指针
+本题的难点在于如何去除重复解
+
+```java
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        // 1.排序数组
+        Arrays.sort(nums);
+        List<List<Integer>> res = new ArrayList<>();
+        // 2.左指针为循环标志，中指针和右指针每次重置
+        for(int left = 0; left < nums.length - 2; left++){ // [length - 3] 是最后一次，刚好容下三个值
+            if(nums[left] > 0) break;
+            // 跳过重复
+            if(left > 0 && nums[left] == nums[left - 1]) continue;
+            int middle = left + 1;
+            int right = nums.length - 1;
+            while(middle < right){
+                int sum = nums[left] + nums[middle] + nums[right];
+                if(sum > 0){ // 若和大于 0，说明 nums[R] 太大，R 左移
+                    while(middle < right && nums[right] == nums[--right]); // 并跳过重复
+                }else if(sum < 0){ // 若和小于 0，说明 nums[L] 太小，L 右移 
+                    while(middle < right && nums[middle] == nums[++middle]); // 并跳过重复
+                }else{ // 若和等于 0, 加入结果
+                    res.add(new ArrayList<Integer>(Arrays.asList(nums[left],nums[middle],nums[right])));
+                    // 说不定还有满足的结果, R 左移, L 右移
+                    while(middle < right && nums[right] == nums[--right]); // 并跳过重复
+                    while(middle < right && nums[middle] == nums[++middle]); // 并跳过重复
+                }
+            }
+        }
+        return res;
+    }
+}
+```
+
+
+
+## F59 - 🟥239. 滑动窗口最大值
 
 ### 解题
 
@@ -365,7 +433,50 @@ class Solution {
 
 
 
-## F105 - 739. 每日温度
+## F87 - 🟨695. 岛屿的最大面积
+
+### 解题
+
+深度优先搜索
+
++ 我们想知道网格中每个连通形状的面积，然后取最大值。
++ 如果我们在一个土地上，以 444 个方向探索与之相连的每一个土地（以及与这些土地相连的土地），那么探索过的土地总数将是该连通形状的面积。
++ 为了确保每个土地访问不超过一次，我们每次经过一块土地时，将这块土地的值置为 000。这样我们就不会多次访问同一土地。
+
+```java
+class Solution {
+    public int maxAreaOfIsland(int[][] grid) {
+        int res = 0; 
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[i].length; j++) {
+                if (grid[i][j] == 1) {
+                    res = Math.max(res, dfs(i, j, grid));
+                }
+            }
+        } 
+        return res;
+    }
+    // 每次调用的时候默认num为1，进入后判断如果不是岛屿，则直接返回0，就可以避免预防错误的情况。
+    // 每次找到岛屿，则直接把找到的岛屿改成0，这是传说中的沉岛思想，就是遇到岛屿就把他和周围的全部沉默。
+    // ps：如果能用沉岛思想，那么自然可以用朋友圈思想。有兴趣的朋友可以去尝试。
+    private int dfs(int i, int j, int[][] grid) {
+        if (i < 0 || j < 0 || i >= grid.length || j >= grid[i].length || grid[i][j] == 0) { 
+            return 0;
+        } 
+        grid[i][j] = 0;
+        int num = 1;
+        num += dfs(i + 1, j, grid);
+        num += dfs(i - 1, j, grid);
+        num += dfs(i, j + 1, grid);
+        num += dfs(i, j - 1, grid);
+        return num;
+    }
+}
+```
+
+
+
+## F105 - 🟨739. 每日温度
 
 ### 关键字
 
@@ -399,7 +510,7 @@ class Solution {
 
 
 
-## F199 - 279. 完全平方数
+## F199 - 🟨279. 完全平方数
 
 ### 关键字
 
