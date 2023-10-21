@@ -16,7 +16,7 @@
 
 ## Reading notes
 
-+ 📖 My Reading List and Notes: [https://creative-store-bc6.notion.site](https://creative-store-bc6.notion.site/c36b33378ab44eaa8a4e0d51acb419cd?v=f866caf0636341839c3ddd977cbb4bfe&pvs=4)
++ 📖 My Reading List and Notes: [Jerrysmd.notion.site](https://jerrysmd.notion.site/c36b33378ab44eaa8a4e0d51acb419cd?v=f866caf0636341839c3ddd977cbb4bfe&pvs=4)
 + 📝 Synchronization: Real-time sync in Notion :(fa-solid fa-book-bookmark):
 
 
