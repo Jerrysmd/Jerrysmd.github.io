@@ -18,22 +18,25 @@ math:
 + 🧑‍💻 Name： **Liu, Jiarui Jerry**
 + ☎️ Phone：`Kzg2MTU3MzUxODQwOTg=`
 + 📬 E-mail：`MHgwMDRjMkBnbWFpbC5jb20=`
-+ 🔭 B l o g：[Jerrysmd.github.io](https://jerrysmd.github.io)
-+ {{< typeit >}}🏀 Hobby：⚽📸🏓🎹📱📖🚲🏊💪...{{< /typeit >}}
++ 🏀 Hobby：⚽📸🏓🎹📱📖🚲🏊💪...
 
 
 
+## Bookshlf
 
-![the United States](/posts/picture/20191011083753_IMG_2610-01.jfif "Corpus Christi, Texas")
++ 📖 My reading log, highlights and notes: [jerrysmd.notion.site](https://jerrysmd.notion.site/c36b33378ab44eaa8a4e0d51acb419cd?v=f866caf0636341839c3ddd977cbb4bfe&pvs=4)
++ 📝 Synchronization: Real-time synchronization from Weread to Notion :(fa-solid fa-book-bookmark):
 
-## Reading notes
-
-+ 📖 My Reading List and Notes: [Jerrysmd.notion.site](https://jerrysmd.notion.site/c36b33378ab44eaa8a4e0d51acb419cd?v=f866caf0636341839c3ddd977cbb4bfe&pvs=4)
-+ 📝 Synchronization: Real-time sync in Notion :(fa-solid fa-book-bookmark):
-
+![Weread Reading Notes](/posts/picture/weread.png "Weread Reading Notes")
 
 
-![Weread Reading Notes](/posts/picture/image-20231010224455342.png "Weread Reading Notes")
+
+## Gallery
+
++ 📷 My photo gallery: [jerrysmd.github.io/gallery](https://jerrysmd.github.io/gallery/)
++ 🔭 Synchronization: Meaningful photos compressed using Photoshop and stored on GitHub
+
+![the United States](/posts/picture/gallery.png "Gallery")
 
 ## Blog
 

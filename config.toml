@@ -60,7 +60,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 [menu]
   [[menu.main]]
     weight = 1
-    identifier = "home"
+    identifier = "Home"
     # you can add extra information before the name (HTML format is supported), such as icons
     # 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
     pre = ""
@@ -90,7 +90,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     title = "Life article list"
   [[menu.main]]
     weight = 4
-    identifier = "tags"
+    identifier = "Tags"
     pre = ""
     post = ""
     name = "Tags"
@@ -98,7 +98,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     title = "Tags cloud"
   [[menu.main]]
     weight = 5
-    identifier = "about"
+    identifier = "About"
     pre = ""
     post = ""
     name = "About"
@@ -106,17 +106,33 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     title = "About blog"
   [[menu.main]]
     weight = 6
-    identifier = "github"
+    identifier = "GitHub"
     pre = "<i class='fab fa-github fa-fw' aria-hidden='true'></i>"
     post = ""
     name = ""
-    url = "https://github.com/Jerrysmd"
-    title = "GitHub"
+    url = "https://github.com/Jerrysmd/"
+    title = "My GitHub"
+  [[menu.main]]
+    weight = 7
+    identifier = "Weread"
+    pre = "<i class='fa-solid fa-book-bookmark' aria-hidden='true'></i>"
+    post = ""
+    name = ""
+    url = "https://jerrysmd.notion.site/c36b33378ab44eaa8a4e0d51acb419cd?v=f866caf0636341839c3ddd977cbb4bfe&pvs=4"
+    title = "My Bookshelf"
+  [[menu.main]]
+    weight = 8
+    identifier = "Gallery"
+    pre = "<i class='fa-solid fa-images' aria-hidden='true'></i>"
+    post = ""
+    name = ""
+    url = "https://jerrysmd.github.io/gallery"
+    title = "My Gallery"
 
 [params]
   # site default theme ["auto", "light", "dark"]
   # 网站默认主题 ["auto", "light", "dark"]
-  defaultTheme = "auto"
+  defaultTheme = "light"
   # public git repo url only then enableGitInfo is true
   # 公共 git 仓库路径，仅在 enableGitInfo 设为 true 时有效
   gitRepo = "https://github.com/Jerrysmd/Jerrysmd.github.io"
