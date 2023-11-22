@@ -29,7 +29,7 @@ hasCJKLanguage = false
 # paginate = 12
 # google analytics code [UA-XXXXXXXX-X]
 # 谷歌分析代号 [UA-XXXXXXXX-X]
-googleAnalytics = ""
+googleAnalytics = "UA-293887733-1"
 # copyright description used only for seo schema
 # 版权描述，仅仅用于 SEO
 copyright = ""
@@ -123,7 +123,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   [[menu.main]]
     weight = 8
     identifier = "Gallery"
-    pre = "<i class='fa-solid fa-images fa-fw' aria-hidden='true'></i>"
+    pre = "<i class='fa-solid fa-images fa-sm fa-fw' aria-hidden='true'></i>"
     post = ""
     name = ""
     url = "https://Jerrysmd.github.io/gallery"
