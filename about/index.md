@@ -14,6 +14,7 @@
 
 + 📖 My reading log, highlights and notes: [:(fa-solid fa-book-bookmark fa-fw): jerrysmd.notion.site](https://jerrysmd.notion.site/c36b33378ab44eaa8a4e0d51acb419cd?v=f866caf0636341839c3ddd977cbb4bfe&pvs=4)
 + 📝 Synchronization: Real-time synchronization from Weread to Notion 
++ 🌊 In case you have limited access to Notion, this is a mimic website: [:(fab fa-github fa-fw):jerrysmd.github.io/bookshelf](https://jerrysmd.github.io/bookshelf/)
 
 ![](/posts/picture/weread.png "Weread Reading Notes")
 
