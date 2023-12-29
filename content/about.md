@@ -13,16 +13,15 @@ math:
   enable: true
 ---
 
-## Author
+## Profile
 
 + 🧑‍💻 Name： **Liu, Jiarui Jerry**
-+ ☎️ Phone：`Kzg2MTU3MzUxODQwOTg=`
 + 📬 E-mail：`MHgwMDRjMkBnbWFpbC5jb20=`
 + 🏀 Hobby：⚽📸🏓🎹📱📖🚲🏊💪...
 
 
 
-## Bookshlf
+## Bookshelf
 
 + 📖 My reading log, highlights and notes: [:(fa-solid fa-book-bookmark fa-fw): jerrysmd.notion.site](https://jerrysmd.notion.site/c36b33378ab44eaa8a4e0d51acb419cd?v=f866caf0636341839c3ddd977cbb4bfe&pvs=4)
 + 📝 Synchronization: Real-time synchronization from Weread to Notion 
@@ -38,6 +37,8 @@ math:
 + 🔭 Synchronization: Meaningful photos compressed using Photoshop and stored on GitHub
 
 ![](/posts/picture/gallery.png "Gallery")
+
+
 
 ## Blog
 
