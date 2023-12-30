@@ -10,7 +10,7 @@ draft: false
 # license: ""
 # images: []
 
-tags: ["Database", "LLM"]
+tags: ["Database", "LLM", "OpenAI"]
 categories: ["Technology"]
 
 # featuredImage: ""

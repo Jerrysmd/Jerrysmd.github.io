@@ -10,7 +10,7 @@ draft: false
 # license: ""
 # images: []
 
-tags: ["Java", "JDK"]
+tags: ["Java", "JDK", "Multi Thread", "Virtual Thread"]
 categories: ["Technology"]
 
 # featuredImage: ""

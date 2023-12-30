@@ -10,7 +10,7 @@ draft: false
 # license: ""
 # images: []
 
-tags: ["Git", "SQL"]
+tags: ["Git", "SQL", "SQLite", "Database"]
 categories: ["Technology"]
 
 # featuredImage: ""

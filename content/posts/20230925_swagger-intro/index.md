@@ -10,7 +10,7 @@ draft: false
 # license: ""
 # images: []
 
-tags: ["Java", "Spring"]
+tags: ["Java", "Spring", "Swagger"]
 categories: ["Technology"]
 
 # featuredImage: ""

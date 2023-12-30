@@ -10,7 +10,7 @@ draft: false
 # license: ""
 # images: []
 
-tags: ["News"]
+tags: ["News", "Politics"]
 categories: ["Life"]
 
 # featuredImage: ""
