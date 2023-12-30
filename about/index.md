@@ -30,6 +30,7 @@
 
 ## Blog
 
++ :(far fa-edit fa-fw): My Technology and Lifestyle Blog: [:(far fa-edit fa-fw): https://jerrysmd.github.io](https://jerrysmd.github.io)
 + :(fas fa-rocket fa-fw): Optimized for **performance**: [99]/[100] on mobile and [100]/[100] on desktop in [Google PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights)
 + :(fas fa-tachometer-alt fa-fw): **CDN** for third-party libraries supported. [UNPKG](https://unpkg.com/) CDN is working
 + :(fas fa-mobile-screen fa-fw): **[Desktop]/[Mobile] responsive** layout supported
