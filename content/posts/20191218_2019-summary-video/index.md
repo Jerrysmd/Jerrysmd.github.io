@@ -1,5 +1,5 @@
 ---
-title: "Memories of 2019" # Title of the blog post.
+title: "A Year in Moments: 2019 Video Blog" # Title of the blog post.
 date: 2019-12-18T10:01:12+08:00 # Date of post creation.
 description: "Article description." # Description used for search engine.
 featured: false # Sets if post is a featured post, making appear on the home page side bar.
@@ -35,4 +35,3 @@ Photos and videos recorded in 2019.
             src="https://github.com/Jerrysmd/Jerrysmd.github.io/releases/download/video/2019-memory.mp4"
             type="video/mp4"> 
 </video>
-

@@ -1,5 +1,5 @@
 ---
-title: "Memories of 2021" # Title of the blog post.
+title: "A Year in Moments: 2021 Video Blog" # Title of the blog post.
 date: 2021-12-18T10:01:20+08:00 # Date of post creation.
 description: "Article description." # Description used for search engine.
 featured: false # Sets if post is a featured post, making appear on the home page side bar.
@@ -34,4 +34,3 @@ Photos and videos recorded in 2021.
             src="https://github.com/Jerrysmd/Jerrysmd.github.io/releases/download/video/2021-memory.mp4"
             type="video/mp4"> 
 </video>
-
