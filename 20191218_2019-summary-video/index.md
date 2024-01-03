@@ -1,4 +1,4 @@
-# Memories of 2019
+# A Year in Moments: 2019 Video Blog
 
 
 Photos and videos recorded in 2019.
@@ -11,5 +11,4 @@ Photos and videos recorded in 2019.
             src="https://github.com/Jerrysmd/Jerrysmd.github.io/releases/download/video/2019-memory.mp4"
             type="video/mp4"> 
 </video>
-
 

@@ -1,4 +1,4 @@
-# Memories of 2021
+# A Year in Moments: 2021 Video Blog
 
 
 Photos and videos recorded in 2021.
@@ -11,5 +11,4 @@ Photos and videos recorded in 2021.
             src="https://github.com/Jerrysmd/Jerrysmd.github.io/releases/download/video/2021-memory.mp4"
             type="video/mp4"> 
 </video>
-
 
