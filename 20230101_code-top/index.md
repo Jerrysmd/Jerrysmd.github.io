@@ -3,9 +3,9 @@
 
 <!--more-->
 
-## F1 - 🟨146. LRU缓存机制
+## [F1 - 🟨146. LRU缓存机制](https://leetcode.cn/problems/lru-cache)
 
-https://leetcode.cn/problems/lru-cache
+
 
 ### 关键字
 
@@ -115,9 +115,7 @@ public class LRUCache {
 
 
 
-## F2 - 🟩206. 反转链表
-
-https://leetcode.cn/problems/reverse-linked-list
+## [F2 - 🟩206. 反转链表](https://leetcode.cn/problems/reverse-linked-list)
 
 ### 解题
 
@@ -173,9 +171,7 @@ class Solution {
 
 
 
-## F3 - 🟨3. 无重复字符的最长子串
-
-https://leetcode.cn/problems/longest-substring-without-repeating-characters
+## [F3 - 🟨3. 无重复字符的最长子串](https://leetcode.cn/problems/longest-substring-without-repeating-characters)
 
 ### 关键字
 
@@ -208,9 +204,7 @@ class Solution{
 
 
 
-## F4 - 🟥25. K 个一组翻转链表
-
-https://leetcode.cn/problems/reverse-nodes-in-k-group
+## [F4 - 🟥25. K 个一组翻转链表](https://leetcode.cn/problems/reverse-nodes-in-k-group)
 
 ### 解题
 
@@ -256,7 +250,7 @@ class Solution{
 
 
 
-## F5 - 🟨215. 数组中的第K个最大元素
+## [F5 - 🟨215. 数组中的第K个最大元素](https://leetcode.cn/problems/kth-largest-element-in-an-array)
 
 ### 关键字
 
@@ -295,7 +289,7 @@ class Solution {
 
 
 
-## F6 - 🟨15. 三数之和
+## [F6 - 🟨15. 三数之和](https://leetcode.cn/problems/3sum)
 
 ### 解题
 
@@ -334,9 +328,42 @@ class Solution {
 }
 ```
 
+## [F10 - 🟩1. 两数之和](https://leetcode.cn/problems/two-sum)
 
+### 解题
 
-## F59 - 🟥239. 滑动窗口最大值
+我先想到用 Arrays.sort() 解题，可发现结果要返回的是初始位置而不是位置上的数字。
+
+如果用穷举，要用 *O*(*N*2) 复杂度寻找 `target - x` ，时间复杂度过高。
+
+所以可以用 **哈希表** 解决寻找 `target - x` 时间复杂度过高的问题，时间复杂度从 *O*(*N*2) 降低到 *O*(*N*) 
+
+```java
+class Solution{
+    public int[] twoSum(int[] nums, int target){
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+        for(int i = 0; i < nums.length; i++){
+            if(map.containsKey(target - nums[i])){
+                return new int[]{map.get(target - nums[i]), i};
+            }
+            map.put(nums[i], i);
+        }
+    }
+    return new int[0];
+}
+```
+
+## F11 - 🟨[5. 最长回文子串](https://leetcode.cn/problems/longest-palindromic-substring)
+
+### 解题
+
++ 方法1
+  + 暴力求解
+  + 时间复杂度 O(n^3), 左指针从0开始，右指针从L+1开始，对所有长度大于2的字符串进行 validPalindromic() 判断，找出 maxLen
++ 方法2
+  + 
+
+## [F59 - 🟥239. 滑动窗口最大值](https://leetcode.cn/problems/sliding-window-maximum)
 
 ### 解题
 
