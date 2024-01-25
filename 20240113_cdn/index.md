@@ -1,9 +1,13 @@
 # Speed Up Your Site with a CDN: Content Delivery Network Essentials
 
 
-One scenario where I need a CDN is for dynamically requesting static JavaScript files on my website. Hosting these large JS files myself would significantly impact my bandwidth usage since my host charges based on traffic volume. Using a CDN helps solve this issue by distributing requests across its worldwide network of data centers. Not only does this improve access speeds by caching files closer to users, it also reduces my origin server load and bandwidth costs. With assets offloaded to the CDN, my website performance is optimized for a better user experience while keeping infrastructure expenses down. In summary, a CDN provides clear benefits in both performance and savings for serving the static files required by my application at global scale.
+One scenario where I need a CDN is for dynamically requesting static JavaScript files on my website. Hosting these large JS files myself would significantly impact my bandwidth usage since my host charges based on traffic volume. Using a CDN helps solve this issue by distributing requests across its worldwide network of data centers. Not only does this improve access speeds by caching files closer to users, it also reduces my origin server load and bandwidth costs.
 
 <!--more-->
+
+> Due to network instability caused by various political events in China, I need to continuously learn about networking knowledge. 
+
+> The CDN https://unpkg.com/ that I had always been using was blocked. This inspired me to write this article.
 
 ## What is a CDN?
 
