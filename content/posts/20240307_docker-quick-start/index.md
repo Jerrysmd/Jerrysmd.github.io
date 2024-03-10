@@ -82,6 +82,8 @@ When we install an application with Docker, Docker automatically searches for an
 
 ![image-20240308105238561](image-20240308105238561.png " ")
 
+![alexxubyte](alexxubyte.gif " ")
+
 ## Registry
 
 After the image is built, it can be easily run on the current host machine. However, if we need to use this image on other servers, we need a centralized storage and distribution service for images, and **Docker Registry** is such a service.

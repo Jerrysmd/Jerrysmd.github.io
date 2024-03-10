@@ -68,7 +68,11 @@ Explore the power of Jenkins and Docker for automating the deployment of your Sp
 
 <!--more-->
 
-## Ship Code Whole Progress
+## Whole Progress of Ship Code
+
+First of all, How do companies ship code to production?
+
+The diagram below illustrates the typical workflow.
 
 ![img](0x1664.webp " ")
 
@@ -83,4 +87,34 @@ Explore the power of Jenkins and Docker for automating the deployment of your Sp
 9. If the UAT testing is successful, the builds become release candidates and will be deployed to the production environment on schedule.
 10. SRE (Site Reliability Engineering) team is responsible for prod monitoring.
 
+
+
+## Pipeline for a Single Microservice
+
+From a team standpoint, the pipeline must allow them to be able to quickly build, test and deploy the microservice without disrupting other teams or destabilizing the application as a whole.
+
+Here is a typical high-level workflow that many small development teams use to promote their work from one namespace (ie. project in OpenShift) to another
+
+![image-20240310152529392](image-20240310152529392.png " ")
+
+
+
 ## Automated deployment Process
+
+In addition, OpenShift has extensive support for Jenkins and provides an out-of-the-box containerized Jenkins template that you can quickly deploy.
+
+OpenShift’s pipeline build strategy uses *pipelines* for execution by the Jenkins pipeline plugin. Pipeline workflows are defined in a Jenkinsfile, either embedded directly in the build configuration or supplied in a Git repository and referenced by the build configuration.
+
+Here is a typical pipeline for a single containerized microservice
+
+![image-20240310151758052](image-20240310151758052.png " ")
+
+1. Developer makes code changes and commits code to the local git repo
+2. Push code changes into the “develop” branch where a trigger has been set up to kick off an automated build.
+3. Unit and component tests are performed during the build procedure.
+4. Static code analysis is also performed to pass the source code quality gate.
+5. Build artifacts are published into an artifact repository, such as Nexus or Artifactory
+6. Build image is pushed to image repo
+7. Jenkins deploys the image to “Dev” namespace (called “Project” in OpenShift) where any automated test cases are kicked off. Developers are also able to perform manual/ad-hoc testing as well (teams often use tools such as postman)
+8. If test cases pass, image is tagged and Jenkins promotes (deploys tagged image) to the Integration project (i.e. namespace) for integration testing. Trigger integration with other microservices.
+9. If integration tests pass, image is tagged again and publish into a production image repository for deployment to staging or prod.
