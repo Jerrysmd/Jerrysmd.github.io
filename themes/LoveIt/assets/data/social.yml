@@ -577,19 +577,33 @@ phone:
   Icon:
     Class: fas fa-phone fa-fw
 
+# Bookshelf
+bookshelf:
+  Weight: 99
+  Title: Bookshelf
+  Icon:
+    Class: fa-solid fa-book-bookmark fa-sm fa-fw
+
+# Gallery
+gallery:
+  Weight: 100
+  Title: Gallery
+  Icon:
+    Class: fas fa-images fa-fw
+
 # Email
 email:
-  Weight: 99
+  Weight: 101
   Template: mailto:%v
   Title: Email
   Icon:
-    Class: far fa-envelope fa-fw
+    Class: fa-solid fa-at fa-fw
 
 # RSS
 rss:
-  Weight: 100
+  Weight: 102
   Url: /index.xml
   Title: RSS
   Newtab: true
   Icon:
-    Class: fas fa-rss fa-fw
+    Class: fas fa-rss-square fa-fw
