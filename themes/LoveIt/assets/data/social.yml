@@ -597,7 +597,7 @@ email:
   Template: mailto:%v
   Title: Email
   Icon:
-    Class: fa-solid fa-at fa-fw
+    Class: fa-regular fa-envelope fa-fw
 
 # RSS
 rss:
