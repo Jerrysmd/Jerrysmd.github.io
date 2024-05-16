@@ -1,4 +1,4 @@
-# Automated Deployment of SpringBoot with Jenkins and Docker
+# Automated Deployment with Jenkins and Docker
 
 
 Explore the power of Jenkins and Docker for automating the deployment of your SpringBoot projects. This blog post walks through integrating these tools to create a seamless CI/CD pipeline, enabling you to build, test, and deploy your applications as containerized services with ease, enhancing your DevOps skills.
