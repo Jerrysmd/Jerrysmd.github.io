@@ -1,5 +1,5 @@
 ---
-title: "Automated Deployment of SpringBoot with Jenkins and Docker"
+title: "Automated Deployment with Jenkins and Docker"
 # subtitle: ""
 date: 2024-03-08T17:56:44+08:00
 # lastmod: 2024-03-08T17:56:44+08:00
