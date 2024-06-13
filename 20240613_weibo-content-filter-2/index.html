@@ -1,0 +1,264 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><title>Extension Project: Weibo Content Filter Ⅱ - JerrysBlog</title><meta name=Description content><meta property="og:title" content="Extension Project: Weibo Content Filter Ⅱ"><meta property="og:description" content="Update the GitHub project https://github.com/Jerrysmd/weibo-content-filter. Add popup page and allow for custom configurations"><meta property="og:type" content="article"><meta property="og:url" content="https://jerrysmd.github.io/20240613_weibo-content-filter-2/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2024-06-13T23:33:30+08:00"><meta property="article:modified_time" content="2024-06-13T23:33:30+08:00"><meta property="og:site_name" content="JerrysBlog"><meta name=twitter:card content="summary"><meta name=twitter:title content="Extension Project: Weibo Content Filter Ⅱ"><meta name=twitter:description content="Update the GitHub project https://github.com/Jerrysmd/weibo-content-filter. Add popup page and allow for custom configurations"><meta name=application-name content="JerrysBlog"><meta name=apple-mobile-web-app-title content="JerrysBlog"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://jerrysmd.github.io/20240613_weibo-content-filter-2/><link rel=prev href=https://jerrysmd.github.io/20240516_no-country-for-old-man/><link rel=stylesheet href=/css/style.min.css><link rel=preload href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css></noscript><link rel=preload href=https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css></noscript><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Extension Project: Weibo Content Filter Ⅱ","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/jerrysmd.github.io\/20240613_weibo-content-filter-2\/"},"genre":"posts","keywords":"Browser Extension, JavaScript, Extension","wordcount":931,"url":"https:\/\/jerrysmd.github.io\/20240613_weibo-content-filter-2\/","datePublished":"2024-06-13T23:33:30+08:00","dateModified":"2024-06-13T23:33:30+08:00","publisher":{"@type":"Organization","name":"xxxx","logo":"https:\/\/jerrysmd.github.io\/images\/avatar.png"},"description":""}</script></head><body data-header-desktop=fixed data-header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem("theme")?localStorage.getItem("theme")==="dark":"light"==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:"light"==="dark")&&document.body.setAttribute("theme","dark")</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title=JerrysBlog><span class=header-title-pre><i class='far fa-edit fa-fw' aria-hidden=true></i></span>JERRYSBLOG</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/ title=Home>Home </a><a class=menu-item href=/categories/technology/ title="Technology article list">Technology </a><a class=menu-item href=/categories/life/ title="Life article list">Life </a><a class=menu-item href=/tags/ title="Tags cloud">Tags </a><a class=menu-item href=/about/ title="About blog">About </a><a class=menu-item href=https://github.com/Jerrysmd/ title="My GitHub" rel="noopener noreffer" target=_blank><i class='fab fa-github fa-fw' aria-hidden=true></i> </a><a class=menu-item href="https://jerrysmd.notion.site/c36b33378ab44eaa8a4e0d51acb419cd?v=f866caf0636341839c3ddd977cbb4bfe&pvs=4" title="My Bookshelf" rel="noopener noreffer" target=_blank><i class='fa-solid fa-book-bookmark fa-sm fa-fw' aria-hidden=true></i> </a><a class=menu-item href=https://Jerrysmd.github.io/gallery title="My Gallery" rel="noopener noreffer" target=_blank><i class='fa-solid fa-images fa-sm fa-fw' aria-hidden=true></i> </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder="Search titles or contents..." id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=Search><i class="fas fa-search fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=Clear><i class="fas fa-times-circle fa-fw" aria-hidden=true></i></a>
+<span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i></span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title="Switch Theme"><i class="fas fa-moon fa-fw" aria-hidden=true></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title=JerrysBlog><span class=header-title-pre><i class='far fa-edit fa-fw' aria-hidden=true></i></span>JERRYSBLOG</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder="Search titles or contents..." id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=Search><i class="fas fa-search fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=Clear><i class="fas fa-times-circle fa-fw" aria-hidden=true></i></a>
+<span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>Cancel</a></div><a class=menu-item href=/ title=Home>Home</a><a class=menu-item href=/categories/technology/ title="Technology article list">Technology</a><a class=menu-item href=/categories/life/ title="Life article list">Life</a><a class=menu-item href=/tags/ title="Tags cloud">Tags</a><a class=menu-item href=/about/ title="About blog">About</a><a class=menu-item href=https://github.com/Jerrysmd/ title="My GitHub" rel="noopener noreffer" target=_blank><i class='fab fa-github fa-fw' aria-hidden=true></i></a><a class=menu-item href="https://jerrysmd.notion.site/c36b33378ab44eaa8a4e0d51acb419cd?v=f866caf0636341839c3ddd977cbb4bfe&pvs=4" title="My Bookshelf" rel="noopener noreffer" target=_blank><i class='fa-solid fa-book-bookmark fa-sm fa-fw' aria-hidden=true></i></a><a class=menu-item href=https://Jerrysmd.github.io/gallery title="My Gallery" rel="noopener noreffer" target=_blank><i class='fa-solid fa-images fa-sm fa-fw' aria-hidden=true></i></a><a href=javascript:void(0); class="menu-item theme-switch" title="Switch Theme">
+<i class="fas fa-moon fa-fw" aria-hidden=true></i></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>Contents</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Extension Project: Weibo Content Filter Ⅱ</h1><div class=post-meta><div class=post-meta-line><span class=post-category>Category
+<a href=/categories/technology/><i class="far fa-folder fa-fw" aria-hidden=true></i>Technology</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt fa-fw" aria-hidden=true></i>&nbsp;<time datetime=2024-06-13>2024-06-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden=true></i>&nbsp;931 words&nbsp;
+<i class="far fa-clock fa-fw" aria-hidden=true></i>&nbsp;2 minutes&nbsp;<span id=/20240613_weibo-content-filter-2/ class=leancloud_visitors data-flag-title="Extension Project: Weibo Content Filter Ⅱ">
+<i class="far fa-eye fa-fw" aria-hidden=true></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+</span>&nbsp;</div></div><div class="details toc" id=toc-static data-kept><div class="details-summary toc-title"><span>Contents</span>
+<span><i class="details-icon fas fa-angle-right" aria-hidden=true></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#extension-1-step-config-manifestjson>Extension 1 step: Config manifest.json</a></li><li><a href=#extension-2-step-setup-popup-html-and-js>Extension 2 step: Setup popup HTML and JS</a></li><li><a href=#extension-3-step-setup-backgroundjs>Extension 3 step: Setup background.js</a></li><li><a href=#extension-4-step-make-mainjs>Extension 4 step: Make main.js</a></li></ul></nav></div></div><div class=content id=content><p>Update the GitHub project <a href=https://github.com/Jerrysmd/weibo-content-filter target=_blank rel="noopener noreffer">https://github.com/Jerrysmd/weibo-content-filter</a>. Add popup page and allow for custom configurations</p><h2 id=extension-1-step-config-manifestjson>Extension 1 step: Config manifest.json</h2><ol><li><strong>content_scripts</strong>: Injects scripts into web pages that match specified URLs, runs at document start.</li><li><strong>permissions</strong>: Defines the APIs the extension needs access to, like browser storage.</li><li><strong>action</strong>: Specifies the popup displayed when the user clicks the extension icon.</li><li><strong>background</strong>: Runs scripts in the background, even when the popup is not open.</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;大眼夹（新版微博）&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;short_name&#34;</span><span class=p>:</span> <span class=s2>&#34;大眼夹&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;version&#34;</span><span class=p>:</span> <span class=s2>&#34;0.1&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;manifest_version&#34;</span><span class=p>:</span> <span class=mi>3</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;description&#34;</span><span class=p>:</span> <span class=s2>&#34;新版微博非官方插件，去除时间线上的推荐、推广和广告微博。&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;icons&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;48&#34;</span><span class=p>:</span> <span class=s2>&#34;images/weiboFilter.png&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;128&#34;</span><span class=p>:</span> <span class=s2>&#34;images/weiboFilter.large.png&#34;</span>
+</span></span><span class=line><span class=cl>  <span class=p>},</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;content_scripts&#34;</span><span class=p>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;matches&#34;</span><span class=p>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;https://weibo.com/*&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;https://www.weibo.com/*&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;https://d.weibo.com/*&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;http://d.weibo.com/*&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;http://weibo.com/*&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;http://www.weibo.com/*&#34;</span>
+</span></span><span class=line><span class=cl>      <span class=p>],</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;js&#34;</span><span class=p>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;main.js&#34;</span>
+</span></span><span class=line><span class=cl>      <span class=p>],</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;run_at&#34;</span><span class=p>:</span> <span class=s2>&#34;document_start&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=p>],</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;permissions&#34;</span><span class=p>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;storage&#34;</span>
+</span></span><span class=line><span class=cl>  <span class=p>],</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;action&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;default_popup&#34;</span><span class=p>:</span> <span class=s2>&#34;popup.html&#34;</span>
+</span></span><span class=line><span class=cl>  <span class=p>},</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;background&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;service_worker&#34;</span><span class=p>:</span> <span class=s2>&#34;background.js&#34;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=extension-2-step-setup-popup-html-and-js>Extension 2 step: Setup popup HTML and JS</h2><ol><li>The <code>DOMContentLoaded</code> event ensures the code runs after the popup&rsquo;s HTML is loaded.</li><li>The <code>addEventListener</code> attaches handlers to the checkboxes, updating the browser&rsquo;s storage when their state changes.</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=nb>document</span><span class=p>.</span><span class=nx>addEventListener</span><span class=p>(</span><span class=s1>&#39;DOMContentLoaded&#39;</span><span class=p>,</span> <span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>chrome</span><span class=p>.</span><span class=nx>storage</span><span class=p>.</span><span class=nx>sync</span><span class=p>.</span><span class=nx>get</span><span class=p>([</span><span class=s1>&#39;hotPush&#39;</span><span class=p>,</span> <span class=s1>&#39;recommend&#39;</span><span class=p>,</span> <span class=s1>&#39;mediaRecommend&#39;</span><span class=p>,</span> <span class=s1>&#39;ad&#39;</span><span class=p>,</span> <span class=s1>&#39;fansTop&#39;</span><span class=p>],</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>items</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nb>document</span><span class=p>.</span><span class=nx>getElementById</span><span class=p>(</span><span class=s1>&#39;hotPush&#39;</span><span class=p>).</span><span class=nx>checked</span> <span class=o>=</span> <span class=nx>items</span><span class=p>.</span><span class=nx>hotPush</span> <span class=o>||</span> <span class=kc>false</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=nb>document</span><span class=p>.</span><span class=nx>getElementById</span><span class=p>(</span><span class=s1>&#39;recommend&#39;</span><span class=p>).</span><span class=nx>checked</span> <span class=o>=</span> <span class=nx>items</span><span class=p>.</span><span class=nx>recommend</span> <span class=o>||</span> <span class=kc>false</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=nb>document</span><span class=p>.</span><span class=nx>getElementById</span><span class=p>(</span><span class=s1>&#39;mediaRecommend&#39;</span><span class=p>).</span><span class=nx>checked</span> <span class=o>=</span> <span class=nx>items</span><span class=p>.</span><span class=nx>mediaRecommend</span> <span class=o>||</span> <span class=kc>false</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=nb>document</span><span class=p>.</span><span class=nx>getElementById</span><span class=p>(</span><span class=s1>&#39;ad&#39;</span><span class=p>).</span><span class=nx>checked</span> <span class=o>=</span> <span class=nx>items</span><span class=p>.</span><span class=nx>ad</span> <span class=o>||</span> <span class=kc>false</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=nb>document</span><span class=p>.</span><span class=nx>getElementById</span><span class=p>(</span><span class=s1>&#39;fansTop&#39;</span><span class=p>).</span><span class=nx>checked</span> <span class=o>=</span> <span class=nx>items</span><span class=p>.</span><span class=nx>fansTop</span> <span class=o>||</span> <span class=kc>false</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=p>});</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=nb>document</span><span class=p>.</span><span class=nx>getElementById</span><span class=p>(</span><span class=s1>&#39;hotPush&#39;</span><span class=p>).</span><span class=nx>addEventListener</span><span class=p>(</span><span class=s1>&#39;change&#39;</span><span class=p>,</span> <span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>chrome</span><span class=p>.</span><span class=nx>storage</span><span class=p>.</span><span class=nx>sync</span><span class=p>.</span><span class=nx>set</span><span class=p>({</span> <span class=s1>&#39;hotPush&#39;</span><span class=o>:</span> <span class=k>this</span><span class=p>.</span><span class=nx>checked</span> <span class=p>});</span>
+</span></span><span class=line><span class=cl>  <span class=p>});</span>
+</span></span><span class=line><span class=cl>  <span class=nb>document</span><span class=p>.</span><span class=nx>getElementById</span><span class=p>(</span><span class=s1>&#39;recommend&#39;</span><span class=p>).</span><span class=nx>addEventListener</span><span class=p>(</span><span class=s1>&#39;change&#39;</span><span class=p>,</span> <span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>chrome</span><span class=p>.</span><span class=nx>storage</span><span class=p>.</span><span class=nx>sync</span><span class=p>.</span><span class=nx>set</span><span class=p>({</span> <span class=s1>&#39;recommend&#39;</span><span class=o>:</span> <span class=k>this</span><span class=p>.</span><span class=nx>checked</span> <span class=p>});</span>
+</span></span><span class=line><span class=cl>  <span class=p>});</span>
+</span></span><span class=line><span class=cl>  <span class=nb>document</span><span class=p>.</span><span class=nx>getElementById</span><span class=p>(</span><span class=s1>&#39;mediaRecommend&#39;</span><span class=p>).</span><span class=nx>addEventListener</span><span class=p>(</span><span class=s1>&#39;change&#39;</span><span class=p>,</span> <span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>chrome</span><span class=p>.</span><span class=nx>storage</span><span class=p>.</span><span class=nx>sync</span><span class=p>.</span><span class=nx>set</span><span class=p>({</span> <span class=s1>&#39;mediaRecommend&#39;</span><span class=o>:</span> <span class=k>this</span><span class=p>.</span><span class=nx>checked</span> <span class=p>});</span>
+</span></span><span class=line><span class=cl>  <span class=p>});</span>
+</span></span><span class=line><span class=cl>  <span class=nb>document</span><span class=p>.</span><span class=nx>getElementById</span><span class=p>(</span><span class=s1>&#39;ad&#39;</span><span class=p>).</span><span class=nx>addEventListener</span><span class=p>(</span><span class=s1>&#39;change&#39;</span><span class=p>,</span> <span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>chrome</span><span class=p>.</span><span class=nx>storage</span><span class=p>.</span><span class=nx>sync</span><span class=p>.</span><span class=nx>set</span><span class=p>({</span> <span class=s1>&#39;ad&#39;</span><span class=o>:</span> <span class=k>this</span><span class=p>.</span><span class=nx>checked</span> <span class=p>});</span>
+</span></span><span class=line><span class=cl>  <span class=p>});</span>
+</span></span><span class=line><span class=cl>  <span class=nb>document</span><span class=p>.</span><span class=nx>getElementById</span><span class=p>(</span><span class=s1>&#39;fansTop&#39;</span><span class=p>).</span><span class=nx>addEventListener</span><span class=p>(</span><span class=s1>&#39;change&#39;</span><span class=p>,</span> <span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>chrome</span><span class=p>.</span><span class=nx>storage</span><span class=p>.</span><span class=nx>sync</span><span class=p>.</span><span class=nx>set</span><span class=p>({</span> <span class=s1>&#39;fansTop&#39;</span><span class=o>:</span> <span class=k>this</span><span class=p>.</span><span class=nx>checked</span> <span class=p>});</span>
+</span></span><span class=line><span class=cl>  <span class=p>});</span>
+</span></span><span class=line><span class=cl><span class=p>});</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=extension-3-step-setup-backgroundjs>Extension 3 step: Setup background.js</h2><p>The <code>background.js</code> file separates storage logic from the content script (<code>main.js</code>). This allows for:</p><ol><li>Cleaner separation of concerns</li><li>Asynchronous communication between scripts</li><li>Centralized, more efficient storage management</li><li>Easier maintenance and flexibility</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=nx>chrome</span><span class=p>.</span><span class=nx>runtime</span><span class=p>.</span><span class=nx>onMessage</span><span class=p>.</span><span class=nx>addListener</span><span class=p>((</span><span class=nx>request</span><span class=p>,</span> <span class=nx>sender</span><span class=p>,</span> <span class=nx>sendResponse</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=nx>request</span><span class=p>.</span><span class=nx>action</span> <span class=o>===</span> <span class=s1>&#39;getSettings&#39;</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>chrome</span><span class=p>.</span><span class=nx>storage</span><span class=p>.</span><span class=nx>sync</span><span class=p>.</span><span class=nx>get</span><span class=p>([</span><span class=s1>&#39;hotPush&#39;</span><span class=p>,</span> <span class=s1>&#39;recommend&#39;</span><span class=p>,</span> <span class=s1>&#39;mediaRecommend&#39;</span><span class=p>,</span> <span class=s1>&#39;ad&#39;</span><span class=p>,</span> <span class=s1>&#39;fansTop&#39;</span><span class=p>],</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>items</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=nx>sendResponse</span><span class=p>(</span><span class=nx>items</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=p>});</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=kc>true</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>});</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=extension-4-step-make-mainjs>Extension 4 step: Make main.js</h2><ol><li>Callback and Async:<ul><li>The <code>callback</code> function is asynchronous and uses the <code>await</code> keyword to call the <code>getSettings()</code> function.</li><li>This allows the code to wait for the settings to be retrieved from the background script before processing the DOM mutations.</li></ul></li><li>MutationObserver:<ul><li>The <code>MutationObserver</code> is used to monitor changes to the DOM structure of the web page.</li><li>When changes are detected, the <code>callback</code> function is called to process the mutations.</li></ul></li><li>Config:<ul><li>The <code>config</code> object defines the types of mutations the <code>MutationObserver</code> should watch for.</li><li>In this case, it&rsquo;s set to watch for changes to the child nodes (<code>childList: true</code>) and recursively observe the entire subtree (<code>subtree: true</code>).</li></ul></li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kr>const</span> <span class=nx>getSettings</span> <span class=o>=</span> <span class=p>()</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=k>new</span> <span class=nb>Promise</span><span class=p>((</span><span class=nx>resolve</span><span class=p>,</span> <span class=nx>reject</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>chrome</span><span class=p>.</span><span class=nx>runtime</span><span class=p>.</span><span class=nx>sendMessage</span><span class=p>({</span> <span class=nx>action</span><span class=o>:</span> <span class=s1>&#39;getSettings&#39;</span> <span class=p>},</span> <span class=p>(</span><span class=nx>response</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=p>(</span><span class=nx>chrome</span><span class=p>.</span><span class=nx>runtime</span><span class=p>.</span><span class=nx>lastError</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=nx>reject</span><span class=p>(</span><span class=nx>chrome</span><span class=p>.</span><span class=nx>runtime</span><span class=p>.</span><span class=nx>lastError</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=nx>resolve</span><span class=p>(</span><span class=nx>response</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=p>});</span>
+</span></span><span class=line><span class=cl>    <span class=p>});</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>callback</span> <span class=o>=</span> <span class=kr>async</span> <span class=p>(</span><span class=nx>mutationsList</span><span class=p>,</span> <span class=nx>observer</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>try</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=kr>const</span> <span class=nx>items</span> <span class=o>=</span> <span class=kr>await</span> <span class=nx>getSettings</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>        <span class=nx>mutationsList</span><span class=p>.</span><span class=nx>forEach</span><span class=p>(</span><span class=nx>mutation</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=p>(</span><span class=nx>mutation</span><span class=p>.</span><span class=nx>type</span> <span class=o>===</span> <span class=s1>&#39;childList&#39;</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=kr>const</span> <span class=nx>divs</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>querySelectorAll</span><span class=p>(</span><span class=s1>&#39;#scroller &gt; div.vue-recycle-scroller__item-wrapper &gt; div&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>                <span class=nx>divs</span><span class=p>.</span><span class=nx>forEach</span><span class=p>(</span><span class=kd>function</span> <span class=p>(</span><span class=nx>div</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                    <span class=kr>const</span> <span class=nx>targetDiv</span> <span class=o>=</span> <span class=nx>div</span><span class=p>.</span><span class=nx>querySelector</span><span class=p>(</span><span class=s1>&#39;div.wbpro-tag.wbpro-tag-c2.head-info_tag_3iMJw &gt; div&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>                    <span class=kr>const</span> <span class=nx>targetContent</span> <span class=o>=</span> <span class=nx>targetDiv</span> <span class=o>?</span> <span class=nx>targetDiv</span><span class=p>.</span><span class=nx>textContent</span><span class=p>.</span><span class=nx>trim</span><span class=p>()</span> <span class=o>:</span> <span class=s1>&#39;&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                    <span class=kr>const</span> <span class=nx>isPromotedPost</span> <span class=o>=</span>
+</span></span><span class=line><span class=cl>                        <span class=p>(</span><span class=nx>items</span><span class=p>.</span><span class=nx>hotPush</span> <span class=o>&amp;&amp;</span> <span class=nx>targetContent</span><span class=p>.</span><span class=nx>match</span><span class=p>(</span><span class=sr>/^(热推)$/</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>                        <span class=o>||</span> <span class=p>(</span><span class=nx>items</span><span class=p>.</span><span class=nx>recommend</span> <span class=o>&amp;&amp;</span> <span class=nx>targetContent</span><span class=p>.</span><span class=nx>match</span><span class=p>(</span><span class=sr>/^(推荐)$/</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>                        <span class=o>||</span> <span class=p>(</span><span class=nx>items</span><span class=p>.</span><span class=nx>mediaRecommend</span> <span class=o>&amp;&amp;</span> <span class=nx>targetContent</span><span class=p>.</span><span class=nx>match</span><span class=p>(</span><span class=sr>/^(媒体推荐)$/</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>                        <span class=o>||</span> <span class=p>(</span><span class=nx>items</span><span class=p>.</span><span class=nx>ad</span> <span class=o>&amp;&amp;</span> <span class=nx>div</span><span class=p>.</span><span class=nx>querySelector</span><span class=p>(</span><span class=s1>&#39;div[mark*=&#34;reallog_mark_ad&#34;]&#39;</span><span class=p>)</span> <span class=o>&amp;&amp;</span> <span class=o>!</span><span class=nx>div</span><span class=p>.</span><span class=nx>querySelector</span><span class=p>(</span><span class=s1>&#39;div[mark*=&#34;999_reallog_mark_ad&#34;]&#39;</span><span class=p>)</span> <span class=o>&amp;&amp;</span> <span class=o>!</span><span class=nx>targetContent</span><span class=p>.</span><span class=nx>match</span><span class=p>(</span><span class=sr>/^(热推)$/</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>                        <span class=o>||</span> <span class=p>(</span><span class=nx>items</span><span class=p>.</span><span class=nx>fansTop</span> <span class=o>&amp;&amp;</span> <span class=p>(</span><span class=nx>targetContent</span><span class=p>.</span><span class=nx>match</span><span class=p>(</span><span class=sr>/^(粉丝头条)$/</span><span class=p>)</span> <span class=o>||</span> <span class=nx>div</span><span class=p>.</span><span class=nx>querySelector</span><span class=p>(</span><span class=s1>&#39;div[mark*=&#34;FansTop&#34;]&#39;</span><span class=p>)));</span>
+</span></span><span class=line><span class=cl>                    <span class=kr>const</span> <span class=nx>hasRepost</span> <span class=o>=</span> <span class=o>!!</span><span class=nx>div</span><span class=p>.</span><span class=nx>querySelector</span><span class=p>(</span><span class=s2>&#34;div.Feed_retweet_JqZJb&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>                    <span class=kr>const</span> <span class=nx>displayValue</span> <span class=o>=</span> <span class=nx>isPromotedPost</span> <span class=o>?</span> <span class=s1>&#39;none&#39;</span> <span class=o>:</span> <span class=s1>&#39;&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                    <span class=k>if</span> <span class=p>(</span><span class=nx>hasRepost</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                        <span class=nx>div</span><span class=p>.</span><span class=nx>querySelectorAll</span><span class=p>(</span><span class=s2>&#34;div.wbpro-feed-content, div.Feed_retweet_JqZJb, footer&#34;</span><span class=p>).</span><span class=nx>forEach</span><span class=p>(</span><span class=nx>el</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                            <span class=nx>el</span><span class=p>.</span><span class=nx>style</span><span class=p>.</span><span class=nx>display</span> <span class=o>=</span> <span class=nx>displayValue</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                        <span class=p>});</span>
+</span></span><span class=line><span class=cl>                    <span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                        <span class=nx>div</span><span class=p>.</span><span class=nx>querySelectorAll</span><span class=p>(</span><span class=s2>&#34;div.wbpro-feed-content, footer&#34;</span><span class=p>).</span><span class=nx>forEach</span><span class=p>(</span><span class=nx>el</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                            <span class=nx>el</span><span class=p>.</span><span class=nx>style</span><span class=p>.</span><span class=nx>display</span> <span class=o>=</span> <span class=nx>displayValue</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                        <span class=p>});</span>
+</span></span><span class=line><span class=cl>                    <span class=p>}</span>
+</span></span><span class=line><span class=cl>                <span class=p>});</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=p>});</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span> <span class=k>catch</span> <span class=p>(</span><span class=nx>error</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>console</span><span class=p>.</span><span class=nx>error</span><span class=p>(</span><span class=s1>&#39;Failed to get settings:&#39;</span><span class=p>,</span> <span class=nx>error</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>observer</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>MutationObserver</span><span class=p>(</span><span class=nx>callback</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>config</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>childList</span><span class=o>:</span> <span class=kc>true</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>subtree</span><span class=o>:</span> <span class=kc>true</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>observer</span><span class=p>.</span><span class=nx>observe</span><span class=p>(</span><span class=nb>document</span><span class=p>,</span> <span class=nx>config</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s1>&#39;Observer started&#39;</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span></span></div></div><div class=post-info-line><div class=post-info-md></div><div class=post-info-share><span></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fas fa-tags fa-fw" aria-hidden=true></i>&nbsp;<a href=/tags/browser-extension/>Browser Extension</a>,&nbsp;<a href=/tags/javascript/>JavaScript</a>,&nbsp;<a href=/tags/extension/>Extension</a></section><section><span><a href=javascript:void(0); onclick=window.history.back()>Back</a></span>&nbsp;|&nbsp;<span><a href=/>Home</a></span></section></div><div class=post-nav><a href=/20240516_no-country-for-old-man/ class=prev rel=prev title="No Country for Old Men"><i class="fas fa-angle-left fa-fw" aria-hidden=true></i>No Country for Old Men</a></div></div><div id=comments><div id=valine class=comment></div><noscript>Please enable JavaScript to view the comments powered by <a href=https://valine.js.org/>Valine</a>.</noscript></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="far fa-copyright fa-fw" aria-hidden=true></i><span itemprop=copyrightYear>2018 - 2024</span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title="Back to Top"><i class="fas fa-arrow-up fa-fw" aria-hidden=true></i>
+</a><a href=# id=view-comments class=fixed-button title="View Comments"><i class="fas fa-comment fa-fw" aria-hidden=true></i></a></div><link rel=stylesheet href=/lib/valine/valine.min.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.5.0/css/lightgallery-bundle.min.css><script type=text/javascript src=https://cdnjs.cloudflare.com/ajax/libs/valine/1.5.0/Valine.min.js></script><script type=text/javascript src=https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.1/autocomplete.min.js></script><script type=text/javascript src=https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/4.13.1/algoliasearch-lite.umd.min.js></script><script type=text/javascript src=https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js></script><script type=text/javascript src=https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.5.0/lightgallery.min.js></script><script type=text/javascript src=https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.5.0/plugins/thumbnail/lg-thumbnail.min.js></script><script type=text/javascript src=https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.5.0/plugins/zoom/lg-zoom.min.js></script><script type=text/javascript src=https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"Copy to clipboard",maxShownLines:40},comment:{valine:{appId:"2jSYKh8PFUje3v7Ie3Nn5v1g-gzGzoHsz",appKey:"MyWn4P9G5N32q3oM5JDnlpdL",avatar:"retro",el:"#valine",emojiCDN:"https://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/",enableQQ:!0,highlight:!0,lang:"en",meta:["nick","mail","link"],pageSize:10,placeholder:"Your comment ...",recordIP:!0,visitor:!0}},lightgallery:!0,search:{algoliaAppID:"BADKNNRXHD",algoliaIndex:"index",algoliaSearchKey:"7a8c2923330a44bdd9985698e3f28e0c",highlightTag:"em",maxResultLength:8,noResultsFound:"No results found",snippetLength:40,type:"algolia"}}</script><script type=text/javascript src=/js/theme.min.js></script><script type=text/javascript>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-JJBX835T6W")</script><script type=text/javascript src="https://www.googletagmanager.com/gtag/js?id=G-JJBX835T6W" async></script></body></html>

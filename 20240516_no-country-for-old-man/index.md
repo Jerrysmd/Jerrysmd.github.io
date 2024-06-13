@@ -1,9 +1,11 @@
 # No Country for Old Men
 
 
+<!--more-->
+
 We are entering an era without any reliable foundation, where nothing is truly firm and lasting.
 
-<!--more-->
+------
 
 I came across a social media post the other day, which essentially said that things that were once considered essential are no longer so, even to the point of no longer being alive. 
 
