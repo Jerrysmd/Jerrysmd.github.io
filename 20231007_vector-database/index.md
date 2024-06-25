@@ -137,6 +137,10 @@ In conclusion, there's no one-size-fits-all when it comes to vector databases. T
 
 > **Source**
 >
+> https://www.kdnuggets.com/2023/06/vector-databases-important-llms.html 
+>
+> https://benchmark.vectorview.ai/vectordbs.html
+>
 > https://ann-benchmarks.com/
 >
 > https://qdrant.tech/benchmarks/
