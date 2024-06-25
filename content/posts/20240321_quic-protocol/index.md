@@ -205,3 +205,7 @@ The internet has come a long way since the inception of HTTP decades ago. The ev
 Google developed the game changing protocol, QUIC. It leveraged UDP and addressed all the shortcomings of TCP. Reduced latency, multiplexing, enhanced security, & connection migration are some of the striking features of QUIC. The innovations bought by QUIC have addressed problems like head of the line blocking.
 
 Big Tech companies like Google and Facebook have seen drastic improvements in performance by adopting QUIC in HTTP/3. With the rising adoption and growing support, HTTP/3 will become a standard for internet communication. In the coming years, the internet will evolve and transition to HTTP/3 for efficiency, reliability and performance.
+
+> Source:
+>
+> https://engineeringatscale.substack.com/p/how-quic-is-displacing-tcp-for-speed
