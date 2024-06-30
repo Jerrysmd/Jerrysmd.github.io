@@ -162,7 +162,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     desktopMode = "fixed"
     # mobile header mode ["fixed", "normal", "auto"]
     # 移动端导航栏模式 ["fixed", "normal", "auto"]
-    mobileMode = "auto"
+    mobileMode = "normal"
     # Header title config
     # 页面头部导航栏标题配置
     [params.header.title]
@@ -308,7 +308,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       title = ""
       # subtitle shown in home page (HTML format is supported)
       # 主页显示的网站副标题 (允许 HTML 格式)
-      subtitle = "Thoughts come and go swiftly, occasionally lingering here"
+      subtitle = "The wheels of history roll ever forward"
       # whether to use typeit animation for subtitle
       # 是否为副标题显示打字机动画
       typeit = false

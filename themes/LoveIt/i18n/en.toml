@@ -41,7 +41,7 @@ other = "More"
 other = "Select Language"
 
 [switchTheme]
-other = "Switch Theme"
+other = "Dark Theme"
 # === partials/header.html ===
 
 # === partials/footer.html ===
