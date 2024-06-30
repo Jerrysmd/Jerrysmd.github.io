@@ -1,7 +1,13 @@
 # No Country for Old Men
 
 
+*No Country for Old Men* is one of my favorite movies, although I haven't read the original book. I think this title is perfectly fitting for this blog post. **The wheels of history roll forward, and the tides of time surge on.** Maintaining physical and mental health, and surpassing the changes of our era through learning, has become the best strategy for the present.
+
 <!--more-->
+
+---
+
+> 历史车轮滚滚向前，时代潮流浩浩荡荡
 
 We are entering an era without any reliable foundation, where nothing is truly firm and lasting.
 
