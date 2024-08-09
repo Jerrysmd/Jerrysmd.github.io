@@ -328,7 +328,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   # Social config in home page
   # 主页的社交信息设置
   [params.social]
-    GitHub = "Jerrysmd"
+    GitHub = ""
     Bookshelf = "https://jerrysmd.notion.site/c36b33378ab44eaa8a4e0d51acb419cd?v=f866caf0636341839c3ddd977cbb4bfe&pvs=4"
     Gallery = "https://Jerrysmd.github.io/gallery"
     Linkedin = ""
@@ -402,7 +402,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     Plume = ""
     HackTheBox = ""
     RootMe= ""
-    Email = "MHgwMDRjMkBnbWFpbC5jb20="
+    Email = ""
     RSS = "RSS"
 
   # Page global config
