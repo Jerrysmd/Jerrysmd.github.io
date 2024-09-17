@@ -18,22 +18,22 @@ categories: ["Technology"]
 
 hiddenFromHomePage: false
 hiddenFromSearch: false
-# twemoji: false
-# lightgallery: true
+twemoji: false
+lightgallery: true
 # ruby: true
 # fraction: true
 # fontawesome: true
 # linkToMarkdown: true
 # rssFullText: false
 
-# toc:
-#   enable: true
-#   auto: true
-# code:
-#   copy: true
-#   maxShownLines: 50
-# math:
-#   enable: false
+toc:
+  enable: true
+  auto: true
+code:
+  copy: true
+  maxShownLines: 50
+math:
+  enable: false
 #   # ...
 # mapbox:
 #   # ...
