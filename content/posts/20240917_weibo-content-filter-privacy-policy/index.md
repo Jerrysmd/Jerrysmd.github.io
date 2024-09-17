@@ -40,8 +40,8 @@ toc:
 # share:
 #   enable: true
 #   # ...
-# comment:
-#   enable: true
+comment:
+  enable: false
 #   # ...
 # library:
 #   css:

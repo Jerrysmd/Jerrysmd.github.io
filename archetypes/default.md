@@ -40,8 +40,8 @@ math:
 # share:
 #   enable: true
 #   # ...
-# comment:
-#   enable: true
+comment:
+  enable: true
 #   # ...
 # library:
 #   css:
