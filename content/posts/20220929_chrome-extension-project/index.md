@@ -10,7 +10,7 @@ draft: false
 # license: ""
 # images: []
 
-tags: ["JavaScript", "Browser Extension"]
+tags: ["JavaScript", "Browser extension"]
 categories: ["Technology"]
 
 # featuredImage: ""

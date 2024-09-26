@@ -10,7 +10,7 @@ draft: false
 # license: ""
 # images: []
 
-tags: ["Privacy Policy", "Policy"]
+tags: ["Privacy policy", "Policy"]
 categories: ["Technology"]
 
 # featuredImage: ""

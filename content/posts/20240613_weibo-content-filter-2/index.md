@@ -10,7 +10,7 @@ draft: false
 # license: ""
 # images: []
 
-tags: ["Browser Extension", "JavaScript", "Extension"]
+tags: ["Browser extension", "JavaScript", "Extension"]
 categories: ["Technology"]
 
 # featuredImage: ""
@@ -64,9 +64,13 @@ hiddenFromSearch: false
 # {{< mermaid >}}{{< /mermaid >}}
 ---
 
+Extension available on chrome web store: [https://chromewebstore.google.com](https://chromewebstore.google.com/detail/%E5%A4%A7%E7%9C%BC%E5%A4%B9%EF%BC%88%E6%96%B0%E7%89%88%E5%BE%AE%E5%8D%9A%EF%BC%89/lgmemegockdpkabelcgogdcdfdjnmbhe) 
+
 Update the GitHub project https://github.com/Jerrysmd/weibo-content-filter. Add popup page and allow for custom configurations
 
 <!--more-->
+
+> Extension now available on chrome web store: [https://chromewebstore.google.com](https://chromewebstore.google.com/detail/%E5%A4%A7%E7%9C%BC%E5%A4%B9%EF%BC%88%E6%96%B0%E7%89%88%E5%BE%AE%E5%8D%9A%EF%BC%89/lgmemegockdpkabelcgogdcdfdjnmbhe) 
 
 ## Extension 1 step: Config manifest.json
 

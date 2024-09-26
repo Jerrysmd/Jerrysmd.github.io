@@ -1,0 +1,70 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.8 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.8">
+  <diagram name="Page-1" id="gQ1NnS1RKVY82qmcrfCU">
+    <mxGraphModel dx="1182" dy="658" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <object placeholders="1" id="mCmyRcpR5s1qGP92soEO-4">
+          <mxCell style="rounded=1;fontSize=11;whiteSpace=wrap;html=1;dashed=1;arcSize=20;fillColor=#D5E8D4;strokeColor=#666666;fontColor=#333333;labelBackgroundColor=none;align=left;verticalAlign=bottom;labelBorderColor=none;spacingTop=0;spacing=10;dashPattern=8 4;metaEdit=1;rotatable=0;perimeter=rectanglePerimeter;noLabel=0;labelPadding=0;allowArrows=0;connectable=0;expand=0;recursiveResize=0;editable=1;pointerEvents=0;absoluteArcSize=1;points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];" vertex="1" parent="1">
+            <mxGeometry x="530" y="630" width="270" height="120" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" id="mCmyRcpR5s1qGP92soEO-3">
+          <mxCell style="rounded=1;fontSize=11;whiteSpace=wrap;html=1;dashed=1;arcSize=20;fillColor=#BED0EB;strokeColor=#666666;fontColor=#333333;labelBackgroundColor=none;align=left;verticalAlign=bottom;labelBorderColor=none;spacingTop=0;spacing=10;dashPattern=8 4;metaEdit=1;rotatable=0;perimeter=rectanglePerimeter;noLabel=0;labelPadding=0;allowArrows=0;connectable=0;expand=0;recursiveResize=0;editable=1;pointerEvents=0;absoluteArcSize=1;points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];" vertex="1" parent="1">
+            <mxGeometry x="530" y="490" width="270" height="120" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" id="mCmyRcpR5s1qGP92soEO-1">
+          <mxCell style="rounded=1;fontSize=11;whiteSpace=wrap;html=1;dashed=1;arcSize=20;fillColor=#FFDEB8;strokeColor=#666666;fontColor=#333333;labelBackgroundColor=none;align=left;verticalAlign=bottom;labelBorderColor=none;spacingTop=0;spacing=10;dashPattern=8 4;metaEdit=1;rotatable=0;perimeter=rectanglePerimeter;noLabel=0;labelPadding=0;allowArrows=0;connectable=0;expand=0;recursiveResize=0;editable=1;pointerEvents=0;absoluteArcSize=1;points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];" vertex="1" parent="1">
+            <mxGeometry x="530" y="350" width="270" height="120" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="TjJ7RFLJj6_N5epalvzf-1" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;Abstraction&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;fillWeight=4;hachureGap=8;hachureAngle=45;sketch=1;fillColor=#FFCE9F;" parent="1" vertex="1">
+          <mxGeometry x="390" y="380" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="TjJ7RFLJj6_N5epalvzf-2" value="&lt;p style=&quot;orphans: 4; text-align: left;&quot;&gt;&lt;span style=&quot;orphans: 2; text-align: center;&quot;&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;Coupling&lt;/font&gt;&lt;/span&gt;&lt;br&gt;&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;fillWeight=4;hachureGap=8;hachureAngle=45;sketch=1;fillColor=#BECDEB;" parent="1" vertex="1">
+          <mxGeometry x="390" y="520" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="TjJ7RFLJj6_N5epalvzf-3" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;Change&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;fillWeight=4;hachureGap=8;hachureAngle=45;sketch=1;fillColor=#D5E8D4;" parent="1" vertex="1">
+          <mxGeometry x="390" y="660" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="TjJ7RFLJj6_N5epalvzf-4" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="520" y="350" width="20" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="TjJ7RFLJj6_N5epalvzf-5" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="520" y="490" width="20" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="TjJ7RFLJj6_N5epalvzf-6" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="520" y="630" width="20" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="TjJ7RFLJj6_N5epalvzf-7" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;flipH=1;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="790" y="350" width="20" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="TjJ7RFLJj6_N5epalvzf-8" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;flipH=1;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="790" y="490" width="20" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="TjJ7RFLJj6_N5epalvzf-9" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;flipH=1;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="790" y="630" width="20" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="TjJ7RFLJj6_N5epalvzf-10" value="&lt;ul&gt;&lt;li&gt;&lt;b&gt;Perspective&lt;/b&gt;: &lt;br&gt;Abstract dependencies, focus on viewpoints&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;b&gt;Code&lt;/b&gt;:&amp;nbsp;&lt;br&gt;&lt;/span&gt;Decouple code from the real world details&lt;/li&gt;&lt;/ul&gt;" style="text;strokeColor=none;fillColor=none;html=1;whiteSpace=wrap;verticalAlign=middle;overflow=hidden;" parent="1" vertex="1">
+          <mxGeometry x="520" y="350" width="310" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="TjJ7RFLJj6_N5epalvzf-11" value="&lt;ul&gt;&lt;li&gt;&lt;b&gt;Code&lt;/b&gt;: Define the scope of changes&lt;br&gt;&lt;br&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;Modules&lt;/b&gt;: Handle module interactions&lt;br&gt;&lt;br&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;System&lt;/b&gt;: Ensure team collaboration&lt;/li&gt;&lt;/ul&gt;" style="text;strokeColor=none;fillColor=none;html=1;whiteSpace=wrap;verticalAlign=middle;overflow=hidden;" parent="1" vertex="1">
+          <mxGeometry x="520" y="500" width="290" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="TjJ7RFLJj6_N5epalvzf-12" value="&lt;ul&gt;&lt;li&gt;&lt;b&gt;Different users&lt;/b&gt;: Different requirements&lt;br&gt;&lt;br&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;Different stages&lt;/b&gt;: Different needs&lt;br&gt;&lt;/li&gt;&lt;/ul&gt;" style="text;strokeColor=none;fillColor=none;html=1;whiteSpace=wrap;verticalAlign=middle;overflow=hidden;" parent="1" vertex="1">
+          <mxGeometry x="520" y="650" width="290" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="TjJ7RFLJj6_N5epalvzf-13" value="Unify language, achieve consensus" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=0;" parent="1" vertex="1">
+          <mxGeometry x="820" y="380" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="TjJ7RFLJj6_N5epalvzf-14" value="&lt;p style=&quot;text-align: left; orphans: 2;&quot;&gt;Clarify boundaries, define responsibilities&lt;br&gt;&lt;/p&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=0;" parent="1" vertex="1">
+          <mxGeometry x="820" y="520" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="TjJ7RFLJj6_N5epalvzf-15" value="Reduce frequency, narrow the scope" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=0;" parent="1" vertex="1">
+          <mxGeometry x="820" y="660" width="230" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

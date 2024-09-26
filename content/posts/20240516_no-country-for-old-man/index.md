@@ -10,7 +10,7 @@ draft: false
 # license: ""
 # images: []
 
-tags: ["Thoughts", "Shower Thoughts"]
+tags: ["Thoughts", "Shower thoughts"]
 categories: ["Life"]
 
 # featuredImage: ""

@@ -10,7 +10,7 @@ draft: false
 # license: ""
 # images: []
 
-tags: ["CDN", "Distribution", "Front End", "Blog"]
+tags: ["CDN", "Distribution", "Frontend", "Blog"]
 categories: ["Technology"]
 
 # featuredImage: ""
