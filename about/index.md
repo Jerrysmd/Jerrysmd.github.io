@@ -11,9 +11,12 @@
 
 ## Bookshelf
 
-+ 📖 My reading log, highlights and notes: [:(fa-solid fa-book-bookmark fa-fw): jerrysmd.notion.site](https://jerrysmd.notion.site/c36b33378ab44eaa8a4e0d51acb419cd?v=f866caf0636341839c3ddd977cbb4bfe&pvs=4)
-+ 📝 Synchronization: Real-time synchronization from Weread to Notion 
-+ 🌊 In case you have limited access to Notion, this is a mimic website: [:(fab fa-github fa-fw):jerrysmd.github.io/bookshelf](https://jerrysmd.github.io/bookshelf/)
++ 📖 My reading log, highlights and notes:
+  + [:(fa-solid fa-book-bookmark fa-fw): jerrysmd.notion.site](https://jerrysmd.notion.site/c36b33378ab44eaa8a4e0d51acb419cd?v=f866caf0636341839c3ddd977cbb4bfe&pvs=4)
+  + [:(fab fa-github fa-fw): jerrysmd.github.io/bookshelf](https://jerrysmd.github.io/bookshelf/)
+
++ 📝 Synchronization: Real-time synchronization from Weread to Notion
++  :(fab fa-github fa-fw): Project link: [github.com/Jerrysmd/weread2notion](https://github.com/Jerrysmd/weread2notion)
 
 ![](/posts/picture/weread.png "Weread Reading Notes")
 
@@ -23,6 +26,7 @@
 
 + 📷 My photo gallery: [:(fa-solid fa-images fa-fw): jerrysmd.github.io/gallery](https://jerrysmd.github.io/gallery/)
 + 🔭 Synchronization: Meaningful photos compressed using Photoshop and stored on GitHub
++  :(fab fa-github fa-fw): Project link: [github.com/Jerrysmd/gallery](https://github.com/Jerrysmd/gallery)
 
 ![](/posts/picture/gallery.png "Gallery")
 
@@ -30,38 +34,15 @@
 
 ## Blog
 
-+ :(far fa-edit fa-fw): My Technology and Lifestyle Blog: [:(far fa-edit fa-fw): https://jerrysmd.github.io](https://jerrysmd.github.io)
-+ :(fas fa-rocket fa-fw): Optimized for **performance**: [99]/[100] on mobile and [100]/[100] on desktop in [Google PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights)
-+ :(fas fa-tachometer-alt fa-fw): **CDN** for third-party libraries supported. [UNPKG](https://unpkg.com/) CDN is working
-+ :(fas fa-mobile-screen fa-fw): **[Desktop]/[Mobile] responsive** layout supported
-+ :(fas fas fa-moon fa-fw): **[Light]/[Dark]** mode supported
-+ :(far fa-comment-alt fa-fw): **Valine** comment system supported by [Valine](https://valine.js.org/)
-+ :(fas fa-search fa-fw): **Search** supported by [algolia](https://www.algolia.com/)
-+ :(far fa-copy fa-fw): **Copy code** to clipboard with one click
-+ :(far fa-images fa-fw): **Images gallery** supported by [lightGallery](https://github.com/sachinchoolur/lightgallery)
-+ :(fab fa-font-awesome fa-fw): Extended Markdown syntax for [Font Awesome](https://fontawesome.com/) icons
-+ :(fas fa-superscript fa-fw): Extended Markdown syntax for **ruby annotation**
-+ :(fas fa-percentage fa-fw): Extended Markdown syntax for **fraction**
-+ :(fas fa-square-root-alt fa-fw): **Mathematical formula** supported by [$\KaTeX$](https://katex.org/)
-+ :(fas fa-project-diagram fa-fw): **Diagrams** shortcode supported by [mermaid](https://github.com/mermaid-js/mermaid)
-+ :(fas fa-chart-pie fa-fw): **Interactive data visualization** shortcode supported by [ECharts](https://echarts.apache.org/)
-+ :(fas fa-map-marked-alt fa-fw): **Mapbox** shortcode supported by [Mapbox GL JS](https://docs.mapbox.com/mapbox-gl-js)
-+ :(fas fa-music fa-fw): **Music player** shortcode supported by [APlayer](https://github.com/MoePlayer/APlayer) and [MetingJS](https://github.com/metowolf/MetingJS)
-+ :(fab fa-bilibili fa-fw): **Bilibili player** shortcode supported
-+ :(fas fa-note-sticky fa-fw): Kinds of **admonitions** shortcode supported
-+ :(fas fa-i-cursor fa-fw): **Animated typing** supported by [TypeIt](https://typeitjs.com/)
-+ :(fas fa-cookie-bite fa-fw): **Cookie consent banner** supported by [cookieconsent](https://github.com/osano/cookieconsent)
++ :(far fa-edit fa-fw): My Blog: [:(fab fa-github fa-fw): jerrysmd.github.io](https://jerrysmd.github.io)
++ :(fab fa-github fa-fw): Project link: [github.com/Jerrysmd/Jerrysmd.github.io](https://github.com/Jerrysmd/Jerrysmd.github.io)
 
-## Licenses
+![](/posts/picture/myBlog.png " ")
 
-+ All original articles are protected by [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)
+## Weibo Ad Blocker
 
-  {{< admonition note Copyright>}}
++ :(fa-solid fa-puzzle-piece): This is a Chrome extension used to block ads on Weibo
++ :(fa-brands fa-chrome): Chrome web store: [chromewebstore.google.com/detail/](https://chromewebstore.google.com/detail/%E5%A4%A7%E7%9C%BC%E5%A4%B9%EF%BC%882024%E5%BE%AE%E5%8D%9A%E5%8E%BB%E5%B9%BF%E5%91%8A%EF%BC%89/lgmemegockdpkabelcgogdcdfdjnmbhe)
 
-  Under the following terms:
-
-  + **Attribution** — You must give [appropriate credit](https://creativecommons.org/licenses/by-nc/4.0/#), provide a link to the license, and [indicate if changes were made](https://creativecommons.org/licenses/by-nc/4.0/#). You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
-  + **NonCommercial** — You may not use the material for [commercial purposes](https://creativecommons.org/licenses/by-nc/4.0/#).
-
-  {{< /admonition >}}
+![](/posts/picture/weibo.png " ")
 
