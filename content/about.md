@@ -15,7 +15,7 @@ math:
 
 ## Profile
 
-+ 🧑‍💻 Name： **Liu, Jiarui Jerry**
++ 🧑‍💻 Nickname： **Jerry**
 + 📬 E-mail：`MHgwMDRjMkBnbWFpbC5jb20=`
 + 🏀 Hobby：💪🚲🎾⚽📸🏓🎹📱📖🏊...
 
