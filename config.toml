@@ -105,14 +105,6 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     url = "/about/"
     title = "About blog"
   [[menu.main]]
-    weight = 6
-    identifier = "GitHub"
-    pre = "<i class='fab fa-github fa-fw' aria-hidden='true'></i>"
-    post = ""
-    name = ""
-    url = "https://github.com/Jerrysmd/"
-    title = "My GitHub"
-  [[menu.main]]
     weight = 7
     identifier = "Weread"
     pre = "<i class='fa-solid fa-book-bookmark fa-sm fa-fw' aria-hidden='true'></i>"
