@@ -307,6 +307,7 @@ print(dataset)
 ```
 
 ```python
+# CustomDataset.py
 from torch.utils.data import Dataset
 from datasets import load_from_disk
 class CustomDataset(Dataset):
@@ -326,20 +327,141 @@ for data in dataset:
 Befor fine-tuning, you need to design the downstream tasks. This includes one or more full-connected layers, which are used to adapt the pre-trained model to the specific task. 
 
 ```python
+# network.py
 from transformers import BertModel
-import torch.nn as nn
+import torch
+# Define the device for model training
+DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+pretrained = BertModel.from_pretrained("bert-base-uncased").to(DEVICE)
+# Define downstream task model
+class DownstreamTaskModel(torch.nn.Module):
+    # Initialize the model with a pre-trained BERT model and a classifier layer
+    def __init__(self, pretrained_model, num_labels):
+        super(DownstreamTaskModel, self).__init__()
+        self.bert = pretrained_model
+        self.fc = torch.nn.Linear(self.bert.config.hidden_size, num_labels)
 
-class SentimentClassifier(nn.Module):
-    def __init__(self, model_name, num_labels):
-        super(SentimentClassifier, self).__init__()
-        self.bert = BertModel.from_pretrained(model_name)
-        self.drop_out = nn.Dropout(0.3)  # Dropout layer to prevent overfitting
-        self.linear = nn.Linear(self.bert.config.hidden_size, num_labels)  # Fully connected layer for classification
-    def forward(self, input_ids, attention_mask=None):
-        _, pooled_output = self.bert(
-            input_ids=input_ids,
-            attention_mask=attention_mask,
-            return_dict=False  # Return tuple instead of dict
-        )
-        return self.linear(self.drop_out(pooled_output))  # Apply dropout and linear layer
+    def forward(self, input_ids, attention_mask=None, token_type_ids=None):
+        # Only the downstream task model will be trained, upstream model do not need to be trained(locked)
+        with torch.no_grad():
+            output = pretrained(input_ids=input_ids, attention_mask=attention_mask, token_type_ids=token_type_ids)
+        # Downstream training
+        output = self.fc(output.last_hidden_state[:, 0])  # Use the [CLS] token representation
+        return output.softmax(dim=1)  # Apply softmax to get probabilities
+```
+
+```mermaid
+flowchart LR
+    dataset --> Bert
+    subgraph Model
+    Bert-->FullyConnected
+    end
+    FullyConnected --> output
+```
+
+### Custom Model training
+
+```python
+import torch
+from CustomDataset import MyDataset
+from torch.utils.data import DataLoader
+from network import Model
+from transformers import BertTokenizer, AdamW
+
+# Define devices
+DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+EPOCHS = 100 # training times
+
+tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
+# Encode the dataset
+def collate_fn(data):
+  sentences, labels = [i[0] for i in data], [i[1] for i in data]
+  data = tokenizer.batch_encode_plus(
+    batch_text_or_text_pairs=sentences,
+    truncation=True,
+    padding="max_length",
+    max_length="128,
+    return_tensors="pt",  # Return PyTorch tensors
+    return_length=True,  # Return the length of each encoded sentence
+  )
+  input_ids = data['input_ids']
+  attention_mask = data['attention_mask']
+  token_type_ids = data.get('token_type_ids', None)  # Optional, used
+  label = torch.LongTensor(labels)  # Convert labels to tensor
+  return input_ids, attention_mask, token_type_ids, label
+# Create dataset
+train_dataset = MyDataset("train")
+# Create DataLoader
+train_loader = DataLoader(
+  dataset=train_dataset,
+  batch_size=32,  # Batch size for every load
+  shuffle=True,  # Shuffle the dataset for each epoch
+  drop_last=True,  # Drop the last incomplete batch
+  collate_fn=collate_fn  # Custom collate function for batching
+)
+
+if __name__ == "__main__":
+    model = Model().to(DEVICE)  # Initialize the model
+    optimizer = AdamW(model.parameters(), lr=5e-4)  # Optimizer for training
+    loss_fn = torch.nn.CrossEntropyLoss()  # Loss function for classification
+    for epoch in range(EPOCHS):
+        for i, (input_ids, attention_mask, token_type_ids, labels) in enumerate(train_loader):
+            input_ids = input_ids.to(DEVICE)
+            attention_mask = attention_mask.to(DEVICE)
+            token_type_ids = token_type_ids.to(DEVICE) 
+            labels = labels.to(DEVICE)
+            # Forward computation
+            outputs = model(input_ids=input_ids, attention_mask=attention_mask, token_type_ids=token_type_ids)
+            # Calculate loss
+            loss = loss_fn(outputs, labels)
+            # optimization steps
+            optimizer.zero_grad()  # 1.lear gradients
+            loss.backward()  # 2.Backpropagation
+            optimizer.step()  # 3.Update model parameters
+            if i % 5 == 0:  # Print loss every 5 batches
+                print(f"Epoch [{epoch+1}/{EPOCHS}], Step [{i+1}/{len(train_loader)}], Loss: {loss.item():.4f}")
+                accuracy = (outputs.argmax(dim=1) == labels).sum().item() / len(labels)
+                print(f"Accuracy: {accuracy:.4f}")
+
+```
+
+### Save the model
+
+After training the model, you can save the model parameters and configuration to a file. This allows you to load the model later for inference or further training.
+
+```python
+# Save the model
+torch.save(model.state_dict(), "sentiment_analysis_model.pt")
+# Load the model
+model = Model()
+model.load_state_dict(torch.load("sentiment_analysis_model.pt"))
+model.eval()  # Set the model to evaluation mode
+```
+
+### Evaluate the model
+
+Accuracy is a common metric for evaluating classification models. It measures the proportion of correct predictions made by the model compared to the total number of predictions.
+
+The test of model is similar to the training process, but without the optimization steps. You can use the same dataset and DataLoader, but set the model to evaluation mode and disable gradient calculation.
+
+```python
+#...
+if __name__ == "__main__":
+    model = Model().to(DEVICE)  # Initialize the model
+    model.load_state_dict(torch.load("params/2bert.pt"))  # Load the trained model parameters
+    model.eval()  # Set the model to evaluation mode
+    correct = 0
+    total = 0
+    with torch.no_grad():  # Disable gradient calculation for evaluation
+        for input_ids, attention_mask, token_type_ids, labels in train_loader:
+            input_ids = input_ids.to(DEVICE)
+            attention_mask = attention_mask.to(DEVICE)
+            token_type_ids = token_type_ids.to(DEVICE)
+            labels = labels.to(DEVICE)
+            outputs = model(input_ids=input_ids, attention_mask=attention_mask, token_type_ids=token_type_ids)
+            _, predicted = torch.max(outputs.data, 1)  # Get the predicted class
+            total += labels.size(0)  # Update total count
+            correct += (predicted == labels).sum().item()  # Count correct predictions
+    accuracy = correct / total  # Calculate accuracy
+    print(f"Accuracy: {accuracy:.4f}")
 ```
