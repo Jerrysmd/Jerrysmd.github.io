@@ -1,6 +1,6 @@
 # 001: Github
 github:
-  Weight: 1
+  Weight: 102
   Prefix: https://github.com/
   Title: GitHub
   Icon:
@@ -601,7 +601,7 @@ email:
 
 # RSS
 rss:
-  Weight: 102
+  Weight: 999
   Url: /index.xml
   Title: RSS
   Newtab: true
