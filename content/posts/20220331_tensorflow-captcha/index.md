@@ -17,7 +17,7 @@ categories:
   - Technology
 tags:
   - TensorFlow
-  - MachineLearning
+  - Machine Learning
 comments: true # Disable comment if false.
 ---
 

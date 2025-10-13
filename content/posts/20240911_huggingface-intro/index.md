@@ -10,7 +10,7 @@ draft: false
 # license: ""
 # images: []
 
-tags: ["Hagging Face", "Transformer"]
+tags: ["AI", "Hagging Face", "Transformer"]
 categories: ["Technology"]
 
 # featuredImage: ""
