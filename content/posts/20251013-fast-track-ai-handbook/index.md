@@ -66,3 +66,16 @@ comment:
 We all can chat with LLM through prompt, but what is the algorithm before LLM? What are the key development stages in the algorithmic world? And why is the route of LLM moving towards larger models? This handbook will take you through the key points of AI development, and help you quickly understand the core concepts and technologies in the field of artificial intelligence.
 ---
 
+# Machine Learning
+
+## Model Automation
+
+We do not intervene and let the machine (for ease of understanding, it can be considered as a running piece of code) help us produce a more scientific algorithm formula to replace our rule formula. In other words, let the model recognize this potential rule formula (pattern, rule). We call this lazy method machine learning.
+
+The concept of machine learning is very broad. We refer to the most basic machine learning methods as traditional machine learning. With the development of neural networks, deep learning (neural networks with sufficiently deep and multiple layers of neurons) has emerged as a key branch of machine learning. The large models we are familiar with today are a subfield of deep learning
+
+So their relationship is machine learning > artificial neural network > deep learning > large model, which is a hierarchical inclusion relationship.
+
+## Understanding Model
+
+From a mathematical perspective, the formula for pd is a linear equation, generally written as f(x) = wx + b. For ease of understanding, we hide the intercept (also called bias) b. Linear equations are very intuitive. If f(x) = 2x (w = 2, b = 0)
