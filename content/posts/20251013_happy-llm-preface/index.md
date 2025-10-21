@@ -1,0 +1,75 @@
+---
+title: "Reading Happy-LLM: Preface"
+# subtitle: ""
+date: 2025-10-13T04:13:31+08:00
+# lastmod: 2025-04-02T04:13:31+08:00
+draft: false
+# author: ""
+# authorLink: ""
+# description: ""
+# license: ""
+# images: []
+
+tags: ["AI", "LLM", "GPT", "BERT", "Machine Learning", "Deep Learning"]
+categories: ["Technology"]
+
+# featuredImage: ""
+# featuredImagePreview: ""
+
+hiddenFromHomePage: false
+hiddenFromSearch: false
+twemoji: false
+lightgallery: true
+# ruby: true
+# fraction: true
+# fontawesome: true
+# linkToMarkdown: true
+# rssFullText: false
+
+toc:
+  enable: true
+  auto: true
+code:
+  copy: true
+  maxShownLines: 50
+math:
+  enable: false
+#   # ...
+# mapbox:
+#   # ...
+# share:
+#   enable: true
+#   # ...
+comment:
+  enable: true
+#   # ...
+# library:
+#   css:
+#     # someCSS = "some.css"
+#     # located in "assets/"
+#     # Or
+#     # someCSS = "https://cdn.example.com/some.css"
+#   js:
+#     # someJS = "some.js"
+#     # located in "assets/"
+#     # Or
+#     # someJS = "https://cdn.example.com/some.js"
+# seo:
+#   images: []
+
+# admonition:
+# {{< admonition tip>}}{{< /admonition >}}
+# note abstract info tip success question warning failure danger bug example quote
+# mermaid:
+# {{< mermaid >}}{{< /mermaid >}}
+---
+The emergence of ChatGPT changed ppeople's perception of ai and brought about a transformative phase in the field of NLP. LLM, represented by the GPT, have become the mainstream research focus in NLP and even the broader field of ai.
+---
+
+## Preface
+
+LLM is actually a derivative achievement of the classic research method of Pretrain Language Model (PLM) in the field of NLP. The field of NLP focuses on the processing, understanding, and generation of natural language text written by humans, and has undergone multiple transformations from the symbolic stage, statistical learning stage, deep learning stage, pre-training model stage, to the current large model stage. PLM represented by GPT and BERT is the core research achievement of the previous stage of NLP, with attention mechanism as the model architecture, and through the idea of pre-training and fine-tuning, achieves powerful natural language understanding capabilities by self-supervised pre-training on a large amount of unsupervised text. However, traditional PLM still depends on a certain amount of supervised data for downstream task fine-tuning, and its performance in natural language generation tasks is still not satisfactory. The performance of NLP systems is still far from the expected general artificial intelligence, with a significant gap. 
+
+LLM is a breakthrough achievement realized by expanding the model parameters and pre-training data scale on the basis of PLM, and introducing means such as instruction fine-tuning and human feedback reinforcement learning. Compared with traditional PLM, LLM has emergent capabilities, strong contextual learning ability, instruction understanding ability, and text generation ability. At the large model stage, NLP researchers can to some extent abandon a large amount of supervised data annotation work, and through providing a small amount of supervised examples, LLM can achieve performance on specified downstream tasks that is comparable to that of large-scale fine-tuned PLM. At the same time, the strong instruction understanding ability and text generation ability enable LLM to directly, efficiently, and accurately respond to user instructions, thus truly approaching the goal of general artificial intelligence.
+
+The breakthrough progress in LLMs has ignited research enthusiasm in the field of NLP and the entire field of artificial intelligence. Universities, research institutes, major corporations, and even many traditional industry enterprises have joined the wave of LLM research. Since 2023, there have been numerous 阶段性 achievements in LLMs, with model performance continuously breaking through the upper limit. From the initial ChatGPT to GPT-4, and to the more powerful and customized models such as the reasoning large models represented by DeepSeek-R1 and the multimodal large models represented by Qwen-VL, LLM applications have also emerged, bringing innovative applications that enhance actual productivity and empower users' daily lives. From the "hundred models battle" to the "Agent Year," the research on LLMs may have reached a stable structure, but the research on LLMs is still in full swing. It is certain that in the not-too-distant future, LLMs and applications based on LLMs will definitely become infrastructure in people's lives, closely intertwined with everyone's life, study, and work.
