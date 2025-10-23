@@ -1,5 +1,5 @@
 ---
-title: "Reading Happy-LLM: Preface"
+title: "Reading Happy-LLM Notes: Preface"
 # subtitle: ""
 date: 2025-10-13T04:13:31+08:00
 # lastmod: 2025-04-02T04:13:31+08:00
@@ -75,6 +75,7 @@ The emergence of ChatGPT changed people's perception of AI and brought about a t
 **LLMs** are actually a derivative achievement of the classic research method of **Pretrained Language Models (PLMs)** in the field of NLP. The field of NLP focuses on the processing, understanding, and generation of natural language text written by humans, and has undergone multiple transformations:
 
 {{< mermaid >}}
+
 graph LR
     A[Symbolic Stage] --> B[Statistical Learning]
     B --> C[Deep Learning]
@@ -94,6 +95,7 @@ graph LR
     style E fill:#ffebee
     style F fill:#e3f2fd
     style G fill:#e8f5e8
+
 {{< /mermaid >}}
 
 - **Symbolic stage** → **Statistical learning stage** → **Deep learning stage** → **Pre-training model stage** → **Current large model stage**
@@ -112,6 +114,7 @@ graph LR
 - **Introducing instruction fine-tuning** and human feedback reinforcement learning
 
 {{< mermaid >}}
+
 graph TB
     subgraph "PLM Era"
         A[Traditional PLM] --> B[Supervised Data Required]
@@ -131,6 +134,7 @@ graph TB
     style A fill:#ffcdd2
     style E fill:#c8e6c9
     style I fill:#dcedc8
+
 {{< /mermaid >}}
 
 **Compared with traditional PLMs, LLMs have:**
