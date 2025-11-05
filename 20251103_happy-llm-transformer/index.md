@@ -5,8 +5,6 @@ Transformer is a model architecture for natural language processing (NLP) tasks.
 
 ## 2.1 Attention Mechanism
 
-> Personal notes on the Transformer internals. Focus on what matters; skip the fluff.
-
 ### 2.1.1 What is Attention?
 
 As NLP moved from statistical methods to deep learning, text representation evolved accordingly. The field shifted from vector space models and n-gram language models to neural representations like Word2Vec. From computer vision came three backbone architectures:
