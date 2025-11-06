@@ -599,6 +599,13 @@ email:
   Icon:
     Class: fa-regular fa-envelope fa-fw
 
+# Duolingo
+duolingo:
+  Weight: 103
+  Title: Duolingo
+  Icon:
+    Simpleicons: duolingo
+
 # RSS
 rss:
   Weight: 999
