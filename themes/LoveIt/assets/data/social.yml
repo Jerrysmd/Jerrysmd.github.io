@@ -1,6 +1,6 @@
 # 001: Github
 github:
-  Weight: 102
+  Weight: 103
   Prefix: https://github.com/
   Title: GitHub
   Icon:
@@ -601,7 +601,7 @@ email:
 
 # Duolingo
 duolingo:
-  Weight: 103
+  Weight: 102
   Title: Duolingo
   Icon:
     Simpleicons: duolingo
