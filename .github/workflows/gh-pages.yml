@@ -13,17 +13,18 @@ jobs:
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
-          submodules: true  # Fetch Hugo themes (true OR recursive)
-          #fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
-
+          submodules: recursive
+          fetch-depth: 0
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
+        uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: '0.146.5'
           extended: true
-
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
       - name: Build
         run: hugo --minify
 
