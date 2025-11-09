@@ -20,6 +20,10 @@ enableEmoji = true
 # 忽略一些构建错误
 ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 
+# template timeout setting
+# 模板超时设置
+timeout = "120s"
+
 # theme
 # 主题
 theme = "DoIt"
