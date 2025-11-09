@@ -42,12 +42,12 @@ enableEmoji = false
 # 忽略一些构建错误
 ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 
-# Author config
-# 作者配置
-# [author]
-#   name = ""
-#   email = ""
-#   link = ""
+# Pagination config
+# 分页配置
+[pagination]
+  disableAliases = false
+  pagerSize = 10
+  path = "page"
 
 # Menu config
 # 菜单配置
@@ -103,7 +103,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     identifier = "Github"
     pre = "<i class='fa-brands fa-github fa-sm fa-fw' aria-hidden='true'></i>"
     post = ""
-    name = ""
+    name = " "
     url = "https://github.com/Jerrysmd"
     title = "My Github"
 
@@ -132,6 +132,13 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   # 网站图片, 用于 Open Graph 和 Twitter Cards
   # images = ["/logo.png"]
 
+# Author config
+# 作者配置
+  [params.author]
+    name = "Jerry"
+    email = ""
+    link = ""
+
   # Header config
   # 页面头部导航栏配置
   [params.header]
@@ -152,7 +159,6 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       name = "JERRYSBLOG"
       # you can add extra information before the name (HTML format is supported), such as icons
       # 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
-      # pre = "<i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i>"
       pre = "<i class='far fa-edit fa-fw' aria-hidden='true'></i>"
       # you can add extra information after the name (HTML format is supported), such as icons
       # 你可以在名称 (允许 HTML 格式) 之后添加其他信息, 例如图标
@@ -192,26 +198,26 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   [params.section]
     # special amount of posts in each section page
     # section 页面每页显示文章数量
-    # paginate = 20
+    paginate = 20
     # date format (month and day)
     # 日期格式 (月和日)
     dateFormat = "01-02"
     # amount of RSS pages
     # RSS 文章数目
-    rss = 6
+    rss = 10
 
   # List (category or tag) page config
   # List (目录或标签) 页面配置
   [params.list]
     # special amount of posts in each list page
     # list 页面每页显示文章数量
-    paginate = 100
+    paginate = 20
     # date format (month and day)
     # 日期格式 (月和日)
     dateFormat = "01-02"
     # amount of RSS pages
     # RSS 文章数目
-    rss = 6
+    rss = 10
 
   # App icon config
   # 应用图标配置
@@ -227,13 +233,13 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     svgFavicon = ""
     # Android browser theme color
     # Android 浏览器主题色
-    themeColor = ""
+    themeColor = "#ffffff"
     # Safari mask icon color
     # Safari 图标颜色
-    iconColor = ""
+    iconColor = "#5bbad5"
     # Windows v8-11 tile color
     # Windows v8-11 磁贴颜色
-    tileColor = ""
+    tileColor = "#da532c"
 
   # Search config
   # 搜索配置
@@ -270,7 +276,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   [params.home]
     # amount of RSS pages
     # RSS 文章数目
-    rss = 6
+    rss = 10
     # Home page profile
     # 主页个人信息
     [params.home.profile]
@@ -377,7 +383,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     ORCID = ""
     Pleroma = ""
     Kaggle = ""
-    MediaWiki= ""
+    MediaWiki = ""
     Plume = ""
     HackTheBox = ""
     RootMe= ""
@@ -385,6 +391,9 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     TikTok = ""
     TryHackMe = ""
     Codeberg = ""
+    HuggingFace = ""
+    Threads = ""
+    Bluesky = ""
     Email = ""
     RSS = "RSS"
 
@@ -485,7 +494,8 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     # 文章页面的分享信息设置
     [params.page.share]
       enable = false
-      Twitter = true
+      X = true
+      Threads = true
       Facebook = true
       Linkedin = false
       Whatsapp = false
@@ -507,7 +517,9 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       Evernote = false
       Skype = false
       Trello = false
+      Diaspora = true
       Mix = false
+      Telegram = true
     # Comment config
     # 评论系统设置
     [params.page.comment]
@@ -544,7 +556,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
         recordIP = true
         highlight = true
         enableQQ = true
-        # serverURLs = "https://leancloud.hugoloveit.com"
+        serverURLs = "https://valine.hugoloveit.com"
         # emoji data file name, default is "google.yml"
         # ["apple.yml", "google.yml", "facebook.yml", "twitter.yml"]
         # located in "themes/LoveIt/assets/lib/valine/emoji/" directory
@@ -611,6 +623,15 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
         lazyLoading = false
         lightTheme = "light"
         darkTheme = "dark"
+      # Waline comment config (https://waline.js.org/)
+      # Waline 评论系统设置 (https://waline.js.org/)
+      [params.page.comment.waline]
+        enable = false
+        serverURL = "https://love-it-waline.vercel.app"
+        # automatically adapt the current theme i18n configuration when empty
+        # 为空时自动适配当前主题 i18n 配置
+        lang = ""
+        emoji = ["https://unpkg.com/@waline/emojis@1.0.1/tw-emoji"]
     # Third-party library config
     # 第三方库配置
     [params.page.library]
@@ -674,13 +695,12 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   # Analytics config
   # 网站分析配置
   [params.analytics]
-    enable = true
     # Google Analytics
     [params.analytics.google]
       id = "G-JJBX835T6W"
-      # whether to anonymize IP
-      # 是否匿名化用户 IP
-      anonymizeIP = false
+      # whether to respect the browser’s “do not track” setting
+      # 是否遵循浏览器的 “Do Not Track” 设置
+      respectDoNotTrack = false
     # Fathom Analytics
     [params.analytics.fathom]
       id = ""
@@ -693,6 +713,9 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     # Yandex Metrica
     [params.analytics.yandexMetrica]
       id = ""
+    [params.analytics.goatCounter]
+      code = ""
+
 
   # Cookie consent config
   # Cookie 许可配置
@@ -736,12 +759,11 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   # Syntax Highlighting (https://gohugo.io/content-management/syntax-highlighting)
   # 语法高亮设置 (https://gohugo.io/content-management/syntax-highlighting)
   [markup.highlight]
+    anchorLineNos = false
     codeFences = true
     guessSyntax = true
     lineNos = true
     lineNumbersInTable = true
-    # false is a necessary configuration (https://github.com/dillonzq/LoveIt/issues/158)
-    # false 是必要的设置 (https://github.com/dillonzq/LoveIt/issues/158)
     noClasses = false
   # Goldmark is from Hugo 0.60 the default library used for Markdown
   # Goldmark 是 Hugo 0.60 以来的默认 Markdown 解析库
@@ -773,21 +795,21 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 
 # Permalinks config (https://gohugo.io/content-management/urls/#permalinks)
 # Permalinks 配置 (https://gohugo.io/content-management/urls/#permalinks)
-[Permalinks]
+[permalinks]
   # posts = ":year/:month/:filename"
   posts = ":filename"
 
-# Privacy config (https://gohugo.io/about/hugo-and-gdpr/)
-# 隐私信息配置 (https://gohugo.io/about/hugo-and-gdpr/)
+# Privacy config (https://gohugo.io/configuration/privacy/)
+# 隐私信息配置 (https://gohugo.io/configuration/privacy/)
 [privacy]
-  # privacy of the Google Analytics (replaced by params.analytics.google)
-  # Google Analytics 相关隐私 (被 params.analytics.google 替代)
+  # privacy of the Google Analytics (can also be configured in params.analytics.google)
+  # Google Analytics 相关隐私设置 (也能在 params.analytics.google 配置)
   [privacy.googleAnalytics]
     # ...
   [privacy.twitter]
-    enableDNT = true
+    # ...
   [privacy.youtube]
-    privacyEnhanced = true
+    # ...
 
 # Options to make output .md files
 # 用于输出 Markdown 格式文档的设置
@@ -809,4 +831,3 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   page = ["HTML", "MarkDown"]
   section = ["HTML", "RSS"]
   taxonomy = ["HTML", "RSS"]
-  taxonomyTerm = ["HTML"]
