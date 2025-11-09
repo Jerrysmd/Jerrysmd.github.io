@@ -1,0 +1,38 @@
+weread:
+  Weight: 1
+  Title: Weread
+  Icon:
+    Fontawesome: 
+      Style: solid
+      Icon: book
+
+gallery:
+  Weight: 2
+  Title: Gallery
+  Icon:
+    Fontawesome:
+      Style: solid
+      Icon: camera-retro
+
+duolingo:
+  Weight: 3
+  Title: Duolingo
+  Icon:
+    Src: svg/icons/duolingo.svg
+
+github:
+  Weight: 4
+  Prefix: https://github.com/
+  Title: GitHub
+  Icon:
+    Simpleicons: github
+
+rss:
+  Weight: 5
+  Url: /index.xml
+  Title: RSS
+  Newtab: true
+  Icon:
+    Fontawesome:
+      Style: solid
+      Icon: rss-square
