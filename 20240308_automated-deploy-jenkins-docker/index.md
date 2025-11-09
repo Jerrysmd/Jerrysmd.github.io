@@ -11,7 +11,7 @@ First of all, How do companies ship code to production?
 
 The diagram below illustrates the typical workflow.
 
-![img](0x1664.webp " ")
+{{< figure src="0x1664.webp" title="" >}}
 
 1. The process starts with a product owner creating user stories based on requirements.
 2. The dev team picks up the user stories from the backlog and puts them into a sprint for a two-week dev cycle.
