@@ -121,7 +121,7 @@ The right approach to analyzing anomalies: Top-down or bottom-up?
    + Baseline function: Retain simple samples as a "safety net" to ensure model stability
 
 + Arize: Dataset Management:
-  + ![img]({B22E9FD2-E120-454A-9490-95AED923FC73})
+  + ![img](arize-dataset-management.png)
 
 ### Building a trustworthy evaluation system
 
