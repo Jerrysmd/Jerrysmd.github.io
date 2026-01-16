@@ -1,5 +1,5 @@
 ---
-title: "Major Releases in Spring AI 1.1"
+title: "Major Releases in Spring AI 1.1: Full-Stack Agent Development"
 # subtitle: ""
 date: 2026-01-07T10:44:55+08:00
 # lastmod: 2026-01-07T10:44:55+08:00
