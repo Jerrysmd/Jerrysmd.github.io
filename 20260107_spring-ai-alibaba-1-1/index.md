@@ -1,4 +1,4 @@
-# Major Releases in Spring AI 1.1
+# Major Releases in Spring AI 1.1: Full-Stack Agent Development
 
 Spring AI offers a complete ecosystem: the Admin platform for visualized management and Dify integration; the Agent Framework for rapid development with built-in workflows; and the Graph runtime for flexible, stateful multi-agent orchestration. This full-stack solution streamlines building, managing, and running sophisticated AI agents.
 <!--more-->
