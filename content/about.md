@@ -25,7 +25,7 @@ math:
 + 📝 Synchronization: Real-time synchronization from Weread to Notion
 +  Project link: [github.com/Jerrysmd/weread2notion](https://github.com/Jerrysmd/weread2notion)
 
-![](/posts/picture/weread.png "Weread Reading Notes")
+![](/posts/picture/weread.png)
 
 
 
@@ -35,7 +35,7 @@ math:
 + 🔭 Synchronization: Meaningful photos compressed using Photoshop and stored on GitHub
 +   Project link: [github.com/Jerrysmd/gallery](https://github.com/Jerrysmd/gallery)
 
-![](/posts/picture/gallery.png "Gallery")
+![](/posts/picture/gallery.png)
 
 
 
@@ -44,11 +44,11 @@ math:
 +  My Blog: [ jerrysmd.github.io](https://jerrysmd.github.io)
 +  Project link: [github.com/Jerrysmd/Jerrysmd.github.io](https://github.com/Jerrysmd/Jerrysmd.github.io)
 
-![](/posts/picture/myBlog.png " ")
+![](/posts/picture/myBlog.png)
 
 ## Weibo Ad Blocker
 
 +  This is a Chrome extension used to block ads on Weibo
 +  Chrome web store: [chromewebstore.google.com/detail/](https://chromewebstore.google.com/detail/%E5%A4%A7%E7%9C%BC%E5%A4%B9%EF%BC%882024%E5%BE%AE%E5%8D%9A%E5%8E%BB%E5%B9%BF%E5%91%8A%EF%BC%89/lgmemegockdpkabelcgogdcdfdjnmbhe)
 
-![](/posts/picture/weibo.png " ")
+![](/posts/picture/weibo.png)
