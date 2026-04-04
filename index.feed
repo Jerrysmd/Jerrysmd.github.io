@@ -1,7 +1,7 @@
 {
     "version" : "https://jsonfeed.org/version/1.1",
-    "title" : "JerrysBlog",
-    "description": "JerrysBlog",
+    "title" : "Jerryskills",
+    "description": "Jerryskills",
     "home_page_url" : "https://jerrysmd.github.io/",
     "feed_url" : "https://jerrysmd.github.io/index.feed",
     "icon" : "https://jerrysmd.github.io/apple-touch-icon.png",
