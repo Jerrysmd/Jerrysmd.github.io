@@ -1,0 +1,16 @@
+// ==============================
+// Override theme variables
+// ==============================
+
+@import url('https://fonts.googleapis.cn/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+@keyframes pulse {
+  50% {
+    opacity: .5;
+  }
+}
+
+$header-title-font-family:
+  "JetBrains Mono",
+  "JetBrains Mono Fallback",
+  monospace;

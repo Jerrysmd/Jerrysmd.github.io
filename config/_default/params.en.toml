@@ -9,7 +9,7 @@ keywords = ["Theme", "Hugo"]
 [app]
   # optional site title override for the app when added to an iOS home screen or Android launcher
   # 当添加到 iOS 主屏幕或者 Android 启动器时的标题, 覆盖默认标题
-  title = "JerrysBlog"
+  title = "Jerryskills"
   # whether to omit favicon resource links
   # 是否隐藏网站图标资源链接
   noFavicon = false
