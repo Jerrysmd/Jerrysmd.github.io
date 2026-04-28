@@ -23,7 +23,6 @@ math:
 
 + 📖 My reading log, highlights and notes:[jerrysmd.notion.site](https://jerrysmd.notion.site/c36b33378ab44eaa8a4e0d51acb419cd?v=f866caf0636341839c3ddd977cbb4bfe&pvs=4)
 + 📝 Synchronization: Real-time synchronization from Weread to Notion
-+  Project link: [github.com/Jerrysmd/weread2notion](https://github.com/Jerrysmd/weread2notion)
 
 ![](/posts/picture/weread.png)
 
@@ -33,7 +32,6 @@ math:
 
 + 📷 My photo gallery: [ jerrysmd.github.io/gallery](https://jerrysmd.github.io/gallery/)
 + 🔭 Synchronization: Meaningful photos compressed using Photoshop and stored on GitHub
-+   Project link: [github.com/Jerrysmd/gallery](https://github.com/Jerrysmd/gallery)
 
 ![](/posts/picture/gallery.png)
 
@@ -42,7 +40,6 @@ math:
 ## Blog
 
 +  My Blog: [ jerrysmd.github.io](https://jerrysmd.github.io)
-+  Project link: [github.com/Jerrysmd/Jerrysmd.github.io](https://github.com/Jerrysmd/Jerrysmd.github.io)
 
 ![](/posts/picture/myBlog.png)
 
